@@ -170,7 +170,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                 PerUnitPrice    : $scope.puprc,
                 Amount          : ($scope.prc == 20) ? eval($scope.puprc) * eval(configFareList[cnt].Distance) : configFareList[cnt].Amount,
                 FareTypeId      :configFareList[cnt].FareTypeId,
-                VehicleId       : $scope.v.Id,
+                VehicleId: $scope.v.VehicleId,
                 Active          :1,      
                 FromDate        :configFareList[cnt].FromDate,
                 ToDate: configFareList[cnt].ToDate
@@ -181,7 +181,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
 
         var RouteFareConfig = {
-            VehicleId: $scope.v.Id,
+            VehicleId: $scope.v.VehicleId,
             RouteId: $scope.r.RouteId,
             PriceTypeId: $scope.prc,
             UnitPrice: $scope.puprc,
