@@ -240,6 +240,7 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
             }
             $http(req).then(function (res) {
                 $scope.initdata = res.data;
+                $scope.showdialogue("Saved successfully")
             });
 
            // $scope.logdata = lines;
@@ -284,14 +285,14 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
 
          $http(req).then(function (response) {
 
-             //$scope.showDialog("Saved successfully!!");
-             // alert("Saved successfully");
+             scope.showDialog("Saved successfully!!");
+             
              $scope.data = null;
              //$scope.GetCompanys();
 
          }, function (errres) {
              var errdata = errres.data;
-             var errmssg = "";
+             var errmssg = "Your details are incorrect";
              errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
              // $scope.showDialog(errmssg);
              alert(errmssg);
@@ -350,18 +351,18 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
 
              $http(req).then(function (response) {
 
-                 //$scope.showDialog("Saved successfully!!");
-                 // alert("Saved successfully");
+                $scope.showDialog("Saved successfully!!");
+               
                  $scope.data = null;
                  //$scope.GetCompanys();
 
              }, function (errres) {
          
              var errdata = errres.data;
-             var errmssg = "";
+             var errmssg = "Your details are incorrect";
              errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
              // $scope.showDialog(errmssg);
-             alert(errmssg);
+     
          });
 
        

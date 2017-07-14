@@ -2090,7 +2090,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Dashboard.pubxml" />
     <Content Include="UI\vendors\bootstrap-clockface\.gitignore" />
     <Content Include="UI\vendors\bootstrap-clockface\.jshintignore" />
     <Content Include="UI\vendors\bootstrap-clockface\build" />
@@ -2421,6 +2420,7 @@
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
+    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

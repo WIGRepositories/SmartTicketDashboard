@@ -62,6 +62,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
             $scope.cmpdata1 = res.data;
+            $scope.showdialogue("Saved successfully")
+
 
             //if ($scope.userSId != 1) {
             //    //loop throug the fleetowners and identify the correct one

@@ -33,6 +33,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             //$scope.initdata = res.data;
             $scope.companies = res.data;
+            $scope.showdialogue("Saved successfully")
         });
 
     }
@@ -60,6 +61,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data.Table;
+            $scope.showdialogue("Saved successfully")
         });
     }
 
@@ -85,6 +87,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.showdialogue("Saved successfully")
            
         });
 

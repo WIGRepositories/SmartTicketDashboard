@@ -177,6 +177,8 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
         }
         $http(req).then(function (res) {
             $scope.FleetForFO = res.data;
+            $scope.showdialogue("Saved successfully")
+
         });
     }
 
@@ -213,13 +215,13 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
 
         $http(req).then(function (response) {
 
-           // $scope.showDialog("Saved successfully!");
+           $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
@@ -261,7 +263,7 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
 
         }
         $http(req).then(function (res) { });
-        //alert('updated successfully.');
+        alert('updated successfully.');
 
     }
 
@@ -282,7 +284,7 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
             data: FAvaliability
         }
         $http(req).then(function (response) {
-            //alert('Removed successfully.');
+            alert('Removed successfully.');
 
             $http.get('/api/FleetAvailability/GetFleetAvailability?VehicleId=' + R.VehicleId).then(function (res, data) {
                 $scope.FleetAvailability = res.data;

@@ -59,10 +59,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             data: countries,
 
         }).success(function (data, status, headers, config) {
-            //alert('Country details successfully');
+            alert('Country details Saved Successfully');
             
         }).error(function (ata, status, headers, config) {
-            alert(ata);
+            alert('Country details NotSaved Successfully');
         });
     };
 
