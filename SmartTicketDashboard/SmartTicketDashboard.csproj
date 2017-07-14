@@ -2031,6 +2031,7 @@
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\SmsGatewayConfigController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
+    <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
@@ -2063,7 +2064,6 @@
     <Compile Include="Controllers\SMSformatsController.cs" />
     <Compile Include="Controllers\SMSProviderConfigController.cs" />
     <Compile Include="Controllers\STATEController.cs" />
-    <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\TicketGenerationController.cs" />
     <Compile Include="Controllers\TransactionsController.cs" />
     <Compile Include="Controllers\TroubleTicketingDetailsController.cs" />
