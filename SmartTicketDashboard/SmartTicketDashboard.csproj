@@ -106,10 +106,13 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
+    <Content Include="UI\AddVehicle.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
+    <Content Include="UI\AssginDriver.html" />
     <Content Include="UI\AssignRole.html" />
     <Content Include="UI\BlockList.html" />
+    <Content Include="UI\BookingDetails.html" />
     <Content Include="UI\Btposdetails1.html" />
     <Content Include="UI\BtposLicense.html" />
     <Content Include="UI\BTPOSMonitoringPage.html" />
@@ -122,6 +125,7 @@
     <Content Include="UI\CardTrasactionDetails.html" />
     <Content Include="UI\CartDetails.html" />
     <Content Include="UI\CheckOut.html" />
+    <Content Include="UI\ClosingReport.html" />
     <Content Include="UI\CompanyHierarchy.html" />
     <Content Include="UI\CompanyReports.html" />
     <Content Include="UI\CompanyRoles.html" />
@@ -132,6 +136,7 @@
     <Content Include="UI\css\handsontable.full.min.css" />
     <Content Include="UI\css\themes\style2\Custom.css" />
     <Content Include="UI\css\treasure-overlay-spinner.css" />
+    <Content Include="UI\CustomerList.html" />
     <Content Include="UI\CustomizeRoutes.html" />
     <Content Include="UI\AddNewVehicleDetails.html" />
     <Content Include="UI\AddNewCompany.html" />
@@ -153,9 +158,12 @@
     <Content Include="UI\css\themes\style2\pink-violet.css" />
     <Content Include="UI\DataLoad.html" />
     <Content Include="UI\DefaultRoutePricing.html" />
+    <Content Include="UI\DriverList.html" />
     <Content Include="UI\EditHistory.html" />
     <Content Include="UI\EmailGatewayConfiguration.html" />
     <Content Include="UI\EmailInbox.html" />
+    <Content Include="UI\EmailTemplates\1.txt" />
+    <Content Include="UI\EmailTemplates\TicketFormat.html" />
     <Content Include="UI\extra.html" />
     <Content Include="UI\FAQs.html" />
     <Content Include="UI\FleetAvailability.html" />
@@ -197,11 +205,14 @@
     <Content Include="UI\InventorySales.html" />
     <Content Include="UI\InventoryStatus.html" />
     <Content Include="UI\Invoices.html" />
+    <Content Include="UI\js\AddVehicle.js" />
     <Content Include="UI\js\Advertisment.js" />
     <Content Include="UI\js\Alerts.js" />
     <Content Include="UI\js\AlertsConfiguration.js" />
     <Content Include="UI\js\angular-animate.js" />
+    <Content Include="UI\js\AssginDriver.js" />
     <Content Include="UI\js\BlockList.js" />
+    <Content Include="UI\js\BookingDetails.js" />
     <Content Include="UI\js\bootstrap.min.js" />
     <Content Include="UI\js\BTPOSConfig.js" />
     <Content Include="UI\js\Btposdetails1.js" />
@@ -210,11 +221,14 @@
     <Content Include="UI\js\BTPOSRoute.js" />
     <Content Include="UI\js\BTPOSTransactions.js" />
     <Content Include="UI\js\charts-highchart-line.js" />
+    <Content Include="UI\js\ClosingReport.js" />
     <Content Include="UI\js\CompanyHierarchy.js" />
     <Content Include="UI\js\CompanyReports.js" />
     <Content Include="UI\js\Countries.js" />
     <Content Include="UI\js\createfleet.js" />
+    <Content Include="UI\js\CustomerList.js" />
     <Content Include="UI\js\DataLoad.js" />
+    <Content Include="UI\js\DriverList.js" />
     <Content Include="UI\js\EditHistory.js" />
     <Content Include="UI\js\EmailGatewayConfiguration.js" />
     <Content Include="UI\js\EmailInbox.js" />
@@ -294,7 +308,10 @@
     <Content Include="UI\js\ui-bootstrap-tpls-1.3.3.js" />
     <Content Include="UI\js\userdetails.js" />
     <Content Include="UI\js\UserLicense.js" />
+    <Content Include="UI\js\VehicleAvailability.js" />
     <Content Include="UI\js\VehicleLayout.js" />
+    <Content Include="UI\js\VehicleList.js" />
+    <Content Include="UI\js\VehiclePricing.js" />
     <Content Include="UI\js\VehicleScheduleList.js" />
     <Content Include="UI\LicenseConfguration.html" />
     <Content Include="UI\LicenseDetails.html" />
@@ -562,8 +579,11 @@
     <Content Include="UI\UserProfile.html" />
     <Content Include="UI\UserRoles.html" />
     <Content Include="UI\Users.html" />
+    <Content Include="UI\VehicleAvailability.html" />
     <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\VehicleLayout.html" />
+    <Content Include="UI\VehicleList.html" />
+    <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
     <Content Include="UI\vendors\bootstrap-clockface\CHANGELOG.txt" />
@@ -1971,10 +1991,14 @@
     <Compile Include="Controllers\AdvertismentController.cs" />
     <Compile Include="Controllers\AlertsConfigurationController.cs" />
     <Compile Include="Controllers\AlertsController.cs" />
+    <Compile Include="Controllers\allocatedriverController.cs" />
+    <Compile Include="Controllers\AvailableSeatsController.cs" />
     <Compile Include="Controllers\Blocklistcontroller.cs" />
     <Compile Include="Controllers\blocklistnewController.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controllers\BookAVehicleController.cs" />
+    <Compile Include="Controllers\BookingHistoryController.cs" />
     <Compile Include="Controllers\BTPOSConfigController.cs" />
     <Compile Include="Controllers\Btposcontroller1Controller.cs" />
     <Compile Include="Controllers\BTPOSDetailsController.cs" />
@@ -1986,11 +2010,15 @@
     <Compile Include="Controllers\BTPOSPaymentController.cs" />
     <Compile Include="Controllers\BtposRoutesController.cs" />
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
+    <Compile Include="Controllers\CancelBookingController.cs" />
+    <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
+    <Compile Include="Controllers\DriverMasterController.cs" />
     <Compile Include="Controllers\EditHistoryController.cs" />
     <Compile Include="Controllers\EditHistoryDetailsController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmailGatewayConfigController.cs" />
     <Compile Include="Controllers\faqsController.cs" />
     <Compile Include="Controllers\FilesController.cs" />
@@ -2008,6 +2036,7 @@
     <Compile Include="Controllers\FleetRoutesController.cs" />
     <Compile Include="Controllers\FleetRoutesDetailsController.cs" />
     <Compile Include="Controllers\FleetStaffController.cs" />
+    <Compile Include="Controllers\ForgotpasswordController.cs" />
     <Compile Include="Controllers\FOVSchedule.cs" />
     <Compile Include="Controllers\InventoryItemController.cs" />
     <Compile Include="Controllers\InventoryPurchaseController.cs" />
@@ -2018,10 +2047,15 @@
     <Compile Include="Controllers\LicensePricingController.cs" />
     <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\List.cs" />
+    <Compile Include="Controllers\nearestvehiclesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Controllers\PaymentGatewayConfigurationController.cs" />
     <Compile Include="Controllers\PaymentHistoryController.cs" />
     <Compile Include="Controllers\PaymentsController.cs" />
+    <Compile Include="Controllers\prebookController.cs" />
+    <Compile Include="Controllers\prebookingdetailsController.cs" />
+    <Compile Include="Controllers\pricedetailsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
@@ -2033,7 +2067,12 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\TicketBookingController.cs" />
+    <Compile Include="Controllers\travelstartController.cs" />
+    <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
+    <Compile Include="Controllers\UserlocationController.cs" />
+    <Compile Include="Controllers\UserpreferencesController.cs" />
     <Compile Include="Controllers\VehicleConfigController.cs" />
     <Compile Include="Controllers\VehicleDetailsController.cs" />
     <Compile Include="Controllers\CompanyGroupsController.cs" />
@@ -2074,6 +2113,8 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
+    <Compile Include="Controllers\VehicleMasterController.cs" />
+    <Compile Include="Controllers\vehicletypesController.cs" />
     <Compile Include="Controllers\ZipCodeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
