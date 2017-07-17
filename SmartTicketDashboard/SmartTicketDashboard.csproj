@@ -2112,6 +2112,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
+    <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\vehicletypesController.cs" />
     <Compile Include="Controllers\ZipCodeController.cs" />
     <Compile Include="Global.asax.cs">
