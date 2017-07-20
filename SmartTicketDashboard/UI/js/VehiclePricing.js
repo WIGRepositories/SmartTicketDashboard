@@ -11,114 +11,162 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.GetStops = function () {
-        $http.get('/api/Stops/GetStops').then(function (res, data) {
-            $scope.Stops = res.data;
+    $scope.GetVehiclePrices = function () {
+        $http.get('/api/VehiclePricing/GetVehiclePrices').then(function (res, data) {
+            $scope.pricedetails = res.data;
         });
     }
 
-    $scope.saveNewStop = function (newStop) {
-        if (newStop == null) {
+    $scope.saveNewprice = function (price) {
+        if (price == null) {
             alert('Please Enter Name');
             return;
         }
-        if (newStop.Name == null) {
-            alert('Please Enter Nmae');
+        if (price.SrNo == null) {
+            alert('Please Enter SrNo');
             return;
         }
-        if (newStop.Code == null) {
-            alert('Please Enter Code');
+        if (price.Duration == null) {
+            alert('Please Enter Duration');
             return;
         }
+        if (price.KiloMtr == null) {
+            alert('Please Enter KiloMtr');
+            return;
+        }
+        if (price.IndicaRate == null) {
+            alert('Please Enter IndicaRate');
+            return;
+        }
+        if (price.IndigoRate == null) {
+            alert('Please Enter IndigoRate');
+            return;
+        }
+        if (price.InnovaRate == null) {
+            alert('Please Enter InnovaRate');
+            return;
+        }
+        if (price.Tag == null) {
+            alert('Please Enter Tag');
+            return;
+        }
+      
 
-        var newStop = {
-            Id: -1,
-            Name: newStop.Name,
-            Description: newStop.Description,
-            Code: newStop.Code,
+        var price = {
+            SrNo:price.SrNo,
+            Duration: price.Duration,
+            Description: price.Description,
+            KiloMtr: price.KiloMtr,
+            IndicaRate: price.IndicaRate,
+            IndigoRate: price.IndigoRate,
+            InnovaRate: price.InnovaRate,
+            Tag: price.Tag,
 
-            Active: (newStop.Active == true) ? 1 : 0,
+            Active: (price.Active == true) ? 1 : 0,
 
-            insupdflag: "I"
+           
         }
 
         var req = {
             method: 'POST',
-            url: '/api/Stops/saveStops',
-            data: newStop
+            url: '/api/VehiclePricing/VehiclePrices',
+            data: price
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your Details Are Not Saved";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops1 = null;
+    $scope.pricing = null;
 
 
-    $scope.save = function (Stops, flag) {
-        if (Stops == null) {
+    $scope.save = function (pricing, flag) {
+        if (pricing == null) {
             alert('Please Enter Name');
             return;
         }
-        if (Stops.Name == null) {
-            alert('Please Enter Nmae');
+        if (pricing.SrNo == null) {
+            alert('Please Enter SrNo');
             return;
         }
-        if (Stops.Code == null) {
-            alert('Please Enter Code');
+        if (pricing.Duration == null) {
+            alert('Please Enter Duration');
+            return;
+        }
+        if (pricing.KiloMtr == null) {
+            alert('Please Enter KiloMtr');
+            return;
+        }
+        if (pricing.IndicaRate == null) {
+            alert('Please Enter IndicaRate');
+            return;
+        }
+        if (pricing.IndigoRate == null) {
+            alert('Please Enter IndigoRate');
+            return;
+        }
+        if (pricing.InnovaRate == null) {
+            alert('Please Enter InnovaRate');
+            return;
+        }
+        if (pricing.Tag == null) {
+            alert('Please Enter Tag');
             return;
         }
 
-        var Stops = {
-            Id: Stops.Id,
-            Name: Stops.Name,
-            Description: Stops.Description,
-            Code: Stops.Code,
+        var pricing = {
+            SrNo: pricing.SrNo,
+            Duration: pricing.Duration,
+            Description: pricing.Description,
+            KiloMtr: pricing.KiloMtr,
+            IndicaRate: pricing.IndicaRate,
+            IndigoRate: pricing.IndigoRate,
+            InnovaRate: pricing.InnovaRate,
+            Tag: pricing.Tag,
 
-            Active: (Stops.Active == true) ? 1 : 0,
+            Active: (pricing.Active == true) ? 1 : 0,
 
 
-            insupdflag: "U"
         }
 
         var req = {
             method: 'POST',
-            url: '/api/Stops/saveStops',
-            data: Stops
+            url: '/api/VehiclePricing/VehiclePrices',
+            data: pricing
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Updated successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your Details Are Not Updated";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops = null;
+    $scope.pricing = null;
 
-    $scope.setStops = function (usr) {
-        $scope.Stops1 = usr;
+    $scope.setpricedetails = function (usr) {
+        $scope.pricing = usr;
     };
 
-    $scope.clearStops = function () {
-        $scope.Stops1 = null;
+    $scope.clearprice = function () {
+        $scope.pricing = null;
     }
 
 

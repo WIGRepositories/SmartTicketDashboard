@@ -71,6 +71,8 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(v);
 
             SqlParameter v1 = new SqlParameter("@Customername", SqlDbType.VarChar, 255);
+
+
             v1.Value = b.Customername;
             cmd.Parameters.Add(v1);
 
