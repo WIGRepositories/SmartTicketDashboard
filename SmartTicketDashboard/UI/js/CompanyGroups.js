@@ -297,14 +297,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!!");
-           // alert("Saved successfully");
+            $scope.showDialog("Saved successfully!!");
+          
             $scope.Group = null;
             //$scope.GetCompanys();
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             // $scope.showDialog(errmssg);
             alert(errmssg);
@@ -388,18 +388,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!!");
-            //alert("Saved successfully!").
+            $scope.showDialog("Saved successfully!!");
+           
             $scope.GetCompanys();
             $scope.currGroup = null;
             
         }
         , function (errres) {
             var errdata = errres.data;
-            var errmssg = "";            
+            var errmssg = "Your details are incorrect";            
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;            
-           // $scope.showDialog(errmssg);
-            alert(errmssg);
+         
         });
         
     };

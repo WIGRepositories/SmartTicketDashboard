@@ -2070,4 +2070,26 @@ namespace SmartTicketDashboard.Models
        public string CloseStatus {get;set;}
     }
    
+    public class close
+    { 
+        public int SlNo{get;set;} 
+        public DateTime EntryDate{get;set;} 
+        public int VechID {get;set;} 
+        public String RegistrationNo {get;set;}  
+        public String DriverName{get;set;} 
+        public String PartyName{get;set;} 
+        public String PickupPlace{get;set;} 
+        public String DropPlace{get;set;} 
+        public int StartMeter{get;set;} 
+         public int EndMeter{get;set;} 
+         public int OtherExp{get;set;} 
+         public int GeneratedAmount{get;set;} 
+        public int ActualAmount{get;set;}
+        public string ExecutiveName{get;set;} 
+        public Decimal BNo{get;set;}
+        public DateTime DropTime{get;set;} 
+        public DateTime PickupTime{get;set;} 
+        public DateTime EntryTime{get;set;}
+
+    }
 }

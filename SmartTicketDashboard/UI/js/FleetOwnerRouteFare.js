@@ -45,6 +45,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.showdialogue("Saved successfully")
         });
 
         $scope.pricingType = [{ "Id": "1", "Name": "Per unit pricing" }, { "Id": "2", "Name": "Stage to Stage" }]
@@ -72,6 +73,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
+            $scope.showdialogue("Saved successfully")
         });
     }
        
@@ -113,6 +115,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             }
             $http(req).then(function (res) {
                 $scope.fleet = res.data;
+                $scope.showdialogue("Saved successfully")
             });
         
     }
@@ -201,8 +204,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             data: RouteFareConfig,
 
         }).success(function (data, status, headers, config) {
-            //alert('Fleet owner routes successfully');
-            //$scope.GetFORouteFare();
+            alert('Fleet owner routes successfully');
+            $scope.GetFORouteFare();
         }).error(function (ata, status, headers, config) {
             alert(ata);
         });
