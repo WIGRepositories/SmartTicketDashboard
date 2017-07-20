@@ -22,6 +22,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (Driverlist.DId == null) {
             alert('Please Enter DId');
             return;
+
+
         }
         if (Driverlist.NAme == null) {
             alert('Please Enter NAme');
