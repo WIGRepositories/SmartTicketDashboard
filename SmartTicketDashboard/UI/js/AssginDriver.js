@@ -11,11 +11,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    //$scope.GetStops = function () {
-    //    $http.get('/api/Stops/GetStops').then(function (res, data) {
-    //        $scope.Stops = res.data;
-    //    });
-    //}
+    $scope.Getallocatedriver = function () {
+        $http.get('/api/allocatedriver/Getallocatedriver?VechID=1').then(function (res, data) {
+            $scope.drivers = res.data;
+        });
+    }
 
     $scope.saveNEW = function (AssginDriver,flag) {
         if (AssginDriver == null) {
