@@ -2038,5 +2038,58 @@ namespace SmartTicketDashboard.Models
         public int preferenceId { get; set; }
         public string flag { get; set; }
     }
+    public class Pricing
+    {
+    public int SrNo {get;set;}
+    public int  Duration {get;set;}
+    public int KiloMtr {get;set;}
+
+    public int IndicaRate {get;set;}
+    public int IndigoRate {get;set;}
+    public int InnovaRate {get;set;}
+    public int Tag { get; set; }
+    }
+  
+    public class start
+    {
+        public string flag { get; set; }
+        public int SlNo {get;set;}
+        public DateTime EntryDate {get;set;}
+        public int VechID {get;set;}
+        public string RegistrationNo {get;set;}
+        public string DriverName {get;set;}
+        public string PartyName {get;set;}
+        public string PickupPlace {get;set;}
+
+        public string DropPlace {get;set;}
+        public int StartMeter {get;set;}
+        public DateTime PickupTime {get;set;}
+        public string ExecutiveName {get;set;}
+       public decimal BookingNo {get;set;}
+       public DateTime EntryTime {get;set;}
+       public string CloseStatus {get;set;}
+    }
    
+    public class close
+    { 
+        public int SlNo{get;set;} 
+        public DateTime EntryDate{get;set;} 
+        public int VechID {get;set;} 
+        public String RegistrationNo {get;set;}  
+        public String DriverName{get;set;} 
+        public String PartyName{get;set;} 
+        public String PickupPlace{get;set;} 
+        public String DropPlace{get;set;} 
+        public int StartMeter{get;set;} 
+         public int EndMeter{get;set;} 
+         public int OtherExp{get;set;} 
+         public int GeneratedAmount{get;set;} 
+        public int ActualAmount{get;set;}
+        public string ExecutiveName{get;set;} 
+        public Decimal BNo{get;set;}
+        public DateTime DropTime{get;set;} 
+        public DateTime PickupTime{get;set;} 
+        public DateTime EntryTime{get;set;}
+
+    }
 }

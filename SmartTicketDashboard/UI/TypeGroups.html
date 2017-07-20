@@ -379,6 +379,7 @@
                                 <li><a href="CustomerList.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CustomerList</span></a></li>
                                 
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
                                 <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
                                 <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
@@ -520,7 +521,8 @@
 
                                                                     <label for="Name" class="col-md-3 control-label" style="color:red;"> Name <span class='require'>*</span></label>
 
-                                                                    <div class="col-md-4"><input id="inputFirstName" type="text" ng-model="TypeGroups.Name" class="form-control" /><span class="help-block"></span></div>
+                                                                    <div class="col-md-4"><input id="inputFirstName" type="text" ng-model="TypeGroups.Name" class="form-control" />
+                                                                    <span class="help-block"></span></div>
                                                                 </div>
 
 
@@ -528,7 +530,8 @@
                                                                     <label for="Description" class="col-md-3 control-label"> Description <span class='require'></span></label>
 
 
-                                                                    <div class="col-md-4"><input id="Description" type="text" ng-model="TypeGroups.Description" class="form-control" /><span class="help-block"></span></div>
+                                                                    <div class="col-md-4"><input id="Description" type="text" ng-model="TypeGroups.Description" class="form-control" />
+                                                                    <span class="help-block"></span></div>
                                                                 </div>
 
 
@@ -543,7 +546,7 @@
                                                                 </div>
                                                                 <div class="form-actions">
                                                                     <div class="col-md-offset-3 col-md-9">
-                                                                        <button class="btn btn-primary" data-dismiss="modal" type="button" ng-click="saveNew(TypeGroups);">Save</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(TypeGroups,'T');">Save</button>
 
 
                                                                         <a href="TypeGroups.html" class="btn btn-green">Cancel</a>

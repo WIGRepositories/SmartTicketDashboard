@@ -158,13 +158,13 @@ var ctrl = app.controller('myctrl', function ($scope, $http, $localStorage) {
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });

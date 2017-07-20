@@ -253,13 +253,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
@@ -402,7 +402,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
                     $scope.s = null;
                     $scope.ur = null;
@@ -410,7 +410,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
@@ -465,7 +465,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: userrole
         }
         $http(req).then(function (response) {
-            //alert('Removed successfully.');
+            alert('Removed successfully.');
 
             $http.get('/api/Users/GetUsers?cmpId=' + cmpId).then(function (res, data) {
                 $scope.userRoles = res.data;

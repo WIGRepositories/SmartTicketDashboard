@@ -157,6 +157,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
             $scope.cmpdata1 = res.data;
+            $scope.showdialogue("Saved successfully")
 
             if ($scope.userSId != 1) {
                 //loop throug the fleetowners and identify the correct one
@@ -195,6 +196,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.fdata = res.data;
+            $scope.showdialogue("Saved successfully")
         });
 
     };
@@ -232,6 +234,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
+            $scope.showdialogue("Saved successfully")
         });
         $scope.FirstPage(1);
     };
@@ -528,13 +531,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
@@ -666,14 +669,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-           // $scope.showDialog("Saved successfully! " + Group.Quantity + " no of POS units created");
+            $scope.showDialog("Saved successfully! " );
 
             $scope.Group = null;
             $scope.FirstPage();
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });

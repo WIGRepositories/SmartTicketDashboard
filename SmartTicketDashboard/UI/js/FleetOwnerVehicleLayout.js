@@ -28,6 +28,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         $http(req).then(function (res) {
             //$scope.initdata = res.data;
             $scope.companies = res.data;
+            $scope.showdialogue("Saved successfully")
         });
 
     }
@@ -55,6 +56,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data.Table;
+            $scope.showdialogue("Saved successfully")
         });
     }
 
@@ -78,6 +80,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.showdialogue("Saved successfully")
         });
 
     }
@@ -246,13 +249,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             }
             $http(req).then(function (response) {
 
-               // $scope.showDialog("Saved successfully!");
+               $scope.showDialog("Saved successfully!");
 
                 $scope.Group = null;
 
             }, function (errres) {
                 var errdata = errres.data;
-                var errmssg = "";
+                var errmssg = "Your details are incorrect";
                 errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
                 $scope.showDialog(errmssg);
             });

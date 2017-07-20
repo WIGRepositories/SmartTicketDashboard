@@ -11,101 +11,46 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.getVehicleDetails = function () {
-        $http.get('/api/VehicleDetails/getVehicleDetails').then(function (res, data) {
-            $scope.VehicleAvailable = res.data;
+    $scope.Getvehicles = function () {
+        $http.get('/api/nearestvehicles/Getvehicles?PhoneNo=9951197608').then(function (res, data) {
+            $scope.vehiclelist = res.data;
         });
     }
 
-    $scope.save = function (VehicleAvailable) {
-        if (VehicleAvailable == null) {
+    $scope.savevech = function (newVehicles) {
+        if (newVehicles == null) {
             alert('Please Enter Name');
             return;
         }
-        if (VehicleAvailable.busId == null) {
-            alert('Please Enter Nmae');
+        if (newVehicles.PhoneNo == null) {
+            alert('Please Enter PhoneNo');
             return;
         }
-        if (VehicleAvailable.busTypeId == null) {
-            alert('Please Enter Code');
+        if (newVehicles.Latitude == null) {
+            alert('Please Enter Latitude');
             return;
         }
-        if (VehicleAvailable.conductorId == null) {
-            alert('Please Enter Code');
+        if (newVehicles.Longitude == null) {
+            alert('Please Enter Longitude');
             return;
         }
-        if (VehicleAvailable.conductorName == null) {
-            alert('Please Enter Code');
+        if (newVehicles.Type == null) {
+            alert('Please Enter Type');
             return;
-        }
-        if (VehicleAvailable.driverId == null) {
-            alert('Please Enter Code');
-            return;
-        }
-        if (VehicleAvailable.driverName == null) {
-            alert('Please Enter Code');
-            return;
-        }
-        if (VehicleAvailable.fleetOwnerId == null) {
-            alert('Please Enter Code');
-            return;
-        }
-        if (VehicleAvailable.CompanyName == null) {
-            alert('Please Enter Code');
-            return;
-        }
-        if (VehicleAvailable.Id == null) {
-            alert('Please Enter Code');
-            return;
-            if (VehicleAvailable.POSID == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (VehicleAvailable.RegNo == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (VehicleAvailable.route == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (VehicleAvailable.Status == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (VehicleAvailable.statusid == null) {
-                alert('Please Enter Code');
-                return;
-            }
         }
 
-        var VehicleAvailable = {
-            Id: -1,
-            busId: VehicleAvailable.busId,
-            busTypeId: VehicleAvailable.busTypeId,
-            conductorId: VehicleAvailable.conductorId,
-            conductorName: VehicleAvailable.conductorName,
-            driverId: VehicleAvailable.driverId,
-            driverName: VehicleAvailable.driverName,
-            fleetOwnerId: VehicleAvailable.fleetOwnerId,
-            CompanyName: VehicleAvailable.CompanyName,
-            Id: VehicleAvailable.Id,
-            POSID: VehicleAvailable.POSID,
-            RegNo: VehicleAvailable.RegNo,
-            route: VehicleAvailable.route,
-            Status: VehicleAvailable.Status,
-            statusid: VehicleAvailable.statusid,
-
-
-            Active: (VehicleAvailable.Active == true) ? 1 : 0,
-
-            insupdflag: "I"
+        var newVehicles = {
+            PhoneNo: newVehicles.PhoneNo,
+            latitude: newVehicles.Latitude,
+            longitude: newVehicles.Longitude,
+            Type: newVehicles.Type,
+            Active: (newVehicles.Active == true) ? 1 : 0
         }
 
         var req = {
             method: 'POST',
-            url: '/api/VehicleDetails/saveVehicleDetails',
-            data: VehicleAvailable
+            url: '/api/VehicleMaster/Vehicles',
+            data: newVehicles
         }
         $http(req).then(function (response) {
 
@@ -115,57 +60,58 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "Your Details Are Incorrect
-            
-            
-            
-            
-            
-            
-            ";
+            var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops1 = null;
+    $scope.vechiles = null;
 
 
-    $scope.save = function (Stops, flag) {
-        if (Stops == null) {
+    $scope.save = function (vechiles, flag) {
+        if (vechiles == null) {
             alert('Please Enter Name');
             return;
         }
-        if (Stops.Name == null) {
-            alert('Please Enter Nmae');
+        if (vechiles.PhoneNo == null) {
+            alert('Please Enter PhoneNo');
             return;
         }
-        if (Stops.Code == null) {
-            alert('Please Enter Code');
+        if (vechiles.Latitude == null) {
+            alert('Please Enter Latitude');
+            return;
+        }
+        if (vechiles.Longitude == null) {
+            alert('Please Enter Longitude');
+            return;
+        }
+        if (vechiles.Type == null) {
+            alert('Please Enter Type');
             return;
         }
 
-        var Stops = {
-            Id: Stops.Id,
-            Name: Stops.Name,
-            Description: Stops.Description,
-            Code: Stops.Code,
+        var vechiles = {
+            PhoneNo: vechiles.PhoneNo,
+            latitude: vechiles.Latitude,
+            longitude: vechiles.Longitude,
+            Type: vechiles.Type,
 
-            Active: (Stops.Active == true) ? 1 : 0,
+            Active: (vechiles.Active == true) ? 1 : 0,
 
 
-            insupdflag: "U"
+            flag: "U"
         }
 
         var req = {
             method: 'POST',
-            url: '/api/Stops/saveStops',
-            data: Stops
+            url: '/api/VehicleMaster/Vehicles',
+            data: vechiles
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Updated successfully!");
 
             $scope.Group = null;
 
@@ -178,14 +124,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.Stops = null;
+    $scope.vechiles = null;
 
-    $scope.setStops = function (usr) {
-        $scope.Stops1 = usr;
+    $scope.setvehiclelist = function (usr) {
+        $scope.vechiles = usr;
     };
 
-    $scope.clearStops = function () {
-        $scope.Stops1 = null;
+    $scope.clearvech = function () {
+        $scope.vechiles = null;
     }
 
 
