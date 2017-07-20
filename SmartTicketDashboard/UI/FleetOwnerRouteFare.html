@@ -423,6 +423,7 @@
                                                                         </select>
 
                                                                     </div>
+                                                                    
                                                                     <div class="col-md-1">
                                                                         Fleet Owner:
                                                                     </div>
@@ -440,29 +441,27 @@
                                                                             <option value="">Select</option>
                                                                         </select>
                                                                     </div>
+                                                                </div>
+                                                            </div>
+                                                         
+                                                            <div class="row mbm">
+                                                                <div class="col-lg-12">
+                                                                   
                                                                     <div class="col-md-1">
-                                                                        Code: 
+                                                                        Code:
                                                                     </div>
                                                                     <div class="col-md-2">
                                                                         <input type="text" readonly style="width:100%" value="{{r.code}}" disabled />
                                                                     </div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="row mbm">
-                                                                <div class="col-lg-12">
                                                                     <div class="col-md-1">
                                                                         Vehicle Type.:
                                                                     </div>
-                                                                    <div class="col-md-2">
-                                                                        <!--<select ng-options="v.VehicleRegNo for v in fleet track by v.VehicleId" ng-model="v" ng-change="getVehicleFareConfig()" ng-checked="ShowHide()" style="width:100%">
-                                                                            <option value="">Select</option>
-                                                                        </select>-->
-                                                                        <select id="pt" style="width:100%">
-                                                                            <option value="">Select</option>
-                                                                            <option value="20">AC</option>
-                                                                            <option value="21">Non-AC</option>
-                                                                        </select>
-                                                                    </div>
+                                                                   
+                                                                       <div class="col-md-3">
+                                                                           <input type="text" readonly style="width:100%" value="{{v.vehicleType}}" disabled />
+                                                                        </div>
+
+                                                                     
                                                                     <div class="col-md-1">
                                                                         Vehicle Reg No.:
                                                                     </div>
@@ -471,137 +470,137 @@
                                                                             <option value="">Select</option>
                                                                         </select>
                                                                     </div>
-
-                                                                    <!--<div class="col-md-3" style="text-align:right">
-                    Vehicle Type: <input type="text" style="width:100px" value="{{v.vehicleType}}" disabled />
-                </div>-->
-                                                                    <div class="col-md-1">
-                                                                        Pricing Type:
-
-                                                                    </div>
-                                                                    <div class="col-md-2">
-
-                                                                        <select id="pt" ng-model="prc" value={{prc}} ng-change="SetPrice();" style="width:100%">
-                                                                            <option value="">Select</option>
-                                                                            <option value="20">Per unit pricing</option>
-                                                                            <option value="21">Stage to Stage</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <!--<select ng-options="c.Name for c in pricingType track by c.Id" ng-model="prc" ng-change="SetPrice();" value="{{prc}}">
-                    <option value="">Select</option>
-                </select>-->
-                                                                    <div class="col-md-1">
-                                                                        Per unit(km) price:
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input type="text" style="width:100%" ng-init="puprc=0" value="r.PerUnitPrice" ng-model="puprc" ng-disabled="prc != 20" ng-change="SetPrice();" />
-                                                                        <!--<div class="row mbm">-->
-                                                                        </div>
-
-                                                                    </div>
-                                                            </div>
-                                                            <div class="row mbm">
-                                                                <div class="col-lg-12">
-                                                                    <div class="col-md-1">
-                                                                        Source Stop.:
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <select ng-options="v.VehicleRegNo for v in fleet track by v.VehicleId" ng-model="v" ng-change="getVehicleFareConfig()" ng-checked="ShowHide()" style="width:100%">
-                                                                            <option value="">All</option>
-                                                                        </select>
-                                                                    </div>
-                                                                    <div class="col-md-1">
-                                                                        Source: 
-
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input type="text" readonly style="width:100%" value="{{r.srcStop}}" disabled />
-
-                                                                    </div>
-                                                                   
-                                                                    <div class="col-md-1">
-                                                                        Destination: 
-
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input type="text" readonly style="width:100%" value="{{r.destStop}}" disabled />
-
-                                                                    </div>
-                                                                    <div class="col-md-1">
-                                                                        distance:
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                        <input type="text" readonly style="width:100%" value="{{r.distance}}" disabled />
-                                                                    </div> 
                                                                 </div>
                                                             </div>
-                                                            <div class="row mbm">
-                                                                <div class="col-lg-12">
-                                                                    <div class="col-md-9">
-                                                                       
-                                                                    </div>
-                                                                    <div class="col-md-1">
-                                                                        Total:
-                                                                    </div>
-                                                                    <div class="col-md-2">
-                                                                         <input type="text" readonly style="width:100%" disabled value="{{puprc * r.distance}}" />
+                                                      
+                                                                    <div class="row mbm">
+                                                                        <div class="col-lg-12">
+                                                                            <div class="col-md-1">
+                                                                                Pricing Type:
 
-                                                                    </div>
-                                                                    </div>
-                                                                </div>
-                                                            <div ng-hide="prc == null">
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
+                                                                            </div>
+                                                                            <div class="col-md-2">
 
-                                                                            <th>Source stop</th>
-                                                                            <th>target stop</th>
-                                                                            <th>Pricing Type</th>
-                                                                            <th>Unit Price</th>
-                                                                            <th>Distance</th>
-                                                                            <th>Amount</th>
-                                                                            <!--<th>List Key</th>
-                    <th>List value</th>-->
-                                                                            <!--<th>Effective from</th>
-                    <th>Effective Till</th>-->
-
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-
-                                                                        <tr ng-repeat="T in FOVFareConfig">
-
-
-                                                                            <td>{{T.Src}}</td>
-                                                                            <td>{{T.Dest}}</td>
-                                                                            <td>
-                                                                                <select ng-model="prc" disabled value="{{prc}}">
+                                                                                <select id="pt" ng-model="prc" value={{prc}} ng-change="SetPrice();" style="width:100%">
                                                                                     <option value="">Select</option>
                                                                                     <option value="20">Per unit pricing</option>
                                                                                     <option value="21">Stage to Stage</option>
                                                                                 </select>
-                                                                                <!--<select ng-options="c.Name for c in pricingType track by c.Id" ng-model="prc" ng-change="SetPrice();" value="{{prc}}">
-                        <option value="">Select</option></select>-->
-                                                                                <!--<input type="text" class="form-control" style="width:100px" id="p" ng-model="prc" value="prc.value" disabled/>-->
-                                                                            </td>
-                                                                            <td><input type="text" class="form-control" style="width:100px" id="p" ng-model="T.PerUnitPrice" value="{{puprc}}" disabled /></td>
-                                                                            <td><input type="text" class="form-control" style="width:100px" id="d" ng-model="T.Distance" disabled /></td>
-                                                                            <td><input type="text" class="form-control" style="width:100px" id="amt" value="{{T.Amount}}" ng-model="T.Amount" ng-disabled="prc == 20 || prc==''" /></td>
-                                                                            <!--<td><input type="date" ng-mode="T.nFrom" value={{T.From}}></td>
-                    <td><input type="date" ng-mode="T.nTo" value={{T.To}}></td>-->
-                                                                        </tr>
-                                                                    </tbody>
+                                                                            </div>
+                                                                            <!--<select ng-options="c.Name for c in pricingType track by c.Id" ng-model="prc" ng-change="SetPrice();" value="{{prc}}">
+                    <option value="">Select</option>
+                </select>-->
+                                                                            <div class="col-md-1">
+                                                                                Per unit(km) price:
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                
+                                                                                <input type="text" style="width:100%" ng-init="puprc=0" value="r.PerUnitPrice" ng-model="puprc" ng-disabled="prc != 20" ng-change="SetPrice();" />
+                                                                                <!--<div class="row mbm">-->
+                                                                            </div>
+                                                                            <div class="col-md-1">
+                                                                                Source:
 
-                                                                </table>
+                                                                            </div>
+                                                                            <div class="col-md-2">
+                                                                                <input type="text" readonly style="width:100%" value="{{r.srcStop}}" disabled />
 
-                                                                <div style="text-align:center">
-                                                                    <button type="button" class="btn btn-green" data--dismiss="modal" ng-click="saveFORouteFare();">Save</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-lg-12">
+                                                                            
+                                                                           
+                                                                            </div>
+                                                                        </div>
+                                                                            <div class="row mbm">
+                                                                                <div class="col-lg-12">
+                                                                                    <div class="col-md-1">
+                                                                                        Destination:
+
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" readonly style="width:100%" value="{{r.destStop}}" disabled />
+
+                                                                                    </div>
+                                                                                    <div class="col-md-1">
+                                                                                        distance:
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" readonly style="width:100%" value="{{r.distance}}" disabled />
+                                                                                    </div>
+                                                                                    <div class="col-md-1">
+                                                                                        Total:
+                                                                                    </div>
+                                                                                    <div class="col-md-2">
+                                                                                        <input type="text" readonly style="width:100%" disabled value="{{puprc * r.distance}}" />
+
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mbm">
+                                                                                <div class="col-lg-12">
+                                                                                  
+                                                                                   
+                                                                                </div>
+                                                                            </div>
+                                                                            <div ng-hide="prc == null">
+                                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                                                    <thead>
+                                                                                        <tr>
+
+                                                                                            <th>Source stop</th>
+                                                                                            <th>target stop</th>
+                                                                                            <th>Pricing Type</th>
+                                                                                            <th>Unit Price</th>
+                                                                                            <th>Distance</th>
+                                                                                            <th>Amount</th>
+                                                                                            <!--<th>List Key</th>
+                        <th>List value</th>-->
+                                                                                            <!--<th>Effective from</th>
+                        <th>Effective Till</th>-->
+
+                                                                                        </tr>
+                                                                                    </thead>
+                                                                                    <tbody>
+
+                                                                                        <tr ng-repeat="T in FOVFareConfig">
 
 
-                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
-                                                                </div>
-                                                            </div>
-                                                                </div>
+                                                                                            <td>{{T.Src}}</td>
+                                                                                            <td>{{T.Dest}}</td>
+                                                                                            <td>
+                                                                                                <select ng-model="prc" disabled value="{{prc}}">
+                                                                                                    <option value="">Select</option>
+                                                                                                    <option value="20">Per unit pricing</option>
+                                                                                                    <option value="21">Stage to Stage</option>
+                                                                                                </select>
+                                                                                                <!--<select ng-options="c.Name for c in pricingType track by c.Id" ng-model="prc" ng-change="SetPrice();" value="{{prc}}">
+                            <option value="">Select</option></select>-->
+                                                                                                <!--<input type="text" class="form-control" style="width:100px" id="p" ng-model="prc" value="prc.value" disabled/>-->
+                                                                                            </td>
+                                                                                            <td><input type="text" class="form-control" style="width:100px" id="p" ng-model="T.PerUnitPrice" value="{{puprc}}" disabled /></td>
+                                                                                            <td><input type="text" class="form-control" style="width:100px" id="d" ng-model="T.Distance" disabled /></td>
+                                                                                            <td><input type="text" class="form-control" style="width:100px" id="amt" value="{{T.Amount}}" ng-model="T.Amount" ng-disabled="prc == 20 || prc==''" /></td>
+                                                                                            <!--<td><input type="date" ng-mode="T.nFrom" value={{T.From}}></td>
+                        <td><input type="date" ng-mode="T.nTo" value={{T.To}}></td>-->
+                                                                                        </tr>
+                                                                                    </tbody>
+
+                                                                                    </tabl
+
+                                                                                </table>
+
+                                                                                <div style="text-align:center">
+                                                                                    <button type="button" class="btn btn-green" data--dismiss="modal" ng-click="saveFORouteFare();">Save</button>
+
+
+                                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
 
 
 

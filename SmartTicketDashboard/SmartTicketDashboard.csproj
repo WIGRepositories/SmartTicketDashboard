@@ -2012,6 +2012,7 @@
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
+    <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
@@ -2067,7 +2068,6 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
-    <Compile Include="Controllers\TicketBookingController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
