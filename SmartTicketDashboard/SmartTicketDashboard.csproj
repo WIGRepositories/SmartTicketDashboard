@@ -310,7 +310,7 @@
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleAvailability.js" />
     <Content Include="UI\js\VehicleLayout.js" />
-    <Content Include="UI\js\VehicleList.js" />
+    <Content Include="UI\js\Landmark.js" />
     <Content Include="UI\js\VehiclePricing.js" />
     <Content Include="UI\js\VehicleScheduleList.js" />
     <Content Include="UI\LicenseConfguration.html" />
@@ -583,7 +583,7 @@
     <Content Include="UI\VehicleAvailability.html" />
     <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\VehicleLayout.html" />
-    <Content Include="UI\VehicleList.html" />
+    <Content Include="UI\Landmark.html" />
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />

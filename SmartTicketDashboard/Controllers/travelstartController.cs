@@ -23,7 +23,7 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVtravelling";
+            cmd.CommandText = "HVInsUpdtravelling";
             cmd.Connection = conn;
 
             SqlParameter ui = new SqlParameter("@flag", SqlDbType.VarChar);

@@ -1816,6 +1816,7 @@ namespace SmartTicketDashboard.Models
     }
     public class driverdetails
     {
+        public string flag { get; set; }
         public int id { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
@@ -1835,8 +1836,9 @@ namespace SmartTicketDashboard.Models
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
     }
-    public class vehicledetails
+    public class vehicle
     {
+        public string flag { get; set; }
         public int SrNo { get; set; }
         public int VID { get; set; }
         public string RegistrationNo { get; set; }
