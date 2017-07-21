@@ -2071,7 +2071,8 @@ namespace SmartTicketDashboard.Models
     }
    
     public class close
-    { 
+    {
+        public string flag { get; set; }
         public int SlNo{get;set;} 
         public DateTime EntryDate{get;set;} 
         public int VechID {get;set;} 

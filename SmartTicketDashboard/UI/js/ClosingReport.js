@@ -11,175 +11,270 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.GetStops = function () {
-        $http.get('/api/Stops/GetStops').then(function (res, data) {
-            $scope.Stops = res.data;
+    $scope.getReports = function () {
+        $http.get('/api/ClosingReport/getReports').then(function (res, data) {
+            $scope.reportors = res.data;
+
         });
     }
 
-    $scope.saveNewStop = function (ClosingReport) {
-        if (ClosingReport == null) {
+
+    $scope.saveNew = function (report) {
+        if (report == null) {
             alert('Please Enter Name');
             return;
-        }
-        if (ClosingReport.SlNo == null) {
-            alert('Please Enter SlNo');
-            return;
-        }
-        if (ClosingReport.EntryDate  == null) {
+        }       
+        if (report.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
         }
-        if (ClosingReport.VechID  == null) {
+        if (report.VechID == null) {
             alert('Please Enter VechID');
             return;
         }
-        if (ClosingReport.RegistrationNo  == null) {
+        if (report.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');
             return;
         }
-        if (ClosingReport.DriverName  == null) {
+        if (report.DriverName == null) {
             alert('Please Enter DriverName');
             return;
         }
-        if (ClosingReport.PartyName  == null) {
+        if (report.PartyName == null) {
             alert('Please Enter PartyName');
             return;
         }
-        if (ClosingReport.PickupPlace  == null) {
+        if (report.PickupPlace == null) {
             alert('Please Enter PickupPlace');
             return;
         }
-        if (ClosingReport.DropPlace  == null) {
+        if (report.DropPlace == null) {
             alert('Please Enter DropPlace');
             return;
         }
-        if (ClosingReport.StartMeter == null) {
+        if (report.StartMeter == null) {
             alert('Please Enter StartMeter');
             return;
         }
-        if (ClosingReport.EndMeter  == null) {
-            alert('Please Enter EndMeter ');
+        if (report.EndMeter == null) {
+            alert('Please Enter EndMeter');
             return;
         }
-        if (ClosingReport.OtherExp  == null) {
-            alert('Please Enter OtherExp ');
+        if (report.OtherExp == null) {
+            alert('Please Enter OtherExp');
             return;
         }
-        if (ClosingReport.GeneratedAmount == null) {
-            alert('Please Enter GeneratedAmount,');
+        if (report.GeneratedAmount == null) {
+            alert('Please Enter GeneratedAmount');
             return;
         }
-        if (ClosingReport.ActualAmount  == null) {
-            alert('Please Enter ActualAmount ');
+        if (report.ActualAmount == null) {
+            alert('Please Enter ActualAmount');
             return;
         }
-        if (ClosingReport.ExecutiveName  == null) {
-            alert('Please Enter ExecutiveName ');
+
+        if (report.ExecutiveName == null) {
+            alert('Please Enter ExecutiveName');
             return;
         }
-        if (ClosingReport.DropTime == null) {
-            alert('Please Enter DropTime ');
+        if (report.BNo == null) {
+            alert('Please Enter BNo');
             return;
         }
-        if (ClosingReport.PickupTime == null) {
+        if (report.DropTime == null) {
+            alert('Please Enter DropTime');
+            return;
+        }
+        if (report.PickupTime == null) {
             alert('Please Enter PickupTime');
             return;
         }
-        if (ClosingReport.EntryTime == null) {
+        if (report.EntryTime == null) {
             alert('Please Enter EntryTime');
             return;
         }
 
 
-        var ClosingReport = {
-            Id: -1,
-            Name: newStop.Name,
-            Description: newStop.Description,
-            Code: newStop.Code,
 
-            Active: (newStop.Active == true) ? 1 : 0,
+        var report = {
 
-            insupdflag: "I"
+            flag: "I",
+            SlNo: "",
+            EntryDate: report.EntryDate,
+            VechID: report.VechID,
+            RegistrationNo: report.RegistrationNo,
+            DriverName: report.DriverName,
+            PartyName: report.PartyName,
+            PickupPlace: report.PickupPlace,
+            DropPlace: report.DropPlace,
+            StartMeter: report.StartMeter,
+            EndMeter: report.EndMeter,
+            OtherExp: report.OtherExp,
+            GeneratedAmount: report.GeneratedAmount,
+            ActualAmount: report.ActualAmount,
+            ExecutiveName: report.ExecutiveName,
+            BNo: report.BNo,
+            DropTime: report.DropTime,
+            PickupTime: report.PickupTime,
+            EntryTime: report.EntryTime,
+
+
+            Active: (report.Active == true) ? 1 : 0,
         }
 
         var req = {
             method: 'POST',
-            url: '/api/Stops/saveStops',
-            data: ClosingReport
+            url: '/api/ClosingReport/closerprt',
+            data: report
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
-            $scope.Group = null;
+            $scope.reporting = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops1 = null;
+    $scope.reporting = null;
 
 
-    $scope.save = function (Stops, flag) {
-        if (Stops == null) {
+    $scope.save = function (report, flag) {
+        if (report == null) {
             alert('Please Enter Name');
             return;
-        }
-        if (Stops.Name == null) {
-            alert('Please Enter Nmae');
+        }       
+        if (report.EntryDate == null) {
+            alert('Please Enter EntryDate');
             return;
         }
-        if (Stops.Code == null) {
-            alert('Please Enter Code');
+        if (report.VechID == null) {
+            alert('Please Enter VechID');
             return;
         }
+        if (report.RegistrationNo == null) {
+            alert('Please Enter RegistrationNo');
+            return;
+        }
+        if (report.DriverName == null) {
+            alert('Please Enter DriverName');
+            return;
+        }
+        if (report.PartyName == null) {
+            alert('Please Enter PartyName');
+            return;
+        }
+        if (report.PickupPlace == null) {
+            alert('Please Enter PickupPlace');
+            return;
+        }
+        if (report.DropPlace == null) {
+            alert('Please Enter DropPlace');
+            return;
+        }
+        if (report.StartMeter == null) {
+            alert('Please Enter StartMeter');
+            return;
+        }
+        if (report.EndMeter == null) {
+            alert('Please Enter EndMeter');
+            return;
+        }
+        if (report.OtherExp == null) {
+            alert('Please Enter OtherExp');
+            return;
+        }
+        if (report.GeneratedAmount == null) {
+            alert('Please Enter GeneratedAmount');
+            return;
+        }
+        if (report.ActualAmount == null) {
+            alert('Please Enter ActualAmount');
+            return;
+        }
+       
+        if (report.ExecutiveName == null) {
+            alert('Please Enter ExecutiveName');
+            return;
+        }
+        if (report.BNo == null) {
+            alert('Please Enter BNo');
+            return;
+        }
+        if (report.DropTime == null) {
+            alert('Please Enter DropTime');
+            return;
+        }
+        if (report.PickupTime == null) {
+            alert('Please Enter PickupTime');
+            return;
+        }
+        if (report.EntryTime == null) {
+            alert('Please Enter EntryTime');
+            return;
+        }
+       
 
-        var Stops = {
-            Id: Stops.Id,
-            Name: Stops.Name,
-            Description: Stops.Description,
-            Code: Stops.Code,
 
-            Active: (Stops.Active == true) ? 1 : 0,
+        var report = {
+
+            flag: "U",           
+            EntryDate: report.EntryDate,
+            VechID: report.VechID,
+            RegistrationNo: report.RegistrationNo,
+            DriverName: report.DriverName,
+            PartyName: report.PartyName,
+            PickupPlace: report.PickupPlace,
+            DropPlace: report.DropPlace,
+            StartMeter: report.StartMeter,
+            EndMeter: report.EndMeter,
+            OtherExp: report.OtherExp,
+            GeneratedAmount: report.GeneratedAmount,
+            ActualAmount: report.ActualAmount,
+            ExecutiveName: report.ExecutiveName,
+            BNo: report.BNo,
+            DropTime: report.DropTime,
+            PickupTime: report.PickupTime,
+            EntryTime: report.EntryTime,
 
 
-            insupdflag: "U"
+            Active: (report.Active == true) ? 1 : 0,
         }
 
         var req = {
             method: 'POST',
-            url: '/api/Stops/saveStops',
-            data: Stops
+            url: '/api/ClosingReport/closerprt',
+            data: report
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops = null;
+    $scope.reporting = null;
 
-    $scope.setStops = function (usr) {
-        $scope.Stops1 = usr;
+    $scope.setreportors = function (reporting) {
+        $scope.reporting = reporting;
     };
 
-    $scope.clearStops = function () {
-        $scope.Stops1 = null;
+    $scope.clearreporting = function () {
+        $scope.reporting = null;
     }
 
 

@@ -11,8 +11,33 @@ using System.Web.Http;
 
 namespace SmartTicketDashboard.Controllers
 {
+
+
     public class allocatedriverController : ApiController
     {
+
+        [HttpGet]
+        [Route("api/allocatedriver/Getallocatedriver")]
+
+        public DataTable Getallocatedriver()
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "Getallocatedriver";
+            cmd.Connection = conn;
+
+
+            
+            DataTable dt = new DataTable();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
+
+            return dt;
+
+        }
         [HttpPost]
         [Route("api/allocatedriver/AllocateDriver")]
 
