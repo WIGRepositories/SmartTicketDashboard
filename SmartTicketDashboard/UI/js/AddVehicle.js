@@ -19,11 +19,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (newVehicle) {
         if (newVehicle == null) {
-            alert('Please Enter Name');
+            alert('Please Enter VID');
             return;
         }
         if (newVehicle.VID == null) {
-            alert('Please Enter ID');
+            alert('Please Enter VID');
             return;
         }
         if (newVehicle.RegistrationNo == null) {
@@ -204,7 +204,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.vech = null;
+    $scope.Vehicles = null;
 
 
     $scope.save = function (vech, flag) {
@@ -391,12 +391,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.vech = null;
 
-    $scope.setVehicles = function (vech) {
-        $scope.vech = vech;
+    $scope.setvech = function (vech) {
+        $scope.Vehicles = vech;
     };
 
     $scope.clearvech = function () {
-        $scope.vech = null;
+        $scope.Vehicles = null;
     }
 
 

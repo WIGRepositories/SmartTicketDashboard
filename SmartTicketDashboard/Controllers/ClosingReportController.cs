@@ -15,8 +15,8 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
 
-        [Route("api/ClosingReport/getClosingReport")]
-        public DataTable getClosingReport(int SlNo)
+        [Route("api/ClosingReport/getReports")]
+        public DataTable getReports()
         {
             DataTable dt = new DataTable();
 
@@ -27,7 +27,7 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "getClosingReport";
-            cmd.Parameters.Add("@SlNo", SqlDbType.Int).Value = SlNo;
+            
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
@@ -39,91 +39,93 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpPost]
-        [Route("api/ClosingReport/closereport")]
+        [Route("api/ClosingReport/closerprt")]
 
-        public DataTable closereport(close d)
+        public DataTable closerprt(close d)
         {
             SqlConnection conn = new SqlConnection();
 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "InsUpDelClosingReport";
+            cmd.CommandText = "HVInsUpDelClosingReport";
             cmd.Connection = conn;
 
 
-            SqlParameter n = new SqlParameter("@SlNo", SqlDbType.VarChar, 50);
+            SqlParameter nn = new SqlParameter("@flag", SqlDbType.VarChar);
+            nn.Value = d.flag;
+            cmd.Parameters.Add(nn);
+
+            SqlParameter n = new SqlParameter("@SlNo", SqlDbType.Int);
             n.Value = d.SlNo;
             cmd.Parameters.Add(n);
 
-            SqlParameter r = new SqlParameter("@EntryDate", SqlDbType.VarChar, 50);
+            SqlParameter r = new SqlParameter("@EntryDate", SqlDbType.Date);
             r.Value = d.EntryDate;
             cmd.Parameters.Add(r);
 
-
-
-            SqlParameter a = new SqlParameter("@VechID", SqlDbType.VarChar, 50);
+            SqlParameter a = new SqlParameter("@VechID", SqlDbType.Int);
             a.Value = d.VechID;
             cmd.Parameters.Add(a);
 
-            SqlParameter s = new SqlParameter("@RegistrationNo", SqlDbType.VarChar, 50);
+            SqlParameter s = new SqlParameter("@RegistrationNo", SqlDbType.NVarChar,255);
             s.Value = d.RegistrationNo;
             cmd.Parameters.Add(s);
 
-            SqlParameter f = new SqlParameter("@DriverName", SqlDbType.VarChar, 50);
+            SqlParameter f = new SqlParameter("@DriverName", SqlDbType.NVarChar, 255);
             f.Value = d.DriverName;
             cmd.Parameters.Add(f);
 
-            SqlParameter j2 = new SqlParameter("@PartyName", SqlDbType.VarChar, 255);
+            SqlParameter j2 = new SqlParameter("@PartyName", SqlDbType.NVarChar, 255);
             j2.Value = d.PartyName;
             cmd.Parameters.Add(j2);
 
-            SqlParameter g = new SqlParameter("@PickupPlace", SqlDbType.VarChar, 50);
+            SqlParameter g = new SqlParameter("@PickupPlace", SqlDbType.NVarChar, 255);
             g.Value = d.PickupPlace;
             cmd.Parameters.Add(g);
 
-            SqlParameter h = new SqlParameter("@DropPlace", SqlDbType.Float);
+            SqlParameter h = new SqlParameter("@DropPlace", SqlDbType.NVarChar, 255);
             h.Value = d.DropPlace;
             cmd.Parameters.Add(h);
 
-            SqlParameter j = new SqlParameter("@StartMeter", SqlDbType.VarChar, 255);
+            SqlParameter j = new SqlParameter("@StartMeter", SqlDbType.Int);
             j.Value = d.StartMeter;
             cmd.Parameters.Add(j);
 
-            SqlParameter k = new SqlParameter("@EndMeter", SqlDbType.Date);
+            SqlParameter k = new SqlParameter("@EndMeter", SqlDbType.Int);
             k.Value = d.EndMeter;
             cmd.Parameters.Add(k);
 
-            SqlParameter y = new SqlParameter("@OtherExp", SqlDbType.Date);
+            SqlParameter y = new SqlParameter("@OtherExp", SqlDbType.Int);
             y.Value = d.OtherExp;
             cmd.Parameters.Add(y);
 
-            SqlParameter rj = new SqlParameter("@GeneratedAmount", SqlDbType.VarChar, 50);
+            SqlParameter rj = new SqlParameter("@GeneratedAmount", SqlDbType.Int);
             rj.Value = d.GeneratedAmount;
             cmd.Parameters.Add(rj);
 
-            SqlParameter t = new SqlParameter("@ActualAmount", SqlDbType.VarChar, 50);
+            SqlParameter t = new SqlParameter("@ActualAmount", SqlDbType.Int);
             t.Value = d.ActualAmount;
             cmd.Parameters.Add(t);
 
-            SqlParameter u = new SqlParameter("@ExecutiveName", SqlDbType.Date);
+            SqlParameter u = new SqlParameter("@ExecutiveName", SqlDbType.NVarChar, 255);
             u.Value = d.ExecutiveName;
             cmd.Parameters.Add(u);
 
-            SqlParameter o = new SqlParameter("@BNo", SqlDbType.VarChar, 50);
+            SqlParameter o = new SqlParameter("@BNo", SqlDbType.Decimal);
             o.Value = d.BNo;
             cmd.Parameters.Add(o);
 
-            SqlParameter p = new SqlParameter("@DropTime", SqlDbType.Date);
+            SqlParameter p = new SqlParameter("@DropTime", SqlDbType.DateTime);
             p.Value = d.DropTime;
             cmd.Parameters.Add(p);
 
-            SqlParameter w = new SqlParameter("@PickupTime", SqlDbType.VarChar, 50);
+            SqlParameter w = new SqlParameter("@PickupTime", SqlDbType.DateTime);
             w.Value = d.PickupTime;
             cmd.Parameters.Add(w);
 
 
-            SqlParameter ws = new SqlParameter("@EntryTime", SqlDbType.VarChar, 50);
+            SqlParameter ws = new SqlParameter("@EntryTime", SqlDbType.DateTime);
             ws.Value = d.EntryTime;
             cmd.Parameters.Add(ws);
 

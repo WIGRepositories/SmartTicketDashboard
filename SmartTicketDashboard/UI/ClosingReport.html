@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | DriverList</title>
+    <title>Home | BTPOS | StartReport</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetStops();" ng-model="Stops">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="getReports" ng-model="reportors">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -366,13 +366,13 @@
                                 <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
                                 <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
-                                
+
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="CustomerList.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CustomerList</span></a></li>
-                                
+
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                                 <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
+                                <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
                                 <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
                                 <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
@@ -414,7 +414,7 @@
 
                                                         <div class="actions">
                                                             <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add ClosingReport</button>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">ClosingReport</button>
                                                         </div>
 
 
@@ -429,47 +429,127 @@
 
                                                                         <div class="row">
 
-                                                                            <div class="col-md-3">
-                                                                                <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">SlNo:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.SlNo" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
-                                                                            <div class="col-md-5">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="Stops1.Name" /></div>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">EntryDate:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="date" ng-model="report.EntryDate" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
+
                                                                         </div>
                                                                         <div class="row">
 
-                                                                            <div class="col-md-3">
-                                                                                <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">Description:</label>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">VechID:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.VechID" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
-                                                                            <div class="col-md-5">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="Stops1.Description" /></div>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
+
                                                                         </div>
                                                                         <div class="row">
 
-                                                                            <div class="col-md-3">
-                                                                                <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">Code:<span class='require'>*</span></label>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label"> DriverName:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.DriverName" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
-                                                                            <div class="col-md-5">
-                                                                                <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="Stops1.Code" /></div>
-                                                                                </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">PartyName:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.PartyName" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">PickupPlace:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.PickupPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">DropPlace:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.DropPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">StartMeter:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="text" ng-model="report.StartMeter" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">EndMeter:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="time" ng-model="report.EndMeter" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">OtherExp:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.OtherExp" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">GeneratedAmount:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="text" ng-model="report.GeneratedAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">ActualAmount:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="text" ng-model="report.ActualAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">ExecutiveName:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="text" ng-model="report.ExecutiveName" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">BNo:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="text" ng-model="report.BNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">DropTime:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="time" ng-model="report.DropTime" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">PickupTime:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="time" ng-model="report.PickupTime" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">EntryTime:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input type="time" ng-model="report.EntryTime" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div style="text-align:right">
+                                                                                <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <input type="checkbox" checked ng-model="reporting.Active" />
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(Stops1, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(reporting, 'U');">Save</button>
                                                                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
@@ -484,30 +564,43 @@
                                                             <tr>
 
 
+                                                               
                                                                 <th width="10%">VechID</th>
                                                                 <th width="10%">RegistrationNo</th>
                                                                 <th width="10%">DriverName</th>
+                                                                <th width="10%">PartyName</th>
                                                                 <th width="10%">PickupPlace</th>
                                                                 <th width="10%">DropPlace</th>
+                                                                <th width="10%">StartMeter</th>
+                                                                <th width="10%">EndMeter</th>
+                                                                <th width="10%">EntryTime</th>
+                                                                <th width="10%">GeneratedAmount</th>
+                                                                <th width="10%">ActualAmount</th>                                                                
+                                                                <th>Active</th>
+                                                                <th>Edit</th>
 
-                                                                <th width="9%">Active</th>
-                                                                <th width="9%">Update</th>
 
                                                             </tr>
                                                         <tbody>
-                                                            <tr ng-repeat="S in Stops">
+                                                            <tr ng-repeat="r in reportors">
 
-                                                                <td>{{S.VechID}}</td>
-                                                                <td>{{S.RegistrationNo}}</td>
-                                                                <td>{{S.DriverName}}</td>
-                                                                <td>{{S.PickupPlace}}</td>
-                                                                <td>{{S.DropPlace}}</td>
-
+                                                                
+                                                                <td>{{r.VechID}}</td>
+                                                                <td>{{r.RegistrationNo}}</td>
+                                                                <td>{{r.DriverName}}</td>
+                                                                <td>{{r.PartyName}}</td>
+                                                                <td>{{r.PickupPlace}}</td>
+                                                                <td>{{r.DropPlace}}</td>
+                                                                <td>{{r.StartMeter}}</td>
+                                                                <td>{{r.EndMeter}}</td>
+                                                                <td>{{r.EntryTime}}</td>
+                                                                <td>{{r.GeneratedAmount}}</td>
+                                                                <td>{{r.ActualAmount}}</td>
                                                                 <td><input type="checkbox" checked /></td>
                                                                 <td>
-                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setStops(St);">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setreportors(r);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
-                                                                        Edit
+
                                                                     </button>
                                                                 </td>
                                                             </tr>
@@ -517,146 +610,144 @@
 
                                                     </table>
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
+                                                        <div class=" modal-dialog modal-lg">
+                                                            <div class="modal-content" ng-model="report">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                                                     <h4 id="modal-header-primary-label" class="modal-title">Add ClosingReport</h4>
                                                                 </div>
-                                                                <div class="row mbm">
-                                                                    <div class="col-lg-12">
+                                                                <div class="modal-body">
 
-                                                                        <div class="row">
 
-                                                                            <div class="col-md-6">
-                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> SlNo:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.SlNo" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">EntryDate*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.EntryDate" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
+                                                                    <div class="row">
 
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">SlNo:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.SlNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">EntryDate:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="date" ng-model="report.EntryDate" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
+                                                                    </div>
+                                                                    <div class="row">
 
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VechID:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.VechID" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">RegistrationNo*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">VechID:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.VechID" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DriverName:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.DriverName" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">PartyName*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.PartyName" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
+                                                                    </div>
+                                                                    <div class="row">
 
-
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> PickupPlace:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.PickupPlace" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">DropPlace*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.DropPlace" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label"> DriverName:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.DriverName" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> StartMeter:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.StartMeter" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">EndMeter*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.EndMeter" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> OtherExp :<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.OtherExp, " class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">GeneratedAmount*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.GeneratedAmount" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> ActualAmount:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.ActualAmount" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">ExecutiveName*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.ExecutiveName" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> BNo:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.BNo" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">DropTime*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.DropTime" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> PickupTime:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.PickupTime" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">EntryTime*:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.EntryTime" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <!--<div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> ExecutiveName:<span class='require'>*</span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="ClosingReport.ExecutiveName" class="form-control" /><span class=""></span></div>
-                                                                            </div>
-                                                                        </div>-->
-                                                                        <div class="form-actions">
-                                                                            <div class="col-md-offset-5 col-md-8">
-                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNEW(AssginDriver, 'I');">Save</button>
-
-                                                                                <a href="Company.html" class="btn btn-primary" ng-click="clearGroup()">Cancel</a>
-                                                                            </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">PartyName:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.PartyName" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">PickupPlace:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.PickupPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">DropPlace:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.DropPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
 
                                                                     </div>
 
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">StartMeter:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="text" ng-model="report.StartMeter" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">EndMeter:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="time" ng-model="report.EndMeter" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">OtherExp:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="report.OtherExp" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">GeneratedAmount:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="text" ng-model="report.GeneratedAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">ActualAmount:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="text" ng-model="report.ActualAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">ExecutiveName:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="text" ng-model="report.ExecutiveName" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">BNo:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="text" ng-model="report.BNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">DropTime:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="time" ng-model="report.DropTime" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">PickupTime:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="time" ng-model="report.PickupTime" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label">EntryTime:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input type="time" ng-model="report.EntryTime" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="row">
+                                                                        <div style="text-align:right">
+                                                                            <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <input type="checkbox" checked ng-model="report.Active" />
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div style="text-align:center">
+
+                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(report)">Save</button>
+
+                                                                            <a href="ClosingReport.html" class="btn btn-primary" ng-click="clearreport()">Cancel</a>
+
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
 
@@ -741,3 +832,4 @@
 
 </body>
 </html>
+
