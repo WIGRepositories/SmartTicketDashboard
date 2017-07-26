@@ -13,7 +13,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
 
-        [Route("api/nearestvehiclese/Getvehicles")]
+        [Route("api/nearestvehicles/Getvehicles")]
         public DataTable Getvehicles(string PhoneNo)
         {
             DataTable dt = new DataTable();

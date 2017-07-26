@@ -13,7 +13,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
-            $scope.Driverslist = res.data;
+            $scope.listdrivers = res.data;
         });
     }
 
@@ -22,6 +22,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (Driverlist.DId == null) {
             alert('Please Enter DId');
             return;
+
+
         }
         if (Driverlist.NAme == null) {
             alert('Please Enter NAme');
@@ -88,7 +90,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         
 
         var Driverlist = {
-            
+
+            flag:'I',
             DId: Driverlist.id,
             NAme: Driverlist.NAme,
             Address: Driverlist.Address,
@@ -129,102 +132,94 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
-    };
+    };   
 
     $scope.drivers = null;
 
-
-    $scope.save = function (Driverlist, flag) {
-        if (Driverlist == null) {
-            alert('Please Enter Driverlist');
-            return;
-        }
-        if (Driverlist.DId == null) {
-            alert('Please Enter DId');
-            return;
-        }
-        if (Driverlist.NAme == null) {
+    $scope.save = function (drivers, flag) {
+        
+        if (drivers.NAme == null) {
             alert('Please Enter NAme');
             return;
         }
-        if (Driverlist.City == null) {
+        if (drivers.City == null) {
             alert('Please Enter City');
             return;
         }
-        if (Driverlist.Pin == null) {
+        if (drivers.Pin == null) {
             alert('Please Enter Pin');
             return;
         }
-        if (Driverlist.PAddress == null) {
+        if (drivers.PAddress == null) {
             alert('Please Enter PAddress');
             return;
         }
-        if (Driverlist.PCity == null) {
+        if (drivers.PCity == null) {
             alert('Please Enter PCity');
             return;
         }
-        if (Driverlist.PPin == null) {
+        if (drivers.PPin == null) {
             alert('Please Enter PPin');
             return;
         }
-        if (Driverlist.OffMobileNo == null) {
+        if (drivers.OffMobileNo == null) {
             alert('Please Enter OffMobileNo');
             return;
         }
-        if (Driverlist.PMobNo == null) {
+        if (drivers.PMobNo == null) {
             alert('Please Enter PMobNo');
             return;
         }
-        if (Driverlist.DOB == null) {
+        if (drivers.DOB == null) {
             alert('Please Enter Code');
             return;
         }
-        if (Driverlist.DOJ == null) {
+        if (drivers.DOJ == null) {
             alert('Please Enter DOB');
             return;
         }
-        if (Driverlist.BloodGroup == null) {
+        if (drivers.BloodGroup == null) {
             alert('Please Enter BloodGroup');
             return;
         }
 
-        if (Driverlist.LiCExpDate == null) {
+        if (drivers.LiCExpDate == null) {
             alert('Please Enter LiCExpDate');
             return;
         }
-        if (Driverlist.BadgeNo == null) {
+        if (drivers.BadgeNo == null) {
             alert('Please Enter BadgeNo');
             return;
         }
-        if (Driverlist.BadgeExpDate == null) {
+        if (drivers.BadgeExpDate == null) {
             alert('Please Enter BadgeExpDate');
             return;
         }
-        if (Driverlist.Remarks == null) {
+        if (drivers.Remarks == null) {
             alert('Please Enter Remarks');
             return;
         }
 
-        var Driverlist = {
+        var drivers = {
            
-            DId: Driverlist.id,
-            NAme: Driverlist.NAme,
-            Address: Driverlist.Address,
-            City: Driverlist.City,
-            Pin: Driverlist.Pin,
-            PAddress: Driverlist.PAddress,
-            PCity: Driverlist.PCity,
-            PPin: Driverlist.PPin,
-            OffMobileNo: Driverlist.OffMobileNo,
-            PMobNo: Driverlist.PMobNo,
-            DOB: Driverlist.DOB,
-            DOJ: Driverlist.DOJ,
-            BloodGroup: Driverlist.BloodGroup,
-            LicenceNo: Driverlist.LicenceNo,
-            LiCExpDate: Driverlist.LiCExpDate,
-            BadgeNo: Driverlist.BadgeNo,
-            BadgeExpDate: Driverlist.BadgeExpDate,
-            Remarks: Driverlist.Remarks,
+           flag:'U',
+            NAme: drivers.NAme,
+            Address: drivers.Address,
+            City: drivers.City,
+            Pin: drivers.Pin,
+            PAddress: drivers.PAddress,
+            PCity: drivers.PCity,
+            PPin: drivers.PPin,
+            OffMobileNo: drivers.OffMobileNo,
+            PMobNo: drivers.PMobNo,
+            DOB: drivers.DOB,
+            DOJ: drivers.DOJ,
+            BloodGroup: drivers.BloodGroup,
+            LicenceNo: drivers.LicenceNo,
+            LiCExpDate: drivers.LiCExpDate,
+            BadgeNo: drivers.BadgeNo,
+            BadgeExpDate: drivers.BadgeExpDate,
+            Remarks: drivers.Remarks,
 
            
         }
@@ -233,7 +228,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var req = {
             method: 'POST',
             url: '/api/DriverMaster/Driver',
-            data: Driverlist
+            data: drivers
         }
         $http(req).then(function (response) {
 
@@ -250,13 +245,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.Driverlist = null;
+    $scope.listdrivers = null;
 
-    $scope.setDriverlist = function (usr) {
+    $scope.setlistdrivers = function (usr) {
         $scope.drivers = usr;
     };
 
-    $scope.clearDriverlist = function () {
+    $scope.clearlistdrivers = function () {
         $scope.drivers = null;
     }
 

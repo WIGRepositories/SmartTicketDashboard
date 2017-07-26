@@ -46,12 +46,12 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
         }
 , function (errres) {
     var errdata = errres.data;
-    var errmssg = "";
+    var errmssg = "Your details are incorrect";
     errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
     $scope.showDialog(errmssg);
 
@@ -87,13 +87,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
     var errdata = errres.data;
-    var errmssg = "";
+    var errmssg = "Your details are incorrect";
     errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
     $scope.showDialog(errmssg);
 });
@@ -209,13 +209,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
     var errdata = errres.data;
-    var errmssg = "";
+    var errmssg = "Your details are incorrect";
     errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
     $scope.showDialog(errmssg);
 });
@@ -271,7 +271,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             data: CompanyRole,
 
         }).success(function (data, status, headers, config) {
-            //alert('Company Roles successfully');
+            alert('Company Roles successfully');
            
         }).error(function (ata, status, headers, config) {
             alert(ata);
@@ -295,7 +295,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             data: cmprole
         }
         $http(req).then(function (response) {
-            //alert('Removed successfully.');
+            $scope.showDialog("Saved successfully!");
+
             
             $http.get('/api/Roles/GetCompanyRoles?companyId=' + role.CompanyId).then(function (res, data) {
                 $scope.cmproles = res.data;

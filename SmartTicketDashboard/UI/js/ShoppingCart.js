@@ -109,10 +109,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
             data: items1,
 
         }).success(function (data, status, headers, config) {
-            //alert('saved successfully');
+            $scope.showdialogue("Saved successfully")
             window.location.href = "/UI/CheckOut.html";
         }).error(function (ata, status, headers, config) {
-            alert(ata);
+           
         });
       
     }

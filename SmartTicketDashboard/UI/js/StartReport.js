@@ -11,19 +11,23 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.getReports = function () {
-        $http.get('/api/ClosingReport/getReports').then(function (res, data) {
-            $scope.reportors = res.data;
+    $scope.GetStatus = function () {
+        $http.get('/api/StartReport/GetStatus').then(function (res, data) {
+            $scope.Status = res.data;
 
         });
     }
 
-
+   
     $scope.saveNew = function (report) {
         if (report == null) {
             alert('Please Enter Name');
             return;
-        }       
+        }
+        if (report.SlNo == null) {
+            alert('Please Enter SlNo');
+            return;
+        }
         if (report.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
@@ -41,6 +45,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         if (report.PartyName == null) {
+
+
             alert('Please Enter PartyName');
             return;
         }
@@ -56,50 +62,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter StartMeter');
             return;
         }
-        if (report.EndMeter == null) {
-            alert('Please Enter EndMeter');
+        if (report.PickupTime == null) {
+            alert('Please Enter PickupTime');
             return;
         }
-        if (report.OtherExp == null) {
-            alert('Please Enter OtherExp');
-            return;
-        }
-        if (report.GeneratedAmount == null) {
-            alert('Please Enter GeneratedAmount');
-            return;
-        }
-        if (report.ActualAmount == null) {
-            alert('Please Enter ActualAmount');
-            return;
-        }
-
         if (report.ExecutiveName == null) {
             alert('Please Enter ExecutiveName');
             return;
         }
-        if (report.BNo == null) {
-            alert('Please Enter BNo');
-            return;
-        }
-        if (report.DropTime == null) {
-            alert('Please Enter DropTime');
-            return;
-        }
-        if (report.PickupTime == null) {
-            alert('Please Enter PickupTime');
+        if (report.BookingNo == null) {
+            alert('Please Enter BookingNo');
             return;
         }
         if (report.EntryTime == null) {
             alert('Please Enter EntryTime');
             return;
         }
+        if (report.CloseStatus == null) {
+            alert('Please Enter CloseStatus');
+            return;
+        }
+       
 
 
 
         var report = {
 
-            flag: "I",
-            SlNo: "",
+            flag:"I",
+            SlNo: report.SlNo,
             EntryDate: report.EntryDate,
             VechID: report.VechID,
             RegistrationNo: report.RegistrationNo,
@@ -108,23 +98,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PickupPlace: report.PickupPlace,
             DropPlace: report.DropPlace,
             StartMeter: report.StartMeter,
-            EndMeter: report.EndMeter,
-            OtherExp: report.OtherExp,
-            GeneratedAmount: report.GeneratedAmount,
-            ActualAmount: report.ActualAmount,
-            ExecutiveName: report.ExecutiveName,
-            BNo: report.BNo,
-            DropTime: report.DropTime,
             PickupTime: report.PickupTime,
+            ExecutiveName: report.ExecutiveName,
+            BookingNo: report.BookingNo,
             EntryTime: report.EntryTime,
-
+            PolutionNo: report.PolExpDate,
+            CloseStatus: report.CloseStatus,
 
             Active: (report.Active == true) ? 1 : 0,
+
+
         }
 
         var req = {
             method: 'POST',
-            url: '/api/ClosingReport/closerprt',
+            url: '/api/StartReport/Startingreport',
             data: report
         }
         $http(req).then(function (response) {
@@ -149,7 +137,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (report == null) {
             alert('Please Enter Name');
             return;
-        }       
+        }
+        if (report.SlNo == null) {
+            alert('Please Enter SlNo');
+            return;
+        }
         if (report.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
@@ -167,6 +159,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         if (report.PartyName == null) {
+
+
             alert('Please Enter PartyName');
             return;
         }
@@ -182,49 +176,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter StartMeter');
             return;
         }
-        if (report.EndMeter == null) {
-            alert('Please Enter EndMeter');
+        if (report.PickupTime == null) {
+            alert('Please Enter PickupTime');
             return;
         }
-        if (report.OtherExp == null) {
-            alert('Please Enter OtherExp');
-            return;
-        }
-        if (report.GeneratedAmount == null) {
-            alert('Please Enter GeneratedAmount');
-            return;
-        }
-        if (report.ActualAmount == null) {
-            alert('Please Enter ActualAmount');
-            return;
-        }
-       
         if (report.ExecutiveName == null) {
             alert('Please Enter ExecutiveName');
             return;
         }
-        if (report.BNo == null) {
-            alert('Please Enter BNo');
-            return;
-        }
-        if (report.DropTime == null) {
-            alert('Please Enter DropTime');
-            return;
-        }
-        if (report.PickupTime == null) {
-            alert('Please Enter PickupTime');
+        if (report.BookingNo == null) {
+            alert('Please Enter BookingNo');
             return;
         }
         if (report.EntryTime == null) {
             alert('Please Enter EntryTime');
             return;
         }
-       
+        if (report.CloseStatus == null) {
+            alert('Please Enter CloseStatus');
+            return;
+        }
+
+
 
 
         var report = {
 
-            flag: "U",           
+            flag: "U",
+            SlNo: report.SlNo,
             EntryDate: report.EntryDate,
             VechID: report.VechID,
             RegistrationNo: report.RegistrationNo,
@@ -233,23 +212,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PickupPlace: report.PickupPlace,
             DropPlace: report.DropPlace,
             StartMeter: report.StartMeter,
-            EndMeter: report.EndMeter,
-            OtherExp: report.OtherExp,
-            GeneratedAmount: report.GeneratedAmount,
-            ActualAmount: report.ActualAmount,
-            ExecutiveName: report.ExecutiveName,
-            BNo: report.BNo,
-            DropTime: report.DropTime,
             PickupTime: report.PickupTime,
+            ExecutiveName: report.ExecutiveName,
+            BookingNo: report.BookingNo,
             EntryTime: report.EntryTime,
-
+            PolutionNo: report.PolExpDate,
+            CloseStatus: report.CloseStatus,
 
             Active: (report.Active == true) ? 1 : 0,
+
+
         }
 
         var req = {
             method: 'POST',
-            url: '/api/ClosingReport/closerprt',
+            url: '/api/StartReport/Startingreport',
             data: report
         }
         $http(req).then(function (response) {
@@ -269,11 +246,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.reporting = null;
 
-    $scope.setreportors = function (reporting) {
-        $scope.reporting = reporting;
+    $scope.setStatus = function (reporting) {
+        $scope.report = reporting;
     };
 
-    $scope.clearreporting = function () {
+    $scope.clearreport = function () {
         $scope.reporting = null;
     }
 

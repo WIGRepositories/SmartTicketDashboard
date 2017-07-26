@@ -40,15 +40,21 @@ namespace SmartTicketDashboard.Controllers
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
 
-        public DataTable Vehicles(vehicledetails v)
+        public DataTable Vehicles(vehicle v)
         {
             SqlConnection conn = new SqlConnection();
 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVVehicles";
+            cmd.CommandText = "HVInsUpdVehicles";
             cmd.Connection = conn;
+
+
+            SqlParameter se = new SqlParameter("@flag", SqlDbType.VarChar);
+            se.Value = v.flag;
+            cmd.Parameters.Add(se);
+
 
             SqlParameter s = new SqlParameter("@SrNo", SqlDbType.Int);
             s.Value = v.SrNo;

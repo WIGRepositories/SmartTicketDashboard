@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="drivers();" ng-model="AssginDriver">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="Getallocatedriver();" ng-model="drivers">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -363,7 +363,7 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">VehicleList</span></a></li>
+                                <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
                                 <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
 
@@ -371,7 +371,8 @@
                                 <li><a href="CustomerList.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CustomerList</span></a></li>
 
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
-                                <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
+                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
+                                 <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
                                 <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
                                 <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
@@ -399,147 +400,356 @@
                     </div>
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                     <div class="page-content">
+                        <div id="table-action" class="row">
+                            <div class="col-lg-12">
 
-                        <div class="col-lg-12">
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
 
-                            <div id="tableactionTabContent" class="tab-content">
-                                <div id="table-table-tab" class="tab-pane fade in active">
-                                    <div class="row">
 
-                                        <div class="col-lg-12">
-
-                                            <div id="table-action">
-                                                <div class="table-container" ng-model="AssginDriver">
+                                                <div class="table-container">
                                                     <div class="row mbm">
-                                                        <div class="col-lg-12">
 
-                                                            <div class="row">
+                                                        <div class="actions">
+                                                            <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Vehicle</button>
+                                                        </div>
 
-                                                                <div class="col-md-6">
-                                                                    <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> SlNo:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.SlNo" class="form-control" /><span class="help-block"></span></div>
+
+                                                        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Vehicle</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" ng-model="AssginDriver">
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Driver" class="col-md-4 control-label" style="color:red;float:left"> SlNo:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.SlNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">BookingNo*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.BookingNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> CustomerName:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CustomerName" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">CusID*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CusID" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> PhoneNo:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">AltPhoneNo*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.AltPhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+
+
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> Address:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Address" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupAddress*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupAddress" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> LandMark:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.LandMark" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupPlace*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DropPlace:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DropPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">Package*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Package" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VehicleType:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VehicleType" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">NoofVehicle*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.NoofVehicle" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VechID:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VechID" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">RegistrationNo*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DriverName:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DriverName" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="code" class="col-md-4 control-label" style="color:red;float:left">PresentDriverLandMark*:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PresentDriverLandMark" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> ExecutiveName:<span class='require'>*</span></label>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.ExecutiveName" class="form-control" /><span class=""></span></div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+                                                                            <div style="text-align:right">
+                                                                                <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <input type="checkbox" checked ng-model="AssginDriver.Active" />
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-3 col-md-9">
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(Driver, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">BookingNo*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.BookingNo" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
                                                             </div>
 
 
-                                                            <div class="row">
+                                                        </div>
+                                                    </div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
 
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> CustomerName:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CustomerName" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">CusID*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CusID" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
 
+                                                                <th width="10%">BookingNo</th>
+                                                                <th width="10%">CustomerName</th>
+                                                                <th width="10%">VehicleType</th>
+                                                                <th width="10%">VechID</th>
+                                                                <th width="10%">RegistrationNo</th>
+                                                                <th width="10%">DriverName</th>
+                                                                <th width="10%">PresentDriverLandMark</th>
+                                                                <th>Active</th>
+                                                                <th>Edit</th>
+
+
+                                                            </tr>
+                                                        <tbody>
+                                                            <tr ng-repeat="a in drivers">
+
+                                                                <td>{{a.BookingNo}}</td>
+                                                                <td>{{a.CustomerName}}</td>
+                                                                <td>{{a.VehicleType}}</td>
+                                                                <td>{{a.VechID}}</td>
+                                                                <td>{{a.RegistrationNo}}</td>
+                                                                <td>{{a.DriverName}}</td>
+                                                                <td>{{a.PresentDriverLandMark}}</td>
+                                                                <td><input type="checkbox" checked /></td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setdrivers(a);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
+
+                                                        </tbody>
+
+                                                    </table>
+                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                        <div class=" modal-dialog modal-lg">
+                                                            <div class="modal-content" ng-model="AssginDriver">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add New Vehicle</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> SlNo:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.SlNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">BookingNo*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.BookingNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> CustomerName:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CustomerName" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">CusID*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.CusID" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> PhoneNo:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">AltPhoneNo*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.AltPhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+
+
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> Address:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Address" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupAddress*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupAddress" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> LandMark:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.LandMark" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupPlace*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DropPlace:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DropPlace" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">Package*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Package" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VehicleType:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VehicleType" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">NoofVehicle*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.NoofVehicle" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VechID:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VechID" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">RegistrationNo*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DriverName:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DriverName" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">PresentDriverLandMark*:<span class='require'></span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PresentDriverLandMark" class="form-control" /><span class="help-block"></span></div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> ExecutiveName:<span class='require'>*</span></label>
+                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.ExecutiveName" class="form-control" /><span class=""></span></div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-actions">
+                                                                        <div class="col-md-offset-5 col-md-8">
+                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNEW(AssginDriver, 'I');">Save</button>
+
+                                                                            <a href="AssginDriver.html" class="btn btn-primary" ng-click="clearAssginDriver()">Cancel</a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                            <div class="row">
 
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> PhoneNo:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">AltPhoneNo*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.AltPhoneNo" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-
-
-
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> Address:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Address" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupAddress*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupAddress" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> LandMark:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.LandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupPlace*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PickupPlace" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DropPlace:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DropPlace" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">Package*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.Package" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VehicleType:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VehicleType" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">NoofVehicle*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.NoofVehicle" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VechID:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.VechID" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">RegistrationNo*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> DriverName:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.DriverName" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">PresentDriverLandMark*:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PresentDriverLandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-
-                                                            </div>
-                                                            <div class="row">
-
-                                                                <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> ExecutiveName:<span class='require'>*</span></label>
-                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.ExecutiveName" class="form-control" /><span class=""></span></div>
-                                                                </div>
-                                                            </div>
-                                                            <div class="form-actions">
-                                                                <div class="col-md-offset-5 col-md-8">
-                                                                    <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNEW(AssginDriver, 'I');">Save</button>
-
-                                                                    <a href="Company.html" class="btn btn-primary" ng-click="clearGroup()">Cancel</a>
-                                                                </div>
-                                                            </div>
 
 
                                                         </div>
@@ -547,21 +757,18 @@
                                                     </div>
 
 
-
                                                 </div>
-
-
                                             </div>
+
+
                                         </div>
-
-
                                     </div>
-                                </div>
 
+                                </div>
+                                <!--END CONTENT-->
                             </div>
-                            <!--END CONTENT-->
+                            <!--END PAGE WRAPPER-->
                         </div>
-                        <!--END PAGE WRAPPER-->
                     </div>
                 </div>
 

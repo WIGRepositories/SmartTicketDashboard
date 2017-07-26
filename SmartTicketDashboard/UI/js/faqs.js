@@ -24,7 +24,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http) {
     }
 
     $http(req).then(function (response) {
-        //alert("save successfully!!");
+        $scope.showdialogue("Saved successfully")
         //window.location.href = "Register.html";
     },
     function (errres) {

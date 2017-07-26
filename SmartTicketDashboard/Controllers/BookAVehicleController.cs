@@ -71,6 +71,8 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(v);
 
             SqlParameter v1 = new SqlParameter("@Customername", SqlDbType.VarChar, 255);
+
+
             v1.Value = b.Customername;
             cmd.Parameters.Add(v1);
 
@@ -206,7 +208,7 @@ namespace SmartTicketDashboard.Controllers
                     SmtpClient SmtpServer = new SmtpClient(emailserver);
 
                     mail.From = new MailAddress(fromaddress);
-                    mail.To.Add(b.PhoneNo);
+                    mail.To.Add(fromaddress);
                     mail.Subject = "User registration - Mobile OTP";
                     mail.IsBodyHtml = true;
 

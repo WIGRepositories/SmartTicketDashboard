@@ -93,6 +93,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
             $scope.cmpdata1 = res.data;
+            $scope.showdialogue("Saved successfully")
+
 
             if ($scope.userSId != 1) {
                 //loop throug the fleetowners and identify the correct one
@@ -155,6 +157,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.FleetnBTPos = res.data;
+            $scope.showdialogue("Saved successfully")
+
         });
     }
     $scope.save = function (currVD, flag) {
@@ -194,7 +198,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         }
         $http(req).then(function (res) {
-            //$scope.showDialog("Updated successfully!");
+            $scope.showDialog("Updated successfully!");
             GetFleetDetails();
         });
 
@@ -244,7 +248,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: FBTPOS
         }
         $http(req).then(function (response) {
-            //alert('Removed successfully.');
+            alert('Removed successfully.');
 
             $http.get('/api/FleetBtpos/GetFleebtDetails?sId=-1&cmpid=-1').then(function (res, data) {
                 $scope.FleetBtposList = res.data;
@@ -290,13 +294,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (response) {
 
-          //  $scope.showDialog("Saved successfully!");
+          $scope.showDialog("Saved successfully!");
             $scope.GetFleeBTPosDetails();
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });

@@ -164,7 +164,6 @@
     <Content Include="UI\EmailInbox.html" />
     <Content Include="UI\EmailTemplates\1.txt" />
     <Content Include="UI\EmailTemplates\TicketFormat.html" />
-    <Content Include="UI\extra.html" />
     <Content Include="UI\FAQs.html" />
     <Content Include="UI\FleetAvailability.html" />
     <Content Include="UI\FleetBtpos.html" />
@@ -275,6 +274,7 @@
     <Content Include="UI\js\registrationform.js" />
     <Content Include="UI\js\ShoppingCart.js" />
     <Content Include="UI\js\SmsGatewayConfiguration.js" />
+    <Content Include="UI\js\StartReport.js" />
     <Content Include="UI\js\table-action.js" />
     <Content Include="UI\js\treasure-overlay-spinner.js" />
     <Content Include="UI\js\treetable.js" />
@@ -312,7 +312,7 @@
     <Content Include="UI\js\VehicleDistPricing.js" />
     <Content Include="UI\js\VehicleHoursBasePricing.js" />
     <Content Include="UI\js\VehicleLayout.js" />
-    <Content Include="UI\js\VehicleList.js" />
+    <Content Include="UI\js\Landmark.js" />
     <Content Include="UI\js\VehiclePricing.js" />
     <Content Include="UI\js\VehicleScheduleList.js" />
     <Content Include="UI\LicenseConfguration.html" />
@@ -568,6 +568,7 @@
     <Content Include="UI\ShippingOrder.html" />
     <Content Include="UI\ShoppingCart.html" />
     <Content Include="UI\SmsGatewayConfiguration.html" />
+    <Content Include="UI\StartReport.html" />
     <Content Include="UI\Stops.html" />
     <Content Include="UI\SubCategory.html" />
     <Content Include="UI\TroubleTicketHistory.html" />
@@ -586,7 +587,7 @@
     <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\VehicleHoursBasePricing.html" />
     <Content Include="UI\VehicleLayout.html" />
-    <Content Include="UI\VehicleList.html" />
+    <Content Include="UI\Landmark.html" />
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
@@ -2016,6 +2017,7 @@
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
+    <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
@@ -2069,6 +2071,7 @@
     <Compile Include="Controllers\ShippingOrderController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\SmsGatewayConfigController.cs" />
+    <Compile Include="Controllers\StartReportController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
@@ -2119,6 +2122,7 @@
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
+    <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Controllers\vehicletypesController.cs" />
     <Compile Include="Controllers\ZipCodeController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2136,7 +2140,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\Dashboard.pubxml" />
     <Content Include="UI\vendors\bootstrap-clockface\.gitignore" />
     <Content Include="UI\vendors\bootstrap-clockface\.jshintignore" />
     <Content Include="UI\vendors\bootstrap-clockface\build" />
@@ -2467,6 +2470,7 @@
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
+    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

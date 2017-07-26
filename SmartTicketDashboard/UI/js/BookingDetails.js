@@ -13,8 +13,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.GetBookingHistory = function () {
-        $http.get('/api/BookAVehicle/GetBookingHistory?PhoneNo=').then(function (res, data) {
-            $scope.book = res.data;
+        $http.get('/api/BookAVehicle/GetBookingHistory?PhoneNo=9951197608').then(function (res, data) {
+            $scope.bookings = res.data;
         });
     }
    
@@ -165,11 +165,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             ReconfirmedBy: book.ReconfirmedBy,
             AssignedBy: book.AssignedBy,
             latitude: book.latitude,
-            longitude: book.longitude,
+            longitude: book.longitude          
 
-            
-
-            insupdflag: "I"
+           
         }
 
         var req = {
@@ -195,163 +193,159 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
    
 
 
-    $scope.saveupd = function (book) {
-        if (book == null) {
+    $scope.saveupd = function (booking) {
+        if (booking == null) {
             alert('Please Enter Name');
             return;
         }
-        if (book.BookingType == null) {
-            alert('Please Enter Nmae');
+        if (booking.BookingType == null) {
+            alert('Please Enter BookingType');
             return;
         }
-        if (book.ReqVehicle == null) {
-            alert('Please Enter Code');
+        if (booking.ReqVehicle == null) {
+            alert('Please Enter ReqVehicle');
             return;
         }
-        if (book.Customername == null) {
-            alert('Please Enter Code');
+        if (booking.Customername == null) {
+            alert('Please Enter Customername');
             return;
         }
-        if (book.CusID == null) {
-            alert('Please Enter Code');
+        if (booking.CusID == null) {
+            alert('Please Enter CusID');
             return;
         }
-        if (book.PhoneNo == null) {
-            alert('Please Enter Code');
+        if (booking.PhoneNo == null) {
+            alert('Please Enter PhoneNo');
             return;
         }
-        if (book.AltPhoneNo == null) {
-            alert('Please Enter Code');
+        if (booking.AltPhoneNo == null) {
+            alert('Please Enter AltPhoneNo');
             return;
         }
-        if (book.CAddress == null) {
-            alert('Please Enter Code');
+        if (booking.CAddress == null) {
+            alert('Please Enter CAddress');
             return;
         }
-        if (book.PickupAddress == null) {
-            alert('Please Enter Code');
+        if (booking.PickupAddress == null) {
+            alert('Please Enter PickupAddress');
             return;
         }
-        if (book.LandMark == null) {
-            alert('Please Enter Code');
+        if (booking.LandMark == null) {
+            alert('Please Enter LandMark');
             return;
         }
-        if (book.Package == null) {
-            alert('Please Enter Code');
+        if (booking.Package == null) {
+            alert('Please Enter Package');
             return;
-            if (book.PickupPalce == null) {
+            if (booking.PickupPalce == null) {
+                alert('Please Enter PickupPalce');
+                return;
+            }
+            if (booking.DropPalce == null) {
+                alert('Please Enter DropPalce');
+                return;
+            }
+            if (booking.ExtraCharge == null) {
+                alert('Please Enter ExtraCharge');
+                return;
+            }
+            if (booking.NoofVehicle == null) {
                 alert('Please Enter Code');
                 return;
             }
-            if (book.DropPalce == null) {
-                alert('Please Enter Code');
+            if (booking.ExecutiveName == null) {
+                alert('Please Enter ExecutiveName');
                 return;
             }
-            if (book.ExtraCharge == null) {
-                alert('Please Enter Code');
+            if (booking.VID == null) {
+                alert('Please Enter VID');
                 return;
             }
-            if (book.NoofVehicle == null) {
-                alert('Please Enter Code');
+            if (booking.BookingStatus == null) {
+                alert('Please Enter BookingStatus');
                 return;
             }
-            if (book.ExecutiveName == null) {
-                alert('Please Enter Code');
+            if (booking.CustomerSMS == null) {
+                alert('Please Enter CustomerSMS');
                 return;
             }
-            if (book.VID == null) {
-                alert('Please Enter Code');
+            if (booking.CancelReason == null) {
+                alert('Please Enter CancelReason');
                 return;
             }
-            if (book.BookingStatus == null) {
-                alert('Please Enter Code');
+            if (booking.CBNo == null) {
+                alert('Please Enter CBNo');
+                return;
+            }           
+            if (booking.ModifiedBy == null) {
+                alert('Please Enter ModifiedBy');
                 return;
             }
-            if (book.CustomerSMS == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (book.CancelReason == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (book.CBNo == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (book.Code == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (book.ModifiedBy == null) {
-                alert('Please Enter Code');
-                return;
-            }
-            if (book.CancelBy == null) {
-                alert('Please Enter Code');
+            if (booking.CancelBy == null) {
+                alert('Please Enter CancelBy');
                 return;
             }
 
-            if (book.ReconfirmedBy == null) {
-                alert('Please Enter Code');
+            if (booking.ReconfirmedBy == null) {
+                alert('Please Enter ReconfirmedBy');
                 return;
             }
-            if (book.AssignedBy == null) {
-                alert('Please Enter Code');
+            if (booking.AssignedBy == null) {
+                alert('Please Enter AssignedBy');
                 return;
             }
-            if (book.latitude == null) {
-                alert('Please Enter Code');
+            if (booking.latitude == null) {
+                alert('Please Enter latitude');
                 return;
             }
-            if (book.longitude == null) {
-                alert('Please Enter Code');
+            if (booking.longitude == null) {
+                alert('Please Enter longitude');
                 return;
             }
 
 
         }
 
-        var book = {
-            flag: 'I',
-            Id: -1,
-            BNo: book.BNo,
-            BookingType: book.BookingType,
-            ReqVehicle: book.ReqVehicle,
-            Customername: book.Customername,
-            CusID: book.CusID,
-            PhoneNo: book.PhoneNo,
-            AltPhoneNo: book.AltPhoneNo,
-            CAddress: book.CAddress,
-            PickupAddress: book.PickupAddress,
-            LandMark: book.LandMark,
-            Package: book.Package,
-            PickupPalce: book.PickupPalce,
-            DropPalce: book.DropPalce,
-            ExtraCharge: book.ExtraCharge,
-            NoofVehicle: book.NoofVehicle,
-            ExecutiveName: book.ExecutiveName,
-            VID: book.VID,
-            BookingStatus: book.BookingStatus,
-            CustomerSMS: book.CustomerSMS,
-            CancelReason: book.CancelReason,
-            CBNo: book.CBNo,
-            ModifiedBy: book.ModifiedBy,
-            CancelBy: book.CancelBy,
-            ReconfirmedBy: book.ReconfirmedBy,
-            AssignedBy: book.AssignedBy,
-            latitude: book.latitude,
-            longitude: book.longitude,
+        var booking = {
+            flag: 'U',
+            Id:"",
+            BNo: booking.BNo,
+            BookingType: booking.BookingType,
+            ReqVehicle: booking.ReqVehicle,
+            Customername: booking.Customername,
+            CusID: booking.CusID,
+            PhoneNo: booking.PhoneNo,
+            AltPhoneNo: booking.AltPhoneNo,
+            CAddress: booking.CAddress,
+            PickupAddress: booking.PickupAddress,
+            LandMark: booking.LandMark,
+            Package: booking.Package,
+            PickupPalce: booking.PickupPalce,
+            DropPalce: booking.DropPalce,
+            ExtraCharge: booking.ExtraCharge,
+            NoofVehicle: booking.NoofVehicle,
+            ExecutiveName: booking.ExecutiveName,
+            VID: booking.VID,
+            BookingStatus: booking.BookingStatus,
+            CustomerSMS: booking.CustomerSMS,
+            CancelReason: booking.CancelReason,
+            CBNo: booking.CBNo,
+            ModifiedBy: booking.ModifiedBy,
+            CancelBy: booking.CancelBy,
+            ReconfirmedBy: booking.ReconfirmedBy,
+            AssignedBy: booking.AssignedBy,
+            latitude: booking.latitude,
+            longitude: booking.longitude,
 
 
 
-            insupdflag: "U"
+            
         }
 
         var req = {
             method: 'POST',
             url: '/api/BookAVehicle/booking',
-            data: book
+            data: booking
         }
         $http(req).then(function (response) {
 
@@ -368,14 +362,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.book = null;
+    $scope.booking = null;
 
-    $scope.setbook = function (usr) {
-        $scope.book1 = usr;
+    $scope.setbookings = function (usr) {
+        $scope.booking = usr;
     };
 
     $scope.clearbook = function () {
-        $scope.book1 = null;
+        $scope.booking = null;
     }
 
 

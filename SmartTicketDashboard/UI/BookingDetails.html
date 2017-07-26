@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetBookingHistory" ng-model="book">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetBookingHistory" ng-model="bookings">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -363,14 +363,14 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">VehicleList</span></a></li>
+                                <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
                                 <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
 
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="CustomerList.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CustomerList</span></a></li>
-
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
                                 <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
                                 <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
@@ -482,7 +482,7 @@
                                                                     </div>
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveupd(book1, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveupd(booking, 'U');">Save</button>
                                                                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
@@ -502,25 +502,24 @@
                                                                 <th width="10%">BookingType</th>
                                                                 <th width="10%">PhoneNo</th>
                                                                 <th width="10%">CAddress</th>
-
                                                                 <th width="9%">Active</th>
-                                                                <th width="9%">Update</th>
+                                                                <th width="9%">Edit</th>
 
                                                             </tr>
                                                         <tbody>
-                                                            <tr ng-repeat="b in booking">
+                                                            <tr ng-repeat="b in bookings">
 
                                                                 <td>{{b.VID}}</td>
-                                                                <td>{{b.BookingNo}}</td>
+                                                                <td>{{b.BNo}}</td>
                                                                 <td>{{b.BookingType}}</td>
                                                                 <td>{{b.PhoneNo}}</td>
                                                                 <td>{{b.CAddress}}</td>
 
                                                                 <td><input type="checkbox" checked /></td>
                                                                 <td>
-                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbook(b);">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbookings(b);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
-                                                                        Edit
+                                                                        
                                                                     </button>
                                                                 </td>
                                                             </tr>
@@ -547,7 +546,7 @@
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-5 control-label" style="color:red;float:left">BookingType:<span class='require'></span></label>
-                                                                            <select  ng-model="book.BookingType">
+                                                                            <select ng-model="book.BookingType">
                                                                                 <option value="">Select</option>
                                                                                 <option value="CurrentBooking">CurrentBooking</option>
                                                                                 <option value="AdvanceBooking">AdvanceBooking</option>
@@ -611,6 +610,11 @@
                                                                                 <option value="">Select</option>
                                                                                 <option value="PRNagar">PrNagar</option>
                                                                                 <option value="Motinagar">MotiNagar</option>
+                                                                                <option value="Madhapur">Madhapur</option>
+                                                                                <option value="Kukatpally">Kukatpally</option>
+                                                                                <option value="Nampally">Nampally</option>
+                                                                                <option value="Secunderabad">Secunderabad</option>
+                                                                                <option value="SRNagar">SRNagar</option>
 
 
                                                                             </select>
@@ -822,15 +826,6 @@
     <script src="js/ngStorage.js"></script>
     <script src="js/BookingDetails.js"></script>
 
-
-</body>
-</html>
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <title></title>
-</head>
-<body>
 
 </body>
 </html>
