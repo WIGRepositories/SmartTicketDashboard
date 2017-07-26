@@ -2038,5 +2038,23 @@ namespace SmartTicketDashboard.Models
         public int preferenceId { get; set; }
         public string flag { get; set; }
     }
-   
+    public class VehicleDist
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public string VehicleModel { get; set; }
+        public int FromKm { get; set; }
+        public int ToKm { get; set; }
+        public decimal Pricing { get; set; }
+    }
+    public class HourBase
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public string VehicleModel { get; set; }
+        public string Hours { get; set; }
+
+        public decimal Price { get; set; }
+
+    }
 }

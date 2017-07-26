@@ -309,6 +309,8 @@
     <Content Include="UI\js\userdetails.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleAvailability.js" />
+    <Content Include="UI\js\VehicleDistPricing.js" />
+    <Content Include="UI\js\VehicleHoursBasePricing.js" />
     <Content Include="UI\js\VehicleLayout.js" />
     <Content Include="UI\js\VehicleList.js" />
     <Content Include="UI\js\VehiclePricing.js" />
@@ -580,7 +582,9 @@
     <Content Include="UI\UserRoles.html" />
     <Content Include="UI\Users.html" />
     <Content Include="UI\VehicleAvailability.html" />
+    <Content Include="UI\VehicleDestBasePricing.html" />
     <Content Include="UI\VehicleDetails.html" />
+    <Content Include="UI\VehicleHoursBasePricing.html" />
     <Content Include="UI\VehicleLayout.html" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\VehiclePricing.html" />
@@ -2038,6 +2042,7 @@
     <Compile Include="Controllers\FleetStaffController.cs" />
     <Compile Include="Controllers\ForgotpasswordController.cs" />
     <Compile Include="Controllers\FOVSchedule.cs" />
+    <Compile Include="Controllers\HourBasedPricingController.cs" />
     <Compile Include="Controllers\InventoryItemController.cs" />
     <Compile Include="Controllers\InventoryPurchaseController.cs" />
     <Compile Include="Controllers\InventorySalesController.cs" />
@@ -2111,6 +2116,7 @@
     <Compile Include="Controllers\UserRolesController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Controllers\UserTypeController.cs" />
+    <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\vehicletypesController.cs" />
