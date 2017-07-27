@@ -401,17 +401,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
-        $scope.currGroup = null;
+        $scope.vech = null;
     };
 
     $scope.newVehicle = null;
 
-    $scope.setVehicles = function (vech1) {
-        $scope.vech = vech1;
+    $scope.setVehicles = function (vech) {
+        $scope.vech = vech;
     };
 
     $scope.clearnewVehicle = function () {
-        $scope.vech1 = null;
+        $scope.vech = null;
     }
 
 

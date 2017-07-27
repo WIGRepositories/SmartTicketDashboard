@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSgetvehilcetypes";
+            cmd.CommandText = "PSgetvehiclemaster";
             cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
