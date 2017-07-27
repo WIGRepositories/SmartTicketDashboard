@@ -1,5 +1,5 @@
 ﻿using SmartTicketDashboard;
-using SmartTicketDashboard;
+
 using SmartTicketDashboard.Models;
 using System;
 using System.Collections.Generic;

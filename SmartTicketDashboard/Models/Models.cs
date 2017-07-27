@@ -1868,10 +1868,7 @@ namespace SmartTicketDashboard.Models
         public string VechMobileNo { get; set; }
         public DateTime EntryDate { get; set; }
         public string NewEntry { get; set; }
-        public string AirPortCab { get; set; }
-        public string deletedVech { get; set; }
-        public string Carrier { get; set; }
-        public string PayGroup { get; set; }
+        
     }
     public class allocatedriver
     {

@@ -27,10 +27,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (Driverlist,flag) {
       
-        if (Driverlist.DId == null) {
-            alert('Please Enter DId');
-            return;
-        }
+        
         if (Driverlist.Id == null) {
             alert('Please Enter CompanyId');
             return;
@@ -153,10 +150,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.save = function (driver, flag) {
 
-        if (driver.DId == null) {
-            alert('Please Enter DId');
-            return;
-        }
+        
         if (driver.CompanyId == null) {
             alert('Please Enter CompanyId');
             return;
@@ -229,7 +223,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag: 'U',
             DId: "",
-            CompanyId: driver.CompanyId,
+            CompanyId: driver.Companyid,
             NAme: driver.NAme,
             Address: driver.Address,
             City: driver.City,
