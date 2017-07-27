@@ -581,12 +581,20 @@
                                                                                 <div class="col-md-3">
                                                                                     <div class="form-group">
                                                                                         <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                        <div class="text-center mbl">
+                                                                                        <!--<div class="text-center mbl">
 
                                                                                             <a href="#" class="btn btn-green">
                                                                                                 <i class="fa fa-upload"></i>&nbsp;
                                                                                                 Upload
                                                                                             </a>
+                                                                                        </div>-->
+                                                                                        <div class="row mbm" style="margin-left:-20px">
+                                                                                            <!--<div style="text-align:right">
+            <label for="Description" class="col-md-4 control-label"><span class='require'></span></label>
+        </div>-->
+                                                                                            <div class="col-md-4">
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
 
@@ -598,16 +606,17 @@
                                                                                     <div id="generalTabContent" class="tab-content">
                                                                                         <div id="tab-edit" class="tab-pane fade in active row">
 
-                                                                                            
+                                                                                            <div class="row">
                                                                                             <div class="col-md-6">
                                                                                                 <div class="col-md-4">
                                                                                                     <label for="AssginDriver" class=" control-label" style="color:red;float:left">CompanyId:</label>
                                                                                                 </div>
 
-                                                                                                <div class="col-md-6">
+                                                                                                <div class="col-md-8">
                                                                                                     <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist" ng-init="GetCompanys();" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
+                                                                                                </div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left">Name:<span class='require'>*</span></label>
@@ -684,7 +693,7 @@
                                                                                             
                                                                                             <div class="col-md-6">
                                                                                                 <label for="code" class="col-md-4 control-label" style="color:red;float:left">BloodGroup*:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><select ng-model="Driverlist.BloodGroup">
+                                                                                                <div class="col-md-8"><select ng-model="Driverlist.BloodGroup" class="form-control">
                                                                                                     <option value="">Select</option>
                                                                                                     <option value="A+">A+</option>
                                                                                                     <option value="A-">A-</option>
