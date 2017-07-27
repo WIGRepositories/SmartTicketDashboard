@@ -18,6 +18,8 @@
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetVehcileMaster();" ng-model="Vehicles">
     <div>
+
+
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
@@ -363,7 +365,7 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                               <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
+                                <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
                                 <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
 
@@ -430,12 +432,24 @@
                                                                         <div class="row ">
 
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> VID:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.VID" class="form-control" /><span class="help-block"></span></div>
+                                                                                <label for="Name" class="col-md-4 control-label">Id:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input  type="text" ng-model="vech.Id" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">VID:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input  type="text" ng-model="vech.VID" class="form-control" /><span class="help-block"></span></div>
+                                                                            </div>
+
+                                                                        </div>
+                                                                        <div class="row ">
+
+                                                                            <div class="col-md-6">
+                                                                                <label for="Name" class="col-md-4 control-label">CompanyId:<span class='require'></span></label>
+                                                                                <div class="col-md-8"><input  type="text" ng-model="vech.CompanyId" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8"><input  type="text" ng-model="vech.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
 
                                                                         </div>
@@ -615,14 +629,14 @@
                                                                                 <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
                                                                             </div>
                                                                             <div class="col-md-4">
-                                                                                <input type="checkbox" checked ng-model="newVehicle.Active" />
+                                                                                <input type="checkbox" checked ng-model="vech.Active" />
 
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(vech, 'U');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(vech,'U');">Save</button>
                                                                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
@@ -679,262 +693,512 @@
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                                                     <h4 id="modal-header-primary-label" class="modal-title">Add New Vehicle</h4>
                                                                 </div>
+                                                                <!--<div class="page-content">
+                                                                      <div class="row">-->
+
                                                                 <div class="modal-body">
 
 
                                                                     <div class="row ">
+                                                                        <!--<div class="page-content">
+                                                                            <div class="row">-->
+                                                                        <div class="col-md-12">
+                                                                            <!--<h2>Vehice List</h2-->
+                                                                            <div class="row mtl">
+                                                                                <div class="col-md-3">
+                                                                                    <div class="form-group">
+                                                                                        <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
+                                                                                        <div class="text-center mbl">
+                                                                                            <a href="#" class="btn btn-green">
+                                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                                Upload
+                                                                                            </a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <table class="table table-striped table-hover">
+                                                                                        <tbody>
+                                                                                            <tr>
+                                                                                                <td>User Name</td>
+                                                                                                <td>User</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Email</td>
+                                                                                                <td>name@example.com</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Address</td>
+                                                                                                <td>Street 123, Avenue 45, Country</td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Status</td>
+                                                                                                <td><span class="label label-success">Active</span></td>
+                                                                                            </tr>
+                                                                                            <tr>
+                                                                                                <td>Member Since</td>
+                                                                                                <td> Jun 03, 2014</td>
+                                                                                            </tr>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </div>
+                                                                                <div class="col-md-9">
+                                                                                    <!--<ul class="nav nav-tabs">
+                                                                                        <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
+                                                                                    </ul>-->
+                                                                                    <div id="generalTabContent" class="tab-content">
+                                                                                        <div id="tab-edit" class="tab-pane fade in active">
+                                                                                            <!--<form action="#" class="form-horizontal">
+                                                                                                </form>-->
+                                                                                            <!--<h3>Account Settings</h3>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Email</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="email" placeholder="email@yourcompany.com" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Username</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="username" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Password</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-4"><input type="password" placeholder="password" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Confirm Password</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-4"><input type="password" placeholder="password" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <hr />
+                                                                                            <h3>Profile Setting</h3>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">First Name</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="first name" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Last Name</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="last name" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Gender</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9">
+                                                                                                            <div class="radio">
+                                                                                                                <label class="radio-inline">
+                                                                                                                    <input type="radio" value="0" name="gender" checked="checked" />&nbsp;
+                                                                                                                    Male
+                                                                                                                </label><label class="radio-inline">
+                                                                                                                    <input type="radio" value="1" name="gender" />&nbsp;
+                                                                                                                    Female
+                                                                                                                </label>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Birthday</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-4"><input id="datepicker-normal" type="text" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Marital Status</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-4">
+                                                                                                            <select class="form-control">
+                                                                                                                <option>Single</option>
+                                                                                                                <option>Married</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Position</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-4">
+                                                                                                            <select class="form-control">
+                                                                                                                <option>CEO</option>
+                                                                                                                <option>Director</option>
+                                                                                                                <option>Manager</option>
+                                                                                                                <option>Staff</option>
+                                                                                                                <option>Office Boy</option>
+                                                                                                            </select>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">About</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><textarea rows="3" class="form-control"></textarea></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <hr />
+                                                                                            <h3>Contact Setting</h3>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Mobile Phone</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="mobile phone" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Website</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="website" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Facebook</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="facebook" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="form-group">
+                                                                                                <label class="col-sm-3 control-label">Twitter</label>
+                                                                                                <div class="col-sm-9 controls">
+                                                                                                    <div class="row">
+                                                                                                        <div class="col-xs-9"><input type="text" placeholder="twitter" class="form-control" /></div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>-->
+                                                                                            <!--<div class="form-group">
+                                                                                                <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
+                                                                                                <div class="text-center mbl">
+                                                                                                    <a href="#" class="btn btn-green">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                                        Upload
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                            </div>
 
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">VID:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.VID" class="form-control" /><span class="help-block"></span></div>
+                                                                                            <ul class="nav nav-tabs">
+                                                                                                <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
+                                                                                            </ul>
+
+                                                                                            <div id="tab-edit" class="tab-pane fade in active">
+                                                                                                <form action="#" class="form-horizontal">
+                                                                                                    <h3>Add Vehicle List</h3>
+                                                                                                    <div class="form-group">
+                                                                                                        <label class="col-sm-3 control-label">Id</label>
+                                                                                                        <div class="col-sm-9 controls">
+                                                                                                            <div class="row">
+                                                                                                                <div class="col-xs-9"><input type="email" placeholder="" class="form-control" /></div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>-->
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Id:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Id" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">VID:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.VID" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row ">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">CompanyId:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.CompanyId" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Type" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">OwnerName:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.OwnerName" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> ChasisNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ChasisNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Engineno:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Engineno" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> WirelessFleetNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.WirelessFleetNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">AllotmentType:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.AllotmentType" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> RoadNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RoadNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">RoadTaxDate:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="newVehicle.RoadTaxDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> InsuranceNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.InsuranceNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">InsDate:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="newVehicle.InsDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> PolutionNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.PolutionNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">PolExpDate:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="newVehicle.PolExpDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> RCBookNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RCBookNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">RCExpDate:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="newVehicle.RCExpDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> CompanyVechile:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.CompanyVechile" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">OwnerPhoneNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.OwnerPhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> HomeLandmark:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.HomeLandmark" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">ModelYear:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ModelYear" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> DayOnly:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.DayOnly" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">DayNight:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.DayNight" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> InsProvider:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.InsProvider" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">VechMobileNo:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.VechMobileNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> EntryDate:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="newVehicle.EntryDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">NewEntry:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.NewEntry" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">AirPortCab:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.AirPortCab" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> deletedVech:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.deletedVech" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+
+                                                                                        </div>
+
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Carrier:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Carrier" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> PayGroup:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.PayGroup" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <!--<div class="from-group">
+                                                                                            <div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>
+                                                                                            <div class="text-left">
+                                                                                                <a href="#" class="btn btn-green">
+                                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                                    Upload Logo
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>-->
+                                                                                        <div class="row">
+                                                                                            <div style="text-align:right">
+                                                                                                <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                                            </div>
+                                                                                            <div class="col-md-4">
+                                                                                                <input type="checkbox" checked ng-model="newVehicle.Active" />
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="form-actions">
+                                                                                            <div style="text-align:center">
+
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
+
+                                                                                                <a href="AddVehicle.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+
+                                                                            </div>
+
                                                                         </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Type" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">OwnerName:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.OwnerName" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> ChasisNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ChasisNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Engineno:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Engineno" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> WirelessFleetNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.WirelessFleetNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">AllotmentType:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.AllotmentType" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
 
 
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> RoadNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RoadNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">RoadTaxDate:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="date" ng-model="newVehicle.RoadTaxDate" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> InsuranceNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.InsuranceNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">InsDate:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="date" ng-model="newVehicle.InsDate" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> PolutionNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.PolutionNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">PolExpDate:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="date" ng-model="newVehicle.PolExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> RCBookNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RCBookNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">RCExpDate:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="date" ng-model="newVehicle.RCExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> CompanyVechile:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.CompanyVechile" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">OwnerPhoneNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.OwnerPhoneNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> HomeLandmark:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.HomeLandmark" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">ModelYear:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ModelYear" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> DayOnly:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.DayOnly" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">DayNight:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.DayNight" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> InsProvider:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.InsProvider" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">VechMobileNo:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.VechMobileNo" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> EntryDate:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="date" ng-model="newVehicle.EntryDate" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">NewEntry:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.NewEntry" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">AirPortCab:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.AirPortCab" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> deletedVech:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.deletedVech" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-
-                                                                    </div>
-
-                                                                    <div class="row">
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Carrier:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Carrier" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> PayGroup:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.PayGroup" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="row">
-                                                                        <div style="text-align:right">
-                                                                            <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            <input type="checkbox" checked ng-model="newVehicle.Active" />
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-actions">
-                                                                        <div style="text-align:center">
-
-                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
-
-                                                                            <a href="AddVehicle.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
-
-                                                                        </div>
                                                                     </div>
                                                                 </div>
+
+
                                                             </div>
-
-
-
                                                         </div>
 
                                                     </div>
-
-
+                                                    <!--END CONTENT-->
                                                 </div>
+                                                <!--END PAGE WRAPPER-->
                                             </div>
-
-
                                         </div>
-                                    </div>
 
+                                        <!--BEGIN FOOTER-->
+                                        <div id="footer">
+                                            <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                        </div>
+                                        <!--END FOOTER-->
+                                    </div>
                                 </div>
-                                <!--END CONTENT-->
                             </div>
-                            <!--END PAGE WRAPPER-->
+                            <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+                                <div class="modal-header">
+                                    <h3 class="modal-title">Save confirmation!</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <!--<ul>
+                                        <li ng-repeat="item in items">
+                                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                        </li>
+                                    </ul>
+                                    Selected: <b>{{ selected.item }}</b>-->
+                                    {{mssg}}
+                                </div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                    <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                                </div>
+
+                            </script>
                         </div>
                     </div>
-
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
                 </div>
             </div>
         </div>
-        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-            <div class="modal-header">
-                <h3 class="modal-title">Save confirmation!</h3>
-            </div>
-            <div class="modal-body">
-                <!--<ul>
-                    <li ng-repeat="item in items">
-                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ selected.item }}</b>-->
-                {{mssg}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-            </div>
-
-        </script>
     </div>
 
     <script src="js/jquery-1.10.2.min.js"></script>

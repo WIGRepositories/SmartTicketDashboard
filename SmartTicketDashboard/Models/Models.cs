@@ -1818,6 +1818,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int id { get; set; }
+        public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -1839,8 +1840,9 @@ namespace SmartTicketDashboard.Models
     public class vehicle
     {
         public string flag { get; set; }
-        public int SrNo { get; set; }
+        public int Id { get; set; }
         public int VID { get; set; }
+        public int CompanyId { get; set; }
         public string RegistrationNo { get; set; }
         public string Type { get; set; }
         public string OwnerName { get; set; }
@@ -1874,10 +1876,10 @@ namespace SmartTicketDashboard.Models
     public class allocatedriver
     {
         public string flag { get; set; }
-        public int SlNo { get; set; }
+        public int Id { get; set; }
 
 
-
+        public int CompanyId { get; set; }
         public int BookingNo { get; set; }
 
         public string CustomerName { get; set; }
@@ -2094,5 +2096,11 @@ namespace SmartTicketDashboard.Models
         public DateTime PickupTime{get;set;} 
         public DateTime EntryTime{get;set;}
 
+    }
+    public class land
+    {
+        public string flag { get; set; }
+        public int Zno { get; set; }
+        public string landmark { get; set; }
     }
 }

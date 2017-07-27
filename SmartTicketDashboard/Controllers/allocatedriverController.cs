@@ -17,6 +17,29 @@ namespace SmartTicketDashboard.Controllers
     {
 
         [HttpGet]
+        [Route("api/allocatedriver/Gettypes")]
+
+        public DataTable Gettypes()
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PSGetvechicletypes";
+            cmd.Connection = conn;
+
+
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
+
+            return dt;
+
+        }
+
+        [HttpGet]
         [Route("api/allocatedriver/Getallocatedriver")]
 
         public DataTable Getallocatedriver()
@@ -26,7 +49,7 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Getallocatedriver";
+            cmd.CommandText = "HVGetallocatedriver";
             cmd.Connection = conn;
 
 
@@ -55,11 +78,13 @@ namespace SmartTicketDashboard.Controllers
             f.Value = A.flag;
             cmd.Parameters.Add(f);
 
-            SqlParameter i = new SqlParameter("@SlNo", SqlDbType.Int);
-            i.Value = A.SlNo;
+            SqlParameter i = new SqlParameter("@Id", SqlDbType.Int);
+            i.Value = A.Id;
             cmd.Parameters.Add(i);
 
-
+            SqlParameter dd = new SqlParameter("@CompanyId", SqlDbType.Int);
+            dd.Value = A.CompanyId;
+            cmd.Parameters.Add(dd);
 
             SqlParameter BookingNo = new SqlParameter("@BookingNo", SqlDbType.Int);
             BookingNo.Value = A.BookingNo;

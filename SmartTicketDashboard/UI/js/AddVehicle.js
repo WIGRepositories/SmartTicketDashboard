@@ -17,13 +17,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.saveNew = function (newVehicle) {
+    $scope.saveNew = function (newVehicle,flag) {
         if (newVehicle == null) {
-            alert('Please Enter VID');
+            alert('Please Enter Id');
             return;
         }
         if (newVehicle.VID == null) {
             alert('Please Enter VID');
+            return;
+        }
+        if (newVehicle.CompanyId == null) {
+            alert('Please Enter CompanyId');
             return;
         }
         if (newVehicle.RegistrationNo == null) {
@@ -147,8 +151,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var newVehicle = {
 
-            flag:'I',
+            flag: 'I',
+            Id: newVehicle.Id,
             VID: newVehicle.VID,
+            CompanyId:newVehicle.CompanyId,
             RegistrationNo: newVehicle.RegistrationNo,
             Type: newVehicle.Type,
             OwnerName: newVehicle.OwnerName,
@@ -204,16 +210,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.Vehicles = null;
+    $scope.newVehicle = null;
 
 
     $scope.save = function (vech, flag) {
         if (vech == null) {
-            alert('Please Enter Name');
+            alert('Please Enter Id');
             return;
         }
         if (vech.VID == null) {
-            alert('Please Enter ID');
+            alert('Please Enter VID');
+            return;
+        }
+        if (vech.CompanyId == null) {
+            alert('Please Enter CompanyId');
             return;
         }
         if (vech.RegistrationNo == null) {
@@ -333,10 +343,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
+
+
         var vech = {
 
             flag: 'U',
+            Id:"",
             VID: vech.VID,
+            CompanyId: vech.CompanyId,
             RegistrationNo: vech.RegistrationNo,
             Type: vech.Type,
             OwnerName: vech.OwnerName,
@@ -348,7 +362,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             RoadTaxDate: vech.RoadTaxDate,
             InsuranceNo: vech.InsuranceNo,
             InsDate: vech.InsDate,
-            PolutionNo: vech.PolExpDate,
+            PolutionNo: vech.PolutionNo,
+            PolExpDate: vech.PolExpDate,
             RCBookNo: vech.RCBookNo,
             RCExpDate: vech.RCExpDate,
             CompanyVechile: vech.CompanyVechile,
@@ -376,9 +391,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            alert("Saved successfully!");
+            alert("Updated successfully!");
 
-            $scope.Group = null;
+            $scope.vech = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -389,14 +404,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.vech = null;
+    $scope.newVehicle = null;
 
-    $scope.setvech = function (vech) {
-        $scope.Vehicles = vech;
+    $scope.setVehicles = function (vech1) {
+        $scope.vech = vech1;
     };
 
-    $scope.clearvech = function () {
-        $scope.Vehicles = null;
+    $scope.clearnewVehicle = function () {
+        $scope.vech1 = null;
     }
 
 

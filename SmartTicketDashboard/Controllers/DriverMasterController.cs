@@ -13,6 +13,7 @@ namespace SmartTicketDashboard.Controllers
 {
     public class DriverMasterController : ApiController
     {
+       
         [HttpGet]
 
         [Route("api/DriverMaster/GetMaster")]
@@ -58,6 +59,10 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter i = new SqlParameter("@DId", SqlDbType.Int);
             i.Value = d.id;
             cmd.Parameters.Add(i);
+
+            SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.Int);
+            di.Value = d.CompanyId;
+            cmd.Parameters.Add(di);
 
             SqlParameter n = new SqlParameter("@NAme", SqlDbType.VarChar, 50);
             n.Value = d.Name;

@@ -1,5 +1,4 @@
-﻿// JavaScript source code
-// JavaScript source code
+﻿
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
@@ -70,35 +69,35 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.vechiles = null;
 
 
-    $scope.save = function (vechiles, flag) {
-        if (vechiles == null) {
+    $scope.save = function (newVehicles, flag) {
+        if (newVehicles == null) {
             alert('Please Enter Name');
             return;
         }
-        if (vechiles.PhoneNo == null) {
+        if (newVehicles.PhoneNo == null) {
             alert('Please Enter PhoneNo');
             return;
         }
-        if (vechiles.Latitude == null) {
+        if (newVehicles.Latitude == null) {
             alert('Please Enter Latitude');
             return;
         }
-        if (vechiles.Longitude == null) {
+        if (newVehicles.Longitude == null) {
             alert('Please Enter Longitude');
             return;
         }
-        if (vechiles.Type == null) {
+        if (newVehicles.Type == null) {
             alert('Please Enter Type');
             return;
         }
 
-        var vechiles = {
-            PhoneNo: vechiles.PhoneNo,
-            latitude: vechiles.Latitude,
-            longitude: vechiles.Longitude,
-            Type: vechiles.Type,
+        var newVehicles = {
+            PhoneNo: newVehicles.PhoneNo,
+            latitude: newVehicles.Latitude,
+            longitude: newVehicles.Longitude,
+            Type: newVehicles.Type,
 
-            Active: (vechiles.Active == true) ? 1 : 0,
+            Active: (newVehicles.Active == true) ? 1 : 0,
 
 
             flag: "U"
@@ -107,7 +106,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var req = {
             method: 'POST',
             url: '/api/VehicleMaster/Vehicles',
-            data: vechiles
+            data: newVehicles
         }
         $http(req).then(function (response) {
 
@@ -124,14 +123,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.vechiles = null;
+    $scope.newVehicles = null;
 
-    $scope.setvehiclelist = function (usr) {
-        $scope.vechiles = usr;
+    $scope.setnewVehicles = function (usr) {
+        $scope.newVehicles = usr;
     };
 
-    $scope.clearvech = function () {
-        $scope.vechiles = null;
+    $scope.clearnewVehiclesvech = function () {
+        $scope.newVehicles = null;
     }
 
 
