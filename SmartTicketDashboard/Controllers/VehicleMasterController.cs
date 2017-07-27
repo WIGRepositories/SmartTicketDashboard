@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSgetvehiclemaster";
+            cmd.CommandText = "PSgetvehilcetypes";
             cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
@@ -171,21 +171,7 @@ namespace SmartTicketDashboard.Controllers
             wsd.Value = v.NewEntry;
             cmd.Parameters.Add(wsd);
 
-            SqlParameter ww = new SqlParameter("@AirPortCab", SqlDbType.VarChar, 50);
-            ww.Value = v.AirPortCab;
-            cmd.Parameters.Add(ww);
-
-            SqlParameter wq = new SqlParameter("@deletedVech", SqlDbType.VarChar, 50);
-            wq.Value = v.deletedVech;
-            cmd.Parameters.Add(wq);
-
-            SqlParameter wm = new SqlParameter("@Carrier", SqlDbType.VarChar, 50);
-            wm.Value = v.Carrier;
-            cmd.Parameters.Add(wm);
-
-            SqlParameter mw = new SqlParameter("@PayGroup", SqlDbType.VarChar, 50);
-            mw.Value = v.PayGroup;
-            cmd.Parameters.Add(mw);
+           
 
 
 

@@ -2471,13 +2471,6 @@
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
-    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2485,6 +2478,9 @@
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\SmartTicketDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
