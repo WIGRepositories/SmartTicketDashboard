@@ -7,39 +7,48 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
-    $scope.SavePricing = function (Group, flag) {
+    $scope.SavePricing = function (Dist, flag) {
 
-        if (Group == null) {
+        if (Dist == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (Group.VehicleModel == null || Group.VehicleModel == "") {
+        if (Dist.VehicleModel == null || Dist.VehicleModel == "") {
             alert('Please enter VehicleModel.');
             return;
         }
-        if (Group.FromKm == null || Group.FromKm == "") {
+        if (Dist.FromKm == null || Dist.FromKm == "") {
             alert('Please enter FromKm.');
             return;
         }
         //emailid
-        if (Group.ToKm == null) {
+        if (Dist.ToKm == null) {
             alert('Please enter ToKm.');
             return;
         }
 
-        if (Group.Pricing == null) {
+        if (Dist.Pricing == null) {
             alert('Please enter Pricing.');
             return;
         }
+        if (Dist.FromTime == null) {
+            alert('Please enter FromTime.');
+            return;
+        }
+        if (Dist.ToTime == null) {
+            alert('Please enter ToTime.');
+            return;
+        }
 
-        var newSavePricing = {
+        var Pricing = {
 
-            Id: Group.Id,
-            VehicleModel: Group.VehicleModel,
-            FromKm: Group.FromKm,
-            ToKm: Group.ToKm,
-            Pricing: Group.Pricing,
-
+            Id: Dist.Id,
+            VehicleModel: Dist.VehicleModel,
+            FromKm: Dist.FromKm,
+            ToKm: Dist.ToKm,
+            Pricing: Dist.Pricing,
+            FromTime: Dist.FromTime,
+            ToTime: Dist.ToTime,
             insupddelflag: 'I'
         }
 
@@ -47,7 +56,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var req = {
             method: 'POST',
             url: '/api/VehicleDistPricing/SaveVehicleDistPricing',
-            data: newSavePricing
+            data: Pricing
         }
         $http(req).then(function (response) {
 
@@ -63,38 +72,53 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             // $scope.showDialog(errmssg);
             alert(errmssg);
         });
+        $scope.currGroup = null;
     };
-    $scope.SavePricingChanges = function (currGroup, flag) {
-        if (currGroup == null) {
+
+    $scope.Changes = null;
+
+    $scope.SavePricingChanges = function (Changes, flag) {
+        if (Changes == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (currGroup.VehicleModel == null || currGroup.VehicleModel == "") {
+        if (Changes.VehicleModel == null || Changes.VehicleModel == "") {
             alert('Please enter VehicleModel.');
             return;
         }
-        if ($scope.FromKm == null || Group.FromKm == "") {
+        if (Changes.FromKm == null || Changes.FromKm == "") {
             alert('Please enter FromKm.');
             return;
         }
         //emailid
-        if (currGroup.ToKm == null) {
+        if (Changes.ToKm == null) {
             alert('Please enter ToKm.');
             return;
         }
 
-        if (currGroup.Pricing == null) {
+        if (Changes.Pricing == null) {
             alert('Please enter Pricing.');
+            return;
+        }
+        if (Changes.FromTime == null) {
+            alert('Please enter FromTime.');
+            return;
+        }
+        if (Changes.ToTime == null) {
+            alert('Please enter ToTime.');
             return;
         }
 
 
-        var currGroup = {
-            Id: currGroup.Id,
-            VehicleModel: currGroup.VehicleModel,
-            FromKm: currGroup.FromKm,
-            ToKm: currGroup.ToKm,
-            Pricing: currGroup.Pricing,
+        var PricingChanges = {
+            Id: Changes.Id,
+            VehicleModel: Changes.VehicleModel,
+            FromKm: Changes.FromKm,
+            ToKm: Changes.ToKm,
+            Pricing: Changes.Pricing,
+           
+            FromTime: Changes.FromTime,
+            ToTime: Changes.ToTime,
             insupddelflag: 'U'
 
         }
@@ -103,21 +127,58 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var req = {
             method: 'POST',
             url: '/api/VehicleDistPricing/SaveHourBasePricing',
-            data: currGroup
+            data: PricingChanges
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!!");
+            //$scope.showDialog("Saved successfully!");
 
-            $scope.GetCompanys();
-            $scope.currGroup = null;
+            $scope.Group = null;
 
-        }
-        , function (errres) {
+        }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "Your details are incorrect";
+            var errmssg = "";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-
+            $scope.showDialog(errmssg);
         });
+        $scope.currGroup = null;
+    };
+
+    $scope.Changes = null;
+
+    $scope.setChanges = function (D) {
+        $scope.Changes = D;
+    };
+
+    $scope.clearChanges = function () {
+        $scope.Changes = null;
+    }
+
+
+    $scope.showDialog = function (message) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                mssg: function () {
+                    return message;
+                }
+            }
+        });
+    }
+
+
+});
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
+
+    $scope.mssg = mssg;
+    $scope.ok = function () {
+        $uibModalInstance.close('test');
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
     };
 });

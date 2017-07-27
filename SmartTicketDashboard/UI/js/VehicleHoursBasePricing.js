@@ -25,18 +25,28 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter Hours.');
             return;
         }
+        if (Vprice.FromTime == null) {
+            alert('Please enter FromTime.');
+            return;
+        }
+        if (Vprice.ToTime == null) {
+            alert('Please enter ToTime.');
+            return;
+        }
 
         if (Vprice.Price == null) {
             alert('Please enter Price.');
             return;
         }
 
+
         var newSavePricing = {
 
             Id: Vprice.Id,
             VehicleModel: Vprice.VehicleModel,
             Hours: Vprice.Hours,
-           
+            FromTime: Vprice.FromTime,
+            ToTime: Vprice.ToTime,
             Price: Vprice.Price,
 
             insupddelflag: 'I'
@@ -78,7 +88,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter Hours.');
             return;
         }
-
+        if (DistPricing.FromTime == null) {
+            alert('Please enter FromTime.');
+            return;
+        }
+        if (DistPricing.ToTime == null) {
+            alert('Please enter ToTime.');
+            return;
+        }
         if (DistPricing.Price == null) {
             alert('Please enter Pricing.');
             return;
@@ -90,6 +107,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VehicleModel: DistPricing.VehicleModel,
             
             Hours: DistPricing.Hours,
+            FromTime: DistPricing.FromTime,
+            ToTime: DistPricing.ToTime,
             Price: DistPricing.Price,
             insupddelflag: 'U'
 

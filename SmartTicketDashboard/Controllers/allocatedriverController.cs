@@ -19,7 +19,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpGet]
         [Route("api/allocatedriver/Getallocatedriver")]
 
-        public DataTable Getallocatedriver()
+        public DataTable Getallocatedriver(int VID)
         {
             SqlConnection conn = new SqlConnection();
 
@@ -28,7 +28,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "Getallocatedriver";
             cmd.Connection = conn;
-
+            cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
 
             
             DataTable dt = new DataTable();

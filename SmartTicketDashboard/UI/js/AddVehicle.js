@@ -26,6 +26,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter VID');
             return;
         }
+        if (newVehicle.CompanyId == null) {
+            alert('Please Enter CompanyId');
+            return;
+        }
         if (newVehicle.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');
             return;
@@ -149,6 +153,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag:'I',
             VID: newVehicle.VID,
+            CompanyId: newVehicle.CompanyId,
             RegistrationNo: newVehicle.RegistrationNo,
             Type: newVehicle.Type,
             OwnerName: newVehicle.OwnerName,
@@ -204,7 +209,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.Vehicles = null;
+    $scope.newVehicle = null;
 
 
     $scope.save = function (vech, flag) {
@@ -337,6 +342,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag: 'U',
             VID: vech.VID,
+            CompanyId: vech.CompanyId,
             RegistrationNo: vech.RegistrationNo,
             Type: vech.Type,
             OwnerName: vech.OwnerName,
@@ -376,7 +382,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            alert("Saved successfully!");
+            alert("Updated successfully!");
 
             $scope.Group = null;
 
@@ -386,17 +392,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
-        $scope.currGroup = null;
+        $scope.vech = null;
     };
 
     $scope.vech = null;
 
-    $scope.setvech = function (vech) {
-        $scope.Vehicles = vech;
+    $scope.setVehicles = function (vech) {
+        $scope.vech = vech;
     };
 
-    $scope.clearvech = function () {
-        $scope.Vehicles = null;
+    $scope.clearnewVehicle = function () {
+        $scope.vech = null;
     }
 
 

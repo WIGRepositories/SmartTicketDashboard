@@ -77,6 +77,14 @@ namespace SmartTicketDashboard.Controllers
             c1.Value = v.Pricing;
             cmd.Parameters.Add(c1);
 
+            SqlParameter ft = new SqlParameter("@FromTime", SqlDbType.DateTime);
+            ft.Value = v.FromTime;
+            cmd.Parameters.Add(ft);
+
+            SqlParameter tf = new SqlParameter("@ToTime", SqlDbType.DateTime);
+            tf.Value = v.ToTime;
+            cmd.Parameters.Add(tf);
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
