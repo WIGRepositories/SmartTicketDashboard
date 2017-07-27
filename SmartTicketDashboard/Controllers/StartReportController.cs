@@ -15,9 +15,9 @@ namespace SmartTicketDashboard.Controllers
     {
 
         [HttpGet]
-        [Route("api/StartReport/Getreprts")]
+        [Route("api/StartReport/GetStatus")]
 
-        public DataTable Getreprts()
+        public DataTable GetStatus()
         {
             SqlConnection conn = new SqlConnection();
 

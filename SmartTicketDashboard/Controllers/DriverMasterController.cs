@@ -13,6 +13,7 @@ namespace SmartTicketDashboard.Controllers
 {
     public class DriverMasterController : ApiController
     {
+       
         [HttpGet]
 
         [Route("api/DriverMaster/GetMaster")]
@@ -48,13 +49,20 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVdrivers";
+            cmd.CommandText = "HVInsUpddrivers";
             cmd.Connection = conn;
 
+            SqlParameter ff = new SqlParameter("@flag", SqlDbType.VarChar);
+            ff.Value = d.flag;
+            cmd.Parameters.Add(ff);
 
             SqlParameter i = new SqlParameter("@DId", SqlDbType.Int);
             i.Value = d.id;
             cmd.Parameters.Add(i);
+
+            SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.Int);
+            di.Value = d.CompanyId;
+            cmd.Parameters.Add(di);
 
             SqlParameter n = new SqlParameter("@NAme", SqlDbType.VarChar, 50);
             n.Value = d.Name;

@@ -1,5 +1,4 @@
-﻿// JavaScript source code
-// JavaScript source code
+﻿
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
@@ -11,8 +10,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.getReports = function () {
-        $http.get('/api/ClosingReport/getReports').then(function (res, data) {
+    //$scope.GetReports = function () {
+    //    $http.get('/api/ClosingReport/GetReports').then(function (res, data) {
+    //        $scope.reportors = res.data;
+    //    });
+    //}
+
+    $scope.GetReports = function () {
+        $http.get('/api/ClosingReport/GetReports').then(function (res, data) {
             $scope.reportors = res.data;
 
         });
@@ -99,7 +104,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var report = {
 
             flag: "I",
-            SlNo: "",
+            SlNo: report.SlNo,
             EntryDate: report.EntryDate,
             VechID: report.VechID,
             RegistrationNo: report.RegistrationNo,
@@ -131,7 +136,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             alert("Saved successfully!");
 
-            $scope.reporting = null;
+            $scope.reportors = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -142,7 +147,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.reporting = null;
+    $scope.reportors = null;
 
 
     $scope.save = function (report, flag) {
@@ -267,10 +272,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.reporting = null;
+    $scope.reportors = null;
 
     $scope.setreportors = function (reporting) {
-        $scope.reporting = reporting;
+        $scope.reportors = reporting;
     };
 
     $scope.clearreporting = function () {

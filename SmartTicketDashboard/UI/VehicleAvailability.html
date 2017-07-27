@@ -363,7 +363,7 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">VehicleList</span></a></li>
+                                <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
                                 <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
 
@@ -436,7 +436,7 @@
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="vechiles.PhoneNo" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="newVehicles.PhoneNo" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -449,7 +449,7 @@
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="vechiles.Latitude" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="newVehicles.Latitude" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -462,7 +462,7 @@
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="vechiles.Longitude" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="newVehicles.Longitude" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -474,14 +474,14 @@
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="vechiles.Type" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="newVehicles.Type" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9" style="text-align:left">
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(vechiles, 'V');">Save</button>
+                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(vechiles, 'U');">Save</button>
                                                                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
@@ -559,6 +559,15 @@
                                                                         </div>
 
                                                                     </div>
+                                                                    <div class="from-group">
+                                                                        <div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>
+                                                                        <div class="text-left">
+                                                                            <a href="#" class="btn btn-green">
+                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                Upload Logo
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
 
                                                                     <div class="row">
                                                                         <div style="text-align:right">
@@ -574,7 +583,7 @@
 
                                                                             <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="savevech(newVehicles)">Save</button>
 
-                                                                            <a href="VehicleAvailability.html" class="btn btn-primary" ng-click="clearVehicles()">Cancel</a>
+                                                                            <a href="VehicleAvailability.html" class="btn btn-primary" ng-click="clearnewVehicles()">Cancel</a>
 
                                                                         </div>
                                                                     </div>

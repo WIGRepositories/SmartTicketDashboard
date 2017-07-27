@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSgetvehilcetypes";
+            cmd.CommandText = "PSgetvehiclemaster";
             cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
@@ -40,24 +40,34 @@ namespace SmartTicketDashboard.Controllers
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
 
-        public DataTable Vehicles(vehicledetails v)
+        public DataTable Vehicles(vehicle v)
         {
             SqlConnection conn = new SqlConnection();
 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVVehicles";
+            cmd.CommandText = "HVInsUpdVehicles";
             cmd.Connection = conn;
 
-            SqlParameter s = new SqlParameter("@SrNo", SqlDbType.Int);
-            s.Value = v.SrNo;
+
+            SqlParameter se = new SqlParameter("@flag", SqlDbType.VarChar);
+            se.Value = v.flag;
+            cmd.Parameters.Add(se);
+
+
+            SqlParameter s = new SqlParameter("@Id", SqlDbType.Int);
+            s.Value = v.Id;
             cmd.Parameters.Add(s);
 
 
             SqlParameter i = new SqlParameter("@VID", SqlDbType.Int);
             i.Value = v.VID;
             cmd.Parameters.Add(i);
+
+            SqlParameter cd = new SqlParameter("@CompanyId", SqlDbType.Int);
+            cd.Value = v.CompanyId;
+            cmd.Parameters.Add(cd);
 
             SqlParameter n = new SqlParameter("@RegistrationNo", SqlDbType.VarChar, 50);
             n.Value = v.RegistrationNo;

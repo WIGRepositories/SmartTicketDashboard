@@ -11,44 +11,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.Getvehicles = function () {
-        $http.get('api/nearestvehicles/Getvehicles?PhoneNo=').then(function (res, data) {
-            $scope.vehiclelist = res.data;
-        });
-    }
+    //$scope.Getvehicles = function () {
+    //    $http.get('api/nearestvehicles/Getvehicles?PhoneNo=').then(function (res, data) {
+    //        $scope.vehiclelist = res.data;
+    //    });
+    //}
 
-    $scope.savevech = function (newVehicles) {
+    $scope.saveNew = function (newVehicles) {
         if (newVehicles == null) {
-            alert('Please Enter Name');
+            //alert('Please Enter Name');
             return;
         }
-        if (newVehicles.PhoneNo == null) {
-            alert('Please Enter PhoneNo');
+        if (newVehicles.Zno == null) {
+            alert('Please Enter Zno');
             return;
         }
-        if (newVehicles.Latitude == null) {
-            alert('Please Enter Latitude');
+        if (newVehicles.Landmark == null) {
+            alert('Please Enter Landmark');
             return;
-        }
-        if (newVehicles.Longitude == null) {
-            alert('Please Enter Longitude');
-            return;
-        }
-        if (newVehicles.Type == null) {
-            alert('Please Enter Type');
-            return;
-        }
+        } 
        
-        
-       
-        
 
         var newVehicles = {
-            PhoneNo: newVehicles.PhoneNo,
-            Latitude: newVehicles.Latitude,
-            Longitude: newVehicles.Longitude,
-            Type: newVehicles.Type,
-            
+            flag:"I",
+            Zno: newVehicles.Zno,
+            Landmark: newVehicles.Landmark,       
             
 
             Active: (newVehicles.Active == true) ? 1 : 0,
@@ -58,7 +45,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var req = {
             method: 'POST',
-            url: '/api/VehicleMaster/Vehicles',
+            url: '/api/landmark/markingland',
             data: newVehicles
         }
         $http(req).then(function (response) {
@@ -76,7 +63,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.vechiles = null;
+    $scope.newVehicles = null;
 
 
     $scope.save = function (vechiles, flag) {
@@ -84,20 +71,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter Name');
             return;
         }
-        if (vechiles.Name == null) {
-            alert('Please Enter Nmae');
+        if (vechiles.Zno == null) {
+            alert('Please Enter Zno');
             return;
         }
-        if (vechiles.Code == null) {
-            alert('Please Enter Code');
+        if (vechiles.Landmark == null) {
+            alert('Please Enter Landmark');
             return;
         }
 
         var vechiles = {
-            PhoneNo: vechiles.PhoneNo,
-            Latitude: vechiles.Latitude,
-            Longitude: vechiles.Longitude,
-            Type: vechiles.Type,
+            Zno: vechiles.Zno,
+            Landmark: vechiles.Landmark,
+           
 
             Active: (vechiles.Active == true) ? 1 : 0,
 
@@ -107,32 +93,32 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var req = {
             method: 'POST',
-            url: '/api/VehicleMaster/Vehicles',
-            data: Stops
+            url: '/api/landmark/markingland',
+            data: vechiles
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Updated successfully!");
 
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
-            var errmssg = "";
+            var errmssg = "Not Updated";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
         $scope.currGroup = null;
     };
 
-    $scope.Stops = null;
+    $scope.vechiles = null;
 
-    $scope.setStops = function (usr) {
-        $scope.Stops1 = usr;
+    $scope.setVehicles = function (usr) {
+        $scope.vechiles = usr;
     };
 
-    $scope.clearStops = function () {
-        $scope.Stops1 = null;
+    $scope.clearVehicles = function () {
+        $scope.vechiles = null;
     }
 
 

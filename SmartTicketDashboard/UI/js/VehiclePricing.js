@@ -136,6 +136,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             Active: (pricing.Active == true) ? 1 : 0,
 
+            flag: "U"
 
         }
 

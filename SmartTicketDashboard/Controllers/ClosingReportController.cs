@@ -15,8 +15,8 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
 
-        [Route("api/ClosingReport/getReports")]
-        public DataTable getReports()
+        [Route("api/ClosingReport/GetReports")]
+        public DataTable GetReports()
         {
             DataTable dt = new DataTable();
 
@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "getClosingReport";
+            cmd.CommandText = "HVgetClosingReport";
             
             cmd.Connection = conn;
             DataSet ds = new DataSet();
@@ -48,7 +48,7 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVInsUpDelClosingReport";
+            cmd.CommandText = "HVInsUpdDelClosingReport";
             cmd.Connection = conn;
 
 

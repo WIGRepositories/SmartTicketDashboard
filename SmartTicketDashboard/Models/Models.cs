@@ -1816,7 +1816,9 @@ namespace SmartTicketDashboard.Models
     }
     public class driverdetails
     {
+        public string flag { get; set; }
         public int id { get; set; }
+        public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -1835,10 +1837,12 @@ namespace SmartTicketDashboard.Models
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
     }
-    public class vehicledetails
+    public class vehicle
     {
-        public int SrNo { get; set; }
+        public string flag { get; set; }
+        public int Id { get; set; }
         public int VID { get; set; }
+        public int CompanyId { get; set; }
         public string RegistrationNo { get; set; }
         public string Type { get; set; }
         public string OwnerName { get; set; }
@@ -1872,10 +1876,10 @@ namespace SmartTicketDashboard.Models
     public class allocatedriver
     {
         public string flag { get; set; }
-        public int SlNo { get; set; }
+        public int Id { get; set; }
 
 
-
+        public int CompanyId { get; set; }
         public int BookingNo { get; set; }
 
         public string CustomerName { get; set; }
@@ -2038,37 +2042,6 @@ namespace SmartTicketDashboard.Models
         public int preferenceId { get; set; }
         public string flag { get; set; }
     }
-    public class Pricing
-    {
-    public int SrNo {get;set;}
-    public int  Duration {get;set;}
-    public int KiloMtr {get;set;}
-
-    public int IndicaRate {get;set;}
-    public int IndigoRate {get;set;}
-    public int InnovaRate {get;set;}
-    public int Tag { get; set; }
-    }
-  
-    public class start
-    {
-        public string flag { get; set; }
-        public int SlNo {get;set;}
-        public DateTime EntryDate {get;set;}
-        public int VechID {get;set;}
-        public string RegistrationNo {get;set;}
-        public string DriverName {get;set;}
-        public string PartyName {get;set;}
-        public string PickupPlace {get;set;}
-
-        public string DropPlace {get;set;}
-        public int StartMeter {get;set;}
-        public DateTime PickupTime {get;set;}
-        public string ExecutiveName {get;set;}
-       public decimal BookingNo {get;set;}
-       public DateTime EntryTime {get;set;}
-       public string CloseStatus {get;set;}
-    }
    
     public class close
     {
@@ -2093,4 +2066,63 @@ namespace SmartTicketDashboard.Models
         public DateTime EntryTime{get;set;}
 
     }
+    public class land
+    {
+        public string flag { get; set; }
+        public int Zno { get; set; }
+        public string landmark { get; set; }
+    }
+    public class VehicleDist
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public string VehicleModel { get; set; }
+        public int FromKm { get; set; }
+        public int ToKm { get; set; }
+        public decimal Pricing { get; set; }
+        public DateTime FromTime { get; set; }
+        public DateTime ToTime { get; set; }
 }
+    public class HourBase
+    {
+        public string insupddelflag { get; set; }
+        public int Id { get; set; }
+        public string VehicleModel { get; set; }
+        public string Hours { get; set; }
+        public DateTime FromTime { get; set; }
+        public DateTime ToTime { get; set; }
+        public decimal Price { get; set; }
+
+    }
+    public class Pricing
+    {
+        public int SrNo { get; set; }
+        public int Duration { get; set; }
+        public int KiloMtr { get; set; }
+
+        public int IndicaRate { get; set; }
+        public int IndigoRate { get; set; }
+        public int InnovaRate { get; set; }
+        public int Tag { get; set; }
+    }
+    public class start
+    {
+        public string flag { get; set; }
+        public int SlNo { get; set; }
+        public DateTime EntryDate { get; set; }
+        public int VechID { get; set; }
+        public string RegistrationNo { get; set; }
+        public string DriverName { get; set; }
+        public string PartyName { get; set; }
+        public string PickupPlace { get; set; }
+
+        public string DropPlace { get; set; }
+        public int StartMeter { get; set; }
+        public DateTime PickupTime { get; set; }
+        public string ExecutiveName { get; set; }
+        public decimal BookingNo { get; set; }
+        public DateTime EntryTime { get; set; }
+        public string CloseStatus { get; set; }
+    }
+}
+

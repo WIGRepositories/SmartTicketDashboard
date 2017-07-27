@@ -25,7 +25,7 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetTariff";
+            cmd.CommandText = "HVGetTariff";
             cmd.Connection = conn;
 
             DataTable dt = new DataTable();

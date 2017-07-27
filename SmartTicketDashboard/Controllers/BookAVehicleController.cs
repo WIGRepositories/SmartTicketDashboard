@@ -208,7 +208,7 @@ namespace SmartTicketDashboard.Controllers
                     SmtpClient SmtpServer = new SmtpClient(emailserver);
 
                     mail.From = new MailAddress(fromaddress);
-                    mail.To.Add(b.PhoneNo);
+                    mail.To.Add(fromaddress);
                     mail.Subject = "User registration - Mobile OTP";
                     mail.IsBodyHtml = true;
 
