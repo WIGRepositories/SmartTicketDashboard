@@ -112,7 +112,13 @@ namespace SmartTicketDashboard.Controllers
             forid.ParameterName = "@needFleetOwnerRoutes";
             forid.SqlDbType = SqlDbType.Int;
             forid.Value = (vc.needfleetownerroutes == null) ? -1 : vc.needfleetownerroutes;
-            cmd.Parameters.Add(forid);  
+            cmd.Parameters.Add(forid);
+
+            SqlParameter vmid = new SqlParameter();
+            vmid.ParameterName = "@needvehicleModel";
+            vmid.SqlDbType = SqlDbType.Int;
+            vmid.Value = (vc.needvehicleModel == null) ? 0 : 1;
+            cmd.Parameters.Add(vmid); 
 
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
