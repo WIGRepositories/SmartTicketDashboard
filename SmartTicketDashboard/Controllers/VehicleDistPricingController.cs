@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetDistanceBasePricing";
+            cmd.CommandText = "PSGetDistanceBasePricing";
             cmd.Connection = conn;
 
             SqlDataAdapter db = new SqlDataAdapter(cmd);
@@ -61,8 +61,8 @@ namespace SmartTicketDashboard.Controllers
             q.Value = v.Id;
             cmd.Parameters.Add(q);
 
-            SqlParameter q1 = new SqlParameter("@VehicleModel", SqlDbType.VarChar, 50);
-            q1.Value = v.VehicleModel;
+            SqlParameter q1 = new SqlParameter("@VehicleModelId", SqlDbType.Int);
+            q1.Value = v.VehicleModelId;
             cmd.Parameters.Add(q1);
 
             SqlParameter e = new SqlParameter("@Fromkm", SqlDbType.Int);

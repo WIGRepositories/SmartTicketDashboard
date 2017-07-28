@@ -15,12 +15,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter Pricing.');
             return;
         }
-        if (Vprice.VehicleModel == null || Vprice.VehicleModel == "") {
+        if ($scope.vm.Id == null || $scope.vm.Id == "") {
             alert('Please enter VehicleModel.');
             return;
-        }
+        }      
        
-        //emailid
         if (Vprice.Hours == null) {
             alert('Please enter Hours.');
             return;
@@ -43,7 +42,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var newSavePricing = {
 
             Id: Vprice.Id,
-            VehicleModel: Vprice.VehicleModel,
+            VehicleModelId: $scope.vm.Id,
+           // VehicleModelId: (Vprice.vm.Id != null) ? Vprice.vm.Id : Vprice.VehicleModel.Id,
             Hours: Vprice.Hours,
             FromTime: Vprice.FromTime,
             ToTime: Vprice.ToTime,
@@ -73,6 +73,29 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert(errmssg);
         });
     };
+    $scope.GetVehicleConfig = function () {
+
+        var vc = {
+            // needfleetowners:'1',
+            needvehicleModel: '1'
+            
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
     $scope.SavePricingChanges = function (DistPricing, flag) {
         if (DistPricing == null) {
             alert('Please enter Pricing.');

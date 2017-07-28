@@ -62,11 +62,15 @@ namespace SmartTicketDashboard.Controllers
             q.Value = c.Id;
             cmd.Parameters.Add(q);
 
-            SqlParameter q1 = new SqlParameter("@VehicleModel", SqlDbType.VarChar, 50);
-            q1.Value = c.VehicleModel;
-            cmd.Parameters.Add(q1);
+            SqlParameter v = new SqlParameter("@VehicleModelId", SqlDbType.Int);
+            v.Value = c.VehicleModelId;
+            cmd.Parameters.Add(v);
 
-            SqlParameter e = new SqlParameter("@Hours", SqlDbType.VarChar, 5);
+            //SqlParameter q1 = new SqlParameter("@VehicleModel", SqlDbType.VarChar, 50);
+            //q1.Value = c.VehicleModel;
+            //cmd.Parameters.Add(q1);
+
+           SqlParameter e = new SqlParameter("@Hours", SqlDbType.VarChar, 5);
             e.Value = c.Hours;
             cmd.Parameters.Add(e);
 
