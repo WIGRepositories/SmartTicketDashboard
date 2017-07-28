@@ -187,6 +187,8 @@
     <Content Include="UI\images\13.jpg" />
     <Content Include="UI\images\14.jpg" />
     <Content Include="UI\images\bkgRd3.png" />
+    <Content Include="UI\images\Car.jpg" />
+    <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\images\dashboard.png" />
     <Content Include="UI\images\earphone.jpg" />
     <Content Include="UI\images\img5.jpg" />
