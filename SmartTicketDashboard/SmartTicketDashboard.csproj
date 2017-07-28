@@ -106,7 +106,7 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
-    <Content Include="UI\AddVehicle.html" />
+    <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
     <Content Include="UI\AssginDriver.html" />
@@ -187,6 +187,8 @@
     <Content Include="UI\images\13.jpg" />
     <Content Include="UI\images\14.jpg" />
     <Content Include="UI\images\bkgRd3.png" />
+    <Content Include="UI\images\Car.jpg" />
+    <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\images\dashboard.png" />
     <Content Include="UI\images\earphone.jpg" />
     <Content Include="UI\images\img5.jpg" />
@@ -2050,6 +2052,7 @@
     <Compile Include="Controllers\InventorySalesController.cs" />
     <Compile Include="Controllers\InventoryStatusController.cs" />
     <Compile Include="Controllers\InvoicesController.cs" />
+    <Compile Include="Controllers\landmarkController.cs" />
     <Compile Include="Controllers\LicenseDetailsController.cs" />
     <Compile Include="Controllers\LicensePricingController.cs" />
     <Compile Include="Controllers\licenseTController.cs" />
@@ -2470,13 +2473,6 @@
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="UI\orgchart\assets\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="UI\DataUploadTemplates\CompanyList.csv" />
-    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
-    <None Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
-    <None Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2484,6 +2480,9 @@
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\SmartTicketDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

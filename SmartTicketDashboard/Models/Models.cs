@@ -1820,6 +1820,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int id { get; set; }
+        public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -1869,18 +1870,15 @@ namespace SmartTicketDashboard.Models
         public string VechMobileNo { get; set; }
         public DateTime EntryDate { get; set; }
         public string NewEntry { get; set; }
-        public string AirPortCab { get; set; }
-        public string deletedVech { get; set; }
-        public string Carrier { get; set; }
-        public string PayGroup { get; set; }
+        
     }
     public class allocatedriver
     {
         public string flag { get; set; }
-        public int SlNo { get; set; }
+        public int Id { get; set; }
 
 
-
+        public int CompanyId { get; set; }
         public int BookingNo { get; set; }
 
         public string CustomerName { get; set; }
@@ -1898,8 +1896,11 @@ namespace SmartTicketDashboard.Models
         public int VechID { get; set; }
         public string RegistrationNo { get; set; }
         public string DriverName { get; set; }
+        public int DriverId { get; set; }
         public string PresentDriverLandMark { get; set; }
         public string ExecutiveName { get; set; }
+        public DateTime EffectiveDate { get; set; }
+        public DateTime EffectiveTill { get; set; }
     }
     public class UserLocation
     {
@@ -2098,6 +2099,12 @@ namespace SmartTicketDashboard.Models
         public DateTime EntryTime{get;set;}
 
     }
+    public class land
+    {
+        public string flag { get; set; }
+        public int Zno { get; set; }
+        public string landmark { get; set; }
+    }
     public class VehicleDist
     {
         public string insupddelflag { get; set; }
@@ -2108,7 +2115,7 @@ namespace SmartTicketDashboard.Models
         public decimal Pricing { get; set; }
         public DateTime FromTime { get; set; }
         public DateTime ToTime { get; set; }
-    }
+}
     public class HourBase
     {
         public string insupddelflag { get; set; }

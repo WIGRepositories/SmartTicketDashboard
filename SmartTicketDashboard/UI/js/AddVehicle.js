@@ -11,22 +11,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
+    $scope.GetCompanys = function () {
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+            $scope.Companies = response.data;
+
+        });
+    }
+      
     $scope.GetVehcileMaster = function () {
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.Vehicles = res.data;
         });
     }
 
-    $scope.saveNew = function (newVehicle) {
-        if (newVehicle == null) {
-            alert('Please Enter VID');
-            return;
-        }
-        if (newVehicle.VID == null) {
-            alert('Please Enter VID');
-            return;
-        }
-        if (newVehicle.CompanyId == null) {
+    $scope.saveNew = function (newVehicle,flag) {
+       
+        if (newVehicle.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -34,7 +34,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter RegistrationNo');
             return;
         }
-        if (newVehicle.Type == null) {
+        //var newVD = initdata.newfleet;
+        if ($scope.initdata.newfleet.vt == null || $scope.initdata.newfleet.vt.Id == null)
+        {
             alert('Please Enter Type');
             return;
         }
@@ -129,33 +131,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (newVehicle.NewEntry == null) {
             alert('Please Enter NewEntry');
             return;
-        }
-        if (newVehicle.AirPortCab == null) {
-            alert('Please Enter AirPortCab');
-            return;
-        }
-        if (newVehicle.deletedVech == null) {
-            alert('Please Enter deletedVech');
-            return;
-        }
-        if (newVehicle.Carrier == null) {
-            alert('Please Enter Carrier');
-            return;
-        }
-        if (newVehicle.PayGroup == null) {
-            alert('Please Enter PayGroup');
-            return;
-        }
-
-
+        }    
 
         var newVehicle = {
 
-            flag:'I',
+            flag: 'I',            
             VID: newVehicle.VID,
-            CompanyId: newVehicle.CompanyId,
+            CompanyId: newVehicle.c.Id,
             RegistrationNo: newVehicle.RegistrationNo,
-            Type: newVehicle.Type,
+            Type: $scope.initdata.newfleet.vt.Id,
             OwnerName: newVehicle.OwnerName,
             ChasisNo: newVehicle.ChasisNo,
             Engineno: newVehicle.Engineno,
@@ -179,10 +163,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VechMobileNo: newVehicle.VechMobileNo,
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
-            AirPortCab: newVehicle.AirPortCab,
-            deletedVech: newVehicle.deletedVech,
-            Carrier: newVehicle.Carrier,
-            PayGroup: newVehicle.PayGroup,
+           
 
             Active: (newVehicle.Active == true) ? 1 : 0,
 
@@ -213,12 +194,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.save = function (vech, flag) {
-        if (vech == null) {
-            alert('Please Enter Name');
-            return;
-        }
-        if (vech.VID == null) {
-            alert('Please Enter ID');
+       
+        if (vech.Id == null) {
+            alert('Please Enter CompanyId');
             return;
         }
         if (vech.RegistrationNo == null) {
@@ -321,28 +299,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter NewEntry');
             return;
         }
-        if (vech.AirPortCab == null) {
-            alert('Please Enter AirPortCab');
-            return;
-        }
-        if (vech.deletedVech == null) {
-            alert('Please Enter deletedVech');
-            return;
-        }
-        if (vech.Carrier == null) {
-            alert('Please Enter Carrier');
-            return;
-        }
-        if (vech.PayGroup == null) {
-            alert('Please Enter PayGroup');
-            return;
-        }
-
+        
         var vech = {
 
             flag: 'U',
+            Id:"",
             VID: vech.VID,
-            CompanyId: vech.CompanyId,
+            CompanyId: vech.Id,
             RegistrationNo: vech.RegistrationNo,
             Type: vech.Type,
             OwnerName: vech.OwnerName,
@@ -354,7 +317,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             RoadTaxDate: vech.RoadTaxDate,
             InsuranceNo: vech.InsuranceNo,
             InsDate: vech.InsDate,
-            PolutionNo: vech.PolExpDate,
+            PolutionNo: vech.PolutionNo,
+            PolExpDate: vech.PolExpDate,
             RCBookNo: vech.RCBookNo,
             RCExpDate: vech.RCExpDate,
             CompanyVechile: vech.CompanyVechile,
@@ -367,10 +331,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VechMobileNo: vech.VechMobileNo,
             EntryDate: vech.EntryDate,
             NewEntry: vech.NewEntry,
-            AirPortCab: vech.AirPortCab,
-            deletedVech: vech.deletedVech,
-            Carrier: vech.Carrier,
-            PayGroup: vech.PayGroup,
+            
 
             Active: (vech.Active == true) ? 1 : 0,
         }
@@ -384,7 +345,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             alert("Updated successfully!");
 
-            $scope.Group = null;
+            $scope.vech = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -397,12 +358,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.vech = null;
 
-    $scope.setVehicles = function (vech) {
-        $scope.vech = vech;
+    $scope.setVehicles = function (vech1) {
+        $scope.vech = vech1;
     };
 
-    $scope.clearnewVehicle = function () {
-        $scope.vech = null;
+    $scope.clearVehicles = function () {
+        $scope.vech1 = null;
     }
 
 
@@ -420,6 +381,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.GetVehicleConfig = function () {
+
+        var vc = {
+            // needfleetowners:'1',
+            needvehicleType: '1',
+            needServiceType: '1',
+            needvehiclelayout: '1',
+            needCompanyName: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
 
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {

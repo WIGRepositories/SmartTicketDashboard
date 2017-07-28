@@ -50,7 +50,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(lPassword);
             //System.Threading.Thread.Sleep(10000);
             SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(Tbl);
+                da.Fill(Tbl);
 
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Validate Credentials completed.");
             

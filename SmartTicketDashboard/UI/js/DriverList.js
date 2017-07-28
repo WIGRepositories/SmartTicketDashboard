@@ -11,22 +11,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
+
+    $scope.GetCompanys = function () {
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+            $scope.Companies = response.data;
+
+        });
+    }
+
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
-    }
+    }   
 
-    $scope.savelist = function (Driverlist) {
+    $scope.saveNew = function (Driverlist,flag) {
       
-        if (Driverlist.DId == null) {
-            alert('Please Enter DId');
+        
+        if (Driverlist.Id == null) {
+            alert('Please Enter CompanyId');
             return;
-
-
         }
         if (Driverlist.NAme == null) {
             alert('Please Enter NAme');
+            return;
+        }
+        if (Driverlist.Address == null) {
+            alert('Please Enter Address');
             return;
         }
         if (Driverlist.City == null) {
@@ -92,7 +103,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var Driverlist = {
 
             flag:'I',
-            DId: Driverlist.id,
+            DId:-1,
+            CompanyId: Driverlist.Id,
             NAme: Driverlist.NAme,
             Address: Driverlist.Address,
             City: Driverlist.City,
@@ -134,107 +146,113 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };   
 
-    $scope.drivers = null;
+    $scope.Driverlist = null;
 
-    $scope.save = function (drivers, flag) {
+    $scope.save = function (driver, flag) {
+
         
-        if (drivers.NAme == null) {
+        if (driver.CompanyId == null) {
+            alert('Please Enter CompanyId');
+            return;
+        }
+        if (driver.NAme == null) {
             alert('Please Enter NAme');
             return;
         }
-        if (drivers.City == null) {
+        if (driver.City == null) {
             alert('Please Enter City');
             return;
         }
-        if (drivers.Pin == null) {
+        if (driver.Pin == null) {
             alert('Please Enter Pin');
             return;
         }
-        if (drivers.PAddress == null) {
+        if (driver.PAddress == null) {
             alert('Please Enter PAddress');
             return;
         }
-        if (drivers.PCity == null) {
+        if (driver.PCity == null) {
             alert('Please Enter PCity');
             return;
         }
-        if (drivers.PPin == null) {
+        if (driver.PPin == null) {
             alert('Please Enter PPin');
             return;
         }
-        if (drivers.OffMobileNo == null) {
+        if (driver.OffMobileNo == null) {
             alert('Please Enter OffMobileNo');
             return;
         }
-        if (drivers.PMobNo == null) {
+        if (driver.PMobNo == null) {
             alert('Please Enter PMobNo');
             return;
         }
-        if (drivers.DOB == null) {
-            alert('Please Enter Code');
-            return;
-        }
-        if (drivers.DOJ == null) {
+        if (driver.DOB == null) {
             alert('Please Enter DOB');
             return;
         }
-        if (drivers.BloodGroup == null) {
+        if (driver.DOJ == null) {
+            alert('Please Enter DOJ');
+            return;
+        }
+        if (driver.BloodGroup == null) {
             alert('Please Enter BloodGroup');
             return;
         }
 
-        if (drivers.LiCExpDate == null) {
+        if (driver.LiCExpDate == null) {
             alert('Please Enter LiCExpDate');
             return;
         }
-        if (drivers.BadgeNo == null) {
+        if (driver.BadgeNo == null) {
             alert('Please Enter BadgeNo');
             return;
         }
-        if (drivers.BadgeExpDate == null) {
+        if (driver.BadgeExpDate == null) {
             alert('Please Enter BadgeExpDate');
             return;
         }
-        if (drivers.Remarks == null) {
+        if (driver.Remarks == null) {
             alert('Please Enter Remarks');
             return;
         }
 
-        var drivers = {
-           
-           flag:'U',
-            NAme: drivers.NAme,
-            Address: drivers.Address,
-            City: drivers.City,
-            Pin: drivers.Pin,
-            PAddress: drivers.PAddress,
-            PCity: drivers.PCity,
-            PPin: drivers.PPin,
-            OffMobileNo: drivers.OffMobileNo,
-            PMobNo: drivers.PMobNo,
-            DOB: drivers.DOB,
-            DOJ: drivers.DOJ,
-            BloodGroup: drivers.BloodGroup,
-            LicenceNo: drivers.LicenceNo,
-            LiCExpDate: drivers.LiCExpDate,
-            BadgeNo: drivers.BadgeNo,
-            BadgeExpDate: drivers.BadgeExpDate,
-            Remarks: drivers.Remarks,
 
-           
+
+        var driver = {
+
+            flag: 'U',
+            DId: "",
+            CompanyId: driver.Companyid,
+            NAme: driver.NAme,
+            Address: driver.Address,
+            City: driver.City,
+            Pin: driver.Pin,
+            PAddress: driver.PAddress,
+            PCity: driver.PCity,
+            PPin: driver.PPin,
+            OffMobileNo: driver.OffMobileNo,
+            PMobNo: driver.PMobNo,
+            DOB: driver.DOB,
+            DOJ: driver.DOJ,
+            BloodGroup: driver.BloodGroup,
+            LicenceNo: driver.LicenceNo,
+            LiCExpDate: driver.LiCExpDate,
+            BadgeNo: driver.BadgeNo,
+            BadgeExpDate: driver.BadgeExpDate,
+            Remarks: driver.Remarks,
+
+
         }
-
 
         var req = {
             method: 'POST',
             url: '/api/DriverMaster/Driver',
-            data: drivers
+            data: driver
         }
         $http(req).then(function (response) {
 
-           alert("Updated successfully!");
-
-            $scope.Group = null;
+            alert("Updated successfully!");            
 
         }, function (errres) {
             var errdata = errres.data;
@@ -242,17 +260,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
-        $scope.currGroup = null;
+       
     };
 
-    $scope.listdrivers = null;
+    $scope.driver = null;
 
-    $scope.setlistdrivers = function (usr) {
-        $scope.drivers = usr;
+    $scope.setlistdrivers = function (cur) {
+        $scope.driver = cur;
     };
 
-    $scope.clearlistdrivers = function () {
-        $scope.drivers = null;
+    $scope.clearDriverlist = function () {
+        $scope.cur = null;
     }
 
 
