@@ -2142,7 +2142,9 @@
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\WEB\JPListHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="UI\vendors\bootstrap-clockface\.gitignore" />
     <Content Include="UI\vendors\bootstrap-clockface\.jshintignore" />
     <Content Include="UI\vendors\bootstrap-clockface\build" />
@@ -2482,7 +2484,7 @@
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\SmartTicketDashboard.pubxml" />
+    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
