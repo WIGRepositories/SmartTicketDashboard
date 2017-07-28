@@ -106,7 +106,7 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
-    <Content Include="UI\AddVehicle.html" />
+    <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
     <Content Include="UI\AssginDriver.html" />

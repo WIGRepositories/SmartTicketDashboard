@@ -356,14 +356,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.vech = null;
     };
 
-    $scope.newVehicle = null;
+    $scope.vech = null;
 
-    $scope.setVehicles = function (vech) {
-        $scope.vech = vech;
+    $scope.setVehicles = function (vech1) {
+        $scope.vech = vech1;
     };
 
-    $scope.clearnewVehicle = function () {
-        $scope.vech = null;
+    $scope.clearVehicles = function () {
+        $scope.vech1 = null;
     }
 
 

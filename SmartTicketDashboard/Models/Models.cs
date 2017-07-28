@@ -1897,6 +1897,8 @@ namespace SmartTicketDashboard.Models
         public int DriverId { get; set; }
         public string PresentDriverLandMark { get; set; }
         public string ExecutiveName { get; set; }
+        public DateTime EffectiveDate { get; set; }
+        public DateTime EffectiveTill { get; set; }
     }
     public class UserLocation
     {

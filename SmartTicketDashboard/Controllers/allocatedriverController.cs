@@ -168,6 +168,14 @@ namespace SmartTicketDashboard.Controllers
                 ExecutiveName.Value = A.ExecutiveName;
                 cmd.Parameters.Add(ExecutiveName);
 
+                SqlParameter ed = new SqlParameter("@EffectiveDate", SqlDbType.Date);
+                ed.Value = A.EffectiveDate;
+                cmd.Parameters.Add(ed);
+
+                SqlParameter de = new SqlParameter("@EffectiveTill", SqlDbType.Date);
+                de.Value = A.EffectiveTill;
+                cmd.Parameters.Add(de);
+
             }
             catch
             {

@@ -364,7 +364,7 @@
                             </a>
                             <ul class="nav nav-second-level">
                                 <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
-                                <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
+                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
 
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
@@ -372,8 +372,8 @@
 
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                                <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Availablevehicles"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
-                                <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Pricing of Vehicles"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
+                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
+                                <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
                                 <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
                             </ul>
@@ -393,7 +393,7 @@
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="AddVehicle.html">Vehicle List</a></li>
+                            <li><a href="VehicleList.html">Vehicle List</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -430,33 +430,28 @@
                                                                         <div class="row ">
 
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Id:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" ng-model="vech.Id" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">VID:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" ng-model="vech.VID" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row ">
-
-                                                                            <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">CompanyId:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" ng-model="vech.CompanyId" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="vech.c" ng-init="GetCompanys();" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" ng-model="vech.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
 
                                                                         </div>
                                                                         <div class="row">
 
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
+                                                                                <label for="Name" class="col-md-4 control-label">VehicleType:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                <input id="inputFirstName" type="text" ng-model="vech.Type" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">OwnerName:<span class='require'></span></label>
@@ -478,17 +473,35 @@
                                                                         </div>
                                                                         <div class="row">
 
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> WirelessFleetNo:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.WirelessFleetNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            <div class="col-md-6" style="margin-bottom:7px">
+                                                                                <div class="col-md-4">
+                                                                                    <label for="Name" class=" control-label">WirelessFleetNo:<span class='require'></span></label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.WirelessFleetNo" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="1">1</option>
+                                                                                        <option value="2">2</option>
+                                                                                        <option value="3">3</option>
+                                                                                        <option value="4">4</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">AllotmentType:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.AllotmentType" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-4">
+                                                                                    <label for="Name" class=" control-label">AllotmentType:<span class='require'></span></label>
+                                                                                </div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.AllotmentType" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
+
                                                                             </div>
 
                                                                         </div>
-
 
                                                                         <div class="row">
 
@@ -541,8 +554,14 @@
                                                                         <div class="row">
 
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> CompanyVechile:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input  id="inputFirstName" type="text" ng-model="vech.CompanyVechile" class="form-control" /><span class=""></span></div>
+                                                                                <label for="Name" class="col-md-4 control-label">CompanyVechile:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.CompanyVechile" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">OwnerPhoneNo:<span class='require'></span></label>
@@ -562,15 +581,27 @@
                                                                             </div>
 
                                                                         </div>
-                                                                        <div class="row">
+                                                                        <div class="row" style="margin-bottom:7px">
 
                                                                             <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> DayOnly:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.DayOnly" class="form-control" /><span class="help-block"></span></div>
+                                                                                <label for="Name" class="col-md-4 control-label">DayOnly:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.DayOnly" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">DayNight:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.DayNight" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.DayNight" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
 
                                                                         </div>
@@ -579,7 +610,13 @@
 
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label"> InsProvider:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.InsProvider" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.InsProvider" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">VechMobileNo:<span class='require'></span></label>
@@ -595,40 +632,22 @@
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Name" class="col-md-4 control-label">NewEntry:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.NewEntry" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8">
+                                                                                    <select ng-model="vech.NewEntry" class="form-control">
+                                                                                        <option value="">Select</option>
+                                                                                        <option value="Yes">Yes</option>
+                                                                                        <option value="No">No</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
 
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">AirPortCab:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.AirPortCab" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> deletedVech:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.deletedVech" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-
-                                                                        </div>
-
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Carrier:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.Carrier" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> PayGroup:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.PayGroup" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div style="text-align:right">
                                                                                 <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
                                                                             </div>
                                                                             <div class="col-md-4">
-                                                                                <input type="checkbox" checked ng-model="newVehicle.Active" />
+                                                                                <input type="checkbox" checked ng-model="vech.Active" />
 
                                                                             </div>
                                                                         </div>
@@ -971,9 +990,9 @@
                                                                                         <div class="form-actions">
                                                                                             <div style="text-align:center">
 
-                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
 
-                                                                                                <a href="AddVehicle.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                                <a href="VehicleList.html" class="btn btn-primary" ng-click="clearVehicles()">Cancel</a>
 
                                                                                             </div>
                                                                                         </div>
