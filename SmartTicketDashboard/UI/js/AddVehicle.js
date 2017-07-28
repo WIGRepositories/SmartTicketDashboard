@@ -17,9 +17,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
-
-    
-
+      
     $scope.GetVehcileMaster = function () {
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.Vehicles = res.data;
@@ -28,7 +26,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (newVehicle,flag) {
        
-        if (newVehicle.Id == null) {
+        if (newVehicle.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -36,8 +34,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter RegistrationNo');
             return;
         }
-        var newVD = initdata.newfleet;
-        if (newVehicle.Type == null)           
+        //var newVD = initdata.newfleet;
+        if ($scope.initdata.newfleet.vt == null || $scope.initdata.newfleet.vt.Id == null)
         {
             alert('Please Enter Type');
             return;
@@ -139,9 +137,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag: 'I',            
             VID: newVehicle.VID,
-            CompanyId:newVehicle.CompanyId,
+            CompanyId: newVehicle.c.Id,
             RegistrationNo: newVehicle.RegistrationNo,
-            Type: newVehicle.Type,
+            Type: $scope.initdata.newfleet.vt.Id,
             OwnerName: newVehicle.OwnerName,
             ChasisNo: newVehicle.ChasisNo,
             Engineno: newVehicle.Engineno,
@@ -383,6 +381,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.GetVehicleConfig = function () {
+
+        var vc = {
+            // needfleetowners:'1',
+            needvehicleType: '1',
+            needServiceType: '1',
+            needvehiclelayout: '1',
+            needCompanyName: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
 
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {

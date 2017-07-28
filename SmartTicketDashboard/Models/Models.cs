@@ -1894,6 +1894,7 @@ namespace SmartTicketDashboard.Models
         public int VechID { get; set; }
         public string RegistrationNo { get; set; }
         public string DriverName { get; set; }
+        public int DriverId { get; set; }
         public string PresentDriverLandMark { get; set; }
         public string ExecutiveName { get; set; }
     }

@@ -12,6 +12,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.dashboardDS = $localStorage.dashboardDS;
 
 
+    $scope.Getallocatedriver = function () {
+        $http.get('/api/allocatedriver/Getallocatedriver?VID=1').then(function (res, data) {
+            $scope.drivers = res.data;
+        });
+    }
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
@@ -19,131 +24,61 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.Gettypes = function () {
-        $http.get('/api/allocatedriver/Gettypes').then(function (res, data) {
-            $scope.vehicles = res.data;
+    $scope.GetMaster = function () {
+        $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
+            $scope.listdrivers = res.data;
         });
+        $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
+            $scope.Vehicles = res.data;
+        });        
     }
 
 
-    $scope.Getallocatedriver = function () {
-        $http.get('/api/allocatedriver/Getallocatedriver').then(function (res, data) {
-            $scope.drivers = res.data;
-        });
-    }
+   
 
     $scope.saveNew = function (newVehicle, flag) {
-        if (newVehicle == null) {
-            alert('Please Enter SLNO')
-        }
-        if (newVehicle.Id == null) {
-            alert('Please Enter Id');
-            return;
-        }       
-        if (newVehicle.Id == null) {
-            alert('Please Enter CompanyId');
-            return;
-        }
-        if (newVehicle.BookingNo == null) {
-            alert('Please Enter BookingNo');
-            return;
-        }
-        if (newVehicle.CustomerName == null) {
-            alert('Please Enter CustomerName');
-            return;
-        }
-        if (newVehicle.CusID == null) {
-            alert('Please Enter CusID');
-            return;
-        }
-        if (newVehicle.PhoneNo == null) {
-            alert('Please Enter PhoneNo');
-            return;
-        }
-        if (newVehicle.AltPhoneNo == null) {
-            alert('Please Enter AltPhoneNo');
-            return;
-        }
-        if (newVehicle.Address == null) {
-            alert('Please Enter Address');
-            return;
-        }
-        if (newVehicle.PickupAddress == null) {
-            alert('Please Enter PickupAddress');
-            return;
-        }
-        if (newVehicle.LandMark == null) {
-            alert('Please Enter LandMark');
-            return;
-        }
-        if (newVehicle.PickupPlace == null) {
-            alert('Please Enter PickupPlace');
-            return;
-        }
-        if (newVehicle.DropPlace == null) {
-            alert('Please Enter DropPlace');
-            return;
-
-        }
-        if (newVehicle.Package == null) {
-            alert('Please Enter Package');
-            return;
-
-        }
-        if (newVehicle.VehicleType == null) {
-            alert('Please Enter VehicleType');
-            return;
-
-        }
-        if (newVehicle.VechID == null) {
+             
+        if ($scope.vm1.Id == null) {
             alert('Please Enter vechid');
             return;
         }
-        if (newVehicle.RegistrationNo == null) {
-            alert('Please Enter RegistrationNo');
+        if ($scope.c.Id == null) {
+            alert('Please Enter CompanyId');
             return;
-        }
-        if (newVehicle.DriverName == null) {
+        }       
+       
+        if (newVehicle.DId == null || newVehicle.DId.DId == null) {
             alert('Please Enter DriverName');
             return;
         }
-        if (newVehicle.PresentDriverLandMark == null) {
-            alert('Please Enter PresentDriverLandMark');
+        if (newVehicle.EffectiveDate == null) {
+            alert('Please Enter EffectiveDate');
             return;
         }
-        if (newVehicle.ExecutiveName == null) {
-            alert('Please Enter ExecutiveName');
+        if (newVehicle.EffectiveTill == null) {
+            alert('Please Enter EffectiveTill');
             return;
         }
+        
 
-        var newVehicle = {
-            Id: -1,            
-            CompanyId: newVehicle.Id,
-            BookingNo: newVehicle.BookingNo,
-            CustomerName: newVehicle.CustomerName,
-            CusID: newVehicle.CusID,
-            PhoneNo: newVehicle.PhoneNo,
-            AltPhoneNo: newVehicle.AltPhoneNo,
-            Address: newVehicle.Address,
-            PickupAddres: newVehicle.PickupAddres,
-            LandMark: newVehicle.LandMark,
-            PickupPlace: newVehicle.PickupPlace,
-            DropPlace: newVehicle.DropPlace,
-            Package: newVehicle.Package,
+        var newVehicle1 = {
+            Id: -1,
+            VechID: $scope.vm1.Id,
+            CompanyId: $scope.c.Id,
             VehicleType: newVehicle.VehicleType,
-            VechID: newVehicle.VechID,
+            PhoneNo: newVehicle.PhoneNo,            
             RegistrationNo: newVehicle.RegistrationNo,
             DriverName: newVehicle.DriverName,
-            PresentDriverLandMark: newVehicle.PresentDriverLandMark,
-            ExecutiveName: newVehicle.ExecutiveName,
-
+            DriverId: newVehicle.DId.DId,
+            EffectiveDate: newVehicle.EffectiveDate,
+            EffectiveTill: newVehicle.EffectiveTill,
             flag: "I"
         }
 
         var req = {
             method: 'POST',
             url: '/api/allocatedriver/AllocateDriver',
-            data: newVehicle
+            data: newVehicle1
         }
         $http(req).then(function (response) {
 
@@ -164,67 +99,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.save = function (AssginDriver, flag) {
+
         if (AssginDriver == null) {
            // alert('Please Enter SLNO')
         }        
         if (AssginDriver.Id == null) {
-            alert('Please Enter CompanyId');
+            alert('Please Enter VID');
             return;
-        }
-        
-        if (AssginDriver.BookingNo == null) {
-            alert('Please Enter BookingNo');
-            return;
-        }
-        if (AssginDriver.CustomerName == null) {
-            alert('Please Enter CustomerName');
-            return;
-        }
-        if (AssginDriver.CusID == null) {
-            alert('Please Enter CusID');
-            return;
-        }
-        if (AssginDriver.PhoneNo == null) {
-            alert('Please Enter PhoneNo');
-            return;
-        }
-        if (AssginDriver.AltPhoneNo == null) {
-            alert('Please Enter AltPhoneNo');
-            return;
-        }
-        if (AssginDriver.Address == null) {
-            alert('Please Enter Address');
-            return;
-        }
-        if (AssginDriver.PickupAddress == null) {
-            alert('Please Enter PickupAddress');
-            return;
-        }
-        if (AssginDriver.LandMark == null) {
-            alert('Please Enter LandMark');
-            return;
-        }
-        if (AssginDriver.PickupPlace == null) {
-            alert('Please Enter PickupPlace');
-            return;
-        }
-        if (AssginDriver.DropPlace == null) {
-            alert('Please Enter DropPlace');
-            return;
-
-        }
-        if (AssginDriver.Package == null) {
-            alert('Please Enter Package');
-            return;
-
-        }
+        }        
         if (AssginDriver.VehicleType == null) {
             alert('Please Enter VehicleType');
             return;
 
         }
-        if (AssginDriver.VechID == null) {
-            alert('Please Enter VechID');
+        if (AssginDriver.PhoneNo == null) {
+            alert('Please Enter PhoneNo');
             return;
 
         }
@@ -236,36 +125,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter DriverName');
             return;
         }
-        if (AssginDriver.PresentDriverLandMark == null) {
-            alert('Please Enter PresentDriverLandMark');
+        if (AssginDriver.EffectiveDate == null) {
+            alert('Please Enter EffectiveDate');
             return;
         }
-        if (AssginDriver.ExecutiveName == null) {
-            alert('Please Enter ExecutiveName');
+        if (AssginDriver.EffectiveTill == null) {
+            alert('Please Enter EffectiveTill');
             return;
         }
 
         var AssginDriver = {
-            Id: AssginDriver.i,
-            CompanyId:AssginDriver.Id,
-            BookingNo: AssginDriver.BookingNo,
-            CustomerName: AssginDriver.CustomerName,
-            CusID: AssginDriver.CusID,
-            PhoneNo: AssginDriver.PhoneNo,
-            AltPhoneNo: AssginDriver.AltPhoneNo,
-            Address: AssginDriver.Address,
-            PickupAddress: AssginDriver.PickupAddress,
-            LandMark: AssginDriver.LandMark,
-            PickupPlace: AssginDriver.PickupPlace,
-            DropPlace: AssginDriver.DropPlace,
-            Package: AssginDriver.Package,
+            Id: -1,
+            VechID:$scope.vm.id,
             VehicleType: AssginDriver.VehicleType,
-            VechID: AssginDriver.VechID,
-            RegistrationNo: AssginDriver.RegistrationNo,
+            PhoneNo: AssginDriver.PhoneNo,
+            RegistrationNo: $scope.vm.RegistrationNo,
             DriverName: AssginDriver.DriverName,
-            PresentDriverLandMark: AssginDriver.PresentDriverLandMark,
-            ExecutiveName: AssginDriver.ExecutiveName,
-
+            EffectiveDate: AssginDriver.EffectiveDate,
+            EffectiveTill: AssginDriver.EffectiveTill,
+            DriverId:AssginDriver.Did.Did,
             flag: "U"
         }
 
