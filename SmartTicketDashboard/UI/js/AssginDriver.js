@@ -38,7 +38,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (newVehicle, flag) {
              
-        if ($scope.vm.Id == null) {
+        if ($scope.vm.VID == null) {
             alert('Please Enter vechid');
             return;
         }
@@ -63,11 +63,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var newVehicle1 = {
             Id: -1,
-            VechID: $scope.vm.Id,
+            VechID: $scope.vm.VID,
             CompanyId: $scope.c.Id,
             VehicleType: newVehicle.VehicleType,
-            PhoneNo: newVehicle.PhoneNo,            
-            RegistrationNo: newVehicle.RegistrationNo,
+            PhoneNo: newVehicle.PhoneNo,      
+            RegistrationNo: $scope.vm.VID,
             DriverName: newVehicle.DriverName,
             DriverId: newVehicle.DId.DId,
             EffectiveDate: newVehicle.EffectiveDate,
@@ -135,7 +135,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
 
         var AssginDriver = {
-            Id: -1,
+            Id: AssginDriver.Id,
             VechID:$scope.vm.id,
             VehicleType: AssginDriver.VehicleType,
             PhoneNo: AssginDriver.PhoneNo,
@@ -169,12 +169,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.AssginDriver = null;
 
-    $scope.setdrivers = function (Driver) {
-        $scope.AssginDriver = Driver;
+    $scope.setdrivers = function (a) {
+        $scope.AssginDriver = a;
     };
 
     $scope.clearnewVehicle = function () {
-        $scope.Driver = null;
+        $scope.a = null;
     }
 
 

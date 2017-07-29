@@ -222,7 +222,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var driver = {
 
             flag: 'U',
-            DId: "",
+            DId: driver.DId,
             CompanyId: driver.Companyid,
             NAme: driver.NAme,
             Address: driver.Address,
