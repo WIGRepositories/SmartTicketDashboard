@@ -190,7 +190,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.newVehicle = null;
+    $scope.vech = null;
 
 
     $scope.save = function (vech, flag) {
@@ -345,7 +345,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             alert("Updated successfully!");
 
-            $scope.vech = null;
+            $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -353,17 +353,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
-        $scope.vech = null;
+        $scope.currGroup = null;
+       
     };
 
-    $scope.vech = null;
+    $scope.vech1 = null;
 
-    $scope.setVehicles = function (vech1) {
-        $scope.vech = vech1;
+    $scope.setVehicles = function (v) {
+        $scope.vech = v;
     };
 
-    $scope.clearVehicles = function () {
-        $scope.vech1 = null;
+    $scope.clearnewVehicle = function () {
+        $scope.v = null;
     }
 
 

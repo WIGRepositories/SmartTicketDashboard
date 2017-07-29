@@ -1,6 +1,7 @@
 ﻿var app = angular.module('myApp1', ['ngStorage', 'ui.bootstrap'])
 
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+
     $scope.GetDistanceBasePricing = function () {
         $http.get("/api/VehicleDistPricing/GetDistanceBasePricing").then(function (response, req) {
             $scope.VPricing = response.data;
@@ -60,7 +61,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!!");
+            alert("Saved successfully!!");
 
             $scope.Group = null;
             //$scope.GetCompanys();
@@ -100,12 +101,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    $scope.SavePricingChanges = function (Changes, flag) {
+    $scope.Save = function (Changes, flag) {
         if (Changes == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (Changes.VehicleModel == null || Changes.VehicleModel == "") {
+        if ($scope.vm1.Id == null || $scope.vm1.Id == "") {
             alert('Please enter VehicleModel.');
             return;
         }
@@ -133,9 +134,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
 
 
-        var PricingChanges = {
+        var Changes = {
             Id: Changes.Id,
-            VehicleModel: Changes.VehicleModel,
+            VehicleModelId: $scope.vm1.Id,
             FromKm: Changes.FromKm,
             ToKm: Changes.ToKm,
             Pricing: Changes.Pricing,
@@ -149,12 +150,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var req = {
             method: 'POST',
-            url: '/api/VehicleDistPricing/SaveHourBasePricing',
-            data: PricingChanges
+            url: '/api/VehicleDistPricing/SaveVehicleDistPricing',
+            data: Changes
         }
         $http(req).then(function (response) {
 
-            //$scope.showDialog("Saved successfully!");
+            alert("Updated successfully!");
 
             $scope.Group = null;
 
@@ -167,14 +168,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.Changes = null;
+    $scope.PricingChanges = null;
 
-    $scope.setChanges = function (D) {
-        $scope.Changes = D;
+    $scope.setVPricing = function (vp) {
+        $scope.Changes = vp;
     };
 
-    $scope.clearChanges = function () {
-        $scope.Changes = null;
+    $scope.clearDist = function () {
+        $scope.vp = null;
     }
 
 
