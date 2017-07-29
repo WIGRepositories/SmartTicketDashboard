@@ -602,7 +602,7 @@
                                                                                          <div class="modal-body" ng-init="GetCompanys();" ng-model="newVehicle">
                                                                                              <div class="row mbm">
                                                                                                  <div style="text-align:right">
-                                                                                                     <label for="selCompany" class="col-md-4 control-label" style="color:red;">Company:<span class='require'>*</span></label>
+                                                                                                     <label for="selCompany" class="col-md-4 control-label" >Company*:</label>
                                                                                                  </div>
                                                                                                  <div class="col-md-6">
 
@@ -618,7 +618,7 @@
                                                                                                      <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
                                                                                                  </div>
                                                                                                  <div class="col-md-6">
-                                                                                                     <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.Id" ng-model="vm">
+                                                                                                     <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.Id" ng-model="vm" class="form-control">
                                                                                                          <option value="">Select</option>
                                                                                                      </select>
                                                                                                  </div>
