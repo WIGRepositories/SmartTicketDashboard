@@ -434,7 +434,7 @@
                                                                          <div class="col-md-6">
                                                                              <label for="Name" class="col-md-4 control-label">VechID:<span class='require'></span></label>
                                                                              <div class="col-md-6">
-                                                                                 <select ng-options="v.VID for v in vehicles track by v.Id" ng-model="AssginDriver" ng-init="Gettypes();" class="form-control">
+                                                                                 <select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="AssginDriver" ng-init="Gettypes();" class="form-control">
                                                                                      <option value="">Select</option>
                                                                                  </select>
                                                                              </div>
@@ -618,7 +618,7 @@
                                                                                                      <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
                                                                                                  </div>
                                                                                                  <div class="col-md-6">
-                                                                                                     <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.Id" ng-model="vm">
+                                                                                                     <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm">
                                                                                                          <option value="">Select</option>
                                                                                                      </select>
                                                                                                  </div>

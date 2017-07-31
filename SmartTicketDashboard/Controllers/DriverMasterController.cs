@@ -57,7 +57,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(ff);
 
             SqlParameter i = new SqlParameter("@DId", SqlDbType.Int);
-            i.Value = d.id;
+            i.Value = d.DId;
             cmd.Parameters.Add(i);
 
             SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.Int);

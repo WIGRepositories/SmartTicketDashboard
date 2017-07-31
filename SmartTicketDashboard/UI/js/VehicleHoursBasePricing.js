@@ -60,7 +60,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!!");
+            alert("Saved successfully!!");
 
             $scope.Vprice = null;
             //$scope.GetCompanys();
@@ -73,6 +73,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert(errmssg);
         });
     };
+
     $scope.GetVehicleConfig = function () {
 
         var vc = {
@@ -96,17 +97,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
 
     }
+
     $scope.SavePricingChanges = function (DistPricing, flag) {
         if (DistPricing == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (DistPricing.VehicleModel == null || DistPricing.VehicleModel == "") {
+        if ($scope.vm.Id == null || $scope.vm.Id == "") {
             alert('Please enter VehicleModel.');
             return;
         }
-       
-        //emailid
         if (DistPricing.Hours == null) {
             alert('Please enter Hours.');
             return;
@@ -125,10 +125,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
 
 
-        var SaveDistPricing = {
+        var DistPricing = {
             Id: DistPricing.Id,
-            VehicleModel: DistPricing.VehicleModel,
-            
+            VehicleModelId: $scope.vm.Id,
             Hours: DistPricing.Hours,
             FromTime: DistPricing.FromTime,
             ToTime: DistPricing.ToTime,
@@ -141,13 +140,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var req = {
             method: 'POST',
             url: '/api/HourBasedPricing/SaveHourBasePricing',
-            data: SaveDistPricing
+            data: DistPricing
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!!");
-
-            $scope.GetHourBasePricing();
+            alert("Updated successfully!!");
+            
             $scope.DistPricing = null;
 
         }
@@ -158,4 +156,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     };
+
+        $scope.setVechPricing = function (Driver) {
+            $scope.DistPricing = Driver;
+        };
+
+        $scope.clearVprice = function () {
+            $scope.Driver = null;
+        }
+   
     });

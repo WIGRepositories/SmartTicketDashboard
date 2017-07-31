@@ -108,6 +108,8 @@
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
+    <Content Include="UI\images\Car.jpg" />
+    <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
@@ -189,8 +191,6 @@
     <Content Include="UI\images\13.jpg" />
     <Content Include="UI\images\14.jpg" />
     <Content Include="UI\images\bkgRd3.png" />
-    <Content Include="UI\images\Car.jpg" />
-    <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\images\dashboard.png" />
     <Content Include="UI\images\earphone.jpg" />
     <Content Include="UI\images\img5.jpg" />
@@ -2148,7 +2148,9 @@
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\WEB\JPListHandler.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="UI\vendors\bootstrap-clockface\.gitignore" />
     <Content Include="UI\vendors\bootstrap-clockface\.jshintignore" />
     <Content Include="UI\vendors\bootstrap-clockface\build" />
@@ -2488,7 +2490,7 @@
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\PublishProfiles\SmartTicketDashboard.pubxml" />
+    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

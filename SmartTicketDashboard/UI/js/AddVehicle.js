@@ -1,6 +1,4 @@
-﻿// JavaScript source code
-// JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -20,7 +18,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
       
     $scope.GetVehcileMaster = function () {
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
-            $scope.Vehicles = res.data;
+            $scope.VehiclesList = res.data;
         });
     }
 
@@ -191,7 +189,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.newVehicle = null;
+    $scope.GetVehicleConfig = function () {
 
+        var vc = {
+            // needfleetowners:'1',
+            needvehicleType: '1',
+            needServiceType: '1',
+            needvehiclelayout: '1',
+            needCompanyName: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
 
     $scope.save = function (vech, flag) {
        
@@ -303,7 +325,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vech = {
 
             flag: 'U',
-            Id:"",
+            Id:vech.Id,
             VID: vech.VID,
             CompanyId: vech.Id,
             RegistrationNo: vech.RegistrationNo,
@@ -345,7 +367,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             alert("Updated successfully!");
 
-            $scope.vech = null;
+            $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -353,17 +375,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.showDialog(errmssg);
         });
+        $scope.currGroup = null;
+       
+    };
+
+    $scope.vech1 = null;
+
+    $scope.setVehiclesList = function (v) {
+        $scope.vech = v;
+    };
+
+    $scope.clearnewVehicle = function () {
         $scope.vech = null;
-    };
-
-    $scope.vech = null;
-
-    $scope.setVehicles = function (vech1) {
-        $scope.vech = vech1;
-    };
-
-    $scope.clearVehicles = function () {
-        $scope.vech1 = null;
     }
 
 

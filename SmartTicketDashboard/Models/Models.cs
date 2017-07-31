@@ -1819,7 +1819,7 @@ namespace SmartTicketDashboard.Models
     public class driverdetails
     {
         public string flag { get; set; }
-        public int id { get; set; }
+        public int DId { get; set; }
         public int CompanyId { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
