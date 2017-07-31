@@ -430,7 +430,7 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">VID:<span class='require'>*</span></label>
+                                                                                    <label for="inputFirstName" class="control-label">VID*:</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
@@ -456,7 +456,7 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">BookingType:<span class='require'>*</span></label>
+                                                                                    <label for="inputFirstName" class="control-label">BookingType*:</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
@@ -469,7 +469,7 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">PhoneNo:<span class='require'>*</span></label>
+                                                                                    <label for="inputFirstName" class="control-label">PhoneNo*:</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
@@ -541,17 +541,19 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> BookingNo:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > BookingNo*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.BookingNo" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-5 control-label" style="color:red;float:left">BookingType:<span class='require'></span></label>
-                                                                            <select ng-model="book.BookingType">
+                                                                            <label for="code" class="col-md-4 control-label" >BookingType:<span class='require'></span></label>
+                                                                            <div class="col-md-8">
+                                                                            <select ng-model="book.BookingType" class="form-control">
                                                                                 <option value="">Select</option>
                                                                                 <option value="CurrentBooking">CurrentBooking</option>
                                                                                 <option value="AdvanceBooking">AdvanceBooking</option>
 
                                                                             </select>
+                                                                                </div>
                                                                         </div>
 
                                                                     </div>
@@ -560,11 +562,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> ReqVehicle:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > ReqVehicle*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ReqVehicle" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">Customername*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >Customer<br>Name*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.Customername" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -572,11 +574,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> CusID:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > CusID*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CusID" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">PhoneNo*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >PhoneNo*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PhoneNo" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -585,11 +587,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> AltPhoneNo:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > AltPhoneNo*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.AltPhoneNo" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">CAddress*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >CAddress*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CAddress" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -597,38 +599,40 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> PickupAddress:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > PickupAddress*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PickupAddress" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <!--<div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">LandMark*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >LandMark*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.LandMark" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>-->
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-5 control-label" style="color:red;float:left">LandMark:<span class='require'></span></label>
-                                                                            <select ng-model="book.LandMark">
-                                                                                <option value="">Select</option>
-                                                                                <option value="PRNagar">PrNagar</option>
-                                                                                <option value="Motinagar">MotiNagar</option>
-                                                                                <option value="Madhapur">Madhapur</option>
-                                                                                <option value="Kukatpally">Kukatpally</option>
-                                                                                <option value="Nampally">Nampally</option>
-                                                                                <option value="Secunderabad">Secunderabad</option>
-                                                                                <option value="SRNagar">SRNagar</option>
+                                                                            <label for="code" class="col-md-4 control-label" >LandMark:<span class='require'></span></label>
+                                                                            <div class="col-md-8">
+                                                                                <select ng-model="book.LandMark" class="form-control">
+                                                                                    <option value="">Select</option>
+                                                                                    <option value="PRNagar">PrNagar</option>
+                                                                                    <option value="Motinagar">MotiNagar</option>
+                                                                                    <option value="Madhapur">Madhapur</option>
+                                                                                    <option value="Kukatpally">Kukatpally</option>
+                                                                                    <option value="Nampally">Nampally</option>
+                                                                                    <option value="Secunderabad">Secunderabad</option>
+                                                                                    <option value="SRNagar">SRNagar</option>
 
 
-                                                                            </select>
-                                                                        </div>
+                                                                                </select>
+                                                                                </div>
+                                                                            </div>
 
                                                                     </div>
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> Package:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > Package*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.Package" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">PickupPalce*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >PickupPalce*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PickupPalce" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -637,11 +641,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> DropPalce:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > DropPalce*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.DropPalce" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">ExtraCharge*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >ExtraCharge*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ExtraCharge" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -649,11 +653,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> NoofVehicle:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > NoofVehicle*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.NoofVehicle" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">ExecutiveName*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >Executive<br>Name*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ExecutiveName" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -661,11 +665,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> VID:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > VID*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.VID" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">BookingStatus*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >Booking<br>Status*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.BookingStatus" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -673,11 +677,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> CustomerSMS:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > CustomerSMS*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CustomerSMS" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">CancelReason*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >CancelReason*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CancelReason" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -685,11 +689,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> CBNo:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > CBNo*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CBNo" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">ModifiedBy*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >ModifiedBy*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ModifiedBy" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -697,11 +701,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> CancelBy:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > CancelBy*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CancelBy" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">ReconfirmedBy*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >Reconfirmed<br>By*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ReconfirmedBy" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -710,11 +714,11 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> AssignedBy:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > AssignedBy*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.AssignedBy" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
-                                                                            <label for="code" class="col-md-4 control-label" style="color:red;float:left">latitude*:<span class='require'></span></label>
+                                                                            <label for="code" class="col-md-4 control-label" >latitude*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.latitude" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
@@ -722,7 +726,7 @@
                                                                     <div class="row">
 
                                                                         <div class="col-md-6">
-                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="color:red;float:left"> longitude:<span class='require'>*</span></label>
+                                                                            <label for="AssginDriver" class="col-md-4 control-label" > longitude*:</label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.longitude" class="form-control" /><span class="help-block"></span></div>
                                                                         </div>
 
