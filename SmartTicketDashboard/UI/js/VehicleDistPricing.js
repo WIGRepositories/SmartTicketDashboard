@@ -177,7 +177,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.Changes = null;
     }
 
-
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({

@@ -2060,8 +2060,6 @@ namespace SmartTicketDashboard.Models
         public decimal BookingNo { get; set; }
 
         public string CloseStatus { get; set; }
-
-
     }
     public class HVUsers
     {
@@ -2158,5 +2156,54 @@ namespace SmartTicketDashboard.Models
         public DateTime EntryTime { get; set; }
         public string CloseStatus { get; set; }
     }
+
+    public class Vechlogin
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+
+        public int VechId { get; set; }
+        public string RegNo { get; set; }
+        public string DriverName { get; set; }
+        public string LoginLandMark { get; set; }
+        public string CurrentLandMark { get; set; }
+        public string StartKiloMtr { get; set; }
+        public string CurStatus { get; set; }
+        public string DriverMobileNo { get; set; }
+        public string ExecutiveName { get; set; }
+        public string Remarks { get; set; }
+        public int GenratedAmount { get; set; }
+        public int NoofTimesLogin { get; set; }
+        public int TotalGeneratedAmount { get; set; }
+        public string VechType { get; set; }
+
+    }
+
+    public class vechlogout
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public int VechId { get; set; }
+        public string RegNo { get; set; }
+        public string DriverName { get; set; }
+        public string LoginLandMark { get; set; }
+        public string CurrentLandMark { get; set; }
+        public string EndMtr { get; set; }
+        public string CurStatus { get; set; }
+        public string DriverMobileNo { get; set; }
+        public string ExecutiveName { get; set; }
+        public string Remarks { get; set; }
+        public int GenratedAmount { get; set; }
+        public int NoofTimesLogin { get; set; }
+
+        public int TotalGeneratedAmount { get; set; }
+
+        public string VechType { get; set; }
+
+
+    }
+
 }
 

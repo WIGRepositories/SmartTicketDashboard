@@ -308,7 +308,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var booking = {
             flag: 'U',
-            Id:"",
+            Id: booking.Id,
             BNo: booking.BNo,
             BookingType: booking.BookingType,
             ReqVehicle: booking.ReqVehicle,

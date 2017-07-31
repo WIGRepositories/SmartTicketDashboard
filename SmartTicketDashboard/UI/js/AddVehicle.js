@@ -388,7 +388,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             needvehicleType: '1',
             needServiceType: '1',
             needvehiclelayout: '1',
-            needCompanyName: '1'
+            needCompanyName: '1',
+            needVehicleModel:'1'
         };
 
         var req = {

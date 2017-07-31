@@ -106,6 +106,8 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
+    <Content Include="UI\js\Vehiclelogin.js" />
+    <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
@@ -590,6 +592,8 @@
     <Content Include="UI\VehicleHoursBasePricing.html" />
     <Content Include="UI\VehicleLayout.html" />
     <Content Include="UI\Landmark.html" />
+    <Content Include="UI\Vehiclelogin.html" />
+    <Content Include="UI\VehicleLogout.html" />
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
@@ -2124,6 +2128,8 @@
     <Compile Include="Controllers\UserTypeController.cs" />
     <Compile Include="Controllers\VehicleDistPricingController.cs" />
     <Compile Include="Controllers\VehicleLayoutController.cs" />
+    <Compile Include="Controllers\VehicleloginController.cs" />
+    <Compile Include="Controllers\VehicleLogoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\VehiclePricingController.cs" />
     <Compile Include="Controllers\vehicletypesController.cs" />

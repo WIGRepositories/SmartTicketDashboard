@@ -45,7 +45,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if ($scope.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
-        }       
+        }      
        
         if (newVehicle.DId == null || newVehicle.DId.DId == null) {
             alert('Please Enter DriverName');
