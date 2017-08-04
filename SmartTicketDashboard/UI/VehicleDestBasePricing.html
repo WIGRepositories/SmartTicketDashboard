@@ -473,7 +473,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <label for="Fax" class="col-md-4 control-label" >FromTime<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="FromTime" type="time" ng-model="Dist.FromTime" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <div class="col-md-8"><input  type="time" ng-model="Dist.FromTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                                 </div>
 
@@ -482,7 +482,7 @@
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
                                                                                     <label for="Fax" class="col-md-4 control-label" >ToTime<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="ToTime" type="time" ng-model="Dist.ToTime" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <div class="col-md-8"><input  type="time" ng-model="Dist.ToTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                                 </div>
 
@@ -519,10 +519,10 @@
                                                         </div>
                                                         <div class="modal-body" ng-model="currGroup">
 
-                                                            <div class="row">
+                                                            <div class="row" style="margin-bottom:7px">
 
                                                                 <div class="col-md-6">
-                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left"> VehicleModel:<span class='require'>*</span></label>
+                                                                    <label for="Name" class="col-md-4 control-label"> VehicleModel:<span class='require'></span></label>
                                                                     <div class="col-md-8">
                                                                         <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm1" class="form-control">
                                                                             <option value="">Select</option>
@@ -534,7 +534,7 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">FromKm:<span class='require'></span></label>
+                                                                    <label for="Fax" class="col-md-4 control-label">FromKm:<span class='require'></span></label>
                                                                     <div class="col-md-8"><input id="FromKm" type="text" ng-model="Changes.FromKm" class="form-control" /><span class="help-block"></span></div>
 
                                                                 </div>
@@ -568,8 +568,8 @@
 
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">FromTime:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="FromTime" type="text" ng-model="Changes.FromTime" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float: left">FromTime:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input type="time" ng-model="Changes.FromTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                 </div>
 
@@ -578,8 +578,8 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">ToTime:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="ToTime" type="text" ng-model="Changes.ToTime" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float: left">ToTime:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input  type="time" ng-model="Changes.ToTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                 </div>
 
@@ -701,8 +701,7 @@
     <script src="js/jquery.menu.js"></script>
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
-    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-    <script src="vendors/bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>    
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
     <script src="js/angular.js"></script>

@@ -28,7 +28,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vc = {
             // needfleetowners:'1',
             needvehicleType: '1',
-            needvehicleModel: '1'
+            needvehicleMake: '1'
 
         };
 
@@ -205,7 +205,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DriverMobileNo: $scope.logout.m.DId,
             LoginLandMark: logout.LoginLandMark,
             CurrentLandMark: logout.CurrentLandMark,
-            StartKiloMtr: logout.StartKiloMtr,
+            EndMtr: logout.EndMtr,
             CurStatus: logout.CurStatus,
             NoofTimesLogin: logout.NoofTimesLogin1,
             RegNo: $scope.vm.Id,
@@ -242,7 +242,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.clearvehlogout = function () {
-        $scope.vl = null;
+        $scope.logout = null;
     }
 
 

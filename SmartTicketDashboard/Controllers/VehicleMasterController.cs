@@ -40,7 +40,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
 
-        public DataTable Vehicles(vehicle v)
+        public DataTable Vehicles(vehiclemas v)
         {
             SqlConnection conn = new SqlConnection();
 
@@ -60,7 +60,6 @@ namespace SmartTicketDashboard.Controllers
             s.Value = v.Id;
             cmd.Parameters.Add(s);
 
-
             SqlParameter i = new SqlParameter("@VID", SqlDbType.Int);
             i.Value = v.VID;
             cmd.Parameters.Add(i);
@@ -77,8 +76,6 @@ namespace SmartTicketDashboard.Controllers
             r.Value = v.Type;
             cmd.Parameters.Add(r);
 
-
-
             SqlParameter a = new SqlParameter("@OwnerName", SqlDbType.VarChar, 50);
             a.Value = v.OwnerName;
             cmd.Parameters.Add(a);
@@ -90,18 +87,7 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter f = new SqlParameter("@Engineno", SqlDbType.VarChar, 50);
             f.Value = v.Engineno;
             cmd.Parameters.Add(f);
-
-            SqlParameter g = new SqlParameter("@WirelessFleetNo", SqlDbType.VarChar, 50);
-            g.Value = v.WirelessFleetNo;
-            cmd.Parameters.Add(g);
-
-            SqlParameter h = new SqlParameter("@AllotmentType", SqlDbType.VarChar, 50);
-            h.Value = v.AllotmentType;
-            cmd.Parameters.Add(h);
-
-            SqlParameter j = new SqlParameter("@RoadNo", SqlDbType.VarChar, 50);
-            j.Value = v.RoadNo;
-            cmd.Parameters.Add(j);
+                  
 
             SqlParameter k = new SqlParameter("@RoadTaxDate", System.Data.SqlDbType.Date);
             k.Value = v.RoadTaxDate;
@@ -149,15 +135,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter wf = new SqlParameter("@DayOnly", SqlDbType.VarChar, 50);
             wf.Value = v.DayOnly;
-            cmd.Parameters.Add(wf);
-
-            SqlParameter wd = new SqlParameter("@DayNight", SqlDbType.VarChar, 50);
-            wd.Value = v.DayNight;
-            cmd.Parameters.Add(wd);
-
-            SqlParameter wa = new SqlParameter("@InsProvider", SqlDbType.VarChar, 50);
-            wa.Value = v.InsProvider;
-            cmd.Parameters.Add(wa);
+            cmd.Parameters.Add(wf);            
 
             SqlParameter ca = new SqlParameter("@VechMobileNo", SqlDbType.VarChar, 50);
             ca.Value = v.VechMobileNo;
@@ -171,7 +149,18 @@ namespace SmartTicketDashboard.Controllers
             wsd.Value = v.NewEntry;
             cmd.Parameters.Add(wsd);
 
-           
+            SqlParameter vv = new SqlParameter("@VehicleModelId", SqlDbType.Int);
+            vv.Value = v.VehicleModelId;
+            cmd.Parameters.Add(vv);
+
+
+            SqlParameter vf = new SqlParameter("@ServiceTypeId", SqlDbType.Int);
+            vf.Value = v.ServiceTypeId;
+            cmd.Parameters.Add(vf);
+
+            SqlParameter vg = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+            vg.Value = v.VehicleGroupId;
+            cmd.Parameters.Add(vg);
 
 
 

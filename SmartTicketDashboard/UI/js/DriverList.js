@@ -36,7 +36,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter NAme');
             return;
         }
-        if (Driverlist.Address == null) {
+        if (Driverlist.Address1 == null) {
             alert('Please Enter Address');
             return;
         }
@@ -106,7 +106,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DId:-1,
             CompanyId: Driverlist.Id,
             NAme: Driverlist.NAme,
-            Address: Driverlist.Address,
+            Address: Driverlist.Address1,
             City: Driverlist.City,
             Pin: Driverlist.Pin,
             PAddress: Driverlist.PAddress,
@@ -122,6 +122,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BadgeNo: Driverlist.BadgeNo,
             BadgeExpDate: Driverlist.BadgeExpDate,
             Remarks: Driverlist.Remarks,
+            FileName: $scope.doc,
+            FileContent: $scope.doc,
+            docType:$scope.doc
 
             
         }
@@ -272,8 +275,53 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.clearDriverlist = function () {
         $scope.cur = null;
     }
+    $scope.onFileSelect = function (files, $event) {
+
+        //$scope.docfiles = [];
+        var ext = files[0].name.split('.').pop();
+        fileReader.readAsDataUrl(files[0], $scope, (ext == 'csv') ? 1 : 4).then(function (result) {
+
+            if (result.length > 2097152) {
+                alert('Cannot upload file greater than 2 MB.');
+                $event.stopPropagation();
+                $event.preventDefault();
+                return;
+            }
+
+            var doc =
+                 {                                   
+                     
+                     docType: ($scope.ppdoc == null || $scope.ppdoc.docType == null) ? null : $scope.ppdoc.docType.Name,//
+                     FileName: files[0].name,
+                     FileContent: result,                   
+                     
+                 }
 
 
+            //check if already the file exists                       
+            for (cnt = 0; cnt < $scope.docfiles.length; cnt++) {
+                if ($scope.docfiles[cnt].FileName == files[0].name) {
+                    $scope.docfiles.splice(cnt, 1);
+                }
+            }
+
+            $scope.docfiles.push(doc);
+            //if ($scope.DocFiles)
+            //{
+            //    $scope.DocFiles.push(doc);
+            //}
+
+        });
+    };
+
+    $scope.validateFile = function ($event) {
+       //  {
+       //     alert('Please select docType');
+       // //    $event.stopPropagation();
+       // //    $event.preventDefault();
+       //     return;
+       //}
+    }
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({

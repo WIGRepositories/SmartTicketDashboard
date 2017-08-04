@@ -506,7 +506,20 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
-                                                                </div>
+                                                                    <div class="row">
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="AssginDriver" class="control-label">Permanent<br>MobNo:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                                <div class="col-md-5">
+                                                                                    <div class="form-group">
+                                                                                        <div class="input-icon right">
+                                                                                            <input type="text" ng-model="driver.PMobNo" class="form-control" /><span class="help-block"></span>
+                                                                                        </div>
+                                                                            </div>
+                                                                    </div>
+                                                                   </div>
                                                                 <div class="form-actions">
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(driver,'U');">Save</button>
@@ -583,12 +596,9 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                    <div class="text-center mbl">
-
-                                                                                        <a href="#" class="btn btn-green">
-                                                                                            <i class="fa fa-upload"></i>&nbsp;
-                                                                                            Upload
-                                                                                        </a>
+                                                                                    <div class="text-center mbl">                                                                                      
+                                                                                            <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".jpg,.png,.jpeg" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
+                                                                                          
                                                                                     </div>
                                                                                 </div>
 
@@ -597,13 +607,14 @@
                                                                             <div class="col-md-9">
 
 
+
                                                                                 <div id="generalTabContent" class="tab-content">
                                                                                     <div id="tab-edit" class="tab-pane fade in active row">
 
                                                                                         <div class="row">
                                                                                         <div class="col-md-6">
                                                                                             <div class="col-md-4">
-                                                                                                <label for="AssginDriver" class=" control-label" style="float:left">CompanyId*:</label>
+                                                                                                <label for="AssginDriver" class=" control-label" style="float:left">Company:</label>
                                                                                             </div>
 
                                                                                             <div class="col-md-8">
@@ -613,7 +624,7 @@
                                                                                             </div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
-                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Name*:</label>
+                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Name:</label>
                                                                                                 <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.NAme" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
 
@@ -625,11 +636,11 @@
 
                                                                                            
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Address*:<span class='require'></span></label>
-                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Address" class="form-control" /><span class="help-block"></span></div>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Address:<span class='require'></span></label>
+                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Address1" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">City*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">City:</label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.City" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -637,12 +648,12 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Present<br>Address*:<span class='require'></span></label>
-                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PAddress" class="form-control" /><span class="help-block"></span></div>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Pin:<span class='require'></span></label>
+                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Pin" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Pin*:</label>
-                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Pin" class="form-control" /><span class="help-block"></span></div>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent Address:</label>
+                                                                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PAddress" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
 
                                                                                     </div>
@@ -650,11 +661,11 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">PresentCity*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Permanent City:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PCity" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">PresentPin*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent Pin:</label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PPin" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
 
@@ -663,11 +674,11 @@
 
                                                                                            
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">OffMobileNo*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Off Mobile No:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.OffMobileNo" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent<br>MobNo*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent<br>MobNo:</label>
                                                                                             <div class="col-md-8"><input type="text" ng-model="Driverlist.PMobNo" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -675,11 +686,11 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">DOB*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">DOB:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><input type="date" ng-model="Driverlist.DOB" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">DOJ*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">DOJ:</label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.DOJ" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -687,7 +698,7 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">BloodGroup*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">BloodGroup:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><select ng-model="Driverlist.BloodGroup" class="form-control">
                                                                                                 <option value="">Select</option>
                                                                                                 <option value="A+">A+</option>
@@ -702,7 +713,7 @@
                                                                                                                             </div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">LicenceNo*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">LicenceNo:</label>
                                                                                             <div class="col-md-8"><input type="text" ng-model="Driverlist.LicenceNo" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -711,11 +722,11 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">LiCExpDate*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">LiCExpDate:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.LiCExpDate" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">BadgeNo*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">BadgeNo:</label>
                                                                                             <div class="col-md-8"><input type="text" ng-model="Driverlist.BadgeNo" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -723,11 +734,11 @@
 
                                                                                             
                                                                                         <div class="col-md-6">
-                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">BadgeExpDate*:<span class='require'></span></label>
+                                                                                            <label for="code" class="col-md-4 control-label" style="float:left">BadgeExpDate:<span class='require'></span></label>
                                                                                             <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.BadgeExpDate" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Remarks*:</label>
+                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Remarks:</label>
                                                                                             <div class="col-md-8"><input type="text" ng-model="Driverlist.Remarks" class="form-control" /><span class="help-block"></span></div>
                                                                                         </div>
                                                                                     </div>
@@ -822,6 +833,7 @@
                 </div>
             </div>
         </div>
+    </div>
     </div>
     
     <script src="js/jquery-1.10.2.min.js"></script>

@@ -38,6 +38,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (newVehicle, flag) {
              
+        if ($scope.vm.RegistrationNo == null) {
+            alert('Please Enter vechid');
+            return;
+        }
         if ($scope.vm.VID == null) {
             alert('Please Enter vechid');
             return;
@@ -47,10 +51,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }      
        
-        if (newVehicle.DId == null || newVehicle.DId.DId == null) {
+        if ($scope.d.DId == null || $scope.d.DId.DId == null) {
             alert('Please Enter DriverName');
             return;
-        }
+        }        
         if (newVehicle.EffectiveDate == null) {
             alert('Please Enter EffectiveDate');
             return;
@@ -65,13 +69,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Id: -1,
             VechID: $scope.vm.VID,
             CompanyId: $scope.c.Id,
-            VehicleType: newVehicle.VehicleType,
-            PhoneNo: newVehicle.PhoneNo,      
-            RegistrationNo: $scope.vm.VID,
-            DriverName: newVehicle.DriverName,
-            DriverId: newVehicle.DId.DId,
+            VehicleType: $scope.vm.Type,
+            PhoneNo: $scope.d.DId.PMobNo,
+            AltPhoneNo:$scope.d.DId.AltPhoneNo,
+            RegistrationNo: $scope.vm.RegistrationNo,
+            DriverName: $scope.d.DId.NAme,
+            DriverId:$scope.d.DId.DId,
             EffectiveDate: newVehicle.EffectiveDate,
             EffectiveTill: newVehicle.EffectiveTill,
+            VehicleModelId: $scope.vm.VehicleModelId,
+            ServiceTypeId: $scope.vm.ServiceTypeId,
+            VehicleGroupId:$scope.vm.VehicleGroupId,
             flag: "I"
         }
 
@@ -100,14 +108,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.save = function (AssginDriver, flag) {
 
-        if (AssginDriver == null) {
-           // alert('Please Enter SLNO')
-        }        
-        if (AssginDriver.Id == null) {
-            alert('Please Enter VID');
+        if ($scope.cc.Id == null) {
+            alert('Please Enter Company');
             return;
-        }        
-        if (AssginDriver.VehicleType == null) {
+        }
+            
+        if ($scope.v.Type == null) {
             alert('Please Enter VehicleType');
             return;
 
@@ -117,11 +123,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
 
         }
-        if (AssginDriver.RegistrationNo == null) {
+        if ($scope.vm1.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');
             return;
         }
-        if (AssginDriver.DriverName == null) {
+        if ($scope.d.NAme == null) {
             alert('Please Enter DriverName');
             return;
         }
@@ -136,14 +142,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var AssginDriver = {
             Id: AssginDriver.Id,
-            VechID:$scope.vm.id,
-            VehicleType: AssginDriver.VehicleType,
+            VechID:AssginDriver.VechID,
+            VehicleType: $scope.v.Type,
             PhoneNo: AssginDriver.PhoneNo,
-            RegistrationNo: $scope.vm.RegistrationNo,
-            DriverName: AssginDriver.DriverName,
+            RegistrationNo: $scope.vm1.RegistrationNo,
+            DriverName: $scope.d.NAme,
             EffectiveDate: AssginDriver.EffectiveDate,
             EffectiveTill: AssginDriver.EffectiveTill,
-            DriverId:AssginDriver.Did.Did,
+            DriverId:$scope.d.DId,
             flag: "U"
         }
 
@@ -167,7 +173,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.AssginDriver = null;
+    $scope.AssginDriver1 = null;
 
     $scope.setdrivers = function (a) {
         $scope.AssginDriver = a;

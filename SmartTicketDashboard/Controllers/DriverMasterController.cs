@@ -17,7 +17,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpGet]
 
         [Route("api/DriverMaster/GetMaster")]
-        public DataTable Master(int DId)
+        public DataTable GetMaster(int DId)
         {
             DataTable dt = new DataTable();
 
@@ -133,6 +133,19 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter w = new SqlParameter("@Remarks", SqlDbType.VarChar, 50);
             w.Value = d.Remarks;
             cmd.Parameters.Add(w);
+
+            SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar,100);
+            parentid.Value = d.FileContent;
+            cmd.Parameters.Add(parentid);
+
+            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
+            FileName.Value = d.FileName;
+            cmd.Parameters.Add(FileName);
+
+            SqlParameter Gid1 = new SqlParameter("@DocType", SqlDbType.VarChar,100);
+            Gid1.Value = d.docType;
+            cmd.Parameters.Add(Gid1);
+
 
 
             DataTable dt = new DataTable();

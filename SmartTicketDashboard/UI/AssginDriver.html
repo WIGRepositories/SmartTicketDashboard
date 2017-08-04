@@ -416,111 +416,125 @@
                                                  <div class="row mbm">
 
                                                      <div class="actions">
-                                                         
+
                                                          <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Driver</button>
                                                      </div>
 
-
-                                                     <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                         <div class="modal-dialog">
-                                                             <div class="modal-content">
+                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                         <div class=" modal-dialog modal-lg">
+                                                             <div class="modal-content" ng-model="newVehicle">
                                                                  <div class="modal-header modal-header-primary">
                                                                      <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                     <h4 id="modal-header-primary-label" class="modal-title">Edit Assign Driver</h4>
+                                                                     <h4 id="modal-header-primary-label" class="modal-title">Assign Driver</h4>
                                                                  </div>
-                                                                 <div class="modal-body" ng-model="AssginDriver">
+                                                                 <div class="modal-body">
 
-                                                                     <div class="row">
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">VechID:<span class='require'></span></label>
-                                                                             <div class="col-md-6">
-                                                                                 <select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="AssginDriver" ng-init="Gettypes();" class="form-control">
-                                                                                     <option value="">Select</option>
-                                                                                 </select>
+
+                                                                     <div class="row ">
+
+                                                                         <div class="col-md-12">
+
+                                                                             <div class="row mtl">
+                                                                                 <div class="col-md-3">
+                                                                                     <div class="form-group">
+                                                                                         <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
+                                                                                         <div class="text-center mbl">
+                                                                                             <a href="#" class="btn btn-green">
+                                                                                                 <i class="fa fa-upload"></i>&nbsp;
+                                                                                                 Upload
+                                                                                             </a>
+                                                                                         </div>
+                                                                                     </div>
+
+                                                                                 </div>
+                                                                                 <div class="col-md-9">
+                                                                                     <ul class="nav nav-tabs"></ul>
+                                                                                     <div id="generalTabContent" class="tab-content">
+                                                                                         <div id="tab-edit" class="tab-pane fade in active">
+                                                                                             <form action="#" class="form-horizontal"></form>
+
+                                                                                             <div class="modal-body" ng-init="GetCompanys();" ng-model="newVehicle">
+                                                                                                 <div class="row mbm">
+                                                                                                     <div style="text-align:right">
+                                                                                                         <label for="selCompany" class="col-md-4 control-label">Company:<span class='require'></span></label>
+                                                                                                     </div>
+                                                                                                     <div class="col-md-6">
+
+                                                                                                         <select ng-options="c.Name for c in Companies track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                                                                                             <option value="">Select</option>
+                                                                                                         </select>
+                                                                                                     </div>
+                                                                                                 </div>
+
+
+                                                                                                 <div class="row mbm">
+                                                                                                     <div style="text-align:right">
+                                                                                                         <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                                                                                     </div>
+                                                                                                     <div class="col-md-6">
+                                                                                                         <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm" class="form-control">
+                                                                                                             <option value="">Select</option>
+                                                                                                         </select>
+                                                                                                     </div>
+                                                                                                 </div>
+                                                                                                 <div class="row mbm">
+                                                                                                     <div style="text-align:right">
+                                                                                                         <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
+                                                                                                     </div>
+                                                                                                     <div class="col-md-6">
+                                                                                                         <select ng-options="d.NAme for d in listdrivers track by d.DId" class="form-control" ng-model="d.DId">
+                                                                                                             <option value="">Select</option>
+                                                                                                         </select>
+                                                                                                     </div>
+                                                                                                 </div>
+
+                                                                                                 <div class="row mbm">
+                                                                                                     <div style="text-align:right">
+                                                                                                         <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
+                                                                                                     </div>
+                                                                                                     <div class="col-md-6">
+                                                                                                         <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
+                                                                                                     </div>
+                                                                                                 </div>
+                                                                                                 <div class="row mbm">
+                                                                                                     <div style="text-align:right">
+                                                                                                         <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
+                                                                                                     </div>
+                                                                                                     <div class="col-md-6">
+                                                                                                         <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
+                                                                                                     </div>
+                                                                                                 </div>
+                                                                                             </div>
+                                                                                             <div class="form-actions">
+                                                                                                 <div style="text-align:center">
+
+                                                                                                     <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
+
+                                                                                                     <a href="AssginDriver.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                                                                                 </div>
+                                                                                             </div>
+                                                                                         </div>
+                                                                                     </div>
+
+
+
+                                                                                 </div>
+
                                                                              </div>
-                                                                         </div>
-                                                                     </div>
-                                                                     <div class="row">
 
-                                                                         
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">VehicleType:<span class='require'></span></label>
-                                                                             <div class="col-md-8">
-                                                                                 <select ng-options="v.Type for v in vehicles track by v.Id" class="form-control" ng-model="AssginDriver" ng-init="Gettypes();">
-                                                                                     <option value="">Select</option>
-                                                                                 </select>
-                                                                             </div>
-                                                                         </div>
-                                                                         
-
-                                                                     </div>
-                                                                     
-                                                                     <div class="row">
-
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">PhoneNo:<span class='require'></span></label>
-                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
-                                                                         </div>
-                                                                         </div>
-                                                                     <div class="row">
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">RegistrationNo:<span class='require'></span></label>
-                                                                             <div class="col-md-8">
-                                                                                 <select ng-options="v.RegistrationNo for v in vehicles track by v.id" ng-model="AssginDriver" ng-init="Gettypes();">
-                                                                                     <option value="">Select</option>
-                                                                                 </select>
-                                                                             </div>
-                                                                         </div>
-
-                                                                     </div>
-
-
-                                                                     <div class="row">
-
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">DriverName:<span class='require'></span></label>
-                                                                             <div class="col-md-8">
-                                                                                 <select ng-options="d.NAme for d in drivers track by d.DId" class="form-control" ng-model="AssginDriver">
-                                                                                     <option value="">Select</option>
-                                                                                 </select>
-                                                                             </div>
-                                                                         </div>
-                                                                     </div>
-                                                                     <div class="row">
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">EffectiveDate:<span class='require'></span></label>
-                                                                             <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveDate" class="form-control" /><span class="help-block"></span></div>
-                                                                         </div>
-
-                                                                     </div>
-
-                                                                     <div class="row">
-                                                                         <div class="col-md-6">
-                                                                             <label for="Name" class="col-md-4 control-label">EffectiveTill:<span class='require'></span></label>
-                                                                             <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveTill" class="form-control" /><span class="help-block"></span></div>
-                                                                         </div>
-                                                                     </div>                                                            
-                                                                     <div class="row">
-                                                                         <div style="text-align:right">
-                                                                             <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
-                                                                         </div>
-                                                                         <div class="col-md-4">
-                                                                             <input type="checkbox" checked ng-model="AssginDriver.Active" />
 
                                                                          </div>
                                                                      </div>
-                                                                 </div>
-                                                                 <div class="form-actions">
-                                                                     <div class="col-md-offset-3 col-md-9">
-                                                                         <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(AssginDriver,'U');">Save</button>
-                                                                         <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                                                                     </div>
+
+
                                                                  </div>
                                                              </div>
+
                                                          </div>
-
-
+                                                         <!--END CONTENT-->
                                                      </div>
+                                                     
                                                  </div>
                                                  <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                      <thead>
@@ -528,14 +542,13 @@
 
 
                                                              <!--<th width="10%">VechID</th>-->
-                                                             <th width="10%">VehicleType</th>
-                                                             <th width="10%">RegistrationNo</th>
-                                                             <th width="10%">DriverName</th>
+                                                             <th width="10%">Vehicle Type</th>
+                                                             <th width="10%">Registration No</th>
+                                                             <th width="10%">Driver Name</th>
                                                              <th width="10%">Mobile No</th>
-                                                             <th width="10%">Alt. Mobile No</th>
-                                                             <th width="10%">EffectiveDate</th>
-                                                             <th width="10%">EffectiveTill</th>
-                                                             
+                                                             <!--<th width="10%">Alt. Mobile No</th>-->
+                                                             <th width="10%">Effective Date</th>
+                                                             <th width="10%">Effective Till</th>                                                             
                                                              <th>Active</th>
                                                              <th>Edit</th>
 
@@ -547,9 +560,9 @@
                                                              <!--<td>{{a.VechID}}</td>-->
                                                              <td>{{a.VehicleType}}</td>
                                                              <td>{{a.RegistrationNo}}</td>
-                                                             <td>{{a.NAme}}</td>
-                                                             <td>{{a.PMobNo}}</td>
-                                                             <td>{{a.AltPhoneNo}}</td>
+                                                             <td>{{a.DriverName}}</td>
+                                                             <td>{{a.PhoneNo}}</td>
+                                                             <!--<td>{{a.AltPhoneNo}}</td>-->
                                                              <td>{{a.EffectiveDate}}</td>
                                                              <td>{{a.EffectiveTill}}</td>
                                                              
@@ -566,120 +579,103 @@
                                                      </tbody>
 
                                                  </table>
-                                                 <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                     <div class=" modal-dialog modal-lg">
-                                                         <div class="modal-content" ng-model="newVehicle">
+                                                 <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                     <div class="modal-dialog">
+                                                         <div class="modal-content">
                                                              <div class="modal-header modal-header-primary">
                                                                  <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                 <h4 id="modal-header-primary-label" class="modal-title">Assign Driver</h4>
+                                                                 <h4 id="modal-header-primary-label" class="modal-title">Edit Vehicle</h4>
                                                              </div>
-                                                             <div class="modal-body">
+                                                             <div class="modal-body" ng-model="AssginDriver">
 
+                                                                 <div class="row" style="margin-bottom:7px">
+                                                                     <div class="col-md-6">
+                                                                         <label for="selCompany" class="col-md-4 control-label">Company:<span class='require'></span></label>                                                                    
+                                                                         <div class="col-md-8">
+                                                                             <select ng-options="cc.Name for cc in Companies track by cc.Id" ng-model="cc" class="form-control" ng-change="GetMaster()">
+                                                                                 <option value="">Select</option>
+                                                                             </select>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
+                                                                         <div class="col-md-8">
+                                                                             <select ng-options="v.Type for v in Vehicles track by v.Id" class="form-control" ng-model="v">
+                                                                                 <option value="">Select</option>
+                                                                             </select>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
 
-                                                                 <div class="row ">
-                                                                     
-                                                                     <div class="col-md-12">
-                                                                        
-                                                                         <div class="row mtl">
-                                                                             <div class="col-md-3">
-                                                                                 <div class="form-group">
-                                                                                     <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                     <div class="text-center mbl">
-                                                                                         <a href="#" class="btn btn-green">
-                                                                                             <i class="fa fa-upload"></i>&nbsp;
-                                                                                             Upload
-                                                                                         </a>
-                                                                                     </div>
-                                                                                 </div>
-                                                                                 
-                                                                             </div>
-                                                                             <div class="col-md-9">
-                                                                                 <ul class="nav nav-tabs"></ul>
-                                                                                 <div id="generalTabContent" class="tab-content">
-                                                                                     <div id="tab-edit" class="tab-pane fade in active">
-                                                                                         <form action="#" class="form-horizontal"></form>
+                                                                 <div class="row">
 
-                                                                                         <div class="modal-body" ng-init="GetCompanys();" ng-model="newVehicle">
-                                                                                             <div class="row mbm">
-                                                                                                 <div style="text-align:right">
-                                                                                                     <label for="selCompany" class="col-md-4 control-label" style="color:red;">Company:<span class='require'>*</span></label>
-                                                                                                 </div>
-                                                                                                 <div class="col-md-6">
-
-                                                                                                     <select ng-options="c.Name for c in Companies track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
-                                                                                                         <option value="">Select</option>
-                                                                                                     </select>
-                                                                                                 </div>
-                                                                                             </div>
-
-
-                                                                                             <div class="row mbm">
-                                                                                                 <div style="text-align:right">
-                                                                                                     <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                                                                                 </div>
-                                                                                                 <div class="col-md-6">
-                                                                                                     <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm">
-                                                                                                         <option value="">Select</option>
-                                                                                                     </select>
-                                                                                                 </div>
-                                                                                             </div>
-                                                                                             <div class="row mbm">
-                                                                                                 <div style="text-align:right">
-                                                                                                     <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
-                                                                                                 </div>
-                                                                                                 <div class="col-md-6">
-                                                                                                     <select ng-options="d.NAme for d in listdrivers track by d.DId" class="form-control" ng-model="newVehicle.DId">
-                                                                                                         <option value="">Select</option>
-                                                                                                     </select>
-                                                                                                 </div>
-                                                                                             </div>
-
-                                                                                             <div class="row mbm">
-                                                                                                 <div style="text-align:right">
-                                                                                                     <label for="Name" class="col-md-4 control-label">EffectiveDate:<span class='require'></span></label>
-                                                                                                 </div>
-                                                                                                 <div class="col-md-6">
-                                                                                                     <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
-                                                                                                 </div>
-                                                                                             </div>
-                                                                                             <div class="row mbm">
-                                                                                                 <div style="text-align:right">
-                                                                                                     <label for="Name" class="col-md-4 control-label">EffectiveTill:<span class='require'></span></label>
-                                                                                                 </div>
-                                                                                                 <div class="col-md-6">
-                                                                                                     <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
-                                                                                                 </div>
-                                                                                             </div>
-                                                                                         </div>
-                                                                                     <div class="form-actions">
-                                                                                         <div style="text-align:center">
-
-                                                                                             <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
-
-                                                                                             <a href="AssginDriver.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
-
-                                                                                         </div>
-                                                                                     </div>
-                                                                                 </div>
-                                                                             </div>
-
-
-
-                                                                                     </div>
-
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Phone No:<span class='require'></span></label>
+                                                                         <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                                                         <div class="col-md-8">
+                                                                             <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm1" class="form-control">
+                                                                                 <option value="">Select</option>
+                                                                             </select>
+                                                                         </div>
                                                                      </div>
 
+                                                                 </div>
+
+
+                                                                 <div class="row">
+
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
+                                                                         <div class="col-md-8">
+                                                                             <select ng-options="d.NAme for d in listdrivers track by d.DId" class="form-control" ng-model="d">
+                                                                                 <option value="">Select</option>
+                                                                             </select>
+                                                                         </div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
+                                                                         <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveDate" class="form-control" /><span class="help-block"></span></div>
+                                                                     </div>
 
                                                                  </div>
+
+                                                                 <div class="row">
+                                                                     <div class="col-md-6">
+                                                                         <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
+                                                                         <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveTill" class="form-control" /><span class="help-block"></span></div>
+                                                                     </div>
+                                                                 </div>
+                                                                 <div class="row">
+                                                                     <div style="text-align:right">
+                                                                         <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                     </div>
+                                                                     <div class="col-md-4">
+                                                                         <input type="checkbox" checked ng-model="AssginDriver.Active" />
+
+                                                                     </div>
+                                                                 </div>
                                                              </div>
-
-
+                                                             <div class="form-actions">
+                                                                 <div class="col-md-offset-3 col-md-9">
+                                                                     <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(AssginDriver,'U');">Save</button>
+                                                                     <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                 </div>
+                                                             </div>
                                                          </div>
                                                      </div>
 
+
                                                  </div>
-                                                 <!--END CONTENT-->
-                                             </div>
+                                                 
                                              <!--END PAGE WRAPPER-->
                                          </div>
                                      </div>

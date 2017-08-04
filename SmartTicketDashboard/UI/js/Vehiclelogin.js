@@ -28,7 +28,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vc = {
             // needfleetowners:'1',
             needvehicleType: '1',
-            needvehicleModel: '1'
+            needvehicleMake: '1',
+            
             
         };
 

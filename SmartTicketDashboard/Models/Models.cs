@@ -1467,7 +1467,8 @@ namespace SmartTicketDashboard.Models
         public int? cmpId { get; set; }
         public int? fleetownerId { get; set; }
         public int? needfleetownerroutes { get; set; }
-        public int? needvehicleModel { get; set; }
+        public int? needvehicleMake { get; set; }
+        public int? needVehicleGroup { get; set; }
 
 
     }
@@ -1838,8 +1839,12 @@ namespace SmartTicketDashboard.Models
         public string BadgeNo { get; set; }
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
+        public string FileContent { get; set; }
+        public string FileName { get; set; }
+        public string docType { get; set; }
+
     }
-    public class vehicle
+    public class vehiclemas
     {
         public string flag { get; set; }
         public int Id { get; set; }
@@ -1864,13 +1869,13 @@ namespace SmartTicketDashboard.Models
         public string OwnerPhoneNo { get; set; }
         public string HomeLandmark { get; set; }
         public DateTime ModelYear { get; set; }
-        public string DayOnly { get; set; }
-        public string DayNight { get; set; }
-        public string InsProvider { get; set; }
+        public string DayOnly { get; set; }       
         public string VechMobileNo { get; set; }
         public DateTime EntryDate { get; set; }
         public string NewEntry { get; set; }
-        
+        public int VehicleModelId { get; set; }   
+        public int ServiceTypeId { get; set; }
+        public int VehicleGroupId { get; set; }
     }
     public class allocatedriver
     {
@@ -1901,6 +1906,9 @@ namespace SmartTicketDashboard.Models
         public string ExecutiveName { get; set; }
         public DateTime EffectiveDate { get; set; }
         public DateTime EffectiveTill { get; set; }
+        public int VehicleModelId { get; set; }
+        public int ServiceTypeId { get; set; }
+        public int VehicleGroupId { get; set; }
     }
     public class UserLocation
     {
@@ -2177,6 +2185,9 @@ namespace SmartTicketDashboard.Models
         public int NoofTimesLogin { get; set; }
         public int TotalGeneratedAmount { get; set; }
         public string VechType { get; set; }
+        public int VehicleModelId { get; set; }
+        public int ServiceTypeId { get; set; }
+        public int VehicleGroupId { get; set; }
 
     }
 

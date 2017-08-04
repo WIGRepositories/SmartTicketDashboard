@@ -33,8 +33,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         //var newVD = initdata.newfleet;
-        if ($scope.initdata.newfleet.vt == null || $scope.initdata.newfleet.vt.Id == null)
+        if ($scope.initdata.newfleet.vt.Id == null || $scope.initdata.newfleet.vt.Id == null)
         {
+            alert('Please Enter Type');
+            return;
+        }
+        if ($scope.vm.Id == null || $scope.vm.Id == null) {
             alert('Please Enter Type');
             return;
         }
@@ -49,19 +53,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (newVehicle.Engineno == null) {
             alert('Please Enter Engineno');
             return;
-        }
-        if (newVehicle.WirelessFleetNo == null) {
-            alert('Please Enter WirelessFleetNo');
-            return;
-        }
-        if (newVehicle.AllotmentType == null) {
-            alert('Please Enter AllotmentType');
-            return;
-        }
-        if (newVehicle.RoadNo == null) {
-            alert('Please Enter RoadNo');
-            return;
-        }
+        }       
         if (newVehicle.RoadTaxDate == null) {
             alert('Please Enter RoadTaxDate');
             return;
@@ -110,12 +102,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter DayOnly');
             return;
         }
-        if (newVehicle.DayNight == null) {
-            alert('Please Enter DayNight');
-            return;
-        }
-        if (newVehicle.InsProvider == null) {
-            alert('Please Enter InsProvider');
+       
+        if ($scope.vr.Id == null || $scope.vr.Id == null) {
+            alert('Please Enter VechMobileNo');
             return;
         }
         if (newVehicle.VechMobileNo == null) {
@@ -138,12 +127,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             CompanyId: newVehicle.c.Id,
             RegistrationNo: newVehicle.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
+            VehicleModelId: $scope.vm.Id,
             OwnerName: newVehicle.OwnerName,
             ChasisNo: newVehicle.ChasisNo,
             Engineno: newVehicle.Engineno,
-            WirelessFleetNo: newVehicle.WirelessFleetNo,
-            AllotmentType: newVehicle.AllotmentType,
-            RoadNo: newVehicle.RoadNo,
             RoadTaxDate: newVehicle.RoadTaxDate,
             InsuranceNo: newVehicle.InsuranceNo,
             InsDate: newVehicle.InsDate,
@@ -156,8 +143,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             HomeLandmark: newVehicle.HomeLandmark,
             ModelYear: newVehicle.ModelYear,
             DayOnly: newVehicle.DayOnly,
-            DayNight: newVehicle.DayNight,
-            InsProvider: newVehicle.InsProvider,
+            VehicleGroupId: newVehicle.vg.Id,
+            ServiceTypeId: $scope.vr.Id,
             VechMobileNo: newVehicle.VechMobileNo,
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
@@ -189,35 +176,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.newVehicle = null;
-    $scope.GetVehicleConfig = function () {
-
-        var vc = {
-            // needfleetowners:'1',
-            needvehicleType: '1',
-            needServiceType: '1',
-            needvehiclelayout: '1',
-            needCompanyName: '1'
-        };
-
-        var req = {
-            method: 'POST',
-            url: '/api/VehicleConfig/VConfig',
-            //headers: {
-            //    'Content-Type': undefined
-
-            data: vc
-
-
-        }
-        $http(req).then(function (res) {
-            $scope.initdata = res.data;
-        });
-
-    }
+   
 
     $scope.save = function (vech, flag) {
-       
-        if (vech.Id == null) {
+        if (vech.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -225,7 +187,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter RegistrationNo');
             return;
         }
-        if (vech.Type == null) {
+        //var newVD = initdata.newfleet;
+        if ($scope.initdata.newfleet.vt.Id == null || $scope.initdata.newfleet.vt.Id == null) {
+            alert('Please Enter Type');
+            return;
+        }
+        if ($scope.vm.Id == null || $scope.vm.Id == null) {
             alert('Please Enter Type');
             return;
         }
@@ -239,18 +206,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         if (vech.Engineno == null) {
             alert('Please Enter Engineno');
-            return;
-        }
-        if (vech.WirelessFleetNo == null) {
-            alert('Please Enter WirelessFleetNo');
-            return;
-        }
-        if (vech.AllotmentType == null) {
-            alert('Please Enter AllotmentType');
-            return;
-        }
-        if (vech.RoadNo == null) {
-            alert('Please Enter RoadNo');
             return;
         }
         if (vech.RoadTaxDate == null) {
@@ -280,11 +235,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (vech.RCExpDate == null) {
             alert('Please Enter RCExpDate');
             return;
-        }
-        if (vech.CompanyVechile == null) {
-            alert('Please Enter CompanyVechile');
-            return;
-        }
+        }       
         if (vech.OwnerPhoneNo == null) {
             alert('Please Enter OwnerPhoneNo');
             return;
@@ -300,19 +251,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (vech.DayOnly == null) {
             alert('Please Enter DayOnly');
             return;
-        }
-        if (vech.DayNight == null) {
-            alert('Please Enter DayNight');
-            return;
-        }
-        if (vech.InsProvider == null) {
-            alert('Please Enter InsProvider');
-            return;
-        }
-        if (vech.VechMobileNo == null) {
-            alert('Please Enter VechMobileNo');
-            return;
-        }
+        }              
         if (vech.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
@@ -321,21 +260,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter NewEntry');
             return;
         }
-        
+
         var vech = {
 
             flag: 'U',
             Id:vech.Id,
             VID: vech.VID,
-            CompanyId: vech.Id,
+            CompanyId: vech.c.Id,
             RegistrationNo: vech.RegistrationNo,
-            Type: vech.Type,
+            Type: $scope.initdata.newfleet.vt.Id,
+            Category: $scope.vm.Id,
             OwnerName: vech.OwnerName,
             ChasisNo: vech.ChasisNo,
             Engineno: vech.Engineno,
-            WirelessFleetNo: vech.WirelessFleetNo,
-            AllotmentType: vech.AllotmentType,
-            RoadNo: vech.RoadNo,
             RoadTaxDate: vech.RoadTaxDate,
             InsuranceNo: vech.InsuranceNo,
             InsDate: vech.InsDate,
@@ -343,19 +280,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PolExpDate: vech.PolExpDate,
             RCBookNo: vech.RCBookNo,
             RCExpDate: vech.RCExpDate,
-            CompanyVechile: vech.CompanyVechile,
+            CompanyVechile: vech.CompanyVechile1,
             OwnerPhoneNo: vech.OwnerPhoneNo,
             HomeLandmark: vech.HomeLandmark,
             ModelYear: vech.ModelYear,
-            DayOnly: vech.DayOnly,
-            DayNight: vech.DayNight,
-            InsProvider: vech.InsProvider,
+            DayOnly: vech.DayOnly1,
+            VehicleGroupId: vech.vg1.Id,
             VechMobileNo: vech.VechMobileNo,
             EntryDate: vech.EntryDate,
             NewEntry: vech.NewEntry,
-            
+
 
             Active: (vech.Active == true) ? 1 : 0,
+
+
         }
 
         var req = {
@@ -409,10 +347,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vc = {
             // needfleetowners:'1',
             needvehicleType: '1',
-            needServiceType: '1',
-            needvehiclelayout: '1',
+            needServiceType: '1',            
             needCompanyName: '1',
-            needVehicleModel:'1'
+            needVehicleMake: '1',
+            needVehicleGroup: '1',
         };
 
         var req = {
