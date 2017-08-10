@@ -1839,9 +1839,9 @@ namespace SmartTicketDashboard.Models
         public string BadgeNo { get; set; }
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
-        //public string FileContent { get; set; }
-        //public string FileName { get; set; }
-        //public string docType { get; set; }
+        public string FileContent { get; set; }
+        public string FileName { get; set; }
+        public int DocTypeId { get; set; }
 
     }
     public class vehiclemas
