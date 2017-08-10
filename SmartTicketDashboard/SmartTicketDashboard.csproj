@@ -1384,9 +1384,6 @@
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.sln" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj.user" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.csproj.FileListAbsolute.txt" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.dll" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.pdb" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\create.sql" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\create.sql" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-sqlite-demo\sqlite3.exe" />
@@ -2374,8 +2371,6 @@
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.ttf" />
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.woff" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.suo" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\ResolveAssemblyReference.cache" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\server.ashx" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\config.php" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\server-html.php" />
