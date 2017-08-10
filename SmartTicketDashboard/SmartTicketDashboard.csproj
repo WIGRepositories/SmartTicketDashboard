@@ -2080,6 +2080,7 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
@@ -2480,13 +2481,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="UI\images\avatar\" />
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
