@@ -512,6 +512,20 @@
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
+                                                                        </div>                                                                        
+                                                                        <div class="row">
+                                                                            <div class="col-md-6">
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Logout Date:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <input id="Price" type="date" ng-model="vehlogout.LogoutDate" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Logout Time:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <input id="Price" type="time" ng-model="vehlogout.LogoutTime" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
@@ -519,7 +533,6 @@
                                                                                 <div class="col-md-8"><input id="Price" type="text" ng-model="vehlogout.TotalGeneratedAmount" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
-
                                                                         <div class="form-actions">
                                                                             <div style="text-align:center">
 
@@ -545,109 +558,52 @@
                                                             <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                                             <h4 id="modal-header-primary-label" class="modal-title">Edit Vehicle Logout</h4>
                                                         </div>
-                                                        <div class="modal-body" ng-init="GetCompanys();" ng-model="logout">
+                                                        <div class="modal-body"  ng-model="logout">
 
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="selCountry" class="col-md-4 control-label">Company</label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-options="c.Name for c in Companies track by c.Id" ng-model="c" class="form-control" ng-init="GetCompanys" ng-change="GetMaster()">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="selCountry" class="col-md-4 control-label">Vehicle Model</label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            <br />
-                                                            <div class="row">
 
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Reg No:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-options="v.RegistrationNo for v in Vehicles track by v.Id" ng-model="v" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Mobile No:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-options="m.PMobNo for m in listdrivers track by m.DId" ng-model="logout.m" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
                                                             <div class="row" style="margin-top:7px">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="vt" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Driver No:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.DriverNo" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Login LandMark:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.LoginLandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                            </div>
-
-                                                            <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Current LandMark:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.CurrentLandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">End Mtr:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.EndMtr" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Logout Latitude:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.LogoutLatitude" class="form-control" /><span class="help-block"></span></div>
+                                                                </div>                                                               
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">CurStatus:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <select ng-model="logout.CurStatus" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                            <option value="0">0</option>
-                                                                            <option value="1">1</option>
-                                                                        </select>
-                                                                    </div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Logout Longitude:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.LogoutLongitude" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">No of TimesLogin:<span class='require'></span></label>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Logout Date:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <select ng-model="logout.NoofTimesLogin1" class="form-control">
-                                                                            <option value="">Select</option>
-                                                                            <option value="1">1</option>
-                                                                            <option value="2">2</option>
-                                                                            <option value="3">3</option>
-                                                                            <option value="4">4</option>
-                                                                            <option value="5">5</option>
-                                                                        </select>
+                                                                        <input id="Price" type="date" ng-model="logout.LogoutDate" class="form-control" /><span class="help-block"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Total Generated Amount:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.TotalGeneratedAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Logout Time:<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <input id="Price" type="time" ng-model="logout.LogoutTime" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Status:<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+                                                                </div>
+                                                                <div class="form-actions">
+                                                                    <div style="text-align:center">
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="Save(logout,'U');">Save</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="form-actions">
-                                                                <div style="text-align:center">
-                                                                    <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="Save(logout,'U');">Save</button>
-                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
 
 
@@ -663,26 +619,25 @@
                                             <thead>
                                                 <tr>
 
-                                                    <th>RegNo</th>
-                                                    <th>LoginLandMark</th>
-                                                    <th>DriverMobileNo</th>
-                                                    <th>TotalGeneratedAmount</th>
-                                                    <th>VechType</th>
-                                                    <th>EndMtr</th>
+                                                    
+                                                    <th>DriverNo</th>
+                                                    <th>Logout Latitude</th>
+                                                    <th>Logout Longitude</th>
+                                                    <th>LogoutDate</th>
+                                                    <th>LogoutTime</th>
+                                                    <th>Status</th>
                                                     <th>Edit</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
                                                 <tr ng-repeat="vl in Vechout" class="gradeA">
-                                                    <td>{{vl.RegNo}}</td>
-                                                    <td>{{vl.LoginLandMark}}</td>
-                                                    <td>{{vl.DriverMobileNo}}</td>
-                                                    <td>{{vl.TotalGeneratedAmount}}</td>
-                                                    <td>{{vl.VechType}}</td>
-                                                    <td>{{vl.EndMtr}}</td>
-
-
+                                                    <td>{{vl.DriverNo}}</td>
+                                                    <td>{{vl.LogoutLatitude}}</td>
+                                                    <td>{{vl.LogoutLongitude}}</td>
+                                                    <td>{{vl.LogoutDate}}</td>
+                                                    <td>{{vl.LogoutTime}}</td>
+                                                    <td>{{vl.Status}}</td>
                                                     <td>
                                                         <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechout(vl);">
                                                             <i class="fa fa-edit"></i>&nbsp;

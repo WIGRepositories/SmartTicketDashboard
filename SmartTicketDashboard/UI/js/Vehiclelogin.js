@@ -4,7 +4,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.Getvech = function () {
-        $http.get("/api/Vehiclelogin/Getvech?VechId=1").then(function (response, req) {
+        $http.get("/api/Vehiclelogin/Getvech?DriverNo=9550588606").then(function (response, req) {
             $scope.Vechin = response.data;
         });
     }
