@@ -5,6 +5,27 @@ using System.Web;
 
 namespace SmartTicketDashboard.Models
 {
+
+    public class CardTypes
+    {
+        public int Id { get; set; }
+        public int Active { get; set; }
+        public string Cardtype { get; set; }
+        public string Desc1 { get; set; }
+        public int Typegrpid { get; set; }
+    }
+    public class CardUsers
+    {
+        public int CardType { get; set; }
+        public int CardNumber { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Emailid { get; set; }
+        public string MobileNo { get; set; }
+        public string Address { get; set; }
+    }
+
     public class Alerts
     {
         public int Id { get; set; }
@@ -137,6 +158,79 @@ namespace SmartTicketDashboard.Models
         public string Longitude { get; set; }
 
     }
+
+    public class Cards
+    {
+        public object CardId;
+        public object TransactionId;
+        public object TransactionNo;
+        public object TransactionDateTime;
+        public object TransactionName;
+        public object TransactionType;
+        public object TransactionAmount;
+        public object TransactionStatus;
+        public object TransactionLoc;
+        public object TransactionMode;
+        public int Id { get; set; }
+        public int CardNumber { get; set; }
+        public string CardName { get; set; }
+        public string CardType { get; set; }
+        public string CardModel { get; set; }
+        public string CardCategory { get; set; }
+        public string Customer { get; set; }
+        public DateTime EffectiveFrom { get; set; }
+        public DateTime EffectiveTo { get; set; }
+        public int StatusId { get; set; }
+
+        public string flag { get; set; }
+
+        public int id { get; set; }
+
+        public int UserId { get; set; }
+
+        public int CardStatus { get; set; }
+
+        public string PIN { get; set; }
+
+        public int CVV2 { get; set; }
+
+        public int CVV { get; set; }
+
+        public DateTime ValidTillDate { get; set; }
+
+        public DateTime EstimatedEndDate { get; set; }
+
+        public DateTime EstimatedStartDate { get; set; }
+
+        public int ReferenceId { get; set; }
+
+        public string NameOnCard { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string EmaiId { get; set; }
+
+        public string MobileNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public string MiddleName { get; set; }
+
+        public object EmailId { get; set; }
+    }
+    public class CardStatuses
+    {
+        public int Id { get; set; }
+        public int Active { get; set; }
+        public string CardStatus { get; set; }
+        public string Desc1 { get; set; }
+        public int Typegrpid { get; set; }
+    }
+
+
+
     public class Payables
     {
         public int Id { get; set; }

@@ -4,7 +4,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.Getvechout = function () {
-        $http.get("/api/VehicleLogout/Getvechout?VechId=1").then(function (response, req) {
+        $http.get("/api/VehicleLogout/Getvechout?DriverNo=9550588606").then(function (response, req) {
             $scope.Vechout = response.data;
         });
     }
@@ -116,6 +116,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             RegNo: $scope.vm.Id,
             DriverName: vehlogout.DriverName,
             TotalGeneratedAmount: vehlogout.TotalGeneratedAmount,
+            LogoutDate:vehlogout.LogoutDate,
+            LogoutTime:vehlogout.LogoutTime,
             flag: "I"
         }
 
