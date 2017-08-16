@@ -1935,7 +1935,7 @@ namespace SmartTicketDashboard.Models
         public string Remarks { get; set; }
         public string FileContent { get; set; }
         public string FileName { get; set; }
-        public string docType { get; set; }
+        public int DocTypeId { get; set; }
 
     }
     public class vehiclemas
