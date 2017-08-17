@@ -177,5 +177,7 @@ $(function () {
     }
     //END COUNTER FOR SUMMARY BOX
 
+
+
 });
 

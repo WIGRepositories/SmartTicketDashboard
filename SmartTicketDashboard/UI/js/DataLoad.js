@@ -71,9 +71,9 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
     $scope.dashboardDS = $localStorage.dashboardDS;
     $scope.GetDataLoad = function () {
 
-        $http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
-            $scope.GetDataLoad = response.data;
-        });
+        //$http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
+        //    $scope.GetDataLoad = response.data;
+        //});
     }
     $scope.csv_link = 'DataUploadTemplates/CompanyList.csv';// + $window.location.search;
 
@@ -169,12 +169,8 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
 
 
     
-    $scope.importData = function () {
-        
-           
-
-            $scope.processData($scope.fileContent)
-        
+    $scope.importData = function () {     
+        $scope.processData($scope.fileContent);        
     }
 
    
@@ -182,9 +178,7 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
 
     $scope.processData = function (allText) {
         if (allText == null) {
-        alert('Please insert file.');
-        
-          
+        alert('Please insert file.'); 
             return;
         }
           
