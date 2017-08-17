@@ -1079,14 +1079,7 @@ namespace SmartTicketDashboard.Models
         public string ReportType { set; get; }
         public int Typegrpid { set; get; }
     }
-    public class CardStatuses
-    {
-        public int Id { set; get; }
-        public int Active { set; get; }
-        public string CardStatus { set; get; }
-        public string Desc1 { set; get; }
-        public int Typegrpid { set; get; }
-    }
+  
 
     public class ExpensesClass
     {
@@ -1104,14 +1097,7 @@ namespace SmartTicketDashboard.Models
         public string Desc1 { set; get; }
         public int Typegrpid { set; get; }
     }
-    public class CardTypes
-    {
-        public int Id { set; get; }
-        public int Active { set; get; }
-        public string Cardtype { set; get; }
-        public string Desc1 { set; get; }
-        public int Typegrpid { set; get; }
-    }
+   
     public class Types1
     {
         public int Id { set; get; }
@@ -2309,6 +2295,15 @@ namespace SmartTicketDashboard.Models
 
 
     }
+    public class Advertisment
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string image { get; set; }
+        public string imagcontent{get;set;}
+        public float price { get; set; }
+        public string description { get; set; }
 
+    }
 }
 
