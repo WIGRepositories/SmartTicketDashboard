@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetBookingHistory" ng-model="bookings">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetBookingHistory()" ng-model="bookings">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -409,14 +409,27 @@
 
 
                                                 <div class="table-container">
-                                                    <div class="row mbm">
+                                                    
 
-                                                        <div class="actions">
+                                                        <!--<div class="actions">-->
                                                             <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add BookingDetails</button>
+                                                            <!--<button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add BookingDetails</button>-->
+                                                        <!--</div>-->
+                                                    
+                                                       
+                                                    <div class="row mbm" ng-init="GetMaster();">
+                                                        <div class="col-md-3">
+                                                           Vehicles:<select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="v"  class="form-control" style="width:80%">
+    <option value="">Select</option>
+</select>
                                                         </div>
-
-
+                                                        <div class="col-md-3">
+                                                            Drivers:<select ng-options="dd.DId for dd in listdrivers track by dd.Id" ng-model="dd"  class="form-control" style="width:80%">
+    <option value="">Select</option>
+</select>
+                                                        </div>
+                                                    </div>
+                                                    <!--<div class="row mbm">
                                                         <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -430,12 +443,16 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">VID*:</label>
+                                                                                    <label for="inputFirstName" class="control-label">VId:</label>                                                                                      
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="booking.VID" /></div>
+                                                                                    <div class="input-icon right">
+                                                                                        <select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="v1" class="form-control" style="width:80%">
+                                                                                            <option value="">Select</option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -448,7 +465,7 @@
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="booking.BookingNo" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="booking.BNo" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -456,12 +473,12 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">BookingType*:</label>
+                                                                                    <label for="inputFirstName" class="control-label">BookedDate:</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.BookingType" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.BookedDate" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -469,12 +486,68 @@
 
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group has-success" style="text-align:right">
-                                                                                    <label for="inputFirstName" class="control-label">PhoneNo*:</label>
+                                                                                    <label for="inputFirstName" class="control-label">BookedTime:</label>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
-                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.PhoneNo" /></div>
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.BookedTime" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">DepartureDate:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.DepartueDate" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">DepartureTime:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.DepartureTime" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Source:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.Src" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Destination:</label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.Dest" /></div>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -491,37 +564,44 @@
 
 
                                                         </div>
-                                                    </div>
+                                                    </div>-->
                                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                         <thead>
                                                             <tr>
 
 
-                                                                <th width="10%">VID</th>
-                                                                <th width="10%">BookingNo</th>
-                                                                <th width="10%">BookingType</th>
-                                                                <th width="10%">PhoneNo</th>
-                                                                <th width="10%">CAddress</th>
+                                                                <th width="10%">BNo</th>
+                                                                <th width="15%">Source</th>
+                                                                <th width="15%">Destination</th>
+                                                                <th width="15%">CustomerNo</th>
+                                                                <th width="15%">DriverNo</th>
+                                                                <th width="15%">BookedDate</th>
+                                                                <th width="15%">BookedTime</th>
+                                                                <th width="15%">DepartueDate</th>
+                                                                <th width="15%">DepartureTime</th>
                                                                 <th width="9%">Active</th>
-                                                                <th width="9%">Edit</th>
+                                                                <!--<th width="9%">Edit</th>-->
 
                                                             </tr>
                                                         <tbody>
                                                             <tr ng-repeat="b in bookings">
 
-                                                                <td>{{b.VID}}</td>
                                                                 <td>{{b.BNo}}</td>
-                                                                <td>{{b.BookingType}}</td>
-                                                                <td>{{b.PhoneNo}}</td>
-                                                                <td>{{b.CAddress}}</td>
-
+                                                                <td>{{b.Src}}</td>
+                                                                <td>{{b.Dest}}</td>
+                                                                <td>{{b.CustomerPhoneNo}}</td>
+                                                                <td>{{b.DriverPhoneNo}}</td>
+                                                                <td>{{b.BookedDate}}</td>
+                                                                <td>{{b.BookedTime}}</td>
+                                                                <td>{{b.DepartueDate}}</td>
+                                                                <td>{{b.DepartureTime}}</td>
                                                                 <td><input type="checkbox" checked /></td>
-                                                                <td>
+                                                                <!--<td>
                                                                     <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbookings(b);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
                                                                         
                                                                     </button>
-                                                                </td>
+                                                                </td>-->
                                                             </tr>
 
 
@@ -745,7 +825,7 @@
                                                                         <div class="col-md-offset-3 col-md-9">
                                                                             <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(book)">Save</button>
 
-                                                                            <a href="Stops.html" class="btn btn-primary" ng-click="clearbook()">Cancel</a>
+                                                                            <a href="BookingDetails.html" class="btn btn-primary" ng-click="clearbook()">Cancel</a>
                                                                         </div>
                                                                     </div>
                                                                 </div>
