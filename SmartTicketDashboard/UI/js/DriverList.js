@@ -18,12 +18,45 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
-
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
-    }   
+    }
+    $scope.docfiles = [];
+
+    $scope.onFileSelect = function (image, $event) {
+
+        //$scope.docfiles = [];
+        var ext = image[0].name.split('.').pop();
+        fileReader.readAsDataUrl(image[0], $scope, (ext == 'img') ? 1 : 4).then(function (result) {
+
+            if (result.length > 2097152) {
+                alert('Cannot upload file greater than 2 MB.');
+                $event.stopPropagation();
+                $event.preventDefault();
+                return;
+            }
+
+         
+
+            //check if already the file exists                       
+            for (cnt = 0; cnt < docfiles.length; cnt++) {
+                if ($scope.docfiles[cnt].FileName == image[0].name) {
+                    $scope.docfiles.splice(cnt, 1);
+                }
+            }
+
+            $scope.docfiles.push(FileName);
+            //if ($scope.DocFiles)
+            //{
+            //    $scope.DocFiles.push(doc);
+            //}
+
+        });
+    };
+
+     
 
     $scope.saveNew = function (Driverlist,flag) {
       
@@ -92,12 +125,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (Driverlist.BadgeExpDate == null) {
             alert('Please Enter BadgeExpDate');
             return;
-        }
-        if (Driverlist.Remarks == null) {
-            alert('Please Enter Remarks');
-            return;
-        }
-       
+        }        
         
 
         var Driverlist = {
@@ -121,11 +149,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             LiCExpDate: Driverlist.LiCExpDate,
             BadgeNo: Driverlist.BadgeNo,
             BadgeExpDate: Driverlist.BadgeExpDate,
-            Remarks: Driverlist.Remarks,
-            FileName: $scope.doc,
-            FileContent: $scope.doc,
-            docType:$scope.doc
-
+            Remarks: Driverlist.Remarks,            
+            FileName: Driverlist.FileName,
             
         }
 
@@ -275,44 +300,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.clearDriverlist = function () {
         $scope.cur = null;
     }
-    $scope.onFileSelect = function (files, $event) {
-
-        //$scope.docfiles = [];
-        var ext = files[0].name.split('.').pop();
-        fileReader.readAsDataUrl(files[0], $scope, (ext == 'csv') ? 1 : 4).then(function (result) {
-
-            if (result.length > 2097152) {
-                alert('Cannot upload file greater than 2 MB.');
-                $event.stopPropagation();
-                $event.preventDefault();
-                return;
-            }
-
-            var doc =
-                 {                                   
-                     
-                     docType: ($scope.ppdoc == null || $scope.ppdoc.docType == null) ? null : $scope.ppdoc.docType.Name,//
-                     FileName: files[0].name,
-                     FileContent: result,                   
-                     
-                 }
-
-
-            //check if already the file exists                       
-            for (cnt = 0; cnt < $scope.docfiles.length; cnt++) {
-                if ($scope.docfiles[cnt].FileName == files[0].name) {
-                    $scope.docfiles.splice(cnt, 1);
-                }
-            }
-
-            $scope.docfiles.push(doc);
-            //if ($scope.DocFiles)
-            //{
-            //    $scope.DocFiles.push(doc);
-            //}
-
-        });
-    };
+    
 
     $scope.validateFile = function ($event) {
        //  {
@@ -322,6 +310,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
        //     return;
        //}
     }
+
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({

@@ -5,6 +5,29 @@ using System.Web;
 
 namespace SmartTicketDashboard.Models
 {
+    //jagan start
+
+    //jagan end
+    public class CardTypes
+    {
+        public int Id { get; set; }
+        public int Active { get; set; }
+        public string Cardtype { get; set; }
+        public string Desc1 { get; set; }
+        public int Typegrpid { get; set; }
+    }
+    public class CardUsers
+    {
+        public int CardType { get; set; }
+        public int CardNumber { get; set; }
+
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Emailid { get; set; }
+        public string MobileNo { get; set; }
+        public string Address { get; set; }
+    }
+
     public class Alerts
     {
         public int Id { get; set; }
@@ -137,6 +160,72 @@ namespace SmartTicketDashboard.Models
         public string Longitude { get; set; }
 
     }
+
+    public class Cards
+    {
+        public object CardId;
+        public object TransactionId;
+        public object TransactionNo;
+        public object TransactionDateTime;
+        public object TransactionName;
+        public object TransactionType;
+        public object TransactionAmount;
+        public object TransactionStatus;
+        public object TransactionLoc;
+        public object TransactionMode;
+        public int Id { get; set; }
+        public int CardNumber { get; set; }
+        public string CardName { get; set; }
+        public string CardType { get; set; }
+        public string CardModel { get; set; }
+        public string CardCategory { get; set; }
+        public string Customer { get; set; }
+        public DateTime EffectiveFrom { get; set; }
+        public DateTime EffectiveTo { get; set; }
+        public int StatusId { get; set; }
+
+        public string flag { get; set; }
+
+        public int id { get; set; }
+
+        public int UserId { get; set; }
+
+        public int CardStatus { get; set; }
+
+        public string PIN { get; set; }
+
+        public int CVV2 { get; set; }
+
+        public int CVV { get; set; }
+
+        public DateTime ValidTillDate { get; set; }
+
+        public DateTime EstimatedEndDate { get; set; }
+
+        public DateTime EstimatedStartDate { get; set; }
+
+        public int ReferenceId { get; set; }
+
+        public string NameOnCard { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
+
+        public string EmaiId { get; set; }
+
+        public string MobileNumber { get; set; }
+
+        public string Address { get; set; }
+
+        public string MiddleName { get; set; }
+
+        public object EmailId { get; set; }
+    }
+
+
+
+
     public class Payables
     {
         public int Id { get; set; }
@@ -530,6 +619,7 @@ namespace SmartTicketDashboard.Models
 
     public class CompanyGroups
     {
+        
         public List<CompanyGroups> list { get; set; }
         public int active { get; set; }
 
@@ -556,8 +646,8 @@ namespace SmartTicketDashboard.Models
         public string ZipCode { get; set; }
         public string State { get; set; }
 
-        public int FleetSize{get;set;}
-        public int StaffSize{get;set;}
+        public int FleetSize { get; set; }
+        public int StaffSize { get; set; }
         public string AlternateAddress { get; set; }
         //public string TemporaryAddress{get;set;} 
         public string Logo { get; set; }
@@ -1010,14 +1100,7 @@ namespace SmartTicketDashboard.Models
         public string Desc1 { set; get; }
         public int Typegrpid { set; get; }
     }
-    public class CardTypes
-    {
-        public int Id { set; get; }
-        public int Active { set; get; }
-        public string Cardtype { set; get; }
-        public string Desc1 { set; get; }
-        public int Typegrpid { set; get; }
-    }
+
     public class Types1
     {
         public int Id { set; get; }
@@ -1082,10 +1165,10 @@ namespace SmartTicketDashboard.Models
         public int Active { get; set; }
         public int GenderId { get; set; }
         public string UserType { set; get; }
-        public int UserTypeId { set; get; }      
+        public int UserTypeId { set; get; }
         public string Address { set; get; }
         public string AltAdress { set; get; }
-        public string Photo { get; set; }             
+        public string Photo { get; set; }
         public string Role { set; get; }
         public int RoleId { set; get; }
         public DateTime? RFromDate { get; set; }
@@ -1097,7 +1180,7 @@ namespace SmartTicketDashboard.Models
         public string insupdflag { get; set; }
         public int companyId { set; get; }
         public string Company { set; get; }
-     
+
     }
 
     public class Register
@@ -1328,11 +1411,11 @@ namespace SmartTicketDashboard.Models
         public String LicenseName { get; set; }
         public String FeatureValue { get; set; }
         public String LabelClass { get; set; }
-        public int Active { get; set; }        
+        public int Active { get; set; }
         public DateTime? fromDate { get; set; }
         public DateTime? toDate { get; set; }
         public string insupddelflag { get; set; }
-       public int LicenseTypeGroupId { get; set; }
+        public int LicenseTypeGroupId { get; set; }
     }
 
     public class LicensePricing
@@ -1479,13 +1562,13 @@ namespace SmartTicketDashboard.Models
         public string LicenseType { set; get; }
         public string LicenseCode { set; get; }
         public int LicenseCategoryId { set; get; }
-        public int Active { set; get; }        
+        public int Active { set; get; }
         public string Desc { set; get; }
         public string LicenseCategory { set; get; }
         public DateTime? fromDate { get; set; }
         public DateTime? toDate { get; set; }
         public int LicenseId { get; set; }
-         public int LicensePricingId { get; set; }
+        public int LicensePricingId { get; set; }
         public String RenewalFreqType { get; set; }
         public int RenewalFreqTypeId { get; set; }
         public int RenewalFreqUnit { get; set; }
@@ -1493,27 +1576,27 @@ namespace SmartTicketDashboard.Models
         public decimal UnitPrice { get; set; }
         public DateTime? Pfromdate { get; set; }
         public DateTime? Ptodate { get; set; }
-       
+
         public int PActive { get; set; }
         public string insupddelflag { get; set; }
 
         //license pos      
-	    public int LPOSId { get; set; }
-         public int BTPOSTypeId { get; set; }
-         public int NoOfUnits { get; set; }
-	    public string POSType { get; set; }
+        public int LPOSId { get; set; }
+        public int BTPOSTypeId { get; set; }
+        public int NoOfUnits { get; set; }
+        public string POSType { get; set; }
         public String POSLabel { get; set; }
-        public String POSLabelClass { get; set; }	
+        public String POSLabelClass { get; set; }
         public DateTime? POSfromdate { get; set; }
-        public DateTime? POStodate { get; set; }       
+        public DateTime? POStodate { get; set; }
         public int POSActive { get; set; }
 
         public List<LicenseDetails> licenseDetails { get; set; }
     }
-               
+
     public class LicenseTypes1
     {
-       // public List<licenses> lltypes { get; set; }
+        // public List<licenses> lltypes { get; set; }
         public int Id { set; get; }
         public int Active { set; get; }
         public string LicenseType { set; get; }
@@ -1543,7 +1626,7 @@ namespace SmartTicketDashboard.Models
         public Decimal UnitPrice { set; get; }
         public DateTime fromdate { set; get; }
 
-        public DateTime todate { set; get; }        
+        public DateTime todate { set; get; }
 
         public char insupddelflag { set; get; }
         public string Featurename { set; get; }
@@ -1787,8 +1870,8 @@ namespace SmartTicketDashboard.Models
     //    public int Active { get; set; }
     //    public string insupddelflag { get; set; }
     //}
-   
-    public class faqs 
+
+    public class faqs
     {
 
         public string flag { get; set; }
@@ -1841,7 +1924,7 @@ namespace SmartTicketDashboard.Models
         public string Remarks { get; set; }
         public string FileContent { get; set; }
         public string FileName { get; set; }
-        public string docType { get; set; }
+        public int DocTypeId { get; set; }
 
     }
     public class vehiclemas
@@ -1869,11 +1952,11 @@ namespace SmartTicketDashboard.Models
         public string OwnerPhoneNo { get; set; }
         public string HomeLandmark { get; set; }
         public DateTime ModelYear { get; set; }
-        public string DayOnly { get; set; }       
+        public string DayOnly { get; set; }
         public string VechMobileNo { get; set; }
         public DateTime EntryDate { get; set; }
         public string NewEntry { get; set; }
-        public int VehicleModelId { get; set; }   
+        public int VehicleModelId { get; set; }
         public int ServiceTypeId { get; set; }
         public int VehicleGroupId { get; set; }
     }
@@ -2081,28 +2164,28 @@ namespace SmartTicketDashboard.Models
         public int preferenceId { get; set; }
         public string flag { get; set; }
     }
-   
+
     public class close
     {
         public string flag { get; set; }
-        public int SlNo{get;set;} 
-        public DateTime EntryDate{get;set;} 
-        public int VechID {get;set;} 
-        public String RegistrationNo {get;set;}  
-        public String DriverName{get;set;} 
-        public String PartyName{get;set;} 
-        public String PickupPlace{get;set;} 
-        public String DropPlace{get;set;} 
-        public int StartMeter{get;set;} 
-         public int EndMeter{get;set;} 
-         public int OtherExp{get;set;} 
-         public int GeneratedAmount{get;set;} 
-        public int ActualAmount{get;set;}
-        public string ExecutiveName{get;set;} 
-        public Decimal BNo{get;set;}
-        public DateTime DropTime{get;set;} 
-        public DateTime PickupTime{get;set;} 
-        public DateTime EntryTime{get;set;}
+        public int SlNo { get; set; }
+        public DateTime EntryDate { get; set; }
+        public int VechID { get; set; }
+        public String RegistrationNo { get; set; }
+        public String DriverName { get; set; }
+        public String PartyName { get; set; }
+        public String PickupPlace { get; set; }
+        public String DropPlace { get; set; }
+        public int StartMeter { get; set; }
+        public int EndMeter { get; set; }
+        public int OtherExp { get; set; }
+        public int GeneratedAmount { get; set; }
+        public int ActualAmount { get; set; }
+        public string ExecutiveName { get; set; }
+        public Decimal BNo { get; set; }
+        public DateTime DropTime { get; set; }
+        public DateTime PickupTime { get; set; }
+        public DateTime EntryTime { get; set; }
 
     }
     public class land
@@ -2121,7 +2204,7 @@ namespace SmartTicketDashboard.Models
         public decimal Pricing { get; set; }
         public DateTime FromTime { get; set; }
         public DateTime ToTime { get; set; }
-}
+    }
     public class HourBase
     {
         public string insupddelflag { get; set; }

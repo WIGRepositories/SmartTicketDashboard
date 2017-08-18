@@ -106,6 +106,20 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
+    <Content Include="UI\CardCategory.html" />
+    <Content Include="UI\CardInformation.html" />
+    <Content Include="UI\CardUser.html" />
+    <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\js\AddNewCardData.js" />
+    <Content Include="UI\js\CardCategory.js" />
+    <Content Include="UI\js\CardDetails.js" />
+    <Content Include="UI\js\CardDetails1.js" />
+    <Content Include="UI\js\CardsList.js" />
+    <Content Include="UI\js\CardTransaction.js" />
+    <Content Include="UI\js\CardTransaction1.js" />
+    <Content Include="UI\js\CardTransactionDetails.js" />
+    <Content Include="UI\js\CardUser.js" />
+    <Content Include="UI\js\CardUserList.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
@@ -1384,9 +1398,6 @@
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.sln" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\JPList.csproj.user" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.csproj.FileListAbsolute.txt" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.dll" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\JPList.pdb" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\create.sql" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\create.sql" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-sqlite-demo\sqlite3.exe" />
@@ -2023,6 +2034,7 @@
     <Compile Include="Controllers\BtposRoutesController.cs" />
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
+    <Compile Include="Controllers\CardUser.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
@@ -2375,8 +2387,6 @@
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.ttf" />
     <Content Include="UI\vendors\iCheck\demo\css\montserrat-regular.woff" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList.suo" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\obj\Debug\ResolveAssemblyReference.cache" />
     <Content Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\server.ashx" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\config.php" />
     <Content Include="UI\vendors\jplist\html\data-sources\php-mysql-demo\server-html.php" />
@@ -2486,13 +2496,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Properties\PublishProfiles\" />
     <Folder Include="UI\images\avatar\" />
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Properties\PublishProfiles\SmartTicketsDashboard.pubxml" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

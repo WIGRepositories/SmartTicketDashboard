@@ -13,8 +13,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.GetBookingHistory = function () {
-        $http.get('/api/BookAVehicle/GetBookingHistory?PhoneNo=9951197608').then(function (res, data) {
+        $http.get('/api/BookAVehicle/GetBookingHistory?Vid=1&Did=1').then(function (res, data) {
             $scope.bookings = res.data;
+        });
+    }    
+
+    $scope.GetMaster = function () {
+        $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
+            $scope.listdrivers = res.data;
+        });
+        $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
+            $scope.Vehicles = res.data;
         });
     }
    

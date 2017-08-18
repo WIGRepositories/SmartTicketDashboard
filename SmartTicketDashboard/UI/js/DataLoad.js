@@ -59,7 +59,13 @@ $scope.InveCol = 'Name,Category,Active';
 $scope.InveArr = [{ "Id": 1, "Name": "Category" },
                     { "Id": 2, "Name": "Category" }]
 
-                    
+$scope.DriverCol = 'Name,PMobNo,Address';
+$scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
+                    { "Id": 2, "NAme": "Address" }]
+
+$scope.VehiclesCol = 'VechMobileNo,OwnerName,Type';
+$scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
+                    { "Id": 2, "VechMobileNo": "OwnerName" }]
 
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -71,9 +77,9 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
     $scope.dashboardDS = $localStorage.dashboardDS;
     $scope.GetDataLoad = function () {
 
-        //$http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
-        //    $scope.GetDataLoad = response.data;
-        //});
+        $http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
+            $scope.GetDataLoad = response.data;
+        });
     }
     $scope.csv_link = 'DataUploadTemplates/CompanyList.csv';// + $window.location.search;
 
@@ -112,6 +118,13 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
                 $scope.mandatoryCols = $scope.InveCol;
                 break;
 
+            case "9":
+                $scope.mandatoryCols = $scope.DriverCol;
+                break;
+
+            case "10":
+                $scope.mandatoryCols = $scope.VehiclesCol;
+                break;
         }
     }
 
@@ -229,7 +242,7 @@ $scope.InveArr = [{ "Id": 1, "Name": "Category" },
         //list
             var req = {
                 method: 'POST',
-                url: '/api/DataLoad/SaveCompanyGroups',
+                url: '/api/DataLoad/SaveCompanyGroups1',
                 data: lines
             }
             $http(req).then(function (res) {
