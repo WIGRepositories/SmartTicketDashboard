@@ -9,7 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Tracing;
 using SmartTicketDashboard.Models;
 
-namespace SmartTicketDashboard.UI
+namespace SmartTicketDashboard.Controllers
 {
     public class DataLoadController : ApiController
     {
