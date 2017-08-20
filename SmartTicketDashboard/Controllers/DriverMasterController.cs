@@ -134,16 +134,16 @@ namespace SmartTicketDashboard.Controllers
             w.Value = d.Remarks;
             cmd.Parameters.Add(w);
 
-            SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar, 500);
+            SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar,100);
             parentid.Value = d.FileContent;
             cmd.Parameters.Add(parentid);
 
-            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar, 250);
+            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
             FileName.Value = d.FileName;
             cmd.Parameters.Add(FileName);
 
-            SqlParameter Gid1 = new SqlParameter("@DocTypeId", SqlDbType.Int);
-            Gid1.Value = d.DocTypeId;
+            SqlParameter Gid1 = new SqlParameter("@DocType", SqlDbType.VarChar,100);
+            Gid1.Value = d.docType;
             cmd.Parameters.Add(Gid1);
 
 

@@ -6,24 +6,28 @@ using System.Web;
 namespace SmartTicketDashboard.Models
 {
 
-    public class CardTypes
-    {
-        public int Id { get; set; }
-        public int Active { get; set; }
-        public string Cardtype { get; set; }
-        public string Desc1 { get; set; }
-        public int Typegrpid { get; set; }
-    }
+    
     public class CardUsers
     {
-        public int CardType { get; set; }
-        public int CardNumber { get; set; }
+        public object Id { get; set; }
 
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Emailid { get; set; }
-        public string MobileNo { get; set; }
-        public string Address { get; set; }
+        public object firstName { get; set; }
+
+        public object lastName { get; set; }
+
+        public object middleName { get; set; }
+
+        public object CardNumber { get; set; }
+
+        public object CardType { get; set; }
+
+        public object Address { get; set; }
+
+        public object Mobilenumber { get; set; }
+
+        public object EmailId { get; set; }
+
+        public object flag { get; set; }
     }
 
     public class Alerts
@@ -228,7 +232,6 @@ namespace SmartTicketDashboard.Models
         public string Desc1 { get; set; }
         public int Typegrpid { get; set; }
     }
-
 
 
     public class Payables
@@ -1079,8 +1082,7 @@ namespace SmartTicketDashboard.Models
         public string ReportType { set; get; }
         public int Typegrpid { set; get; }
     }
-  
-
+   
     public class ExpensesClass
     {
         public int Id { set; get; }
@@ -1097,7 +1099,15 @@ namespace SmartTicketDashboard.Models
         public string Desc1 { set; get; }
         public int Typegrpid { set; get; }
     }
-   
+    public class CardTypes
+    {
+        public int Id { set; get; }
+        public int Active { set; get; }
+        public string Cardtype { set; get; }
+        public string Desc1 { set; get; }
+        public int Typegrpid { set; get; }
+    }
+
     public class Types1
     {
         public int Id { set; get; }
@@ -2295,21 +2305,6 @@ namespace SmartTicketDashboard.Models
 
 
     }
-    public class Advertisment
-    {
-        public string flag { get; set; }
-        public int Id { get; set; }
-        public string image { get; set; }
-        public string imagcontent{get;set;}
-        public float price { get; set; }
-        public string description { get; set; }
-        public string Area { get; set; }
-        public string Place { get; set; }
-        public DateTime AdvertismentDate { get; set; }
-        public DateTime AdvertismentExpireDate { get; set; }
-        public float AdvertismentAmount { get; set; }
-        public string CompanyName { get; set; }
 
-    }
 }
 

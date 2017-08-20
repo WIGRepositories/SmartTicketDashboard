@@ -17,17 +17,17 @@ namespace SmartTicketDashboard.Controllers
         [HttpGet]
         [Route("api/VehicleLogout/Getvechout")]
 
-        public DataTable Getvechout(string DriverNo)
+        public DataTable Getvechout(int VechId)
         {
             SqlConnection conn = new SqlConnection();
 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSGetDriverLogin";
+            cmd.CommandText = "PSGetVechlogout";
             cmd.Connection = conn;
 
-            cmd.Parameters.Add("@DriverNo", SqlDbType.VarChar,20).Value = DriverNo;
+            cmd.Parameters.Add("@VechID", SqlDbType.Int).Value = VechId;
             DataTable dt = new DataTable();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);

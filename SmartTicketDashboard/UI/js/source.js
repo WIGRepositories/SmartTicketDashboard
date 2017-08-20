@@ -1,5 +1,5 @@
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap']);
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {    
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -7,13 +7,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
     $scope.canShow = ($scope.Roleid == 1 || $scope.roleid == 2 || ($localStorage.uname == 'check check'));
-  //  $scope.dashboardDS = $localStorage.dashboardDS;
 
-
-    //if ($localStorage.userdetails && $localStorage.userdetails.length > 0 && $localStorage.userdetails[0])
-    //$scope.userid = $localStorage.userdetails[0].userid;
-
-    //now call GetDashboardDetails and pass userid as parameter
 
 
     $scope.GetFleetDetails = function () {
@@ -79,62 +73,62 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         });
     }
 
-    $scope.GetVehicleConfig = function () {
+    //$scope.GetVehicleConfig = function () {
 
-        var vc = {
-            // needfleetowners:'1',
-            needvehicleType: '1',
-            needServiceType: '1',
-            needvehiclelayout: '1',
-            needCompanyName: '1'
-        };
+    //    var vc = {
+    //        // needfleetowners:'1',
+    //        needvehicleType: '1',
+    //        needServiceType: '1',
+    //        needvehiclelayout: '1',
+    //        needCompanyName: '1'
+    //    };
 
-        var req = {
-            method: 'POST',
-            url: '/api/VehicleConfig/VConfig',
-            //headers: {
-            //    'Content-Type': undefined
+    //    var req = {
+    //        method: 'POST',
+    //        url: '/api/VehicleConfig/VConfig',
+    //        //headers: {
+    //        //    'Content-Type': undefined
 
-            data: vc
+    //        data: vc
 
 
-        }
-        $http(req).then(function (res) {
-            $scope.initdata = res.data;
-        });
+    //    }
+    //    $http(req).then(function (res) {
+    //        $scope.initdata = res.data;
+    //    });
 
-    }
+    //}
 
-    $scope.displocations = function (){
+    $scope.displocations = function () {
         var maplocations = $scope.locations;
 
-                   var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
-                       zoom: 15,
-                       center: new google.maps.LatLng(-17.8252, 31.0335), //17.8252° S, 31.0335° E
-                       mapTypeId: google.maps.MapTypeId.ROADMAP
-                   });
-                                                       
-
-                   var infowindow = new google.maps.InfoWindow();
+        var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
+            zoom: 15,
+            center: new google.maps.LatLng(-17.8252, 31.0335), //17.8252° S, 31.0335° E
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
 
 
-                   var marker, i;
+        var infowindow = new google.maps.InfoWindow();
 
 
-                   for (i = 0; i < maplocations.length; i++) {
-                       marker = new google.maps.Marker({
-                           position: new google.maps.LatLng(maplocations[i]['Xcoordinate'], maplocations[i]['Ycoordinate']),
-                           map: map
-                       });
+        var marker, i;
 
 
-                       google.maps.event.addListener(marker, 'click', (function (marker, i) {
-                           return function () {
-                               infowindow.setContent(maplocations[i][0]);
-                               infowindow.open(map, marker);
-                           }
-                       })(marker, i));
-                   }
+        for (i = 0; i < maplocations.length; i++) {
+            marker = new google.maps.Marker({
+                position: new google.maps.LatLng(maplocations[i]['Xcoordinate'], maplocations[i]['Ycoordinate']),
+                map: map
+            });
+
+
+            google.maps.event.addListener(marker, 'click', (function (marker, i) {
+                return function () {
+                    infowindow.setContent(maplocations[i][0]);
+                    infowindow.open(map, marker);
+                }
+            })(marker, i));
+        }
 
     }
 
@@ -147,15 +141,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
             $scope.displocations();
         });
     }
-  
 
-    $scope.GetDashboardDS = function ()
-    {
+
+    $scope.GetDashboardDS = function () {
         //retive the userid and roleid
         var roleid = $localStorage.userdetails[0].roleid;
 
-        $http.get('/api/dashboard/getdashboard?userid=-1&roleid=' + roleid).then(function (res, data)
-        {
+        $http.get('/api/dashboard/getdashboard?userid=-1&roleid=' + roleid).then(function (res, data) {
             $scope.dashboardDS = res.data;
             $localStorage.dashboardDS = res.data;
         });
@@ -166,7 +158,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         document.getElementById('btposstatus').innerHTML = ($scope.myVar) ? "Hide" : "Show";
     };
     $scope.show = function () {
-        
+
     }
 
     $scope.GetInventoryItems = function () {
@@ -224,7 +216,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
             $scope.showDialog("Saved successfully! ");
 
             $scope.Group = null;
-          //  $scope.FirstPage();
+            //  $scope.FirstPage();
 
         }, function (errres) {
             var errdata = errres.data;
@@ -307,59 +299,335 @@ app.controller('mapCtrl', function ($scope, $http) {
         $scope.markers.push(marker);
     };
 
+    //jagan
+    
+    //jagan
+
 });
-$(document).ready(function () {
-    // add button style 
-    $("[name='poll_bar']").addClass("btn btn-default");
-    // Add button style with alignment to left with margin.
-    $("[name='poll_bar']").css({ "text-align": "left", "margin": "5px" });
 
-    //loop 
-    $("[name='poll_bar']").each(
-            function (i) {
-                //get poll value 	
-                var bar_width = (parseFloat($("[name='poll_val']").eq(i).text()) / 2).toString();
-                bar_width = bar_width + "%"; //add percentage sign.										
-                //set bar button width as per poll value mention in span.
-                $("[name='poll_bar'").eq(i).width(bar_width);
 
-                //Define rules.
-                var bar_width_rule = parseFloat($("[name='poll_val']").eq(i).text());
-                if (bar_width_rule >= 50) { $("[name='poll_bar']").eq(i).addClass("btn btn-sm btn-success") }
-                if (bar_width_rule < 50) { $("[name='poll_bar']").eq(i).addClass("btn btn-sm btn-warning") }
-                if (bar_width_rule <= 10) { $("[name='poll_bar']").eq(i).addClass("btn btn-sm btn-danger") }
 
-                //Hide dril down divs
-                $("#" + $("[name='poll_bar']").eq(i).text()).hide();
+//JAGAN UPDATED START
+var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+    if ($localStorage.uname == null) {
+        window.location.href = "login.html";
+    }
+    $scope.uname = $localStorage.uname;
+    $scope.userdetails = $localStorage.userdetails;
+    $scope.userCmpId = $scope.userdetails[0].CompanyId;
+    $scope.userSId = $scope.userdetails[0].UserId;
+    $scope.Roleid = $scope.userdetails[0].roleid;
+
+    $scope.dashboardDS = $localStorage.dashboardDS;
+
+
+
+    $scope.GetCompanies = function () {
+
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
+            $scope.Companies = res.data;
+            $scope.Companies1 = res.data;
+
+
+            if ($scope.userCmpId != 1) {
+                //loop throug the companies and identify the correct one
+                for (i = 0; i < res.data.length; i++) {
+                    if (res.data[i].Id == $scope.userCmpId) {
+                        $scope.cmp = res.data[i];
+                        document.getElementById('test').disabled = true;
+                        break
+                    }
+                }
+                // $scope.GetFleetOwners();
+            }
+            else {
+                document.getElementById('test').disabled = false;
+            }
+            $scope.GetFleetOwners($scope.cmp);
+        });
+
+    }
+
+
+
+    $scope.GetFleetOwners = function () {
+
+
+
+        var vc = {
+            needfleetowners: '1',
+            cmpId: $scope.cmp.Id
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.cmpdata = res.data;
+            $scope.showdialogue("Saved successfully")
+
+
+            if ($scope.userSId != 1) {
+                //loop throug the fleetowners and identify the correct one
+                for (i = 0; i < res.data.Table.length; i++) {
+                    if (res.data.Table[i].UserId == $scope.userSId) {
+                        $scope.s = res.data.Table[i];
+                        document.getElementById('test1').disabled = true;
+                        break
+                    }
+                }
+            }
+            else {
+                document.getElementById('test1').disabled = false;
+            }
+            $scope.GetFleetStaff($scope.s);
+
+        });
+    }
+
+    
+    //$scope.GetVehicleConfig = function () {
+
+    //    $scope.vehicles = null;
+
+    //    var fleetowner = $scope.s;
+
+    //    if (fleetowner == null) {
+    //        return;
+    //    }
+
+
+    //    var vc = {
+    //        needvehicleRegno: '1',
+    //        fleetownerId: fleetowner.Id,
+
+    //    };
+
+    //    var req = {
+    //        method: 'POST',
+    //        url: '/api/VehicleConfig/VConfig',
+    //        //headers: {
+    //        //    'Content-Type': undefined
+    //        data: vc
+    //    }
+    //    //$http(req).then(function (res) {
+    //    //    $scope.vehicles = res.data;
+    //    //    $scope.showdialogue("Saved successfully")
+    //    //});
+    //    $scop.message = 'Hai';
+
+    //}
+
+    $scope.getUsersnRoles = function () {
+        var s = $scope.cmp;
+
+        if (s == null) {
+            $scope.userRoles = null;
+            return;
+        }
+        var cmpId = (s == null) ? -1 : s.Id;
+
+       
+        $http.get('/api/Users/GetUserRoles?cmpId=' + $scope.cmp.Id).then(function (res, data) {
+            $scope.userRoles = res.data;
+        });
+    }
+
+    $scope.savenewfleetStaffdetails = function () {
+        var newVD = $scope.f;
+        if (newVD == null) {
+            alert('Please select VehicleRegNo.');
+            return;
+        }
+
+        if (newVD.Id == null) {
+            alert('Please select VehicleRegNo.');
+            return;
+        }
+        //validate user, company and role also      
+
+
+        var Fleet = {
+            Id: -1,
+            vehicleId: newVD.Id,
+            roleId: newVD.uu.RoleId,
+            UserId: newVD.uu.Id,
+            cmpId: $scope.cmp.Id,
+            FromDate: newVD.fd,
+            ToDate: newVD.td,
+            // Active:1,
+            insupddelflag: 'I'
+        };
+
+
+        var req = {
+            method: 'POST',
+            url: '/api/FleetStaff/NewFleetStaff',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: Fleet
+        }
+
+        $http(req).then(function (response) {
+
+            $scope.showDialog("Saved successfully!");
+
+            $scope.Group = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your details are incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
+        $scope.currGroup = null;
+    };
+    $scope.savefleetStaff = function () {
+        var FleetStaff = $scope.f1;
+        if (FleetStaff == null) {
+            alert('Please select VehicleRegNo.');
+            return;
+        }
+
+        if (FleetStaff.Id == null) {
+            alert('Please select VehicleRegNo.');
+            return;
+        }
+
+
+        var FleetS = {
+
+            Id: -1,
+            vehicleId: FleetStaff.Id,
+            roleId: FleetStaff.uu.RoleId,
+            UserId: FleetStaff.uu.Id,
+            cmpId: $scope.cmp.Id,
+            FromDate: FleetStaff.fd,
+            ToDate: FleetStaff.td,
+            // Active:1,
+            insupddelflag: 'U'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/FleetStaff/NewFleetStaff',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: FleetS
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.showDialog("Updated successfully!");
+            GetFleetDetails();
+        });
+
+
+    }
+    //jagan updated on 10-08-2017 start
+    $scope.GetVehicleConfig = function () {
+
+        var vc = {
+            // needfleetowners:'1',
+            //needvehicleType: '1',
+            //needServiceType: '1',
+            //needCompanyName: '1',
+            //needVehicleMake: '1',
+            needVehicleGroup: '1',
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
+
+    $scope.GetFleetStaff = function () {
+        if ($scope.cmp == null || $scope.cmp.Id == null) {
+            $scope.FleetStaff = null;
+            return;
+        }
+
+        if ($scope.s == null || $scope.s.Id == null) {
+            $scope.FleetStaff = null;
+            return;
+        }
+
+        $http.get('/api/FleetStaff/GetFleetStaff?foId=' + $scope.s.Id + '&cmpId=' + $scope.cmp.Id).then(function (res, data) {
+            $scope.FleetStaff = res.data;
+        });
+    }
+
+
+    $scope.setFleet = function (Fleet) {
+        $scope.currFleet = Fleet;
+    };
+    $scope.testdel = function (Fleet) {
+        var FRoutes = {
+
+            Id: -1,
+            vehicleId: Fleet.Id,
+            roleId: Fleet.RoleId,
+            UserId: Fleet.UserId,
+            cmpId: $scope.cmp.Id,
+            FromDate: Fleet.fd,
+            ToDate: Fleet.td,
+            // Active:1,
+            insupddelflag: 'D'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/FleetStaff/NewFleetStaff',
+            data: FRoutes
+        }
+        $http(req).then(function (response) {
+            $scope.showdialogue("Saved successfully")
+
+            $http.get('/api/FleetStaff/GetFleetStaff?roleid=' + Fleet.RoleId).then(function (res, data) {
+                $scope.FleetStaff = res.data;
             });
 
-    //On click main menu bar show its particular detail div.
-    $("[name='poll_bar']").click(function () {
-        //Hide all 
-        $(".panel-body").children().hide();
-        //Display only selected bar texted div sub chart.
-        $("#" + $(this).text()).show();
-        //If not inner drill down sub detail found then move to main menu.
-        if ($("#" + $(this).text()).length == 0) {
-            $("#Main").show();
-        }
-    });
+        });
+
+    }
+    $scope.showDialog = function (message) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                mssg: function () {
+                    return message;
+                }
+            }
+        });
+    }
+
+
+
 });
-//var myApp = angular.module('myApp', []);
-//myApp.controller('mainCtrl', ['$scope', function ($scope) {
 
-//     Set the default value of inputType
-//    $scope.inputType = 'password';
-
-//     Hide & show password function
-//    $scope.hideShowPassword = function () {
-//        if ($scope.inputType == 'password')
-//            $scope.inputType = 'text';
-//        else
-//            $scope.inputType = 'password';
-//    };
-
-//}]);
 
 
 

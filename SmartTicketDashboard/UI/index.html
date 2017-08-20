@@ -27,11 +27,9 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl"  ng-init="GetDashboardDS();" ng-model="dashboardDS">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetDashboardDS();" ng-model="dashboardDS">
  
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP-->
@@ -52,9 +50,11 @@
                                 <li><p>You have 0 new alerts</p></li>
                             </ul>
                             <ul class="dropdown-menu dropdown-messages">                                                               
-                                <li ng-repeat="A in dashboardDS.Table2"><p>
+                            <li ng-repeat="A in dashboardDS.Table2">
+                                <p>
                                                                             <a href="ShippingOrder.html"><i class="fa fa-user"></i>{{A.Message}}</a>
-                                    </p></li>
+                                </p>
+                            </li>
                             </ul>
                         </li>
                         <li class="dropdown">
@@ -104,7 +104,7 @@
                     <div class="sidebar-collapse menu-scroll">
                         <ul id="side-menu" class="nav">
                             <li class="user-panel">
-                                <div class="thumb"><img src="images/user.jpg" height="20" width="20"  alt="" class="img-circle" /></div>
+                            <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
                                 <div class="info">
                                     <p>{{uname}}</p>
                                     <ul class="list-inline list-unstyled">
@@ -393,7 +393,20 @@
 
                              </ul>
                             </li>
-                        
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-send-o fa-fw">
+                                            <div class="icon-bg bg-dark"></div>
+                                        </i><span class="menu-title">Cards</span><span class="fa arrow"></span>
+                                    </a>
+                                    <ul class="nav nav-second-level">
+                                        <li><a href="CardList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">CardList</span></a></li>
+                                        <li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
+                                        <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
+                                        <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
+                                        <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
+                                    </ul>
+                                </li>
                         <li>
                             <a href="#">
                                 <i class="fa fa-send-o fa-fw">
@@ -415,20 +428,6 @@
                             </ul>
                         
                             </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-send-o fa-fw">
-                                    <div class="icon-bg bg-dark"></div>
-                                </i><span class="menu-title">Cards</span><span class="fa arrow"></span>
-                            </a>
-                            <ul class="nav nav-second-level">
-                                <li><a href="CardList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">CardList</span></a></li>
-                                <li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
-                                <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
-                                <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
-                                <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
-                            </ul>
-                        </li>
                     </div>
                 </nav>                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
@@ -458,7 +457,8 @@
                                             <div class="actions">
 
                                                 <div class="pull-left">                                                    
-                                                    <button type="button" class="btn btn-primary" style="float:right;margin:10px;height:20px" ng-click="GetDashboardDS();">Refresh</button>
+                                                <button type="button" class="btn btn-primary" style="float:right;margin:10px;height:20px" ng-click="GetDashboardDS();">Refresh </button>
+                                                
                                                 </div>
                                             </div>
                                         </div>
@@ -637,57 +637,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                            <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
-                                <div class="row mb">
-                                    <div class="col-lg-12">
-                                        <div class="portlet box">
-                                            <div class="portlet-header">
-                                                <div class="caption">Business</div>
-                                            </div>
-                                            <div class="panel-body" style="margin:0px; width:115%;">
-
-                                                <div id="Main">
-                                                    <a name="poll_bar">HireVehicle </a> <span name="poll_val">60.1% </span><br />
-                                                    <a name="poll_bar">MeteredTaxi</a> <span name="poll_val">100% </span><br />
-                                                    <a name="poll_bar">BookTicket</a> <span name="poll_val">9.8%  </span><br />
-                                                    <a name="poll_bar">Ambulance </a> <span name="poll_val">50.7%  </span><br />
-                                                    <a name="poll_bar">Towner  </a> <span name="poll_val">1.6%  </span><br />
-                                                </div>
-
-                                                <!-- Chrome yearly usages detail -->
-                                                <div id="HireVehicle">
-                                                    <a name="poll_bar">HireVehicle-2014</a> <span name="poll_val">60% </span><br />
-                                                    <a name="poll_bar">HireVehicle-2013</a> <span name="poll_val">55% </span><br />
-                                                    <a name="poll_bar">HireVehicle-2012</a> <span name="poll_val">46%  </span><br />
-                                                    <a name="poll_bar">HireVehicle-2011</a> <span name="poll_val">34%  </span><br />
-                                                </div>
-
-                                                <!-- Chrome monthly usages detail -->
-                                                <div id="HireVehicle-2014">
-                                                    <a name="poll_bar">November </a> <span name="poll_val">60.1% </span><br />
-                                                    <a name="poll_bar">October  </a> <span name="poll_val">40.4% </span><br />
-                                                    <a name="poll_bar">September</a> <span name="poll_val">59.6% </span><br />
-                                                </div>
-
-                                                <!-- Firefox yearly usages detail -->
-                                                <div id="MeteredTaxi">
-                                                    <a name="poll_bar">MeteredTaxi-2014</a> <span name="poll_val">60% </span><br />
-                                                    <a name="poll_bar">MeteredTaxi-2013</a> <span name="poll_val">70% </span><br />
-                                                    <a name="poll_bar">MeteredTaxi-2012</a> <span name="poll_val">15%  </span><br />
-                                                    <a name="poll_bar">MeteredTaxi-2011</a> <span name="poll_val">3%  </span><br />
-                                                </div>
-                                                <div id="MeteredTaxi-2014">
-                                                    <a name="poll_bar">November </a> <span name="poll_val">60.1% </span><br />
-                                                    <a name="poll_bar">October  </a> <span name="poll_val">40.4% </span><br />
-                                                    <a name="poll_bar">September</a> <span name="poll_val">59.6% </span><br />
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div id="tab-general">
                                 <h3 class="mtn">BTPOS Details</h3>
                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter" ng-hide="dashboardDS.Table.length == 0">
@@ -772,18 +721,61 @@
                                 <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
                                 <!--<a style="float:right" href="Notifications.html" class="button" ng-click="label label-sm label-success">More...</a>-->
                                 <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+                            
                                 </div>
 
+
+
+
+
+
                             <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
-                                <div class="row mb">
+                            <div class="row mb" ng-init="GetCompanies()">
                                     <div class="col-lg-12">
+                                    <!--Jagan Updated on 08-08-2017-->
+                                    <!--<div class="col-md-3" ng-controller="mapCtrl" ng-init="GetCompanies();">
+                                        Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners()" id="test" style="width:80%">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>-->
+
+                                    
+                                    <div class="row mbm">
+                                        <div class="col-md-4" ng-init="GetCompanies();">
+                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-md-4">
+                                            Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFleetStaff(s)" id="test1">
+
+                                                <option value="">Select</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-md-4" ng-init="init">
+                                            Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-init="GetVehicleConfig()" ng-change="GetVehicleLocation()">
+
+    <option value="">Select</option>
+</select>
+                                            
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="col-md-12">
+
+                                </div>
+                                <!--Jagan Updated on 08-08-2017-->
+
                                         <div class="portlet box">
                                             <div class="portlet-header">
                                                 <div class="caption">Vehicles</div>
+                                        
                                             </div>
                                             <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
-                                            <div ng-app="mapApp" ng-controller="mapCtrl">
-                                                <!--<div id="map"></div>-->
+                                    <div ng-app="mapApp" ng-controller="mapCtrl" ng-change="GetVehicleLocation()">
+                                        <div id="map"></div>
                                             </div>
 
                                             <!--<script>
@@ -861,7 +853,6 @@
 
 
                                 <!--END CONTENT-->
-
                             </div>
                     <!--END PAGE WRAPPER-->
                     <!--BEGIN FOOTER-->
@@ -881,7 +872,7 @@
                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                     <h4 id="modal-header-primary-label" class="modal-title">New Inventory Purchases</h4>
                 </div>
-                <div class="modal-body"  ng-model="group">
+                <div class="modal-body" ng-model="group">
 
 
                     <div class="row mbm">
@@ -1001,7 +992,6 @@
 <script src="vendors/holder/holder.js"></script>
 <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
 <!--LOADING SCRIPTS FOR PAGE-->
-
 <!--CORE JAVASCRIPT-->
 <script src="js/main.js"></script>
 
@@ -1022,8 +1012,6 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
 
 <script src="js/source.js"></script>
-
-
 <script src="vendors/jquery-highcharts/highcharts.js"></script>
 <script src="vendors/jquery-highcharts/exporting.js"></script>
 <script src="js/charts-highchart-line.js"></script>
