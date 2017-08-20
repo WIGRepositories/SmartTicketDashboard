@@ -2303,6 +2303,12 @@ namespace SmartTicketDashboard.Models
         public string imagcontent{get;set;}
         public float price { get; set; }
         public string description { get; set; }
+        public string Area { get; set; }
+        public string Place { get; set; }
+        public DateTime AdvertismentDate { get; set; }
+        public DateTime AdvertismentExpireDate { get; set; }
+        public float AdvertismentAmount { get; set; }
+        public string CompanyName { get; set; }
 
     }
 }
