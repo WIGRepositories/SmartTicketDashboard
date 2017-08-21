@@ -2490,6 +2490,9 @@
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\DriversList.csv" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

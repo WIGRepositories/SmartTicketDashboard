@@ -463,7 +463,169 @@ namespace SmartTicketDashboard.Controllers
             //  return Tbl;
         }
 
-
         //jagan updated end
+
+
+        //Jagan Updated On18thAug Start
+
+
+        [HttpPost]
+        [Route("api/DataLoad/SaveDriverGroups")]
+        public HttpResponseMessage SaveDriverGroups(List<DriversGroups> list)
+        {
+            //List<DriversGroups> list1 = new List<DriversGroups>();
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveDriverGroups credentials....");
+            //DataTable Tbl = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            try
+            {
+                //connect to database
+
+                // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "HVInsUpddrivers2";
+                cmd.Connection = conn;
+
+                conn.Open();
+                list = new List<DriversGroups>();
+                foreach(DriversGroups m in list)
+                {
+                    SqlParameter dgid = new SqlParameter();
+                    dgid.ParameterName = "@CompanyId";
+                    dgid.SqlDbType = SqlDbType.Int;
+                    dgid.Value = m.CompanyId;
+                    cmd.Parameters.Add(dgid);
+
+                    SqlParameter dgname = new SqlParameter("@NAme", SqlDbType.VarChar, 50);
+                    dgname.Value = m.NAme;
+                    cmd.Parameters.Add(dgname);
+
+                    SqlParameter dgAddr = new SqlParameter();
+                    dgAddr.ParameterName = "@Address";
+                    dgAddr.SqlDbType = SqlDbType.VarChar;
+                    dgAddr.Value = m.Address;
+                    cmd.Parameters.Add(dgAddr);
+
+                    SqlParameter dgcity = new SqlParameter();
+                    dgcity.ParameterName = "@City";
+                    dgcity.SqlDbType = SqlDbType.VarChar;
+                    dgcity.Value = m.City;
+                    cmd.Parameters.Add(dgcity);
+
+                    SqlParameter dgppin = new SqlParameter();
+                    dgppin.ParameterName = "@Pin";
+                    dgppin.SqlDbType = SqlDbType.VarChar;
+                    dgppin.Value = m.Pin;
+                    cmd.Parameters.Add(dgppin);
+
+                    //SqlParameter gsac = new SqlParameter("@Id", SqlDbType.Int);
+                    //gsac.Value = n.Id;
+                    //cmd.Parameters.Add(gsac);                    
+
+                    SqlParameter dgpadr = new SqlParameter();
+                    dgpadr.ParameterName = "@PAddress";
+                    dgpadr.SqlDbType = SqlDbType.VarChar;
+                    dgpadr.Value = m.PAddress;
+                    cmd.Parameters.Add(dgpadr);
+
+                    SqlParameter dgPPin = new SqlParameter();
+                    dgPPin.ParameterName = "@PPin";
+                    dgPPin.SqlDbType = SqlDbType.VarChar;
+                    dgPPin.Value = m.PPin;
+                    cmd.Parameters.Add(dgPPin);
+
+                    SqlParameter dgMob1 = new SqlParameter();
+                    dgMob1.ParameterName = "@OffMobileNo";
+                    dgMob1.SqlDbType = SqlDbType.VarChar;
+                    dgMob1.Value = m.OffMobileNo;
+                    cmd.Parameters.Add(dgMob1);
+
+                    SqlParameter dgPM = new SqlParameter();
+                    dgPM.ParameterName = "@PMobNo";
+                    dgPM.SqlDbType = SqlDbType.VarChar;
+                    dgPM.Value = m.PMobNo;
+                    cmd.Parameters.Add(dgPM);
+
+                    SqlParameter dgDOB = new SqlParameter();
+                    dgDOB.ParameterName = "@DOB";
+                    dgDOB.SqlDbType = SqlDbType.DateTime;
+                    dgDOB.Value = m.DOB;
+                    cmd.Parameters.Add(dgDOB);
+
+                    SqlParameter dgDOJ = new SqlParameter();
+                    dgDOJ.ParameterName = "@DOJ";
+                    dgDOJ.SqlDbType = SqlDbType.DateTime;
+                    dgDOJ.Value = m.DOJ;
+                    cmd.Parameters.Add(dgDOJ);
+
+                    SqlParameter dgbg = new SqlParameter();
+                    dgbg.ParameterName = "@BloodGroup";
+                    dgbg.SqlDbType = SqlDbType.VarChar;
+                    dgbg.Value = m.BloodGroup;
+                    cmd.Parameters.Add(dgbg);
+
+                    SqlParameter dgLNo = new SqlParameter();
+                    dgLNo.ParameterName = "@LicenceNo";
+                    dgLNo.SqlDbType = SqlDbType.VarChar;
+                    dgLNo.Value = m.LicenceNo;
+                    cmd.Parameters.Add(dgLNo);
+
+                    SqlParameter dgLEDt = new SqlParameter();
+                    dgLEDt.ParameterName = "@LiCExpDate";
+                    dgLEDt.SqlDbType = SqlDbType.VarChar;
+                    dgLEDt.Value = m.LiCExpDate;
+                    cmd.Parameters.Add(dgLEDt);
+
+                    SqlParameter dgBNo = new SqlParameter();
+                    dgBNo.ParameterName = "@BadgeNo";
+                    dgBNo.SqlDbType = SqlDbType.VarChar;
+                    dgBNo.Value = m.BadgeNo;
+                    cmd.Parameters.Add(dgBNo);
+
+                    SqlParameter dgBED = new SqlParameter();
+                    dgBED.ParameterName = "@BadgeExpDate";
+                    dgBED.SqlDbType = SqlDbType.DateTime;
+                    dgBED.Value = m.BadgeExpDate;
+                    cmd.Parameters.Add(dgBED);
+
+                    SqlParameter dgRemarks = new SqlParameter();
+                    dgRemarks.ParameterName = "@Remarks";
+                    dgRemarks.SqlDbType = SqlDbType.VarChar;
+                    dgRemarks.Value = m.Remarks;
+                    cmd.Parameters.Add(dgRemarks);
+
+
+                    SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
+                    insupdflag.Value = m.flag;
+                    cmd.Parameters.Add(insupdflag);
+
+                    cmd.ExecuteScalar();
+                    cmd.Parameters.Clear();
+                }
+                conn.Close();
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveDriversGroups Credentials completed.");
+                return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+
+                string str = ex.Message;
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveDriversGroups:" + ex.Message);
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+            }
+            // int found = 0;
+            //  return Tbl;
+        }
+        //Jagan Updated On18thAug End
+
     }
 }

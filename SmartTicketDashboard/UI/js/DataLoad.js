@@ -257,10 +257,10 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
     function GetCompany(data) {
 
         var list = {
-            Name: data[1],
-            code: data[2],            
-            Address: data[3],
-            ContactNo1: data[5],
+            Name: data[0],
+            code: data[1],            
+            Address: data[2],
+            ContactNo1: data[3],
             EmailId: data[4],
             active: 1,
             insupdflag:'I'

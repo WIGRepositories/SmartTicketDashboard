@@ -663,6 +663,34 @@ namespace SmartTicketDashboard.Models
 
     }
 
+
+    //Jagan Updated On18th Aug Start
+    public class DriversGroups
+    {
+        public List<DriversGroups> list { get; set; }
+        public string flag {get; set;}
+        public int DId {get; set;}
+        public int CompanyId {get; set;}
+        public string NAme {get; set;}
+        public string Address {get; set;}
+        public string City {get; set;}
+        public string Pin {get; set;}
+        public string PAddress {get; set;}
+        public string PCity {get; set;}
+        public string PPin {get; set;}
+        public string OffMobileNo {get; set;}
+        public string PMobNo {get; set;}
+        public DateTime DOB {get; set;}
+        public DateTime DOJ {get; set;}
+        public string BloodGroup {get; set;}
+        public string LicenceNo {get; set;}
+        public DateTime LiCExpDate {get; set;}
+        public string BadgeNo {get; set;}
+        public DateTime BadgeExpDate {get; set;}
+        public string Remarks { get; set; }
+
+    }
+    //Jagan Updated On18th Aug End
     public class CompanyRoles
     {
         public int Id { get; set; }
@@ -1932,7 +1960,7 @@ namespace SmartTicketDashboard.Models
         public string FileContent { get; set; }
         public string FileName { get; set; }
         public int DocTypeId { get; set; }
-
+        public string docType { get; set; }
     }
     public class vehiclemas
     {
