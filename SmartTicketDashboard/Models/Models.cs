@@ -2333,6 +2333,15 @@ namespace SmartTicketDashboard.Models
 
 
     }
+    public class Advertisment
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string image { get; set; }
+        public string imagcontent { get; set; }
+        public float price { get; set; }
+        public string description { get; set; }
+    }
 
 }
 
