@@ -106,6 +106,7 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
+    <Content Include="UI\AdvertismentConfiguration.html" />
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\js\GetLocation.js" />

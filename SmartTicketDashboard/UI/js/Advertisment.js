@@ -1,4 +1,4 @@
-﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+﻿var app = angular.module('myApp1', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
     if ($localStorage.uname == null) {
@@ -15,8 +15,89 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.GetAdvertisment = response.data;
         });
     }
+  
+    $scope.onFileSelect = function (files, $event) {
 
-   
+        //$scope.docfiles = [];
+        var ext = files[0].name.split('.').pop();
+        fileReader.readAsDataUrl(files[0], $scope, (ext == 'jpg') ? 1 : 4).then(function (result) {
+
+            if (result.length > 2097152) {
+                alert('Cannot upload file greater than 2 MB.');
+                $event.stopPropagation();
+                $event.preventDefault();
+                return;
+            }
+
+            var book =
+                 {
+                     Id: -1,                
+
+                     Area: (book.Area),
+
+                     Place: (book.Place),
+                     CompanyName: (book.CompanyName),
+                     //image: ($scope.book == null || $scope.book.Image == null) ? null : $scope.book.Image,
+                     imgcontent: (book.Title),
+                     description: (book.Content ),
+                     price: (book.PrizeAmount ),
+                     AdvertismentAmount: (book.AdvertismentAmount ),//
+                     image: files[0].name,
+                    
+
+                     AdvertismentDate: (AdvertismentDate ),
+                     AdvertismentExpireDate: (book.AdvertismentExpiredDate ),
+                     
+                    flag: 'I'
+                 }           
+
+
+            //check if already the file exists                       
+            for (cnt = 0; cnt < $scope.docfiles.length; cnt++) {
+                if ($scope.docfiles[cnt].image == files[0].name) {
+                    $scope.docfiles.splice(cnt, 1);
+                }
+            }
+
+
+            $scope.docfiles.push(book);
+            //if ($scope.DocFiles)
+            //{
+            //    $scope.DocFiles.push(doc);
+            //}
+
+        });
+    };
+    $scope.save = function () {
+
+        var req = {
+            method: 'POST',
+            url: '/api/Advertisment/Advertismentsectionone',
+            data: $scope.docfiles
+        }
+        $http(req).then(function (response) {
+
+            alert("Saved successfully!");
+
+            $scope.Group = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
+        $scope.currGroup = null;
+
+    };
+    $scope.validateFile = function ($event) {
+        //if ($scope.assetDoc.docType == null) {
+        //    alert('Please select docType');
+        //    $event.stopPropagation();
+        //    $event.preventDefault();
+        //    return;
+        //}
+    }
     $scope.GetCompanies = function () {
 
         var vc = {
