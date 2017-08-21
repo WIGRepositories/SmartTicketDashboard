@@ -105,7 +105,7 @@ namespace SmartTicketDashboard.Controllers
                         SmtpClient SmtpServer = new SmtpClient(emailserver);
 
                         mail.From = new MailAddress(fromaddress);
-                        mail.To.Add(emailAddress);
+                        mail.To.Add(fromaddress);
                         mail.Subject = "Email Address verification";
                         mail.IsBodyHtml = true;
 
