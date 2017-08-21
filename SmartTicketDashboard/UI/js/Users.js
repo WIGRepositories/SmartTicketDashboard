@@ -318,7 +318,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        $http.get('/api/Users/GetUserRoles?cmpId=' + $scope.cmp.Id).then(function (res, data) {
+        $http.get('/api/Users/GetUserRoles?cmpId=1').then(function (res, data) {
             $scope.userRoles = res.data;
             $scope.checkedArr = res.data;
            // $scope.uncheckedArr = $filter('filter')($scope.userRoles, { assigned: "0" });

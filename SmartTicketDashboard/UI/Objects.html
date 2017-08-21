@@ -408,10 +408,10 @@
 
                                             <div class="col-lg-12">
 
-                                                <div class="actions">
+                                                <!--<div class="actions">-->
                                                     <!-----   <a href="NewObject.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Object</button></a>--->
-                                                    <button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>
-                                                </div>
+                                                    <!--<button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>-->
+                                                <!--</div>-->
 
                                                 
 
@@ -419,10 +419,10 @@
                                                     <!--<caption class="mbl mtl"><a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>&nbsp; | &nbsp;<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a></caption>-->
                                                     <thead>
                                                         <tr>
-
-                                                            <th>Name</th>
-                                                            <th>Details</th>
-                                                            <th>Add Child</th>
+                                                            <th width="20%">Name</th>
+                                                            <th width="15%">Details</th>
+                                                            <th width="30%">Add Child</th>                                                           
+                                                            <th>Delete</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -436,12 +436,13 @@
                                                             <td style="text-align:center">
                                                                 <button ng-click="ViewDetails(a)" class="btn btn-default btn-sm">Details</button>
                                                             </td>
+                                                           
+                                                            <td>
+                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="align-content:center">Add Child Equipment</button>
+                                                            </td>
                                                             <td style="text-align:center">
                                                                 <button ng-click="remove_node(a)" ng-disabled="CanUploadDoc == 0" ng-hide="a.ParentId == null" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                                                            </td>
-                                                            <td>
-                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="float: right; margin: 10px;">Add Child Equipment</button>
-                                                            </td>
+                                                            </td>                                                            
                                                             <td>
                                                                 <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
                                                             </td>
@@ -534,9 +535,9 @@
                                 <label for="selCountry" class="col-md-4 control-label" style="color:red;">Parent:<span class='require'>*</span></label>
                             </div>
                             <div class="col-md-6">
-                                <!---- <input type="text" disabled ng-model="NewObject.ParentId" class="form-control" />-->
-                                <select ng-options="O.Name for O in NewObjects track by O.ID" class="form-control" ng-value="NewObject.ParentId" ng-model="NewObject.ParentId">
-                                    <option value="NewObject.ParentId">Select</option>
+                                 <!--<input type="text" disabled ng-model="NewObject.ParentId" class="form-control" />-->
+                                <select ng-options="O.Name for O in NewObjects track by O.Id" class="form-control"  ng-model="p">
+                                    <option value="">Select</option>
                                 </select>
 
 
