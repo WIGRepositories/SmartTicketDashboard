@@ -38,7 +38,7 @@ namespace SmartTicketDashboard.Controllers
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetCountries completed.");
             // int found = 0;
             return Tbl;
-        }
+        }     
 
         [HttpPost]
         public HttpResponseMessage SaveCountries(IEnumerable<Country> countries)

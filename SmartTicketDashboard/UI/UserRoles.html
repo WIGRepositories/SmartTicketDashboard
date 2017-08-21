@@ -409,10 +409,10 @@
                                         <div class="row">
                                             <div class="col-lg-12">
                                                 <div class="table-container">
-                                                    <div class="col-md-4">
+                                                    <div class="col-md-4" style="margin-bottom:7px;">
                                                         Company: <select ng-options="cmp.Name for cmp in Companies track by cmp.Id" ng-model="cmp" ng-change="getUserRolesForCompany(cmp)"
         id="test" width="100%">
-    <option value="">Select Company</option>
+    <option value="">Select</option>
 </select>
                                                     </div>
                                                     <!--<div class="col-md-3">
@@ -606,7 +606,7 @@
                                                                                 <label for="selCompany" class="col-md-3 control-label" style="color:red;">Company:<span class='require'>*</span></label>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <select style="width:260px" ng-options="cmp.Name for cmp in Companies track by cmp.Id" class="form-control" ng-model="cmp" ng-change="getUserRolesForCompany(cmp)" disabled>
+                                                                                <select style="width:260px" ng-options="cmp.Name for cmp in Companies track by cmp.Id" class="form-control" ng-model="cmp" disabled>
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
@@ -619,7 +619,7 @@
                                                                             </div>
 
                                                                             <div class="col-md-6">
-                                                                                <select style="width:260px" ng-options="u.FirstName+' '+u.LastName  for u in cmpUsers1 track by u.Id" ng-change="GetUsersForCmp(cmp)" class="form-control">
+                                                                                <select style="width:260px" ng-options="u.FirstName+' '+u.LastName  for u in cmpUsers1 track by u.Id" ng-model="u" ng-change="getUserRolesForCompany(cmp)" class="form-control">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>

@@ -2023,7 +2023,6 @@
     <Compile Include="Controllers\BtposRoutesController.cs" />
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
-    <Compile Include="Controllers\CardUser.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
@@ -2490,6 +2489,9 @@
     <Folder Include="UI\vendors\bootstrap-datetimepicker\bootstrap\" />
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\DriversList.csv" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
