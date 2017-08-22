@@ -1,4 +1,4 @@
-var myapp1 = angular.module('myApp', ['ngStorage', 'ngAnimate', 'treasure-overlay-spinner', 'ui.bootstrap'])
+var myapp1 = angular.module('myApp1', ['ngStorage', 'ngAnimate', 'treasure-overlay-spinner', 'ui.bootstrap'])
 //var myapp1 = angular.module('myApp', ['ngStorage'])
 
 var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage, $rootScope, $uibModal) {
@@ -18,9 +18,8 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
         var type = {
 
             UserName: type.UserName,
-            oldPassword: type.oldPassword,
-            newPassword: type.newPassword,
-            reenternewPassword: type.reenternewPassword,
+            newPassword: type.newPassword
+           
 
         };
 
@@ -32,7 +31,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
             data: type
         }
         $http(req).then(function (response) {
-
+            alert("Updated Password Successfully");
         })
     }
 
@@ -44,13 +43,13 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
         var p = $scope.Password
 
         if (u == null || u == "") {
-            $scope.showDialog("Please enter username");
+            alert("Please enter username");
            // alert('Please enter username');
             return;
         }
 
         if (p == null || p == "") {
-            $scope.showDialog("Please enter password");
+            alert("Please enter password");
             //alert('Please enter password');
             return;
         }
@@ -64,7 +63,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
             data: inputcred
         }
           $rootScope.spinner.on();
-      //  angular.element('body').addClass('spinnerOn'); // add Class to body to show spinner
+        angular.element('body').addClass('spinnerOn'); // add Class to body to show spinner
 
 
         $http(req).then(function (res) {
@@ -74,7 +73,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
              //  $rootScope.$apply();
                //angular.element('body').removeClass('spinnerOn').then(function () { alert('invalid credentials'); }); // hide spinner
                // alert('invalid credentials');
-                $scope.showDialog("invalid credentials");
+                alert("invalid credentials");
             }
             else {
                 //if the user has role, then get the details and save in session

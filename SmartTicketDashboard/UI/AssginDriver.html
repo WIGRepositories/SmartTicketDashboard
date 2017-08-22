@@ -541,9 +541,8 @@
                                                          <tr>
 
 
-                                                             <!--<th width="10%">VechID</th>-->
-                                                             <th width="10%">Vehicle Type</th>
                                                              <th width="15%">Registration No</th>
+                                                             <th width="10%">Vehicle Type</th>                                                             
                                                              <th width="15%">Driver Name</th>
                                                              <th width="15%">Mobile No</th>
                                                              <!--<th width="10%">Alt. Mobile No</th>-->
@@ -557,9 +556,8 @@
                                                      <tbody>
                                                          <tr ng-repeat="a in drivers">
 
-                                                             <!--<td>{{a.VechID}}</td>-->
+                                                             <td><a href="AssginDriver.html"> <font color="blue"> <u> {{a.RegistrationNo}}</u></font></a></td>
                                                              <td>{{a.VehicleType}}</td>
-                                                             <td>{{a.RegistrationNo}}</td>
                                                              <td>{{a.DriverName}}</td>
                                                              <td>{{a.PhoneNo}}</td>
                                                              <!--<td>{{a.AltPhoneNo}}</td>-->

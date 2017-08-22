@@ -1,8 +1,129 @@
-﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
+
+    app.directive('file-input', function ($parse) {
+        return {
+            restrict: "EA",
+            template: "<input type='file' />",
+            replace: true,
+            link: function (scope, element, attrs) {
+
+                var modelGet = $parse(attrs.fileInput);
+                var modelSet = modelGet.assign;
+                var onChange = $parse(attrs.onChange);
+
+                var updateModel = function () {
+                    scope.$apply(function () {
+                        modelSet(scope, element[0].files[0]);
+                        onChange(scope);
+                    });
+                };
+
+                element.bind('change', updateModel);
+            }
+        };
+    });
+
+    app.directive("ngFileSelect", function () {
+
+        return {
+
+            link: function ($scope, el) {
+
+                el.on('click', function () {
+
+                    this.value = '';
+
+                });
+
+                el.bind("change", function (e) {
+
+                    $scope.file = (e.srcElement || e.target).files[0];
+
+
+
+                    var allowed = ["jpeg", "png", "gif", "jpg"];
+
+                    var found = false;
+
+                    var img;
+
+                    img = new Image();
+
+                    allowed.forEach(function (extension) {
+
+                        if ($scope.file.type.match('image/' + extension)) {
+
+                            found = true;
+
+                        }
+
+                    });
+
+                    if (!found) {
+
+                        alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                        return;
+
+                    }
+
+                    img.onload = function () {
+
+                        var dimension = $scope.selectedImageOption.split(" ");
+
+                        if (dimension[0] == this.width && dimension[2] == this.height) {
+
+                            allowed.forEach(function (extension) {
+
+                                if ($scope.file.type.match('image/' + extension)) {
+
+                                    found = true;
+
+                                }
+
+                            });
+
+                            if (found) {
+
+                                if ($scope.file.size <= 1048576) {
+
+                                    $scope.getFile();
+
+                                } else {
+
+                                    alert('file size should not be grater then 1 mb.');
+
+                                }
+
+                            } else {
+
+                                alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                            }
+
+                        } else {
+
+                            alert('selected image dimension is not equal to size drop down.');
+
+                        }
+
+                    };
+
+                    //  img.src = _URL.createObjectURL($scope.file);
+
+
+
+                });
+
+            }
+
+        };
+
+    });
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
@@ -148,7 +269,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VechMobileNo: newVehicle.VechMobileNo,
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
-           
+            Photo: $scope.imageSrc,
 
             Active: (newVehicle.Active == true) ? 1 : 0,
 
@@ -369,6 +490,49 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+
+    $scope.onFileSelect = function () {
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    }
+   
+    $scope.setUsers = function (usr) {
+        $scope.User1 = usr;
+        $scope.imageSrc = null;
+        document.getElementById('cmpNewLogo').src = "";
+        $scope.imageSrc = usr.photo;
+        document.getElementById('uactive').checked = (usr.Active == 1);
+
+    }
+    $scope.GetUsersinitData = function () {
+
+        $scope.imageSrc = null;
+        document.getElementById('cmpLogo').src = "";
+
+        var date = new Date();
+        var components = [
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds()
+        ];
+
+        var id = components.join("");
+        $scope.EmpNo = 'EMP' + id;
+
+        //get companies list   
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+            $scope.Companies = response.data;
+        });
+    }
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
