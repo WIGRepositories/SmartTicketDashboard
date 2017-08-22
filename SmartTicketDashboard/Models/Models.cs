@@ -1757,6 +1757,7 @@ namespace SmartTicketDashboard.Models
         public string OldPassword { set; get; }
         public string NewPassword { set; get; }
         public string ReenterNewPassword { set; get; }
+        public string Pwd { get; set; }
 
     }
     public class FORouteFleetSchedule

@@ -16,7 +16,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/BookAVehicle/GetBookingHistory")]
-        public DataTable GetBookingHistory(string PhoneNo)
+        public DataTable GetBookingHistory(string RegNo,string DriverName)
         {
             DataTable dt = new DataTable();
 
@@ -27,7 +27,8 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "HVGetHistory";
-            cmd.Parameters.Add("@PhoneNo", SqlDbType.VarChar,50).Value = PhoneNo;
+            cmd.Parameters.Add("@RegistrationNo", SqlDbType.VarChar, 50).Value = RegNo;
+            cmd.Parameters.Add("@DriverName", SqlDbType.VarChar, 50).Value = DriverName;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);

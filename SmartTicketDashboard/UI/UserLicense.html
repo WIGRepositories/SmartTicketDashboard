@@ -349,7 +349,7 @@
                             <a href="#">
                                 <i class="fa fa-send-o fa-fw">
                                     <div class="icon-bg bg-dark"></div>
-                                </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
+                                </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -412,7 +412,21 @@
 
                                                 <div class="table-container">
                                                     <div class="row mbm">
-
+                                                        <div class="col-md-2">
+                                                            Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry()" style="width:80%">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-2" ng-init="GetCompanies()">
+                                                           Company: <select ng-options="s.Name for s in Companies track by s.Id" ng-model="s" ng-change="getUsersnRoles()" style="width:80%">
+    <option value="">Select</option>
+</select>
+                                                        </div>
+                                                        <div class="col-md-2">
+                                                           Users: <select ng-options="u.FirstName+' '+u.LastName  for u in cmpUsers1 track by u.Id" ng-model="uu" ng-change="GetUsersForCmp(cmp)" style="width:80%">
+    <option value="">Select</option>
+</select>
+                                                        </div>
                                                         <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">

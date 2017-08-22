@@ -347,7 +347,7 @@
                                         <a href="#">
                                             <i class="fa fa-send-o fa-fw">
                                                 <div class="icon-bg bg-dark"></div>
-                                            </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
+                                            </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                                         </a>
                                         <ul class="nav nav-second-level">
                                             <li>
@@ -396,731 +396,740 @@
                                     <div class="clearfix"></div>
                                 </div>
                                 <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
-                                <div class="page-content">
+                                <div class="page-content">                                   
                                     <div id="tableactionTabContent" class="tab-content">
                                         <div id="table-table-tab" class="tab-pane fade in active">
                                             <div class="row">
                                                 <div class="col-lg-12">
                                                     <div class="table-container">
                                                         <div class="row mbm">
-
-                                                            <div class="col-md-5">
-                                                                Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetUsersForCmp()" style="width:80%">
-                                                                    <option value="">Select</option>
-                                                                </select>
+                                                            <div class="col-md-2">
+                                                                First Name   <input type="text" ng-model="query" /><br />
                                                             </div>
-
-                                                            <div class="actions">
-                                                                <button ng-disabled="Roleid != 1" ng-hide="cmp == null" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetUsersinitData();">Add User</button>
-
-                                                                <a href="AddFleetowner.html"><button type="button" ng-hide="cmp == null" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add Fleet Owner</button></a>
-
-                                                                <!--<a href="AddNewUser.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add User</button></a>-->
+                                                            <div class="col-md-2">
+                                                                Last Name   <input type="text" ng-model="query" /><br />
                                                             </div>
+                                                                <div class="col-md-2">
+                                                                    Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry()" style="width:80%">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
+                                                           
+                                                                <div class="col-md-2">
+                                                                    Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetUsersForCmp()" style="width:80%">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
 
-                                                            <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade" ng-model="NewUser">
-                                                                <div class=" modal-dialog modal-lg">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header modal-header-primary">
-                                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
-                                                                            <h4 id="modal-header-primary-label" class="modal-title">Add User</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <h3>Personal details</h3>
-                                                                            <div class="row">
+                                                                <div class="actions">
+                                                                    <button ng-disabled="Roleid != 1" ng-hide="cmp == null" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetUsersinitData();">Add User</button>
 
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left">First Name:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="NewUser.FirstName" /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left">Last Name:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="NewUser.LastName" /><span class="help-block"></span></div>
-                                                                                </div>
+                                                                    <a href="AddFleetowner.html"><button type="button" ng-hide="cmp == null" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add Fleet Owner</button></a>
 
+                                                                    <!--<a href="AddNewUser.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add User</button></a>-->
+                                                                </div>
+
+                                                                <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade" ng-model="NewUser">
+                                                                    <div class=" modal-dialog modal-lg">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header modal-header-primary">
+                                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                                                <h4 id="modal-header-primary-label" class="modal-title">Add User</h4>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float: left">Middle Name:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="EmailId" type="text" ng-model="NewUser.MiddleName" class="form-control" /><span class="help-block"></span></div>
+                                                                            <div class="modal-body">
+                                                                                <h3>Personal details</h3>
+                                                                                <div class="row">
 
-                                                                                </div>
-
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">Employee No*:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="code" type="text" ng-model="EmpNo" class="form-control" readonly /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">E-mail Id:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="EmailId" type="text" ng-model="NewUser.EmailId" class="form-control" /><span class="help-block"></span></div>
-
-                                                                                </div>
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ContactNo1" class="col-md-4 control-label" style="color: red;float: left">Contact No.1:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="ContactNo1" type="text" ng-keypress="filterValue($event)" ng-model="NewUser.ContactNo1" class="form-control" maxlength="10" /><span class="help-block"></span></div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ContactNo2" class="col-md-4 control-label" style="float:left">Contact No.2:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" id="ContactNo2" ng-keypress="filterValue($event)" ng-model="NewUser.ContactNo2" maxlength="10" data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" data-fv-phone-country11="IN" required="required" data-fv-notempty-message="This field cannot be left blank." class="form-control" name="data[User][mobile]" data-fv-field="data[User][mobile]">
-                                                                                        <!--<input id="ContactNo2" type="text" ng-model="Group.ContactNo2" class="form-control" maxlength="10" />-->
-                                                                                        <span class="help-block">
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Supervisor:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
-
-                                                                                        <select class="col-md-12 form-control" ng-model="NewUser.SupervisorId">
-                                                                                            <option value="">select Supervisor</option>
-                                                                                            <option value="1">1</option>
-                                                                                            <option value="2">2</option>
-                                                                                            <option value="3">3</option>
-                                                                                            <option value="4">4</option>
-                                                                                            <option value="5">5</option>
-                                                                                            <option value="6">6</option>
-                                                                                            <option value="7">7</option>
-                                                                                            <option value="8">8</option>
-                                                                                            <option value="9">9</option>
-                                                                                            <option value="10">10</option>
-
-                                                                                        </select>
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-
-
-                                                                            <div class="row" style="margin-top:5px">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select class="col-md-12 form-control" ng-model="NewUser.Country">
-                                                                                            <option value="">select Country</option>
-                                                                                            <option value="245">Zimbabwe</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="State" class="col-md-4 control-label" style="color: red; float: left">State/Province:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select class="col-md-12 form-control" ng-model="NewUser.State">
-                                                                                            <option value="">select State/Province</option>
-                                                                                            <option value="1">Bulawayo</option>
-                                                                                            <option value="2">Harare</option>
-                                                                                            <option value="3">Manicaland</option>
-                                                                                            <option value="4">Mashonaland Central</option>
-                                                                                            <option value="5">Mashonaland East</option>
-                                                                                            <option value="6">Mashonaland West</option>
-                                                                                            <option value="7">Masvingo</option>
-                                                                                            <option value="8">Matabeleland North</option>
-                                                                                            <option value="9">Matabeleland South</option>
-                                                                                            <option value="10">Midlands</option>
-
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-
-                                                                            <div class="row" style="margin-top:10px">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ZipCode" class="col-md-4 control-label" style="float:left">ZipCode:<span class='require'></span></label>
-
-                                                                                    <div class="col-md-8"><input id="ZipCode" type="text" ng-model="NewUser.ZipCode" class="form-control" /><span class="help-block"></span></div>
-
-                                                                                </div>
-
-                                                                                <div class="col-md-2">
-                                                                                    <label for="active" class="col-md-6 control-label" style="float:left">Active: <span class='require'></span></label>
-
-                                                                                    <input id="nactive" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="NewUser.active" class="form-control" checked disabled />
-
-                                                                                </div>
-
-                                                                                <div class="col-md-3">
-                                                                                    <label for="active" class="col-md-5 control-label" style="color: red; float: left">Gender: <span class='require'></span></label>
-
-                                                                                    <select ng-model="NewUser.Gender">
-                                                                                        <option value="">Select Gender</option>
-                                                                                        <option value="1">Male</option>
-                                                                                        <option value="2">Female</option>
-                                                                                        <option value="3">Others</option>
-                                                                                    </select>
-
-                                                                                </div>
-
-
-                                                                            </div>
-
-                                                                            <div class="row" style="margin-top:10px">
-                                                                                <div class="col-md-6">
-                                                                                    <div>
-                                                                                        <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Address:</label>
-
-                                                                                        <div class="col-md-8"><textarea rows="3" class="form-control" ng-model="NewUser.Address"></textarea></div>
-                                                                                        <br />
-                                                                                    </div>
-
-                                                                                    <div style="margin-top:10px">
-                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Alternate Address:</label>
-                                                                                        <div class="col-md-8" style="margin-top:10px"><textarea rows="3" class="form-control" ng-model="NewUser.AlternateAddress"></textarea></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Address Id" class="col-md-4 control-label" style="float:left">Photo:</label>
-                                                                                    <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                    <div class="col-md-8">
-                                                                                        <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
-                                                                                        <br />
-                                                                                        <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
-                                                                                            <i class="fa fa-upload"></i>&nbsp;
-                                                                                            Upload photo
-                                                                                        </a>
-                                                                                    </div>
-
-
-
-                                                                                    <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
-
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <h3>Role details</h3>
-                                                                            <div class="row" style="margin-top:10px">
-
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Role:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
-
-                                                                                        <select class="col-md-12 form-control" ng-model="NewUser.RoleId">
-                                                                                            <option value="">Select Role</option>
-                                                                                            <option value="1">Fleet Owner</option>
-                                                                                            <option value="2">Supervisor</option>
-                                                                                            <option value="3">Manager</option>
-                                                                                            <option value="4">Sales executive</option>
-                                                                                            <option value="5">Techical manager</option>
-                                                                                            <option value="6">Front office</option>
-                                                                                            <option value="7">7</option>
-                                                                                            <option value="8">8</option>
-                                                                                            <option value="9">9</option>
-                                                                                            <option value="10">10</option>
-
-                                                                                        </select>
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-5 control-label" style="float:left">From Date:<span class='require'></span></label>
-                                                                                    <div class="col-md-7">
-                                                                                        <input type="date" ng-model="NewUser.RFromDate" />
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">To Date:<span class='require'></span></label>
                                                                                     <div class="col-md-6">
-                                                                                        <input type="date" ng-model="NewUser.RToDate" />
+                                                                                        <label for="Name" class="col-md-4 control-label" style="color:red;float:left">First Name:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="NewUser.FirstName" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Name" class="col-md-4 control-label" style="color:red;float:left">Last Name:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="NewUser.LastName" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float: left">Middle Name:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="EmailId" type="text" ng-model="NewUser.MiddleName" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" style="color:red;float:left">Employee No*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="code" type="text" ng-model="EmpNo" class="form-control" readonly /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">E-mail Id:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="EmailId" type="text" ng-model="NewUser.EmailId" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ContactNo1" class="col-md-4 control-label" style="color: red;float: left">Contact No.1:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="ContactNo1" type="text" ng-keypress="filterValue($event)" ng-model="NewUser.ContactNo1" class="form-control" maxlength="10" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ContactNo2" class="col-md-4 control-label" style="float:left">Contact No.2:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" id="ContactNo2" ng-keypress="filterValue($event)" ng-model="NewUser.ContactNo2" maxlength="10" data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" data-fv-phone-country11="IN" required="required" data-fv-notempty-message="This field cannot be left blank." class="form-control" name="data[User][mobile]" data-fv-field="data[User][mobile]">
+                                                                                            <!--<input id="ContactNo2" type="text" ng-model="Group.ContactNo2" class="form-control" maxlength="10" />-->
+                                                                                            <span class="help-block">
+                                                                                            </span>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Supervisor:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
+
+                                                                                            <select class="col-md-12 form-control" ng-model="NewUser.SupervisorId">
+                                                                                                <option value="">select Supervisor</option>
+                                                                                                <option value="1">1</option>
+                                                                                                <option value="2">2</option>
+                                                                                                <option value="3">3</option>
+                                                                                                <option value="4">4</option>
+                                                                                                <option value="5">5</option>
+                                                                                                <option value="6">6</option>
+                                                                                                <option value="7">7</option>
+                                                                                                <option value="8">8</option>
+                                                                                                <option value="9">9</option>
+                                                                                                <option value="10">10</option>
+
+                                                                                            </select>
+
+                                                                                        </div>
 
                                                                                     </div>
                                                                                 </div>
 
 
-                                                                            </div>
+                                                                                <div class="row" style="margin-top:5px">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <select ng-options="c.Name for c in Countries track by c.Id" class="col-md-12 form-control" ng-model="NewUser.Country">
+                                                                                                <option value="">select Country</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="State" class="col-md-4 control-label" style="color: red; float: left">State/Province:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <select class="col-md-12 form-control" ng-model="NewUser.State">
+                                                                                                <option value="">select State/Province</option>
+                                                                                                <option value="1">Bulawayo</option>
+                                                                                                <option value="2">Harare</option>
+                                                                                                <option value="3">Manicaland</option>
+                                                                                                <option value="4">Mashonaland Central</option>
+                                                                                                <option value="5">Mashonaland East</option>
+                                                                                                <option value="6">Mashonaland West</option>
+                                                                                                <option value="7">Masvingo</option>
+                                                                                                <option value="8">Matabeleland North</option>
+                                                                                                <option value="9">Matabeleland South</option>
+                                                                                                <option value="10">Midlands</option>
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
 
 
-                                                                            <h3>Dashboard portal & Website login details</h3>
+                                                                                </div>
 
-                                                                            <div class="row" style="margin-top:5px">
+                                                                                <div class="row" style="margin-top:10px">
 
-                                                                                <div class="col-md-6">
-                                                                                    <label for="inputMiddleName" class="col-md-4 control-label" style="float: left">User Name:</label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" class="form-control" ng-model="NewUser.DUserName" />
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ZipCode" class="col-md-4 control-label" style="float:left">ZipCode:<span class='require'></span></label>
+
+                                                                                        <div class="col-md-8"><input id="ZipCode" type="text" ng-model="NewUser.ZipCode" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-2">
+                                                                                        <label for="active" class="col-md-6 control-label" style="float:left">Active: <span class='require'></span></label>
+
+                                                                                        <input id="nactive" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="NewUser.active" class="form-control" checked disabled />
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="active" class="col-md-5 control-label" style="color: red; float: left">Gender: <span class='require'></span></label>
+
+                                                                                        <select ng-model="NewUser.Gender">
+                                                                                            <option value="">Select Gender</option>
+                                                                                            <option value="1">Male</option>
+                                                                                            <option value="2">Female</option>
+                                                                                            <option value="3">Others</option>
+                                                                                        </select>
+
+                                                                                    </div>
+
+
+                                                                                </div>
+
+                                                                                <div class="row" style="margin-top:10px">
+                                                                                    <div class="col-md-6">
+                                                                                        <div>
+                                                                                            <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Address:</label>
+
+                                                                                            <div class="col-md-8"><textarea rows="3" class="form-control" ng-model="NewUser.Address"></textarea></div>
+                                                                                            <br />
+                                                                                        </div>
+
+                                                                                        <div style="margin-top:10px">
+                                                                                            <label for="Fax" class="col-md-4 control-label" style="float:left">Alternate Address:</label>
+                                                                                            <div class="col-md-8" style="margin-top:10px"><textarea rows="3" class="form-control" ng-model="NewUser.AlternateAddress"></textarea></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Address Id" class="col-md-4 control-label" style="float:left">Photo:</label>
+                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                        <div class="col-md-8">
+                                                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                                                            <br />
+                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                                Upload photo
+                                                                                            </a>
+                                                                                        </div>
+
+
+
+                                                                                        <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-md-6">
-                                                                                    <label for="State" class="col-md-4 control-label" style="float: left">Password:</label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" class="form-control" ng-model="NewUser.DPassword" />
+                                                                                <h3>Role details</h3>
+                                                                                <div class="row" style="margin-top:10px">
+
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Role:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
+
+                                                                                            <select class="col-md-12 form-control" ng-model="NewUser.RoleId">
+                                                                                                <option value="">Select Role</option>
+                                                                                                <option value="1">Fleet Owner</option>
+                                                                                                <option value="2">Supervisor</option>
+                                                                                                <option value="3">Manager</option>
+                                                                                                <option value="4">Sales executive</option>
+                                                                                                <option value="5">Techical manager</option>
+                                                                                                <option value="6">Front office</option>
+                                                                                                <option value="7">7</option>
+                                                                                                <option value="8">8</option>
+                                                                                                <option value="9">9</option>
+                                                                                                <option value="10">10</option>
+
+                                                                                            </select>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-5 control-label" style="float:left">From Date:<span class='require'></span></label>
+                                                                                        <div class="col-md-7">
+                                                                                            <input type="date" ng-model="NewUser.RFromDate" />
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">To Date:<span class='require'></span></label>
+                                                                                        <div class="col-md-6">
+                                                                                            <input type="date" ng-model="NewUser.RToDate" />
+
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+                                                                                <h3>Dashboard portal & Website login details</h3>
+
+                                                                                <div class="row" style="margin-top:5px">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="inputMiddleName" class="col-md-4 control-label" style="float: left">User Name:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" class="form-control" ng-model="NewUser.DUserName" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="State" class="col-md-4 control-label" style="float: left">Password:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" class="form-control" ng-model="NewUser.DPassword" />
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+                                                                                <br />
+                                                                                <div class="form-actions">
+                                                                                    <div class="col-md-offset-5 col-md-8">
+                                                                                        <button class="btn btn-green" type="button" ng-click="save(NewUser, 'I');">Save</button>
+
+                                                                                        <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
                                                                                     </div>
                                                                                 </div>
 
-
                                                                             </div>
-
-
-                                                                            <br />
-                                                                            <div class="form-actions">
-                                                                                <div class="col-md-offset-5 col-md-8">
-                                                                                    <button class="btn btn-green" type="button" ng-click="save(NewUser, 'I');">Save</button>
-
-                                                                                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-                                                                                </div>
-                                                                            </div>
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
-                                                            <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade" ng-model="User1">
-                                                                <div class="modal-dialog modal-lg">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header modal-header-primary">
-                                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
-                                                                            <h4 id="modal-header-primary-label" class="modal-title">Edit User</h4>
-                                                                        </div>
-                                                                        <div class="modal-body">
-                                                                            <h3>Personal details</h3>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left">First Name:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="User1.FirstName" /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label" style="color:red;float:left">Last Name:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="User1.LastName" /><span class="help-block"></span></div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float: left">Middle Name:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="EmailId" type="text" ng-model="User1.MiddleName" class="form-control" /><span class="help-block"></span></div>
-
-                                                                                </div>
-
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="code" class="col-md-4 control-label" style="color:red;float:left">Employee No*:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="code" type="text" ng-model="User1.EmpNo" class="form-control" readonly /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">E-mail Id:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="EmailId" type="text" ng-model="User1.EmailId" class="form-control" /><span class="help-block"></span></div>
-
-                                                                                </div>
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ContactNo1" class="col-md-4 control-label" style="color: red;float: left">Contact No.1:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="ContactNo1" type="text" ng-keypress="filterValue($event)" ng-model="User1.ContactNo1" class="form-control" maxlength="10" /><span class="help-block"></span></div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ContactNo2" class="col-md-4 control-label" style="float:left">Contact No.2:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" id="ContactNo2" ng-keypress="filterValue($event)" ng-model="User1.ContactNo2" maxlength="10" data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" data-fv-phone-country11="IN" required="required" data-fv-notempty-message="This field cannot be left blank." class="form-control" name="data[User][mobile]" data-fv-field="data[User][mobile]">
-                                                                                        <!--<input id="ContactNo2" type="text" ng-model="Group.ContactNo2" class="form-control" maxlength="10" />-->
-                                                                                        <span class="help-block">
-                                                                                        </span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Supervisor:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
-
-                                                                                        <select class="col-md-12 form-control" ng-model="User1.ManagerId" ng-value="User1.ManagerId">
-                                                                                            <option value="">select Supervisor</option>
-                                                                                            <option value="1">1</option>
-                                                                                            <option value="2">2</option>
-                                                                                            <option value="3">3</option>
-                                                                                            <option value="4">4</option>
-                                                                                            <option value="5">5</option>
-                                                                                            <option value="6">6</option>
-                                                                                            <option value="7">7</option>
-                                                                                            <option value="8">8</option>
-                                                                                            <option value="9">9</option>
-                                                                                            <option value="10">10</option>
-
-                                                                                        </select>
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                            </div>
-
-
-                                                                            <div class="row" style="margin-top:5px">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select class="col-md-12 form-control" ng-model="User1.Country" ng-value="User1.CountryId">
-                                                                                            <option value="">select Country</option>
-                                                                                            <option value="245">Zimbabwe</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="State" class="col-md-4 control-label" style="color: red; float: left">State/Province:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select class="col-md-12 form-control" ng-model="User1.State" ng-value="User1.StateId">
-                                                                                            <option value="">select State/Province</option>
-                                                                                            <option value="1">Bulawayo</option>
-                                                                                            <option value="2">Harare</option>
-                                                                                            <option value="3">Manicaland</option>
-                                                                                            <option value="4">Mashonaland Central</option>
-                                                                                            <option value="5">Mashonaland East</option>
-                                                                                            <option value="6">Mashonaland West</option>
-                                                                                            <option value="7">Masvingo</option>
-                                                                                            <option value="8">Matabeleland North</option>
-                                                                                            <option value="9">Matabeleland South</option>
-                                                                                            <option value="10">Midlands</option>
-
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-
-                                                                            <div class="row" style="margin-top:10px">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="ZipCode" class="col-md-4 control-label" style="float:left">ZipCode:<span class='require'></span></label>
-
-                                                                                    <div class="col-md-8"><input id="ZipCode" type="text" ng-model="User1.ZipCode" class="form-control" /><span class="help-block"></span></div>
-
-                                                                                </div>
-
-                                                                                <div class="col-md-2">
-                                                                                    <label for="active" class="col-md-6 control-label" style="float:left">Active: <span class='require'></span></label>
-
-                                                                                    <input id="uactive" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="User1.active" class="form-control" />
-
-                                                                                </div>
-
-                                                                                <div class="col-md-3">
-                                                                                    <label for="active" class="col-md-5 control-label" style="color: red; float: left">Gender: <span class='require'></span></label>
-
-                                                                                    <select ng-model="User1.Gender" ng-value="User1.GenderId">
-                                                                                        <option value="">Select Gender</option>
-                                                                                        <option value="1">Male</option>
-                                                                                        <option value="2">Female</option>
-                                                                                        <option value="3">Others</option>
-                                                                                    </select>
-
-                                                                                </div>
-
-
-                                                                            </div>
-
-                                                                            <div class="row" style="margin-top:10px">
-                                                                                <div class="col-md-6">
-                                                                                    <div>
-                                                                                        <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Address:</label>
-
-                                                                                        <div class="col-md-8"><textarea rows="3" class="form-control" ng-model="User1.Address"></textarea></div>
-                                                                                        <br />
-                                                                                    </div>
-
-                                                                                    <div style="margin-top:10px">
-                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Alternate Address:</label>
-                                                                                        <div class="col-md-8" style="margin-top:10px"><textarea rows="3" class="form-control" ng-model="User1.AlternateAddress"></textarea></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Address Id" class="col-md-4 control-label" style="float:left">Photo:</label>
-                                                                                    <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                    <div class="col-md-8">
-                                                                                        <img id="cmpNewLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
-                                                                                        <br />
-                                                                                        <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
-                                                                                            <i class="fa fa-upload"></i>&nbsp;
-                                                                                            Upload photo
-                                                                                        </a>
-                                                                                        <a href="#" class="btn btn-red" ng-click="clearImg();" style="margin-top:5px">
-                                                                                            <i class="fa fa-upload"></i>&nbsp;
-                                                                                            Remove Logo
-                                                                                        </a>
-                                                                                    </div>
-
-
-
-                                                                                    <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
-
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <h3>Role details</h3>
-                                                                            <div class="row" style="margin-top:10px">
-
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Role:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
-
-                                                                                        <select class="col-md-12 form-control" ng-model="User1.RoleId" ng-value="User1.RoleId">
-                                                                                            <option value="">Select Role</option>
-                                                                                            <option value="1">Fleet Owner</option>
-                                                                                            <option value="2">Supervisor</option>
-                                                                                            <option value="3">Manager</option>
-                                                                                            <option value="4">Sales executive</option>
-                                                                                            <option value="5">Techical manager</option>
-                                                                                            <option value="6">Front office</option>
-                                                                                            <option value="7">7</option>
-                                                                                            <option value="8">8</option>
-                                                                                            <option value="9">9</option>
-                                                                                            <option value="10">10</option>
-
-                                                                                        </select>
-
-                                                                                    </div>
-
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-5 control-label" style="float:left">From Date:<span class='require'></span></label>
-                                                                                    <div class="col-md-7">
-                                                                                        <input type="date" ng-model="User1.RFromDate" />
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">To Date:<span class='require'></span></label>
-                                                                                    <div class="col-md-6">
-                                                                                        <input type="date" ng-model="User1.RToDate" />
-
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-
-
-                                                                            <h3>Dashboard portal & Website login details</h3>
-
-                                                                            <div class="row" style="margin-top:5px">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="inputMiddleName" class="col-md-4 control-label" style="float: left">User Name:</label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" class="form-control" ng-model="User1.DUserName" />
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="State" class="col-md-4 control-label" style="float: left">Password:</label>
-                                                                                    <div class="col-md-8">
-                                                                                        <input type="text" class="form-control" ng-model="User1.DPassword" />
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-
-
-                                                                            <br />
-
-                                                                            <div class="modal-footer">
-                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(User1, 'U');">Save</button>
-                                                                                <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
-                                                                            </div>
-
-
-                                                                        </div>
-
-
-
-                                                                    </div>
-                                                                </div>
-                                                                <div id="Modal-header-primary2" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary2-label" aria-hidden="true" class="modal fade">
+                                                                <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade" ng-model="User1">
                                                                     <div class="modal-dialog modal-lg">
                                                                         <div class="modal-content">
-                                                                            <div class="modal-header modal-header-primary2">
-                                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                            <div class="modal-header modal-header-primary">
+                                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                                                <h4 id="modal-header-primary-label" class="modal-title">Edit User</h4>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-lg-9">
-                                                                                    <h2>Edit User</h2>
-                                                                                    <div class="row mtl">
-                                                                                        <div class="col-md-3">
-                                                                                            <div class="form-group">
-                                                                                                <div class="text-center mbl"><img src="images/user.jpg" style="width:100px;height:100px" alt="" class="img-responsive" /></div>
-                                                                                                <div class="text-center mbl">
-                                                                                                    <a href="#" class="btn btn-green">
-                                                                                                        <i class="fa fa-upload"></i>&nbsp;
-                                                                                                        Upload
-                                                                                                    </a>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <table class="table table-striped table-hover">
-                                                                                                <tbody>
-                                                                                                    <tr>
-                                                                                                        <td>User Name</td>
-                                                                                                        <td><input type="text" placeholder="User Name"></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Email</td>
-                                                                                                        <td><input type="email" placeholder="Email"></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Address</td>
-                                                                                                        <td><textarea></textarea></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Status</td>
-                                                                                                        <td><input type="checkbox" /></td>
-                                                                                                    </tr>
-                                                                                                    <tr>
-                                                                                                        <td>Member Since</td>
-                                                                                                        <td> <input type="text" placeholder="Jun 03, 2014" /></td>
-                                                                                                    </tr>
-                                                                                                </tbody>
-                                                                                            </table>
+                                                                            <div class="modal-body">
+                                                                                <h3>Personal details</h3>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Name" class="col-md-4 control-label" style="color:red;float:left">First Name:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="User1.FirstName" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Name" class="col-md-4 control-label" style="color:red;float:left">Last Name:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8"><input type="text" class="form-control" id="cName" ng-model="User1.LastName" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float: left">Middle Name:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="EmailId" type="text" ng-model="User1.MiddleName" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" style="color:red;float:left">Employee No*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="code" type="text" ng-model="User.EmpNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="row">
+
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">E-mail Id:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="EmailId" type="text" ng-model="User1.EmailId" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ContactNo1" class="col-md-4 control-label" style="color: red;float: left">Contact No.1:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="ContactNo1" type="text" ng-keypress="filterValue($event)" ng-model="User1.ContactNo1" class="form-control" maxlength="10" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ContactNo2" class="col-md-4 control-label" style="float:left">Contact No.2:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" id="ContactNo2" ng-keypress="filterValue($event)" ng-model="User1.ContactNo2" maxlength="10" data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" data-fv-phone-country11="IN" required="required" data-fv-notempty-message="This field cannot be left blank." class="form-control" name="data[User][mobile]" data-fv-field="data[User][mobile]">
+                                                                                            <!--<input id="ContactNo2" type="text" ng-model="Group.ContactNo2" class="form-control" maxlength="10" />-->
+                                                                                            <span class="help-block">
+                                                                                            </span>
                                                                                         </div>
-                                                                                        <div class="col-md-9">
-                                                                                            <div id="generalTabContent" class="tab-content">
-                                                                                                <div id="tab-edit" class="tab-pane fade in active">
-                                                                                                    <form action="#" class="form-horizontal">
-                                                                                                        <h3>Account Settings</h3>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Email</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9"><input type="email" ng-model="User1.Email" placeholder="email@yourcompany.com" class="form-control" /></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Supervisor:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
+
+                                                                                            <select class="col-md-12 form-control" ng-model="User1.ManagerId" ng-value="User1.ManagerId">
+                                                                                                <option value="">select Supervisor</option>
+                                                                                                <option value="1">1</option>
+                                                                                                <option value="2">2</option>
+                                                                                                <option value="3">3</option>
+                                                                                                <option value="4">4</option>
+                                                                                                <option value="5">5</option>
+                                                                                                <option value="6">6</option>
+                                                                                                <option value="7">7</option>
+                                                                                                <option value="8">8</option>
+                                                                                                <option value="9">9</option>
+                                                                                                <option value="10">10</option>
+
+                                                                                            </select>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                                <div class="row" style="margin-top:5px">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <select ng-options="cc.Name for cc in Countries track by cc.Id" class="col-md-12 form-control" ng-model="User.Country" ng-value="User.CountryId">
+                                                                                                <option value="">select Country</option>
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="State" class="col-md-4 control-label" style="color: red; float: left">State/Province:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <select class="col-md-12 form-control" ng-model="User1.State" ng-value="User1.StateId">
+                                                                                                <option value="">select State/Province</option>
+                                                                                                <option value="1">Bulawayo</option>
+                                                                                                <option value="2">Harare</option>
+                                                                                                <option value="3">Manicaland</option>
+                                                                                                <option value="4">Mashonaland Central</option>
+                                                                                                <option value="5">Mashonaland East</option>
+                                                                                                <option value="6">Mashonaland West</option>
+                                                                                                <option value="7">Masvingo</option>
+                                                                                                <option value="8">Matabeleland North</option>
+                                                                                                <option value="9">Matabeleland South</option>
+                                                                                                <option value="10">Midlands</option>
+
+                                                                                            </select>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+                                                                                <div class="row" style="margin-top:10px">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="ZipCode" class="col-md-4 control-label" style="float:left">ZipCode:<span class='require'></span></label>
+
+                                                                                        <div class="col-md-8"><input id="ZipCode" type="text" ng-model="User1.ZipCode" class="form-control" /><span class="help-block"></span></div>
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-2">
+                                                                                        <label for="active" class="col-md-6 control-label" style="float:left">Active: <span class='require'></span></label>
+
+                                                                                        <input id="uactive" type="checkbox" ng-true-value="1" ng-false-value="0" ng-model="User1.active" class="form-control" />
+
+                                                                                    </div>
+
+                                                                                    <div class="col-md-3">
+                                                                                        <label for="active" class="col-md-5 control-label" style="color: red; float: left">Gender: <span class='require'></span></label>
+
+                                                                                        <select ng-model="User1.Gender" ng-value="User1.GenderId">
+                                                                                            <option value="">Select Gender</option>
+                                                                                            <option value="1">Male</option>
+                                                                                            <option value="2">Female</option>
+                                                                                            <option value="3">Others</option>
+                                                                                        </select>
+
+                                                                                    </div>
+
+
+                                                                                </div>
+
+                                                                                <div class="row" style="margin-top:10px">
+                                                                                    <div class="col-md-6">
+                                                                                        <div>
+                                                                                            <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Address:</label>
+
+                                                                                            <div class="col-md-8"><textarea rows="3" class="form-control" ng-model="User1.Address"></textarea></div>
+                                                                                            <br />
+                                                                                        </div>
+
+                                                                                        <div style="margin-top:10px">
+                                                                                            <label for="Fax" class="col-md-4 control-label" style="float:left">Alternate Address:</label>
+                                                                                            <div class="col-md-8" style="margin-top:10px"><textarea rows="3" class="form-control" ng-model="User1.AlternateAddress"></textarea></div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="Address Id" class="col-md-4 control-label" style="float:left">Photo:</label>
+                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                        <div class="col-md-8">
+                                                                                            <img id="cmpNewLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                                                            <br />
+                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                                Upload photo
+                                                                                            </a>
+                                                                                            <a href="#" class="btn btn-red" ng-click="clearImg();" style="margin-top:5px">
+                                                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                                                Remove Logo
+                                                                                            </a>
+                                                                                        </div>
+
+
+
+                                                                                        <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <h3>Role details</h3>
+                                                                                <div class="row" style="margin-top:10px">
+
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Role:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <!--<input id="EmailId" type="text" ng-model="Group.FleetSize" class="form-control" /><span class="help-block"></span>-->
+
+                                                                                            <select class="col-md-12 form-control" ng-model="User1.RoleId" ng-value="User1.RoleId">
+                                                                                                <option value="">Select Role</option>
+                                                                                                <option value="1">Fleet Owner</option>
+                                                                                                <option value="2">Supervisor</option>
+                                                                                                <option value="3">Manager</option>
+                                                                                                <option value="4">Sales executive</option>
+                                                                                                <option value="5">Techical manager</option>
+                                                                                                <option value="6">Front office</option>
+                                                                                                <option value="7">7</option>
+                                                                                                <option value="8">8</option>
+                                                                                                <option value="9">9</option>
+                                                                                                <option value="10">10</option>
+
+                                                                                            </select>
+
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-5 control-label" style="float:left">From Date:<span class='require'></span></label>
+                                                                                        <div class="col-md-7">
+                                                                                            <input type="date" ng-model="User1.RFromDate" />
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">To Date:<span class='require'></span></label>
+                                                                                        <div class="col-md-6">
+                                                                                            <input type="date" ng-model="User1.RToDate" />
+
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+                                                                                <h3>Dashboard portal & Website login details</h3>
+
+                                                                                <div class="row" style="margin-top:5px">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="inputMiddleName" class="col-md-4 control-label" style="float: left">User Name:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" class="form-control" ng-model="User1.DUserName" />
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="State" class="col-md-4 control-label" style="float: left">Password:</label>
+                                                                                        <div class="col-md-8">
+                                                                                            <input type="text" class="form-control" ng-model="User1.DPassword" />
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
+
+
+                                                                                <br />
+
+                                                                                <div class="modal-footer">
+                                                                                    <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(User1, 'U');">Save</button>
+                                                                                    <button class="btn btn-primary" type="button" data-dismiss="modal">Cancel</button>
+                                                                                </div>
+
+
+                                                                            </div>
+
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                    <div id="Modal-header-primary2" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary2-label" aria-hidden="true" class="modal fade">
+                                                                        <div class="modal-dialog modal-lg">
+                                                                            <div class="modal-content">
+                                                                                <div class="modal-header modal-header-primary2">
+                                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                                </div>
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-9">
+                                                                                        <h2>Edit User</h2>
+                                                                                        <div class="row mtl">
+                                                                                            <div class="col-md-3">
+                                                                                                <div class="form-group">
+                                                                                                    <div class="text-center mbl"><img src="images/user.jpg" style="width:100px;height:100px" alt="" class="img-responsive" /></div>
+                                                                                                    <div class="text-center mbl">
+                                                                                                        <a href="#" class="btn btn-green">
+                                                                                                            <i class="fa fa-upload"></i>&nbsp;
+                                                                                                            Upload
+                                                                                                        </a>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <table class="table table-striped table-hover">
+                                                                                                    <tbody>
+                                                                                                        <tr>
+                                                                                                            <td>User Name</td>
+                                                                                                            <td><input type="text" placeholder="User Name"></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>Email</td>
+                                                                                                            <td><input type="email" placeholder="Email"></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>Address</td>
+                                                                                                            <td><textarea></textarea></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>Status</td>
+                                                                                                            <td><input type="checkbox" /></td>
+                                                                                                        </tr>
+                                                                                                        <tr>
+                                                                                                            <td>Member Since</td>
+                                                                                                            <td> <input type="text" placeholder="Jun 03, 2014" /></td>
+                                                                                                        </tr>
+                                                                                                    </tbody>
+                                                                                                </table>
+                                                                                            </div>
+                                                                                            <div class="col-md-9">
+                                                                                                <div id="generalTabContent" class="tab-content">
+                                                                                                    <div id="tab-edit" class="tab-pane fade in active">
+                                                                                                        <form action="#" class="form-horizontal">
+                                                                                                            <h3>Account Settings</h3>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Email</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9"><input type="email" ng-model="User1.Email" placeholder="email@yourcompany.com" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Username</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9"><input type="text" placeholder="username" ng-model="User1.UserName" class="form-control" /></div>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Username</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9"><input type="text" placeholder="username" ng-model="User1.UserName" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Password</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-4"><input type="password" placeholder="password" ng-model="User1.Password" class="form-control" /></div>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Password</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-4"><input type="password" placeholder="password" ng-model="User1.Password" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Confirm Password</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-4"><input type="password" placeholder="password" ng-model="User1.Password" class="form-control" /></div>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Confirm Password</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-4"><input type="password" placeholder="password" ng-model="User1.Password" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <hr />
-                                                                                                        <h3>Profile Setting</h3>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">First Name</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9"><input type="text" ng-model="User1.FirstName" placeholder="first name" class="form-control" /></div>
+                                                                                                            <hr />
+                                                                                                            <h3>Profile Setting</h3>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">First Name</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9"><input type="text" ng-model="User1.FirstName" placeholder="first name" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Last Name</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9"><input type="text" ng-model="User1.LastName" placeholder="last name" class="form-control" /></div>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Last Name</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9"><input type="text" ng-model="User1.LastName" placeholder="last name" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Gender</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9">
-                                                                                                                        <div class="radio">
-                                                                                                                            <label class="radio-inline">
-                                                                                                                                <input type="radio" value="0" name="gender" checked="checked" />&nbsp;
-                                                                                                                                Male
-                                                                                                                            </label><label class="radio-inline">
-                                                                                                                                <input type="radio" value="1" name="gender" />&nbsp;
-                                                                                                                                Female
-                                                                                                                            </label>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Gender</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9">
+                                                                                                                            <div class="radio">
+                                                                                                                                <label class="radio-inline">
+                                                                                                                                    <input type="radio" value="0" name="gender" checked="checked" />&nbsp;
+                                                                                                                                    Male
+                                                                                                                                </label><label class="radio-inline">
+                                                                                                                                    <input type="radio" value="1" name="gender" />&nbsp;
+                                                                                                                                    Female
+                                                                                                                                </label>
+                                                                                                                            </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
 
-                                                                                                        <hr />
-                                                                                                        <h3>Contact Setting</h3>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-sm-3 control-label">Mobile Phone</label>
-                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                <div class="row">
-                                                                                                                    <div class="col-xs-9"><input type="text" placeholder="mobile phone" ng-keypress="filterValue($event)" ng-model="User1.MobileNo" class="form-control" /></div>
+                                                                                                            <hr />
+                                                                                                            <h3>Contact Setting</h3>
+                                                                                                            <div class="form-group">
+                                                                                                                <label class="col-sm-3 control-label">Mobile Phone</label>
+                                                                                                                <div class="col-sm-9 controls">
+                                                                                                                    <div class="row">
+                                                                                                                        <div class="col-xs-9"><input type="text" placeholder="mobile phone" ng-keypress="filterValue($event)" ng-model="User1.MobileNo" class="form-control" /></div>
+                                                                                                                    </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                        </div>
-                                                                                                    </form>
-                                                                                                </div>
-                                                                                                <div id="tab-messages" class="tab-pane fade in">
-                                                                                                    <div class="row mbl">
-                                                                                                        <div class="col-lg-6">
-                                                                                                            <span style="margin-left: 15px"></span><input type="checkbox" /><a href="#" class="btn btn-success btn-sm mlm mrm">
-                                                                                                                <i class="fa fa-send-o"></i>&nbsp;
-                                                                                                                Write Mail
-                                                                                                            </a><a href="#" class="btn btn-white btn-sm">
-                                                                                                                <i class="fa fa-trash-o"></i>&nbsp;
-                                                                                                                Delete
-                                                                                                            </a>
-                                                                                                        </div>
-                                                                                                        <div class="col-lg-6">
-                                                                                                            <div class="input-group"><input type="text" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-white">Search</button></span></div>
-                                                                                                        </div>
+                                                                                                        </form>
                                                                                                     </div>
+                                                                                                    <div id="tab-messages" class="tab-pane fade in">
+                                                                                                        <div class="row mbl">
+                                                                                                            <div class="col-lg-6">
+                                                                                                                <span style="margin-left: 15px"></span><input type="checkbox" /><a href="#" class="btn btn-success btn-sm mlm mrm">
+                                                                                                                    <i class="fa fa-send-o"></i>&nbsp;
+                                                                                                                    Write Mail
+                                                                                                                </a><a href="#" class="btn btn-white btn-sm">
+                                                                                                                    <i class="fa fa-trash-o"></i>&nbsp;
+                                                                                                                    Delete
+                                                                                                                </a>
+                                                                                                            </div>
+                                                                                                            <div class="col-lg-6">
+                                                                                                                <div class="input-group"><input type="text" class="form-control" /><span class="input-group-btn"><button type="button" class="btn btn-white">Search</button></span></div>
+                                                                                                            </div>
+                                                                                                        </div>
 
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="col-md-offset-6">
-                                                                                <button class="btn btn-green" type="button" ng-click="save(User1, 'U');">Save</button>
-                                                                                <button class="btn btn-primary" type="reset" data-dismiss="modal" class="btn btn-default">close</button>
+                                                                                <div class="col-md-offset-6">
+                                                                                    <button class="btn btn-green" type="button" ng-click="save(User1, 'U');">Save</button>
+                                                                                    <button class="btn btn-primary" type="reset" data-dismiss="modal" class="btn btn-default">close</button>
 
+                                                                                </div>
                                                                             </div>
+
                                                                         </div>
-
                                                                     </div>
+
+
+
                                                                 </div>
 
-
-
                                                             </div>
-
-                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -1140,7 +1149,7 @@
                                                         <th width="9%">Update</th>
                                                     </tr>
                                                 <tbody>
-                                                    <tr ng-repeat="U in User">
+                                                    <tr ng-repeat="U in User| filter:query" ng-on-finish-render>
 
                                                         <td>{{U.FirstName}}</td>
                                                         <td>{{U.LastName}}</td>
@@ -1158,11 +1167,11 @@
                                                             </button>
                                                         </td>
                                                         <!--<td>
-                                                            <button type="button" data-target="#Modal-header-primary2" data-toggle="modal" class="btn btn-default btn-xs">
-                                                                <i class="fa fa-Users"></i>&nbsp;
-                                                                Edit
-                                                            </button>
-                                                        </td>-->
+            <button type="button" data-target="#Modal-header-primary2" data-toggle="modal" class="btn btn-default btn-xs">
+                <i class="fa fa-Users"></i>&nbsp;
+                Edit
+            </button>
+        </td>-->
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -1200,6 +1209,7 @@
                             </div>
 
                         </script>
+                    </div>
                     </div>
                     <script src="js/jquery-1.10.2.min.js"></script>
                     <script src="js/jquery-migrate-1.2.1.min.js"></script>

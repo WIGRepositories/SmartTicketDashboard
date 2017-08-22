@@ -347,7 +347,7 @@
                             <a href="#">
                                 <i class="fa fa-send-o fa-fw">
                                     <div class="icon-bg bg-dark"></div>
-                                </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
+                                </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
@@ -419,12 +419,12 @@
                                                        
                                                     <div class="row mbm" ng-init="GetMaster();">
                                                         <div class="col-md-3">
-                                                           Vehicles:<select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="v"  class="form-control" style="width:80%">
+                                                           Vehicles:<select ng-options="v.RegistrationNo for v in Vehicles track by v.Id" ng-model="v"  class="form-control" style="width:80%">
     <option value="">Select</option>
 </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Drivers:<select ng-options="dd.DId for dd in listdrivers track by dd.Id" ng-model="dd"  class="form-control" style="width:80%">
+                                                            Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd"  class="form-control" style="width:80%">
     <option value="">Select</option>
 </select>
                                                         </div>
@@ -585,8 +585,7 @@
                                                             </tr>
                                                         <tbody>
                                                             <tr ng-repeat="b in bookings">
-
-                                                                <td>{{b.BNo}}</td>
+                                                                <td><a href="BookingDetails.html"> <font color="blue"> <u> {{b.BNo}}</u></font></a></td>                                                                
                                                                 <td>{{b.Src}}</td>
                                                                 <td>{{b.Dest}}</td>
                                                                 <td>{{b.CustomerPhoneNo}}</td>
@@ -608,7 +607,7 @@
                                                         </tbody>
 
                                                     </table>
-                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                    <!--<div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header modal-header-primary">
@@ -685,7 +684,7 @@
                                                                         <!--<div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" >LandMark*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.LandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>-->
+                                                                        </div>
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" >LandMark:<span class='require'></span></label>
                                                                             <div class="col-md-8">
