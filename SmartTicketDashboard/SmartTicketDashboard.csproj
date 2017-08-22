@@ -109,6 +109,8 @@
     <Content Include="UI\AdvertismentConfiguration.html" />
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\js\DataLoad2.js" />
+    <Content Include="UI\js\DataLoad3.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
@@ -2492,6 +2494,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\DataUploadTemplates\DriversList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\Users.csv" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
