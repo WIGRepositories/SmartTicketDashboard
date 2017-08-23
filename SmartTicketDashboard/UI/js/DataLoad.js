@@ -233,7 +233,7 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                     //for (var j = 0; j < headers.length; j++) {
                     //    tarr.push(data[j]);
                     //}
-                    lines.push(GetCompany(data));
+                    //lines.push(GetCompany(data));
                 //}
             }
 
@@ -373,67 +373,7 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
        
          }
 
-    //Modified start
-
-         function GetDrivers(data) {
-
-             var GD = {
-                 Id: ((flag == 'I') ? User.Id : -1),
-                 FirstName: data[1],
-                 LastName: data[2],
-                 MiddleName: data[3],
-                 Email: data[4],
-                 ContactNo1: data[5],
-                 ContactNo2: data[6],
-                 Active: 1,
-                 insupdflag: flag
-             }
-             return GD;
-         }
-
-         $scope.save = function () {
-             if (FirstName == null) {
-                 return;
-             }
-             if (LastName == null) {
-                 return;
-             }
-             if (MiddleName == null) {
-                 return;
-             }
-             if (Email == null) {
-                 return;
-             }
-             if (ContactNo1 == null) {
-                 return;
-             }
-             if (ContactNo2 == null) {
-                 return;
-             }
-             if (Active == null) {
-                 return;
-             }
-
-
-             $http(req).then(function (response) {
-
-                 $scope.showDialog("Saved successfully!!");
-
-                 $scope.data = null;
-                 //$scope.GetCompanys();
-
-             }, function (errres) {
-
-                 var errdata = errres.data;
-                 var errmssg = "Your details are incorrect";
-                 errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-                 // $scope.showDialog(errmssg);
-
-             });
-
-
-         }
-    //Modified end
+   
 
 
 

@@ -699,7 +699,7 @@ namespace SmartTicketDashboard.Models
     {
         
         public VehiclesGroups[] o = null;
-        //public List<DriversGroups> list { get; set; }
+        //public List<VehiclesGroups> list3 { get; set; }
         public string flag { get; set; }
         public int Id { get; set; }
         public int CompanyId { get; set; }
@@ -709,20 +709,20 @@ namespace SmartTicketDashboard.Models
         public string OwnerName { get; set; }
         public string ChasisNo { get; set; }
         public string Engineno { get; set; }
-        public DateTime RoadTaxDate { get; set; }
+        public DateTime? RoadTaxDate { get; set; }
         public string InsuranceNo { get; set; }
-        public DateTime InsDate { get; set; }
+        public DateTime? InsDate { get; set; }
         public string PolutionNo { get; set; }
-        public DateTime PolExpDate { get; set; }
+        public DateTime? PolExpDate { get; set; }
         public string RCBookNo { get; set; }
-        public DateTime RCExpDate { get; set; }
+        public DateTime? RCExpDate { get; set; }
         public int CompanyVechile { get; set; }
         public string OwnerPhoneNo { get; set; }
         public string HomeLandmark { get; set; }
         public string ModelYear { get; set; }
         public string DayOnly { get; set; }
         public string VechMobileNo { get; set; }
-        public DateTime EntryDate { get; set; }
+        public DateTime? EntryDate { get; set; }
         public string NewEntry { get; set; }
         public int VehicleModelId { get; set; }
         public int ServiceTypeId { get; set; }

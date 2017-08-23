@@ -2499,6 +2499,9 @@
   <ItemGroup>
     <Content Include="UI\DataUploadTemplates\Users.csv" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\VehiclesList.csv" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
