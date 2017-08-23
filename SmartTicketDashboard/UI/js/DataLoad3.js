@@ -27,9 +27,9 @@ app.directive('fileReader', function () {
 
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
-    $scope.compCol = 'Name,PMobNo,Address';
-    $scope.compArr = [{ "Id": 1, "NAme": "Address" },
-                        { "Id": 2, "NAme": "Address" }]
+    $scope.compCol = 'CompanyName,Active';
+    $scope.compArr = [{ "Id": 1, "Name": "CompanyName" },
+    { "Id": 2, "Name": "Active" }]
 
     $scope.userCol = 'FirstName,LastName,Emailid,Active';
     $scope.UserArr = [{ "Id": 1, "Name": "FirsName" },
@@ -81,7 +81,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.GetDataLoad = response.data;
         });
     }
-    $scope.csv_link = 'DataUploadTemplates/DriversList.csv';// + $window.location.search;
+    $scope.csv_link = 'DataUploadTemplates/VehiclesList.csv';// + $window.location.search;
 
     $scope.SetOptionSettings = function () {
         switch ($scope.seloption) {
@@ -176,7 +176,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var blob = new Blob([$scope.logdata], { type: "application/csv;charset=utf-8;" });
         var downloadLink = angular.element('<a></a>');
         downloadLink.attr('href', window.URL.createObjectURL(blob));
-        downloadLink.attr('download', 'CompanyList_log.csv');
+        downloadLink.attr('download', 'VehiclesList_log.csv');
         downloadLink[0].click();
     };
 
@@ -226,42 +226,63 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         for (var i = 1; i < allTextLines.length; i++) {
             // split content based on comma
             var data = allTextLines[i].split(',');
-            lines.push(GetDrivers(data));
+            lines.push(GetVehicles(data));
 
             //if (data.length == headers.length) {
             //var tarr = [];
             //for (var j = 0; j < headers.length; j++) {
             //    tarr.push(data[j]);
             //}
-            lines.push(GetDrivers(data));
+            //lines.push(GetVehicles(data));
             //}
         }
 
         //list
         var req = {
             method: 'POST',
-            url: '/api/DataLoad/SaveDriverGroups',
+            url: '/api/DataLoad/SaveVehicleGroups1',
             data: lines
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
         });
 
         // $scope.logdata = lines;
     };
 
 
-    function GetCompany(data) {
+    function GetVehicles(data) {
 
         var list = {
-            Name: data[0],
-            code: data[1],
-            Address: data[2],
-            ContactNo1: data[3],
-            EmailId: data[4],
-            active: 1,
-            insupdflag: 'I'
+            CompanyId: data[0],
+            VID: data[1],
+            RegistrationNo: data[2],
+            Type: data[3],
+            OwnerName: data[4],
+            ChasisNo: data[5],
+            Engineno: data[6],
+            RoadTaxDate: data[7],
+            InsuranceNo: data[8],
+            InsDate: data[9],
+            PolutionNo: data[10],
+            PolExpDate: data[11],
+            RCBookNo: data[12],
+            RCExpDate: data[13],
+            CompanyVechile: data[14],
+            OwnerPhoneNo: data[15],
+            HomeLandmark: data[16],
+            ModelYear: data[17],
+            DayOnly: data[18],
+            VechMobileNo: data[19],
+            EntryDate: data[20],
+            NewEntry: data[21],
+            VehicleModelId: data[22],
+            ServiceTypeId: data[23],
+            VehicleGroupId: data[24],
+
+            flag: 'I'
+
         }
         return list;
 
@@ -269,22 +290,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
     $scope.save = function () {
-        if (active == null) {
+        if (CompanyId == null) {
             return;
         }
-        if (Name == null) {
+        if (VID == null) {
             return;
         }
-        if (Code == null) {
+        if (RegistrationNo == null) {
             return;
         }
-        if (Address == null) {
+        if (Type == null) {
             return;
         }
-        if (EmailId == null) {
+        if (OwnerName == null) {
             return;
         }
-        if (ContactNo1 == null) {
+        if (ChasisNo == null) {
             return;
         }
 
@@ -373,79 +394,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    //Modified start
 
-    function GetDrivers(data) {
-
-        var GD = {
-            DId: data[0],
-            CompanyId: data[1],
-            NAme: data[2],
-            Address: data[3],
-            City: data[4],
-            Pin: data[5],
-            PAddress: data[6],
-            PCity: data[7],
-            PPin: data[8],
-            OffMobileNo: data[9],
-            PMobNo: data[10],
-            DOB: data[11],
-            DOJ: data[12],
-            BloodGroup: data[13],
-            LicenceNo: data[14],
-            LiCExpDate: data[15],
-            BadgeNo: data[16],
-            BadgeExpDate: data[17],
-            Remarks: data[18],
-            insupdflag: flag
-        }
-        return GD;
-    }
-
-    
-    $scope.save = function () {
-        if (FirstName == null) {
-            return;
-        }
-        if (LastName == null) {
-            return;
-        }
-        if (MiddleName == null) {
-            return;
-        }
-        if (Email == null) {
-            return;
-        }
-        if (ContactNo1 == null) {
-            return;
-        }
-        if (ContactNo2 == null) {
-            return;
-        }
-        if (Active == null) {
-            return;
-        }
-
-
-        $http(req).then(function (response) {
-
-            $scope.showDialog("Saved successfully!!");
-
-            $scope.data = null;
-            //$scope.GetCompanys();
-
-        }, function (errres) {
-
-            var errdata = errres.data;
-            var errmssg = "Your details are incorrect";
-            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            // $scope.showDialog(errmssg);
-
-        });
-
-
-    }
-    //Modified end
 
 
 

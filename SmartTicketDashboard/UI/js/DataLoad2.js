@@ -233,7 +233,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //for (var j = 0; j < headers.length; j++) {
             //    tarr.push(data[j]);
             //}
-            lines.push(GetDrivers(data));
+            //lines.push(GetDrivers(data));
             //}
         }
 

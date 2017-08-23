@@ -691,222 +691,215 @@ namespace SmartTicketDashboard.Controllers
             //  return Tbl;
         }
         //jaganupdated on 21st Aug End
-        //[HttpPost]
-        //[Route("api/DataLoad/SaveVehicleGroups")]
-        //public SqlParameter[] SaveVehicleGroups(VehiclesGroups o)
-        //{
-        //    //List<DriversGroups> list1 = new List<DriversGroups>();
-        //    LogTraceWriter traceWriter = new LogTraceWriter();
-        //    traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveVehicleGroups credentials....");
-        //    //DataTable Tbl = new DataTable();
-        //    SqlConnection conn = new SqlConnection();
+        [HttpPost]
+        [Route("api/DataLoad/SaveVehicleGroups")]
+        public SqlParameter[] SaveVehicleGroups(VehiclesGroups o)
+        {
+           
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveVehicleGroups credentials....");
+            
+            SqlConnection conn = new SqlConnection();
 
-        //    try
-        //    {
-        //        //connect to database
+            try
+            {
+               
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-        //        // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
-        //        conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "HVInsUpddrivers2";
+                cmd.Connection = conn;
 
-        //        SqlCommand cmd = new SqlCommand();
-        //        cmd.CommandType = CommandType.StoredProcedure;
-        //        cmd.CommandText = "HVInsUpddrivers2";
-        //        cmd.Connection = conn;
+                conn.Open();
+              
+                ArrayList arr = new ArrayList();
+               
+                SqlParameter vgid = new SqlParameter();
+                vgid.ParameterName = "@Id";
+                vgid.SqlDbType = SqlDbType.Int;
+                vgid.Value = o.Id;
+                cmd.Parameters.Add(vgid);
 
-        //        conn.Open();
-        //        //list = new List<DriversGroups>();
-        //        ArrayList arr = new ArrayList();
-        //        //foreach(DriversGroups m in list)
-        //        //{
-        //        SqlParameter vgid = new SqlParameter();
-        //        vgid.ParameterName = "@Id";
-        //        vgid.SqlDbType = SqlDbType.Int;
-        //        vgid.Value = o.Id;
-        //        cmd.Parameters.Add(vgid);
+                SqlParameter vgCompanyId = new SqlParameter("@CompanyId", SqlDbType.Int);
+                vgCompanyId.Value = o.CompanyId;
+                cmd.Parameters.Add(vgCompanyId);
 
-        //        SqlParameter vgCompanyId = new SqlParameter("@CompanyId", SqlDbType.Int);
-        //        vgCompanyId.Value = o.CompanyId;
-        //        cmd.Parameters.Add(vgCompanyId);
+                SqlParameter vgVId = new SqlParameter();
+                vgVId.ParameterName = "@VID";
+                vgVId.SqlDbType = SqlDbType.Int;
+                vgVId.Value = o.VID;
+                cmd.Parameters.Add(vgVId);
 
-        //        SqlParameter vgVId = new SqlParameter();
-        //        vgVId.ParameterName = "@VID";
-        //        vgVId.SqlDbType = SqlDbType.Int;
-        //        vgVId.Value = o.VID;
-        //        cmd.Parameters.Add(vgVId);
+                SqlParameter vgRegNo = new SqlParameter();
+                vgRegNo.ParameterName = "@RegistrationNo";
+                vgRegNo.SqlDbType = SqlDbType.NVarChar;
+                vgRegNo.Value = o.RegistrationNo;
+                cmd.Parameters.Add(vgRegNo);
 
-        //        SqlParameter vgRegNo = new SqlParameter();
-        //        vgRegNo.ParameterName = "@RegistrationNo";
-        //        vgRegNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgRegNo.Value = o.RegistrationNo;
-        //        cmd.Parameters.Add(vgRegNo);
+                SqlParameter vgType = new SqlParameter();
+                vgType.ParameterName = "@Type";
+                vgType.SqlDbType = SqlDbType.NVarChar;
+                vgType.Value = o.Type;
+                cmd.Parameters.Add(vgType);
+                 
+                SqlParameter vgOwnerName = new SqlParameter();
+                vgOwnerName.ParameterName = "@OwnerName";
+                vgOwnerName.SqlDbType = SqlDbType.NVarChar;
+                vgOwnerName.Value = o.OwnerName;
+                cmd.Parameters.Add(vgOwnerName);
 
-        //        SqlParameter vgType = new SqlParameter();
-        //        vgType.ParameterName = "@Type";
-        //        vgType.SqlDbType = SqlDbType.NVarChar;
-        //        vgType.Value = o.Type;
-        //        cmd.Parameters.Add(vgType);
+                SqlParameter vgChasisNo = new SqlParameter();
+                vgChasisNo.ParameterName = "@ChasisNo";
+                vgChasisNo.SqlDbType = SqlDbType.NVarChar;
+                vgChasisNo.Value = o.ChasisNo;
+                cmd.Parameters.Add(vgChasisNo);
 
-        //        //SqlParameter gsac = new SqlParameter("@Id", SqlDbType.Int);
-        //        //gsac.Value = n.Id;
-        //        //cmd.Parameters.Add(gsac);                    
+                SqlParameter vgEngineNo = new SqlParameter();
+                vgEngineNo.ParameterName = "@Engineno";
+                vgEngineNo.SqlDbType = SqlDbType.NVarChar;
+                vgEngineNo.Value = o.Engineno;
+                cmd.Parameters.Add(vgEngineNo);
 
-        //        SqlParameter vgOwnerName = new SqlParameter();
-        //        vgOwnerName.ParameterName = "@OwnerName";
-        //        vgOwnerName.SqlDbType = SqlDbType.NVarChar;
-        //        vgOwnerName.Value = o.OwnerName;
-        //        cmd.Parameters.Add(vgOwnerName);
+                SqlParameter vgRoadTDate = new SqlParameter();
+                vgRoadTDate.ParameterName = "@RoadTaxDate";
+                vgRoadTDate.SqlDbType = SqlDbType.DateTime;
+                vgRoadTDate.Value = o.RoadTaxDate;
+                cmd.Parameters.Add(vgRoadTDate);
 
-        //        SqlParameter vgChasisNo = new SqlParameter();
-        //        vgChasisNo.ParameterName = "@ChasisNo";
-        //        vgChasisNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgChasisNo.Value = o.ChasisNo;
-        //        cmd.Parameters.Add(vgChasisNo);
+                SqlParameter vgInsuNo = new SqlParameter();
+                vgInsuNo.ParameterName = "@InsuranceNo";
+                vgInsuNo.SqlDbType = SqlDbType.NVarChar;
+                vgInsuNo.Value = o.InsuranceNo;
+                cmd.Parameters.Add(vgInsuNo);
 
-        //        SqlParameter vgEngineNo = new SqlParameter();
-        //        vgEngineNo.ParameterName = "@Engineno";
-        //        vgEngineNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgEngineNo.Value = o.Engineno;
-        //        cmd.Parameters.Add(vgEngineNo);
+                SqlParameter vgInsDate = new SqlParameter();
+                vgInsDate.ParameterName = "@InsDate";
+                vgInsDate.SqlDbType = SqlDbType.DateTime;
+                vgInsDate.Value = o.InsDate;
+                cmd.Parameters.Add(vgInsDate);
 
-        //        SqlParameter vgRoadTDate = new SqlParameter();
-        //        vgRoadTDate.ParameterName = "@RoadTaxDate";
-        //        vgRoadTDate.SqlDbType = SqlDbType.DateTime;
-        //        vgRoadTDate.Value = o.RoadTaxDate;
-        //        cmd.Parameters.Add(vgRoadTDate);
+                SqlParameter vgPolutionNo = new SqlParameter();
+                vgPolutionNo.ParameterName = "@PolutionNo";
+                vgPolutionNo.SqlDbType = SqlDbType.NVarChar;
+                vgPolutionNo.Value = o.PolutionNo;
+                cmd.Parameters.Add(vgPolutionNo);
 
-        //        SqlParameter vgInsuNo = new SqlParameter();
-        //        vgInsuNo.ParameterName = "@InsuranceNo";
-        //        vgInsuNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgInsuNo.Value = o.InsuranceNo;
-        //        cmd.Parameters.Add(vgInsuNo);
+                SqlParameter vgPolExpDate = new SqlParameter();
+                vgPolExpDate.ParameterName = "@PolExpDate";
+                vgPolExpDate.SqlDbType = SqlDbType.DateTime;
+                vgPolExpDate.Value = o.PolExpDate;
+                cmd.Parameters.Add(vgPolExpDate);
 
-        //        SqlParameter vgInsDate = new SqlParameter();
-        //        vgInsDate.ParameterName = "@InsDate";
-        //        vgInsDate.SqlDbType = SqlDbType.DateTime;
-        //        vgInsDate.Value = o.InsDate;
-        //        cmd.Parameters.Add(vgInsDate);
+                SqlParameter vgRCBookNo = new SqlParameter();
+                vgRCBookNo.ParameterName = "@RCBookNo";
+                vgRCBookNo.SqlDbType = SqlDbType.NVarChar;
+                vgRCBookNo.Value = o.RCBookNo;
+                cmd.Parameters.Add(vgRCBookNo);
 
-        //        SqlParameter vgPolutionNo = new SqlParameter();
-        //        vgPolutionNo.ParameterName = "@PolutionNo";
-        //        vgPolutionNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgPolutionNo.Value = o.PolutionNo;
-        //        cmd.Parameters.Add(vgPolutionNo);
+                SqlParameter vgRCExpDate = new SqlParameter();
+                vgRCExpDate.ParameterName = "@RCExpDate";
+                vgRCExpDate.SqlDbType = SqlDbType.DateTime;
+                vgRCExpDate.Value = o.RCExpDate;
+                cmd.Parameters.Add(vgRCExpDate);
 
-        //        SqlParameter vgPolExpDate = new SqlParameter();
-        //        vgPolExpDate.ParameterName = "@PolExpDate";
-        //        vgPolExpDate.SqlDbType = SqlDbType.DateTime;
-        //        vgPolExpDate.Value = o.PolExpDate;
-        //        cmd.Parameters.Add(vgPolExpDate);
+                SqlParameter vgCompanyVeh = new SqlParameter();
+                vgCompanyVeh.ParameterName = "@CompanyVechile";
+                vgCompanyVeh.SqlDbType = SqlDbType.Int;
+                vgCompanyVeh.Value = o.CompanyVechile;
+                cmd.Parameters.Add(vgCompanyVeh);
 
-        //        SqlParameter vgRCBookNo = new SqlParameter();
-        //        vgRCBookNo.ParameterName = "@RCBookNo";
-        //        vgRCBookNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgRCBookNo.Value = o.RCBookNo;
-        //        cmd.Parameters.Add(vgRCBookNo);
+                SqlParameter vgOwnerPhoneNo = new SqlParameter();
+                vgOwnerPhoneNo.ParameterName = "@OwnerPhoneNo";
+                vgOwnerPhoneNo.SqlDbType = SqlDbType.NVarChar;
+                vgOwnerPhoneNo.Value = o.OwnerPhoneNo;
+                cmd.Parameters.Add(vgOwnerPhoneNo);
 
-        //        SqlParameter vgRCExpDate = new SqlParameter();
-        //        vgRCExpDate.ParameterName = "@RCExpDate";
-        //        vgRCExpDate.SqlDbType = SqlDbType.DateTime;
-        //        vgRCExpDate.Value = o.RCExpDate;
-        //        cmd.Parameters.Add(vgRCExpDate);
-
-        //        SqlParameter vgCompanyVeh = new SqlParameter();
-        //        vgCompanyVeh.ParameterName = "@CompanyVechile";
-        //        vgCompanyVeh.SqlDbType = SqlDbType.DateTime;
-        //        vgCompanyVeh.Value = o.CompanyVechile;
-        //        cmd.Parameters.Add(vgCompanyVeh);
-
-        //        SqlParameter vgOwnerPhoneNo = new SqlParameter();
-        //        vgOwnerPhoneNo.ParameterName = "@OwnerPhoneNo";
-        //        vgOwnerPhoneNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgOwnerPhoneNo.Value = o.OwnerPhoneNo;
-        //        cmd.Parameters.Add(vgOwnerPhoneNo);
-
-        //        SqlParameter vgHomeLandmark = new SqlParameter();
-        //        vgHomeLandmark.ParameterName = "@HomeLandmark";
-        //        vgHomeLandmark.SqlDbType = SqlDbType.NVarChar;
-        //        vgHomeLandmark.Value = o.HomeLandmark;
-        //        cmd.Parameters.Add(vgHomeLandmark);
+                SqlParameter vgHomeLandmark = new SqlParameter();
+                vgHomeLandmark.ParameterName = "@HomeLandmark";
+                vgHomeLandmark.SqlDbType = SqlDbType.NVarChar;
+                vgHomeLandmark.Value = o.HomeLandmark;
+                cmd.Parameters.Add(vgHomeLandmark);
 
 
-        //        SqlParameter vgMYear = new SqlParameter();
-        //        vgMYear.ParameterName = "@ModelYear";
-        //        vgMYear.SqlDbType = SqlDbType.NVarChar;
-        //        vgMYear.Value = o.ModelYear;
-        //        cmd.Parameters.Add(vgMYear);
+                SqlParameter vgMYear = new SqlParameter();
+                vgMYear.ParameterName = "@ModelYear";
+                vgMYear.SqlDbType = SqlDbType.NVarChar;
+                vgMYear.Value = o.ModelYear;
+                cmd.Parameters.Add(vgMYear);
 
-        //        SqlParameter vgDayOnly = new SqlParameter();
-        //        vgDayOnly.ParameterName = "@DayOnly";
-        //        vgDayOnly.SqlDbType = SqlDbType.NVarChar;
-        //        vgDayOnly.Value = o.DayOnly;
-        //        cmd.Parameters.Add(vgDayOnly);
+                SqlParameter vgDayOnly = new SqlParameter();
+                vgDayOnly.ParameterName = "@DayOnly";
+                vgDayOnly.SqlDbType = SqlDbType.NVarChar;
+                vgDayOnly.Value = o.DayOnly;
+                cmd.Parameters.Add(vgDayOnly);
 
-        //        SqlParameter vgVechMobileNo = new SqlParameter();
-        //        vgVechMobileNo.ParameterName = "@VechMobileNo";
-        //        vgVechMobileNo.SqlDbType = SqlDbType.NVarChar;
-        //        vgVechMobileNo.Value = o.DayOnly;
-        //        cmd.Parameters.Add(vgVechMobileNo);
+                SqlParameter vgVechMobileNo = new SqlParameter();
+                vgVechMobileNo.ParameterName = "@VechMobileNo";
+                vgVechMobileNo.SqlDbType = SqlDbType.NVarChar;
+                vgVechMobileNo.Value = o.DayOnly;
+                cmd.Parameters.Add(vgVechMobileNo);
 
-        //        SqlParameter vgEntryDate = new SqlParameter();
-        //        vgEntryDate.ParameterName = "@EntryDate";
-        //        vgEntryDate.SqlDbType = SqlDbType.DateTime;
-        //        vgEntryDate.Value = o.EntryDate;
-        //        cmd.Parameters.Add(vgEntryDate);
+                SqlParameter vgEntryDate = new SqlParameter();
+                vgEntryDate.ParameterName = "@EntryDate";
+                vgEntryDate.SqlDbType = SqlDbType.DateTime;
+                vgEntryDate.Value = o.EntryDate;
+                cmd.Parameters.Add(vgEntryDate);
 
-        //        SqlParameter vgNewEntry = new SqlParameter();
-        //        vgNewEntry.ParameterName = "@NewEntry";
-        //        vgNewEntry.SqlDbType = SqlDbType.NVarChar;
-        //        vgNewEntry.Value = o.EntryDate;
-        //        cmd.Parameters.Add(vgNewEntry);
+                SqlParameter vgNewEntry = new SqlParameter();
+                vgNewEntry.ParameterName = "@NewEntry";
+                vgNewEntry.SqlDbType = SqlDbType.NVarChar;
+                vgNewEntry.Value = o.EntryDate;
+                cmd.Parameters.Add(vgNewEntry);
 
-        //        SqlParameter vgVehicleModelId = new SqlParameter();
-        //        vgVehicleModelId.ParameterName = "@VehicleModelId";
-        //        vgVehicleModelId.SqlDbType = SqlDbType.Int;
-        //        vgVehicleModelId.Value = o.VehicleModelId;
-        //        cmd.Parameters.Add(vgVehicleModelId);
+                SqlParameter vgVehicleModelId = new SqlParameter();
+                vgVehicleModelId.ParameterName = "@VehicleModelId";
+                vgVehicleModelId.SqlDbType = SqlDbType.Int;
+                vgVehicleModelId.Value = o.VehicleModelId;
+                cmd.Parameters.Add(vgVehicleModelId);
 
-        //        SqlParameter vgServiceTypeId = new SqlParameter();
-        //        vgServiceTypeId.ParameterName = "@ServiceTypeId";
-        //        vgServiceTypeId.SqlDbType = SqlDbType.Int;
-        //        vgServiceTypeId.Value = o.VehicleModelId;
-        //        cmd.Parameters.Add(vgServiceTypeId);
+                SqlParameter vgServiceTypeId = new SqlParameter();
+                vgServiceTypeId.ParameterName = "@ServiceTypeId";
+                vgServiceTypeId.SqlDbType = SqlDbType.Int;
+                vgServiceTypeId.Value = o.VehicleModelId;
+                cmd.Parameters.Add(vgServiceTypeId);
 
-        //        SqlParameter vgVehicleGroupId = new SqlParameter();
-        //        vgVehicleGroupId.ParameterName = "@VehicleGroupId";
-        //        vgVehicleGroupId.SqlDbType = SqlDbType.Int;
-        //        vgVehicleGroupId.Value = o.VehicleModelId;
-        //        cmd.Parameters.Add(vgVehicleGroupId);
+                SqlParameter vgVehicleGroupId = new SqlParameter();
+                vgVehicleGroupId.ParameterName = "@VehicleGroupId";
+                vgVehicleGroupId.SqlDbType = SqlDbType.Int;
+                vgVehicleGroupId.Value = o.VehicleModelId;
+                cmd.Parameters.Add(vgVehicleGroupId);
                 
-        //        SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
-        //        insupdflag.Value = o.flag;
-        //        cmd.Parameters.Add(insupdflag);
+                SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
+                insupdflag.Value = o.flag;
+                cmd.Parameters.Add(insupdflag);
 
-        //        cmd.ExecuteScalar();
-        //        cmd.Parameters.Clear();
-        //        //}
+                cmd.ExecuteScalar();
+                cmd.Parameters.Clear();
+                //}
 
-        //        if (arr.Count > 0)
-        //        {
-        //            arr.TrimToSize();
-        //            return (SqlParameter[])arr.ToArray(typeof(SqlParameter));
-        //        }
-        //        return null;
-        //        //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveDriversGroups Credentials completed.");
-        //        //return new HttpResponseMessage(HttpStatusCode.OK);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        if (conn != null && conn.State == ConnectionState.Open)
-        //        {
-        //            conn.Close();
-        //        }
+                if (arr.Count > 0)
+                {
+                    arr.TrimToSize();
+                    return (SqlParameter[])arr.ToArray(typeof(SqlParameter));
+                }
+                return null;
+                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveDriversGroups Credentials completed.");
+                //return new HttpResponseMessage(HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
 
-        //        string str = ex.Message;
-        //        traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveDriversGroups:" + ex.Message);
-        //        ///return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-        //        return null;
-        //    }
-        //}
+                string str = ex.Message;
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveDriversGroups:" + ex.Message);
+                ///return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                return null;
+            }
+        }
 
         //demo purpose
         [HttpPost]
@@ -1053,9 +1046,9 @@ namespace SmartTicketDashboard.Controllers
 
                     cmd.ExecuteScalar();
                     cmd.Parameters.Clear();
-                    
+
                 }
-                
+
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveDriversGroups Credentials completed.");
                 return new HttpResponseMessage(HttpStatusCode.OK);
@@ -1078,34 +1071,28 @@ namespace SmartTicketDashboard.Controllers
         [Route("api/DataLoad/SaveVehicleGroups1")]
         public HttpResponseMessage SaveVehicleGroups1(List<VehiclesGroups> list3)
         {
-            //List<DriversGroups> list1 = new List<DriversGroups>();
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveVehicleGroups credentials....");
-            //DataTable Tbl = new DataTable();
+            
             SqlConnection conn = new SqlConnection();
 
             try
             {
-                //connect to database
-
-                // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
                 conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "HVInsUpddrivers2";
+                cmd.CommandText = "HVInsUpdVehicles";
                 cmd.Connection = conn;
 
                 conn.Open();
-                //list = new List<DriversGroups>();
-                //ArrayList arr = new ArrayList();
                 foreach (VehiclesGroups o in list3)
                 {
-                SqlParameter vgid = new SqlParameter();
-                vgid.ParameterName = "@Id";
-                vgid.SqlDbType = SqlDbType.Int;
-                vgid.Value = o.Id;
-                cmd.Parameters.Add(vgid);
+                //SqlParameter vgid = new SqlParameter();
+                //vgid.ParameterName = "@Id";
+                //vgid.SqlDbType = SqlDbType.Int;
+                //vgid.Value = o.Id;
+                //cmd.Parameters.Add(vgid);
 
                 SqlParameter vgCompanyId = new SqlParameter("@CompanyId", SqlDbType.Int);
                 vgCompanyId.Value = o.CompanyId;
@@ -1195,7 +1182,7 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlParameter vgCompanyVeh = new SqlParameter();
                 vgCompanyVeh.ParameterName = "@CompanyVechile";
-                vgCompanyVeh.SqlDbType = SqlDbType.DateTime;
+                vgCompanyVeh.SqlDbType = SqlDbType.Int;
                 vgCompanyVeh.Value = o.CompanyVechile;
                 cmd.Parameters.Add(vgCompanyVeh);
 
@@ -1227,7 +1214,7 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter vgVechMobileNo = new SqlParameter();
                 vgVechMobileNo.ParameterName = "@VechMobileNo";
                 vgVechMobileNo.SqlDbType = SqlDbType.NVarChar;
-                vgVechMobileNo.Value = o.DayOnly;
+                vgVechMobileNo.Value = o.VechMobileNo;
                 cmd.Parameters.Add(vgVechMobileNo);
 
                 SqlParameter vgEntryDate = new SqlParameter();
@@ -1251,13 +1238,13 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter vgServiceTypeId = new SqlParameter();
                 vgServiceTypeId.ParameterName = "@ServiceTypeId";
                 vgServiceTypeId.SqlDbType = SqlDbType.Int;
-                vgServiceTypeId.Value = o.VehicleModelId;
+                vgServiceTypeId.Value = o.ServiceTypeId;
                 cmd.Parameters.Add(vgServiceTypeId);
 
                 SqlParameter vgVehicleGroupId = new SqlParameter();
                 vgVehicleGroupId.ParameterName = "@VehicleGroupId";
                 vgVehicleGroupId.SqlDbType = SqlDbType.Int;
-                vgVehicleGroupId.Value = o.VehicleModelId;
+                vgVehicleGroupId.Value = o.VehicleGroupId;
                 cmd.Parameters.Add(vgVehicleGroupId);
 
                 SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
