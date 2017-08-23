@@ -1,5 +1,5 @@
 ﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -269,7 +269,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VechMobileNo: newVehicle.VechMobileNo,
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
-            Photo: $scope.imageSrc,
+            photo: $scope.imageSrc,
 
             Active: (newVehicle.Active == true) ? 1 : 0,
 

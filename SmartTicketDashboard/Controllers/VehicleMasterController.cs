@@ -153,7 +153,6 @@ namespace SmartTicketDashboard.Controllers
             vv.Value = v.VehicleModelId;
             cmd.Parameters.Add(vv);
 
-
             SqlParameter vf = new SqlParameter("@ServiceTypeId", SqlDbType.Int);
             vf.Value = v.ServiceTypeId;
             cmd.Parameters.Add(vf);
@@ -162,7 +161,9 @@ namespace SmartTicketDashboard.Controllers
             vg.Value = v.VehicleGroupId;
             cmd.Parameters.Add(vg);
 
-
+            SqlParameter pp = new SqlParameter("@Photo", SqlDbType.VarChar);
+            pp.Value = v.photo;
+            cmd.Parameters.Add(pp);
 
 
             DataTable dt = new DataTable();

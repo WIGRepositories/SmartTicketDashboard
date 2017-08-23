@@ -15,15 +15,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetBookingHistory = function () {
         $http.get('/api/BookAVehicle/GetBookingHistory?RegNo=1&DriverName=1').then(function (res, data) {
             $scope.bookings = res.data;
+            
+
         });
     }    
 
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
+
         });
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.Vehicles = res.data;
+            if ($scope.Vehicles.length > 0) {
+                $scope.v = $scope.Vehicles[0];
+                $scope.GetMaster($scope.v);
+            }
         });
     }
    

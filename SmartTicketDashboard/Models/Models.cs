@@ -2032,6 +2032,7 @@ namespace SmartTicketDashboard.Models
         public int VehicleModelId { get; set; }   
         public int ServiceTypeId { get; set; }
         public int VehicleGroupId { get; set; }
+        public string photo { get; set; }
     }
     public class allocatedriver
     {

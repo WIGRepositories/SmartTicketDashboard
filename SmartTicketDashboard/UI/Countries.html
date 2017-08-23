@@ -289,7 +289,7 @@
                                     <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                     <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                     <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                    <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                    <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                 </ul>
                             </li>
@@ -447,15 +447,16 @@
                                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                     <thead>
                                                         <tr>
-                                                            <th width="20%">Select/Unselect</th>
+                                                            <th width="10%">Select/Unselect</th>
                                                             <!--<th><input type="checkbox"
                                             ng-checked="checkedArr.length == FORoutes.length"
                                             ng-click="toggleAll()">Select</th>-->
 
-                                                            <th>Country Name</th>
-                                                            <th>Latitude</th>
-                                                            <th>Longitude</th>
-                                                            <th>ISO Code</th>
+                                                            <th width="10%">Country Name</th>
+                                                            <th width="5%">Latitude</th>
+                                                            <th width="5%">Longitude</th>
+                                                            <th width="5%">ISO Code</th>
+                                                            <th width="5%">Flag</th>
                                                             <!--<th>Active</th>-->
                                                         </tr>
                                                     </thead>
@@ -466,7 +467,7 @@
                                                             <!--<td>
                                             <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="route.assigned.toString() == '1'" ng-click="toggle(route, checkedArr);" /></td>-->
                                                             <td>
-                                                                <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(c, checkedArr)" ng-click="toggle(c, checkedArr);" />
+                                                                <input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(c, checkedArr)" ng-click="toggle(c, checkedArr);" />
                                                             </td>
 
 
@@ -475,6 +476,7 @@
                                                             <td>{{c.Latitude}}</td>
                                                             <td>{{c.Longitude}}</td>
                                                             <td>{{c.ISOCode}}</td>
+                                                            <td>{{c.flag}}</td>
 
 
                                                         </tr>

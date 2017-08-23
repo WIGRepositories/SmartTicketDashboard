@@ -127,6 +127,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
                 document.getElementById('test').disabled = false;
             }
             $scope.getRolesForCompany($scope.s);
+           
         });
 
       
