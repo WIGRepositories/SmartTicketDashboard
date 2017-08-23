@@ -127,7 +127,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter RegistrationNo');
             return;
         }
-        if ($scope.d.NAme == null) {
+        if ($scope.dd.NAme == null) {
             alert('Please Enter DriverName');
             return;
         }
@@ -146,10 +146,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VehicleType: $scope.v.Type,
             PhoneNo: AssginDriver.PhoneNo,
             RegistrationNo: $scope.vm1.RegistrationNo,
-            DriverName: $scope.d.NAme,
+            DriverName: $scope.dd.NAme,
             EffectiveDate: AssginDriver.EffectiveDate,
             EffectiveTill: AssginDriver.EffectiveTill,
-            DriverId:$scope.d.DId,
+            DriverId:$scope.dd.DId,
             flag: "U"
         }
 

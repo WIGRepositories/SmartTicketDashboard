@@ -18,7 +18,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetLicenseCat();">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetLicenseCat(s);">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP-->
@@ -258,7 +258,7 @@
                                         <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                         <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                         <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                        <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                        <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                     </ul>
                                 </li>
@@ -904,7 +904,7 @@
                                                                             <div class="col-md-5">
                                                                                 <div class="form-group">
                                                                                     <div class="input-icon right">
-                                                                                        <select ng-options="s.Name for s in LicenseCat track by s.Id" ng-model="s">
+                                                                                        <select ng-options="s.Name for s in LicenseCat.Table track by s.Id" ng-model="s">
                                                                                             <option value="currLicenseType.LicenseCatId">{{currLicenseType.licenseCategory}}</option>
                                                                                         </select>
                                                                                     </div>
@@ -930,7 +930,7 @@
 
 
                                                                         <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-green" ng-click="saveLicenseType(currLicenseType, 'U');">Save</button>
+                                                                            <button type="button" class="btn btn-green" data-dismiss="modal" ng-click="saveLicenseType(currLicenseType, 'U');">Save</button>
                                                                             <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
                                                                         </div>
                                                                     </div>

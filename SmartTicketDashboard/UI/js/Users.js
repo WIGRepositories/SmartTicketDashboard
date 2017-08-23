@@ -139,14 +139,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.userRoles = [];
 
     /* user details functions */
-    $scope.GetCountry = function () {
-
-        $scope.checkedArr = [];
-        $scope.uncheckedArr = [];
+    $scope.GetCountry = function () {        
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
             $scope.Countries = response.data;
-        $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
-        $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+            if ($scope.Countries.length > 0) {
+                $scope.ctry = $scope.Countries[0];
+                $scope.GetCountry($scope.ctry);
+            }
     });
 }
     $scope.GetCompanies = function () {    

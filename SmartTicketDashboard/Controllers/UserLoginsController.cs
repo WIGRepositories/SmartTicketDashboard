@@ -113,7 +113,6 @@ namespace SmartTicketDashboard.Controllers
 
 
 
-
         [HttpPost]
         [Route("api/UserLogins/ResetPassword")]
         public HttpResponseMessage savepassword(reset b)
