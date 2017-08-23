@@ -109,6 +109,7 @@
     <Content Include="UI\AdvertismentConfiguration.html" />
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\DriversList.html" />
     <Content Include="UI\js\DataLoad2.js" />
     <Content Include="UI\js\DataLoad3.js" />
     <Content Include="UI\js\GetLocation.js" />
