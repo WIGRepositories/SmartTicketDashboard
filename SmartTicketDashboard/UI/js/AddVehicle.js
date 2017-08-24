@@ -4,6 +4,59 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         window.location.href = "login.html";
     }
 
+
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+
+    $scope.GetVehcileDetails = function () {
+
+        $scope.VehcileDetails = null;
+
+        $scope.selectedVehicle = parseLocation(window.location.search)['Vid'];
+
+        $http.get('api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
+            $scope.VehcileDetails = res.data;
+
+            if ($scope.VehcileDetails.length > 0) {
+                if ($scope.selectedVehicle != null) {
+                    for (i = 0; i < $scope.VehcileDetails.length; i++) {
+                        if ($scope.VehcileDetails[i].id == $scope.selectedVehicle) {
+                            $scope.v = $scope.VehcileDetails[i];
+                            break;
+                        }
+                    }
+                }
+                else {
+                    $scope.s = $scope.VehcileDetails[0];
+                    $scope.selectedVehicle = $scope.VehcileDetails[0].id;
+                }
+
+                $scope.getselectval($scope.selectedVehicle);
+            }
+        });
+    }
+    $scope.getselectval = function (v) {
+
+        $http.get('/api/VehcileMaster/GetVehcileMaster?VID=' + $scope.selectedVehicle).then(function (res, data) {
+            $scope.VehiclesList = res.data;
+        });
+
+    }
+
     app.directive('file-input', function ($parse) {
         return {
             restrict: "EA",

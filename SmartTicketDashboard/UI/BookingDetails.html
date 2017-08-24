@@ -63,6 +63,7 @@
                     </ul>
                 </div>
             </nav>
+            </div>
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
@@ -381,6 +382,7 @@
                         </ul>
                     </div>
                 </nav>
+                </div>
                 <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -397,6 +399,7 @@
                         </ol>
                         <div class="clearfix"></div>
                     </div>
+
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                     <div class="page-content">
                         <div id="table-action" class="row">
@@ -424,7 +427,7 @@
 </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd"  class="form-control" style="width:80%">
+                                                            Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd" ng-change="GetMaster(dd)" class="form-control" style="width:80%">
     <option value="">Select</option>
 </select>
                                                         </div>
@@ -569,7 +572,7 @@
                                                         <thead>
                                                             <tr>
 
-
+                                                                <!--<th>VId</th>-->
                                                                 <th width="10%">BNo</th>
                                                                 <th width="15%">Source</th>
                                                                 <th width="15%">Destination</th>
@@ -585,7 +588,8 @@
                                                             </tr>
                                                         <tbody>
                                                             <tr ng-repeat="b in bookings">
-                                                                <td><a href="BookingDetails.html"> <font color="blue"> <u> {{b.BNo}}</u></font></a></td>                                                                
+                                                                <!--<td>{{b.Vid}}</td>-->
+                                                                <td><a href="BookingList.html?VID={{b.VechId}}"> <font color="blue"> <u> {{b.BNo}}</u></font></a></td>                                                                
                                                                 <td>{{b.Src}}</td>
                                                                 <td>{{b.Dest}}</td>
                                                                 <td>{{b.CustomerPhoneNo}}</td>

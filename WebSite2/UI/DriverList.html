@@ -255,7 +255,7 @@
                                     <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                     <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                     <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                    <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                    <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                 </ul>
                             </li>
@@ -347,7 +347,7 @@
                         <a href="#">
                             <i class="fa fa-send-o fa-fw">
                                 <div class="icon-bg bg-dark"></div>
-                            </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
+                            </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
@@ -555,9 +555,8 @@
                                                     <tbody>
                                                         <tr ng-repeat="Dl in listdrivers">
 
-                                                            
-                                                            
-                                                            <td><a href="DriverDetails.html?DId={{Dl.DId}}"> <font color="blue"> <u> {{Dl.NAme}}</u></font></a></td>
+                                                            <!--<td>{{Dl.DId}}</td>-->
+                                                            <td>{{Dl.NAme}}</td>
                                                             <td>{{Dl.Address}}</td>
                                                             <td>{{Dl.City}}</td>
                                                             <td>{{Dl.Pin}}</td>
@@ -597,9 +596,8 @@
                                                                             <div class="col-md-3">
                                                                                 <div class="form-group">
                                                                                     <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                    <div class="text-center mbl"> 
-                                                                                        <label for="AssginDriver" class="col-md-4 control-label" style="float:left">FileName:</label>                                                                                     
-                                                                                        <input style="width:160px" type="file" name="imageInput" id="imageInput" ng-file-select="onFileSelect($image,$event)" class="btn btn-green" accept=".jpg,.png,.jpeg" ng-model="Driverlist.FileName" ng-click="validateFile($event)" />
+                                                                                    <div class="text-center mbl">                                                                                      
+                                                                                            <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".jpg,.png,.jpeg" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
                                                                                           
                                                                                     </div>
                                                                                 </div>

@@ -12,6 +12,58 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.dashboardDS = $localStorage.dashboardDS;
 
 
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+
+    $scope.GetBookingdetails = function () {
+
+        $scope.bookings = null;
+
+        $scope.selectedbookings = parseLocation(window.location.search)['VechId'];
+
+        $http.get('/api/VehcileMaster/GetBookingdetails?VechId=' + $scope.selectedbookings).then(function (res, data) {
+            $scope.bookings = res.data;
+
+            if ($scope.bookings.length > 0) {
+                if ($scope.selectedbookings != null) {
+                    for (i = 0; i < $scope.bookings.length; i++) {
+                        if ($scope.bookings[i].id == $scope.selectedbookings) {
+                            $scope.v = $scope.bookings[i];
+                            break;
+                        }
+                    }
+                }
+                else {
+                    $scope.s = $scope.bookings[0];
+                    $scope.selectedbookings = $scope.bookings[0].id;
+                }
+
+                $scope.getselectval($scope.selectedbookings);
+            }
+        });
+    }
+    $scope.getselectval = function (v) {
+
+        $http.get('/api/BookAVehicle/GetBookingdetails?VID=' + $scope.selectedbookings).then(function (res, data) {
+            $scope.bookings = res.data;
+        });
+
+    }
+
     $scope.GetBookingHistory = function () {
         $http.get('/api/BookAVehicle/GetBookingHistory?RegNo=1&DriverName=1').then(function (res, data) {
             $scope.bookings = res.data;
@@ -23,6 +75,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
+            if ($scope.listdrivers.length > 0) {
+                $scope.dd = $scope.listdrivers[0];
+                $scope.GetMaster($scope.dd);
+            }
 
         });
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
