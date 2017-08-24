@@ -441,14 +441,56 @@
                                     Upload
                                 </a>
                             </div>-->
-                                                                                            <div class="col-md-2">
-                                                                                                <label for="Name" class="col-md-4 control-label" style="float:left">Photo:</label>
+                                                                                            <div style="margin-right:100px;margin-top:10px">
+                                                                                                <label for="Name">Photo:</label>
                                                                                                 <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
                                                                                                 <div class="col-md-8">
                                                                                                     <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
                                                                                                     <br />
                                                                                                     <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
                                                                                                         <i class="fa fa-upload" ></i>&nbsp;
+                                                                                                        Upload photo
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                                                            </div>
+                                                                                            <div style="margin-right:100px;margin-top:10px">
+                                                                                                <label for="Name">Left:</label>
+                                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                                <div class="col-md-8">
+                                                                                                    <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="80px" />
+                                                                                                    <br />
+                                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                                        Upload photo
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                                                            </div>
+                                                                                            <div style="margin-right:100px;margin-top:10px">
+                                                                                                <label for="Name">Right:</label>
+                                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                                <div class="col-md-8">
+                                                                                                    <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="80px" />
+                                                                                                    <br />
+                                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                                        Upload photo
+                                                                                                    </a>
+                                                                                                </div>
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                                                            </div>
+                                                                                            <div style="margin-right:100px;margin-top:10px">
+                                                                                                <label for="Name">Back:</label>
+                                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                                <div class="col-md-8">
+                                                                                                    <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="80px" />
+                                                                                                    <br />
+                                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
                                                                                                         Upload photo
                                                                                                     </a>
                                                                                                 </div>
@@ -921,7 +963,7 @@
 
                                                                 <!--<td>{{v.VID}}</td>-->
                                                                 
-                                                                <td><a href="VehiclesList.html"> <font color="blue"> <u> {{v.RegistrationNo}}</u></font></a></td>
+                                                                <td><a href="VehicleDetails.html?Vid={{v.VID}}"> <font color="blue"> <u> {{v.RegistrationNo}}</u></font></a></td>
                                                                 <td>{{v.Type}}</td>
                                                                 <td>{{v.OwnerName}}</td>
                                                                 <!--<td>{{v.CompanyVechile}}</td>-->

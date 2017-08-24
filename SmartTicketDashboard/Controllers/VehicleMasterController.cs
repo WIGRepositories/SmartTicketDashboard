@@ -37,6 +37,31 @@ namespace SmartTicketDashboard.Controllers
             return dt;
 
         }
+
+        [HttpGet]
+
+        [Route("api/VehicleMaster/GetVehcileDetails")]
+        public DataTable GetVehcileDetails(int VID)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PSgetvehilcedetails";
+            cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
+            cmd.Connection = conn;
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
 

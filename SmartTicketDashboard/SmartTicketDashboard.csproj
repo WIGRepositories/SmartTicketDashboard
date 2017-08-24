@@ -107,12 +107,15 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\BookingList.html" />
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\js\DataLoad2.js" />
     <Content Include="UI\js\DataLoad3.js" />
     <Content Include="UI\js\DataLoad4.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\Car.jpg" />
@@ -595,7 +598,7 @@
     <Content Include="UI\Users.html" />
     <Content Include="UI\VehicleAvailability.html" />
     <Content Include="UI\VehicleDestBasePricing.html" />
-    <Content Include="UI\VehicleDetails.html" />
+    <Content Include="UI\VehicleDetails1.html" />
     <Content Include="UI\VehicleHoursBasePricing.html" />
     <Content Include="UI\VehicleLayout.html" />
     <Content Include="UI\Landmark.html" />
@@ -603,7 +606,7 @@
     <Content Include="UI\VehicleLogout.html" />
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
-    <Content Include="UI\VehiclesList.html" />
+    <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
     <Content Include="UI\vendors\bootstrap-clockface\CHANGELOG.txt" />
     <Content Include="UI\vendors\bootstrap-clockface\css\clockface.css" />
