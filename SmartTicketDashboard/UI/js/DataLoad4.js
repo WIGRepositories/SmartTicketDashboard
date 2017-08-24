@@ -1,30 +1,5 @@
 ﻿/// <reference path="DataLoad.js" />
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
-//File Validation
-
-//File Validation
-//app.directive('ChechFileValid' = function (file) {
-//    var isValid = false;
-//    if ($scope.SelectedFileForUpload != null) {
-//        if ((file.type == 'csv' || file.type == 'csv' || file.type == 'csv')) {
-//            $scope.FileInvalidMessage = "";
-//            isValid = true;
-//        }
-//        else {
-//            $scope.FileInvalidMessage = "Selected file is Invalid. (only file type csv allowed)";
-//        }
-//    }
-//    else {
-//        $scope.FileInvalidMessage = "csv file required!";
-//    }
-//    $scope.IsFileValid = isValid;
-
-
-//    //File Select event 
-//    $scope.selectFileforUpload = function (file) {
-//        $scope.SelectedFileForUpload = file[0];
-//    };
-//});
 
 app.directive('fileReader', function () {
     return {
@@ -106,7 +81,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.GetDataLoad = response.data;
         });
     }
-    $scope.csv_link = 'DataUploadTemplates/VehiclesList.csv';// + $window.location.search;
+    $scope.csv_link = 'DataUploadTemplates/Users.csv';// + $window.location.search;
 
     $scope.SetOptionSettings = function () {
         switch ($scope.seloption) {
@@ -157,7 +132,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         switch ($scope.seloption) {
             case "1":
-                $scope.downloadFile('DataUploadTemplates/DriversList.csv', 'CompanyList.csv');
+                $scope.downloadFile('DataUploadTemplates/CompanyList.csv', 'CompanyList.csv');
                 break;
             case "2":
                 //users
@@ -201,7 +176,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var blob = new Blob([$scope.logdata], { type: "application/csv;charset=utf-8;" });
         var downloadLink = angular.element('<a></a>');
         downloadLink.attr('href', window.URL.createObjectURL(blob));
-        downloadLink.attr('download', 'VehiclesList_log.csv');
+        downloadLink.attr('download', 'DriversList.csv');
         downloadLink[0].click();
     };
 
@@ -223,6 +198,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var allTextLines = allText.split(/\r\n|\n/);
 
         var headers = allTextLines[0].split(',');
+
+
+
+
         //validate header
 
         //var header = [$scope.seloption];          
@@ -230,7 +209,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    switch ($scope.seloption) {
         //        case "1":
         //            //company                                              
-        //            $scope.mandatoryCols = $scope.VehiclesCol;
+        //            $scope.mandatoryCols = $scope.compCol;
 
         //            alert("Colums are not matching");
         //            if (seloption == "CompanyName")
@@ -247,173 +226,92 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         for (var i = 1; i < allTextLines.length; i++) {
             // split content based on comma
             var data = allTextLines[i].split(',');
-            lines.push(GetVehicles(data));
+            lines.push(GetUser(data));
 
             //if (data.length == headers.length) {
             //var tarr = [];
             //for (var j = 0; j < headers.length; j++) {
             //    tarr.push(data[j]);
             //}
-            //lines.push(GetVehicles(data));
+            //lines.push(GetCompany(data));
             //}
         }
 
         //list
         var req = {
             method: 'POST',
-            url: '/api/DataLoad/SaveVehicleGroups1',
+            url: '/api/DataLoad/SaveUsersGroup1',
             data: lines
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
         });
 
         // $scope.logdata = lines;
     };
 
 
-    function GetVehicles(data) {
+    function GetUser(data) {
 
-        var list = {
-            CompanyId: data[0],
-            VID: data[1],
-            RegistrationNo: data[2],
-            Type: data[3],
-            OwnerName: data[4],
-            ChasisNo: data[5],
-            Engineno: data[6],
-            RoadTaxDate: data[7],
-            InsuranceNo: data[8],
-            InsDate: data[9],
-            PolutionNo: data[10],
-            PolExpDate: data[11],
-            RCBookNo: data[12],
-            RCExpDate: data[13],
-            CompanyVechile: data[14],
-            OwnerPhoneNo: data[15],
-            HomeLandmark: data[16],
-            ModelYear: data[17],
-            DayOnly: data[18],
-            VechMobileNo: data[19],
-            EntryDate: data[20],
-            NewEntry: data[21],
-            VehicleModelId: data[22],
-            ServiceTypeId: data[23],
-            VehicleGroupId: data[24],
-
-            flag: 'I'
-
+        var U = {
+            
+            FirstName: data[0],
+            LastName: data[1],
+            MiddleName: data[2],
+            EmpNo: data[3],
+            Email: data[4],
+            Address: data[5],
+            RoleId: data[6],
+            cmpId: data[7],
+            ContactNo1: data[8],
+            ContactNo2: data[9],
+            Active: 1,
+            insupdflag: 'I'
         }
-        return list;
-
-
+        return U;
     }
 
     $scope.save = function () {
-        if (CompanyId == null) {
+        if (FirstName == null) {
             return;
         }
-        if (VID == null) {
+        if (LastName == null) {
             return;
         }
-        if (RegistrationNo == null) {
+        if (MiddleName == null) {
             return;
         }
-        if (Type == null) {
+        if (Email == null) {
             return;
         }
-        if (OwnerName == null) {
+        if (ContactNo1 == null) {
             return;
         }
-        if (ChasisNo == null) {
+        if (ContactNo2 == null) {
             return;
         }
+       
 
         $http(req).then(function (response) {
 
-            scope.showDialog("Saved successfully!!");
+            $scope.showDialog("Saved successfully!!");
 
             $scope.data = null;
             //$scope.GetCompanys();
 
         }, function (errres) {
+
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
-            alert(errmssg);
+            // $scope.showDialog(errmssg);
+
         });
 
-        //var req = {
-        //    method: 'POST',
-        //    url: '/api/DataLoad/SaveUsers',
-        //    data: lines
-        //}
-        //$http(req).then(function (res) {
-        //    $scope.initdata = res.data;
-        //});
 
-        // $scope.logdata = lines;
-    };
-    //function GetUser(data) {
-
-    //    var U = {
-    //        Id: ((flag == 'I') ? User.Id : -1),
-    //        FirstName: data[1],
-    //        LastName: data[2],
-    //        MiddleName: data[3],
-    //        Email: data[4],
-    //        ContactNo1: data[5],
-    //        ContactNo2: data[6],
-    //        Active: 1,
-    //        insupdflag: flag
-    //    }
-    //    return U;
-    //}
-
-    //$scope.save = function () {
-    //    if (FirstName == null) {
-    //        return;
-    //    }
-    //    if (LastName == null) {
-    //        return;
-    //    }
-    //    if (MiddleName == null) {
-    //        return;
-    //    }
-    //    if (Email == null) {
-    //        return;
-    //    }
-    //    if (ContactNo1 == null) {
-    //        return;
-    //    }
-    //    if (ContactNo2 == null) {
-    //        return;
-    //    }
-    //    if (Active == null) {
-    //        return;
-    //    }
-
-
-    //    $http(req).then(function (response) {
-
-    //        $scope.showDialog("Saved successfully!!");
-
-    //        $scope.data = null;
-    //        //$scope.GetCompanys();
-
-    //    }, function (errres) {
-
-    //        var errdata = errres.data;
-    //        var errmssg = "Your details are incorrect";
-    //        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-    //        // $scope.showDialog(errmssg);
-
-    //    });
-
-
-    //}
+    }
+   
 
 
 
@@ -424,3 +322,5 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 });
+
+

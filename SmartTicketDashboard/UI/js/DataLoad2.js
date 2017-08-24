@@ -25,7 +25,7 @@ app.directive('fileReader', function () {
     };
 });
 
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var ctrl = app.controller('myCtrl1', function ($scope, $http, $localStorage, $uibModal) {
 
     $scope.compCol = 'CompanyName,Active';
     $scope.compArr = [{ "Id": 1, "Name": "CompanyName" },
@@ -186,9 +186,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.processData($scope.fileContent);
     }
 
-
-
-
     $scope.processData = function (allText) {
         if (allText == null) {
             alert('Please insert file.');
@@ -251,7 +248,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         // $scope.logdata = lines;
     };
 
-
     function GetDrivers(data) {
 
         var list = {
@@ -312,80 +308,83 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            // $scope.showDialog(errmssg);
+             $scope.showDialog(errmssg);
             alert(errmssg);
         });
 
-        var req = {
-            method: 'POST',
-            url: '/api/DataLoad/SaveUsers',
-            data: lines
-        }
-        $http(req).then(function (res) {
-            $scope.initdata = res.data;
-        });
+        //var req = {
+        //    method: 'POST',
+        //    url: '/api/DataLoad/SaveUsers',
+        //    data: lines
+        //}
+        //$http(req).then(function (res) {
+        //    $scope.initdata = res.data;
+        //});
 
         // $scope.logdata = lines;
     };
-    function GetUser(data) {
-
-        var U = {
-            Id: ((flag == 'I') ? User.Id : -1),
-            FirstName: data[1],
-            LastName: data[2],
-            MiddleName: data[3],
-            Email: data[4],
-            ContactNo1: data[5],
-            ContactNo2: data[6],
-            Active: 1,
-            insupdflag: flag
-        }
-        return U;
-    }
-
-    $scope.save = function () {
-        if (FirstName == null) {
-            return;
-        }
-        if (LastName == null) {
-            return;
-        }
-        if (MiddleName == null) {
-            return;
-        }
-        if (Email == null) {
-            return;
-        }
-        if (ContactNo1 == null) {
-            return;
-        }
-        if (ContactNo2 == null) {
-            return;
-        }
-        if (Active == null) {
-            return;
-        }
 
 
-        $http(req).then(function (response) {
+    //Recent Changes
+    //function GetUser(data) {
 
-            $scope.showDialog("Saved successfully!!");
+    //    var U = {
+    //        Id: ((flag == 'I') ? User.Id : -1),
+    //        FirstName: data[1],
+    //        LastName: data[2],
+    //        MiddleName: data[3],
+    //        Email: data[4],
+    //        ContactNo1: data[5],
+    //        ContactNo2: data[6],
+    //        Active: 1,
+    //        insupdflag: flag
+    //    }
+    //    return U;
+    //}
 
-            $scope.data = null;
-            //$scope.GetCompanys();
+    //$scope.save = function () {
+    //    if (FirstName == null) {
+    //        return;
+    //    }
+    //    if (LastName == null) {
+    //        return;
+    //    }
+    //    if (MiddleName == null) {
+    //        return;
+    //    }
+    //    if (Email == null) {
+    //        return;
+    //    }
+    //    if (ContactNo1 == null) {
+    //        return;
+    //    }
+    //    if (ContactNo2 == null) {
+    //        return;
+    //    }
+    //    if (Active == null) {
+    //        return;
+    //    }
 
-        }, function (errres) {
 
-            var errdata = errres.data;
-            var errmssg = "Your details are incorrect";
-            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            // $scope.showDialog(errmssg);
+    //    $http(req).then(function (response) {
 
-        });
+    //        $scope.showDialog("Saved successfully!!");
+
+    //        $scope.data = null;
+    //        //$scope.GetCompanys();
+
+    //    }, function (errres) {
+
+    //        var errdata = errres.data;
+    //        var errmssg = "Your details are incorrect";
+    //        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+    //        // $scope.showDialog(errmssg);
+
+    //    });
 
 
-    }
-
+    //}
+    //Recent Changes
     
 
 

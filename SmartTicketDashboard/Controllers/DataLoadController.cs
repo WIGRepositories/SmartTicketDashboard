@@ -163,112 +163,112 @@ namespace SmartTicketDashboard.Controllers
         //    //  return Tbl;
         //}
 
-        [HttpPost]
-        [Route("api/DataLoad/SaveUsers")]        
+        //[HttpPost]
+        //[Route("api/DataLoad/SaveUsers")]
 
-        public HttpResponseMessage SaveUsers(List<Users> list1)
-        {
+        //public HttpResponseMessage SaveUsers(List<Users> list1)
+        //{
 
-            LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveUsers credentials....");
-            //DataTable Tbl = new DataTable();
-            SqlConnection conn = new SqlConnection();
+        //    LogTraceWriter traceWriter = new LogTraceWriter();
+        //    traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveUsers credentials....");
+        //    //DataTable Tbl = new DataTable();
+        //    SqlConnection conn = new SqlConnection();
 
-            try
-            {
-                //connect to database
+        //    try
+        //    {
+        //        //connect to database
 
-                // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
-                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+        //        // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
+        //        conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-                SqlCommand cmd = new SqlCommand();
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InsUpdUsers";
-                cmd.Connection = conn;
+        //        SqlCommand cmd = new SqlCommand();
+        //        cmd.CommandType = CommandType.StoredProcedure;
+        //        cmd.CommandText = "InsUpdUsers";
+        //        cmd.Connection = conn;
 
-                conn.Open();
+        //        conn.Open();
 
 
-                foreach (Users U in list1)
-                {
-                    SqlParameter UId = new SqlParameter("@userid", SqlDbType.Int);
-                    UId.Value = U.Id;
-                    cmd.Parameters.Add(UId);
+        //        foreach (Users U in list1)
+        //        {
+        //            SqlParameter UId = new SqlParameter("@userid", SqlDbType.Int);
+        //            UId.Value = U.Id;
+        //            cmd.Parameters.Add(UId);
 
-                    SqlParameter UFirstName = new SqlParameter("@FirstName", SqlDbType.VarChar, 50);
-                    UFirstName.Value = U.FirstName;
-                    cmd.Parameters.Add(UFirstName);
+        //            SqlParameter UFirstName = new SqlParameter("@FirstName", SqlDbType.VarChar, 50);
+        //            UFirstName.Value = U.FirstName;
+        //            cmd.Parameters.Add(UFirstName);
 
-                    SqlParameter LastName = new SqlParameter("@LastName", SqlDbType.VarChar, 50);
-                    LastName.Value = U.LastName;
-                    cmd.Parameters.Add(LastName);
+        //            SqlParameter LastName = new SqlParameter("@LastName", SqlDbType.VarChar, 50);
+        //            LastName.Value = U.LastName;
+        //            cmd.Parameters.Add(LastName);
 
-                    SqlParameter MiddleName = new SqlParameter("@MiddleName", SqlDbType.VarChar, 50);
-                    MiddleName.Value = U.MiddleName;
-                    cmd.Parameters.Add(MiddleName);
+        //            SqlParameter MiddleName = new SqlParameter("@MiddleName", SqlDbType.VarChar, 50);
+        //            MiddleName.Value = U.MiddleName;
+        //            cmd.Parameters.Add(MiddleName);
 
-                   
-               
 
-                    SqlParameter UEmail = new SqlParameter("@Email", SqlDbType.VarChar, 15);
-                    UEmail.Value = U.Email;
-                    cmd.Parameters.Add(UEmail);
 
-                   
 
-                    SqlParameter UMobileNo = new SqlParameter("@ContactNo1", SqlDbType.VarChar, 15);
-                    UMobileNo.Value = U.ContactNo1;
-                    cmd.Parameters.Add(UMobileNo);
+        //            SqlParameter UEmail = new SqlParameter("@Email", SqlDbType.VarChar, 15);
+        //            UEmail.Value = U.Email;
+        //            cmd.Parameters.Add(UEmail);
 
-                    SqlParameter ContactNo2 = new SqlParameter("@ContactNo2", SqlDbType.VarChar, 15);
-                    ContactNo2.Value = U.ContactNo2;
-                    cmd.Parameters.Add(ContactNo2);
 
-                   
 
-                    SqlParameter UActive = new SqlParameter("@Active", SqlDbType.Int);
-                    UActive.Value = U.Active;
-                    cmd.Parameters.Add(UActive);
+        //            SqlParameter UMobileNo = new SqlParameter("@ContactNo1", SqlDbType.VarChar, 15);
+        //            UMobileNo.Value = U.ContactNo1;
+        //            cmd.Parameters.Add(UMobileNo);
 
-                  
+        //            SqlParameter ContactNo2 = new SqlParameter("@ContactNo2", SqlDbType.VarChar, 15);
+        //            ContactNo2.Value = U.ContactNo2;
+        //            cmd.Parameters.Add(ContactNo2);
 
-                    //  SqlParameter WUserName = new SqlParameter("@WUserName",SqlDbType.VarChar,15);
-                    //WUserName.Value = U.WUserName;
-                    //cmd.Parameters.Add(WUserName);
 
-                    //SqlParameter WPassword = new SqlParameter("@WPassword",SqlDbType.VarChar,15);
-                    //WPassword.Value = U.WPassword;
-                    //cmd.Parameters.Add(WPassword);
 
-               
-                    SqlParameter insupdflag = new SqlParameter("@insupdflag", SqlDbType.VarChar, 10);
-                    insupdflag.Value = U.insupdflag;
-                    cmd.Parameters.Add(insupdflag);
-                   
+        //            SqlParameter UActive = new SqlParameter("@Active", SqlDbType.Int);
+        //            UActive.Value = U.Active;
+        //            cmd.Parameters.Add(UActive);
 
-                   
 
-                    cmd.ExecuteScalar();
-                    cmd.Parameters.Clear();
-                }
-                conn.Close();
-                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveUsers Credentials completed.");
-                return new HttpResponseMessage(HttpStatusCode.OK);
-            }
-            catch (Exception ex)
-            {
-                if (conn != null && conn.State == ConnectionState.Open)
-                {
-                    conn.Close();
-                }
 
-                string str = ex.Message;
-                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveUsers:" + ex.Message);
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-            // int found = 0;
-            //  return Tbl;
-        }
+        //            //  SqlParameter WUserName = new SqlParameter("@WUserName",SqlDbType.VarChar,15);
+        //            //WUserName.Value = U.WUserName;
+        //            //cmd.Parameters.Add(WUserName);
+
+        //            //SqlParameter WPassword = new SqlParameter("@WPassword",SqlDbType.VarChar,15);
+        //            //WPassword.Value = U.WPassword;
+        //            //cmd.Parameters.Add(WPassword);
+
+
+        //            SqlParameter insupdflag = new SqlParameter("@insupdflag", SqlDbType.VarChar, 10);
+        //            insupdflag.Value = U.insupdflag;
+        //            cmd.Parameters.Add(insupdflag);
+
+
+
+
+        //            cmd.ExecuteScalar();
+        //            cmd.Parameters.Clear();
+        //        }
+        //        conn.Close();
+        //        traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveUsers Credentials completed.");
+        //        return new HttpResponseMessage(HttpStatusCode.OK);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        if (conn != null && conn.State == ConnectionState.Open)
+        //        {
+        //            conn.Close();
+        //        }
+
+        //        string str = ex.Message;
+        //        traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveUsers:" + ex.Message);
+        //        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+        //    }
+        //    // int found = 0;
+        //    //  return Tbl;
+        //}
 
 
 
@@ -596,9 +596,9 @@ namespace SmartTicketDashboard.Controllers
         //jaganupdated on  21st Aug Start
 
         [HttpPost]
-        [Route("api/DataLoad/SaveUsers1")]
+        [Route("api/DataLoad/SaveUsersGroup1")]
 
-        public HttpResponseMessage SaveUsers1(List<Users> list1)
+        public HttpResponseMessage SaveUsersGroup1(List<UsersGroup> list5)
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -612,20 +612,22 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InsUpdUsers1";
+                cmd.CommandText = "InsUpdUsers";
                 cmd.Connection = conn;
 
                 conn.Open();
 
 
-                foreach (Users U in list1)
+                foreach (UsersGroup U in list5)
                 {
-                    SqlParameter UId = new SqlParameter("@userid", SqlDbType.Int);
-                    UId.Value = U.Id;
-                    cmd.Parameters.Add(UId);
+                    //SqlParameter UId = new SqlParameter("@userid", SqlDbType.Int);
+                    //UId.Value = U.Id;
+                    //cmd.Parameters.Add(UId);
 
-                    SqlParameter UFirstName = new SqlParameter("@FirstName", SqlDbType.VarChar, 50);
-                    UFirstName.Value = U.FirstName;
+                    SqlParameter UFirstName=new SqlParameter();
+                    UFirstName.ParameterName="@FirstName";
+                    UFirstName.SqlDbType=SqlDbType.VarChar;
+                    UFirstName.Value=U.FirstName;
                     cmd.Parameters.Add(UFirstName);
 
                     SqlParameter LastName = new SqlParameter("@LastName", SqlDbType.VarChar, 50);
@@ -644,6 +646,10 @@ namespace SmartTicketDashboard.Controllers
                     UEmail.Value = U.Email;
                     cmd.Parameters.Add(UEmail);
 
+                    SqlParameter UAddress = new SqlParameter("@Address", SqlDbType.VarChar, 15);
+                    UAddress.Value = U.Address;
+                    cmd.Parameters.Add(UAddress);
+
                     SqlParameter roleId = new SqlParameter("@RoleId", SqlDbType.Int);
                     roleId.Value = U.RoleId;
                     cmd.Parameters.Add(roleId);
@@ -653,7 +659,7 @@ namespace SmartTicketDashboard.Controllers
                     cmd.Parameters.Add(UActive);
 
                     SqlParameter UcmpId = new SqlParameter("@cmpId", SqlDbType.Int);
-                    UcmpId.Value = U.companyId;
+                    UcmpId.Value = U.cmpId;
                     cmd.Parameters.Add(UcmpId);
 
 
@@ -1272,7 +1278,8 @@ namespace SmartTicketDashboard.Controllers
             }
         }
         
-        //sam
+     
+
         
     }
 }
