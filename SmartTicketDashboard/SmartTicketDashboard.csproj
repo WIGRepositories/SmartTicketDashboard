@@ -111,9 +111,6 @@
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\DriverDetails.html" />
-    <Content Include="UI\js\DataLoad2.js" />
-    <Content Include="UI\js\DataLoad3.js" />
-    <Content Include="UI\js\DataLoad4.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
