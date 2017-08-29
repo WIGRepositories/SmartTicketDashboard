@@ -13,8 +13,36 @@ var ctrl = app.controller('Myctrlr', function ($scope, $http, $localStorage) {
 
         });
     }
+    $scope.GetCountry = function () {
 
-    
+        $scope.checkedArr = [];
+        $scope.uncheckedArr = [];
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;
+            $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
+            $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+        });
+    }
+    $scope.GetCompanies = function () {
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+            $scope.Companies = response.data;
+        });
+    }
+     $scope.getUsersnRoles = function () {
+        if ($scope.s == null) {
+            $scope.cmproles1 = null;
+            $scope.cmpUsers1 = null;
+            return;
+        }
+        var cmpId = ($scope.s == null) ? -1 : $scope.s.Id;
 
+        $http.get('/api/Roles/GetCompanyRoles?companyId=' + cmpId).then(function (res, data) {
+            $scope.cmproles1 = res.data;
+        });
+
+        $http.get('/api/Users/GetUsers?cmpId=' + cmpId).then(function (res, data) {
+            $scope.cmpUsers1 = res.data;
+        });
+    }
 });
    

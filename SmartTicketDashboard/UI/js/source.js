@@ -8,7 +8,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     $scope.Roleid = $scope.userdetails[0].roleid;
     $scope.canShow = ($scope.Roleid == 1 || $scope.roleid == 2 || ($localStorage.uname == 'check check'));
 
-
+    $scope.GetCountry = function () {
+             
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;
+       
+        });
+    }
 
     $scope.GetFleetDetails = function () {
 

@@ -627,7 +627,8 @@ namespace SmartTicketDashboard.Models
 
     public class CompanyGroups
     {
-        public List<CompanyGroups> list { get; set; }
+        public CompanyGroups[] m = null;
+        //public List<CompanyGroups> list { get; set; }
         public int active { get; set; }
 
         public string admin { get; set; }
@@ -667,7 +668,9 @@ namespace SmartTicketDashboard.Models
     //Jagan Updated On18th Aug Start
     public class DriversGroups
     {
-        public List<DriversGroups> list { get; set; }
+        
+        public DriversGroups[] p = null;
+        //public List<DriversGroups> list { get; set; }
         public string flag {get; set;}
         public int DId {get; set;}
         public int CompanyId {get; set;}
@@ -680,17 +683,93 @@ namespace SmartTicketDashboard.Models
         public string PPin {get; set;}
         public string OffMobileNo {get; set;}
         public string PMobNo {get; set;}
-        public DateTime DOB {get; set;}
-        public DateTime DOJ {get; set;}
+        public DateTime? DOB {get; set;}
+        public DateTime? DOJ {get; set;}
         public string BloodGroup {get; set;}
         public string LicenceNo {get; set;}
-        public DateTime LiCExpDate {get; set;}
+        public DateTime? LiCExpDate {get; set;}
         public string BadgeNo {get; set;}
-        public DateTime BadgeExpDate {get; set;}
+        public DateTime? BadgeExpDate {get; set;}
         public string Remarks { get; set; }
 
     }
     //Jagan Updated On18th Aug End
+
+    public class VehiclesGroups
+    {
+        
+        public VehiclesGroups[] o = null;
+        //public List<VehiclesGroups> list3 { get; set; }
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int CompanyId { get; set; }
+        public int VID { get; set; }
+        public string RegistrationNo { get; set; }
+        public string Type { get; set; }
+        public string OwnerName { get; set; }
+        public string ChasisNo { get; set; }
+        public string Engineno { get; set; }
+        public DateTime? RoadTaxDate { get; set; }
+        public string InsuranceNo { get; set; }
+        public DateTime? InsDate { get; set; }
+        public string PolutionNo { get; set; }
+        public DateTime? PolExpDate { get; set; }
+        public string RCBookNo { get; set; }
+        public DateTime? RCExpDate { get; set; }
+        public int CompanyVechile { get; set; }
+        public string OwnerPhoneNo { get; set; }
+        public string HomeLandmark { get; set; }
+        public string ModelYear { get; set; }
+        public string DayOnly { get; set; }
+        public string VechMobileNo { get; set; }
+        public DateTime? EntryDate { get; set; }
+        public string NewEntry { get; set; }
+        public int VehicleModelId { get; set; }
+        public int ServiceTypeId { get; set; }
+        public int VehicleGroupId { get; set; }
+    }
+
+
+    public class UsersGroup
+    {
+
+        //public UsersGroup[] U = null;
+        public List<UsersGroup> U { get; set; }
+        public int Id { set; get; }
+        public string FirstName { set; get; }
+        public string LastName { set; get; }
+        public string MiddleName { set; get; }
+        public string EmpNo { set; get; }
+        public string Email { set; get; }
+        public string ContactNo1 { set; get; }
+        public string ContactNo2 { set; get; }
+        public int? mgrId { set; get; }
+        public int ManagerName { set; get; }
+        public string Country { get; set; }
+        public string ZipCode { get; set; }
+        public string State { get; set; }
+        public int StateId { set; get; }
+        public int CountryId { set; get; }
+        public int Active { get; set; }
+        public int GenderId { get; set; }
+        public string UserType { set; get; }
+        public int UserTypeId { set; get; }
+        public string Address { set; get; }
+        public string AltAdress { set; get; }
+        public string Photo { get; set; }
+        public string Role { set; get; }
+        public int RoleId { set; get; }
+        public DateTime? RFromDate { get; set; }
+        public DateTime? RToDate { get; set; }
+        public string DUserName { get; set; }
+        public string DPassword { get; set; }
+        public string WUserName { get; set; }
+        public string WPassword { get; set; }
+        public string insupdflag { get; set; }
+        public int cmpId { set; get; }
+        public string Company { set; get; }
+
+    }
     public class CompanyRoles
     {
         public int Id { get; set; }
@@ -1720,6 +1799,7 @@ namespace SmartTicketDashboard.Models
         public string OldPassword { set; get; }
         public string NewPassword { set; get; }
         public string ReenterNewPassword { set; get; }
+        public string Pwd { get; set; }
 
     }
     public class FORouteFleetSchedule
@@ -1994,6 +2074,7 @@ namespace SmartTicketDashboard.Models
         public int VehicleModelId { get; set; }   
         public int ServiceTypeId { get; set; }
         public int VehicleGroupId { get; set; }
+        public string photo { get; set; }
     }
     public class allocatedriver
     {
@@ -2342,6 +2423,7 @@ namespace SmartTicketDashboard.Models
         public float price { get; set; }
         public string description { get; set; }
     }
+    
 
 }
 

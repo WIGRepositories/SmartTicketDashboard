@@ -27,7 +27,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "PSGetVechlogin";
             cmd.Connection = conn;
 
-            cmd.Parameters.Add("@VechID", SqlDbType.Int).Value = VechId;
+            cmd.Parameters.Add("@VId", SqlDbType.Int).Value = VechId;
             DataTable dt = new DataTable();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);

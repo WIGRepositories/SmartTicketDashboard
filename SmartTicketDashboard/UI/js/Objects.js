@@ -58,13 +58,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (NewObject.ParentId == null) {
+        if ($scope.p.Id == null) {
             alert('Please Enter ParentId');
             return;
         }
-
-
-
         if (NewObject.RootObjectId == null) {
             alert('Please Enter RootObjectId');
             return;
@@ -73,13 +70,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var SelNewObjects = {
             Name: NewObject.Name,
             Description: NewObject.Description,
-            ParentId: NewObject.ParentId,
-
+            ParentId:$scope.p.Id,
             RootObjectId: NewObject.RootObjectId,
             Access: NewObject.Access,
             insupdflag: 'I',
             Active: 1,
-
+       
 
 
         }
@@ -91,7 +87,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -99,7 +95,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currRole = null;
     };
@@ -142,7 +138,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -150,7 +146,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currRole = null;
     };

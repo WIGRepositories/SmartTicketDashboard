@@ -63,6 +63,7 @@
                     </ul>
                 </div>
             </nav>
+            </div>
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
@@ -255,7 +256,7 @@
                                         <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                         <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                         <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                        <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                        <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                     </ul>
                                 </li>
@@ -381,6 +382,7 @@
                         </ul>
                     </div>
                 </nav>
+                </div>
                 <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -397,6 +399,7 @@
                         </ol>
                         <div class="clearfix"></div>
                     </div>
+
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                     <div class="page-content">
                         <div id="table-action" class="row">
@@ -419,12 +422,12 @@
                                                        
                                                     <div class="row mbm" ng-init="GetMaster();">
                                                         <div class="col-md-3">
-                                                           Vehicles:<select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="v"  class="form-control" style="width:80%">
+                                                           Vehicles:<select ng-options="v.RegistrationNo for v in Vehicles track by v.Id" ng-model="v" ng-change="GetMaster(v)" class="form-control" style="width:80%">
     <option value="">Select</option>
 </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Drivers:<select ng-options="dd.DId for dd in listdrivers track by dd.Id" ng-model="dd"  class="form-control" style="width:80%">
+                                                            Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd" ng-change="GetMaster(dd)" class="form-control" style="width:80%">
     <option value="">Select</option>
 </select>
                                                         </div>
@@ -569,7 +572,7 @@
                                                         <thead>
                                                             <tr>
 
-
+                                                                <!--<th>VId</th>-->
                                                                 <th width="10%">BNo</th>
                                                                 <th width="15%">Source</th>
                                                                 <th width="15%">Destination</th>
@@ -585,8 +588,8 @@
                                                             </tr>
                                                         <tbody>
                                                             <tr ng-repeat="b in bookings">
-
-                                                                <td>{{b.BNo}}</td>
+                                                                <!--<td>{{b.Vid}}</td>-->
+                                                                <td><a href="BookingList.html?VID={{b.VechId}}"> <font color="blue"> <u> {{b.BNo}}</u></font></a></td>                                                                
                                                                 <td>{{b.Src}}</td>
                                                                 <td>{{b.Dest}}</td>
                                                                 <td>{{b.CustomerPhoneNo}}</td>
@@ -608,7 +611,7 @@
                                                         </tbody>
 
                                                     </table>
-                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                    <!--<div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
                                                                 <div class="modal-header modal-header-primary">
@@ -685,7 +688,7 @@
                                                                         <!--<div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" >LandMark*:<span class='require'></span></label>
                                                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.LandMark" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>-->
+                                                                        </div>
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" >LandMark:<span class='require'></span></label>
                                                                             <div class="col-md-8">

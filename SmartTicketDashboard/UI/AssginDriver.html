@@ -255,7 +255,7 @@
                                         <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                         <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                         <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                        <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                        <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                     </ul>
                                 </li>
@@ -508,9 +508,9 @@
                                                                                              <div class="form-actions">
                                                                                                  <div style="text-align:center">
 
-                                                                                                     <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
+                                                                                                     <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
 
-                                                                                                     <a href="AssginDriver.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                                     <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 
                                                                                                  </div>
                                                                                              </div>
@@ -541,9 +541,8 @@
                                                          <tr>
 
 
-                                                             <!--<th width="10%">VechID</th>-->
-                                                             <th width="10%">Vehicle Type</th>
                                                              <th width="15%">Registration No</th>
+                                                             <th width="10%">Vehicle Type</th>                                                             
                                                              <th width="15%">Driver Name</th>
                                                              <th width="15%">Mobile No</th>
                                                              <!--<th width="10%">Alt. Mobile No</th>-->
@@ -557,9 +556,8 @@
                                                      <tbody>
                                                          <tr ng-repeat="a in drivers">
 
-                                                             <!--<td>{{a.VechID}}</td>-->
+                                                             <td><a href="AssginDriver.html"> <font color="blue"> <u> {{a.RegistrationNo}}</u></font></a></td>
                                                              <td>{{a.VehicleType}}</td>
-                                                             <td>{{a.RegistrationNo}}</td>
                                                              <td>{{a.DriverName}}</td>
                                                              <td>{{a.PhoneNo}}</td>
                                                              <!--<td>{{a.AltPhoneNo}}</td>-->

@@ -256,7 +256,7 @@
                                         <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                         <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                         <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                        <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                        <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                     </ul>
                                 </li>
@@ -606,7 +606,7 @@
                                                                                 <label for="selCompany" class="col-md-3 control-label" style="color:red;">Company:<span class='require'>*</span></label>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <select style="width:260px" ng-options="cmp.Name for cmp in Companies track by cmp.Id" class="form-control" ng-model="cmp" disabled>
+                                                                                <select style="width:260px" ng-options="cmp.Name for cmp in Companies track by cmp.Id" class="form-control" ng-model="cmp" ng-change="getUserRolesForCompany(cmp)">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
@@ -619,7 +619,7 @@
                                                                             </div>
 
                                                                             <div class="col-md-6">
-                                                                                <select style="width:260px" ng-options="u.FirstName+' '+u.LastName  for u in cmpUsers1 track by u.Id" ng-model="u" ng-change="getUserRolesForCompany(cmp)" class="form-control">
+                                                                                <select style="width:260px" ng-options="u.FirstName+' '+u.LastName  for u in cmpUsers track by u.Id" ng-model="uu" class="form-control">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>

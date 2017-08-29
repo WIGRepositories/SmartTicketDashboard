@@ -175,9 +175,9 @@ $(function () {
             }
         },duration);
     }
-    //END COUNTER FOR SUMMARY BOX
-
+    //END COUNTER FOR SUMMARY BOX  
 
 
 });
+
 

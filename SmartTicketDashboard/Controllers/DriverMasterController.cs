@@ -39,6 +39,31 @@ namespace SmartTicketDashboard.Controllers
 
         }
 
+        [HttpGet]
+
+        [Route("api/DriverMaster/Getdriverdetails")]
+        public DataTable Getdriverdetails(int DId)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVgetdriverdetails";
+            cmd.Parameters.Add("@DId", SqlDbType.Int).Value = DId;
+            cmd.Connection = conn;
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
         [HttpPost]
         [Route("api/DriverMaster/Driver")]
 

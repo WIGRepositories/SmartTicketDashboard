@@ -12,6 +12,60 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.dashboardDS = $localStorage.dashboardDS;
 
 
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+
+    $scope.Getdriverdetails = function () {
+
+        $scope.driverdetails = null;
+
+        $scope.selecteddriverdetails = parseLocation(window.location.search)['VechId'];
+
+        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selecteddriverdetails).then(function (res, data) {
+            $scope.driverdetails = res.data;
+
+            if ($scope.driverdetails.length > 0) {
+                if ($scope.selecteddriverdetails != null) {
+                    for (i = 0; i < $scope.driverdetails.length; i++) {
+                        if ($scope.driverdetails[i].id == $scope.selecteddriverdetails) {
+                            $scope.v = $scope.driverdetails[i];
+                            break;
+                        }
+                    }
+                }
+                else {
+                    $scope.s = $scope.driverdetails[0];
+                    $scope.selecteddriverdetails = $scope.driverdetails[0].id;
+                }
+
+                $scope.getselectval($scope.selecteddriverdetails);
+            }
+        });
+    }
+    $scope.getselectval = function (v) {
+
+        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selecteddriverdetails).then(function (res, data) {
+            $scope.driverdetails = res.data;
+        });
+
+    }
+
+
+
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;

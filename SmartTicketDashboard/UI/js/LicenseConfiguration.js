@@ -18,6 +18,10 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.GetLicenseCat = function () {
         $http.get('/api/License/GetLicenceCatergories').then(function (res, data) {
             $scope.LicenseCat = res.data;
+            if ($scope.LicenseCat.length > 0) {
+                $scope.s = $scope.LicenseCat[0];
+                $scope.GetLicenseCat($scope.s);
+            }
             var range = [];
 
             for (var i = 1; i <= 100; i++) {
@@ -130,7 +134,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-           // $scope.showDialog("Saved successfully!");
+           alert("Updated successfully!");
 
             $scope.Group = null;
 
