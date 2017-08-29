@@ -270,7 +270,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-gavel">
+                               <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -286,7 +286,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-gavel">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -316,7 +316,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-inbox">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Alerts & Notifications</span><span class="fa arrow"></span>
                             </a>
@@ -347,7 +347,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                             </a>
@@ -360,7 +360,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
@@ -619,24 +619,13 @@
                                                             </div>
 
                                                         </div>
-                                                        <div class="row" ng-repeat="Lt in License.Table" ng-model="selType">
+                                                        <div class="row">
                                                             <div style="text-align:right">
-                                                                <label for="Active" class="col-md-4 control-label">Active<span>{{vech.Active}}<small></small></span></label>
+                                                                <label for="Active" class="col-md-4 control-label">Active:{{v.Active}}</label>
                                                             </div>
-                                                            <div class="col-md-4">
-                                                                <input type="checkbox" checked ng-model="vech.Active" />
 
-                                                            </div>
                                                         </div>
-                                                        <div class="form-actions">
-                                                            <div style="text-align:center">
-
-                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
-
-                                                                <a href="VehicleList.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
-
-                                                            </div>
-                                                        </div>
+                                                        
                                                     </div>
                                                 </div>
 
