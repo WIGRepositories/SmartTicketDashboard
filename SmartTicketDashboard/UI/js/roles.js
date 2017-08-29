@@ -15,7 +15,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.GetRoles = function()
     {
         $http.get('/api/Roles/GetRoles?allroles=-1').then(function (response, data) {
-            $scope.roles = response.data;            
+            $scope.roles = response.data;
+          
         });
     }    
 
