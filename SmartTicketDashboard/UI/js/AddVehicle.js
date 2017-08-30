@@ -24,25 +24,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.GetVehcileDetails = function () {
 
-        $scope.VehcileDetails = null;
+        $scope.VehiclesList = null;
 
         $scope.selectedVehicle = parseLocation(window.location.search)['Vid'];
 
         $http.get('api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
-            $scope.VehcileDetails = res.data;
+            $scope.VehiclesList = res.data;
 
-            if ($scope.VehcileDetails.length > 0) {
+            if ($scope.VehiclesList.length > 0) {
                 if ($scope.selectedVehicle != null) {
-                    for (i = 0; i < $scope.VehcileDetails.length; i++) {
-                        if ($scope.VehcileDetails[i].id == $scope.selectedVehicle) {
-                            $scope.v = $scope.VehcileDetails[i];
+                    for (i = 0; i < $scope.VehiclesList.length; i++) {
+                        if ($scope.VehiclesList[i].id == $scope.selectedVehicle) {
+                            $scope.v = $scope.VehiclesList[i];
                             break;
                         }
                     }
                 }
                 else {
-                    $scope.s = $scope.VehcileDetails[0];
-                    $scope.selectedVehicle = $scope.VehcileDetails[0].id;
+                    $scope.s = $scope.VehiclesList[0];
+                    $scope.selectedVehicle = $scope.VehiclesList[0].id;
                 }
 
                 $scope.getselectval($scope.selectedVehicle);

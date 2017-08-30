@@ -150,6 +150,10 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             $scope.cmproles = res.data;
             $scope.checkedArr = $filter('filter')($scope.cmproles, { assigned: "1" });
             $scope.uncheckedArr = $filter('filter')($scope.cmproles, { assigned: "0" });
+            if ($scope.cmproles.length > 0) {
+                $scope.s = $scope.cmproles[0];
+                $scope.getRolesForCompany($scope.s);
+            }
            
         });
        

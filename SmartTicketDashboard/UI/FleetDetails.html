@@ -415,6 +415,12 @@
 
                                                     <div class="row mbm">
 
+                                                        <div class="col-md-2">
+                                                            Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+
                                                         <div class="col-md-3" ng-init="GetCompanies();">
                                                             Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test" style="width:80%">
                                                             <option value="">Select</option>
@@ -426,10 +432,8 @@
                                                          <option value="">Select</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                           
-                                                        </div>
-                                                        <div class="col-md-1">
+                                                        
+                                                        <div class="col-md-3">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="text-align-last:right">Add Fleet Details</button>
 
 

@@ -413,19 +413,24 @@
 
                                                 <div class="table-container" ng-model="FORoutes">
                                                     <div class="row mbm">
+                                                        <div class="col-md-2">
+                                                            Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:50%">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
 
-                                                        <div class="col-md-5">
+                                                        <div class="col-md-2">
                                                             Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners()" id="test">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-5">
+                                                        <div class="col-md-2">
                                                             Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="getFleetOwnerRoute()" id="test1">
 
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
-                                                        <br><br />
+                                                        
 
                                                     </div>
                                                     <div id="tableadvancedTabContent" ng-hide="s == null">
