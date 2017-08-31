@@ -2423,7 +2423,39 @@ namespace SmartTicketDashboard.Models
         public float price { get; set; }
         public string description { get; set; }
     }
-    
+    public class Appusers
+    {
+        public string flag { get; set; }
+
+        public int id { get; set; }
+
+
+        public string Username { get; set; }
+
+        public string Email { get; set; }
+
+        public string Mobilenumber { get; set; }
+
+        public string Password { get; set; }
+
+        public string Mobileotp { get; set; }
+
+        public string Emailotp { get; set; }
+
+        public string Passwordotp { get; set; }
+
+        public int Status { get; set; }
+
+        public string Createdon { get; set; }
+
+        public string Mobileotpsenton { get; set; }
+
+        public string Emailotpsenton { get; set; }
+
+        public string noofattempts { get; set; }
+        public decimal Amount { get; set; }
+        public string AccountNo { get; set; }
+    }
 
 }
 

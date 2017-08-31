@@ -2010,6 +2010,7 @@
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
+    <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\Blocklistcontroller.cs" />
     <Compile Include="Controllers\blocklistnewController.cs">
       <SubType>Code</SubType>
@@ -2088,7 +2089,6 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
-    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
@@ -2515,7 +2515,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1476</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
