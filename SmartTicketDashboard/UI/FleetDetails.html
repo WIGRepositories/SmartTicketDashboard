@@ -269,7 +269,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-gavel">
+                               <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -285,7 +285,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-gavel">
+                               <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -315,7 +315,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Alerts & Notifications</span><span class="fa arrow"></span>
                             </a>
@@ -346,7 +346,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                             </a>
@@ -360,7 +360,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-send-o fa-fw">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
@@ -415,6 +415,12 @@
 
                                                     <div class="row mbm">
 
+                                                        <div class="col-md-2">
+                                                            Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+
                                                         <div class="col-md-3" ng-init="GetCompanies();">
                                                             Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test" style="width:80%">
                                                             <option value="">Select</option>
@@ -426,10 +432,8 @@
                                                          <option value="">Select</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-4">
-                                                           
-                                                        </div>
-                                                        <div class="col-md-1">
+                                                        
+                                                        <div class="col-md-3">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="text-align-last:right">Add Fleet Details</button>
 
 

@@ -223,7 +223,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };   
@@ -340,7 +340,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
        
     };

@@ -35,7 +35,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.selectedbookings = parseLocation(window.location.search)['VechId'];
 
-        $http.get('/api/VehcileMaster/GetBookingdetails?VechId=' + $scope.selectedbookings).then(function (res, data) {
+        $http.get('/api/BookAVehicle/GetBookingHistory?VechId=' + $scope.selectedbookings).then(function (res, data) {
             $scope.bookings = res.data;
 
             if ($scope.bookings.length > 0) {

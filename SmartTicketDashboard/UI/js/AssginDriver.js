@@ -98,7 +98,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
@@ -168,7 +168,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Not Updated";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
