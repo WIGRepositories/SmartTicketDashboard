@@ -365,11 +365,12 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                                
                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
+                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
@@ -405,229 +406,127 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div id="table-table-tab" class="tab-pane fade in active">
-                                        <div class="row mtl">
+                                        <div class="row mtl">                                           
+                                            <div class="row">
+                                                <div class="col-md-12">
 
-                                            <div class="row mtl">
-                                                <div class="col-md-3">
-                                                    <div class="form-group">
-                                                        <!--<div class="text-center mbl"><img src="images/car2.jpg" alt="" class="img-responsive" /></div>-->
-                                                        <!--<div class="text-center mbl">
-                                                            <a href="#" class="btn btn-green">
-                                                                <i class="fa fa-upload"></i>&nbsp;
-                                                                Upload
-                                                            </a>
-                                                        </div>-->
-                                                        <div class="col-md-2">
-                                                            <label for="Name" class="col-md-4 control-label" style="float:left">Photo:</label>
-                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                            <div class="col-md-8">
-                                                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
-                                                                <br />
-                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
-                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                    Upload photo
-                                                                </a>
-                                                            </div>
-                                                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
-
+                                                    <div id="generalTabContent" class="tab-content" ng-repeat="v in VehiclesList">
+                                                        <div class="col-md-8" style="margin-bottom:20px">
+                                                            <label for="Name">Photo:</label>
+                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="90px" />
+                                                            <br />
                                                         </div>
-                                                    </div>
+                                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th width="10">Registration No</th>
+                                                                    <td width="20%">{{v.RegistrationNo}}</td>
+                                                                    </tr>
+                                                                <tr>
+                                                                    <th width="10%">Vehicle Type</th>
+                                                                    <td width="10%">{{v.Type}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Owner Name</th>
+                                                                    <td width="20%">{{v.OwnerName}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Chasis No</th>
+                                                                    <td width="10%">{{v.ChasisNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Engine No</th>
+                                                                    <td width="10%">{{v.Engineno}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Road Tax Date</th>
+                                                                    <td width="10%">{{v.RoadTaxDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Insurance No</th>
+                                                                    <td width="10%">{{v.InsuranceNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Insurance Date</th>
+                                                                    <td width="10%">{{v.InsDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">PollutionNo</th>
+                                                                    <td width="10%">{{v.PolutionNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Pollution Exp Date</th>
+                                                                    <td width="10%">{{v.PolExpDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">RC Book No</th>
+                                                                    <td width="10%">{{v.RCBookNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">RC Exp Date</th>
+                                                                    <td width="10%">{{v.RCExpDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Company Vechile</th>
+                                                                    <td width="10%">{{v.CompanyVechile}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Owner Phone No</th>
+                                                                    <td width="10%">{{v.OwnerPhoneNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Engine No</th>
+                                                                    <td width="10%">{{v.HomeLandmark}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Model Year</th>
+                                                                    <td width="10%">{{v.ModelYear}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Day/Night</th>
+                                                                    <td width="10%">{{v.DayOnly}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Vech Mobile No</th>
+                                                                    <td width="10%">{{v.VechMobileNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Entry Date</th>
+                                                                    <td width="10%">{{v.EntryDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">New Entry</th>
+                                                                    <td width="10%">{{v.NewEntry}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Vehicle Model</th>
+                                                                    <td width="10%">{{v.VehicleModelId}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Service Type </th>
+                                                                    <td width="10%">{{v.ServiceTypeId}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Vehicle Group</th>
+                                                                    <td width="10%">{{v.VehicleGroupId}}</td>
+                                                                </tr>
 
-                                                </div>
-                                                <div class="col-md-9">
-                                                    <div id="generalTabContent" class="tab-content">
+                                                            <tbody>
+                                                                <tr ng-repeat="v in VehiclesList">
 
-                                                        <div class="row ">
 
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Company:<span class='require'>{{vech.Company}}</span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="vech.c" ng-init="GetCompanys();" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
 
-                                                        </div>
-                                                        <div class="row">
+                                                                </tr>
 
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Owner Name:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.OwnerName" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
 
-                                                        </div>
-                                                        <div class="row">
+                                                            </tbody>
 
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label"> Chasis No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.ChasisNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Engine No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.Engineno" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
+                                                        </table>
 
-                                                        </div>
-
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Vehicle Make:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Road Tax Date:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input type="date" ng-model="vech.RoadTaxDate" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label"> Insurance No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.InsuranceNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Ins Date:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input type="date" ng-model="vech.InsDate" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label"> Polution No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.PolutionNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Pol Exp Date:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input type="date" ng-model="vech.PolExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">RC Book No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.RCBookNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">RC Exp Date:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input type="date" ng-model="vech.RCExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Company Vehicle:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-model="vech.CompanyVechile1" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                        <option value="Yes">Yes</option>
-                                                                        <option value="No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Owner Phone No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.OwnerPhoneNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label"> Home Landmark:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.HomeLandmark" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Model Year:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.ModelYear" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row" style="margin-bottom:7px">
-
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Day Or Night:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-model="vech.DayOnly1" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                        <option value="Yes">Yes</option>
-                                                                        <option value="No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-options="vg.Name for vg in initdata.Table3 track by vg.Id" ng-model="vech.vg1" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Vech Mobile No:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="vech.VechMobileNo" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">Vehicle Service Type:<span class='require'></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-options="vr.Name for vr in initdata.Table2 track by vr.Id" ng-model="vr" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="row">
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label"> Entry Date:<span class='require'></span></label>
-                                                                <div class="col-md-8"><input type="date" ng-model="vech.EntryDate" class="form-control" /><span class="help-block"></span></div>
-                                                            </div>
-                                                            <div class="col-md-6">
-                                                                <label for="Name" class="col-md-4 control-label">New Entry:<span>{{vech.Active}}<small></small></span></label>
-                                                                <div class="col-md-8">
-                                                                    <select ng-model="vech.NewEntry" class="form-control">
-                                                                        <option value="">Select</option>
-                                                                        <option value="Yes">Yes</option>
-                                                                        <option value="No">No</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                        <div class="row">
-                                                            <div style="text-align:right">
-                                                                <label for="Active" class="col-md-4 control-label">Active:{{v.Active}}</label>
-                                                            </div>
-
-                                                        </div>
-                                                        
                                                     </div>
                                                 </div>
 
-
+                                                </div>
 
                                             </div>
 

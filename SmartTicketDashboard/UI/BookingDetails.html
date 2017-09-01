@@ -364,13 +364,13 @@
                             </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                            
                             <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                             <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
-
                             <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                             <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
-                            <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                            <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                             <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                             <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                             <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                             <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
@@ -382,7 +382,7 @@
                     </ul>
                 </div>
             </nav>
-        </div>
+       
         <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
         <div id="page-wrapper">
             <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -399,222 +399,225 @@
                 </ol>
                 <div class="clearfix"></div>
             </div>
-        </div>
-    </div>
+       
+    
     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
-    <div class="page-content">
-        <div id="table-action" class="row">
-            <div class="col-lg-12">
+        <div class="page-content">
+            <div id="table-action" class="row">
+                <div class="col-lg-12">
 
-                <div id="tableactionTabContent" class="tab-content">
-                    <div id="table-table-tab" class="tab-pane fade in active">
-                        <div class="row">
-                            <div class="col-lg-12">
+                    <div id="tableactionTabContent" class="tab-content">
+                        <div id="table-table-tab" class="tab-pane fade in active">
+                            <div class="row" ng-repeat="b in bookings">
+                                <div class="col-lg-12">
+
+                                    <div class="table-container">
+                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                            <thead>
+
+                                                <tr>
+                                                    <th width="10%">Id</th>
+                                                    <td>{{b.Id}}</td>
+                                                <tr>
+                                                    <th width="10%">Booking No</th>
+                                                    <td>{{b.BNo}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BookedDate</th>
+                                                    <td>{{b.BookedDate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BookedTime</th>
+                                                    <td>{{b.BookedTime}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DepartueDate</th>
+                                                    <td>{{b.DepartueDate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DepartureTime</th>
+                                                    <td>{{b.DepartureTime}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BookingType</th>
+                                                    <td>{{b.BookingType}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Source</th>
+                                                    <td>{{b.Src}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Destination</th>
+                                                    <td>{{b.Dest}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Source Id</th>
+                                                    <td>{{b.SrcId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Destination Id</th>
+                                                    <td>{{b.DestId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">SrcLatitude</th>
+                                                    <td>{{b.SrcLatitude}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">SrcLongitude</th>
+                                                    <td>{{b.SrcLongitude}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DestLatitude</th>
+                                                    <td>{{b.DestLatitude}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DestLongitude</th>
+                                                    <td>{{b.DestLongitude}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">VechId</th>
+                                                    <td>{{b.VechId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">PackageId</th>
+                                                    <td>{{b.PackageId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Pricing</th>
+                                                    <td>{{b.Pricing}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DriverId</th>
+                                                    <td>{{b.DriverId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DriverPhoneNo</th>
+                                                    <td>{{b.DriverPhoneNo}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">CustomerPhoneNo</th>
+                                                    <td>{{b.CustomerPhoneNo}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">CustomerId</th>
+                                                    <td>{{b.CustomerId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BookingStatus</th>
+                                                    <td>{{b.BookingStatus}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">NoofVehicles</th>
+                                                    <td>{{b.NoofVehicles}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">NoofSeats</th>
+                                                    <td>{{b.NoofSeats}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">ClosingDate</th>
+                                                    <td>{{b.ClosingDate}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">ClosingTime</th>
+                                                    <td>{{b.ClosingTime}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">CancelledOn</th>
+                                                    <td>{{b.CancelledOn}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">CancelledBy</th>
+                                                    <td>{{b.CancelledBy}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BookingChannel</th>
+                                                    <td>{{b.BookingChannel}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Reasons</th>
+                                                    <td>{{b.Reasons}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">CompanyId</th>
+                                                    <td>{{b.CompanyId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">BooKingOTP</th>
+                                                    <td>{{b.BooKingOTP}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Amount</th>
+                                                    <td>{{b.Amount}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">PaymentStatus</th>
+                                                    <td>{{b.PaymentStatus}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Rating</th>
+                                                    <td>{{b.Rating}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">RatedBy</th>
+                                                    <td>{{b.RatedBy}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">Comments</th>
+                                                    <td>{{b.Comments}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">UpdatedBy</th>
+                                                    <td>{{b.UpdatedBy}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">UpdatedUserId</th>
+                                                    <td>{{b.UpdatedUserId}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DriverRating</th>
+                                                    <td>{{b.DriverRating}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DriverRated</th>
+                                                    <td>{{b.DriverRated}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <th width="10%">DriverComments</th>
+                                                    <td>{{b.DriverComments}}</td>
+                                                </tr>
 
 
-                                <div class="table-container">
-                                    <div class="row">
+                                                </thead>
 
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> BookingNo:{{b.BNo}}</label>
 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">BookingType:{{b.BookingType}}<span class='require'></span></label>
 
-                                        </div>
+                                                    <tbody>
+                                                <tr ng-repeat="b in bookings">
+                                                    
+                                                </tr>
 
+
+                                            </tbody>
+
+                                        </table>
+                                        
                                     </div>
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> ReqVehicle:{{b.ReqVehicle}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Customer<br>Name:{{b.CustomerName}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CusID:{{b.CusID}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">PhoneNo:{{b.PhoneNo}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> AltPhoneNo:{{b.AltPhoneNo}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">CAddress:{{b.CAddress}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> PickupAddress:{{b.PickupAddress}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">LandMark:{{b.LandMark}}<span class='require'></span></label>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> Package:{{b.Package}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">PickupPalce:{{b.PickupPalce}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> DropPalce:{{b.DropPalce}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">ExtraCharge:{{b.ExtraCharge}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> NoofVehicle:{{b.NoofVehicle}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Executive<br>Name:{{b.ExecutiveName}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> VID:{{b.VID}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Booking<br>Status:{{b.BookingStatus}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CustomerSMS:{{b.CustomerSMS}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">CancelReason:{{b.CancelReason}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CBNo:{{b.CBNo}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">ModifiedBy:{{b.ModifiedBy}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CancelBy:{{b.CancelBy}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Reconfirmed<br>By:{{b.ReconfirmedBy}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> AssignedBy:{{b.AssignedBy}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">latitude:{{b.latitude}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> longitude:{{b.longitude}}</label>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Active" class="col-md-4 control-label">Active:{{b.Active}}<span class='require'></span></label>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(book)">Save</button>
-
-                                            <a href="#" class="btn btn-primary" ng-click="clearbook()">Cancel</a>
-                                        </div>
-                                    </div>
+                                    <!--END PAGE WRAPPER-->
                                 </div>
                             </div>
 
-
-
+                            <!--BEGIN FOOTER-->
+                            <div id="footer">
+                                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                            </div>
+                            <!--END FOOTER-->
                         </div>
-
                     </div>
-
-                    <!--END CONTENT-->
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
                 </div>
-
-
+                </div>
+            </div>
+       
                 <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
                     <div class="modal-header">
@@ -622,20 +625,18 @@
                     </div>
                     <div class="modal-body">
                         <!--<ul>
-                            <li ng-repeat="item in items">
-                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                            </li>
-                        </ul>
-                        Selected: <b>{{ selected.item }}</b>-->
+                        <li ng-repeat="item in items">
+                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>-->
                         {{mssg}}
                     </div>
-
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                    </div>
-
                 </script>
+            
+
+
+
             </div>
         </div>
     </div>

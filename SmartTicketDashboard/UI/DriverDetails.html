@@ -268,7 +268,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -284,7 +284,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -363,13 +363,12 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                                
                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
-
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
-
+                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
@@ -382,6 +381,7 @@
                         </ul>
                     </div>
                 </nav>
+
                 <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
@@ -405,233 +405,119 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div id="table-table-tab" class="tab-pane fade in active">
-                                        <div class="row">
-                                            <div class="col-lg-12">                                                
+                                        <div class="row mtl">
+                                            <div class="row" ng-repeat="Dl in listdrivers">
+                                                <div class="col-md-12">
+                                                    <div class="container">
 
-                                                                        <div id="generalTabContent" class="tab-content">
-                                                                            <div class="row ">
-                                                                               
-                                                                                        <div class="col-md-12">
-                                                                                            <!--<h2>Vehice List</h2-->
-                                                                                            <div class="row mtl">
-                                                                                                <div class="col-md-3">
-                                                                                                    <div class="form-group">
-                                                                                                        <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                                        <div class="text-center mbl">
-                                                                                                            <label for="AssginDriver" class="col-md-4 control-label" style="float:left">FileName:</label>
-                                                                                                            <input style="width:160px" type="file" name="imageInput" id="imageInput" ng-file-select="onFileSelect($image,$event)" class="btn btn-green" accept=".jpg,.png,.jpeg" ng-model="Driverlist.FileName" ng-click="validateFile($event)" />
+                                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                            <thead>
 
-                                                                                                        </div>
-                                                                                                    </div>
+                                                                <tr>
+                                                                    <th width="10%">DId</th>
+                                                                    <td>{{Dl.DId}}</td>
+                                                                <tr>
+                                                                    <th width="10%">Name</th>
+                                                                    <td>{{Dl.NAme}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Address</th>
+                                                                    <td>{{Dl.Address}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">City</th>
+                                                                    <td>{{Dl.City}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Pin</th>
+                                                                    <td>{{Dl.Pin}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Permanent Address</th>
+                                                                    <td>{{Dl.PAddress}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Permanent City</th>
+                                                                    <td>{{Dl.PCity}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">PPin</th>
+                                                                    <td>{{Dl.PPin}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">OffMobileNo</th>
+                                                                    <td>{{Dl.OffMobileNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">PMobNo</th>
+                                                                    <td>{{Dl.PMobNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">DOB</th>
+                                                                    <td>{{Dl.DOB}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">DOJ</th>
+                                                                    <td>{{Dl.DOJ}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">BloodGroup</th>
+                                                                    <td>{{Dl.BloodGroup}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">LicenceNo</th>
+                                                                    <td>{{Dl.LicenceNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">LiCExpDate</th>
+                                                                    <td>{{Dl.LiCExpDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">BadgeNo</th>
+                                                                    <td>{{Dl.BadgeNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">BadgeExpDate</th>
+                                                                    <td>{{Dl.BadgeExpDate}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">Remarks</th>
+                                                                    <td>{{Dl.Remarks}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">CompanyId</th>
+                                                                    <td>{{Dl.CompanyId}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">DocTypeId</th>
+                                                                    <td>{{Dl.DocTypeId}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">FileName</th>
+                                                                    <td>{{Dl.FileName}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th width="10%">FileContent</th>
+                                                                    <td>{{Dl.FileContent}}</td>
+                                                                </tr>
 
+                                                            <tbody>
+                                                                <tr ng-repeat="Dl in listdrivers"></tr>
+                                                            </tbody>
 
-                                                                                                </div>
-                                                                                                <div class="col-md-9">
+                                                        </table>
 
-
-
-                                                                                                    <div id="generalTabContent" class="tab-content">
-                                                                                                        <div id="tab-edit" class="tab-pane fade in active row">
-
-                                                                                                            <div class="row">
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="col-md-4">
-                                                                                                                        <label for="AssginDriver" class=" control-label" style="float:left">Company:</label>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-8">
-                                                                                                                        <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist" ng-init="GetCompanys();" class="form-control">
-                                                                                                                            <option value="">Select</option>
-                                                                                                                        </select>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Name:</label>
-                                                                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.NAme" class="form-control" /><span class="help-block"></span></div>
-                                                                                                                </div>
-
-                                                                                                            </div>
-
-
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">Address:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Address1" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">City:</label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.City" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">Pin:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.Pin" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent Address:</label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PAddress" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">Permanent City:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PCity" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent Pin:</label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.PPin" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">Off Mobile No:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="Driverlist.OffMobileNo" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Permanent<br>MobNo:</label>
-                                                                                                                <div class="col-md-8"><input type="text" ng-model="Driverlist.PMobNo" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">DOB:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input type="date" ng-model="Driverlist.DOB" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">DOJ:</label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.DOJ" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">BloodGroup:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8">
-                                                                                                                    <select ng-model="Driverlist.BloodGroup" class="form-control">
-                                                                                                                        <option value="">Select</option>
-                                                                                                                        <option value="A+">A+</option>
-                                                                                                                        <option value="A-">A-</option>
-                                                                                                                        <option value="B+">B+</option>
-                                                                                                                        <option value="B-">B-</option>
-                                                                                                                        <option value="O+">O+</option>
-                                                                                                                        <option value="AB+">AB+</option>
-                                                                                                                        <option value="AB-">AB-</option>
-                                                                                                                    </select>
-
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">LicenceNo:</label>
-                                                                                                                <div class="col-md-8"><input type="text" ng-model="Driverlist.LicenceNo" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">LiCExpDate:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.LiCExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">BadgeNo:</label>
-                                                                                                                <div class="col-md-8"><input type="text" ng-model="Driverlist.BadgeNo" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="code" class="col-md-4 control-label" style="float:left">BadgeExpDate:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="Driverlist.BadgeExpDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Remarks:</label>
-                                                                                                                <div class="col-md-8"><input type="text" ng-model="Driverlist.Remarks" class="form-control" /><span class="help-block"></span></div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="row">
-
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="Name" class="col-md-4 control-label">Licence:<span class='require'></span></label>
-
-                                                                                                                <div class="col-md-8">
-                                                                                                                    <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green " accept=".pdf,.jpg,.png,.gif" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-6">
-                                                                                                                <label for="Name" class="col-md-4 control-label">Badge:<span class='require'></span></label>
-                                                                                                                <div class="col-md-8">
-                                                                                                                    <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
-                                                                                                                </div>
-                                                                                                            </div>
-
-                                                                                                        </div>
-
-                                                                                                        <div class="row mbm">
-                                                                                                            <div style="text-align:right">
-                                                                                                                <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-4">
-                                                                                                                <input type="checkbox" checked ng-model="Driverlist.Active" />
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-actions">
-                                                                                                            <div class="col-md-offset-3 col-md-9">
-                                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(Driverlist)">Save</button>
-
-                                                                                                                <a href="DriverList.html" class="btn btn-primary" ng-click="clearDriverlist()">Cancel</a>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-
-
-
-                                                                                            </div>
-
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-                                                                            
-                                                                        </div>
-
-                                                                        
-                                                            </div>
-
-                                                        </div>
                                                         <!--END CONTENT-->
+                                                        <!--END PAGE WRAPPER-->
                                                     </div>
-                                                    <!--END PAGE WRAPPER-->
                                                 </div>
-                                            </div>
 
-                                            <!--BEGIN FOOTER-->
-                                            <div id="footer">
-                                                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                <!--BEGIN FOOTER-->
+                                                <div id="footer">
+                                                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                </div>
+                                                <!--END FOOTER-->
                                             </div>
-                                            <!--END FOOTER-->
                                         </div>
                                     </div>
                                 </div>
@@ -642,17 +528,14 @@
                                     </div>
                                     <div class="modal-body">
                                         <!--<ul>
-                                            <li ng-repeat="item in items">
-                                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                            </li>
-                                        </ul>
-                                        Selected: <b>{{ selected.item }}</b>-->
+                                    <li ng-repeat="item in items">
+                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                    </li>
+                                </ul>
+                                Selected: <b>{{ selected.item }}</b>-->
                                         {{mssg}}
                                     </div>
-                                    <div class="modal-footer">
-                                        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                                    </div>
+
 
                                 </script>
                             </div>
@@ -660,8 +543,9 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
+                </div>   
+        </div>                                       
+                       
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>

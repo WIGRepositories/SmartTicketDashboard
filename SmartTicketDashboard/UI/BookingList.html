@@ -582,10 +582,11 @@
                                                         <th width="15%">BookedTime</th>
                                                         <th width="15%">DepartueDate</th>
                                                         <th width="15%">DepartureTime</th>
-                                                        <th width="9%">Active</th>
+                                                        <th width="9%">BookingStatus</th>
                                                         <!--<th width="9%">Edit</th>-->
 
                                                     </tr>
+                                                   
                                                 <tbody>
                                                     <tr ng-repeat="b in bookings">
                                                         <!--<td>{{b.Vid}}</td>-->
@@ -598,7 +599,7 @@
                                                         <td>{{b.BookedTime}}</td>
                                                         <td>{{b.DepartueDate}}</td>
                                                         <td>{{b.DepartureTime}}</td>
-                                                        <td><input type="checkbox" checked /></td>
+                                                        <td>{{b.BookingStatus}}</td>
                                                         <!--<td>
                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbookings(b);">
                                                                 <i class="fa fa-edit"></i>&nbsp;
@@ -609,7 +610,7 @@
 
 
                                                 </tbody>
-
+                                                
                                             </table>
                                             <!--<div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                                     <div class="modal-dialog">
