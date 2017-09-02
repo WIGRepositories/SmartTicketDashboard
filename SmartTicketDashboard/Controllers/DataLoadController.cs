@@ -15,15 +15,14 @@ namespace SmartTicketDashboard.Controllers
     public class DataLoadController : ApiController
     {
         [HttpGet]
+        [Route("api/DataLoad/GetDataLoad")]
         public DataTable GetDataLoad()
         {
             DataTable Tbl = new DataTable();
 
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetDataLoad credentials....");
-            //connect to database
             SqlConnection conn = new SqlConnection();
-            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
             conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
             SqlCommand cmd = new SqlCommand();
@@ -277,12 +276,12 @@ namespace SmartTicketDashboard.Controllers
         //Jagan Updated start
         [HttpPost]
         [Route("api/DataLoad/SaveCompanyGroups1")]
-        public HttpResponseMessage SaveCompanyGroups1(List<CompanyGroups> list)
+        public DataTable SaveCompanyGroups1(List<CompanyGroups> list)
         {
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveCompanyGroups credentials....");
-            //DataTable dt = new DataTable();
-            
+            DataTable tbl = new DataTable();
+
             SqlConnection conn = new SqlConnection();
 
             try
@@ -402,12 +401,16 @@ namespace SmartTicketDashboard.Controllers
                     insupdflag.Value = m.insupdflag;
                     cmd.Parameters.Add(insupdflag);
 
+                    DataSet ds = new DataSet();
+                    SqlDataAdapter db = new SqlDataAdapter(cmd);
+                    db.Fill(tbl);
+
                     cmd.ExecuteScalar();
                     cmd.Parameters.Clear();
                 }
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveCompanyGroups Credentials completed.");
-                return new HttpResponseMessage(HttpStatusCode.OK);
+                return tbl;
             }
             catch (Exception ex)
             {
@@ -415,15 +418,20 @@ namespace SmartTicketDashboard.Controllers
                 {
                     conn.Close();
                 }
-
+                
                 string str = ex.Message;
-                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveCompanyGroups:" + ex.Message);
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
-            // int found = 0;
-            //  return Tbl;
-        }
 
+                
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveCompanyGroups:" + ex.Message);
+                
+                return tbl;
+
+
+                // int found = 0;
+               
+            }
+         
+        }
         //jagan updated end
 
 

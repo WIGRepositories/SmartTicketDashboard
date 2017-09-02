@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp1" ng-controller="myCtrl" ng-init="GetAdvertisment();" ng-model="Vechout">
+<body ng-app="myApp1" ng-controller="myCtrl" ng-init="GetAdvertisment();" ng-model="advertisement">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -271,7 +271,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -287,7 +287,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -410,6 +410,17 @@
                                             <div class="col-lg-14">
                                                 <div class="table-container">
                                                     <div class="row mbm">
+                                                        <div class="col-md-3">
+                                                            <label for="selCountry" class="col-md-4 control-label">Place</label>
+                                                            <div class="col-md-8">
+                                                                <select ng-model="book.Place">
+                                                                    <option value="">Select</option>
+                                                                    <option>Area 1</option>
+                                                                    <option>Area 2</option>
+                                                                    <option>Area 3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
                                                         <div class="actions">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Advertisment</button>
                                                         </div>
@@ -433,6 +444,7 @@
                                                                                         <option value="">Select</option>
                                                                                         <option>Area 1</option>
                                                                                         <option>Area 2</option>
+                                                                                        <option>Area 3</option>
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -455,24 +467,42 @@
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label">Company Name:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="Price" type="text" class="form-control" ng-model="book.CompanyName" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8"><input id="Price" type="text" class="form-control" ng-model="adv.CompanyName" /><span class="help-block"></span></div>
                                                                             </div>
-                                                                       <div class="col-md-6">
-                                                                         <label for="Fax" class="col-md-4 control-label">Image:<span class='require'></span></label>
-                                                                           <div class="col-md-8"><input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($file,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="book.Image" ng-click="validateFile($event)" /><span class="help-block"></span></div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Fax" class="col-md-4 control-label">Image:<span class='require'></span></label>
+                                                                                <!--<div class="col-md-8"><input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($file,$event)" class="btn btn-green" accept=".jpeg,.jpg,.png,.gif" ng-model="adv.Image" ng-click="UploadImg();" /><span class="help-block"></span></div>-->
+                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                    Upload photo
+                                                                                </a>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row" style="margin-bottom:7px">
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label" style="float:left">Title:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="book.Title" ></textarea>
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Title"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Content:<span class='require'></span></label>
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Description:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="book.Content"></textarea>
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Description"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row" style="margin-bottom:7px">
+                                                                            <div class="col-md-6">
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Clarification:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Clarification"></textarea>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Conclusion:<span class='require'></span></label>
+                                                                                <div class="col-md-8">
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Conclusion"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
@@ -480,30 +510,30 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Date:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <input id="Price" type="date" class="form-control" ng-model="book.AdvertismentDate" /><span class="help-block"></span>
+                                                                                    <input id="Price" type="date" class="form-control" ng-model="adv.AdvertismentDate" /><span class="help-block"></span>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Expired Date:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <input id="Price" type="date" class="form-control" /><span class="help-block" ng-model="book.AdvertismentExpiredDate"></span>
+                                                                                    <input id="Price" type="date" class="form-control" /><span class="help-block" ng-model="adv.AdvertismentExpiredDate"></span>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label">Prize Amount:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="book.PrizeAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="adv.PrizeAmount" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label">Advertisment Amount:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="book.AdvertismentAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="adv.AdvertismentAmount" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-actions">
                                                                             <div style="text-align:center">
 
-                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(book,'I')">Save</button>
+                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(adv,'I')">Save</button>
 
                                                                                 <a href="advertismentconfiguration.html" class="btn btn-primary" ng-click="clearvehlogout()">Cancel</a>
 
@@ -558,7 +588,21 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Content:<span class='require'></span></label>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Description:<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Clarification:<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Conclusion:<span class='require'></span></label>
                                                                     <div class="col-md-8">
                                                                         <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
                                                                     </div>
@@ -610,64 +654,50 @@
                                             </div>
                                         </div>
 
-                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+
+
+
+
+                                        <table class="table table-hover table-striped table-bordered table-advanced">
                                             <thead>
-                                                <tr>
-
-
-                                                    <th>Area</th>
-                                                    <th>Place</th>
-                                                    <th>Company Name</th>
+                                                <tr>                                                 
+                                                    
                                                     <th>Image</th>
-                                                    <th>Title</th>
-                                                    <th>Content</th>
-                                                    <th>Prize Amount</th>
-                                                    <th>Advertisment Date</th>
-                                                    <th>Advertisment Expired Date</th>
-                                                    <th>Advertisment Amount</th>
-                                                    <th>Edit</th>
-                                                    <th>Delete</th>
+                                                    <th>Advertisement Title</th>
+                                                    <th>Description</th>
+                                                    <th>Clarification</th>
+                                                    <th>Conclusion</th>
+                                                    <th>Price</th>
+                                                    <th>Publish Date,
+                                                    <th>Expired Date</th>
+                                                    <th>Advertisement Amount</th>
+                                                    <th>Advertisment Type</th>
+                                                    <th>Company Name</th>
+                                                   
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                <tr ng-repeat="vl in Vechout" class="gradeA">
-                                                    <td>{{vl.Area}}</td>
-                                                    <td>{{vl.Place}}</td>
-                                                    <td>{{vl.CompanyName}}</td>
-                                                    <td>{{vl.image}}</td>
-                                                    <td>{{vl.imgcontent}}</td>
-                                                    <td>{{vl.description}}</td>
-                                                    <td>{{vl.price}}</td>
-                                                    <td>{{vl.AdvertismentDate}}</td>
-                                                    <td>{{vl.AdvertismentExpireDate}}</td>
-                                                    <td>{{vl.AdvertismentAmount}}</td>
-                                                   
-                                                    <td>
-                                                        <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechout(vl);">
-                                                            <i class="fa fa-edit"></i>&nbsp;
-                                                            Edit
-                                                        </button>
-
-                                                    </td>
-                                                    <td>
-                                                        <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechout(vl);">
-                                                            <i class="fa fa-edit"></i>&nbsp;
-                                                            Delete
-                                                        </button>
-
-                                                    </td>
-
+                                                <tr ng-repeat="a in advertisement">
+                                                    <td>{{a.Image}}</td>
+                                                    <td>{{a.AdvertisementTitle}}</td>
+                                                    <td>{{a.Description}}</td>
+                                                    <td>{{a.Clarification}}</td>
+                                                    <td>{{a.Conclusion}}</td>
+                                                    <td>{{a.Price}}</td>
+                                                    <td>{{a.PublishDate}}</td>
+                                                    <td>{{a.ExpiredDate}}</td>
+                                                    <td>{{a.AdvertisementAmount}}</td>
+                                                    <td>{{a.AdvertisementTypeId}}</td>
+                                                    <td>{{a.CompanyName}}</td>
                                                 </tr>
+                                                
 
                                             </tbody>
                                         </table>
-
-                                        <div>
-
-
-                                        </div>
+                                       
                                     </div>
+
                                 </div>
 
 

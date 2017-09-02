@@ -75,10 +75,11 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
+
     $scope.GetDataLoad = function () {
 
         $http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
-            $scope.GetDataLoad = response.data;
+            $scope.list = response.data;
         });
     }
     $scope.csv_link = 'DataUploadTemplates/CompanyList.csv';// + $window.location.search;
@@ -107,7 +108,7 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
 
                     //validate header
 
-                    //var header = [$scope.seloption];          
+                    var header = [$scope.seloption];          
 
                     //    switch ($scope.seloption) {
                     //        case "1":
@@ -120,9 +121,7 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
 
                     //            break;
 
-
                     //}
-
 
                     var lines = [];
 
@@ -131,13 +130,13 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         var data = allTextLines[i].split(',');
                         lines.push(GetCompany(data));
 
-                        //if (data.length == headers.length) {
-                        //var tarr = [];
-                        //for (var j = 0; j < headers.length; j++) {
-                        //    tarr.push(data[j]);
-                        //}
+                        if (data.length == headers.length) {
+                        var tarr = [];
+                        for (var j = 0; j < headers.length; j++) {
+                            tarr.push(data[j]);
+                        }
                         //lines.push(GetCompany(data));
-                        //}
+                        }
                     }
 
                     //list
@@ -148,10 +147,10 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        //$scope.showdialogue("Saved successfully")
+                        alert("Saved successfully")
                     });
 
-                    // $scope.logdata = lines;
+                     //$scope.logdata = list;
                 };
 
 
@@ -160,15 +159,15 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                     var list = {
                         Name: data[0],
                         code: data[1],
-                        Address: data[2],
-                        ContactNo1: data[3],
-                        EmailId: data[4],
+                        Description: data[2],
+                        Address: data[3],
+                        ContactNo1: data[4],
+                        ContactNo2: data[5],
+                        EmailId: data[6],
                         active: 1,
                         insupdflag: 'I'
                     }
                     return list;
-
-
                 }
 
                 $scope.save = function () {
@@ -565,13 +564,13 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         var data = allTextLines[i].split(',');
                         lines.push(GetVehicles(data));
 
-                        //if (data.length == headers.length) {
-                        //var tarr = [];
-                        //for (var j = 0; j < headers.length; j++) {
-                        //    tarr.push(data[j]);
-                        //}
-                        //lines.push(GetVehicles(data));
-                        //}
+                        if (data.length == headers.length) {
+                        var tarr = [];
+                        for (var j = 0; j < headers.length; j++) {
+                            tarr.push(data[j]);
+                        }
+                        lines.push(GetVehicles(data));
+                        }
                     }
 
                     //list
@@ -585,7 +584,7 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         //$scope.showdialogue("Saved successfully")
                     });
 
-                    // $scope.logdata = lines;
+                     $scope.logdata = lines;
                 };
 
                 function GetVehicles(data) {

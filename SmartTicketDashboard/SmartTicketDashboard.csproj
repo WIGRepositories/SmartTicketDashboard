@@ -110,10 +110,15 @@
     <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\Bookinglist.html" />
     <Content Include="UI\CardInformation.html" />
+    <Content Include="UI\CardUser.html" />
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
+    <Content Include="UI\js\CardDetails.js" />
+    <Content Include="UI\js\CardDetails1.js" />
+    <Content Include="UI\js\CardsList.js" />
+    <Content Include="UI\js\CardUser.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
@@ -2031,6 +2036,7 @@
     <Compile Include="Controllers\BtposRoutesController.cs" />
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
@@ -2146,6 +2152,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Id.cs" />
     <Compile Include="Models\Models.cs" />
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\DataBase.cs" />
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\StatusQueries.cs" />

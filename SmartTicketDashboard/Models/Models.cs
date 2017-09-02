@@ -2419,9 +2419,16 @@ namespace SmartTicketDashboard.Models
         public string flag { get; set; }
         public int Id { get; set; }
         public string image { get; set; }
-        public string imagcontent { get; set; }
-        public float price { get; set; }
-        public string description { get; set; }
+        public string AdvertisementTitle { get; set; }
+        public string Description { get; set; }
+        public string Clarification { get; set; }
+        public string Conclusion { get; set; }
+        public float Price { get; set; }
+        public int AdvertisementTypeId { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public float AdvertisementAmount { get; set; }
+        public string CompanyName { get; set; }
     }
     public class Appusers
     {

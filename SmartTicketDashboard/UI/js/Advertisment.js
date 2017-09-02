@@ -12,7 +12,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetAdvertisment = function () {
 
         $http.get('/api/Advertisment/GetAdvertisment').then(function (response, req) {
-            $scope.GetAdvertisment = response.data;
+            $scope.advertisement = response.data;
         });
     }
   
@@ -67,6 +67,75 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //}
 
         });
+    };
+
+    $scope.saveNew = function (adv, flag) {
+
+        if (adv.CompanyName == null) {
+            alert('Please Enter CompanyName');
+            return;
+        }
+        //if (adv.Image == null) {
+        //    alert('Please Enter Image');
+        //    return;
+        //}
+        if (adv.Title == null) {
+            alert('Please Enter Title');
+            return;
+        }
+
+        if (adv.Description == null ) {
+            alert('Please Enter Description');
+            return;
+        }
+        if (adv.AdvertismentDate == null) {
+            alert('Please Enter AdvertismentDate');
+            return;
+        }
+        //if (adv.AdvertismentExpiredDate == null) {
+        //    alert('Please Enter AdvertismentExpiredDate');
+        //    return;
+        //}
+        if (adv.AdvertismentAmount == null) {
+            alert('Please Enter AdvertismentAmount');
+            return;
+        }
+
+
+        var Advertisment = {
+            Id: -1,
+            CompanyName: adv.CompanyName,
+            Image: adv.Image,
+            AdvertisementTitle: adv.Title,
+            Description: adv.Description,
+            Clarification: adv.Clarification,
+            Conclusion: adv.Conclusion,
+            AdvertismentDate: adv.AdvertismentDate,
+            AdvertismentExpiredDate: adv.AdvertismentExpiredDate,
+            PrizeAmount: adv.PrizeAmount,
+            AdvertismentAmount: adv.AdvertismentAmount,
+           
+            flag: "I"
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/Advertisment/Advertismentsectionone',
+            data: Advertisment
+        }
+        $http(req).then(function (response) {
+
+            alert("Saved successfully!");
+
+            $scope.Group = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
     };
     $scope.save = function () {
 
