@@ -269,7 +269,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-gavel">
+                            <i class="fa fa-ticket">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                         </a>
@@ -285,7 +285,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-gavel">
+                            <i class="fa fa-ticket">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                         </a>
@@ -374,7 +374,7 @@
                             <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                             <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                             <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                            <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
+                            <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
                         </ul>
 
@@ -399,243 +399,491 @@
                 </ol>
                 <div class="clearfix"></div>
             </div>
-        </div>
-    </div>
-    <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
-    <div class="page-content">
-        <div id="table-action" class="row">
-            <div class="col-lg-12">
 
-                <div id="tableactionTabContent" class="tab-content">
-                    <div id="table-table-tab" class="tab-pane fade in active">
-                        <div class="row">
-                            <div class="col-lg-12">
+            <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+            <div class="page-content">
+                <div id="table-action" class="row">
+                    <div class="col-lg-12">
+
+                        <div id="tableactionTabContent" class="tab-content">
+                            <div id="table-table-tab" class="tab-pane fade in active">
+                                <div class="row">
+                                    <div class="col-lg-12">
 
 
-                                <div class="table-container">
-                                    <div class="row">
+                                        <div class="table-container">
 
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> BookingNo:{{b.BNo}}</label>
 
+                                            <!--<div class="actions">-->
+                                            <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
+                                            <!--<button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add BookingDetails</button>-->
+                                            <!--</div>-->
+
+
+                                            <div class="row mbm" ng-init="GetMaster();">
+                                                <div class="col-md-3">
+                                                    Vehicles:<select ng-options="v.RegistrationNo for v in Vehicles track by v.Id" ng-model="v" ng-change="GetMaster(v)" class="form-control" style="width:80%">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-3">
+                                                    Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd" ng-change="GetMaster(dd)" class="form-control" style="width:80%">
+                                                        <option value="">Select</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <!--<div class="row mbm">
+                                                <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header modal-header-primary">
+                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                <h4 id="modal-header-primary-label" class="modal-title">Edit BookingDetails</h4>
+                                                            </div>
+                                                            <div class="modal-body" ng-model="currGroup">
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">VId:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right">
+                                                                                <select ng-options="v.VID for v in Vehicles track by v.Id" ng-model="v1" class="form-control" style="width:80%">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">BookingNo:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="booking.BNo" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">BookedDate:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.BookedDate" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">BookedTime:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.BookedTime" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">DepartureDate:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.DepartueDate" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">DepartureTime:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.DepartureTime" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">Source:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.Src" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row">
+
+                                                                    <div class="col-md-3">
+                                                                        <div class="form-group has-success" style="text-align:right">
+                                                                            <label for="inputFirstName" class="control-label">Destination:</label>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-5">
+                                                                        <div class="form-group">
+                                                                            <div class="input-icon right"><input type="text" class="form-control" id="ccode" ng-model="booking.Dest" /></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="form-actions">
+                                                                <div class="col-md-offset-3 col-md-9">
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveupd(booking, 'U');">Save</button>
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+                                                </div>
+                                            </div>-->
+                                            <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                <thead>
+                                                    <tr>
+
+                                                        <!--<th>VId</th>-->
+                                                        <th width="10%">BNo</th>
+                                                        <th width="15%">Source</th>
+                                                        <th width="15%">Destination</th>
+                                                        <th width="15%">CustomerNo</th>
+                                                        <th width="15%">DriverNo</th>
+                                                        <th width="15%">BookedDate</th>
+                                                        <th width="15%">BookedTime</th>
+                                                        <th width="15%">DepartueDate</th>
+                                                        <th width="15%">DepartureTime</th>
+                                                        <th width="9%">BookingStatus</th>
+                                                        <!--<th width="9%">Edit</th>-->
+
+                                                    </tr>
+                                                   
+                                                <tbody>
+                                                    <tr ng-repeat="b in bookings">
+                                                        <!--<td>{{b.Vid}}</td>-->
+                                                        <td><a href="BookingDetails.html?VID={{b.VechId}}"> <font color="blue"> <u> {{b.BNo}}</u></font></a></td>
+                                                        <td>{{b.Src}}</td>
+                                                        <td>{{b.Dest}}</td>
+                                                        <td>{{b.CustomerPhoneNo}}</td>
+                                                        <td>{{b.DriverPhoneNo}}</td>
+                                                        <td>{{b.BookedDate}}</td>
+                                                        <td>{{b.BookedTime}}</td>
+                                                        <td>{{b.DepartueDate}}</td>
+                                                        <td>{{b.DepartureTime}}</td>
+                                                        <td>{{b.BookingStatus}}</td>
+                                                        <!--<td>
+                                                            <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbookings(b);">
+                                                                <i class="fa fa-edit"></i>&nbsp;
+
+                                                            </button>
+                                                        </td>-->
+                                                    </tr>
+
+
+                                                </tbody>
+                                                
+                                            </table>
+                                            <!--<div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                                    <div class="modal-dialog">
+                                                                        <div class="modal-content">
+                                                                            <div class="modal-header modal-header-primary">
+                                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                                <h4 id="modal-header-primary-label" class="modal-title">Add BookingDetails</h4>
+                                                                            </div>
+                                                                            <div class="modal-body" ng-model="book">
+
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > BookingNo*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.BookingNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >BookingType:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                        <select ng-model="book.BookingType" class="form-control">
+                                                                                            <option value="">Select</option>
+                                                                                            <option value="CurrentBooking">CurrentBooking</option>
+                                                                                            <option value="AdvanceBooking">AdvanceBooking</option>
+
+                                                                                        </select>
+                                                                                            </div>
+                                                                                    </div>
+
+                                                                                </div>
+
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > ReqVehicle*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ReqVehicle" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >Customer<br>Name*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.Customername" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > CusID*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CusID" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >PhoneNo*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > AltPhoneNo*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.AltPhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >CAddress*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CAddress" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > PickupAddress*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PickupAddress" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <!--<div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >LandMark*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.LandMark" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >LandMark:<span class='require'></span></label>
+                                                                                        <div class="col-md-8">
+                                                                                            <select ng-model="book.LandMark" class="form-control">
+                                                                                                <option value="">Select</option>
+                                                                                                <option value="PRNagar">PrNagar</option>
+                                                                                                <option value="Motinagar">MotiNagar</option>
+                                                                                                <option value="Madhapur">Madhapur</option>
+                                                                                                <option value="Kukatpally">Kukatpally</option>
+                                                                                                <option value="Nampally">Nampally</option>
+                                                                                                <option value="Secunderabad">Secunderabad</option>
+                                                                                                <option value="SRNagar">SRNagar</option>
+
+
+                                                                                            </select>
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > Package*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.Package" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >PickupPalce*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.PickupPalce" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > DropPalce*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.DropPalce" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >ExtraCharge*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ExtraCharge" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > NoofVehicle*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.NoofVehicle" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >Executive<br>Name*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ExecutiveName" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > VID*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.VID" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >Booking<br>Status*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.BookingStatus" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > CustomerSMS*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CustomerSMS" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >CancelReason*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CancelReason" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > CBNo*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CBNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >ModifiedBy*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ModifiedBy" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > CancelBy*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.CancelBy" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >Reconfirmed<br>By*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.ReconfirmedBy" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > AssignedBy*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.AssignedBy" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" >latitude*:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.latitude" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+                                                                                </div>
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="AssginDriver" class="col-md-4 control-label" > longitude*:</label>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="book.longitude" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+
+
+                                                                                </div>
+                                                                                <div class="row mbm">
+                                                                                    <div style="text-align:right">
+                                                                                        <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                                                                                    </div>
+                                                                                    <div class="col-md-4">
+                                                                                        <input type="checkbox" checked ng-model="book.Active" />
+
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="form-actions">
+                                                                                    <div class="col-md-offset-3 col-md-9">
+                                                                                        <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(book)">Save</button>
+
+                                                                                        <a href="BookingDetails.html" class="btn btn-primary" ng-click="clearbook()">Cancel</a>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+                                                                    </div>
+
+                                                                </div>
+
+
+                                                            </div>
+                                                        </div>
+
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <!--END CONTENT-->
                                         </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">BookingType:{{b.BookingType}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> ReqVehicle:{{b.ReqVehicle}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Customer<br>Name:{{b.CustomerName}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CusID:{{b.CusID}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">PhoneNo:{{b.PhoneNo}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> AltPhoneNo:{{b.AltPhoneNo}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">CAddress:{{b.CAddress}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> PickupAddress:{{b.PickupAddress}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">LandMark:{{b.LandMark}}<span class='require'></span></label>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> Package:{{b.Package}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">PickupPalce:{{b.PickupPalce}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> DropPalce:{{b.DropPalce}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">ExtraCharge:{{b.ExtraCharge}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> NoofVehicle:{{b.NoofVehicle}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Executive<br>Name:{{b.ExecutiveName}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> VID:{{b.VID}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Booking<br>Status:{{b.BookingStatus}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CustomerSMS:{{b.CustomerSMS}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">CancelReason:{{b.CancelReason}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CBNo:{{b.CBNo}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">ModifiedBy:{{b.ModifiedBy}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> CancelBy:{{b.CancelBy}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">Reconfirmed<br>By:{{b.ReconfirmedBy}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> AssignedBy:{{b.AssignedBy}}</label>
-
-                                        </div>
-                                        <div class="col-md-6">
-                                            <label for="code" class="col-md-4 control-label">latitude:{{b.latitude}}<span class='require'></span></label>
-
-                                        </div>
-
-                                    </div>
-                                    <div class="row">
-
-                                        <div class="col-md-6">
-                                            <label for="AssginDriver" class="col-md-4 control-label"> longitude:{{b.longitude}}</label>
-
-                                        </div>
-
-
-                                    </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Active" class="col-md-4 control-label">Active:{{b.Active}}<span class='require'></span></label>
-                                        </div>
-
-                                    </div>
-                                    <div class="form-actions">
-                                        <div class="col-md-offset-3 col-md-9">
-                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(book)">Save</button>
-
-                                            <a href="#" class="btn btn-primary" ng-click="clearbook()">Cancel</a>
-                                        </div>
+                                        <!--END PAGE WRAPPER-->
                                     </div>
                                 </div>
+
+                                <!--BEGIN FOOTER-->
+                                <div id="footer">
+                                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                </div>
+                                <!--END FOOTER-->
                             </div>
-
-
-
                         </div>
-
                     </div>
+                    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
-                    <!--END CONTENT-->
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
+                        <div class="modal-header">
+                            <h3 class="modal-title">Save confirmation!</h3>
+                        </div>
+                        <div class="modal-body">
+                            <!--<ul>
+                                <li ng-repeat="item in items">
+                                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                </li>
+                            </ul>
+                            Selected: <b>{{ selected.item }}</b>-->
+                            {{mssg}}
+                        </div>
+                    </script>
                 </div>
 
 
-                <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
-                    <div class="modal-header">
-                        <h3 class="modal-title">Save confirmation!</h3>
-                    </div>
-                    <div class="modal-body">
-                        <!--<ul>
-                            <li ng-repeat="item in items">
-                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                            </li>
-                        </ul>
-                        Selected: <b>{{ selected.item }}</b>-->
-                        {{mssg}}
-                    </div>
 
-                    <div class="modal-footer">
-                        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                    </div>
-
-                </script>
             </div>
         </div>
     </div>
@@ -665,7 +913,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/BookingDetails.js"></script>
+    <script src="js/Bookinglist.js"></script>
 
 
 </body>

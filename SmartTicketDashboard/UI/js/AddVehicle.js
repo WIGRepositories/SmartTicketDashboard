@@ -26,15 +26,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.VehiclesList = null;
 
-        $scope.selectedVehicle = parseLocation(window.location.search)['Vid'];
+        $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
-        $http.get('api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
+        $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
             $scope.VehiclesList = res.data;
 
             if ($scope.VehiclesList.length > 0) {
-                if ($scope.selectedVehicle != null) {
+                if ($scope.selectedVehicleList != null) {
                     for (i = 0; i < $scope.VehiclesList.length; i++) {
-                        if ($scope.VehiclesList[i].id == $scope.selectedVehicle) {
+                        if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
                             $scope.v = $scope.VehiclesList[i];
                             break;
                         }
@@ -42,10 +42,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 }
                 else {
                     $scope.s = $scope.VehiclesList[0];
-                    $scope.selectedVehicle = $scope.VehiclesList[0].id;
+                    $scope.selectedVehicleList = $scope.VehiclesList[0].id;
                 }
 
-                $scope.getselectval($scope.selectedVehicle);
+                $scope.getselectval($scope.selectedVehicleList);
             }
         });
     }

@@ -40,7 +40,7 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpGet]
-        [Route("api/BookAVehicle/GetBookingdetails")]
+        [Route("api/BookAVehicle/Bookingdetails")]
         public DataTable GetBookingdetails(int VechId)
         {
             DataTable dt = new DataTable();
