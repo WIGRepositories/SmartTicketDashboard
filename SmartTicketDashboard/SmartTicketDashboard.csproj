@@ -107,11 +107,13 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\Bookinglist.html" />
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUser.html" />
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\DriverDetails.html" />
+    <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\CardDetails.js" />
     <Content Include="UI\js\CardDetails1.js" />

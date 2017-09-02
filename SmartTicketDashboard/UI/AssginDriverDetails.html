@@ -1,16 +1,14 @@
 ﻿
 <!DOCTYPE html>
-<html lang="en" ng-app="myApp" ng-controller="myCtrl">
+<html lang="en">
 <head>
-    <title>Home | BTPOS | VehicleList</title>
+    <title>Home | BTPOS | AssginDriver</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
-
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
-
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
 
@@ -18,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-init="GetVehcileDetails();" ng-model="VehiclesList">
+<body ng-app="myApp1" ng-controller="myCtrl1" ng-init="GetAssigndetails();" ng-model="drivers">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -270,7 +268,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -316,7 +314,7 @@
 
                         <li>
                             <a href="#">
-                                <i class="fa fa-inbox">
+                                <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Alerts & Notifications</span><span class="fa arrow"></span>
                             </a>
@@ -365,7 +363,7 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                                
+
                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
@@ -388,13 +386,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Vehicle List</div>
+                            <div class="page-title">Assgin Driver</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="VehicleList.html">Vehicle List</a></li>
+                            <li><a href="AssginDriver.html">Assgin Driver</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -404,175 +402,193 @@
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
-                                <div id="tableactionTabContent" class="tab-content">
-                                    <div id="table-table-tab" class="tab-pane fade in active">
-                                        <div class="row mtl">                                           
-                                            <div class="row">
-                                                <div class="col-md-12">
+                                <div id="table-action" class="row">
+                                    <div class="col-lg-12">
 
-                                                    <div id="generalTabContent" class="tab-content" ng-repeat="v in VehiclesList">
-                                                        <div class="col-md-8" style="margin-bottom:20px">
-                                                            <label for="Name">Photo:</label>
-                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="90px" />
-                                                            <br />
+                                        <div id="tableactionTabContent" class="tab-content">
+                                            <div id="table-table-tab" class="tab-pane fade in active">
+                                                <div class="row" ng-repeat="a in drivers">
+                                                    <div class="col-lg-12">
+
+
+                                                        <div class="table-container">
+                                                            <div class="row mbm">
+
+                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                                    <thead>
+                                                                        <tr>
+                                                                            <th width="10%">Id</th>
+                                                                            <td>{{a.Id}}</td>
+                                                                        <tr>
+                                                                            <th width="10%">CompanyId</th>
+                                                                            <td>{{a.CompanyId}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">EntryDate</th>
+                                                                            <td>{{a.EntryDate}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">BookingNo</th>
+                                                                            <td>{{a.BookingNo}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">ReqDate</th>
+                                                                            <td>{{a.ReqDate}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">ReqTime</th>
+                                                                            <td>{{a.ReqTime}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">CallTime</th>
+                                                                            <td>{{a.CallTime}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">CustomerName</th>
+                                                                            <td>{{a.CustomerName}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">CusID</th>
+                                                                            <td>{{a.CusID}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">PhoneNo</th>
+                                                                            <td>{{a.PhoneNo}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">AltPhoneNo</th>
+                                                                            <td>{{a.AltPhoneNo}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">Address</th>
+                                                                            <td>{{a.Address}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">PickupAddress</th>
+                                                                            <td>{{a.PickupAddress}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">LandMark</th>
+                                                                            <td>{{a.LandMark}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">PickupPlace</th>
+                                                                            <td>{{a.PickupPlace}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">DropPlace</th>
+                                                                            <td>{{a.DropPlace}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">Package</th>
+                                                                            <td>{{a.Package}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">VehicleType</th>
+                                                                            <td>{{a.VehicleType}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">NoofVehicle</th>
+                                                                            <td>{{a.NoofVehicle}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">VechID</th>
+                                                                            <td>{{a.VechID}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">RegistrationNo</th>
+                                                                            <td>{{a.RegistrationNo}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">DriverName</th>
+                                                                            <td>{{a.DriverName}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">PresentDriverLandMark</th>
+                                                                            <td>{{a.PresentDriverLandMark}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">ExecutiveName</th>
+                                                                            <td>{{a.ExecutiveName}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">EffectiveDate</th>
+                                                                            <td>{{a.EffectiveDate}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">EffectiveTill</th>
+                                                                            <td>{{a.EffectiveTill}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">DriverId</th>
+                                                                            <td>{{a.DriverId}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">VehicleModelId</th>
+                                                                            <td>{{a.VehicleModelId}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">ServiceTypeId</th>
+                                                                            <td>{{a.ServiceTypeId}}</td>
+                                                                        </tr>
+                                                                        <tr>
+                                                                            <th width="10%">VehicleGroupId</th>
+                                                                            <td>{{a.VehicleGroupId}}</td>
+                                                                        </tr>
+
+
+                                                                    <tbody>
+                                                                        <tr ng-repeat="a in drivers"></tr>
+
+
+                                                                    </tbody>
+
+                                                                </table>
+
+                                                            </div>
+
+
+
+                                                            <!--END PAGE WRAPPER-->
                                                         </div>
-                                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th width="10">Registration No</th>
-                                                                    <td width="20%">{{v.RegistrationNo}}</td>
-                                                                    </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Type</th>
-                                                                    <td width="10%">{{v.Type}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Owner Name</th>
-                                                                    <td width="20%">{{v.OwnerName}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Chasis No</th>
-                                                                    <td width="10%">{{v.ChasisNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Engine No</th>
-                                                                    <td width="10%">{{v.Engineno}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Road Tax Date</th>
-                                                                    <td width="10%">{{v.RoadTaxDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Insurance No</th>
-                                                                    <td width="10%">{{v.InsuranceNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Insurance Date</th>
-                                                                    <td width="10%">{{v.InsDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">PollutionNo</th>
-                                                                    <td width="10%">{{v.PolutionNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Pollution Exp Date</th>
-                                                                    <td width="10%">{{v.PolExpDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">RC Book No</th>
-                                                                    <td width="10%">{{v.RCBookNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">RC Exp Date</th>
-                                                                    <td width="10%">{{v.RCExpDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Company Vechile</th>
-                                                                    <td width="10%">{{v.CompanyVechile}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Owner Phone No</th>
-                                                                    <td width="10%">{{v.OwnerPhoneNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Engine No</th>
-                                                                    <td width="10%">{{v.HomeLandmark}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Model Year</th>
-                                                                    <td width="10%">{{v.ModelYear}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Day/Night</th>
-                                                                    <td width="10%">{{v.DayOnly}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vech Mobile No</th>
-                                                                    <td width="10%">{{v.VechMobileNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Entry Date</th>
-                                                                    <td width="10%">{{v.EntryDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">New Entry</th>
-                                                                    <td width="10%">{{v.NewEntry}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Model</th>
-                                                                    <td width="10%">{{v.VehicleModelId}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Service Type </th>
-                                                                    <td width="10%">{{v.ServiceTypeId}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Group</th>
-                                                                    <td width="10%">{{v.VehicleGroupId}}</td>
-                                                                </tr>
-
-                                                            <tbody>
-                                                                <tr ng-repeat="v in VehiclesList">
-
-
-
-                                                                </tr>
-
-
-                                                            </tbody>
-
-                                                        </table>
-
                                                     </div>
-                                                </div>
 
+                                                    <!--BEGIN FOOTER-->
+                                                    <div id="footer">
+                                                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                    </div>
+                                                    <!--END FOOTER-->
                                                 </div>
+                                            </div>
+                                        </div>
+                                        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
+                                            <div class="modal-header">
+                                                <h3 class="modal-title">Save confirmation!</h3>
+                                            </div>
+                                            <div class="modal-body">
+                                                <!--<ul>
+                                                    <li ng-repeat="item in items">
+                                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                                    </li>
+                                                </ul>
+                                                Selected: <b>{{ selected.item }}</b>-->
+                                                {{mssg}}
                                             </div>
 
-                                        </div>
 
-
+                                        </script>
                                     </div>
 
-                                    <!--END CONTENT-->
+
                                 </div>
-                                <!--END PAGE WRAPPER-->
                             </div>
                         </div>
                     </div>
-
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
                 </div>
             </div>
         </div>
-        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-            <div class="modal-header">
-                <h3 class="modal-title">Save confirmation!</h3>
-            </div>
-            <div class="modal-body">
-                <!--<ul>
-                    <li ng-repeat="item in items">
-                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ selected.item }}</b>-->
-                {{mssg}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-            </div>
-
-        </script>
     </div>
-
-
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
@@ -598,12 +614,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/fileupload/angular-file-upload.js"></script>
-    <script src="js/fileupload/angular-file-upload-shim.js"></script>
-    <script src="js/AddVehicle.js"></script>
-
-    <script src="js/fileupload/Upload.js"></script>
-
+    <script src="js/Assigndriverdetails.js"></script>
 
 
 </body>

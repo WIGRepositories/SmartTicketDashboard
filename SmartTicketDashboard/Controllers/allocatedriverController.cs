@@ -17,20 +17,20 @@ namespace SmartTicketDashboard.Controllers
     {
 
         [HttpGet]
-        [Route("api/allocatedriver/Gettypes")]
+        [Route("api/allocatedriver/GetAssigndetails")]
 
-        public DataTable Gettypes()
+        public DataTable GetAssigndetails(int VechId)
         {
             SqlConnection conn = new SqlConnection();
 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSGetvechicletypes";
+            cmd.CommandText = "PSGetAssigndetails";
             cmd.Connection = conn;
 
-
-
+            
+            cmd.Parameters.Add("@VechID", SqlDbType.Int).Value = VechId;
             DataTable dt = new DataTable();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);
