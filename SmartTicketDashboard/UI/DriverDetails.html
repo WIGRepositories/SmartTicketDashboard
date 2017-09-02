@@ -487,19 +487,12 @@
                                                                 <tr>
                                                                     <th width="10%">CompanyId</th>
                                                                     <td>{{Dl.CompanyId}}</td>
-                                                                </tr>
+                                                                </tr>                                                               
                                                                 <tr>
-                                                                    <th width="10%">DocTypeId</th>
-                                                                    <td>{{Dl.DocTypeId}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">FileName</th>
+                                                                    <th width="10%">Photo</th>
                                                                     <td>{{Dl.FileName}}</td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th width="10%">FileContent</th>
-                                                                    <td>{{Dl.FileContent}}</td>
-                                                                </tr>
+                                                              
 
                                                             <tbody>
                                                                 <tr ng-repeat="Dl in listdrivers"></tr>
@@ -572,9 +565,11 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
     <script src="js/DriverList.js"></script>
 
-
+    <script src="js/fileupload/Upload.js"></script>
 </body>
 </html>
 

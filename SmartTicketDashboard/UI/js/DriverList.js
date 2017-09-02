@@ -1,7 +1,129 @@
 ﻿// JavaScript source code
 // JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', , 'angularFileUpload'])
+
+app.directive('file-input', function ($parse) {
+    return {
+        restrict: "EA",
+        template: "<input type='file' />",
+        replace: true,
+        link: function (scope, element, attrs) {
+
+            var modelGet = $parse(attrs.fileInput);
+            var modelSet = modelGet.assign;
+            var onChange = $parse(attrs.onChange);
+
+            var updateModel = function () {
+                scope.$apply(function () {
+                    modelSet(scope, element[0].files[0]);
+                    onChange(scope);
+                });
+            };
+
+            element.bind('change', updateModel);
+        }
+    };
+});
+
+app.directive("ngFileSelect", function () {
+
+    return {
+
+        link: function ($scope, el) {
+
+            el.on('click', function () {
+
+                this.value = '';
+
+            });
+
+            el.bind("change", function (e) {
+
+                $scope.file = (e.srcElement || e.target).files[0];
+
+
+
+                var allowed = ["jpeg", "png", "gif", "jpg"];
+
+                var found = false;
+
+                var img;
+
+                img = new Image();
+
+                allowed.forEach(function (extension) {
+
+                    if ($scope.file.type.match('image/' + extension)) {
+
+                        found = true;
+
+                    }
+
+                });
+
+                if (!found) {
+
+                    alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                    return;
+
+                }
+
+                img.onload = function () {
+
+                    var dimension = $scope.selectedImageOption.split(" ");
+
+                    if (dimension[0] == this.width && dimension[2] == this.height) {
+
+                        allowed.forEach(function (extension) {
+
+                            if ($scope.file.type.match('image/' + extension)) {
+
+                                found = true;
+
+                            }
+
+                        });
+
+                        if (found) {
+
+                            if ($scope.file.size <= 1048576) {
+
+                                $scope.getFile();
+
+                            } else {
+
+                                alert('file size should not be grater then 1 mb.');
+
+                            }
+
+                        } else {
+
+                            alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                        }
+
+                    } else {
+
+                        alert('selected image dimension is not equal to size drop down.');
+
+                    }
+
+                };
+
+                //  img.src = _URL.createObjectURL($scope.file);
+
+
+
+            });
+
+        }
+
+    };
+
+});
+
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader,$upload) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -79,36 +201,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     $scope.docfiles = [];
 
-    $scope.onFileSelect = function (image, $event) {
-
-        //$scope.docfiles = [];
-        var ext = image[0].name.split('.').pop();
-        fileReader.readAsDataUrl(image[0], $scope, (ext == 'img') ? 1 : 4).then(function (result) {
-
-            if (result.length > 2097152) {
-                alert('Cannot upload file greater than 2 MB.');
-                $event.stopPropagation();
-                $event.preventDefault();
-                return;
-            }
-
-         
-
-            //check if already the file exists                       
-            for (cnt = 0; cnt < docfiles.length; cnt++) {
-                if ($scope.docfiles[cnt].FileName == image[0].name) {
-                    $scope.docfiles.splice(cnt, 1);
-                }
-            }
-
-            $scope.docfiles.push(FileName);
-            //if ($scope.DocFiles)
-            //{
-            //    $scope.DocFiles.push(doc);
-            //}
-
-        });
-    };
+   
 
      
 
@@ -204,7 +297,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BadgeNo: Driverlist.BadgeNo,
             BadgeExpDate: Driverlist.BadgeExpDate,
             Remarks: Driverlist.Remarks,            
-            FileName: Driverlist.FileName,
+            FileName: $scope.imageSrc,
             
         }
 
@@ -355,15 +448,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.cur = null;
     }
     
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
 
-    $scope.validateFile = function ($event) {
-       //  {
-       //     alert('Please select docType');
-       // //    $event.stopPropagation();
-       // //    $event.preventDefault();
-       //     return;
-       //}
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+
+    $scope.onFileSelect = function () {
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     }
+   
 
     $scope.showDialog = function (message) {
 
