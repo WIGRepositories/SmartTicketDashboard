@@ -2428,6 +2428,7 @@ namespace SmartTicketDashboard.Models
         public DateTime? ExpiredDate { get; set; }
         public float AdvertisementAmount { get; set; }
         public string CompanyName { get; set; }
+        public string Area { get; set; }
     }
     public class Appusers
     {

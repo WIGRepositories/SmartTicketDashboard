@@ -1,4 +1,4 @@
-﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap','angularFileUpload'])
 
 app.directive('file-input', function ($parse) {
     return {
@@ -120,6 +120,7 @@ app.directive("ngFileSelect", function () {
     };
 
 });
+
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader, $upload) {
 
     if ($localStorage.uname == null) {
@@ -130,6 +131,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
+
     $scope.GetAdvertisment = function () {
 
         $http.get('/api/Advertisment/GetAdvertisment').then(function (response, req) {
@@ -141,10 +143,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (adv, flag) {
 
-        //if (adv.CompanyName == null) {
-        //    alert('Please Enter CompanyName');
-        //    return;
-        //}
+        if (adv.CompanyName == null) {
+            alert('Please Enter CompanyName');
+            return;
+        }
         if ($scope.imageSrc == null) {
             alert('Please Enter Image');
             return;
@@ -170,6 +172,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter AdvertismentAmount');
             return;
         }
+            if (adv.Area == null) {
+                alert('Please Enter Area');
+                return;
+        }
 
 
         var Advertisment = {
@@ -182,9 +188,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Conclusion: adv.Conclusion,
             AdvertismentDate: adv.AdvertismentDate,
             AdvertismentExpiredDate: adv.AdvertismentExpiredDate,
-            PrizeAmount: adv.PrizeAmount,
-            AdvertismentAmount: adv.AdvertismentAmount,
-           
+            Price: adv.PrizeAmount,
+            AdvertisementAmount: adv.AdvertismentAmount,
+            Area:adv.Area,
             flag: "I"
         }
 
@@ -229,7 +235,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
 
     };
-   
+    $scope.validateFile = function ($event) {
+        //if ($scope.assetDoc.docType == null) {
+        //    alert('Please select docType');
+        //    $event.stopPropagation();
+        //    $event.preventDefault();
+        //    return;
+        //}
+    }
     $scope.GetCompanies = function () {
 
         var vc = {
