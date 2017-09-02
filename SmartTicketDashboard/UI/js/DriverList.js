@@ -1,6 +1,6 @@
 ﻿// JavaScript source code
 // JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', , 'angularFileUpload'])
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap',  'angularFileUpload'])
 
 app.directive('file-input', function ($parse) {
     return {
