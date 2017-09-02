@@ -18,9 +18,13 @@ var ctrl = app.controller('Myctrlr', function ($scope, $http, $localStorage) {
         $scope.checkedArr = [];
         $scope.uncheckedArr = [];
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
-            $scope.Countries = response.data;
-            $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
-            $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+            $scope.Countries = response.data;           
+            if ($scope.Countries.length > 0) {
+                $scope.ctry = $scope.Countries[0];
+                $scope.GetCountry($scope.ctry);
+                $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
+                $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+            }
         });
     }
     $scope.GetCompanies = function () {

@@ -151,7 +151,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanies = function () {    
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+           
         //    if ($scope.userCmpId != 1) {
         //        //loop throug the companies and identify the correct one
         //        for (i = 0; i < response.data.length; i++) {
@@ -187,6 +187,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/Roles/GetCompanyRoles?companyId=' + $scope.cmp.Id).then(function (res, data) {
             $scope.cmproles = res.data;
+           
         });
     }
 
@@ -321,7 +322,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.userRoles = res.data;
             $scope.checkedArr = res.data;
            // $scope.uncheckedArr = $filter('filter')($scope.userRoles, { assigned: "0" });
-
+           
         });
     }
 

@@ -13,8 +13,22 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
+    $scope.GetCountry = function () {
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;
+            if ($scope.Countries.length > 0) {
+                $scope.ctry = $scope.Countries[0];
+                $scope.GetCountry($scope.ctry);
+            }
+        });
+    }
 
-
+    $scope.GetMaster = function () {
+       
+        $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
+            $scope.Vehicles = res.data;
+        });
+    }
     $scope.GetCompanies = function () {
 
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {

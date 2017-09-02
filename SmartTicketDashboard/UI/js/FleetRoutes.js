@@ -11,7 +11,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
-
+    $scope.GetCountry = function () {
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;
+            if ($scope.Countries.length > 0) {
+                $scope.ctry = $scope.Countries[0];
+                $scope.GetCountry($scope.ctry);
+            }
+        });
+    }
 
     $scope.GetFleeBTPosDetails = function () {
 
