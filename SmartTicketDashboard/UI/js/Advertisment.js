@@ -1,5 +1,127 @@
-﻿var app = angular.module('myApp1', ['ngStorage', 'ui.bootstrap'])
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap','angularFileUpload'])
+
+app.directive('file-input', function ($parse) {
+    return {
+        restrict: "EA",
+        template: "<input type='file' />",
+        replace: true,
+        link: function (scope, element, attrs) {
+
+            var modelGet = $parse(attrs.fileInput);
+            var modelSet = modelGet.assign;
+            var onChange = $parse(attrs.onChange);
+
+            var updateModel = function () {
+                scope.$apply(function () {
+                    modelSet(scope, element[0].files[0]);
+                    onChange(scope);
+                });
+            };
+
+            element.bind('change', updateModel);
+        }
+    };
+});
+
+app.directive("ngFileSelect", function () {
+
+    return {
+
+        link: function ($scope, el) {
+
+            el.on('click', function () {
+
+                this.value = '';
+
+            });
+
+            el.bind("change", function (e) {
+
+                $scope.file = (e.srcElement || e.target).files[0];
+
+
+
+                var allowed = ["jpeg", "png", "gif", "jpg"];
+
+                var found = false;
+
+                var img;
+
+                img = new Image();
+
+                allowed.forEach(function (extension) {
+
+                    if ($scope.file.type.match('image/' + extension)) {
+
+                        found = true;
+
+                    }
+
+                });
+
+                if (!found) {
+
+                    alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                    return;
+
+                }
+
+                img.onload = function () {
+
+                    var dimension = $scope.selectedImageOption.split(" ");
+
+                    if (dimension[0] == this.width && dimension[2] == this.height) {
+
+                        allowed.forEach(function (extension) {
+
+                            if ($scope.file.type.match('image/' + extension)) {
+
+                                found = true;
+
+                            }
+
+                        });
+
+                        if (found) {
+
+                            if ($scope.file.size <= 1048576) {
+
+                                $scope.getFile();
+
+                            } else {
+
+                                alert('file size should not be grater then 1 mb.');
+
+                            }
+
+                        } else {
+
+                            alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                        }
+
+                    } else {
+
+                        alert('selected image dimension is not equal to size drop down.');
+
+                    }
+
+                };
+
+                //  img.src = _URL.createObjectURL($scope.file);
+
+
+
+            });
+
+        }
+
+    };
+
+});
+
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader, $upload) {
 
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -9,6 +131,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
+
     $scope.GetAdvertisment = function () {
 
         $http.get('/api/Advertisment/GetAdvertisment').then(function (response, req) {
@@ -16,58 +139,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
   
-    $scope.onFileSelect = function (files, $event) {
-
-        //$scope.docfiles = [];
-        var ext = files[0].name.split('.').pop();
-        fileReader.readAsDataUrl(files[0], $scope, (ext == 'jpg') ? 1 : 4).then(function (result) {
-
-            if (result.length > 2097152) {
-                alert('Cannot upload file greater than 2 MB.');
-                $event.stopPropagation();
-                $event.preventDefault();
-                return;
-            }
-
-            var book =
-                 {
-                     Id: -1,                
-
-                     Area: (book.Area),
-
-                     Place: (book.Place),
-                     CompanyName: (book.CompanyName),
-                     //image: ($scope.book == null || $scope.book.Image == null) ? null : $scope.book.Image,
-                     imgcontent: (book.Title),
-                     description: (book.Content ),
-                     price: (book.PrizeAmount ),
-                     AdvertismentAmount: (book.AdvertismentAmount ),//
-                     image: files[0].name,
-                    
-
-                     AdvertismentDate: (AdvertismentDate ),
-                     AdvertismentExpireDate: (book.AdvertismentExpiredDate ),
-                     
-                    flag: 'I'
-                 }           
-
-
-            //check if already the file exists                       
-            for (cnt = 0; cnt < $scope.docfiles.length; cnt++) {
-                if ($scope.docfiles[cnt].image == files[0].name) {
-                    $scope.docfiles.splice(cnt, 1);
-                }
-            }
-
-
-            $scope.docfiles.push(book);
-            //if ($scope.DocFiles)
-            //{
-            //    $scope.DocFiles.push(doc);
-            //}
-
-        });
-    };
+    
 
     $scope.saveNew = function (adv, flag) {
 
@@ -75,10 +147,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter CompanyName');
             return;
         }
-        //if (adv.Image == null) {
-        //    alert('Please Enter Image');
-        //    return;
-        //}
+        if ($scope.imageSrc == null) {
+            alert('Please Enter Image');
+            return;
+        }
         if (adv.Title == null) {
             alert('Please Enter Title');
             return;
@@ -100,21 +172,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter AdvertismentAmount');
             return;
         }
+            if (adv.Area == null) {
+                alert('Please Enter Area');
+                return;
+        }
 
 
         var Advertisment = {
             Id: -1,
             CompanyName: adv.CompanyName,
-            Image: adv.Image,
+            Image: $scope.imageSrc,
             AdvertisementTitle: adv.Title,
             Description: adv.Description,
             Clarification: adv.Clarification,
             Conclusion: adv.Conclusion,
             AdvertismentDate: adv.AdvertismentDate,
             AdvertismentExpiredDate: adv.AdvertismentExpiredDate,
-            PrizeAmount: adv.PrizeAmount,
-            AdvertismentAmount: adv.AdvertismentAmount,
-           
+            Price: adv.PrizeAmount,
+            AdvertisementAmount: adv.AdvertismentAmount,
+            Area:adv.Area,
             flag: "I"
         }
 
@@ -241,5 +317,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
            
         });
 
+    }
+
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+
+    $scope.onFileSelect = function () {
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     }
 });

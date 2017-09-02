@@ -17,9 +17,52 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <style>
+        .brdr {
+            border: 1px solid #ededed;
+        }
+
+        .bgc-fff {
+            background-color: #fff !important;
+        }
+
+        .pad-10 {
+            padding: 10px !important;
+        }
+
+        .box-shad {
+            -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+            box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+        }
+
+        .btm-mrg-20 {
+            margin-bottom: 20px !important;
+        }
+
+        @media only screen and (max-width: 991px) {
+            #property-listings .property-listing {
+                padding: 5px !important;
+            }
+
+                #property-listings .property-listing a {
+                    margin: 0;
+                }
+
+                #property-listings .property-listing .media-body {
+                    padding: 10px;
+                }
+        }
+
+        @media only screen and (min-width: 992px) {
+            #property-listings .property-listing img {
+                max-width: 180px;
+            }
+        }
+
+        </style>
 </head>
 
-<body ng-app="myApp1" ng-controller="myCtrl" ng-init="GetAdvertisment();" ng-model="advertisement">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetAdvertisment();" ng-model="advertisement">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -434,13 +477,13 @@
                                                                         <h4 id="modal-header-primary-label" class="modal-title">Advertisment</h4>
                                                                     </div>
 
-                                                                    <div class="modal-body" ng-model="book">
+                                                                    <div class="modal-body" ng-model="adv">
 
                                                                         <div class="row">
                                                                             <div class="col-md-6">
                                                                                 <label for="selCountry" class="col-md-4 control-label">Area</label>
                                                                                 <div class="col-md-8">
-                                                                                    <select class="form-control" ng-model="book.Area">
+                                                                                    <select class="form-control" ng-model="adv.Area">
                                                                                         <option value="">Select</option>
                                                                                         <option>Area 1</option>
                                                                                         <option>Area 2</option>
@@ -451,7 +494,7 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="selCountry" class="col-md-4 control-label">Place</label>
                                                                                 <div class="col-md-8">
-                                                                                    <select class="form-control" ng-model="book.Place">
+                                                                                    <select class="form-control" ng-model="adv.Place">
                                                                                         <option value="">Select</option>
                                                                                         <option value="">Place 1</option>
                                                                                         <option value="">Place 2</option>
@@ -470,12 +513,21 @@
                                                                                 <div class="col-md-8"><input id="Price" type="text" class="form-control" ng-model="adv.CompanyName" /><span class="help-block"></span></div>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label">Image:<span class='require'></span></label>
-                                                                                <!--<div class="col-md-8"><input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($file,$event)" class="btn btn-green" accept=".jpeg,.jpg,.png,.gif" ng-model="adv.Image" ng-click="UploadImg();" /><span class="help-block"></span></div>-->
-                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
-                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                    Upload photo
-                                                                                </a>
+                                                                                <label for="Address Id" class="col-md-4 control-label" style="float:left">Image:</label>
+                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                <div class="col-md-8">
+                                                                                    <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                                                    <br />
+                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                        Upload photo
+                                                                                    </a>
+                                                                                </div>
+
+
+
+                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
                                                                             </div>
                                                                         </div>
                                                                         <div class="row" style="margin-bottom:7px">
@@ -658,44 +710,57 @@
 
 
 
-                                        <table class="table table-hover table-striped table-bordered table-advanced">
-                                            <thead>
-                                                <tr>                                                 
+                                        
+                                        <div class="container-fluid" style="background-color:#e8e8e8">
+                                            <div class="container container-pad" id="property-listings">
+
+
+                                                <div class="row">
+                                                    <div class="col-md-11">
+                                                        <!-- Begin Listing: 609 W GRAVERS LN-->
+                                                        <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 property-listing" ng-repeat="a in advertisement" style="margin-top:10px">
+                                                            <div class="media">
+                                                                <a class="pull-left" href="#" target="_parent">
+                                                                    <img alt="image" class="img-responsive" ng-src="{{a.Image}}">
+                                                                </a>
+                                                                <div class="clearfix visible-sm"></div>
+                                                                <div class="media-body fnt-smaller">
+                                                                    <a href="#" target="_parent"></a>
+                                                                    <h4 class="media-heading">
+                                                                        <a href="#" target="_parent">${{a.AdvertisementAmount}} <small style="margin-left:600px">{{a.CompanyName}}</small></a>
+                                                                    </h4>
+
+                                                                    <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+                                                                        <li>4,820 SqFt</li>
+                                                                        <li style="list-style: none">|</li>
+                                                                        <li>{{a.PublishDate}}</li>
+                                                                        <li style="list-style: none">|</li>
+                                                                        <li>{{a.ExpiredDate}}</li>
+                                                                        <li style="list-style: none">|</li>
+                                                                        <li>{{a.Price}}</li>
+                                                                        <li style="list-style: none">|</li>
+                                                                        <li>{{a.Area}}</li>
+                                                                    </ul>
+                                                                    <h3>{{a.AdvertisementTitle}}</h3>
+                                                                    <p class="hidden-xs">
+                                                                        {{a.Description}}
+                                                                    </p>
+                                                                    <span class="fnt-smaller fnt-lighter fnt-arial">
+                                                                            {{a.Clarification}}
+                                                                    </span>
+                                                                    <span class="fnt-smaller fnt-lighter fnt-arial">
+                                                                        {{a.Conclusion}}
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div><!-- End Listing-->
+                                                       
+
+                                                    </div>
                                                     
-                                                    <th>Image</th>
-                                                    <th>Advertisement Title</th>
-                                                    <th>Description</th>
-                                                    <th>Clarification</th>
-                                                    <th>Conclusion</th>
-                                                    <th>Price</th>
-                                                    <th>Publish Date,
-                                                    <th>Expired Date</th>
-                                                    <th>Advertisement Amount</th>
-                                                    <th>Advertisment Type</th>
-                                                    <th>Company Name</th>
-                                                   
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-
-                                                <tr ng-repeat="a in advertisement">
-                                                    <td>{{a.Image}}</td>
-                                                    <td>{{a.AdvertisementTitle}}</td>
-                                                    <td>{{a.Description}}</td>
-                                                    <td>{{a.Clarification}}</td>
-                                                    <td>{{a.Conclusion}}</td>
-                                                    <td>{{a.Price}}</td>
-                                                    <td>{{a.PublishDate}}</td>
-                                                    <td>{{a.ExpiredDate}}</td>
-                                                    <td>{{a.AdvertisementAmount}}</td>
-                                                    <td>{{a.AdvertisementTypeId}}</td>
-                                                    <td>{{a.CompanyName}}</td>
-                                                </tr>
-                                                
-
-                                            </tbody>
-                                        </table>
-
+                                                </div>
+                                            </div>
+                                        </div>
                                        
                                     </div>
 
@@ -760,8 +825,9 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
     <script src="js/Advertisment.js"></script>
-
+    <script src="js/fileupload/Upload.js"></script>
 </body>
 </html>

@@ -2418,7 +2418,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int Id { get; set; }
-        public string image { get; set; }
+        public string Image { get; set; }
         public string AdvertisementTitle { get; set; }
         public string Description { get; set; }
         public string Clarification { get; set; }
@@ -2429,6 +2429,7 @@ namespace SmartTicketDashboard.Models
         public DateTime? ExpiredDate { get; set; }
         public float AdvertisementAmount { get; set; }
         public string CompanyName { get; set; }
+        public string Area { get; set; }
     }
     public class Appusers
     {

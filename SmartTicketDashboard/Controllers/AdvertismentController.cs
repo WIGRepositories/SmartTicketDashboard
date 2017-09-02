@@ -68,7 +68,7 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(i);
 
                 SqlParameter im = new SqlParameter("@image", SqlDbType.VarChar);
-                im.Value = A.image;
+                im.Value = A.Image;
                 cmd.Parameters.Add(im);
 
                 SqlParameter at = new SqlParameter("@AdvertisementTitle", SqlDbType.VarChar, 100);
@@ -109,7 +109,9 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar,100);
                 cn.Value = A.CompanyName;
                 cmd.Parameters.Add(cn);
-
+                SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
+                ar.Value = A.Area;
+                cmd.Parameters.Add(ar);
             }
             catch
             {
