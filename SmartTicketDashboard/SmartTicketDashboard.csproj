@@ -106,7 +106,21 @@
     <Content Include="UI\AddNewBTPOSDetails.html" />
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
+    <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AssginDriverDetails.html" />
+    <Content Include="UI\Bookinglist.html" />
+    <Content Include="UI\CardInformation.html" />
+    <Content Include="UI\CardUser.html" />
+    <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\DriverDetails.html" />
+    <Content Include="UI\js\Assigndriverdetails.js" />
+    <Content Include="UI\js\Bookinglist.js" />
+    <Content Include="UI\js\CardDetails.js" />
+    <Content Include="UI\js\CardDetails1.js" />
+    <Content Include="UI\js\CardsList.js" />
+    <Content Include="UI\js\CardUser.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\Car.jpg" />
@@ -588,7 +602,7 @@
     <Content Include="UI\Users.html" />
     <Content Include="UI\VehicleAvailability.html" />
     <Content Include="UI\VehicleDestBasePricing.html" />
-    <Content Include="UI\VehicleDetails.html" />
+    <Content Include="UI\VehicleDetails1.html" />
     <Content Include="UI\VehicleHoursBasePricing.html" />
     <Content Include="UI\VehicleLayout.html" />
     <Content Include="UI\Landmark.html" />
@@ -596,6 +610,7 @@
     <Content Include="UI\VehicleLogout.html" />
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
+    <Content Include="UI\VehicleDetails.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
     <Content Include="UI\vendors\bootstrap-clockface\CHANGELOG.txt" />
     <Content Include="UI\vendors\bootstrap-clockface\css\clockface.css" />
@@ -2000,6 +2015,7 @@
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
+    <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\Blocklistcontroller.cs" />
     <Compile Include="Controllers\blocklistnewController.cs">
       <SubType>Code</SubType>
@@ -2078,7 +2094,6 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
-    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
@@ -2134,6 +2149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Id.cs" />
     <Compile Include="Models\Models.cs" />
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\DataBase.cs" />
     <Compile Include="UI\vendors\jplist\html\data-sources\asp-net-sql-server\asp-net-solution\JPList\DAL\StatusQueries.cs" />
@@ -2485,6 +2501,15 @@
     <Folder Include="UI\vendors\css3-treeview\" />
     <Folder Include="UI\vendors\jquery-ui-1.10.4.custom\jquery-ui-1.10.4.custom\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\DriversList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\Users.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\VehiclesList.csv" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -2496,7 +2521,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>1476</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

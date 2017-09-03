@@ -116,6 +116,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             RegNo: $scope.vm.Id,
             DriverName: vehlogout.DriverName,
             TotalGeneratedAmount: vehlogout.TotalGeneratedAmount,
+            LogoutDate:vehlogout.LogoutDate,
+            LogoutTime:vehlogout.LogoutTime,
             flag: "I"
         }
 

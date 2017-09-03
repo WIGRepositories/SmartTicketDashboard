@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="myApp">
 <head>
     <title>Dashboard</title>
     <meta charset="utf-8">
@@ -28,7 +28,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetDashboardDS();" ng-model="dashboardDS">
+<body ng-controller="myCtrl" ng-model="dashboardDS" ng-init="init();">
 
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
@@ -146,7 +146,7 @@
                                     <ul class="nav nav-third-level">
                                         <li><a href="FleetOwners.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet Owners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Fleet Owners</span></a></li>
                                         <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Users"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Details</span></a></li>
-                                        <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">be</span></a></li>
+                                        <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of Users Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">User Roles</span></a></li>
 
                                     </ul>
                                 </li>
@@ -288,7 +288,7 @@
                                     <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                     <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                     <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                    <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                    <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                 </ul>
                             </li>
@@ -301,7 +301,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-gavel">
+                           <i class="fa fa-ticket">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                         </a>
@@ -317,7 +317,7 @@
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-gavel">
+                           <i class="fa fa-ticket">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                         </a>
@@ -347,7 +347,7 @@
 
                     <li>
                         <a href="#">
-                            <i class="fa fa-send-o fa-fw">
+                            <i class="fa fa-taxi">
                                 <div class="icon-bg bg-dark"></div>
                             </i><span class="menu-title">Alerts & Notifications</span><span class="fa arrow"></span>
                         </a>
@@ -378,21 +378,41 @@
 
                     <li>
                         <a href="#">
-                            <i class="fa fa-send-o fa-fw">
+                            <i class="fa fa-taxi">
                                 <div class="icon-bg bg-dark"></div>
-                            </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
+                            </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                             </li>
-
                         </ul>
                     </li>
-
                     <li>
                         <a href="#">
-                            <i class="fa fa-send-o fa-fw">
+                            <i class="fa fa-taxi">
+                                <div class="icon-bg bg-dark"></div>
+                            </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
+                        </a>
+                        <ul class="nav nav-second-level">
+
+                            <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
+                            <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
+                            <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
+                            <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
+                            <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                            <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                            <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
+                            <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
+                            <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
+                            <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
+
+                        </ul>
+
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fa fa-taxi">
                                 <div class="icon-bg bg-dark"></div>
                             </i><span class="menu-title">Cards</span><span class="fa arrow"></span>
                         </a>
@@ -402,40 +422,17 @@
                             <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
                             <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
                             <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
+                            <li><a href="CardCategory.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardCategory</span></a></li>
                         </ul>
                     </li>
 
 
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-send-o fa-fw">
-                                <div class="icon-bg bg-dark"></div>
-                            </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                           <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
-                             <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
-                           <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
-                            
-                            <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
-                            <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
-                            
-                            <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
-                            <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                            <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
-                            <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                            <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
-                        </ul>
-
-                    </li>
-
-                    </ul>
                 </div>
             </nav>                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
             <div id="page-wrapper">
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
-                <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                <!--<div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
                         <div class="page-title">Dashboard</div>
                     </div>
@@ -444,7 +441,7 @@
                         <li><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                     </ol>
                     <div class="clearfix"></div>
-                </div>
+                </div>-->
                 <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                 <div class="page-content">
                     <div id="table-action" class="row">
@@ -452,15 +449,15 @@
                             <div id="tableactionTabContent" class="tab-content">
                                 <div id="table-table-tab" class="tab-pane fade in active">
 
-                                    <div class="col-lg-12">
+                                    <div class="col-lg-12" ng-model="currJob">
                                         <div class="table-container">
                                             <div class="row mbm">
                                                 <div class="col-md-3" style="text-align:left">
-                                                    Location: <select ng-options="s.name for s in Locations track by s.id" ng-model="s" style="width:100%">
+                                                    Card Number:  <select ng-options="s.CardNumber for s in CardNumbers track by s.Id" ng-model="s.Id" style="width:100%">
                                                         <option value="">All</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-md-2" style="text-align:left">
+                                                <!--<div class="col-md-2" style="text-align:left">
                                                     Job Status: <select ng-options="a.Name for a in jobStatus track by a.Id" ng-model="a" style="width:100%">
                                                         <option value="">All</option>
                                                     </select>
@@ -477,8 +474,8 @@
                                                 </div>
 
                                                 <div class="col-md-2" style="text-align:left">
-                                                    <!--<button class="btn btn-primary" type="button" ng-click="AddNewJob();">Create new job</button>-->
-                                                </div>
+                                                    <button class="btn btn-primary" type="button" ng-click="AddNewJob();">Create new job</button>
+                                                </div>-->
 
                                             </div>
 
@@ -491,8 +488,8 @@
                                             <div class="portlet box portlet-grey" style="margin-bottom:10px">
 
                                                 <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                    <div class="caption"><a href=""> Job Details</a></div>
-                                                    <div class="tools"><i class="fa fa-chevron-down"></i></div>
+                                                    <div class="caption"><a href=""> Transaction Details</a></div>
+                                                    <div class="tools"><i class="fa fa-chevron-up"></i></div>
                                                 </div>
 
                                                 <div id="collapse0" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
@@ -501,47 +498,44 @@
 
                                                         <div class="row mbm">
                                                             <div class="col-md-12">
+
                                                                 <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label for="Description" class="control-label" style="color:red;">Job Name:<span class='require'>*</span></label>
-                                                                        <div>
-                                                                            <input id="inputJobID" type="text" ng-model="currJob.Name" class="form-control" style="width:100%" /><span class="help-block"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <div class="form-group">
-                                                                        <label for="Description" class="control-label" style="color:red;">Job#:<span class='require'>*</span></label>
-                                                                        <div>
-                                                                            <input id="inputJobID" type="text" ng-model="currJob.JobID" class="form-control" /><span class="help-block"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label for="selCountry" class=" control-label" style="color:red;">Well#:<span class='require'>*</span></label>
+                                                                    <label for="selCountry" class=" control-label" style="color:red;">TransactionId<span class='require'>*</span></label>
                                                                     <div>
                                                                         <input id="inputDateRate" type="text" ng-model="currJob.WellNo" class="form-control" /><span class="help-block"></span>
                                                                     </div>
                                                                 </div>
 
                                                                 <div class="col-md-3">
-                                                                    <label for="selCountry" class=" control-label" style="color:red;">Job Status:<span class='require'>*</span></label>
-                                                                    <div>
-
-                                                                        <select ng-options="js.Name for js in jobStatus track by js.Id" ng-model="js" ng-value="js.Id" style="width:100%">
-                                                                            <option value="">Select</option>
-                                                                        </select>
+                                                                    <div class="form-group">
+                                                                        <label for="Description" class="control-label" style="color:red;">Transaction Number:<span class='require'>*</span></label>
+                                                                        <div>
+                                                                            <input id="inputJobID" type="text" ng-model="currJob.JobID" class="form-control" /><span class="help-block"></span>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
 
-
+                                                                <div class="col-md-3">
+                                                                    <div class="form-group">
+                                                                        <label for="Description" class="control-label" style="color:red;">Transaction Name:<span class='require'>*</span></label>
+                                                                        <div>
+                                                                            <input id="inputJobID" type="text" ng-model="currJob.Name" class="form-control" style="width:100%" /><span class="help-block"></span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">TransactionAmount:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <input id="inputCustomerPOC" type="text" ng-model="currJob.CustPOC" class="form-control" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                         <div class="row mbm">
                                                             <div class="col-md-12">
 
                                                                 <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label" style="color:red;">Customer: <span class='require'>*</span></label>
+                                                                    <label for="Description" class=" control-label" style="color:red;">ReferenceId <span class='require'>*</span></label>
                                                                     <div>
 
                                                                         <select ng-options="jc.Client for jc in Customers track by jc.Id" ng-model="jc" ng-value="jc.Id" style="width:100%">
@@ -551,95 +545,111 @@
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label" style="color:red;">Location:<span class='require'>*</span></label>
+                                                                    <label for="Description" class=" control-label" style="color:red;">Transaction Location:<span class='require'>*</span></label>
                                                                     <div>
                                                                         <select ng-options="jl.name for jl in Locations track by jl.id" ng-model="jl" ng-value="jl.LocationID" style="width:100%">
                                                                             <option value="">Select</option>
                                                                         </select>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label" style="color:red;">Customer POC:<span class='require'>*</span></label>
+                                                                    <label for="Description" class=" control-label" style="color:red;">TransactionType:<span class='require'>*</span></label>
                                                                     <div>
-                                                                        <input id="inputCustomerPOC" type="text" ng-model="currJob.CustPOC" class="form-control" /><span class="help-block"></span>
+                                                                        <select ng-options="tt.Name for tt in TransactionType track by tt.Id" ng-model="tt" ng-value="tt.Name" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label">Job Type:</label>
+                                                                    <label for="Description" class=" control-label" style="color:red;">ModeOfTransaction:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <select ng-options="jl.name for jl in Locations track by jl.id" ng-model="jl" ng-value="jl.LocationID" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <br />
+                                                        <div class="row mbm">
+                                                            <div class="col-md-12">
+                                                                <div class="col-md-3">
+                                                                    <label for="selCountry" class=" control-label" style="color:red;">Transaction Status:<span class='require'>*</span></label>
+                                                                    <div>
+
+                                                                        <select ng-options="js.Name for js in jobStatus track by js.Id" ng-model="js" ng-value="js.Id" style="width:100%">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label" style="color:red;">TransactionDate:<span class='require'>*</span></label>
+                                                                    <div>
+                                                                        <input id="inputActEndDt" placeholder="mm-dd-yyyy" type="date" ng-model="currJob.EstEndDt" class="form-control" /><span class="help-block"></span>
+                                                                        <!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.EstEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>-->
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-3">
+                                                                    <label for="Description" class=" control-label">Transaction :</label>
                                                                     <div>
                                                                         <input id="inputCustomerPOC" type="text" ng-model="currJob.JobType" class="form-control" /><span class="help-block"></span>
 
                                                                     </div>
                                                                 </div>
-
-
                                                             </div>
                                                         </div>
 
-                                                        <div class="row mbm">
-                                                            <div class="col-md-12">
-                                                                <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label" style="color:red;">Estimated End date:<span class='require'>*</span></label>
-                                                                    <div>
-                                                                        <!--<input id="inputActEndDt" placeholder="mm-dd-yyyy" type="date" ng-model="currJob.EstEndDt" class="form-control" /><span class="help-block"></span>-->
+                                                        <!--<div class="row mbm">
+                                                            <div class="col-md-12">-->
+                                                        <!--<div class="col-md-3">
+                                                        <label for="selCountry" class=" control-label">Actual End date:</label>
+                                                        <div>-->
+                                                        <!--<input id="inputActEndDt" type="date" ng-model="currJob.ActEndDt" class="form-control" /><span class="help-block"></span>-->
+                                                        <!--<!--<!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.ActualEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                                                            </div>
+                                                        </div>
 
-                                                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.EstEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label for="selCountry" class=" control-label">Actual End date:</label>
-                                                                    <div>
-                                                                        <!--<input id="inputActEndDt" type="date" ng-model="currJob.ActEndDt" class="form-control" /><span class="help-block"></span>-->
-
-                                                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.ActualEndDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-md-3">
-                                                                    <label for="Description" class=" control-label" style="color:red;">Estimated start date:<span class='require'>*</span></label>
-                                                                    <div>
-                                                                        <!--<input id="inputEstStartDt" placeholder="mm-dd-yyyy" type="date" ng-model="currJob.EstStartDt" class="form-control" /><span class="help-block"></span>-->
-
-                                                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.EstStartDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-3">
-                                                                    <label for="selCountry" class=" control-label">Actual start date:</label>
-
-                                                                    <div>
-                                                                        <!--<input id="inputActStartDt" type="date" ng-model="currJob.ActStartDt" class="form-control" /><span class="help-block"></span>-->
-
-                                                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.ActualStartDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-
-                                                                    </div>
-                                                                </div>
-
+                                                        <div class="col-md-3">
+                                                            <label for="Description" class=" control-label" style="color:red;">Estimated start date:<span class='require'>*</span></label>
+                                                            <div>
+                                                                <!--<input id="inputEstStartDt" placeholder="mm-dd-yyyy" type="date" ng-model="currJob.EstStartDt" class="form-control" /><span class="help-block"></span>-->
+                                                        <!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.EstStartDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
 
                                                             </div>
-
                                                         </div>
+                                                        <div class="col-md-3">
+                                                            <label for="selCountry" class=" control-label">Actual start date:</label>
+
+                                                            <div>-->
+                                                        <!--<input id="inputActStartDt" type="date" ng-model="currJob.ActStartDt" class="form-control" /><span class="help-block"></span>-->
+                                                        <!--<div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currJob.ActualStartDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                                                            </div>
+                                                        </div>-->
+                                                        <!--</div>-->
+                                                        <!--</div>-->
 
 
                                                         <div class="row mbm">
 
                                                             <div class="col-md-6">
-                                                                <label for="Description" class="control-label" style="color:red;">Project description:</label>
+                                                                <label for="Description" class="control-label" style="color:red;">Transaction description:</label>
                                                                 <div style="text-align:left;padding-left:0">
                                                                     <textarea id="inputProjDesc" rows="5" ng-model="currJob.ProjDesc" class="form-control"></textarea>
                                                                 </div>
                                                             </div>
-                                                            <div class="col-md-6">
+                                                            <!--<div class="col-md-6">
                                                                 <div class="row mbm">
                                                                     <div class="col-md-6">
-                                                                        <label for="Description" class=" control-label">Bid#:</label>
+                                                                        <label for="Description" class=" control-label">CardId</label>
                                                                         <div>
                                                                             <input id="inputBidID" type="text" ng-model="currJob.Bid" class="form-control" /><span class="help-block"></span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="col-md-6">
-                                                                        <label for="selCountry" class=" control-label">POC Phone#</label>
+                                                                        <label for="selCountry" class=" control-label">TransactionId</label>
                                                                         <div>
                                                                             <input id="inputPOCPh" type="text" ng-model="currJob.POCPh" class="form-control" /><span class="help-block"></span>
                                                                         </div>
@@ -660,9 +670,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
+                                                            </div>-->
                                                         </div>
-                                                        <div class="row mbm">
+                                                        <!--<div class="row mbm">
                                                             <div class="col-md-12">
                                                                 <div class="col-md-3">
                                                                     <label for="selCountry" class=" control-label">Trucking:</label>
@@ -685,7 +695,7 @@
 
                                                                 </div>
                                                             </div>
-                                                        </div>
+                                                        </div>-->
 
 
                                                         <div class="form-actions">
@@ -704,7 +714,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="row">
+                                    <!--<div class="row">
                                         <div id="accordion-example" class="panel-group col-md-11" style="padding-right:20px;width:100%">
 
                                             <div class="col-lg-6" style="padding-left: 5px; padding-right: 5px">
@@ -712,262 +722,252 @@
 
                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                         <div class="caption"><a href="">Job Equipment</a></div>
-                                                        <div class="tools"><span class="badge badge-green">{{resources.length}}</span><i class="fa fa-chevron-down"></i></div>
+                                                        <div class="tools"><span class="badge badge-green">{{resources.length}}</span><i class="fa fa-chevron-up"></i></div>
                                                     </div>
 
 
                                                     <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
                                                         <div class="panel-body">
                                                             <!-- <div class="alert alert-danger">No records to display.</div>-->
-                                                            <div>
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Equipment</th>
-                                                                            <th>Equipment Type</th>
-                                                                            <th>From Date</th>
-                                                                            <th>To Date</th>
-                                                                            <th>Updated By</th>
-                                                                            <th>Edit</th>
-                                                                            <th>Delete</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr ng-repeat="T in resources|filter:{insupddelflag :'!D'}" class="gradeA">
-                                                                            <td><a href="AssetDetails.html?assetId={{T.AssetId}}"> <font color="blue"> <u> {{T.Name}}</u></font></a></td>
-                                                                            <td>{{T.AssetModel}}</td>
-                                                                            <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{uname}}</td>
-                                                                            <td>
-                                                                                <button type="button" data-target="#Modal-header-new-jeu" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditJobEquipment(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
-                                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                    <!--<div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Equipment</th>
+                                                                <th>Equipment Type</th>
+                                                                <th>From Date</th>
+                                                                <th>To Date</th>
+                                                                <th>Updated By</th>
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="T in resources|filter:{insupddelflag :'!D'}" class="gradeA">
+                                                                <td><a href="AssetDetails.html?assetId={{T.AssetId}}"> <font color="blue"> <u> {{T.Name}}</u></font></a></td>
+                                                                <td>{{T.AssetModel}}</td>
+                                                                <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{uname}}</td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-new-jeu" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditJobEquipment(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
 
-                                                                                </button>
-                                                                            </td>
-                                                                            <td>
-                                                                                <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="Addresources(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-je" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;" ng-click="GetAssetsModels();">Add Equipment</button></div>
-                                                        </div>
-                                                    </div>
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="Addresources(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-
-                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
-
-                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                        <div class="caption"><a href=""> Job Personnel</a></div>
-                                                        <div class="tools"><span class="badge badge-green">{{jobusers.length}}</span><i class="fa fa-chevron-down"></i></div>
-                                                    </div>
-
-
-                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                        <div class="panel-body">
-
-                                                            <!--<div class="alert alert-danger" >No records to display.</div>-->
-                                                            <div>
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Person</th>
-                                                                            <th>From Date</th>
-                                                                            <th>To Date</th>
-                                                                            <th>Updated By</th>
-                                                                            <th>Edit</th>
-                                                                            <th>Delete</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr ng-repeat="T in jobusers|filter:{insupddelflag :'!D'}" class="gradeA">
-                                                                            <td>{{T.Name}}</td>
-                                                                            <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{uname}}</td>
-                                                                            <td>
-                                                                                <button type="button" data-target="#Modal-header-new-pu" data-toggle="modal" class="btn btn-default btn-xs" ng-click="Editresources(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
-                                                                                    <i class="fa fa-edit"></i>&nbsp;
-
-                                                                                </button>
-                                                                            </td>
-                                                                            <td>
-                                                                                <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="AddUser(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-p" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;" ng-click="GetUsersForJob();">Add personnel</button></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="portlet box portlet-grey" style="margin-bottom:10px">
-
-                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                        <div class="caption"><a href="">Third-party Resources</a></div>
-                                                        <div class="tools"><span class="badge badge-green">{{tresources.length}}</span><i class="fa fa-chevron-down"></i></div>
-                                                    </div>
-
-
-                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                        <div class="panel-body">
-                                                            <!-- <div class="alert alert-danger">No records to display.</div>-->
-                                                            <div>
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Resource</th>
-                                                                            <th>Vendor</th>
-                                                                            <th>From Date</th>
-                                                                            <th>To Date</th>
-                                                                            <th>Updated By</th>
-                                                                            <th>Edit</th>
-                                                                            <th>Delete</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr ng-repeat="T in tresources|filter:{insupddelflag :'!D'}" class="gradeA">
-                                                                            <td>{{T.Name}}</td>
-                                                                            <td>{{T.VName}}</td>
-                                                                            <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <td>{{uname}}</td>
-                                                                            <td>
-                                                                                <button type="button" data-target="#Modal-header-new-tpru" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditTPresources(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
-                                                                                    <i class="fa fa-edit"></i>&nbsp;
-
-                                                                                </button>
-                                                                            </td>
-                                                                            <td>
-                                                                                <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="AddTresources(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-                                                            <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-tpr" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;">Add third-party Resources</button></div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="portlet box portlet-grey" style="margin-bottom:10px">
-
-                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                        <div class="caption"><a href="">Job Documents</a></div>
-                                                        <div class="tools"><span class="badge badge-green">{{jobdocs.length}}</span><i class="fa fa-chevron-down"></i></div>
-                                                    </div>
-
-
-                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                        <div class="panel-body">
-                                                            <!-- <div class="alert alert-danger">No records to display.</div>-->
-                                                            <div>
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th>Document Name</th>
-                                                                            <th>Document Type</th>
-                                                                            <th>Expiry Date</th>
-                                                                            <!--<th>To Date</th>-->
-                                                                            <th>Updated By</th>
-                                                                            <th>Edit</th>
-                                                                            <th>Delete</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
-                                                                        <tr ng-repeat="T in jobdocs" class="gradeA">
-                                                                            <td><a href="#" ng-click="GetFileContent(T)"><font color="blue">{{T.DocName}}</font></a></td>
-                                                                            <td>{{T.DocType}}</td>
-                                                                            <td>{{T.ExpiryDate | date:'MM-dd-yyyy'}}</td>
-                                                                            <!--<td>{{T.DueDate | date:'MM-dd-yyyy'}}</td>-->
-                                                                            <td>{{T.UpdatedBy}}</td>
-                                                                            <td>
-                                                                                <button type="button" data-target="#Modal-header-du" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditJobDoc(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
-                                                                                    <i class="fa fa-edit"></i>&nbsp;
-
-                                                                                </button>
-                                                                            </td>
-                                                                            <td>
-                                                                                <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="DeleteDoc(T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                                                                            </td>
-                                                                        </tr>
-                                                                    </tbody>
-                                                                </table>
-
-                                                            </div>
-                                                            <div>
-
-                                                                <button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-d" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;">Upload project documents</button>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                                <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-je" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;" ng-click="GetAssetsModels();">Add Equipment</button></div>
                                             </div>
+                                        </div>
+                                    </div>-->
+                                    <!--<div class="portlet box portlet-grey" style="margin-bottom: 10px;">
 
-                                            <div class="col-lg-6" style="padding-left: 5px; padding-right: 5px">
-
-
-                                                <div class="portlet box portlet-grey">
-
-                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                        <div class="caption"><a href="">Job History</a></div>
-                                                        <div class="tools"><i class="fa fa-chevron-down"></i></div>
-                                                    </div>
+                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                            <div class="caption"><a href=""> Job Personnel</a></div>
+                                            <div class="tools"><span class="badge badge-green">{{jobusers.length}}</span><i class="fa fa-chevron-up"></i></div>
+                                        </div>
 
 
-                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                        <div class="panel-body">
-                                                            <!-- <div class="alert alert-danger">No records to display.</div>-->
-                                                            <div>
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
+                                        <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                            <div class="panel-body">
 
-                                                                            <!--<th>ChangedType</th>-->
-                                                                            <th>Change details</th>
-                                                                            <th>Component</th>
-                                                                            <th>Value</th>
-                                                                            <th>Changed On</th>
-                                                                            <th>Changed By</th>
-                                                                            <th>details</th>
-                                                                        </tr>
-                                                                    </thead>
-                                                                    <tbody>
+                                                <div class="alert alert-danger" >No records to display.</div>
+                                                <div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Person</th>
+                                                                <th>From Date</th>
+                                                                <th>To Date</th>
+                                                                <th>Updated By</th>
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="T in jobusers|filter:{insupddelflag :'!D'}" class="gradeA">
+                                                                <td>{{T.Name}}</td>
+                                                                <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{uname}}</td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-new-pu" data-toggle="modal" class="btn btn-default btn-xs" ng-click="Editresources(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
 
-
-                                                                        <tr ng-repeat="hist in assetHistory">
-
-                                                                            <!--<td>{{hist.ChangedType}}</td>-->
-                                                                            <td>{{hist.Comment}}</td>
-                                                                            <td>{{hist.category}}</td>
-                                                                            <td>{{hist.FieldValue}}</td>
-                                                                            <td>{{hist.Date | date:'MM-dd-yyyy hh:mm:ss'}}</td>
-                                                                            <td>{{hist.ChangedBy}}</td>
-                                                                            <td>
-                                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="GetDetailsEditHistory(hist)">
-                                                                                    Details
-                                                                                </button>
-                                                                            </td>
-                                                                        </tr>
-
-                                                                    </tbody>
-                                                                </table>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="AddUser(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
                                                 </div>
-
+                                                <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-p" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;" ng-click="GetUsersForJob();">Add personnel</button></div>
                                             </div>
+                                        </div>
+                                    </div>-->
+                                    <!--<div class="portlet box portlet-grey" style="margin-bottom:10px">
+
+                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                            <div class="caption"><a href="">Third-party Resources</a></div>
+                                            <div class="tools"><span class="badge badge-green">{{tresources.length}}</span><i class="fa fa-chevron-up"></i></div>
+                                        </div>
 
 
+                                        <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                            <div class="panel-body">
+                                                 <div class="alert alert-danger">No records to display.</div>
+                                                <div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Resource</th>
+                                                                <th>Vendor</th>
+                                                                <th>From Date</th>
+                                                                <th>To Date</th>
+                                                                <th>Updated By</th>
+                                                                <th>Edit</th>
+                                                                <th>Delete</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <tr ng-repeat="T in tresources|filter:{insupddelflag :'!D'}" class="gradeA">
+                                                                <td>{{T.Name}}</td>
+                                                                <td>{{T.VName}}</td>
+                                                                <td>{{T.FromDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{T.ToDate | date:'MM-dd-yyyy'}}</td>
+                                                                <td>{{uname}}</td>
+                                                                <td>
+                                                                    <button type="button" data-target="#Modal-header-new-tpru" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditTPresources(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="AddTresources(0,T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button></a>
+                                                                </td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div><button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-tpr" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;">Add third-party Resources</button></div>
+                                            </div>
+                                        </div>
+                                    </div>-->
+                                    <!--<div class="portlet box portlet-grey" style="margin-bottom:10px">
+
+                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                            <div class="caption"><a href="">Job Documents</a></div>
+                                            <div class="tools"><span class="badge badge-green">{{jobdocs.length}}</span><i class="fa fa-chevron-up"></i></div>
+                                        </div>
+
+
+                                        <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                            <div class="panel-body">
+                                                <!-- <div class="alert alert-danger">No records to display.</div>-->
+                                    <!--<!--<div>
+                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                            <thead>
+                                                <tr>
+                                                    <th>Document Name</th>
+                                                    <th>Document Type</th>
+                                                    <th>Expiry Date</th>
+                                                    <!--<th>To Date</th>-->
+                                    <!--<th>Updated By</th>
+                                                    <th>Edit</th>
+                                                    <th>Delete</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr ng-repeat="T in jobdocs" class="gradeA">
+                                                    <td><a href="#" ng-click="GetFileContent(T)"><font color="blue">{{T.DocName}}</font></a></td>
+                                                    <td>{{T.DocType}}</td>
+                                                    <td>{{T.ExpiryDate | date:'MM-dd-yyyy'}}</td>
+                                                    <td>{{T.DueDate | date:'MM-dd-yyyy'}}</td>
+                                                    <td>{{T.UpdatedBy}}</td>
+                                                    <td>
+                                                        <button type="button" data-target="#Modal-header-du" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditJobDoc(T)" ng-disabled="isSuperUser == 0 && CanEdit == 0">
+                                                            <i class="fa fa-edit"></i>&nbsp;
+
+                                                        </button>
+                                                    </td>
+                                                    <td>
+                                                        <button ng-disabled="isSuperUser == 0 && CanEdit == 0" ng-click="DeleteDoc(T)" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+                                    <div>
+
+                                        <button ng-disabled="isSuperUser == 0 && CanEdit == 0" type="button" data-target="#Modal-header-new-d" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; margin: 10px;">Upload project documents</button>
+                                    </div>-->
+                                    <!--</div>
+                                            </div>
                                         </div>
                                     </div>
+
+                                    <div class="col-lg-6" style="padding-left: 5px; padding-right: 5px">
+
+
+                                        <div class="portlet box portlet-grey">
+
+                                            <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                <div class="caption"><a href="">Job History</a></div>
+                                                <div class="tools"><i class="fa fa-chevron-down"></i></div>
+                                            </div>
+
+
+                                            <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                <div class="panel-body">
+                                                     <div class="alert alert-danger">No records to display.</div>
+                                                    <div>
+                                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                            <thead>
+                                                                <tr>-->
+                                    <!--<th>ChangedType</th>-->
+                                    <!--<th>Change details</th>
+                                            <th>Component</th>
+                                            <th>Value</th>
+                                            <th>Changed On</th>
+                                            <th>Changed By</th>
+                                            <th>details</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+
+                                        <tr ng-repeat="hist in assetHistory">
+
+                                            <td>{{hist.ChangedType}}</td>
+                                            <td>{{hist.Comment}}</td>
+                                            <td>{{hist.category}}</td>
+                                            <td>{{hist.FieldValue}}</td>
+                                            <td>{{hist.Date | date:'MM-dd-yyyy hh:mm:ss'}}</td>
+                                            <td>{{hist.ChangedBy}}</td>
+                                            <td>
+                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="GetDetailsEditHistory(hist)">
+                                                    Details
+                                                </button>
+                                            </td>
+                                        </tr>-->
+                                    <!--</tbody>
+                                        </table>
+                                    </div>-->
+                                    <!--</div>
+                                        </div>
+                                    </div>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
+                                    <!--</div>-->
 
 
                                 </div>
@@ -975,7 +975,585 @@
                         </div>
                     </div>
                 </div>
+                <!--END CONTENT-->
+                <!--END CONTENT--><!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © PTS Equipment Management Portal</div>
+                </div>
+                <!--END FOOTER-->
+            </div>
+        </div>
+    </div>
+    <!--END PAGE WRAPPER-->
 
+    <div id="Modal-header-new-d" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add New files</h4>
+                </div>
+                <div class="modal-body" ng-model="jobDoc">
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-options="a.Name for a in docTypes track by a.Id" ng-model="jobDoc.docType" style="width:100%" ng-change="updateDocType()">
+                                <option value="">Select document type</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="jobDoc.ExpiryDate" ng-change="updateDocExpDate()" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+
+                    <!--<div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label">Due Date:<span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="jobDoc.DueDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>-->
+
+
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="jobDoc.doc" ng-click="validateFile($event)" />
+                        </div>
+                    </div>
+
+                    <div class="row mbm" style="text-align:center">
+                        <font color="red">Note: Only .pdf,.jpg,.png,.gif,.csv file types are supported</font>
+                    </div>
+                    <div class="form-actions">
+                        <div style="text-align:center">
+                            <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveJobDoc()">Upload</button>
+                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelNewDoc()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="Modal-header-new-p" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add Personnel</h4>
+                </div>
+                <div class="modal-body" ng-model="JobUsers">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">User:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select ng-options="ju.Name for ju in Users|filter:{Active:1} track by ju.Id" ng-model="ju" style="width:100%">
+                                <option value="">Select User</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobUsers.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="JobUsers.fromDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobUsers.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="JobUsers.toDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="AddUser(1);">Add</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelJobUser()">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="Modal-header-new-je" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add Job Equipment/Resource</h4>
+                </div>
+                <div class="modal-body" ng-model="JobResources">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Equipment Type:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select ng-options="s.name for s in Models track by s.id" ng-model="amid" style="width:100%" ng-change="GetAssets();">
+                                <option value="">Select Equipment Type</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Equipment:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <select ng-options="jr.Name for jr in Assets|filter:{Active:1} track by jr.ID" ng-model="jr" style="width:100%">
+                                <option value="">Select Equipment</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobResources.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="JobResources.fromDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobResources.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="JobResources.toDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="Addresources(1);">Add</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div id="Modal-header-new-tpr" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add Third Party Resource</h4>
+                </div>
+                <div class="modal-body" ng-model="tpRes">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Resource Name:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="tpRes.Name" style="width:100%" />
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Vendor Name:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="tpRes.VName" style="width:100%" />
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="tpRes.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="tpRes.fromDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="tpRes.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="tpRes.toDt" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="AddTresources(1);">Add</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Modal-header-du" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Update selected file</h4>
+                </div>
+                <div class="modal-body" ng-model="assetDoc">
+                    <!--<div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label" style="color:red;">File Name:<span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="inputFirstName" type="text" ng-model="assetDoc.Name" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>-->
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <select ng-options="a.Name for a in docTypes track by a.Id" ng-model="assetDoc.dt" style="width:100%">
+                                <option value="">Select</option>
+                            </select>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div style="text-align:right">
+
+                            <div style="text-align:right">
+                                <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="assetDoc.ExpiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--<div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label">Due Date:<span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="inputFirstName" type="date" ng-model="assetDoc.dueDate" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>-->
+
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Description" class="col-md-4 control-label">File Name:<span class='require'></span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="inputFirstName" type="text" ng-model="assetDoc.DocName" class="form-control" disabled /><span class="help-block"></span>
+                            <!--<input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,'U')" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="assetDoc.doc" ng-click="validateFile($event)" />-->
+                        </div>
+                    </div>
+
+
+
+                    <div class="form-actions">
+                        <div style="text-align:center">
+                            <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="updateDoc();">Upload</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="Modal-header-new-pu" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Update added Personnel</h4>
+                </div>
+                <div class="modal-body" ng-model="currUser">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">User:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<select ng-options="ju.Name for ju in Users track by ju.Id" ng-model="currUser.Name" ng-value="currUser.UserId" style="width:70%" disabled>
+                                <option value="">{{currUser.Name}}</option>
+                            </select>-->
+                            <input type="text" ng-model="currUser.Name" disabled style="width:100%" />
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobUsers.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currUser.FromDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobUsers.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currUser.ToDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="AddUser(2,currUser);">Update</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="Modal-header-new-jeu" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">update Job Equipment/Resource</h4>
+                </div>
+                <div class="modal-body" ng-model="CurrJobResources">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Equipment Type:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<select ng-options="s.name for s in Models track by s.id" ng-model="amid" style="width:70%">
+                                <option value="">Select Equipment Type</option>
+                            </select>-->
+                            <input type="text" ng-model="CurrJobResources.AssetModel" disabled />
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Equipment:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="CurrJobResources.Name" disabled />
+                            <!--<select ng-options="jr.Name for jr in Assets track by jr.ID" ng-model="jr" style="width:70%">
+                                <option value="">Select Equipment</option>
+                            </select>-->
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobResources.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="CurrJobResources.FromDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="JobResources.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="CurrJobResources.ToDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="Addresources(2, CurrJobResources);">Update</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <div id="Modal-header-new-tpru" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Update added Third Party Resource</h4>
+                </div>
+                <div class="modal-body" ng-model="currtpRes">
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Resource Name:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="currtpRes.Name" style="width:100%" />
+                        </div>
+                    </div>
+
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">Vendor Name:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input type="text" ng-model="currtpRes.VName" style="width:100%" />
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">From:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="tpRes.fromDt" style="width:70%" /><span class="help-block"></span>-->
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currtpRes.FromDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="col-md-4" style="text-align:right">
+                            <label for="Description" class="control-label">To:</label>
+                        </div>
+                        <div class="col-md-8">
+                            <!--<input id="inputActEndDt" type="date" ng-model="tpRes.toDt" style="width:70%" /><span class="help-block"></span>-->
+
+
+                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="currtpRes.ToDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                        </div>
+                    </div>
+                    <div class="row mbm">
+                        <div class="form-actions">
+                            <div style="text-align:center">
+                                <button class="btn btn-primary" type="button" data-dismiss="modal" ng-click="AddTresources(2,currtpRes);">Update</button>
+                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Edit History Details </h4>
+                </div>
+
+                <div class="modal-body" ng-model="details">
+
+
+                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+
+                        <thead>
+                            <tr>
+                                <th>Field name</th>
+                                <th>From Value</th>
+                                <th>To Value</th>
+                                <th>Change Type</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr ng-repeat="d in detailedhist" class="gradeA">
+                                <td>{{d.Field1}}</td>
+                                <td>{{d.FromValue}}</td>
+                                <td>{{d.ToValue}}</td>
+                                <td>{{d.ChangeType}}</td>
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static" style="z-index:1055">
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
     <!--END CONTENT-->
     </div>
     <!--END PAGE WRAPPER-->
@@ -1095,12 +1673,11 @@
 
     </script>
 
-
-
     <script src="js/jquery-1.10.2.min.js"></script>
+
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
-    <!--loading bootstrap js-->
+    loading bootstrap js
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
 
@@ -1110,35 +1687,31 @@
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
     <script src="vendors/iCheck/icheck.min.js"></script>
     <script src="vendors/iCheck/custom.min.js"></script>
-    <!--<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>-->
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
     <script src="js/jquery.menu.js"></script>
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-    <!--LOADING SCRIPTS FOR PAGE-->
-    <!--CORE JAVASCRIPT-->
+    LOADING SCRIPTS FOR PAGE
+    <script src="js/CardTransaction.js"></script>
+
+    CORE JAVASCRIPT
     <script src="js/main.js"></script>
-
     <script src="js/angular.js"></script>
-
-
-    <script src="js/libs/angular-route.js"></script>
     <script src="js/libs/angular-ui-router.js"></script>
+    <script src="js/libs/angular-route.js"></script>
     <script src="js/libs/ocLazyLoad.js"></script>
     <script src="js/libs/ui-bootstrap.js"></script>
-    <script src="js/ngStorage.js"></script>
-    <script src="js/charts-highchart-line.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/source.js"></script>
-
-
+    <script src="js/ngStorage.js"></script>
+    <script src="js/charts-highchart-line.js"></script>
+    <script src="js/CardTransaction1.js"></script>
     <script src="vendors/jquery-highcharts/highcharts.js"></script>
     <script src="vendors/jquery-highcharts/exporting.js"></script>
     <script src="js/charts-highchart-line.js"></script>
-    <!--CORE JAVASCRIPT-->
-    <script src="js/main.js"></script>
-
-
+    <script src="js/CardTransaction.js"></script>
 </body>
+
 
 </html>

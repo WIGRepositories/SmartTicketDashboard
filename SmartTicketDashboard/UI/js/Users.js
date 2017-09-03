@@ -139,10 +139,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.userRoles = [];
 
     /* user details functions */
+    $scope.GetCountry = function () {        
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;
+            if ($scope.Countries.length > 0) {
+                $scope.ctry = $scope.Countries[0];
+                $scope.GetCountry($scope.ctry);
+            }
+    });
+}
     $scope.GetCompanies = function () {    
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+           
         //    if ($scope.userCmpId != 1) {
         //        //loop throug the companies and identify the correct one
         //        for (i = 0; i < response.data.length; i++) {
@@ -178,6 +187,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/Roles/GetCompanyRoles?companyId=' + $scope.cmp.Id).then(function (res, data) {
             $scope.cmproles = res.data;
+           
         });
     }
 
@@ -202,10 +212,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (User.EmpNo == null) {
-            alert('Please enter employee no.');
-            return;
-        }       
+        //if ($scope.EmpNo == null) {
+        //    alert('Please enter employee no.');
+        //    return;
+        //}       
 
         if ($scope.cmp == null)
         {
@@ -220,10 +230,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             MiddleName: User.MiddleName,
             EmpNo: (flag == 'U') ? User.EmpNo : $scope.EmpNo,
             Email: User.EmailId,
+            Country: (flag == 'U') ? User.Country : $scope.Country,
             ContactNo1: User.ContactNo1,
             ContactNo2: User.ContactNo2,
-            mgrId: User.ManagerId,//($scope.mgr == null) ? null : $scope.mgr.Id,
-            CountryId: User.Country,
+            mgrId: User.ManagerId,//($scope.mgr == null) ? null : $scope.mgr.Id,  
+            
             StateId:User.State,
             GenderId:User.Gender,
             Address:User.Address,
@@ -253,7 +264,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -261,7 +272,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
@@ -307,11 +318,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        $http.get('/api/Users/GetUserRoles?cmpId=' + $scope.cmp.Id).then(function (res, data) {
+        $http.get('/api/Users/GetUserRoles?cmpId=1').then(function (res, data) {
             $scope.userRoles = res.data;
             $scope.checkedArr = res.data;
            // $scope.uncheckedArr = $filter('filter')($scope.userRoles, { assigned: "0" });
-
+           
         });
     }
 
@@ -344,14 +355,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         var cmpId = (seltype) ? seltype.Id : -1;
 
-        $http.get('/api/Roles/GetCompanyRoles?companyId=' + cmpId).then(function (res, data) {
-            $scope.cmproles = res.data;
-        });
+        
 
         $http.get('/api/Users/GetUsers?cmpId=' + cmpId).then(function (res, data) {
             $scope.MgrUsers = res.data;
         });
-        //get users for the company or all users based on company
+            $http.get('/api/Roles/GetCompanyRoles?companyId=' + cmpId).then(function (res, data) {
+                $scope.cmproles = res.data;
+           
+        });
+        //get users for the company or all users based on companygetUsersnRoles
     }
 
     $scope.getUsersnRoles = function () {
@@ -402,7 +415,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
                     $scope.s = null;
                     $scope.ur = null;
@@ -412,7 +425,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            $scope.alert(errmssg);
         });
         
        

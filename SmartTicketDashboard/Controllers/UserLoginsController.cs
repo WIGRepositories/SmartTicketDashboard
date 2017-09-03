@@ -113,7 +113,6 @@ namespace SmartTicketDashboard.Controllers
 
 
 
-
         [HttpPost]
         [Route("api/UserLogins/ResetPassword")]
         public HttpResponseMessage savepassword(reset b)
@@ -135,19 +134,11 @@ namespace SmartTicketDashboard.Controllers
             cmd.Connection = conn;
             conn.Open();
 
-
             SqlParameter Gid = new SqlParameter();
-            Gid.ParameterName = "@UserName";
+            Gid.ParameterName = "@Username";
             Gid.SqlDbType = SqlDbType.VarChar;
             Gid.Value = b.UserName;
-            cmd.Parameters.Add(Gid);
-
-
-            SqlParameter pid = new SqlParameter();
-            pid.ParameterName = "@OldPassword";
-            pid.SqlDbType = SqlDbType.VarChar;
-            pid.Value = b.OldPassword;
-            cmd.Parameters.Add(pid);
+            cmd.Parameters.Add(Gid);                           
 
             SqlParameter uid = new SqlParameter();
             uid.ParameterName = "@NewPassword";
@@ -155,13 +146,7 @@ namespace SmartTicketDashboard.Controllers
             uid.Value = b.NewPassword;
             cmd.Parameters.Add(uid);
 
-
-            SqlParameter gid = new SqlParameter();
-            gid.ParameterName = "@ReenterNewPassword";
-            gid.SqlDbType = SqlDbType.VarChar;
-            gid.Value = b.ReenterNewPassword;
-            cmd.Parameters.Add(gid);
-
+            
             SqlParameter oid = new SqlParameter();
 
             //DataSet ds = new DataSet();

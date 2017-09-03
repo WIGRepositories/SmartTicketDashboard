@@ -1,14 +1,189 @@
-﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
+
+app.directive('file-input', function ($parse) {
+    return {
+        restrict: "EA",
+        template: "<input type='file' />",
+        replace: true,
+        link: function (scope, element, attrs) {
+
+            var modelGet = $parse(attrs.fileInput);
+            var modelSet = modelGet.assign;
+            var onChange = $parse(attrs.onChange);
+
+            var updateModel = function () {
+                scope.$apply(function () {
+                    modelSet(scope, element[0].files[0]);
+                    onChange(scope);
+                });
+            };
+
+            element.bind('change', updateModel);
+        }
+    };
+});
+
+app.directive("ngFileSelect", function () {
+
+    return {
+
+        link: function ($scope, el) {
+
+            el.on('click', function () {
+
+                this.value = '';
+
+            });
+
+            el.bind("change", function (e) {
+
+                $scope.file = (e.srcElement || e.target).files[0];
+
+
+
+                var allowed = ["jpeg", "png", "gif", "jpg"];
+
+                var found = false;
+
+                var img;
+
+                img = new Image();
+
+                allowed.forEach(function (extension) {
+
+                    if ($scope.file.type.match('image/' + extension)) {
+
+                        found = true;
+
+                    }
+
+                });
+
+                if (!found) {
+
+                    alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                    return;
+
+                }
+
+                img.onload = function () {
+
+                    var dimension = $scope.selectedImageOption.split(" ");
+
+                    if (dimension[0] == this.width && dimension[2] == this.height) {
+
+                        allowed.forEach(function (extension) {
+
+                            if ($scope.file.type.match('image/' + extension)) {
+
+                                found = true;
+
+                            }
+
+                        });
+
+                        if (found) {
+
+                            if ($scope.file.size <= 1048576) {
+
+                                $scope.getFile();
+
+                            } else {
+
+                                alert('file size should not be grater then 1 mb.');
+
+                            }
+
+                        } else {
+
+                            alert('file type should be .jpeg, .png, .jpg, .gif');
+
+                        }
+
+                    } else {
+
+                        alert('selected image dimension is not equal to size drop down.');
+
+                    }
+
+                };
+
+                //  img.src = _URL.createObjectURL($scope.file);
+
+
+
+            });
+
+        }
+
+    };
+
+});
+
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, $upload, $timeout, fileReader, $filter) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
+
+  
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+
+    $scope.GetVehcileDetails = function () {
+
+        $scope.VehiclesList = null;
+
+        $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
+
+        $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
+            $scope.VehiclesList = res.data;
+
+            if ($scope.VehiclesList.length > 0) {
+                if ($scope.selectedVehicleList != null) {
+                    for (i = 0; i < $scope.VehiclesList.length; i++) {
+                        if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
+                            $scope.v = $scope.VehiclesList[i];
+                            break;
+                        }
+                    }
+                }
+                else {
+                    $scope.s = $scope.VehiclesList[0];
+                    $scope.selectedVehicleList = $scope.VehiclesList[0].id;
+                }
+
+                $scope.getselectval($scope.selectedVehicleList);
+            }
+        });
+    }
+    $scope.getselectval = function (v) {
+
+        $http.get('/api/VehcileMaster/GetVehcileMaster?VID=' + $scope.selectedVehicle).then(function (res, data) {
+            $scope.VehiclesList = res.data;
+        });
+
+    }
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
@@ -148,7 +323,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VechMobileNo: newVehicle.VechMobileNo,
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
-           
+            photo: $scope.imageSrc,
 
             Active: (newVehicle.Active == true) ? 1 : 0,
 
@@ -170,7 +345,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
@@ -311,7 +486,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
        
@@ -369,6 +544,58 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
+       
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+
+    $scope.onFileSelect = function () {
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        
+    }
+   
+    $scope.clearImg = function () {
+        $scope.imageSrc = null;       
+        document.getElementById('cmpLogo').src = "";
+        document.getElementById('cmpNewLogo').src = "";
+       
+    }
+
+    $scope.setUsers = function (usr) {
+        $scope.User1 = usr;
+        $scope.imageSrc = null;
+        document.getElementById('cmpNewLogo').src = "";
+        $scope.imageSrc = usr.photo;
+        document.getElementById('uactive').checked = (usr.Active == 1);
+
+    }
+    $scope.GetUsersinitData = function () {
+
+        $scope.imageSrc = null;
+        document.getElementById('cmpLogo').src = "";
+
+        var date = new Date();
+        var components = [
+            date.getHours(),
+            date.getMinutes(),
+            date.getSeconds()
+        ];
+
+        var id = components.join("");
+        $scope.EmpNo = 'EMP' + id;
+
+        //get companies list   
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+            $scope.Companies = response.data;
+        });
+    }
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 

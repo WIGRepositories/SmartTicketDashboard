@@ -16,7 +16,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
 
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
             $scope.Companies = res.data;
-
+            if ($scope.Companies.length > 0) {
+                $scope.cmp = $scope.Companies[0];
+                $scope.GetCompanies($scope.cmp);
+            }
             if ($scope.userCmpId != 1) {
                 //loop throug the companies and identify the correct one
                 for (i = 0; i < res.data.length; i++) {
@@ -31,18 +34,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
                 document.getElementById('test').disabled = false;
             }
            
+           
         });
     }
     
    
 
-    $scope.GetFleetOwners = function () {
+    $scope.GetFleetOwners = function () {      
+
        
+
         if ($scope.cmp == null || $scope.cmp.Id == null)
         {
             $scope.FleetOwner = null;
             return;
         }
+       
 
         var vc = {
             needfleetowners: '1',
@@ -75,6 +82,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
           //  $scope.getFleetOwnerRoute($scope.s);
 
         });
+       
        // if ($scope.Fleetownerid != 1) { $scope.cmpId = $scope.UserCmpid; }
     }
     

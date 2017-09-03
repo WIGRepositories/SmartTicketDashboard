@@ -39,6 +39,30 @@ namespace SmartTicketDashboard.Controllers
 
         }
 
+        [HttpGet]
+
+        [Route("api/DriverMaster/Getdriverdetails")]
+        public DataTable Getdriverdetails(int DId)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVgetdriverdetails";
+            cmd.Parameters.Add("@DId", SqlDbType.Int).Value = DId;
+            cmd.Connection = conn;
+            
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);           
+
+            return dt;
+
+        }
+
         [HttpPost]
         [Route("api/DriverMaster/Driver")]
 
@@ -134,17 +158,10 @@ namespace SmartTicketDashboard.Controllers
             w.Value = d.Remarks;
             cmd.Parameters.Add(w);
 
-            SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar, 500);
-            parentid.Value = d.FileContent;
-            cmd.Parameters.Add(parentid);
 
-            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar, 250);
+            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar);
             FileName.Value = d.FileName;
             cmd.Parameters.Add(FileName);
-
-            SqlParameter Gid1 = new SqlParameter("@DocTypeId", SqlDbType.Int);
-            Gid1.Value = d.DocTypeId;
-            cmd.Parameters.Add(Gid1);
 
 
 
