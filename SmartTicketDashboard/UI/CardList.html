@@ -468,12 +468,14 @@
                                                                  ng-max="'2016-01-20'" class="form-control" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                       </div>
                                                 </div>-->
-
+                                                {{errmssg}}
                                                 <div class="col-md-6">
                                                     CardCategory:<select ng-options="s.Name for s in CategoriesLists track by s.id" ng-model="s" ng-change="GetCategoriesLists(s)" id="test1">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>
+                                                
+
                                                 <div class="col-md-6">
                                                     <br />
                                                     <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" ng-click="GetAllCardOptions()"> Add New Card Data</button><br /><br />
@@ -575,6 +577,7 @@
                                                         <div class="col-md-6">
                                                             <div class="form-group">
                                                                 <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="list.CardNumber" /></div>
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>
@@ -623,12 +626,17 @@
                                                     <div class="form-actions">
                                                         <div class="col-md-offset-3 col-md-9">
                                                             <button class="btn btn-green" type="button" data-dismiss="modal" ng-click="saveNew(list,'I');">Save</button>
+
                                                             <a href="CardsList.html" data-dismiss="modal" class="btn btn-primary">Cancel</a>
+                                                            
                                                         </div>
+                                                        
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        
+
                                     </div>
                                 </div>
 
@@ -877,6 +885,7 @@
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
     <script src="js/CardsList.js"></script>
+
 </body>
 
 </html>
