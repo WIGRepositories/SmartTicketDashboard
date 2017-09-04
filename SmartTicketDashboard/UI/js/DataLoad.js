@@ -67,6 +67,11 @@ $scope.VehiclesCol = 'VechMobileNo,OwnerName,Type';
 $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                     { "Id": 2, "VechMobileNo": "OwnerName" }]
 
+$scope.CardsCol = 'CardNumber,CardCategory';
+$scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
+                    { "Id": 2, "CardNumber": "CardCategory" }]
+
+
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -76,12 +81,12 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.GetDataLoad = function () {
+    //$scope.GetDataLoad = function () {
 
-        //$http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
-        //    $scope.list = response.data;
-        //});
-    }
+    //    $http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
+    //        $scope.list = response.data;
+    //    });
+    //}
     $scope.csv_link = 'DataUploadTemplates/CompanyList.csv';// + $window.location.search;
 
     $scope.SetOptionSettings = function () {
@@ -523,8 +528,6 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                 }
 
 
-
-
                 $scope.processData = function (allText) {
                     if (allText == null) {
                         alert('Please insert file.');
@@ -656,6 +659,127 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         // $scope.showDialog(errmssg);
                         alert(errmssg);
                     });
+                };
+                break;
+
+            case "11":
+                $scope.mandatoryCols = $scope.CardsCol;
+
+                $scope.importData = function () {
+                    $scope.processData($scope.fileContent);
+                }
+               
+                $scope.processData = function (allText) {
+                    if (allText == null) {
+                        alert('Please insert file.');
+                        return;
+                    }
+                    // split content based on new line
+                    var allTextLines = allText.split(/\r\n|\n/);
+
+                    var headers = allTextLines[0].split(',');
+
+                    //validate header
+
+                    var header = [$scope.seloption];          
+
+                    //    switch ($scope.seloption) {
+                    //        case "1":
+                    //            //company                                              
+                    //            $scope.mandatoryCols = $scope.compCol;
+
+                    //            alert("Colums are not matching");
+                    //            if (seloption == "CompanyName")
+
+
+                    //            break;
+                    //}
+
+                    var lines = [];
+
+                    for (var i = 1; i < allTextLines.length; i++) {
+                        // split content based on comma
+                        var data = allTextLines[i].split(',');
+                        lines.push(GetCards(data));
+
+                        if (data.length == headers.length) {
+                            var tarr = [];
+                            for (var j = 0; j < headers.length; j++) {
+                                tarr.push(data[j]);
+                            }
+                            //lines.push(GetCards(data));
+                        }
+                    }
+                    //list
+                    var req = {
+                        method: 'POST',
+                        url: '/api/DataLoad/SaveCardsGroup',
+                        data: lines
+                    }
+                    $http(req).then(function (res) {
+                        $scope.initdata = res.data;
+                        alert("Saved successfully")
+                    });
+
+                    //$scope.logdata = list;
+                };
+
+                function GetCards(data) {
+
+                    var list = {
+                        CardNumber: data[0],
+                        CardModel: data[1],
+                        CardType: data[2],
+                        CardCategory: data[3],
+                        UserId: data[4],
+                        Customer: data[5],
+                        EffectiveFrom: data[6],
+                        EffectiveTo: data[7],
+                        //active: 1,
+                        insupdflag: 'I'
+                    }
+                    return list;
+                }
+
+                $scope.save = function () {
+                    if (active == null) {
+                        return;
+                    }
+                    if (CardNumber == null) {
+                        return;
+                    }
+                    if (CardModel == null) {
+                        return;
+                    }
+                    if (CardType == null) {
+                        return;
+                    }
+                 
+                    $http(req).then(function (response) {
+
+                        scope.showDialog("Saved successfully!!");
+
+                        $scope.data = null;
+                        //$scope.GetCompanys();
+
+                    }, function (errres) {
+                        var errdata = errres.data;
+                        var errmssg = "Your details are incorrect";
+                        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+                        // $scope.showDialog(errmssg);
+                        alert(errmssg);
+                    });
+
+                    //var req = {
+                    //    method: 'POST',
+                    //    url: '/api/DataLoad/SaveUsersGroup1',
+                    //    data: lines
+                    //}
+                    //$http(req).then(function (res) {
+                    //    $scope.initdata = res.data;
+                    //});
+
+                    // $scope.logdata = lines;
                 };
                 break;
         }

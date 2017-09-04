@@ -215,10 +215,60 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
     $scope.save = function () {
 
+        if (advEdit.CompanyName == null) {
+            alert('Please Enter CompanyName');
+            return;
+        }
+        if ($scope.imageSrc == null) {
+            alert('Please Enter Image');
+            return;
+        }
+        if (advEdit.Title == null) {
+            alert('Please Enter Title');
+            return;
+        }
+
+        if (advEdit.Description == null) {
+            alert('Please Enter Description');
+            return;
+        }
+        if (advEdit.AdvertismentDate == null) {
+            alert('Please Enter AdvertismentDate');
+            return;
+        }
+        //if (adv.AdvertismentExpiredDate == null) {
+        //    alert('Please Enter AdvertismentExpiredDate');
+        //    return;
+        //}
+        if (advEdit.AdvertismentAmount == null) {
+            alert('Please Enter AdvertismentAmount');
+            return;
+        }
+        if (advEdit.Area == null) {
+            alert('Please Enter Area');
+            return;
+        }
+
+
+        var Advertisment = {
+            Id: -1,
+            CompanyName: advEdit.CompanyName,
+            Image: $scope.imageSrc,
+            AdvertisementTitle: advEdit.Title,
+            Description: advEdit.Description,
+            Clarification: advEdit.Clarification,
+            Conclusion: advEdit.Conclusion,
+            AdvertismentDate: advEdit.AdvertismentDate,
+            AdvertismentExpiredDate: advEdit.AdvertismentExpiredDate,
+            Price: advEdit.PrizeAmount,
+            AdvertisementAmount: advEdit.AdvertismentAmount,
+            Area: advEdit.Area,
+            flag: "U"
+        }
         var req = {
             method: 'POST',
             url: '/api/Advertisment/Advertismentsectionone',
-            data: $scope.docfiles
+            data: Advertisment
         }
         $http(req).then(function (response) {
 
@@ -235,6 +285,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
 
     };
+    $scope.Advertisment = null;
+
+    $scope.setCMPCode = function (a) {
+        $scope.Advertisment = a;
+    };
+
+    $scope.clearvehlogout = function () {
+        $scope.a = null;
+    }
     $scope.validateFile = function ($event) {
         //if ($scope.assetDoc.docType == null) {
         //    alert('Please select docType');

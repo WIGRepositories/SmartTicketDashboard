@@ -601,104 +601,129 @@
                                                 </div>
                                             </div>
                                             <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                <div class="modal-dialog modal-lg">
+                                                <div class=" modal-dialog modal-lg">
                                                     <div class="modal-content">
                                                         <div class="modal-header modal-header-primary">
-                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                            <h4 id="modal-header-primary-label" class="modal-title">Edit Vehicle Logout</h4>
+                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                            <h4 id="modal-header-primary-label" class="modal-title">Edit Advertisment</h4>
                                                         </div>
-                                                        <div class="modal-body" ng-model="logout">
 
+                                                        <div class="modal-body" ng-model="advEdit">
 
-                                                            <div class="row" style="margin-top:7px">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Area:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.DriverNo" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Place:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.LogoutLatitude" class="form-control" /><span class="help-block"></span></div>
-                                                                </div>
-                                                            </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Company Name:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="logout.LogoutLongitude" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="selCountry" class="col-md-4 control-label">Area</label>
+                                                                    <div class="col-md-8">
+                                                                        <select class="form-control" ng-model="advEdit.Area">
+                                                                            <option value="">Select</option>
+                                                                            <option>Area 1</option>
+                                                                            <option>Area 2</option>
+                                                                            <option>Area 3</option>
+                                                                        </select>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Image:<span class='require'></span></label>
+                                                                    <label for="selCountry" class="col-md-4 control-label">Place</label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="date" ng-model="logout.LogoutDate" class="form-control" /><span class="help-block"></span>
+                                                                        <select class="form-control" ng-model="advEdit.Place">
+                                                                            <option value="">Select</option>
+                                                                            <option value="">Place 1</option>
+                                                                            <option value="">Place 2</option>
+                                                                            <option value="">Place 3</option>
+                                                                            <option value="">Place 4</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
+                                                            <br />
+
+
                                                             <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label">Company Name:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" class="form-control" ng-model="advEdit.CompanyName" /><span class="help-block"></span></div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label for="Address Id" class="col-md-4 control-label" style="float:left">Image:</label>
+                                                                    <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                    <div class="col-md-8">
+                                                                        <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                                        <br />
+                                                                        <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                            <i class="fa fa-upload"></i>&nbsp;
+                                                                            Upload photo
+                                                                        </a>
+                                                                    </div>
+
+
+
+                                                                    <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="row" style="margin-bottom:7px">
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Title:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="time" ng-model="logout.LogoutTime" class="form-control" /><span class="help-block"></span>
+                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Title"></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Description:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Description"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
+                                                            <div class="row" style="margin-bottom:7px">
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Clarification:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Clarification"></textarea>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Conclusion:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Conclusion"></textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Prize Amount:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <input id="Price" type="time" ng-model="logout.LogoutTime" class="form-control" /><span class="help-block"></span>
-                                                                    </div>
-                                                                </div>
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Date:<span class='require'></span></label>
                                                                     <div class="col-md-8">
-                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
+                                                                        <input id="Price" type="date" class="form-control" ng-model="advEdit.AdvertismentDate" /><span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Expired Date:<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <input id="Price" type="date" class="form-control" /><span class="help-block" ng-model="advEdit.AdvertismentExpiredDate"></span>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Expired Date:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <input id="Price" type="time" ng-model="logout.LogoutTime" class="form-control" /><span class="help-block"></span>
-                                                                    </div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Prize Amount:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.PrizeAmount" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Amount:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <input id="Price" type="text" ng-model="logout.Status" class="form-control" /><span class="help-block"></span>
-                                                                    </div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Advertisment Amount:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.AdvertismentAmount" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
                                                                 <div style="text-align:center">
-                                                                    <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="Save(logout,'U');">Save</button>
-                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+
+                                                                    <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(advEdit,'U')">Save</button>
+
+                                                                    <a href="advertismentconfiguration.html" class="btn btn-primary" ng-click="clearvehlogout()">Cancel</a>
+
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-
-
-
                                                 </div>
 
 
@@ -751,6 +776,10 @@
                                                                     <span class="fnt-smaller fnt-lighter fnt-arial">
                                                                         {{a.Conclusion}}
                                                                     </span>
+                                                                </div>
+                                                                <div class="actions">
+                                                                    <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Delte</button>
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Edit</button>  
                                                                 </div>
                                                             </div>
                                                         </div><!-- End Listing-->
