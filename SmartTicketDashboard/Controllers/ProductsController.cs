@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Tracing;
+using SmartTicketDashboard.Models;
 
 namespace SmartTicketDashboard.Controllers
 {
@@ -44,7 +45,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpPost]
         [Route("api/Products/ProductsOperations")]
 
-        public DataTable ProductsOperations(Products P)
+        public DataTable ProductsOperations(products P)
         {
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -82,34 +83,26 @@ namespace SmartTicketDashboard.Controllers
                 don.Value = P.DescriptionOne;
                 cmd.Parameters.Add(don);
 
-                SqlParameter dt = new SqlParameter("@DescriptionTwo", SqlDbType.VarChar, 100);
-                dt.Value = P.DescriptionTwo;
-                cmd.Parameters.Add(dt);
+                SqlParameter dtt = new SqlParameter("@DescriptionTwo", SqlDbType.VarChar, 100);
+                dtt.Value = P.DescriptionTwo;
+                cmd.Parameters.Add(dtt);
 
-               
-
-                SqlParameter dth = new SqlParameter("@DescriptionThree", SqlDbType.Int);
+                SqlParameter dth = new SqlParameter("@DescriptionThree", SqlDbType.VarChar, 100);
                 dth.Value = P.DescriptionThree;
                 cmd.Parameters.Add(dth);
 
-                SqlParameter dfo = new SqlParameter("@DescriptionFour", SqlDbType.DateTime);
+                SqlParameter dfo = new SqlParameter("@DescriptionFour", SqlDbType.VarChar, 100);
                 dfo.Value = P.DescriptionFour;
                 cmd.Parameters.Add(dfo);
 
-                SqlParameter ed = new SqlParameter("@ExpiredDate", System.Data.SqlDbType.DateTime);
-                ed.Value = P.ExpiredDate;
-                cmd.Parameters.Add(ed);
+                SqlParameter pud = new SqlParameter("@ProductUploadeDate", System.Data.SqlDbType.DateTime);
+                pud.Value = P.ProductUploadeDate;
+                cmd.Parameters.Add(pud);
 
-                SqlParameter aa = new SqlParameter("@AdvertisementAmount", SqlDbType.Float);
-                aa.Value = P.AdvertisementAmount;
-                cmd.Parameters.Add(aa);
-                SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar, 100);
-                cn.Value = P.CompanyName;
-                cmd.Parameters.Add(cn);
-                SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
-                ar.Value = P.Area;
-                cmd.Parameters.Add(ar);
-            }
+                SqlParameter ped = new SqlParameter("@ProductExpiredDate", System.Data.SqlDbType.DateTime);
+                ped.Value = P.ProductExpiredDate;
+                cmd.Parameters.Add(ped);
+          }
             catch
             {
                 Exception ex;
@@ -120,6 +113,6 @@ namespace SmartTicketDashboard.Controllers
 
             return dt;
         }
-
+         
     }
 }

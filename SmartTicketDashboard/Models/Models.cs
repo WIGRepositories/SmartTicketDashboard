@@ -2482,6 +2482,21 @@ namespace SmartTicketDashboard.Models
         public decimal Amount { get; set; }
         public string AccountNo { get; set; }
     }
+    public class products
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string ProductName{ get; set; }
+        public float Price { get; set; }
+        public string DescriptionOne { get; set; }
+        public string DescriptionTwo { get; set; }
+        public string DescriptionThree { get; set; }
+        public string DescriptionFour { get; set; }
+        public DateTime? ProductUploadeDate { get; set; }
+        public DateTime? ProductExpiredDate { get; set; }
+        
+    }
 
 }
 
