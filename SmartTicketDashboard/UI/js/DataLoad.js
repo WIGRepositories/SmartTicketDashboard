@@ -78,9 +78,9 @@ $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
 
     $scope.GetDataLoad = function () {
 
-        $http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
-            $scope.list = response.data;
-        });
+        //$http.get('/api/DataLoad/GetDataLoad').then(function (response, req) {
+        //    $scope.list = response.data;
+        //});
     }
     $scope.csv_link = 'DataUploadTemplates/CompanyList.csv';// + $window.location.search;
 

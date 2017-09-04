@@ -408,7 +408,7 @@
                                                                 First Name   <input type="text" ng-model="query" /><br />
                                                             </div>
                                                             <div class="col-md-2">
-                                                                Last Name   <input type="text" ng-model="query" /><br />
+                                                                Last Name   <input type="text" ng-model="query1" /><br />
                                                             </div>
                                                             <div class="col-md-2">
                                                                 Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
@@ -1150,7 +1150,7 @@
                                                         <th width="9%">Update</th>
                                                     </tr>
                                                 <tbody>
-                                                    <tr ng-repeat="U in User| filter:query" ng-on-finish-render>
+                                                    <tr ng-repeat="U in User| filter:query || filter:query1" ng-on-finish-render>
 
                                                         <td>{{U.FirstName}}</td>
                                                         <td>{{U.LastName}}</td>
