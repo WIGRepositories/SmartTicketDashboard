@@ -2056,10 +2056,9 @@ namespace SmartTicketDashboard.Models
         public string BadgeNo { get; set; }
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
-        public string FileContent { get; set; }
+       
         public string FileName { get; set; }
-        public int DocTypeId { get; set; }
-        public string docType { get; set; }
+        
     }
     public class vehiclemas
     {
@@ -2437,10 +2436,18 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int Id { get; set; }
-        public string image { get; set; }
-        public string imagcontent { get; set; }
-        public float price { get; set; }
-        public string description { get; set; }
+        public string Image { get; set; }
+        public string AdvertisementTitle { get; set; }
+        public string Description { get; set; }
+        public string Clarification { get; set; }
+        public string Conclusion { get; set; }
+        public float Price { get; set; }
+        public int AdvertisementTypeId { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public float AdvertisementAmount { get; set; }
+        public string CompanyName { get; set; }
+        public string Area { get; set; }
     }
     public class Appusers
     {

@@ -55,10 +55,9 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "HVgetdriverdetails";
             cmd.Parameters.Add("@DId", SqlDbType.Int).Value = DId;
             cmd.Connection = conn;
-            DataSet ds = new DataSet();
+            
             SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            dt = ds.Tables[0];
+            db.Fill(dt);           
 
             return dt;
 
@@ -159,17 +158,10 @@ namespace SmartTicketDashboard.Controllers
             w.Value = d.Remarks;
             cmd.Parameters.Add(w);
 
-            //SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar,100);
-            //parentid.Value = d.FileContent;
-            //cmd.Parameters.Add(parentid);
 
-            //SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
-            //FileName.Value = d.FileName;
-            //cmd.Parameters.Add(FileName);
-
-            //SqlParameter Gid1 = new SqlParameter("@DocType", SqlDbType.VarChar,100);
-            //Gid1.Value = d.docType;
-            //cmd.Parameters.Add(Gid1);
+            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar);
+            FileName.Value = d.FileName;
+            cmd.Parameters.Add(FileName);
 
 
 

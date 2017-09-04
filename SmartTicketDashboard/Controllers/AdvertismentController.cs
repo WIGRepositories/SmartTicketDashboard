@@ -68,41 +68,50 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(i);
 
                 SqlParameter im = new SqlParameter("@image", SqlDbType.VarChar);
-                im.Value = A.image;
+                im.Value = A.Image;
                 cmd.Parameters.Add(im);
 
-                SqlParameter ic = new SqlParameter("@imgcontent", SqlDbType.VarChar, 150);
-                ic.Value = A.imagcontent;
-                cmd.Parameters.Add(ic);
+                SqlParameter at = new SqlParameter("@AdvertisementTitle", SqlDbType.VarChar, 100);
+                at.Value = A.AdvertisementTitle;
+                cmd.Parameters.Add(at);
 
-                //SqlParameter price = new SqlParameter("@price", SqlDbType.Float);
-                //price.Value = A.price;
-                //cmd.Parameters.Add(price);
-                //SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar,50);
-                //cn.Value = A.CompanyName;
-                //cmd.Parameters.Add(cn);
+                SqlParameter d = new SqlParameter("@Description", SqlDbType.VarChar,250);
+                d.Value = A.Description;
+                cmd.Parameters.Add(d);
 
-                //SqlParameter ds = new SqlParameter("@description", SqlDbType.VarChar, 150);
-                //ds.Value = A.description;
-                //cmd.Parameters.Add(ds);
+                SqlParameter cl = new SqlParameter("@Clarification", SqlDbType.VarChar, 250);
+                cl.Value = A.Clarification;
+                cmd.Parameters.Add(cl);
 
-                //SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
-                //ar.Value = A.Area;
-                //cmd.Parameters.Add(ar);
-                //SqlParameter pl = new SqlParameter("@Place", SqlDbType.VarChar, 50);
-                //pl.Value = A.Place;
-                //cmd.Parameters.Add(pl);
-                //SqlParameter ad = new SqlParameter("@AdvertismentDate", SqlDbType.Date );
-                //ad.Value = A.AdvertismentDate;
-                //cmd.Parameters.Add(ad);
-                //SqlParameter aed = new SqlParameter("@AdvertismentExpireDate", SqlDbType.Date);
-                //aed.Value = A.AdvertismentExpireDate;
-                //cmd.Parameters.Add(aed);
-                //SqlParameter aa = new SqlParameter("@AdvertismentAmount", SqlDbType.Float);
-                //aa.Value = A.AdvertismentAmount;
-                //cmd.Parameters.Add(aa);
+                SqlParameter co = new SqlParameter("@Conclusion", SqlDbType.VarChar, 250);
+                co.Value = A.Conclusion;
+                cmd.Parameters.Add(co);
 
+                SqlParameter Price = new SqlParameter("@Price", SqlDbType.Float);
+                Price.Value = A.Price;
+                cmd.Parameters.Add(Price);
 
+                SqlParameter ati = new SqlParameter("@AdvertisementTypeId", SqlDbType.Int);
+                ati.Value = A.AdvertisementTypeId;
+                cmd.Parameters.Add(ati);
+
+                SqlParameter pd = new SqlParameter("@PublishDate", SqlDbType.DateTime);
+                pd.Value = A.PublishDate;
+                cmd.Parameters.Add(pd);
+
+                SqlParameter ed = new SqlParameter("@ExpiredDate", System.Data.SqlDbType.DateTime);
+                ed.Value = A.ExpiredDate;
+                cmd.Parameters.Add(ed);
+
+                SqlParameter aa = new SqlParameter("@AdvertisementAmount", SqlDbType.Float);
+                aa.Value = A.AdvertisementAmount;
+                cmd.Parameters.Add(aa);
+                SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar,100);
+                cn.Value = A.CompanyName;
+                cmd.Parameters.Add(cn);
+                SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
+                ar.Value = A.Area;
+                cmd.Parameters.Add(ar);
             }
             catch
             {

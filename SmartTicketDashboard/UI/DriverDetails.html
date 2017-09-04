@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | DriverList</title>
+    <title>Home | BTPOS | DriverDetails</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -387,13 +387,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Driver List</div>
+                            <div class="page-title">Driver Details</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="DriverList.html">Driver List</a></li>
+                            <li><a href="DriverList.html">Driver Details</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -487,22 +487,19 @@
                                                                 <tr>
                                                                     <th width="10%">CompanyId</th>
                                                                     <td>{{Dl.CompanyId}}</td>
-                                                                </tr>
+                                                                </tr>                                                               
                                                                 <tr>
-                                                                    <th width="10%">DocTypeId</th>
-                                                                    <td>{{Dl.DocTypeId}}</td>
+                                                                    <th width="10%">Photo</th>
+                                                                   <td>
+                                                                        <img alt="image" class="img-responsive" ng-src="{{Dl.FileName}}">
+                                                                  
+                                                                   
+                                                                    </td>
                                                                 </tr>
-                                                                <tr>
-                                                                    <th width="10%">FileName</th>
-                                                                    <td>{{Dl.FileName}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">FileContent</th>
-                                                                    <td>{{Dl.FileContent}}</td>
-                                                                </tr>
+                                                              
 
                                                             <tbody>
-                                                                <tr ng-repeat="Dl in listdrivers"></tr>
+                                                                
                                                             </tbody>
 
                                                         </table>
@@ -572,9 +569,11 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
     <script src="js/DriverList.js"></script>
 
-
+    <script src="js/fileupload/Upload.js"></script>
 </body>
 </html>
 
