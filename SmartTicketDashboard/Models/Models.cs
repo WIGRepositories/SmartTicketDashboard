@@ -2058,6 +2058,9 @@ namespace SmartTicketDashboard.Models
         public string Remarks { get; set; }
        
         public string FileName { get; set; }
+        public string Photo { get; set; }
+        public string licenseimage { get; set; }
+        public string badgeimage { get; set; }
         
     }
     public class vehiclemas

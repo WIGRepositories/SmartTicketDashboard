@@ -754,17 +754,37 @@
                                                                                     <div class="row">
 
                                                                                         <div class="col-md-6">
-                                                                                            <label for="Name" class="col-md-4 control-label">Licence:<span class='require'></span></label>
-                                                                                          
-                                                                                            <div class="col-md-8">
-                                                                                                <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green " accept=".pdf,.jpg,.png,.gif" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
-                                                                                            </div>
+                                                                                            <label for="Name" class="col-md-4 control-label">Licence:<span class='require'></span></label>                                                                                        
+                                                                                            
+                                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                                <div class="col-md-8">
+                                                                                                    <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="120px" />
+                                                                                                    <br />
+                                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                                        Upload photo
+                                                                                                    </a>
+
+                                                                                                </div>
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc1" ng-change="setimg1();" />
+
+                                                                                           
                                                                                         </div>
                                                                                         <div class="col-md-6">
-                                                                                            <label for="Name" class="col-md-4 control-label">Badge:<span class='require'></span></label>
-                                                                                            <div class="col-md-8">
-                                                                                                <input style="width:160px" type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="ppdoc.doc" ng-click="validateFile($event)" />
-                                                                                            </div>
+                                                                                            <label for="Name" class="col-md-4 control-label">Badge:<span class='require'></span></label>                                                                                           
+                                                                                                <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                                <div class="col-md-8">
+                                                                                                    <img id="cmpLogo" ng-src="{{imageSrc2}}" width="150px" height="120px" />
+                                                                                                    <br />
+                                                                                                    <a href="#" class="btn btn-green" ng-click="UploadImg2();" style="width:90px">
+                                                                                                        <i class="fa fa-upload"></i>&nbsp;
+                                                                                                        Upload photo
+                                                                                                    </a>
+
+                                                                                                </div>
+                                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc2" ng-change="setimg2();" />
+
+                                                                                           
                                                                                         </div>
 
                                                                                     </div>

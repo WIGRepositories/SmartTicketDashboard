@@ -175,6 +175,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
                 $scope.getselectval($scope.selectedVehicleList);
             }
+            $scope.imageSrc = $scope.VehiclesList[0].Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -182,6 +183,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehcileMaster/GetVehcileMaster?VID=' + $scope.selectedVehicle).then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
+
 
     }
     $scope.GetCompanys = function () {

@@ -409,10 +409,13 @@
                                             <div class="row" ng-repeat="Dl in listdrivers">
                                                 <div class="col-md-12">
                                                     <div class="container">
-
+                                                        <div class="col-md-8" style="margin-bottom:20px">
+                                                            <label for="Name">Photo:</label>
+                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="90px" />
+                                                            <br />
+                                                        </div>
                                                         <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                            <thead>
-
+                                                            <thead>                                                                
                                                                 <tr>
                                                                     <th width="10%">DId</th>
                                                                     <td>{{Dl.DId}}</td>
@@ -488,14 +491,7 @@
                                                                     <th width="10%">CompanyId</th>
                                                                     <td>{{Dl.CompanyId}}</td>
                                                                 </tr>                                                               
-                                                                <tr>
-                                                                    <th width="10%">Photo</th>
-                                                                   <td>
-                                                                        <img alt="image" class="img-responsive" ng-src="{{Dl.FileName}}">
-                                                                  
-                                                                   
-                                                                    </td>
-                                                                </tr>
+                                                                
                                                               
 
                                                             <tbody>
