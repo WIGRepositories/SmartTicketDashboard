@@ -2082,6 +2082,8 @@
     <Compile Include="Controllers\prebookController.cs" />
     <Compile Include="Controllers\prebookingdetailsController.cs" />
     <Compile Include="Controllers\pricedetailsController.cs" />
+    <Compile Include="Controllers\Products.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
