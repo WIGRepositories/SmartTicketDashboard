@@ -140,6 +140,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
                 CardType: list.CardType.Id,
                 CardCategory: list.CardCategory.Id,
                 flag: 'I'
+
             }
        
 
@@ -156,7 +157,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
             }, function (errres) {
                 var errdata = errres.data;
-                var errmssg = "";
+                var errmssg = errdata.ExceptionMessage;
                 errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
                 $scope.showDialog(errmssg);
             });
@@ -201,48 +202,48 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     
 
-  //$scope.showDialog = function (message)
-  //{
+  $scope.showDialog = function (message)
+  {
 
-  //          var modalInstance = $uibModal.open(
-  //              {
-  //                  animation: $scope.animationsEnabled,
-  //                  templateUrl: 'myModalContent.html',
-  //                  controller: 'ModalInstanceCtrl',
-  //                  resolve:
-  //                  {
-  //                      mssg: function () {
-  //                          return message;
-  //                      }
-  //                  }
-  //              });
-  //}
-        //  myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg)
-        //{
+            var modalInstance = $uibModal.open(
+                {
+                    animation: $scope.animationsEnabled,
+                    templateUrl: 'myModalContent.html',
+                    controller: 'ModalInstanceCtrl',
+                    resolve:
+                    {
+                        mssg: function () {
+                            return message;
+                        }
+                    }
+                });
+  }
+          myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg)
+        {
 
-        //    $scope.mssg = mssg;
-        //    $scope.ok = function () {
-        //        $uibModalInstance.close('test');
-        //    };
+            $scope.mssg = mssg;
+            $scope.ok = function () {
+                $uibModalInstance.close('test');
+            };
 
-        //    $scope.cancel = function () {
-        //        $uibModalInstance.dismiss('cancel');
-        //    };
+            $scope.cancel = function () {
+                $uibModalInstance.dismiss('cancel');
+            };
 
-        //    $scope.showDialog = function (message) {
+            $scope.showDialog = function (message) {
 
-        //        var modalInstance = $uibModal.open(
-        //            {
-        //                animation: $scope.animationsEnabled,
-        //                templateUrl: 'myModalContent.html',
-        //                controller: 'ModalInstanceCtrl',
-        //                resolve: {
-        //                    mssg: function ()
-        //                    {
-        //                        return message;
-        //                    }
-        //                }
-        //            });
-        //    }
-        //  });
+                var modalInstance = $uibModal.open(
+                    {
+                        animation: $scope.animationsEnabled,
+                        templateUrl: 'myModalContent.html',
+                        controller: 'ModalInstanceCtrl',
+                        resolve: {
+                            mssg: function ()
+                            {
+                                return message;
+                            }
+                        }
+                    });
+            }
+          });
 });

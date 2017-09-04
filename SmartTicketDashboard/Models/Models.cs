@@ -730,6 +730,25 @@ namespace SmartTicketDashboard.Models
     }
 
 
+    public class CardsGroup
+    {
+
+        public CardsGroup[] cg = null;
+        //public List<VehiclesGroups> list3 { get; set; }
+        public int Id { get; set; }
+        public int CardNumber { get; set; }
+        public int CardModel { get; set; }
+        public int CardType  { get; set; }
+        public int CardCategory { get; set; }
+        public int StatusId { get; set; }
+        public int UserId { get; set; }
+        public string Customer { get; set; }
+        public DateTime? EffectiveFrom { get; set; }
+        public DateTime? EffectiveTo { get; set; }
+        public string insupdflag { get; set; }
+    }
+
+
     public class UsersGroup
     {
 
