@@ -1421,6 +1421,10 @@ namespace SmartTicketDashboard.Models
         public String SubCategory { get; set; }
         public int ReOrderPoint { get; set; }
         public string ItemImage { get; set; }
+        public decimal price { get; set; }
+        public string Itemmodel { get; set; }
+        public string features { get; set; }
+       
     }
 
     public class FleetOwnerRequest

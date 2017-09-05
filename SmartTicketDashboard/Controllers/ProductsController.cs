@@ -16,11 +16,11 @@ namespace SmartTicketDashboard.Controllers
     {
 
         [HttpGet]
-        public DataTable GetAdvertisment()
+        public DataTable GetProducts()
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertisment credentials....");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetProducts credentials....");
 
 
             //connect to database
@@ -30,13 +30,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "Getadvertisement";
+            cmd.CommandText = "GetProducts";
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
             Tbl = ds.Tables[0];
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertisment Credentials completed.");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetProducts Credentials completed.");
             // int found = 0;
             return Tbl;
 
