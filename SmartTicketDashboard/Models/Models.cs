@@ -2504,6 +2504,21 @@ namespace SmartTicketDashboard.Models
         public DateTime? ProductExpiredDate { get; set; }
         
     }
+    public class Carousel
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string ImageName { get; set; }
+        public string ImageCaption { get; set; }
+        public string ImageDesc { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+        public int ModifiedBy { get; set; }
+        public string ImgPath { get; set; }
+
+    }
 
 }
 
