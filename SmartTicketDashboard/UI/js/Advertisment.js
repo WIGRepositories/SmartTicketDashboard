@@ -247,6 +247,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (advEdit.Area == null) {
             alert('Please Enter Area');
             return;
+
+
         }
 
 

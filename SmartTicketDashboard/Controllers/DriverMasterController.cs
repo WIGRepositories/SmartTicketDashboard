@@ -64,9 +64,9 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpPost]
-        [Route("api/DriverMaster/Driver")]
+        [Route("api/DriverMaster/Driverlist")]
 
-        public DataTable Driver(driverdetails d)
+        public DataTable Driverlist(driverdetails d)
         {
             SqlConnection conn = new SqlConnection();
 
