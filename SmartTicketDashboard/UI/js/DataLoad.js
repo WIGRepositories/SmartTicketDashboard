@@ -285,7 +285,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        //$scope.showdialogue("Saved successfully")
+                       alert("Saved successfully")
                     });
 
                     // $scope.logdata = lines;
