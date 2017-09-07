@@ -945,12 +945,14 @@
                                                                 <!--<th width="10%">VID</th>-->
                                                                 <th width="10%">Registration No</th>
                                                                 <th width="10%">Vehicle Type</th>
-                                                                <th width="15%">Owner Name</th>
+                                                                <th width="10%">Owner Name</th>
                                                                 <!--<th width="10%">CompanyVechile</th>-->
-                                                                <th width="15%">Owner Phone No</th>
-                                                                <th width="15%">Entry Date</th>
-                                                                <th>Active</th>
-                                                                <th>Edit</th>
+                                                                <th width="10%">Owner Phone No</th>
+                                                                <th width="10%">Entry Date</th>
+                                                                <th width="15%">Amount</th>
+                                                                <th width="15%">Booking Status</th>
+                                                                <th width="15%">Active</th>
+                                                                <th width="15%">Edit</th>
 
 
                                                             </tr>
@@ -965,6 +967,8 @@
                                                                 <!--<td>{{v.CompanyVechile}}</td>-->
                                                                 <td>{{v.OwnerPhoneNo}}</td>
                                                                 <td>{{v.EntryDate}}</td>
+                                                                <td>{{v.Amount}}</td>
+                                                                <td>{{v.BookingStatus}}</td>
                                                                 <td><input type="checkbox" checked /></td>
                                                                 <td>
                                                                     <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVehiclesList(v);">
