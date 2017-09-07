@@ -120,6 +120,7 @@
     <Content Include="UI\js\CardsList.js" />
     <Content Include="UI\js\CardUser.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
@@ -2097,6 +2098,7 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />
