@@ -79,11 +79,11 @@ namespace SmartTicketDashboard.Controllers
             Gid.Value = b.ItemName;
             cmd.Parameters.Add(Gid);
 
-            //SqlParameter li = new SqlParameter();
-            //li.ParameterName = "@ItemImage";
-            //li.SqlDbType = SqlDbType.VarChar;
-            //li.Value = b.ItemImage;
-            //cmd.Parameters.Add(li);
+            SqlParameter li = new SqlParameter();
+            li.ParameterName = "@ItemImage";
+            li.SqlDbType = SqlDbType.VarChar;
+            li.Value = b.ItemImage;
+            cmd.Parameters.Add(li);
 
             SqlParameter lid = new SqlParameter();
             lid.ParameterName = "@Code";
@@ -114,6 +114,26 @@ namespace SmartTicketDashboard.Controllers
             prop.SqlDbType = SqlDbType.Int;
             prop.Value = b.ReOrderPoint;
             cmd.Parameters.Add(prop);
+
+            SqlParameter pp = new SqlParameter();
+            pp.ParameterName = "@Price";
+            pp.SqlDbType = SqlDbType.Decimal;
+            pp.Value = b.price;
+            cmd.Parameters.Add(pp);
+
+            SqlParameter ir = new SqlParameter();
+            ir.ParameterName = "@ItemModel";
+            ir.SqlDbType = SqlDbType.VarChar;
+            ir.Value = b.Itemmodel;
+            cmd.Parameters.Add(ir);
+
+            SqlParameter f = new SqlParameter();
+            f.ParameterName = "@Features";
+            f.SqlDbType = SqlDbType.VarChar;
+            f.Value = b.features;
+            cmd.Parameters.Add(f);
+
+            
 
             cmd.ExecuteScalar();
             conn.Close();

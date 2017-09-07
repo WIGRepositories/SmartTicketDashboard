@@ -163,6 +163,18 @@ namespace SmartTicketDashboard.Controllers
             FileName.Value = d.FileName;
             cmd.Parameters.Add(FileName);
 
+            SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
+            pr.Value = d.Photo;
+            cmd.Parameters.Add(pr);
+
+            SqlParameter pu = new SqlParameter("@licenseimage", SqlDbType.VarChar);
+            pu.Value = d.licenseimage;
+            cmd.Parameters.Add(pu);
+
+            SqlParameter rr = new SqlParameter("@Badgeimage", SqlDbType.VarChar);
+            rr.Value = d.badgeimage;
+            cmd.Parameters.Add(rr);
+
 
 
             DataTable dt = new DataTable();

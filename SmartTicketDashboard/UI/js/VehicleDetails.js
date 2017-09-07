@@ -47,6 +47,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
                 $scope.getselectval($scope.selectedVehicle);
             }
+            
         });
     }
     $scope.getselectval = function (v) {

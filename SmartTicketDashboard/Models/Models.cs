@@ -729,6 +729,8 @@ namespace SmartTicketDashboard.Models
         public string ServiceTypeId { get; set; }
         public string VehicleGroupId { get; set; }
     }
+
+
     public class CardsGroup
     {
 
@@ -1491,6 +1493,10 @@ namespace SmartTicketDashboard.Models
         public String SubCategory { get; set; }
         public int ReOrderPoint { get; set; }
         public string ItemImage { get; set; }
+        public decimal price { get; set; }
+        public string Itemmodel { get; set; }
+        public string features { get; set; }
+       
     }
 
     public class FleetOwnerRequest
@@ -2128,6 +2134,9 @@ namespace SmartTicketDashboard.Models
         public string Remarks { get; set; }
        
         public string FileName { get; set; }
+        public string Photo { get; set; }
+        public string licenseimage { get; set; }
+        public string badgeimage { get; set; }
         
     }
     public class vehiclemas
@@ -2552,7 +2561,37 @@ namespace SmartTicketDashboard.Models
         public decimal Amount { get; set; }
         public string AccountNo { get; set; }
     }
- 
+    public class products
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string ProductName{ get; set; }
+        public float Price { get; set; }
+        public string DescriptionOne { get; set; }
+        public string DescriptionTwo { get; set; }
+        public string DescriptionThree { get; set; }
+        public string DescriptionFour { get; set; }
+        public DateTime? ProductUploadeDate { get; set; }
+        public DateTime? ProductExpiredDate { get; set; }
+        
+    }
+    public class Carousel
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string ImageName { get; set; }
+        public string ImageCaption { get; set; }
+        public string ImageDesc { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+        public int ModifiedBy { get; set; }
+        public string ImgPath { get; set; }
+
+    }
+
 
 }
 

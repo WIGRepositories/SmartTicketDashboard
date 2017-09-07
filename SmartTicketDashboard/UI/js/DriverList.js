@@ -176,6 +176,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
                 $scope.getselectval($scope.selectedlistdrivers);
             }
+
+            $scope.imageSrc = $scope.listdrivers[0].Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -297,7 +299,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BadgeNo: Driverlist.BadgeNo,
             BadgeExpDate: Driverlist.BadgeExpDate,
             Remarks: Driverlist.Remarks,            
-            FileName: $scope.imageSrc,
+            Photo: $scope.imageSrc,
+            licenseimage: $scope.imageSrc,
+            badgeimage:$scope.imageSrc,
+      
             
         }
 
@@ -457,8 +462,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //{ $scope.file = fileinput.files[0]; }
         //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
         //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
-    };
-
+    };   
     $scope.onFileSelect = function () {
         fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     }

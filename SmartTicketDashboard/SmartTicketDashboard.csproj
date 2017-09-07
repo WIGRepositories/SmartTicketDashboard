@@ -2035,6 +2035,7 @@
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
     <Compile Include="Controllers\CardsController.cs" />
+    <Compile Include="Controllers\CarousalController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
@@ -2083,6 +2084,7 @@
     <Compile Include="Controllers\prebookController.cs" />
     <Compile Include="Controllers\prebookingdetailsController.cs" />
     <Compile Include="Controllers\pricedetailsController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
