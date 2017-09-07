@@ -288,14 +288,14 @@ app.controller('mapCtrl', function ($scope, $http) {
 
         });
 
-    var createMarker = function (city) {
+    var createMarker = function (spot) {
         var marker = new google.maps.Marker({
             map: $scope.map,
-            position: new google.maps.LatLng(city.Latitude, city.Longitude),
-            title: city.city
+            position: new google.maps.LatLng(spot.Latitude, spot.Longitude),
+            title: spot.spot
 
         });
-        marker.content = '<div class="infoWindowContent">' + city.description + '</div>';
+        marker.content = '<div class="infoWindowContent"</div>';
 
         google.maps.event.addListener(marker, 'click', function () {
             infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
