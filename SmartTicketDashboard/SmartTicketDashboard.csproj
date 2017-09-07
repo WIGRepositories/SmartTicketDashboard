@@ -2034,6 +2034,7 @@
     <Compile Include="Controllers\BtposRoutesController.cs" />
     <Compile Include="Controllers\BtposTicketDetailsController.cs" />
     <Compile Include="Controllers\CancelBookingController.cs" />
+    <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CarousalController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
@@ -2514,6 +2515,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\DataUploadTemplates\CardsList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

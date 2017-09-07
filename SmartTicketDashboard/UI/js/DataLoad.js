@@ -32,45 +32,48 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     {"Id":2,"Name":"Active"}]
 
     $scope.userCol = 'FirstName,LastName,Emailid,Active';
-$scope.UserArr = [{"Id":1,"Name":"FirsName"},
-                    { "Id": 2, "Name": "LastName" }]
+    $scope.UserArr = [{"Id":1,"Name":"FirsName"},
+                        { "Id": 2, "Name": "LastName" }]
 
-$scope.userroleCol = 'FirstName,LastName,Emailid,Role';
-$scope.UserroleArr = [{ "Id": 1, "Name": "FirsName" },
-                    { "Id": 2, "Name": "LastName" }]
+    $scope.userroleCol = 'FirstName,LastName,Emailid,Role';
+    $scope.UserroleArr = [{ "Id": 1, "Name": "FirsName" },
+                        { "Id": 2, "Name": "LastName" }]
 
-$scope.fleetCol = 'VehicleRegno,FleetownerId,Active';
-$scope.fleetArr = [{ "Id": 1, "VehicleRegno": "FleetownerId" },
-                    { "Id": 2, "VehicleRegno": "FleetownerId" }]
+    $scope.fleetCol = 'VehicleRegno,FleetownerId,Active';
+    $scope.fleetArr = [{ "Id": 1, "VehicleRegno": "FleetownerId" },
+                        { "Id": 2, "VehicleRegno": "FleetownerId" }]
 
-$scope.stopCol = 'Name,Code,Active';
-$scope.stopArr = [{ "Id": 1, "Name": "Code" },
-                    { "Id": 2, "Name": "Code" }]
+    $scope.stopCol = 'Name,Code,Active';
+    $scope.stopArr = [{ "Id": 1, "Name": "Code" },
+                        { "Id": 2, "Name": "Code" }]
 
-$scope.routesCol = 'RouteName,,Code,Active';
-$scope.routesArr = [{ "Id": 1, "RouteName": "Code" },
-                    { "Id": 2, "RouteName": "Code" }]
+    $scope.routesCol = 'RouteName,,Code,Active';
+    $scope.routesArr = [{ "Id": 1, "RouteName": "Code" },
+                        { "Id": 2, "RouteName": "Code" }]
 
-$scope.btposCol = 'POSId,FleetOwnerId,StatusId';
-$scope.btposArr = [{ "Id": 1, "POSId": "FleetOwnerId" },
-                    { "Id": 2, "POSId": "FleetOwnerId" }]
+    $scope.btposCol = 'POSId,FleetOwnerId,StatusId';
+    $scope.btposArr = [{ "Id": 1, "POSId": "FleetOwnerId" },
+                        { "Id": 2, "POSId": "FleetOwnerId" }]
 
-$scope.InveCol = 'Name,Category,Active';
-$scope.InveArr = [{ "Id": 1, "Name": "Category" },
-                    { "Id": 2, "Name": "Category" }]
+    $scope.InveCol = 'Name,Category,Active';
+    $scope.InveArr = [{ "Id": 1, "Name": "Category" },
+                        { "Id": 2, "Name": "Category" }]
 
-$scope.DriverCol = 'Name,PMobNo,Address';
-$scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
-                    { "Id": 2, "NAme": "Address" }]
+    $scope.DriverCol = 'Name,PMobNo,Address';
+    $scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
+                        { "Id": 2, "NAme": "Address" }]
 
-$scope.VehiclesCol = 'VechMobileNo,OwnerName,Type';
-$scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
-                    { "Id": 2, "VechMobileNo": "OwnerName" }]
+    $scope.VehiclesCol = 'VechMobileNo,OwnerName,Type';
+    $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
+                        { "Id": 2, "VechMobileNo": "OwnerName" }]
 
-$scope.CardsCol = 'CardNumber,CardCategory';
-$scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
-                    { "Id": 2, "CardNumber": "CardCategory" }]
+    $scope.CardsCol = 'CardNumber,CardCategory';
+    $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
+                        { "Id": 2, "CardNumber": "CardCategory" }]
 
+    $scope.DriverVehicleAssignCol = 'VechMobileNo,OwnerName,Type'
+    $scope.DriverVehicleAssignArr = [{ "Id": 1, "CardNumber": "CardCategory" },
+                        { "Id": 2, "CardNumber": "CardCategory" }]
 
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -463,6 +466,7 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                         BadgeNo: data[14],
                         BadgeExpDate: data[15],
                         Remarks: data[16],
+                        VehicleModelId: data[17],
                         //CompanyId: data[12],
 
                         flag: 'I'
@@ -538,7 +542,7 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
 
                     var headers = allTextLines[0].split(',');
 
-
+                    var header = [$scope.seloption];
 
 
                     //validate header
@@ -572,7 +576,7 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                         for (var j = 0; j < headers.length; j++) {
                             tarr.push(data[j]);
                         }
-                        lines.push(GetVehicles(data));
+                        //lines.push(GetVehicles(data));
                         }
                     }
 
@@ -584,10 +588,11 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
+                        alert("Saved successfully")
                         //$scope.showdialogue("Saved successfully")
                     });
 
-                     $scope.logdata = lines;
+                     //$scope.logdata = lines;
                 };
 
                 function GetVehicles(data) {
@@ -731,10 +736,11 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                         CardModel: data[1],
                         CardType: data[2],
                         CardCategory: data[3],
-                        UserId: data[4],
-                        Customer: data[5],
-                        EffectiveFrom: data[6],
-                        EffectiveTo: data[7],
+                        StatusId: data[4],
+                        UserId: data[5],
+                        Customer: data[6],
+                        EffectiveFrom: data[7],
+                        EffectiveTo: data[8],
                         //active: 1,
                         insupdflag: 'I'
                     }
@@ -782,6 +788,195 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                     // $scope.logdata = lines;
                 };
                 break;
+
+            case "12":
+                $scope.mandatoryCols = $scope.DriverVehicleAssignCol;
+                //  $scope.optionsCols = 'Address,phone,emailid';
+
+                $scope.importData = function () {
+                    $scope.processData($scope.fileContent);
+                }
+
+
+                $scope.processData = function (allText) {
+                    if (allText == null) {
+                        alert('Please insert file.');
+                        return;
+                    }
+                    // split content based on new line
+                    var allTextLines = allText.split(/\r\n|\n/);
+
+                    var headers = allTextLines[0].split(',');
+
+                    //validate header
+
+                    var header = [$scope.seloption];
+
+                    //    switch ($scope.seloption) {
+                    //        case "1":
+                    //            //company                                              
+                    //            $scope.mandatoryCols = $scope.compCol;
+
+                    //            alert("Colums are not matching");
+                    //            if (seloption == "CompanyName")
+
+
+                    //            break;
+
+                    //}
+
+                    var lines = [];
+
+                    for (var i = 1; i < allTextLines.length; i++) {
+                        // split content based on comma
+                        var data = allTextLines[i].split(',');
+                        lines.push(GetDriversVehicleAssign(data));
+
+                        if (data.length == headers.length) {
+                            var tarr = [];
+                            for (var j = 0; j < headers.length; j++) {
+                                tarr.push(data[j]);
+                            }
+                            //lines.push(GetCompany(data));
+                        }
+                    }
+
+                    //list
+                    var req = {
+                        method: 'POST',
+                        url: '/api/DataLoad/SaveDriverVehicleAssignGroup',
+                        data: lines
+                    }
+                    $http(req).then(function (res) {
+                        $scope.initdata = res.data;
+                        alert("Saved successfully")
+                    });
+
+                    //$scope.logdata = list;
+                };
+
+
+                function GetDriversVehicleAssign(data) {
+
+                    var list = {
+                        CompanyId: data[0],
+                        NAme: data[1],
+                        Address: data[2],
+                        City: data[3],
+                        Pin: data[4],
+                        PAddress: data[5],
+                        PCity: data[6],
+                        PPin: data[7],
+                        OffMobileNo: data[8],
+                        PMobNo: data[9],
+                        DOB: data[10],
+                        DOJ: data[11],
+                        BloodGroup: data[12],
+                        LicenceNo: data[13],
+                        LiCExpDate: data[14],
+                        BadgeNo: data[15],
+                        BadgeExpDate: data[16],
+                        Remarks: data[17],
+                        //Id: data[18],
+                        //VID: data[18],
+                        RegistrationNo: data[18],
+                        Type: data[19],
+                        OwnerName: data[20],
+                        ChasisNo: data[21],
+                        Engineno: data[22],
+                        RoadTaxDate: data[23],
+                        InsuranceNo: data[24],
+                        InsDate: data[25],
+                        PolutionNo: data[26],
+                        PolExpDate: data[27],
+                        RCBookNo: data[28],
+                        RCExpDate: data[29],
+                        CompanyVechile: data[30],
+                        OwnerPhoneNo: data[31],
+                        HomeLandmark: data[32],
+                        ModelYear: data[33],
+                        DayOnly: data[34],
+                        VechMobileNo: data[35],
+                        EntryDate: data[36],
+                        NewEntry: data[37],
+                        VehicleModelId: data[38],
+                        ServiceTypeId: data[39],
+                        VehicleGroupId: data[40],
+                        BookingNo: data[41],
+                        ReqDate: data[42],
+                        ReqTime: data[43],
+                        CallTime: data[44],
+                        CustomerName: data[45],
+                        CusID: data[46],
+                        PhoneNo: data[47],
+                        AltPhoneNo: data[48],
+                        PickupAddress: data[49],
+                        LandMark: data[50],
+                        PickupPlace: data[51],
+                        DropPlace: data[52],
+                        Package: data[53],
+                        VehicleType: data[54],
+                        NoofVehicle: data[55],
+                        VechID: data[56],
+                        DriverName: data[57],
+                        PresentDriverLandMark: data[58],
+                        ExecutiveName: data[59],
+                        EffectiveDate: data[60],
+                        EffectiveTill: data[61],
+                        DriverId: data[62],
+
+                        active: 1,
+                        inspudflag: 'I'
+                    }
+                    return list;
+                }
+
+                $scope.save = function () {
+                    //if (active == null) {
+                    //    return;
+                    //}
+                    //if (Name == null) {
+                    //    return;
+                    //}
+                    //if (Code == null) {
+                    //    return;
+                    //}
+                    if (CustomerName == null) {
+                        return;
+                    }
+                    //if (EmailId == null) {
+                    //    return;
+                    //}
+                    //if (ContactNo1 == null) {
+                    //    return;
+                    //}
+
+                    $http(req).then(function (response) {
+
+                        scope.showDialog("Saved successfully!!");
+
+                        $scope.data = null;
+                        //$scope.GetCompanys();
+
+                    }, function (errres) {
+                        var errdata = errres.data;
+                        var errmssg = "Your details are incorrect";
+                        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+                        // $scope.showDialog(errmssg);
+                        alert(errmssg);
+                    });
+
+                    //var req = {
+                    //    method: 'POST',
+                    //    url: '/api/DataLoad/SaveUsersGroup1',
+                    //    data: lines
+                    //}
+                    //$http(req).then(function (res) {
+                    //    $scope.initdata = res.data;
+                    //});
+
+                    // $scope.logdata = lines;
+                };
         }
     }
 
@@ -910,6 +1105,5 @@ $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
 });
 
 
-//jagan changes
 
-//jagan changes
+
