@@ -196,10 +196,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
+
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
+        $scope.imageSrc = $scope.listdrivers[0].Photo;
     }
     $scope.docfiles = [];
 
@@ -308,7 +310,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var req = {
             method: 'POST',
-            url: '/api/DriverMaster/Driver',
+            url: '/api/DriverMaster/Driverlist',
             data: Driverlist
         }
         $http(req).then(function (response) {
@@ -328,7 +330,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.Driverlist = null;
 
-    $scope.save = function (driver, flag) {
+    $scope.save = function (driver,flag) {
 
         
         if (driver.CompanyId == null) {
@@ -399,13 +401,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var driver = {
+        var driver = {          
 
             flag: 'U',
             DId: driver.DId,
-            CompanyId: driver.Companyid,
+            CompanyId: driver.companyid,
             NAme: driver.NAme,
-            Address: driver.Address,
+            Address: driver.Address1,
             City: driver.City,
             Pin: driver.Pin,
             PAddress: driver.PAddress,
@@ -421,13 +423,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BadgeNo: driver.BadgeNo,
             BadgeExpDate: driver.BadgeExpDate,
             Remarks: driver.Remarks,
-
+            Photo: $scope.imageSrc,
+            //licenseimage: $scope.imageSrc,
+            //badgeimage: $scope.imageSrc,
 
         }
 
         var req = {
             method: 'POST',
-            url: '/api/DriverMaster/Driver',
+            url: '/api/DriverMaster/Driverlist',
             data: driver
         }
         $http(req).then(function (response) {
@@ -445,12 +449,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.driver = null;
 
-    $scope.setlistdrivers = function (cur) {
-        $scope.driver = cur;
+    $scope.setlistdrivers = function (Dl) {
+        $scope.driver = Dl;
+        $scope.imageSrc = null;
+        document.getElementById('cmpNewLogo').src = "";
+        $scope.imageSrc = Dl.photo;
+        document.getElementById('uactive').checked = (Dl.Active == 1);
     };
 
     $scope.clearDriverlist = function () {
-        $scope.cur = null;
+        $scope.Dl = null;
     }
     
     $scope.UploadImg = function () {

@@ -197,6 +197,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
+        $scope.imageSrc = $scope.VehiclesList[0].Photo;
     }
 
     $scope.saveNew = function (newVehicle,flag) {

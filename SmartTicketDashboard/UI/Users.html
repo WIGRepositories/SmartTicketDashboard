@@ -422,7 +422,7 @@
                                                                 First Name   <input type="text" ng-model="query" /><br />
                                                             </div>
                                                             <div class="col-md-2">
-                                                                Last Name   <input type="text" ng-model="query1" /><br />
+                                                                Last Name   <input type="text" ng-model="LastName" /><br />
                                                             </div>
                                                             <div class="col-md-2">
                                                                 Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
@@ -1164,7 +1164,7 @@
                                                         <th width="9%">Update</th>
                                                     </tr>
                                                 <tbody>
-                                                    <tr ng-repeat="U in User| filter:query || filter:query1" ng-on-finish-render>
+                                                    <tr ng-repeat="U in User| filter:query || filter:LastName" ng-on-finish-render>
 
                                                         <td>{{U.FirstName}}</td>
                                                         <td>{{U.LastName}}</td>
@@ -1182,11 +1182,11 @@
                                                             </button>
                                                         </td>
                                                         <!--<td>
-                                                <button type="button" data-target="#Modal-header-primary2" data-toggle="modal" class="btn btn-default btn-xs">
-                                                    <i class="fa fa-Users"></i>&nbsp;
-                                                    Edit
-                                                </button>
-                                            </td>-->
+            <button type="button" data-target="#Modal-header-primary2" data-toggle="modal" class="btn btn-default btn-xs">
+                <i class="fa fa-Users"></i>&nbsp;
+                Edit
+            </button>
+        </td>-->
                                                     </tr>
                                                 </tbody>
                                             </table>
