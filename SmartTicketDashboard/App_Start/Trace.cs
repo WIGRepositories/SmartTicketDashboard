@@ -26,5 +26,10 @@ namespace SmartTicketDashboard
                 catch { }
             }
         }
+
+        internal void Trace(System.Net.Http.HttpRequestMessage Request, string p1, System.Diagnostics.TraceLevel traceLevel, string p2, string p3)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
