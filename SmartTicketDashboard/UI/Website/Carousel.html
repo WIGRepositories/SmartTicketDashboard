@@ -506,10 +506,7 @@
                                     <h4 id="modal-header-primary-label" class="modal-title">Edit Carousel</h4>
                                 </div>
 
-                                <div class="modal-body" ng-model="Car">
-
-
-
+                                <div class="modal-body" ng-model="Carl">
 
                                     <div class="row">
                                         <div class="col-md-6">
@@ -538,13 +535,13 @@
                                         <div class="col-md-6">
                                             <label for="Fax" class="col-md-4 control-label" style="float:left">Title:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="Car.Title"></textarea>
+                                                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="Carl.Title"></textarea>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="Fax" class="col-md-4 control-label" style="float:left">Description:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="Car.Description"></textarea>
+                                                <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="Carl.Description"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -553,13 +550,13 @@
                                         <div class="col-md-6">
                                             <label for="Fax" class="col-md-4 control-label" style="float:left">Created By:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <input id="Price" type="text" class="form-control" ng-model="Car.CreatedBy" /><span class="help-block"></span>
+                                                <input id="Price" type="text" class="form-control" ng-model="Carl.CreatedBy" /><span class="help-block"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label for="Fax" class="col-md-4 control-label" style="float:left">Modified By:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <input id="Price" type="text" class="form-control" ng-model="Car.modifiedby" /><span class="help-block"></span>
+                                                <input id="Price" type="text" class="form-control" ng-model="Carl.modifiedby" /><span class="help-block"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -568,9 +565,9 @@
                                     <div class="form-actions">
                                         <div style="text-align:center">
 
-                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(Car,'U')">Save</button>
+                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="save(Carl,'U')">Save</button>
 
-                                            <a href="Carousel.html" class="btn btn-primary" ng-click="clearvehlogout()">Cancel</a>
+                                            <a href="Carousel.html" class="btn btn-primary" ng-click="clearCarl()">Cancel</a>
 
                                         </div>
                                     </div>
@@ -636,7 +633,7 @@
 
                                                     <td>{{i.ImgPath}}</td>
                                                     <td>
-                                                        <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setUsers(U);">
+                                                        <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setcarouselImages(i);">
                                                             <i class="fa fa-edit"></i>&nbsp;
                                                             Edit
                                                         </button>

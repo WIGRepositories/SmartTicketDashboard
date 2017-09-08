@@ -67,7 +67,7 @@ namespace SmartTicketDashboard.Controllers
                 i.Value = A.Id;
                 cmd.Parameters.Add(i);
 
-                SqlParameter im = new SqlParameter("@image", SqlDbType.VarChar);
+                SqlParameter im = new SqlParameter("@Image", SqlDbType.VarChar);
                 im.Value = A.Image;
                 cmd.Parameters.Add(im);
 

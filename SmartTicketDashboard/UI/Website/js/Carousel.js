@@ -240,7 +240,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         var carousel = {
             flag: 'U',
-            Id: -1,
+            Id: Carl.Id,
             ImageName: Carl.ImageName,
             Image: $scope.imageSrc,
             ImageCaption: Carl.Title,
@@ -271,8 +271,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         $scope.currGroup = null;
     };
   
-    $scope.setUsers = function (usr) {
-        $scope.User1 = usr;
+    $scope.setcarouselImages = function (i) {
+        $scope.carousel = i;
         $scope.imageSrc = null;
         document.getElementById('cmpNewLogo').src = "";
         $scope.imageSrc = usr.photo;
@@ -280,8 +280,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     }
 
-    $scope.clearUsers = function () {
-        $scope.User1 = null;
+    $scope.clearCarl = function () {
+        $scope.i = null;
     }
     /*end of  vehicle schedule list*/
     $scope.showDialog = function (message) {
