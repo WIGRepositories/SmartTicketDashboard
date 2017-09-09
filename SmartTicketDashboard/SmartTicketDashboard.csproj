@@ -113,12 +113,14 @@
     <Content Include="UI\CardUser.html" />
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\DriverDetails.html" />
+    <Content Include="UI\DriverStatus.html" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\CardDetails.js" />
     <Content Include="UI\js\CardDetails1.js" />
     <Content Include="UI\js\CardsList.js" />
     <Content Include="UI\js\CardUser.js" />
+    <Content Include="UI\js\DriverStatus.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
@@ -126,6 +128,7 @@
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\Car.jpg" />
     <Content Include="UI\images\car2.jpg" />
+    <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\VechicleBookingDetails.html" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
@@ -613,6 +616,7 @@
     <Content Include="UI\VehiclePricing.html" />
     <Content Include="UI\VehicleScheduleList.html" />
     <Content Include="UI\VehicleDetails.html" />
+    <Content Include="UI\VehicleStatus.html" />
     <Content Include="UI\vendors\animate.css\animate.css" />
     <Content Include="UI\vendors\bootstrap-clockface\CHANGELOG.txt" />
     <Content Include="UI\vendors\bootstrap-clockface\css\clockface.css" />
@@ -2044,6 +2048,7 @@
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
     <Compile Include="Controllers\DriverMasterController.cs" />
+    <Compile Include="Controllers\DriverStatusController.cs" />
     <Compile Include="Controllers\EditHistoryController.cs" />
     <Compile Include="Controllers\EditHistoryDetailsController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
@@ -2151,6 +2156,7 @@
     <Compile Include="Controllers\VehicleLogoutController.cs" />
     <Compile Include="Controllers\VehicleMasterController.cs" />
     <Compile Include="Controllers\VehiclePricingController.cs" />
+    <Compile Include="Controllers\VehicleStatusController.cs" />
     <Compile Include="Controllers\vehicletypesController.cs" />
     <Compile Include="Controllers\ZipCodeController.cs" />
     <Compile Include="Global.asax.cs">

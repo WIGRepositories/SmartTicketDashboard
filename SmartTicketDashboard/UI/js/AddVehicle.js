@@ -157,25 +157,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
-            $scope.VehiclesList = res.data;
+            $scope.v = res.data[0];
 
-            if ($scope.VehiclesList.length > 0) {
-                if ($scope.selectedVehicleList != null) {
-                    for (i = 0; i < $scope.VehiclesList.length; i++) {
-                        if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
-                            $scope.v = $scope.VehiclesList[i];
-                            break;
-                        }
-                    }
-                }
-                else {
-                    $scope.s = $scope.VehiclesList[0];
-                    $scope.selectedVehicleList = $scope.VehiclesList[0].id;
-                }
+            //if ($scope.VehiclesList.length > 0) {
+            //    if ($scope.selectedVehicleList != null) {
+            //        for (i = 0; i < $scope.VehiclesList.length; i++) {
+            //            if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
+            //                $scope.v = $scope.VehiclesList[i];
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else {
+            //        $scope.s = $scope.VehiclesList[0];
+            //        $scope.selectedVehicleList = $scope.VehiclesList[0].id;
+            //    }
 
-                $scope.getselectval($scope.selectedVehicleList);
-            }
-            $scope.imageSrc = $scope.VehiclesList[0].Photo;
+            //    $scope.getselectval($scope.selectedVehicleList);
+            //}
+            $scope.imageSrc = $scope.v.Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -199,6 +199,79 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
        
     }
+
+
+    $scope.GetCompanies = function () {
+
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
+            $scope.Companies = res.data;
+            $scope.Companies1 = res.data;
+
+
+            if ($scope.userCmpId != 1) {
+                //loop throug the companies and identify the correct one
+                for (i = 0; i < res.data.length; i++) {
+                    if (res.data[i].Id == $scope.userCmpId) {
+                        $scope.cmp = res.data[i];
+                        document.getElementById('test').disabled = true;
+                        break
+                    }
+                }
+                // $scope.GetFleetOwners();
+            }
+            else {
+                document.getElementById('test').disabled = false;
+            }
+            $scope.GetFleetOwners($scope.cmp);
+        });
+
+    }
+
+
+
+    $scope.GetFleetOwners = function () {
+
+
+
+        var vc = {
+            needfleetowners: '1',
+            cmpId: $scope.cmp.Id
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.cmpdata = res.data;
+            $scope.showdialogue("Saved successfully")
+
+
+            if ($scope.userSId != 1) {
+                //loop throug the fleetowners and identify the correct one
+                for (i = 0; i < res.data.Table.length; i++) {
+                    if (res.data.Table[i].UserId == $scope.userSId) {
+                        $scope.s = res.data.Table[i];
+                        document.getElementById('test1').disabled = true;
+                        break
+                    }
+                }
+            }
+            else {
+                document.getElementById('test1').disabled = false;
+            }
+            $scope.GetFleetStaff($scope.s);
+
+        });
+    }
+
+    
 
     $scope.saveNew = function (newVehicle,flag) {
        

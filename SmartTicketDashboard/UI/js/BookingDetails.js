@@ -36,24 +36,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedbookings = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/BookAVehicle/Bookingdetails?VechId=' + $scope.selectedbookings).then(function (res, data) {
-            $scope.bookings = res.data;
+            $scope.b = res.data[0];
 
-            if ($scope.bookings.length > 0) {
-                if ($scope.selectedbookings != null) {
-                    for (i = 0; i < $scope.bookings.length; i++) {
-                        if ($scope.bookings[i].id == $scope.selectedbookings) {
-                            $scope.v = $scope.bookings[i];
-                            break;
-                        }
-                    }
-                }
-                else {
-                    $scope.s = $scope.bookings[0];
-                    $scope.selectedbookings = $scope.bookings[0].id;
-                }
+            //if ($scope.bookings.length > 0) {
+            //    if ($scope.selectedbookings != null) {
+            //        for (i = 0; i < $scope.bookings.length; i++) {
+            //            if ($scope.bookings[i].id == $scope.selectedbookings) {
+            //                $scope.v = $scope.bookings[i];
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else {
+            //        $scope.s = $scope.bookings[0];
+            //        $scope.selectedbookings = $scope.bookings[0].id;
+            //    }
 
-                $scope.getselectval($scope.selectedbookings);
-            }
+            //    $scope.getselectval($scope.selectedbookings);
+            //}
         });
     }
     $scope.getselectval = function (v) {
