@@ -254,33 +254,47 @@ $(function () {
     // END FORM CHAT
 
     //BEGIN PORTLET
-    $(".portlet").each(function(index, element) {
+    $(".portlet").each(function (index, element) {
         var me = $(this);
-        $(">.portlet-header>.tools>i", me).click(function(e){
-            if($(this).hasClass('fa-chevron-up')){
+        $(">.portlet-header>.tools>i", me).click(function (e) {
+            if ($(this).hasClass('fa-chevron-up')) {
                 $(">.portlet-body", me).slideUp('fast');
                 $(this).removeClass('fa-chevron-up').addClass('fa-chevron-down');
             }
-            else if($(this).hasClass('fa-chevron-down')){
+            else if ($(this).hasClass('fa-chevron-down')) {
                 $(">.portlet-body", me).slideDown('fast');
                 $(this).removeClass('fa-chevron-down').addClass('fa-chevron-up');
             }
-            else if($(this).hasClass('fa-cog')){
+            else if ($(this).hasClass('fa-cog')) {
                 //Show modal
             }
-            else if($(this).hasClass('fa-refresh')){
+            else if ($(this).hasClass('fa-refresh')) {
                 //$(">.portlet-body", me).hide();
                 $(">.portlet-body", me).addClass('wait');
 
-                setTimeout(function(){
+                setTimeout(function () {
                     //$(">.portlet-body>div", me).show();
                     $(">.portlet-body", me).removeClass('wait');
                 }, 1000);
             }
-            else if($(this).hasClass('fa-times')){
+            else if ($(this).hasClass('fa-times')) {
                 me.remove();
             }
         });
+
+        $(">.portlet-header>.caption>a", me).click(function (e) {
+            var p = this.parentElement.parentElement.childNodes[3].childNodes[0];
+            if ($(p).hasClass('fa-chevron-up')) {
+                $(">.portlet-body", me).slideUp('fast');
+                $(p).removeClass('fa-chevron-up').addClass('fa-chevron-down');
+            }
+            else if ($(p).hasClass('fa-chevron-down')) {
+                $(">.portlet-body", me).slideDown('fast');
+                $(p).removeClass('fa-chevron-down').addClass('fa-chevron-up');
+            }
+        });
+
+
     });
     //END PORTLET
 
