@@ -318,7 +318,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-
+            $scope.GetMaster('DId=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
