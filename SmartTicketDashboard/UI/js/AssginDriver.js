@@ -93,7 +93,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-
+            $scope.Getallocatedriver('VID=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "your Details Are Incorrect";
@@ -142,6 +142,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var AssginDriver = {
             Id: AssginDriver.Id,
+            CompanyId: $scope.c.Id,
             VechID:AssginDriver.VechID,
             VehicleType: $scope.v.Type,
             PhoneNo: AssginDriver.PhoneNo,
@@ -150,6 +151,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EffectiveDate: AssginDriver.EffectiveDate,
             EffectiveTill: AssginDriver.EffectiveTill,
             DriverId:$scope.dd.DId,
+            VehicleModelId: $scope.vm.VehicleModelId,
+            ServiceTypeId: $scope.vm.ServiceTypeId,
+            VehicleGroupId: $scope.vm.VehicleGroupId,
+            
+            
             flag: "U"
         }
 

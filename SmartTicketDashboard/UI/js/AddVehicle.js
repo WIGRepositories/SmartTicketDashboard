@@ -197,7 +197,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
-        $scope.imageSrc = $scope.VehiclesList[0].Photo;
+       
     }
 
     $scope.saveNew = function (newVehicle,flag) {
@@ -343,7 +343,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-
+            $scope.GetVehcileMaster('VID=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
@@ -442,12 +442,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vech = {
 
             flag: 'U',
-            Id:vech.Id,
             VID: vech.VID,
             CompanyId: vech.c.Id,
             RegistrationNo: vech.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
-            Category: $scope.vm.Id,
+            VehicleModelId: $scope.vm.Id,
             OwnerName: vech.OwnerName,
             ChasisNo: vech.ChasisNo,
             Engineno: vech.Engineno,
@@ -458,15 +457,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PolExpDate: vech.PolExpDate,
             RCBookNo: vech.RCBookNo,
             RCExpDate: vech.RCExpDate,
-            CompanyVechile: vech.CompanyVechile1,
+            CompanyVechile: vech.CompanyVechile,
             OwnerPhoneNo: vech.OwnerPhoneNo,
             HomeLandmark: vech.HomeLandmark,
             ModelYear: vech.ModelYear,
-            DayOnly: vech.DayOnly1,
+            DayOnly: vech.DayOnly,
             VehicleGroupId: vech.vg1.Id,
+            ServiceTypeId: $scope.vr.Id,
             VechMobileNo: vech.VechMobileNo,
             EntryDate: vech.EntryDate,
             NewEntry: vech.NewEntry,
+            photo: $scope.imageSrc,
 
 
             Active: (vech.Active == true) ? 1 : 0,
@@ -499,6 +500,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.setVehiclesList = function (v) {
         $scope.vech = v;
+        $scope.imageSrc = v.Photo;
     };
 
     $scope.clearnewVehicle = function () {

@@ -156,12 +156,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter w = new SqlParameter("@Remarks", SqlDbType.VarChar, 50);
             w.Value = d.Remarks;
-            cmd.Parameters.Add(w);
-
-
-            SqlParameter FileName = new SqlParameter("@FileName", SqlDbType.VarChar);
-            FileName.Value = d.FileName;
-            cmd.Parameters.Add(FileName);
+            cmd.Parameters.Add(w);           
 
             SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
             pr.Value = d.Photo;

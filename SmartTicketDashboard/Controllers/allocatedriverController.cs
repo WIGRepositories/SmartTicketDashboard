@@ -176,16 +176,16 @@ namespace SmartTicketDashboard.Controllers
                 de.Value = A.EffectiveTill;
                 cmd.Parameters.Add(de);
 
-                SqlParameter vv = new SqlParameter("@VehicleModelId", SqlDbType.Int);
+                SqlParameter vv = new SqlParameter("@VehicleModelId", SqlDbType.VarChar);
                 vv.Value = A.VehicleModelId;
                 cmd.Parameters.Add(vv);
 
 
-                SqlParameter vf = new SqlParameter("@ServiceTypeId", SqlDbType.Int);
+                SqlParameter vf = new SqlParameter("@ServiceTypeId", SqlDbType.VarChar);
                 vf.Value = A.ServiceTypeId;
                 cmd.Parameters.Add(vf);
 
-                SqlParameter vg = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+                SqlParameter vg = new SqlParameter("@VehicleGroupId", SqlDbType.VarChar);
                 vg.Value = A.VehicleGroupId;
                 cmd.Parameters.Add(vg);
 

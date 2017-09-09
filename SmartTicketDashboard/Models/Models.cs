@@ -673,7 +673,7 @@ namespace SmartTicketDashboard.Models
         //public List<DriversGroups> list { get; set; }
         public string flag {get; set;}
         public int DId {get; set;}
-        public int CompanyId {get; set;}
+        public string CompanyId { get; set; }
         public string NAme {get; set;}
         public string Address {get; set;}
         public string City {get; set;}
@@ -2132,8 +2132,6 @@ namespace SmartTicketDashboard.Models
         public string BadgeNo { get; set; }
         public DateTime BadgeExpDate { get; set; }
         public string Remarks { get; set; }
-       
-        public string FileName { get; set; }
         public string Photo { get; set; }
         public string licenseimage { get; set; }
         public string badgeimage { get; set; }
@@ -2149,9 +2147,7 @@ namespace SmartTicketDashboard.Models
         public string Type { get; set; }
         public string OwnerName { get; set; }
         public string ChasisNo { get; set; }
-        public string Engineno { get; set; }
-        public string WirelessFleetNo { get; set; }
-        public string AllotmentType { get; set; }
+        public string Engineno { get; set; }      
         public float RoadNo { get; set; }
         public DateTime RoadTaxDate { get; set; }
         public string InsuranceNo { get; set; }
@@ -2163,7 +2159,7 @@ namespace SmartTicketDashboard.Models
         public int CompanyVechile { get; set; }
         public string OwnerPhoneNo { get; set; }
         public string HomeLandmark { get; set; }
-        public DateTime ModelYear { get; set; }
+        public string ModelYear { get; set; }
         public string DayOnly { get; set; }       
         public string VechMobileNo { get; set; }
         public DateTime EntryDate { get; set; }
@@ -2202,9 +2198,9 @@ namespace SmartTicketDashboard.Models
         public string ExecutiveName { get; set; }
         public DateTime EffectiveDate { get; set; }
         public DateTime EffectiveTill { get; set; }
-        public int VehicleModelId { get; set; }
-        public int ServiceTypeId { get; set; }
-        public int VehicleGroupId { get; set; }
+        public string VehicleModelId { get; set; }
+        public string ServiceTypeId { get; set; }
+        public string VehicleGroupId { get; set; }
     }
     public class UserLocation
     {

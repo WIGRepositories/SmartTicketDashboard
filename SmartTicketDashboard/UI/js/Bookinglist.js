@@ -14,7 +14,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
    
     $scope.GetBookingHistory = function () {
-        $http.get('/api/BookAVehicle/GetBookingHistory?RegNo=1&DriverName=1').then(function (res, data) {
+        var did = ($scope.dd == null) ? -1 : $scope.dd.DId;
+        var vid = ($scope.v == null) ? -1 : $scope.v.Id;
+        $http.get('/api/BookAVehicle/GetBookingHistory?Did=' + did+ '&Vid=' + vid).then(function (res, data) {
             $scope.bookings = res.data;
 
 
@@ -25,18 +27,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
             if ($scope.listdrivers.length > 0) {
-                $scope.dd = $scope.listdrivers[0];
-                $scope.GetMaster($scope.dd);
+                $scope.dd = $scope.listdrivers[0];              
             }
 
         });
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.Vehicles = res.data;
             if ($scope.Vehicles.length > 0) {
-                $scope.v = $scope.Vehicles[0];
-                $scope.GetMaster($scope.v);
+                $scope.v = $scope.Vehicles[0];               
             }
         });
+
+        
     }
 
     $scope.save = function (book) {

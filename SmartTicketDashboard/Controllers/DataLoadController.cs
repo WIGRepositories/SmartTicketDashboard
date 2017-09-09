@@ -951,7 +951,7 @@ namespace SmartTicketDashboard.Controllers
 
                     SqlParameter dgid = new SqlParameter();
                     dgid.ParameterName = "@CompanyId";
-                    dgid.SqlDbType = SqlDbType.Int;
+                    dgid.SqlDbType = SqlDbType.VarChar;
                     dgid.Value = p.CompanyId;
                     cmd.Parameters.Add(dgid);
 
@@ -988,6 +988,12 @@ namespace SmartTicketDashboard.Controllers
                     dgPPin.SqlDbType = SqlDbType.VarChar;
                     dgPPin.Value = p.PPin;
                     cmd.Parameters.Add(dgPPin);
+
+                        SqlParameter pc = new SqlParameter();
+                        pc.ParameterName = "@PCity";
+                    pc.SqlDbType = SqlDbType.VarChar;
+                    pc.Value = p.PCity;
+                    cmd.Parameters.Add(pc);
 
                     SqlParameter dgMob1 = new SqlParameter();
                     dgMob1.ParameterName = "@OffMobileNo";
@@ -1246,7 +1252,7 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter vgNewEntry = new SqlParameter();
                 vgNewEntry.ParameterName = "@NewEntry";
                 vgNewEntry.SqlDbType = SqlDbType.NVarChar;
-                vgNewEntry.Value = o.EntryDate;
+                vgNewEntry.Value = o.NewEntry;
                 cmd.Parameters.Add(vgNewEntry);
 
                 SqlParameter vgVehicleModelId = new SqlParameter();

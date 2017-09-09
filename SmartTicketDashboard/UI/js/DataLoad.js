@@ -155,7 +155,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        alert("Saved successfully")
+                        alert("Saved successfully");
                     });
 
                      //$scope.logdata = list;
@@ -200,7 +200,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
@@ -285,7 +285,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                       alert("Saved successfully")
+                        alert("Saved successfully");
                     });
 
                     // $scope.logdata = lines;
@@ -335,7 +335,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        $scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
@@ -440,7 +440,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        //$scope.showdialogue("Saved successfully")
+                        alert("Saved successfully")
                     });
 
                     // $scope.logdata = lines;
@@ -467,7 +467,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         BadgeExpDate: data[15],
                         Remarks: data[16],
                         VehicleModelId: data[17],
-                        //CompanyId: data[12],
+                        CompanyId: data[18],
 
                         flag: 'I'
                     }
@@ -498,7 +498,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
@@ -507,7 +507,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         var errdata = errres.data;
                         var errmssg = "Your details are incorrect";
                         errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-                        $scope.showDialog(errmssg);
+                        alert(errmssg);
                         alert(errmssg);
                     });
 
@@ -587,9 +587,8 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         data: lines
                     }
                     $http(req).then(function (res) {
-                        $scope.initdata = res.data;
-                        alert("Saved successfully")
-                        //$scope.showdialogue("Saved successfully")
+                        $scope.initdata = res.data;                        
+                        alert("Saved successfully");
                     });
 
                      //$scope.logdata = lines;
@@ -652,7 +651,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
@@ -723,7 +722,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        alert("Saved successfully")
+                        alert("Saved successfully");
                     });
 
                     //$scope.logdata = list;
@@ -763,7 +762,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                  
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
@@ -849,7 +848,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
-                        alert("Saved successfully")
+                        alert("Saved successfully");
                     });
 
                     //$scope.logdata = list;
@@ -953,7 +952,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        alert("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();

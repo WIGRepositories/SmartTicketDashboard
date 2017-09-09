@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetBookingHistory()" ng-model="bookings">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetMaster();GetBookingHistory();" ng-model="bookings">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -420,14 +420,14 @@
                                             <!--</div>-->
 
 
-                                            <div class="row mbm" ng-init="GetMaster();">
+                                            <div class="row mbm">
                                                 <div class="col-md-3">
-                                                    Vehicles:<select ng-options="v.RegistrationNo for v in Vehicles track by v.Id" ng-model="v" ng-change="GetMaster(v)" class="form-control" style="width:80%">
+                                                    Vehicles:<select ng-options="v1.RegistrationNo for v1 in Vehicles track by v1.Id" ng-model="v" ng-change="GetBookingHistory()" class="form-control" style="width:80%">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-3">
-                                                    Drivers:<select ng-options="dd.NAme for dd in listdrivers track by dd.DId" ng-model="dd" ng-change="GetMaster(dd)" class="form-control" style="width:80%">
+                                                    Drivers:<select ng-options="dd1.NAme for dd1 in listdrivers track by dd1.DId" ng-model="dd" ng-change="GetBookingHistory()" class="form-control" style="width:80%">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>
@@ -586,7 +586,7 @@
                                                         <!--<th width="9%">Edit</th>-->
 
                                                     </tr>
-                                                   
+
                                                 <tbody>
                                                     <tr ng-repeat="b in bookings">
                                                         <!--<td>{{b.Vid}}</td>-->
@@ -610,7 +610,7 @@
 
 
                                                 </tbody>
-                                                
+
                                             </table>
                                             <!--<div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                                     <div class="modal-dialog">
@@ -870,12 +870,17 @@
                             <h3 class="modal-title">Save confirmation!</h3>
                         </div>
                         <div class="modal-body">
+                            al
+                            >
+
                             <!--<ul>
                                 <li ng-repeat="item in items">
                                     <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
                                 </li>
                             </ul>
                             Selected: <b>{{ selected.item }}</b>-->
+                            
+
                             {{mssg}}
                         </div>
                     </script>
