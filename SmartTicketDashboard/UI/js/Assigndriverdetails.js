@@ -36,24 +36,24 @@ var ctrl = app.controller('myCtrl1', function ($scope, $http, $localStorage, $ui
         $scope.selecteddrivers = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/allocatedriver/GetAssigndetails?VechId=' + $scope.selecteddrivers).then(function (res, data) {
-            $scope.drivers = res.data;
+            $scope.a = res.data[0];
 
-            if ($scope.drivers.length > 0) {
-                if ($scope.selecteddrivers != null) {
-                    for (i = 0; i < $scope.drivers.length; i++) {
-                        if ($scope.drivers[i].id == $scope.selecteddrivers) {
-                            $scope.v = $scope.drivers[i];
-                            break;
-                        }
-                    }
-                }
-                else {
-                    $scope.s = $scope.drivers[0];
-                    $scope.selecteddrivers = $scope.drivers[0].id;
-                }
+            //if ($scope.drivers.length > 0) {
+            //    if ($scope.selecteddrivers != null) {
+            //        for (i = 0; i < $scope.drivers.length; i++) {
+            //            if ($scope.drivers[i].id == $scope.selecteddrivers) {
+            //                $scope.v = $scope.drivers[i];
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else {
+            //        $scope.s = $scope.drivers[0];
+            //        $scope.selecteddrivers = $scope.drivers[0].id;
+            //    }
 
-                $scope.getselectval($scope.selecteddrivers);
-            }
+            //    $scope.getselectval($scope.selecteddrivers);
+            //}
         });
     }
     $scope.getselectval = function (v) {
