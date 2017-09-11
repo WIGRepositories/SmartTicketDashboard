@@ -91,10 +91,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         var maplocations = $scope.locations;
 
         var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
-            zoom: 15,
+            zoom: 20,
             center: new google.maps.LatLng(-17.8252, 31.0335), //17.8252° S, 31.0335° E
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
+
 
 
         var infowindow = new google.maps.InfoWindow();
@@ -154,7 +155,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 app.controller('mapCtrl', function ($scope, $http) {
 
     var mapOptions = {
-        zoom: 8,
+        zoom: 15,
         center: new google.maps.LatLng(17.3850, 78.4867),
         mapTypeId: google.maps.MapTypeId.ROADMAP
 
@@ -170,23 +171,24 @@ app.controller('mapCtrl', function ($scope, $http) {
         success(function (data) {
 
             $scope.location = data;
-            $scope.location.forEach(function (location) {
-                createMarker(location);
+            $scope.location.forEach(function (loc) {
+                createMarker(loc);
             });
 
         });
 
-    var createMarker = function (spot) {
+    var createMarker = function (loc) {
         var marker = new google.maps.Marker({
             map: $scope.map,
-            position: new google.maps.LatLng(spot.Latitude, spot.Longitude),
-            title: spot.spot
+            position: new google.maps.LatLng(loc.Latitude, loc.Longitude),
+            //title: loc.loc
 
         });
-        marker.content = '<div class="infoWindowContent"</div>';
+        marker.content = '<div class="infoWindow"</div>' +'Driver: '+loc.NAme +'<br> DriverPhone No: ' +loc.DriverNo + '<br> Vehicle Model: '+loc.VehicleModelId+ '</div>';;
 
         google.maps.event.addListener(marker, 'click', function () {
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            //infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent(marker.content);
             infoWindow.open($scope.map, marker);
         });
 
