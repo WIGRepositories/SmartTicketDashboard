@@ -155,7 +155,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 app.controller('mapCtrl', function ($scope, $http) {
 
     var mapOptions = {
-        zoom: 15,
+        zoom: 8,
         center: new google.maps.LatLng(17.3850, 78.4867),
         mapTypeId: google.maps.MapTypeId.ROADMAP
 
@@ -184,7 +184,7 @@ app.controller('mapCtrl', function ($scope, $http) {
             //title: loc.loc
 
         });
-        marker.content = '<div class="infoWindow"</div>' +'Driver: '+loc.NAme +'<br> DriverPhone No: ' +loc.DriverNo + '<br> Vehicle Model: '+loc.VehicleModelId+ '</div>';;
+        marker.content = '<div class="infoWindow"</div>' +'Driver: '+loc.NAme +'<br> Driver Contact No: ' +loc.DriverNo + '<br> Vehicle Model: '+loc.VehicleModelId+ '</div>';;
 
         google.maps.event.addListener(marker, 'click', function () {
             //infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
