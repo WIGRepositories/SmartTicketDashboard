@@ -157,25 +157,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
-            $scope.VehiclesList = res.data;
+            $scope.v = res.data[0];
 
-            if ($scope.VehiclesList.length > 0) {
-                if ($scope.selectedVehicleList != null) {
-                    for (i = 0; i < $scope.VehiclesList.length; i++) {
-                        if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
-                            $scope.v = $scope.VehiclesList[i];
-                            break;
-                        }
-                    }
-                }
-                else {
-                    $scope.s = $scope.VehiclesList[0];
-                    $scope.selectedVehicleList = $scope.VehiclesList[0].id;
-                }
+            //if ($scope.VehiclesList.length > 0) {
+            //    if ($scope.selectedVehicleList != null) {
+            //        for (i = 0; i < $scope.VehiclesList.length; i++) {
+            //            if ($scope.VehiclesList[i].id == $scope.selectedVehicleList) {
+            //                $scope.v = $scope.VehiclesList[i];
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else {
+            //        $scope.s = $scope.VehiclesList[0];
+            //        $scope.selectedVehicleList = $scope.VehiclesList[0].id;
+            //    }
 
-                $scope.getselectval($scope.selectedVehicleList);
-            }
-            $scope.imageSrc = $scope.VehiclesList[0].Photo;
+            //    $scope.getselectval($scope.selectedVehicleList);
+            //}
+            $scope.imageSrc = $scope.v.Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -197,8 +197,81 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
-        $scope.imageSrc = $scope.VehiclesList[0].Photo;
+       
     }
+
+
+    $scope.GetCompanies = function () {
+
+        $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
+            $scope.Companies = res.data;
+            $scope.Companies1 = res.data;
+
+
+            if ($scope.userCmpId != 1) {
+                //loop throug the companies and identify the correct one
+                for (i = 0; i < res.data.length; i++) {
+                    if (res.data[i].Id == $scope.userCmpId) {
+                        $scope.cmp = res.data[i];
+                        document.getElementById('test').disabled = true;
+                        break
+                    }
+                }
+                // $scope.GetFleetOwners();
+            }
+            else {
+                document.getElementById('test').disabled = false;
+            }
+            $scope.GetFleetOwners($scope.cmp);
+        });
+
+    }
+
+
+
+    $scope.GetFleetOwners = function () {
+
+
+
+        var vc = {
+            needfleetowners: '1',
+            cmpId: $scope.cmp.Id
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.cmpdata = res.data;
+            $scope.showdialogue("Saved successfully")
+
+
+            if ($scope.userSId != 1) {
+                //loop throug the fleetowners and identify the correct one
+                for (i = 0; i < res.data.Table.length; i++) {
+                    if (res.data.Table[i].UserId == $scope.userSId) {
+                        $scope.s = res.data.Table[i];
+                        document.getElementById('test1').disabled = true;
+                        break
+                    }
+                }
+            }
+            else {
+                document.getElementById('test1').disabled = false;
+            }
+            $scope.GetFleetStaff($scope.s);
+
+        });
+    }
+
+    
 
     $scope.saveNew = function (newVehicle,flag) {
        
@@ -343,7 +416,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-
+            $scope.GetVehcileMaster('VID=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
@@ -442,12 +515,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vech = {
 
             flag: 'U',
-            Id:vech.Id,
             VID: vech.VID,
             CompanyId: vech.c.Id,
             RegistrationNo: vech.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
-            Category: $scope.vm.Id,
+            VehicleModelId: $scope.vm.Id,
             OwnerName: vech.OwnerName,
             ChasisNo: vech.ChasisNo,
             Engineno: vech.Engineno,
@@ -458,15 +530,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PolExpDate: vech.PolExpDate,
             RCBookNo: vech.RCBookNo,
             RCExpDate: vech.RCExpDate,
-            CompanyVechile: vech.CompanyVechile1,
+            CompanyVechile: vech.CompanyVechile,
             OwnerPhoneNo: vech.OwnerPhoneNo,
             HomeLandmark: vech.HomeLandmark,
             ModelYear: vech.ModelYear,
-            DayOnly: vech.DayOnly1,
+            DayOnly: vech.DayOnly,
             VehicleGroupId: vech.vg1.Id,
+            ServiceTypeId: $scope.vr.Id,
             VechMobileNo: vech.VechMobileNo,
             EntryDate: vech.EntryDate,
             NewEntry: vech.NewEntry,
+            photo: $scope.imageSrc,
 
 
             Active: (vech.Active == true) ? 1 : 0,
@@ -499,6 +573,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.setVehiclesList = function (v) {
         $scope.vech = v;
+        $scope.imageSrc = v.Photo;
     };
 
     $scope.clearnewVehicle = function () {

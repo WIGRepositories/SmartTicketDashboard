@@ -158,26 +158,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.listdrivers = res.data;
+            $scope.Dl = res.data[0];
 
-            if ($scope.listdrivers.length > 0) {
-                if ($scope.selectedlistdrivers != null) {
-                    for (i = 0; i < $scope.listdrivers.length; i++) {
-                        if ($scope.listdrivers[i].id == $scope.selectedlistdrivers) {
-                            $scope.v = $scope.listdrivers[i];
-                            break;
-                        }
-                    }
-                }
-                else {
-                    $scope.s = $scope.listdrivers[0];
-                    $scope.selectedlistdrivers = $scope.listdrivers[0].id;
-                }
+            //if ($scope.listdrivers.length > 0) {
+            //    if ($scope.selectedlistdrivers != null) {
+            //        for (i = 0; i < $scope.listdrivers.length; i++) {
+            //            if ($scope.listdrivers[i].id == $scope.selectedlistdrivers) {
+            //                $scope.v = $scope.listdrivers[i];
+            //                break;
+            //            }
+            //        }
+            //    }
+            //    else {
+            //        $scope.s = $scope.listdrivers[0];
+            //        $scope.selectedlistdrivers = $scope.listdrivers[0].id;
+            //    }
 
-                $scope.getselectval($scope.selectedlistdrivers);
-            }
+            //    $scope.getselectval($scope.selectedlistdrivers);
+            //}
 
-            $scope.imageSrc = $scope.listdrivers[0].Photo;
+            $scope.imageSrc = $scope.Dl.Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -318,7 +318,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-
+            $scope.GetMaster('DId=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";

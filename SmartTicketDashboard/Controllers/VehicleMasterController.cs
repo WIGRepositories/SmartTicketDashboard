@@ -154,7 +154,7 @@ namespace SmartTicketDashboard.Controllers
             wh.Value = v.HomeLandmark;
             cmd.Parameters.Add(wh);
 
-            SqlParameter wg = new SqlParameter("@ModelYear", System.Data.SqlDbType.Date);
+            SqlParameter wg = new SqlParameter("@ModelYear", SqlDbType.VarChar);
             wg.Value = v.ModelYear;
             cmd.Parameters.Add(wg);
 

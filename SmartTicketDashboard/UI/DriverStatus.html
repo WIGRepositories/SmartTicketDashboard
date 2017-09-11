@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | AssginDriver</title>
+    <title>Home | BTPOS | DriverList</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp1" ng-controller="myCtrl1" ng-init="GetAssigndetails();" ng-model="drivers">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanies();">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -53,7 +53,7 @@
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
 
-                                <li><a href="emailinbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
                                 <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
                                 <li class="divider"></li>
                                 <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
@@ -386,13 +386,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Assgin Driver</div>
+                            <div class="page-title">Driver List</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="AssginDriver.html">Assgin Driver</a></li>
+                            <li><a href="DriverList.html">Driver List</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -402,186 +402,79 @@
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
-                                <div id="table-action" class="row">
-                                    <div class="col-lg-12">
-
-                                        <div id="tableactionTabContent" class="tab-content">
-                                            <div id="table-table-tab" class="tab-pane fade in active">
-                                                <div class="row" ng-repeat="a in drivers">
-                                                    <div class="col-lg-12">
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
 
 
-                                                        <div class="table-container">
-                                                            <div class="row mbm">
+                                                <div class="table-container">
+                                                    <div class="row mbm">
+                                                        <div class="col-md-4">
+                                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-4">
+                                                            Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s"  id="test1">
 
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th width="10%">Id</th>
-                                                                            <td>{{a.Id}}</td>
-                                                                        <tr>
-                                                                            <th width="10%">CompanyId</th>
-                                                                            <td>{{a.CompanyId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EntryDate</th>
-                                                                            <td>{{a.EntryDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">BookingNo</th>
-                                                                            <td>{{a.BookingNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqDate</th>
-                                                                            <td>{{a.ReqDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqTime</th>
-                                                                            <td>{{a.ReqTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">CallTime</th>
-                                                                            <td>{{a.CallTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <!--<th width="10%">CustomerName</th>
-                                                                            <td>{{a.CustomerName}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">CusID</th>
-                                                                            <td>{{a.CusID}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">PhoneNo</th>
-                                                                            <td>{{a.PhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">AltPhoneNo</th>
-                                                                            <td>{{a.AltPhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">Address</th>
-                                                                            <td>{{a.Address}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                                            <th width="10%">PickupAddress</th>
-                                                                            <td>{{a.PickupAddress}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">LandMark</th>
-                                                                            <td>{{a.LandMark}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">PickupPlace</th>
-                                                                            <td>{{a.PickupPlace}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DropPlace</th>
-                                                                            <td>{{a.DropPlace}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">Package</th>
-                                                                            <td>{{a.Package}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">VehicleType</th>
-                                                                            <td>{{a.VehicleType}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">NoofVehicle</th>
-                                                                            <td>{{a.NoofVehicle}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VechID</th>
-                                                                            <td>{{a.VechID}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">RegistrationNo</th>
-                                                                            <td>{{a.RegistrationNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverName</th>
-                                                                            <td>{{a.DriverName}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                                            <th width="10%">PresentDriverLandMark</th>
-                                                                            <td>{{a.PresentDriverLandMark}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">ExecutiveName</th>
-                                                                            <td>{{a.ExecutiveName}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveDate</th>
-                                                                            <td>{{a.EffectiveDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveTill</th>
-                                                                            <td>{{a.EffectiveTill}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverId</th>
-                                                                            <td>{{a.DriverId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleModelId</th>
-                                                                            <td>{{a.VehicleModelId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ServiceTypeId</th>
-                                                                            <td>{{a.ServiceTypeId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleGroupId</th>
-                                                                            <td>{{a.VehicleGroupId}}</td>
-                                                                        </tr>
-
-
-                                                                    <tbody>
-                                                                        <tr ng-repeat="a in drivers"></tr>
-
-
-                                                                    </tbody>
-
-                                                                </table>
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div><br />
+                                                        
+                                                        <div class="portlet box" style="margin-top:50px">
+                                                            <div class="portlet-header">
+                                                               
 
                                                             </div>
+                                                            <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
+                                                            <div ng-app="mapApp" ng-controller="mapCtrl" ng-init="GetDriverlocation()">
+                                                                <div id="map" ng-repeat="p in location">
 
+                                                                </div>
+                                                            </div>
 
+                                                           
 
-                                                            <!--END PAGE WRAPPER-->
+                                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                                                            
+                                                           
                                                         </div>
-                                                    </div>
 
-                                                    <!--BEGIN FOOTER-->
-                                                    <div id="footer">
-                                                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                        <!--END CONTENT-->
                                                     </div>
-                                                    <!--END FOOTER-->
+                                                    <!--END PAGE WRAPPER-->
                                                 </div>
                                             </div>
+
+                                            <!--BEGIN FOOTER-->
+                                            <div id="footer">
+                                                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                            </div>
+                                            <!--END FOOTER-->
                                         </div>
-                                        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+                                    </div>
+                                </div>
+                                <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
-                                            <div class="modal-header">
-                                                <h3 class="modal-title">Save confirmation!</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!--<ul>
-                                                    <li ng-repeat="item in items">
-                                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                                    </li>
-                                                </ul>
-                                                Selected: <b>{{ selected.item }}</b>-->
-                                                {{mssg}}
-                                            </div>
-
-
-                                        </script>
+                                    <div class="modal-header">
+                                        <h3 class="modal-title">Save confirmation!</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!--<ul>
+                                            <li ng-repeat="item in items">
+                                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                                            </li>
+                                        </ul>
+                                        Selected: <b>{{ selected.item }}</b>-->
+                                        {{mssg}}
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                        <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
                                     </div>
 
-
-                                </div>
+                                </script>
                             </div>
                         </div>
                     </div>
@@ -589,6 +482,7 @@
             </div>
         </div>
     </div>
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
@@ -614,8 +508,12 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/Assigndriverdetails.js"></script>
+    
+    <script src="js/DriverStatus.js"></script>
 
+
+    
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
 
 </body>
 </html>

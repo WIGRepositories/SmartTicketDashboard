@@ -400,147 +400,479 @@
                         <div class="clearfix"></div>
                     </div>
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
-                    <div class="page-content">
+                    <div class="page-content" ng-model="v">
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
                                 <div id="tableactionTabContent" class="tab-content">
-                                    <div id="table-table-tab" class="tab-pane fade in active">
-                                        <div class="row mtl">                                           
-                                            <div class="row">
-                                                <div class="col-md-12">
 
-                                                    <div id="generalTabContent" class="tab-content" ng-repeat="v in VehiclesList">
-                                                        <div class="col-md-8" style="margin-bottom:20px">
-                                                            <label for="Name">Photo:</label>
-                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="200px" height="100px" />
-                                                            <br />
+                                    <!---------------------User Profile Style--------------------------->
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <h2>Vehicle Details</h2>
+                                            <div class="row mtl">
+                                                <div class="col-md-3">
+                                                    <div class="form-group">
+                                                        <div class="text-center mbl"><img ng-src="{{imageSrc}}" alt="" class="img-responsive" /></div>
+                                                        <div class="text-center mbl">
+                                                            <a href="#" class="btn btn-green">
+                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                Upload
+                                                            </a>
                                                         </div>
-                                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                            <thead>
-                                                                <tr>
-                                                                    <th width="10">Registration No</th>
-                                                                    <td width="20%">{{v.RegistrationNo}}</td>
-                                                                    </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Type</th>
-                                                                    <td width="10%">{{v.Type}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Owner Name</th>
-                                                                    <td width="20%">{{v.OwnerName}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Chasis No</th>
-                                                                    <td width="10%">{{v.ChasisNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Engine No</th>
-                                                                    <td width="10%">{{v.Engineno}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Road Tax Date</th>
-                                                                    <td width="10%">{{v.RoadTaxDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Insurance No</th>
-                                                                    <td width="10%">{{v.InsuranceNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Insurance Date</th>
-                                                                    <td width="10%">{{v.InsDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">PollutionNo</th>
-                                                                    <td width="10%">{{v.PolutionNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Pollution Exp Date</th>
-                                                                    <td width="10%">{{v.PolExpDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">RC Book No</th>
-                                                                    <td width="10%">{{v.RCBookNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">RC Exp Date</th>
-                                                                    <td width="10%">{{v.RCExpDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Company Vechile</th>
-                                                                    <td width="10%">{{v.CompanyVechile}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Owner Phone No</th>
-                                                                    <td width="10%">{{v.OwnerPhoneNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Engine No</th>
-                                                                    <td width="10%">{{v.HomeLandmark}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Model Year</th>
-                                                                    <td width="10%">{{v.ModelYear}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Day/Night</th>
-                                                                    <td width="10%">{{v.DayOnly}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vech Mobile No</th>
-                                                                    <td width="10%">{{v.VechMobileNo}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Entry Date</th>
-                                                                    <td width="10%">{{v.EntryDate}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">New Entry</th>
-                                                                    <td width="10%">{{v.NewEntry}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Model</th>
-                                                                    <td width="10%">{{v.VehicleModelId}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Service Type </th>
-                                                                    <td width="10%">{{v.ServiceTypeId}}</td>
-                                                                </tr>
-                                                                <tr>
-                                                                    <th width="10%">Vehicle Group</th>
-                                                                    <td width="10%">{{v.VehicleGroupId}}</td>
-                                                                </tr>
+                                                    </div>
+                                                    <table class="table table-striped table-hover">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>Owner Name</td>
+                                                                <td>{{v.OwnerName}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Owner Phone No</td>
+                                                                <td>{{v.OwnerPhoneNo}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Registration No</td>
+                                                                <td> {{v.RegistrationNo}}</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>Address</td>
+                                                                <td>{{v.HomeLandmark}}</td>
+                                                            </tr>
+
+                                                            <tr>
+                                                                <td>Status</td>
+                                                                <td><span class="label label-success">Active</span></td>
+                                                            </tr>
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <!--<ul class="nav nav-tabs">
+                            <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
+                        </ul>-->
+                                                    <div id="generalTabContent" class="tab-content">
+                                                        <div id="tab-edit" class="tab-pane fade in active">
+                                                            <form action="#" class="form-horizontal">
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="">Owner Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Name</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerName" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Phone No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerPhoneNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Address</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.HomeLandmark" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Home Landmark</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.HomeLandmark" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="">Vehicle Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+                                                                           
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Registration No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="email" ng-model="v.RegistrationNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Type" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Service Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ServiceTypeId" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Group</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VehicleGroupId" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Model Year</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ModelYear" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Model</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VehicleModelId" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Engine No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Engineno" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vech Mobile No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VechMobileNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-sm-3 control-label">New Entry</label>
+                                                                                            <div class="col-sm-9 controls">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.NewEntry" class="form-control" /></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-sm-3 control-label">Day/Night</label>
+                                                                                            <div class="col-sm-9 controls">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.DayOnly" class="form-control" /></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-12">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-sm-3 control-label">Entry Date</label>
+                                                                                            <div class="col-sm-9 controls">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.EntryDate" class="form-control" /></div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                             
+
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="">Vehicle  Approvals</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+                                                                            <!--<div class="alert alert-danger" >No records to display.</div>-->
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Engine No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Engineno" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Road Tax Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RoadTaxDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Insurance Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.InsDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Chasis No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ChasisNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">PollutionNo</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.PolutionNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Pollution Exp Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.PolExpDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">RC Book No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RCBookNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">RC Exp Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RCExpDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Company Vechile</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.CompanyVechile" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="Name" class="col-md-3 control-label">Road Tax:<span class='require'></span></label>
+
+                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                            <div class="col-md-6">
+                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
+                                                                                                <br />
+                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                                    Upload photo
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="Name" class="col-md-3 control-label">Insurance:<span class='require'></span></label>
+
+                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                            <div class="col-md-6">
+                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
+                                                                                                <br />
+                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                                    Upload photo
+                                                                                                </a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="row">
+
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="Name" class="col-md-3 control-label">Pollution:<span class='require'></span></label>
+
+                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                            <div class="col-md-6">
+                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
+                                                                                                <br />
+                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                                    Upload photo
+                                                                                                </a>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label for="Name" class="col-md-3 control-label">RC:<span class='require'></span></label>
+
+                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                                                            <div class="col-md-6">
+                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
+                                                                                                <br />
+                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                                                    Upload photo
+                                                                                                </a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
                                                                
 
-                                                            <tbody>
-                                                                <tr ng-repeat="v in VehiclesList">
-
-
-
-                                                                </tr>
-
-
-                                                            </tbody>
-
-                                                        </table>
+                                                               
+                                                                <hr />
+                                                                <div style="margin-left:350px">
+                                                                    <button class="btn btn-green btn-block" style="margin-top:5px">Save</button>
+                                                                    <button class="btn btn-green btn-block">Cancel</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
 
                                                     </div>
                                                 </div>
-
-                                                </div>
-
                                             </div>
-
                                         </div>
-
-
                                     </div>
 
-                                    <!--END CONTENT-->
+                                    <!---------------------------User Profile Style------------------------------>
                                 </div>
-                                <!--END PAGE WRAPPER-->
+                                <!--END CONTENT-->
                             </div>
+                            <!--END PAGE WRAPPER-->
                         </div>
+                    </div>
                     </div>
 
                     <!--BEGIN FOOTER-->

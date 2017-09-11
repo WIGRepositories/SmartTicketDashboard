@@ -305,9 +305,7 @@ app.controller('mapCtrl', function ($scope, $http) {
         $scope.markers.push(marker);
     };
 
-    //jagan
     
-    //jagan
 
 });
 

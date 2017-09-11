@@ -19,7 +19,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
 
             UserName: type.UserName,
             newPassword: type.newPassword
-           
+
 
         };
 
@@ -44,7 +44,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
 
         if (u == null || u == "") {
             alert("Please enter username");
-           // alert('Please enter username');
+            // alert('Please enter username');
             return;
         }
 
@@ -62,17 +62,17 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
             url: '/api/LOGIN/ValidateCredentials/',
             data: inputcred
         }
-          $rootScope.spinner.on();
+        $rootScope.spinner.on();
         angular.element('body').addClass('spinnerOn'); // add Class to body to show spinner
 
 
         $http(req).then(function (res) {
-           
-           if (res.data.length == 0) {
+
+            if (res.data.length == 0) {
                 $rootScope.spinner.off();
-             //  $rootScope.$apply();
-               //angular.element('body').removeClass('spinnerOn').then(function () { alert('invalid credentials'); }); // hide spinner
-               // alert('invalid credentials');
+                //  $rootScope.$apply();
+                //angular.element('body').removeClass('spinnerOn').then(function () { alert('invalid credentials'); }); // hide spinner
+                // alert('invalid credentials');
                 alert("invalid credentials");
             }
             else {
@@ -80,38 +80,37 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 $localStorage.uname = res.data[0].uname;
                 $localStorage.userdetails = res.data;
                 var roleid = $localStorage.userdetails[0].roleid;
-                switch (roleid)
-                {
-                  
+                switch (roleid) {
 
-                     case 1:
+
+                    case 1:
                         window.location.href = "UI/index.html";
                         break;
                     case 2:
                         window.location.href = "UI/Index_finAdmin.html";
-                        break;                
+                        break;
 
-                        
+
                     case 3:
                         window.location.href = "UI/Index_support.html";
-                         break;
+                        break;
                     case 4:
                         window.location.href = "UI/Index_help.html";
-                         break;
+                        break;
                     case 5:
-                       window.location.href = "UI/Index_sales.html";
-                         break;
+                        window.location.href = "UI/Index_sales.html";
+                        break;
                     case 6:
-                       window.location.href = "UI/Index_FO.html";
+                        window.location.href = "UI/Index_FO.html";
                         break;
                     case 11:
                         window.location.href = "UI/Index_G.html";
                         break;
                     case 12:
-                       window.location.href = "UI/Index_cmpUser.html";
+                        window.location.href = "UI/Index_cmpUser.html";
                         break;
                     default:
-                       window.location.href = "UI/index.html";
+                        window.location.href = "UI/index.html";
                         break;
 
                 }
@@ -119,7 +118,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
             }
         },//error
         function (res) {
-              $rootScope.spinner.off();
+            $rootScope.spinner.off();
             //  $rootScope.$apply();
             //angular.element('body').removeClass('spinnerOn'); // hide spinner
         });
@@ -131,7 +130,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
             animation: $scope.animationsEnabled,
             backdrop: false,
             templateUrl: 'myModalContent.html',
-              controller: 'ModalInstanceCtrl',            
+            controller: 'ModalInstanceCtrl',
             resolve: {
                 mssg: function () {
                     return message;
@@ -146,7 +145,7 @@ myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg
     $scope.mssg = mssg;
     $scope.ok = function () {
 
-        $uibModalInstance.close();       
+        $uibModalInstance.close();
     };
 
     $scope.cancel = function () {

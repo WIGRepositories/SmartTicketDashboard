@@ -2,21 +2,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | AssginDriver</title>
+    <title>Home | BT POS | Vehicle Details</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+   
     <!--Loading bootstrap css-->
+    
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+    
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
-
+    
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp1" ng-controller="myCtrl1" ng-init="GetAssigndetails();" ng-model="drivers">
+
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="getVehicleDetails" ng-model="VehicleAvailable">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -24,37 +28,31 @@
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
                     <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/user.jpg" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
                 </div>
                 <div class="topbar-main">
                     <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
 
                     <ul class="nav navbar navbar-top-links navbar-right mbn">
                         <li class="dropdown">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
-                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
-                                <li><p>You have 0 new alerts</p></li>
-                            </ul>
-                            <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table2">
-                                <li><p>{{A.Message}}</p></li>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">0</span></a>
+                            <ul class="dropdown-menu dropdown-alerts">
+                                <li><p>You have 0 new notifications</p></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table1.length}}</span></a>
-                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table1.length==0">
-                                <li><p>You have 0 new notifications</p></li>
-                            </ul>
-                            <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
-                                <li><p>{{A.Message}}</p></li>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">0</span></a>
+                            <ul class="dropdown-menu dropdown-messages">
+                                <li><p>You have 0 new messages</p></li>
                             </ul>
                         </li>
                         <li class="dropdown topbar-user">
-                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">Admin</span>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
 
                                 <li><a href="emailinbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
-                                <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
+                                <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success"></span></a></li>
                                 <li class="divider"></li>
                                 <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
                                 <li><a href="../Login.html"><i class="fa fa-key"></i>Log Out</a></li>
@@ -74,7 +72,7 @@
                                 <div class="info">
                                     <p>{{uname}}</p>
                                     <ul class="list-inline list-unstyled">
-                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="extra-profile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
                                         <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
                                         <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
                                         <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
@@ -268,7 +266,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-ticket">
+                               <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -284,7 +282,7 @@
                         </li>
                         <li>
                             <a href="#">
-                                <i class="fa fa-ticket">
+                               <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -363,17 +361,17 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-
-                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
-                                <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
+                                <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>     
+                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
+                               <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                                 <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
+                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                                <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
+                                
 
                             </ul>
 
@@ -386,13 +384,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Assgin Driver</div>
+                            <div class="page-title">Vehicle Details</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-
-                            <li><a href="AssginDriver.html">Assgin Driver</a></li>
+                            <li><a href="#">BT POS</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="VehicleDetails.html">Vehicle Details</a>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -402,192 +399,411 @@
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
-                                <div id="table-action" class="row">
-                                    <div class="col-lg-12">
-
-                                        <div id="tableactionTabContent" class="tab-content">
-                                            <div id="table-table-tab" class="tab-pane fade in active">
-                                                <div class="row" ng-repeat="a in drivers">
-                                                    <div class="col-lg-12">
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
 
 
-                                                        <div class="table-container">
-                                                            <div class="row mbm">
-
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th width="10%">Id</th>
-                                                                            <td>{{a.Id}}</td>
-                                                                        <tr>
-                                                                            <th width="10%">CompanyId</th>
-                                                                            <td>{{a.CompanyId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EntryDate</th>
-                                                                            <td>{{a.EntryDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">BookingNo</th>
-                                                                            <td>{{a.BookingNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqDate</th>
-                                                                            <td>{{a.ReqDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqTime</th>
-                                                                            <td>{{a.ReqTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">CallTime</th>
-                                                                            <td>{{a.CallTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <!--<th width="10%">CustomerName</th>
-                                                                            <td>{{a.CustomerName}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">CusID</th>
-                                                                            <td>{{a.CusID}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">PhoneNo</th>
-                                                                            <td>{{a.PhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">AltPhoneNo</th>
-                                                                            <td>{{a.AltPhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">Address</th>
-                                                                            <td>{{a.Address}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                                            <th width="10%">PickupAddress</th>
-                                                                            <td>{{a.PickupAddress}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">LandMark</th>
-                                                                            <td>{{a.LandMark}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">PickupPlace</th>
-                                                                            <td>{{a.PickupPlace}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DropPlace</th>
-                                                                            <td>{{a.DropPlace}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">Package</th>
-                                                                            <td>{{a.Package}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">VehicleType</th>
-                                                                            <td>{{a.VehicleType}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">NoofVehicle</th>
-                                                                            <td>{{a.NoofVehicle}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VechID</th>
-                                                                            <td>{{a.VechID}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">RegistrationNo</th>
-                                                                            <td>{{a.RegistrationNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverName</th>
-                                                                            <td>{{a.DriverName}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                                            <th width="10%">PresentDriverLandMark</th>
-                                                                            <td>{{a.PresentDriverLandMark}}</td>
-                                                                        </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">ExecutiveName</th>
-                                                                            <td>{{a.ExecutiveName}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveDate</th>
-                                                                            <td>{{a.EffectiveDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveTill</th>
-                                                                            <td>{{a.EffectiveTill}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverId</th>
-                                                                            <td>{{a.DriverId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleModelId</th>
-                                                                            <td>{{a.VehicleModelId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ServiceTypeId</th>
-                                                                            <td>{{a.ServiceTypeId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleGroupId</th>
-                                                                            <td>{{a.VehicleGroupId}}</td>
-                                                                        </tr>
+                                                <div class="table-container">
+                                                    <div class="row mbm">
 
 
-                                                                    <tbody>
-                                                                        <tr ng-repeat="a in drivers"></tr>
+                                                        <div class="actions">
+                                                            <a href="AddNewVehicleDetails.html">  <button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right"> Add New Vehicle Details</button></a>
 
-
-                                                                    </tbody>
-
-                                                                </table>
-
-                                                            </div>
-
-
-
-                                                            <!--END PAGE WRAPPER-->
                                                         </div>
-                                                    </div>
 
-                                                    <!--BEGIN FOOTER-->
-                                                    <div id="footer">
-                                                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+
+                                                        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Company Details</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" ng-model="currGroup">
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="busId" class="control-label">BusId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="busId" ng-model="currGroup.busId" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="busTypeId" class="control-label">Bus TypeId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="busTypeId" ng-model="currGroup.busTypeId" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="conductorId" class="control-label">ConductorId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="conductorId" ng-model="currGroup.conductorId" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="conductorName" class="control-label">Conductor Name:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="conductorName" ng-model="currGroup.conductorName" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="driverName" class="control-label">driverName:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="driverName" ng-model="currGroup.driverName" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="driverId" class="control-label">driverId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="driverId" ng-model="currGroup.driverId" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="fleetOwnerId" class="control-label">FleetOwnerId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="fleetOwnerId" ng-model="currGroup.fleetOwnerId" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="CompanyName" class="control-label">CompanyName:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="CompanyName" ng-model="currGroup.CompanyName" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="POSID" class="control-label">POSID:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="POSID" ng-model="currGroup.POSID" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="RegNo" class="control-label">Registration No:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="RegNo" ng-model="currGroup.RegNo" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="route" class="control-label">Route:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="route" ng-model="currGroup.route" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="Status" class="control-label">Status:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="Status" ng-model="currGroup.Status" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="statusid" class="control-label">StatusId:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="text" class="form-control" id="statusid" ng-model="currGroup.statusid" /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="Active" class="control-label">Active:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-4">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right"><input type="checkbox" class="form-control" id="Active" ng-model="currGroup.Active" checked /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+
+
+
+                                                                        <!--<div class="row">
+
+                                                                            <div class="col-md-3">
+                                                                                <div class="form-group has-success" style="text-align:right">
+                                                                                    <label for="inputFirstName" class="control-label">Fleet Owner:<span class='require'>*</span></label>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-icon right">
+                                                                                        <select id="selusertype" class="form-control" ng-model="currGroup.FleetOwnerId">
+                                                                                            <option value="" selected disabled>Select</option>
+                                                                                            <option selected value="4">Admin Admin</option>
+                                                                                            <option value="5">Srujan simha</option>
+                                                                                            <option value="6">Naveen kumar</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+
+
+                                                                    </div>
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" class="btn btn-primary" ng-click="save(currGroup, 'U');">Save</button>
+
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+
+
                                                     </div>
-                                                    <!--END FOOTER-->
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                        <thead>
+                                                            <tr>
+
+                                                                <th width="22%">Company Name</th>
+                                                                <th>Bus Number</th>
+                                                                <th>FleetOwner Id</th>
+
+                                                                <th>Active</th>
+                                                                <th>Update</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+
+                                                            <tr ng-repeat="group in Group" class="gradeA">
+                                                                <td>{{group.CompanyName}}</td>
+                                                                <td>{{group.busId}} </td>
+                                                                <td>{{group.fleetOwnerId}}</td>
+                                                                <td>{{group.Active}}</td>
+
+                                                                <td>
+                                                                    {{group.Update}}
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(group);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+                                                                        Edit
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+
+                                                        </tbody>
+
+                                                    </table>
+                                                    <!--<div class="row">
+                                                        <div class="col-lg-6">
+                                                            <div class="pagination-panel">
+                                                                Page
+                                                                &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" maxlenght="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
+                                                                of 6 | View
+                                                                &nbsp;<select class="form-control input-xsmall input-sm input-inline">
+                                                                    <option value="20" selected="selected">20</option>
+                                                                    <option value="50">50</option>
+                                                                    <option value="100">100</option>
+                                                                    <option value="150">150</option>
+                                                                    <option value="-1">All</option>
+                                                                </select>&nbsp;
+                                                                records | Found total 58 records
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-lg-6 text-right">
+                                                            <div class="pagination-panel">
+                                                                <ul class="pagination pagination-sm man">
+                                                                    <li><a href="#">&laquo;</a></li>
+                                                                    <li><a href="#">1</a></li>
+                                                                    <li><a href="#">2</a></li>
+                                                                    <li><a href="#">3</a></li>
+
+                                                                    <li><a href="#">&raquo;</a></li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
-                                        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-                                            <div class="modal-header">
-                                                <h3 class="modal-title">Save confirmation!</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!--<ul>
-                                                    <li ng-repeat="item in items">
-                                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                                    </li>
-                                                </ul>
-                                                Selected: <b>{{ selected.item }}</b>-->
-                                                {{mssg}}
-                                            </div>
-
-
-                                        </script>
                                     </div>
 
+                                    <div id="table-panel-tab" class="tab-pane fade">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="modal-body">
+                                                    <table>
+                                                        <tr>
+                                                            <td> GroupName:</td>
+                                                            <td><input type="text" id="GroupName" ng-model="Group.GroupName"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> GroupId:</td>
+                                                            <td><input type="text" id="admin" ng-model="Group.GroupId"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> IMEI:</td>
+                                                            <td><input type="text" id="IMEI" ng-model="Group.IMEI"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> Location:</td>
+                                                            <td><input type="text" id="Location" ng-model="Group.Location"></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td> POSID:</td>
+                                                            <td><input type="text" id="POSID" ng-model="Group.POSID"></td>
+                                                        </tr>
 
+
+
+                                                        <tr>
+                                                            <td> Status:</td>
+                                                            <td><input type="text" id="Status" ng-model="Group.Status"></td>
+                                                        </tr>
+
+
+                                                    </table>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="clearGroup()">Close</button>
+                                                    <button type="button" class="btn btn-primary" ng-click="save(Group);">Save</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <!--END CONTENT--><!--BEGIN FOOTER-->
+                    <div id="footer">
+                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                    </div>
+                    <!--END FOOTER-->
                 </div>
+                <!--END PAGE WRAPPER-->
             </div>
         </div>
+        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Save confirmation!</h3>
+            </div>
+            <div class="modal-body">
+                <!--<ul>
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>-->
+                {{
+mss
+g
+                }}
+
+                </d
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+            </div>
+
+        </script>
     </div>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -611,11 +827,27 @@
     <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
+
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r;
+            i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+            a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+            a.async = 1;
+            a.src = g;
+            m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-145464-12', 'auto');
+        ga('send', 'pageview');
+
+
+    </script>
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    <script src="js/ngStorage.js"></script>
-    <script src="js/Assigndriverdetails.js"></script>
-
+    <script src="js/VehicleDetails.js"></script>
 
 </body>
 </html>
