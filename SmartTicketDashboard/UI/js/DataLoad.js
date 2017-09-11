@@ -103,7 +103,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     $scope.processData($scope.fileContent);
                 }
 
-
+                
                 $scope.processData = function (allText) {
                     if (allText == null) {
                         alert('Please insert file.');
@@ -578,18 +578,19 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         }
                         //lines.push(GetVehicles(data));
                         }
+                        
                     }
 
                     //list
                     var req = {
                         method: 'POST',
-                        url: '/api/DataLoad/SaveVehicleGroups1',
+                        url: '/api/DataLoad/SaveVehicleGroups1/',
                         data: lines
                     }
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
                         alert("Saved successfully")
-                        //$scope.showdialogue("Saved successfully")
+                        
                     });
 
                      //$scope.logdata = lines;
@@ -599,30 +600,30 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     var list = {
                         CompanyId: data[0],
-                        VID: data[1],
-                        RegistrationNo: data[2],
-                        Type: data[3],
-                        OwnerName: data[4],
-                        ChasisNo: data[5],
-                        Engineno: data[6],
-                        RoadTaxDate: data[7],
-                        InsuranceNo: data[8],
-                        InsDate: data[9],
-                        PolutionNo: data[10],
-                        PolExpDate: data[11],
-                        RCBookNo: data[12],
-                        RCExpDate: data[13],
-                        CompanyVechile: data[14],
-                        OwnerPhoneNo: data[15],
-                        HomeLandmark: data[16],
-                        ModelYear: data[17],
-                        DayOnly: data[18],
-                        VechMobileNo: data[19],
-                        EntryDate: data[20],
-                        NewEntry: data[21],
-                        VehicleModelId: data[22],
-                        ServiceTypeId: data[23],
-                        VehicleGroupId: data[24],
+                        //VID: data[1],
+                        RegistrationNo: data[1],
+                        Type: data[2],
+                        OwnerName: data[3],
+                        ChasisNo: data[4],
+                        Engineno: data[5],
+                        RoadTaxDate: data[6],
+                        InsuranceNo: data[7],
+                        InsDate: data[8],
+                        PolutionNo: data[9],
+                        PolExpDate: data[10],
+                        RCBookNo: data[11],
+                        RCExpDate: data[12],
+                        CompanyVechile: data[13],
+                        OwnerPhoneNo: data[14],
+                        HomeLandmark: data[15],
+                        ModelYear: data[16],
+                        DayOnly: data[17],
+                        VechMobileNo: data[18],
+                        EntryDate: data[19],
+                        NewEntry: data[20],
+                        VehicleModelId: data[21],
+                        ServiceTypeId: data[22],
+                        VehicleGroupId: data[23],
 
                         flag: 'I'
 
@@ -634,12 +635,12 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     if (CompanyId == null) {
                         return;
                     }
-                    if (VID == null) {
-                        return;
-                    }
-                    if (RegistrationNo == null) {
-                        return;
-                    }
+                    //if (VID == null) {
+                    //    return;
+                    //}
+                    //if (RegistrationNo == null) {
+                    //    return;
+                    //}
                     if (Type == null) {
                         return;
                     }
@@ -652,7 +653,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     $http(req).then(function (response) {
 
-                        scope.showDialog("Saved successfully!!");
+                        $scope.showDialog("Saved successfully!!");
 
                         $scope.data = null;
                         //$scope.GetCompanys();
