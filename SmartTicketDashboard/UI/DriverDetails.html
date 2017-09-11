@@ -583,7 +583,7 @@
                                                                                             <label class="col-sm-3 control-label">Date Of Birth</label>
                                                                                             <div class="col-sm-9 controls">
                                                                                                 <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="Dl.DOB" class="form-control" /></div>
+                                                                                                    <div class="col-xs-9"><input type="date" ng-model="Dl.DOB" class="form-control" /></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -607,11 +607,37 @@
                                                                                             <label class="col-sm-3 control-label">Blood Group</label>
                                                                                             <div class="col-sm-9 controls">
                                                                                                 <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="Dl.BloodGroup" class="form-control" /></div>
+                                                                                                    <div class="col-xs-9"><select ng-model="Dl.BloodGroup1" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="A+">A+</option>
+                                                                                                        <option value="A-">A-</option>
+                                                                                                        <option value="B+">B+</option>
+                                                                                                        <option value="B-">B-</option>
+                                                                                                        <option value="O+">O+</option>
+                                                                                                        <option value="AB+">AB+</option>
+                                                                                                        <option value="AB-">AB-</option>
+                                                                                                      </select>
+                                                                                                    </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                    <div class="col-md-6">
+                                                                                        <div class="form-group">
+                                                                                            <label class="col-sm-3 control-label">Company</label>
+                                                                                            <div class="col-sm-9 controls">
+                                                                                                <div class="row">
+                                                                                                    <div class="col-xs-9">
+                                                                                                        <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist" ng-init="GetCompanys();" class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>                                                                                    
+                                                                                </div>
+                                                                                <div class="col-md-12">
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-group">
                                                                                             <label class="col-sm-3 control-label">Status</label>
@@ -658,7 +684,7 @@
                                                                                             <label class="col-sm-3 control-label">Date Of Joining</label>
                                                                                             <div class="col-sm-9 controls">
                                                                                                 <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="Dl.DOJ" class="form-control" /></div>
+                                                                                                    <div class="col-xs-9"><input type="date" ng-model="Dl.DOJ" class="form-control" /></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -680,20 +706,19 @@
                                                                                             <label class="col-sm-3 control-label">Licence Expiry Date</label>
                                                                                             <div class="col-sm-9 controls">
                                                                                                 <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="Dl.LiCExpDate" class="form-control" /></div>
+                                                                                                    <div class="col-xs-9"><input type="date" ng-model="Dl.LiCExpDate" class="form-control" /></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-12">
-
                                                                                     <div class="col-md-6">
                                                                                         <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Company </label>
+                                                                                            <label class="col-sm-3 control-label">Badge Exp Date</label>
                                                                                             <div class="col-sm-9 controls">
                                                                                                 <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="Dl.CompanyId" class="form-control" /></div>
+                                                                                                    <div class="col-xs-9"><input type="date" ng-model="Dl.BadgeExpDate" class="form-control" /></div>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -708,6 +733,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
+                                                                                    
                                                                                 </div>
 
                                                                                 <div class="col-md-12">
@@ -754,25 +780,13 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-
-
-
-
-
-
-
-
-
-
-
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
 
                                                                     <hr />
                                                                     <div style="margin-left:350px">
-                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(driver, 'U');">Save</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(Dl, 'U');">Save</button>
                                                                         <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                     </div>
                                                                 </form>

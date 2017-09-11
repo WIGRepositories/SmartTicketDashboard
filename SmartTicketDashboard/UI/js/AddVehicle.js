@@ -273,13 +273,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     
 
-    $scope.saveNew = function (v,flag) {
+    $scope.saveNew = function (newVehicle,flag) {
        
-        if (v.c.Id == null) {
+        if (newVehicle.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
-        if (v.RegistrationNo == null) {
+        if (newVehicle.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');
             return;
         }
@@ -293,63 +293,63 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter Type');
             return;
         }
-        if (v.OwnerName == null) {
+        if (newVehicle.OwnerName == null) {
             alert('Please Enter OwnerName');
             return;
         }
-        if (v.ChasisNo == null) {
+        if (newVehicle.ChasisNo == null) {
             alert('Please Enter ChasisNo');
             return;
         }
-        if (v.Engineno == null) {
+        if (newVehicle.Engineno == null) {
             alert('Please Enter Engineno');
             return;
         }       
-        if (v.RoadTaxDate == null) {
+        if (newVehicle.RoadTaxDate == null) {
             alert('Please Enter RoadTaxDate');
             return;
         }
-        if (v.InsuranceNo == null) {
+        if (newVehicle.InsuranceNo == null) {
             alert('Please Enter InsuranceNo');
             return;
         }
-        if (v.InsDate == null) {
+        if (newVehicle.InsDate == null) {
             alert('Please Enter InsDate');
             return;
         }
-        if (v.PolutionNo == null) {
+        if (newVehicle.PolutionNo == null) {
             alert('Please Enter PolutionNo');
             return;
         }
-        if (v.PolExpDate == null) {
+        if (newVehicle.PolExpDate == null) {
             alert('Please Enter PolExpDate');
             return;
         }
-        if (v.RCBookNo == null) {
+        if (newVehicle.RCBookNo == null) {
             alert('Please Enter RCBookNo');
             return;
         }
-        if (v.RCExpDate == null) {
+        if (newVehicle.RCExpDate == null) {
             alert('Please Enter RCExpDate');
             return;
         }
-        if (v.CompanyVechile == null) {
+        if (newVehicle.CompanyVechile == null) {
             alert('Please Enter CompanyVechile');
             return;
         }
-        if (v.OwnerPhoneNo == null) {
+        if (newVehicle.OwnerPhoneNo == null) {
             alert('Please Enter OwnerPhoneNo');
             return;
         }
-        if (v.HomeLandmark == null) {
+        if (newVehicle.HomeLandmark == null) {
             alert('Please Enter HomeLandmark');
             return;
         }
-        if (v.ModelYear == null) {
+        if (newVehicle.ModelYear == null) {
             alert('Please Enter ModelYear');
             return;
         }
-        if (v.DayOnly == null) {
+        if (newVehicle.DayOnly == null) {
             alert('Please Enter DayOnly');
             return;
         }
@@ -358,15 +358,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter VechMobileNo');
             return;
         }
-        if (v.VechMobileNo == null) {
+        if (newVehicle.VechMobileNo == null) {
             alert('Please Enter VechMobileNo');
             return;
         }
-        if (v.EntryDate == null) {
+        if (newVehicle.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
         }
-        if (v.NewEntry == null) {
+        if (newVehicle.NewEntry == null) {
             alert('Please Enter NewEntry');
             return;
         }    
@@ -374,34 +374,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var newVehicle = {
 
             flag: 'I',            
-            VID: v.VID,
-            CompanyId: v.c.Id,
-            RegistrationNo: v.RegistrationNo,
+            VID: newVehicle.VID,
+            CompanyId: newVehicle.c.Id,
+            RegistrationNo: newVehicle.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
             VehicleModelId: $scope.vm.Id,
-            OwnerName: v.OwnerName,
-            ChasisNo: v.ChasisNo,
-            Engineno: v.Engineno,
-            RoadTaxDate: v.RoadTaxDate,
-            InsuranceNo: v.InsuranceNo,
-            InsDate: v.InsDate,
-            PolutionNo: v.PolutionNo,
-            PolExpDate: v.PolExpDate,
-            RCBookNo: v.RCBookNo,
-            RCExpDate: v.RCExpDate,
-            CompanyVechile: v.CompanyVechile,
-            OwnerPhoneNo: v.OwnerPhoneNo,
-            HomeLandmark: v.HomeLandmark,
-            ModelYear: v.ModelYear,
-            DayOnly: v.DayOnly,
-            VehicleGroupId: v.vg.Id,
+            OwnerName: newVehicle.OwnerName,
+            ChasisNo: newVehicle.ChasisNo,
+            Engineno: newVehicle.Engineno,
+            RoadTaxDate: newVehicle.RoadTaxDate,
+            InsuranceNo: newVehicle.InsuranceNo,
+            InsDate: newVehicle.InsDate,
+            PolutionNo: newVehicle.PolutionNo,
+            PolExpDate: newVehicle.PolExpDate,
+            RCBookNo: newVehicle.RCBookNo,
+            RCExpDate: newVehicle.RCExpDate,
+            CompanyVechile: newVehicle.CompanyVechile,
+            OwnerPhoneNo: newVehicle.OwnerPhoneNo,
+            HomeLandmark: newVehicle.HomeLandmark,
+            ModelYear: newVehicle.ModelYear,
+            DayOnly: newVehicle.DayOnly,
+            VehicleGroupId: newVehicle.vg.Id,
             ServiceTypeId: $scope.vr.Id,
-            VechMobileNo: v.VechMobileNo,
-            EntryDate: v.EntryDate,
-            NewEntry: v.NewEntry,
+            VechMobileNo: newVehicle.VechMobileNo,
+            EntryDate: newVehicle.EntryDate,
+            NewEntry: newVehicle.NewEntry,
             photo: $scope.imageSrc,
 
-            Active: (v.Active == true) ? 1 : 0,
+            Active: (newVehicle.Active == true) ? 1 : 0,
 
 
         }
@@ -429,12 +429,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.newVehicle = null;
    
 
-    $scope.save = function (vech, flag) {
-        if (vech.c.Id == null) {
+    $scope.save = function (v, flag) {
+        if (v.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
-        if (vech.RegistrationNo == null) {
+        if (v.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');
             return;
         }
@@ -447,67 +447,67 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter Type');
             return;
         }
-        if (vech.OwnerName == null) {
+        if (v.OwnerName == null) {
             alert('Please Enter OwnerName');
             return;
         }
-        if (vech.ChasisNo == null) {
+        if (v.ChasisNo == null) {
             alert('Please Enter ChasisNo');
             return;
         }
-        if (vech.Engineno == null) {
+        if (v.Engineno == null) {
             alert('Please Enter Engineno');
             return;
         }
-        if (vech.RoadTaxDate == null) {
+        if (v.RoadTaxDate == null) {
             alert('Please Enter RoadTaxDate');
             return;
         }
-        if (vech.InsuranceNo == null) {
+        if (v.InsuranceNo == null) {
             alert('Please Enter InsuranceNo');
             return;
         }
-        if (vech.InsDate == null) {
+        if (v.InsDate == null) {
             alert('Please Enter InsDate');
             return;
         }
-        if (vech.PolutionNo == null) {
+        if (v.PolutionNo == null) {
             alert('Please Enter PolutionNo');
             return;
         }
-        if (vech.PolExpDate == null) {
+        if (v.PolExpDate == null) {
             alert('Please Enter PolExpDate');
             return;
         }
-        if (vech.RCBookNo == null) {
+        if (v.RCBookNo == null) {
             alert('Please Enter RCBookNo');
             return;
         }
-        if (vech.RCExpDate == null) {
+        if (v.RCExpDate == null) {
             alert('Please Enter RCExpDate');
             return;
         }       
-        if (vech.OwnerPhoneNo == null) {
+        if (v.OwnerPhoneNo == null) {
             alert('Please Enter OwnerPhoneNo');
             return;
         }
-        if (vech.HomeLandmark == null) {
+        if (v.HomeLandmark == null) {
             alert('Please Enter HomeLandmark');
             return;
         }
-        if (vech.ModelYear == null) {
+        if (v.ModelYear == null) {
             alert('Please Enter ModelYear');
             return;
         }
-        if (vech.DayOnly == null) {
+        if (v.DayOnly == null) {
             alert('Please Enter DayOnly');
             return;
         }              
-        if (vech.EntryDate == null) {
+        if (v.EntryDate == null) {
             alert('Please Enter EntryDate');
             return;
         }
-        if (vech.NewEntry == null) {
+        if (v.NewEntry == null) {
             alert('Please Enter NewEntry');
             return;
         }
@@ -515,35 +515,35 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var vech = {
 
             flag: 'U',
-            VID: vech.VID,
-            CompanyId: vech.c.Id,
-            RegistrationNo: vech.RegistrationNo,
+            VID: v.VID,
+            CompanyId: v.c.Id,
+            RegistrationNo: v.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
             VehicleModelId: $scope.vm.Id,
-            OwnerName: vech.OwnerName,
-            ChasisNo: vech.ChasisNo,
-            Engineno: vech.Engineno,
-            RoadTaxDate: vech.RoadTaxDate,
-            InsuranceNo: vech.InsuranceNo,
-            InsDate: vech.InsDate,
-            PolutionNo: vech.PolutionNo,
-            PolExpDate: vech.PolExpDate,
-            RCBookNo: vech.RCBookNo,
-            RCExpDate: vech.RCExpDate,
-            CompanyVechile: vech.CompanyVechile,
-            OwnerPhoneNo: vech.OwnerPhoneNo,
-            HomeLandmark: vech.HomeLandmark,
-            ModelYear: vech.ModelYear,
-            DayOnly: vech.DayOnly,
-            VehicleGroupId: vech.vg1.Id,
+            OwnerName: v.OwnerName,
+            ChasisNo: v.ChasisNo,
+            Engineno: v.Engineno,
+            RoadTaxDate: v.RoadTaxDate,
+            InsuranceNo: v.InsuranceNo,
+            InsDate: v.InsDate,
+            PolutionNo: v.PolutionNo,
+            PolExpDate: v.PolExpDate,
+            RCBookNo: v.RCBookNo,
+            RCExpDate: v.RCExpDate,
+            CompanyVechile: v.CompanyVechile,
+            OwnerPhoneNo: v.OwnerPhoneNo,
+            HomeLandmark: v.HomeLandmark,
+            ModelYear: v.ModelYear,
+            DayOnly: v.DayOnly,
+            VehicleGroupId: v.vg1.Id,
             ServiceTypeId: $scope.vr.Id,
-            VechMobileNo: vech.VechMobileNo,
-            EntryDate: vech.EntryDate,
-            NewEntry: vech.NewEntry,
+            VechMobileNo: v.VechMobileNo,
+            EntryDate: v.EntryDate,
+            NewEntry: v.NewEntry,
             photo: $scope.imageSrc,
 
 
-            Active: (vech.Active == true) ? 1 : 0,
+            Active: (v.Active == true) ? 1 : 0,
 
 
         }

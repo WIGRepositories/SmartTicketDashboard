@@ -330,71 +330,71 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.Driverlist = null;
 
-    $scope.save = function (driver,flag) {
+    $scope.save = function (Dl,flag) {
 
         
-        if (driver.CompanyId == null) {
+        if (Dl.CompanyId == null) {
             alert('Please Enter CompanyId');
             return;
         }
-        if (driver.NAme == null) {
+        if (Dl.NAme == null) {
             alert('Please Enter NAme');
             return;
         }
-        if (driver.City == null) {
+        if (Dl.City == null) {
             alert('Please Enter City');
             return;
         }
-        if (driver.Pin == null) {
+        if (Dl.Pin == null) {
             alert('Please Enter Pin');
             return;
         }
-        if (driver.PAddress == null) {
+        if (Dl.PAddress == null) {
             alert('Please Enter PAddress');
             return;
         }
-        if (driver.PCity == null) {
+        if (Dl.PCity == null) {
             alert('Please Enter PCity');
             return;
         }
-        if (driver.PPin == null) {
+        if (Dl.PPin == null) {
             alert('Please Enter PPin');
             return;
         }
-        if (driver.OffMobileNo == null) {
+        if (Dl.OffMobileNo == null) {
             alert('Please Enter OffMobileNo');
             return;
         }
-        if (driver.PMobNo == null) {
+        if (Dl.PMobNo == null) {
             alert('Please Enter PMobNo');
             return;
         }
-        if (driver.DOB == null) {
+        if (Dl.DOB == null) {
             alert('Please Enter DOB');
             return;
         }
-        if (driver.DOJ == null) {
+        if (Dl.DOJ == null) {
             alert('Please Enter DOJ');
             return;
         }
-        if (driver.BloodGroup == null) {
+        if (Dl.BloodGroup == null) {
             alert('Please Enter BloodGroup');
             return;
         }
 
-        if (driver.LiCExpDate == null) {
+        if (Dl.LiCExpDate == null) {
             alert('Please Enter LiCExpDate');
             return;
         }
-        if (driver.BadgeNo == null) {
+        if (Dl.BadgeNo == null) {
             alert('Please Enter BadgeNo');
             return;
         }
-        if (driver.BadgeExpDate == null) {
+        if (Dl.BadgeExpDate == null) {
             alert('Please Enter BadgeExpDate');
             return;
         }
-        if (driver.Remarks == null) {
+        if (Dl.Remarks == null) {
             alert('Please Enter Remarks');
             return;
         }
@@ -404,25 +404,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var driver = {          
 
             flag: 'U',
-            DId: driver.DId,
-            CompanyId: driver.companyid,
-            NAme: driver.NAme,
-            Address: driver.Address1,
-            City: driver.City,
-            Pin: driver.Pin,
-            PAddress: driver.PAddress,
-            PCity: driver.PCity,
-            PPin: driver.PPin,
-            OffMobileNo: driver.OffMobileNo,
-            PMobNo: driver.PMobNo,
-            DOB: driver.DOB,
-            DOJ: driver.DOJ,
-            BloodGroup: driver.BloodGroup,
-            LicenceNo: driver.LicenceNo,
-            LiCExpDate: driver.LiCExpDate,
-            BadgeNo: driver.BadgeNo,
-            BadgeExpDate: driver.BadgeExpDate,
-            Remarks: driver.Remarks,
+            DId: Dl.DId,
+            CompanyId: Dl.companyid,
+            NAme: Dl.NAme,
+            Address: Dl.Address1,
+            City: Dl.City,
+            Pin: Dl.Pin,
+            PAddress: Dl.PAddress,
+            PCity: Dl.PCity,
+            PPin: Dl.PPin,
+            OffMobileNo: Dl.OffMobileNo,
+            PMobNo: Dl.PMobNo,
+            DOB: Dl.DOB,
+            DOJ: Dl.DOJ,
+            BloodGroup: Dl.BloodGroup,
+            LicenceNo: Dl.LicenceNo,
+            LiCExpDate: Dl.LiCExpDate,
+            BadgeNo: Dl.BadgeNo,
+            BadgeExpDate: Dl.BadgeExpDate,
+            Remarks: Dl.Remarks,
             Photo: $scope.imageSrc,
             //licenseimage: $scope.imageSrc,
             //badgeimage: $scope.imageSrc,
