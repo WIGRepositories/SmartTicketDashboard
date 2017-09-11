@@ -154,7 +154,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 app.controller('mapCtrl', function ($scope, $http) {
 
     var mapOptions = {
-        zoom: 8,
+        zoom: 15,
         center: new google.maps.LatLng(17.3850, 78.4867),
         mapTypeId: google.maps.MapTypeId.ROADMAP
 
