@@ -86,9 +86,9 @@ namespace SmartTicketDashboard.Controllers
 
         }
         [HttpPost]
-        [Route("api/Balance/AddBalance")]
+        [Route("api/Balance/WalletBalance")]
 
-        public DataTable AddBalance(Appusers A)
+        public DataTable WalletBalance(Appusers A)
         {
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
@@ -106,7 +106,6 @@ namespace SmartTicketDashboard.Controllers
                 f.Value = A.flag;
                 cmd.Parameters.Add(f);                
 
-              
 
                 SqlParameter mn = new SqlParameter("@Mobilenumber", SqlDbType.VarChar, 20);
                mn.Value = A.Mobilenumber;
@@ -131,51 +130,6 @@ namespace SmartTicketDashboard.Controllers
 
             return dt;
         }
-        [HttpPost]
-        [Route("api/Balance/TransferBalance")]
-
-        public DataTable TransferBalance(Appusers A)
-        {
-            SqlConnection conn = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
-            try
-            {
-
-
-                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-
-                cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "PSInsUpdBalance";
-                cmd.Connection = conn;
-
-                SqlParameter f = new SqlParameter("@flag", SqlDbType.VarChar);
-                f.Value = A.flag;
-                cmd.Parameters.Add(f);
-
-              
-
-                SqlParameter mn = new SqlParameter("@Mobilenumber", SqlDbType.VarChar, 20);
-                mn.Value = A.Mobilenumber;
-                cmd.Parameters.Add(mn);
-
-                SqlParameter em = new SqlParameter("@Amount", SqlDbType.Decimal);
-                em.Value = A.Amount;
-                cmd.Parameters.Add(em);
-
-               
-                SqlParameter St = new SqlParameter("@StatusId", SqlDbType.Int);
-                St.Value = A.Status;
-                cmd.Parameters.Add(St);
-            }
-            catch
-            {
-                Exception ex;
-            }
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            return dt;
-        }
+       
     }
 }

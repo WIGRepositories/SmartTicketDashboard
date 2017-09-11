@@ -33,9 +33,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.bookings = null;
 
-        $scope.selectedbookings = parseLocation(window.location.search)['VID'];
+        $scope.selectedbookings = parseLocation(window.location.search)['BNo'];
 
-        $http.get('/api/BookAVehicle/Bookingdetails?VechId=' + $scope.selectedbookings).then(function (res, data) {
+        $http.get('/api/BookAVehicle/Bookingdetails?BNo=' + $scope.selectedbookings).then(function (res, data) {
             $scope.b = res.data[0];
 
             //if ($scope.bookings.length > 0) {

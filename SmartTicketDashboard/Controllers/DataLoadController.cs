@@ -1417,7 +1417,7 @@ namespace SmartTicketDashboard.Controllers
                 conn.Open();
                 foreach (DriverVehicleAssignGroup dva in list5)
                 {
-                    SqlParameter dvaCompanyId = new SqlParameter("@CompanyId", SqlDbType.Int);
+                    SqlParameter dvaCompanyId = new SqlParameter("@CompanyId", SqlDbType.VarChar);
                     dvaCompanyId.Value = dva.CompanyId;
                     cmd.Parameters.Add(dvaCompanyId);
 

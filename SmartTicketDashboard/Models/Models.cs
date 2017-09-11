@@ -754,7 +754,7 @@ namespace SmartTicketDashboard.Models
         public DriverVehicleAssignGroup[] dva = null;
         public string inspudflag { get; set; }
         public int DId { get; set; }
-        public int CompanyId { get; set; }
+        public string CompanyId { get; set; }
         public string NAme { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
