@@ -455,334 +455,500 @@
                                         <div id="generalTabContent" class="tab-content">
                                             <div id="tab-edit" class="tab-pane fade in active">
                                                 <form action="#" class="form-horizontal">
-                                                    <h3>Booking Details</h3>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booking No</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="email" ng-model="b.BNo" class="form-control" readonly/></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booking Type</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookingType" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booked Date</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookedDate" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booked Time</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookedTime" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    <h3>Vehicle  Approvals</h3>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Departure Date</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DepartureDate" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Departure Time</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DepartureTime" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Source</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Src" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Destination</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Desc" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">SrcId</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.SrcId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">DestId</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Source Latitude</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.SrcLatitude" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Source Longitude</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.SrcLongitude" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Destination Latitude</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestLatitude" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   
+                                                    <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
 
-                                                    <hr />
-                                                    <h3>Vehicle Model </h3>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Destination Longitude</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestLongitude" class="form-control" readonly /></div>
+                                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                            <div class="caption"><a href="">Booking Details</a></div>
+                                                            <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                        </div>
+
+
+                                                        <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                            <div class="panel-body">
+
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking No</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="email" ng-model="b.BNo" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking Type</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookingType" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booked Date</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookedDate" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booked Time</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookedTime" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Departure Date</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DepartureDate" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Departure Time</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DepartureTime" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Source</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Src" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Destination</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Desc" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">SrcId</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.SrcId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">DestId</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DestId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Source Latitude</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.SrcLatitude" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Destination Latitude</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DestLatitude" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Destination Longitude</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DestLongitude" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Vehicle Id</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.VechId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Package</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.PackageId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Package</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.PackageId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Pricing</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Pricing" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Driver Id</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DriverId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Driver PhoneNo</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DriverPhoneNo" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Customer PhoneNo</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.CustomerPhoneNo" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Customer Id</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.CustomerId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">No of Vehicles</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.NoofVehicles" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">No of Seats</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.NoofSeats" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Company</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.CompanyId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Amount</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Amount" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                   
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Vehicle Id</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.VechId" class="form-control" readonly /></div>
+                                                  
+                                                    <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                            <div class="caption"><a href="">Booking Status</a></div>
+                                                            <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                        </div>
+
+
+                                                        <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                            <div class="panel-body">
+
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking No</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="email" ng-model="b.BNo" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking Type</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookingType" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booked Date</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookedDate" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking Status</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookingStatus" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Closing Date</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.ClosingDate" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Closing Time</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.ClosingTime" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Cancelled On</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.CancelledOn" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Cancelled By</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.CancelledBy" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking Channel</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BookingChannel" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Reasons</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Reasons" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Booking Otp</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.BooKingOTP" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Payment Status</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.PaymentStatus" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label"> Customer Rating</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Rating" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Comments</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.Comments" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Driver Rating</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DriverRating" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-md-12">
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Driver Comments</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.DriverComments" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Updated By</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.UpdatedBy" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-4">
+                                                                        <div class="form-group">
+                                                                            <label class="col-sm-3 control-label">Updated User</label>
+                                                                            <div class="col-sm-9 controls">
+                                                                                <div class="row">
+                                                                                    <div class="col-xs-9"><input type="text" ng-model="b.UpdatedUserId" class="form-control" readonly /></div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                              
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Package</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.PackageId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Pricing</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Pricing" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Driver Id</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Driver PhoneNo</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverPhoneNo" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Customer PhoneNo</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.CustomerPhoneNo" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Customer Id</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.CustomerId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booking Status</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookingStatus" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">No of Vehicles</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.NoofVehicles" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">No of Seats</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.NoofSeats" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Closing Date</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.ClosingDate" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Closing Time</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.ClosingTime" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Cancelled On</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.CancelledOn" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Cancelled By</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.CancelledBy" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booking Channel</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookingChannel" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Reasons</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Reasons" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Company</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.CompanyId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Booking Otp</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.BooKingOTP" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Amount</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Amount" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Payment Status</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.PaymentStatus" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label"> Customer Rating</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Rating" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Comments</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.Comments" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Driver Rating</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverRating" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Driver Comments</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverComments" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Updated By</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.UpdatedBy" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group">
-                                                        <label class="col-sm-3 control-label">Updated User</label>
-                                                        <div class="col-sm-9 controls">
-                                                            <div class="row">
-                                                                <div class="col-xs-9"><input type="text" ng-model="b.UpdatedUserId" class="form-control" readonly /></div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <hr />
-                                                    
                                                 </form>
                                             </div>
 
