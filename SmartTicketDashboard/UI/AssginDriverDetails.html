@@ -412,140 +412,7 @@
 
 
                                                         <div class="table-container">
-                                                            <div class="row mbm">
-
-                                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th width="10%">Id</th>
-                                                                            <td>{{a.Id}}</td>
-                                                                        <tr>
-                                                                            <th width="10%">CompanyId</th>
-                                                                            <td>{{a.CompanyId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EntryDate</th>
-                                                                            <td>{{a.EntryDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">BookingNo</th>
-                                                                            <td>{{a.BookingNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqDate</th>
-                                                                            <td>{{a.ReqDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ReqTime</th>
-                                                                            <td>{{a.ReqTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">CallTime</th>
-                                                                            <td>{{a.CallTime}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <!--<th width="10%">CustomerName</th>
-                                                    <td>{{a.CustomerName}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <th width="10%">CusID</th>
-                                                    <td>{{a.CusID}}</td>
-                                                </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">PhoneNo</th>
-                                                                            <td>{{a.PhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">AltPhoneNo</th>
-                                                                            <td>{{a.AltPhoneNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">Address</th>
-                                                                            <td>{{a.Address}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                <th width="10%">PickupAddress</th>
-                                                <td>{{a.PickupAddress}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th width="10%">LandMark</th>
-                                                <td>{{a.LandMark}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th width="10%">PickupPlace</th>
-                                                <td>{{a.PickupPlace}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th width="10%">DropPlace</th>
-                                                <td>{{a.DropPlace}}</td>
-                                            </tr>
-                                            <tr>
-                                                <th width="10%">Package</th>
-                                                <td>{{a.Package}}</td>
-                                            </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">VehicleType</th>
-                                                                            <td>{{a.VehicleType}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">NoofVehicle</th>
-                                                                            <td>{{a.NoofVehicle}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VechID</th>
-                                                                            <td>{{a.VechID}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">RegistrationNo</th>
-                                                                            <td>{{a.RegistrationNo}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverName</th>
-                                                                            <td>{{a.DriverName}}</td>
-                                                                        </tr>
-                                                                        <!--<tr>
-                                                <th width="10%">PresentDriverLandMark</th>
-                                                <td>{{a.PresentDriverLandMark}}</td>
-                                            </tr>-->
-                                                                        <tr>
-                                                                            <th width="10%">ExecutiveName</th>
-                                                                            <td>{{a.ExecutiveName}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveDate</th>
-                                                                            <td>{{a.EffectiveDate}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">EffectiveTill</th>
-                                                                            <td>{{a.EffectiveTill}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">DriverId</th>
-                                                                            <td>{{a.DriverId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleModelId</th>
-                                                                            <td>{{a.VehicleModelId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">ServiceTypeId</th>
-                                                                            <td>{{a.ServiceTypeId}}</td>
-                                                                        </tr>
-                                                                        <tr>
-                                                                            <th width="10%">VehicleGroupId</th>
-                                                                            <td>{{a.VehicleGroupId}}</td>
-                                                                        </tr>
-
-
-                                                                    <tbody>
-                                                                        <tr ng-repeat="a in drivers"></tr>
-
-
-                                                                    </tbody>
-
-                                                                </table>
-
-                                                            </div>
+                                                            
 
 
 
@@ -635,10 +502,31 @@
                                                                                                                     </div>
                                                                                                                 </div>
 
-                                                                                                                
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Effective Till</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.EffectiveTill" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
                                                                                                             </div>
 
-
+                                                                                                            <div class="col-md-12">
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Effective Date</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.EffectiveDate" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                              
+                                                                                                            </div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -656,130 +544,102 @@
 
 
                                                                                                             <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Company Id</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="email" ng-model="a.CompanyId" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Entry Date</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.EntryDate" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">VehicleType</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="email" ng-model="a.VehicleType" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="col-md-12">
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Vech ID</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.VechID" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
                                                                                                                         <label class="col-sm-3 control-label">Registration No</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="email" ng-model="v.RegistrationNo" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.RegistrationNo" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Vehicle Type</label>
+                                                                                                                        <label class="col-sm-3 control-label">VehicleModel Id</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Type" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.VehicleModelId" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
                                                                                                             <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Service Type</label>
+                                                                                                                        <label class="col-sm-3 control-label">Service Type Id</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ServiceTypeId" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.ServiceTypeId" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Vehicle Group</label>
+                                                                                                                        <label class="col-sm-3 control-label">Vehicle Group Id</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VehicleGroupId" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.VehicleGroupId" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Model Year</label>
+                                                                                                                        <label class="col-sm-3 control-label">NoofVehicle</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ModelYear" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Vehicle Model</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VehicleModelId" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.NoofVehicle" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
                                                                                                             </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Engine No</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Engineno" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Vech Mobile No</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VechMobileNo" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-12">
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label class="col-sm-3 control-label">New Entry</label>
-                                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                                <div class="row">
-                                                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.NewEntry" class="form-control" /></div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label class="col-sm-3 control-label">Day/Night</label>
-                                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                                <div class="row">
-                                                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.DayOnly" class="form-control" /></div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-12">
-
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label class="col-sm-3 control-label">Entry Date</label>
-                                                                                                                            <div class="col-sm-9 controls">
-                                                                                                                                <div class="row">
-                                                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.EntryDate" class="form-control" /></div>
-                                                                                                                                </div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
+                                                                                                           
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -798,177 +658,71 @@
 
                                                                                                             <!--<div class="alert alert-danger" >No records to display.</div>-->
                                                                                                             <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Engine No</label>
+                                                                                                                        <label class="col-sm-3 control-label">Driver Name</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Engineno" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.DriverName" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Road Tax Date</label>
+                                                                                                                        <label class="col-sm-3 control-label">ExecutiveName</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RoadTaxDate" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.ExecutiveName" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
+                                                                                                                <div class="col-md-4">
+                                                                                                                    <div class="form-group">
+                                                                                                                        <label class="col-sm-3 control-label">Driver Id</label>
+                                                                                                                        <div class="col-sm-9 controls">
+                                                                                                                            <div class="row">
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.DriverId" class="form-control" /></div>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                              
                                                                                                             </div>
+                                                                                                           
                                                                                                             <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Insurance Date</label>
+                                                                                                                        <label class="col-sm-3 control-label">PhoneNo</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.InsDate" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.PhoneNo" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Chasis No</label>
+                                                                                                                        <label class="col-sm-3 control-label">AltPhoneNo</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ChasisNo" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.AltPhoneNo" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
+                                                                                                                <div class="col-md-4">
                                                                                                                     <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">PollutionNo</label>
+                                                                                                                        <label class="col-sm-3 control-label">Address</label>
                                                                                                                         <div class="col-sm-9 controls">
                                                                                                                             <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.PolutionNo" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Pollution Exp Date</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.PolExpDate" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">RC Book No</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RCBookNo" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">RC Exp Date</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RCExpDate" class="form-control" /></div>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <div class="form-group">
-                                                                                                                        <label class="col-sm-3 control-label">Company Vechile</label>
-                                                                                                                        <div class="col-sm-9 controls">
-                                                                                                                            <div class="row">
-                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.CompanyVechile" class="form-control" /></div>
+                                                                                                                                <div class="col-xs-9"><input type="text" ng-model="a.Address" class="form-control" /></div>
                                                                                                                             </div>
                                                                                                                         </div>
                                                                                                                     </div>
                                                                                                                 </div>
 
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="row">
-
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label for="Name" class="col-md-3 control-label">Road Tax:<span class='require'></span></label>
-
-                                                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                                                            <div class="col-md-6">
-                                                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                                                                <br />
-                                                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                                                                    Upload photo
-                                                                                                                                </a>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label for="Name" class="col-md-3 control-label">Insurance:<span class='require'></span></label>
-
-                                                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                                                            <div class="col-md-6">
-                                                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                                                                <br />
-                                                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                                                                    Upload photo
-                                                                                                                                </a>
-
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="col-md-12">
-                                                                                                                <div class="row">
-
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label for="Name" class="col-md-3 control-label">Pollution:<span class='require'></span></label>
-
-                                                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                                                            <div class="col-md-6">
-                                                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                                                                <br />
-                                                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                                                                    Upload photo
-                                                                                                                                </a>
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                    <div class="col-md-6">
-                                                                                                                        <div class="form-group">
-                                                                                                                            <label for="Name" class="col-md-3 control-label">RC:<span class='require'></span></label>
-
-                                                                                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                                                            <div class="col-md-6">
-                                                                                                                                <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                                                                <br />
-                                                                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                                                                    Upload photo
-                                                                                                                                </a>
-
-                                                                                                                            </div>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
                                                                                                             </div>
                                                                                                         </div>
                                                                                                     </div>
