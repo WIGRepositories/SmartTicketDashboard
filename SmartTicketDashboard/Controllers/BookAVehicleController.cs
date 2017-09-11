@@ -41,7 +41,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/BookAVehicle/Bookingdetails")]
-        public DataTable GetBookingdetails(int VechId)
+        public DataTable GetBookingdetails(string BNo)
         {
             DataTable dt = new DataTable();
 
@@ -52,7 +52,7 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "HVGetBookingdetails";
-            cmd.Parameters.Add("@VechId", SqlDbType.Int).Value = VechId;            
+            cmd.Parameters.Add("@bno", SqlDbType.VarChar).Value = BNo;            
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
