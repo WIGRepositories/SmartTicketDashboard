@@ -1,1 +1,10 @@
-Id,Firstname,Lastname,Empno,Emailid,Roleid,Active
+FirstName, LastName, MiddleName, EmpNo,	EmailId, Address, RoleId, CmpId, ContactNo1, ContactNo2
+
+
+
+						
+						
+						
+example:						
+beem, Sena,	ram, EMP001, ram@gmail.com,	21-balaji temple, NULL,	8, 9845461546, 8415654654
+

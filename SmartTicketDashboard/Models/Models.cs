@@ -703,7 +703,7 @@ namespace SmartTicketDashboard.Models
         //public List<VehiclesGroups> list3 { get; set; }
         public string flag { get; set; }
         public int Id { get; set; }
-        public int CompanyId { get; set; }
+        public string CompanyId { get; set; }
         public int VID { get; set; }
         public string RegistrationNo { get; set; }
         public string Type { get; set; }

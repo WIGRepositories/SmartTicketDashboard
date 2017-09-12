@@ -1,6 +1,8 @@
-Name,EmailId,ContactNo,Country,State/province,Address,Comments
+CompanyId, RegistrationNo, Type, OwnerName,	ChasisNo, Engineno,	RoadTaxDate, InsuranceNo, InsDate, PolutionNo, PolExpDate, RCBookNo, RCExpDate,	CompanyVechile,	OwnerPhoneNo, HomeLandmark,	ModelYear, DayOnly,	VechMobileNo, EntryDate, NewEntry, VehicleModelId, ServiceTypeId, VehicleGroupId
+
 						
 						
 						
 example:						
-Interbus,info@interbus.com,1234567890,Zimbabwe,Harare,"103, Mutera rd, ZMW","example record"
+Lampex,	500028,	AC,	scott, 54654682, 54646,	1/1/2015, 54998565,	1/1/2015, 5856,	1/1/2015, 546546, 1/1/2015,	56,	9878546645,	J.Gutta, 2015, Day, 9521654646,	1/1/2015
+

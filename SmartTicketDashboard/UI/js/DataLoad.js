@@ -27,11 +27,11 @@ app.directive('fileReader', function () {
 
 app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
-    $scope.compCol = 'CompanyName,Active';
+    $scope.compCol = 'Name, Code,	Description, Address, ContactNo1, ContactNo2, EmailId, Active, Fax, Title, Caption,	Country, ZipCode, State, FleetSize,	StaffSize, AlternateAddress, ShippingAddress, AddressId, Logo';
     $scope.compArr = [{"Id":1,"Name":"CompanyName"},
     {"Id":2,"Name":"Active"}]
 
-    $scope.userCol = 'FirstName,LastName,Emailid,Active';
+    $scope.userCol = 'FirstName, LastName, MiddleName, EmpNo,	EmailId, Address, RoleId, CmpId, ContactNo1, ContactNo2';
     $scope.UserArr = [{"Id":1,"Name":"FirsName"},
                         { "Id": 2, "Name": "LastName" }]
 
@@ -59,19 +59,19 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     $scope.InveArr = [{ "Id": 1, "Name": "Category" },
                         { "Id": 2, "Name": "Category" }]
 
-    $scope.DriverCol = 'Name,PMobNo,Address';
+    $scope.DriverCol = 'DriverName, Address, City, Pin, PAddress, PCity, PPin, OffMobileNo, PMobNo, DOB, DOJ, BloodGroup, LicenceNo, LiCExpDate, BadgeNo, BadgeExpDate, Remarks, VehicleModel';
     $scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
                         { "Id": 2, "NAme": "Address" }]
 
-    $scope.VehiclesCol = 'VechMobileNo,OwnerName,Type';
+    $scope.VehiclesCol = 'CompanyId, RegistrationNo, Type, OwnerName,	ChasisNo, Engineno,	RoadTaxDate, InsuranceNo, InsDate, PolutionNo, PolExpDate, RCBookNo, RCExpDate,	CompanyVechile,	OwnerPhoneNo, HomeLandmark,	ModelYear, DayOnly,	VechMobileNo, EntryDate, NewEntry, VehicleModelId, ServiceTypeId, VehicleGroupId';
     $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         { "Id": 2, "VechMobileNo": "OwnerName" }]
 
-    $scope.CardsCol = 'CardNumber,CardCategory';
+    $scope.CardsCol = 'CardNumber,	CardModel, CardType, CardCategory, StatusId, UserId, Customer, EffectiveFrom, EffectiveTo';
     $scope.CardsArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                         { "Id": 2, "CardNumber": "CardCategory" }]
 
-    $scope.DriverVehicleAssignCol = 'VechMobileNo,OwnerName,Type'
+    $scope.DriverVehicleAssignCol = 'CompanyId, NAme, Address, City,	Pin, PAddress, PCity, PPin,	OffMobileNo, PMobNo, DOB, DOJ, BloodGroup, LicenceNo, LiCExpDate, BadgeNo, BadgeExpDate, Remarks, RegistrationNo, Type,	OwnerName, ChasisNo, Engineno, RoadTaxDate,	InsuranceNo, InsDate, PolutionNo, PolExpDate, RCBookNo, RCExpDate, CompanyVechile, OwnerPhoneNo, HomeLandmark, ModelYear,DayOnly, VechMobileNo,	EntryDate, NewEntry, VehicleModelId, ServiceTypeId,	VehicleGroupId,	BookingNo, ReqDate,	ReqTime, CallTime, CustomerName, CusID,	PhoneNo, AltPhoneNo, PickupAddress, LandMark, PickupPlace, DropPlace, Package, NoofVehicle, VechID,	DriverName,	PresentDriverLandMark, ExecutiveName, EffectiveDate, EffectiveTill,	DriverId'
     $scope.DriverVehicleAssignArr = [{ "Id": 1, "CardNumber": "CardCategory" },
                         { "Id": 2, "CardNumber": "CardCategory" }]
 
@@ -423,13 +423,13 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         var data = allTextLines[i].split(',');
                         lines.push(GetDrivers(data));
 
-                        //if (data.length == headers.length) {
-                        //var tarr = [];
-                        //for (var j = 0; j < headers.length; j++) {
-                        //    tarr.push(data[j]);
-                        //}
+                        if (data.length == headers.length) {
+                        var tarr = [];
+                        for (var j = 0; j < headers.length; j++) {
+                            tarr.push(data[j]);
+                        }
                         //lines.push(GetDrivers(data));
-                        //}
+                        }
                     }
 
                     //list
@@ -914,15 +914,15 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         PickupPlace: data[51],
                         DropPlace: data[52],
                         Package: data[53],
-                        VehicleType: data[54],
-                        NoofVehicle: data[55],
-                        VechID: data[56],
-                        DriverName: data[57],
-                        PresentDriverLandMark: data[58],
-                        ExecutiveName: data[59],
-                        EffectiveDate: data[60],
-                        EffectiveTill: data[61],
-                        DriverId: data[62],
+                        //VehicleType: data[54],
+                        NoofVehicle: data[54],
+                        VechID: data[55],
+                        DriverName: data[56],
+                        PresentDriverLandMark: data[57],
+                        ExecutiveName: data[58],
+                        EffectiveDate: data[59],
+                        EffectiveTill: data[60],
+                        DriverId: data[61],
 
                         active: 1,
                         inspudflag: 'I'
@@ -1013,6 +1013,21 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                 $scope.downloadFile('DataUploadTemplates/Inventory.csv', 'Inventory.csv');
                 break;
 
+            case "9":
+                $scope.downloadFile('DataUploadTemplates/DriversList.csv', 'DriversList.csv');
+                break;
+
+            case "10":
+                $scope.downloadFile('DataUploadTemplates/VehiclesList.csv', 'VehiclesList.csv');
+                break;
+
+            case "11":
+                $scope.downloadFile('DataUploadTemplates/CardsList.csv', 'CardsList.csv');
+                break;
+
+            case "12":
+                $scope.downloadFile('DataUploadTemplates/DriverVehicleAssignList.csv', 'DriverVehicleAssignList.csv');
+                break;
         }
     }
 

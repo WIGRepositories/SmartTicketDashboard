@@ -1,6 +1,9 @@
-Name,EmailId,ContactNo,Country,State/province,Address,Comments
+DriverName,Address,City,Pin,PAddress,PCity,PPin,OffMobileNo,PMobNo,DOB,DOJ,BloodGroup,LicenceNo,LiCExpDate,BadgeNo,BadgeExpDate,Remarks,VehicleModel
+
+
+
 						
 						
 						
 example:						
-Interbus,info@interbus.com,1234567890,Zimbabwe,Harare,"103, Mutera rd, ZMW","example record"
+Smith, Madhapur, Hyderabad, 500028, gutta, Hyderabad, 54646, 54654682, 54998565, NULL, NULL, B+,546546, NULL, 56, NULL, AllRights, Indigo

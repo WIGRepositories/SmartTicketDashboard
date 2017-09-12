@@ -1,6 +1,8 @@
-Name,EmailId,ContactNo,Country,State/province,Address,Comments
+CardNumber,	CardModel, CardType, CardCategory, StatusId, UserId, Customer, EffectiveFrom, EffectiveTo
+
 						
 						
 						
 example:						
-Interbus,info@interbus.com,1234567890,Zimbabwe,Harare,"103, Mutera rd, ZMW","example record"
+4886, Silver, Visa,	Contact card, 1, 1, ramu, 1/1/2015, 1/1/2015
+

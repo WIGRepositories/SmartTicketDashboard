@@ -1,6 +1,8 @@
-Name,EmailId,ContactNo,Country,State/province,Address,Comments
+Name, Code,	Description, Address, ContactNo1, ContactNo2, EmailId, Active, Fax, Title, Caption,	Country, ZipCode, State, FleetSize,	StaffSize, AlternateAddress, ShippingAddress, AddressId, Logo
+
 						
 						
 						
 example:						
-Interbus,info@interbus.com,1234567890,Zimbabwe,Harare,"103, Mutera rd, ZMW","example record"
+xenosoft, 456, WEBINGATE2, company,	9-234 Jubilee Hills, 546, NULL, xeno3@gmail.com, 1,	NULL, NULL,	NULL, NULL,	NULL, NULL,	NULL, NULL,	NULL, NULL,	NULL, NULL
+
