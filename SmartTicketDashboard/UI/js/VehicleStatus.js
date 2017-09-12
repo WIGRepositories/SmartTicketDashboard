@@ -176,13 +176,38 @@ app.controller('mapCtrl', function ($scope, $http) {
             });
 
         });
+    //---------------
+    //var markerIcon = {
+    //    url: 'http://image.flaticon.com/icons/svg/252/252025.svg',
+    //    scaledSize: new google.maps.Size(80, 80),
+    //    origin: new google.maps.Point(0, 0),
+    //    anchor: new google.maps.Point(32, 65),
+    //    labelOrigin: new google.maps.Point(40, 33)
+    //};
 
+    //var markerLabel = 'Cars';
+    //var marker = new google.maps.Marker({
+    //    map: map,
+    //    animation: google.maps.Animation.DROP,
+    //    position: markerLatLng,
+    //    icon: markerIcon,
+    //    label: {
+    //        text: markerLabel,
+    //        color: "#eb3a44",
+    //        fontSize: "16px",
+    //        fontWeight: "bold"
+    //    }
+    //});
+    //---------------
     var createMarker = function (loc) {
         var marker = new google.maps.Marker({
             map: $scope.map,
             position: new google.maps.LatLng(loc.Latitude, loc.Longitude),
             //title: loc.loc
-
+            //icon: {
+            //    path:'http://localhost:1476/UI/images/Indigo-taxi.png'
+            //    }
+            icon: "/UI/images/Red-2-icon.png"
         });
         marker.content = '<div class="infoWindow"</div>' +'Driver: '+loc.NAme +'<br> Driver Contact No: ' +loc.DriverNo + '<br> Vehicle Model: '+loc.VehicleModelId+ '</div>';;
 
