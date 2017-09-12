@@ -542,7 +542,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     var headers = allTextLines[0].split(',');
 
-                    var header = [$scope.seloption];
+                    //var header = [$scope.seloption];
 
 
                     //validate header

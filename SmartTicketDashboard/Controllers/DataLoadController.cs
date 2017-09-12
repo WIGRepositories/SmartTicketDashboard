@@ -1293,8 +1293,8 @@ namespace SmartTicketDashboard.Controllers
 
                 string str = ex.Message;
                 traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveDriversGroups:" + ex.Message);
-                ///return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-                return null;
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                //return null;
             }
         }
 
