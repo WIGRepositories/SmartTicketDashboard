@@ -1749,11 +1749,11 @@ namespace SmartTicketDashboard.Controllers
                     dvaPackage.Value = dva.Package;
                     cmd.Parameters.Add(dvaPackage);
 
-                    //SqlParameter dvaVehicleType = new SqlParameter();
-                    //dvaVehicleType.ParameterName = "@VehicleType";
-                    //dvaVehicleType.SqlDbType = SqlDbType.NVarChar;
-                    //dvaVehicleType.Value = dva.VehicleType;
-                    //cmd.Parameters.Add(dvaVehicleType);
+                    SqlParameter dvaVehicleType = new SqlParameter();
+                    dvaVehicleType.ParameterName = "@VehicleType";
+                    dvaVehicleType.SqlDbType = SqlDbType.NVarChar;
+                    dvaVehicleType.Value = dva.VehicleType;
+                    cmd.Parameters.Add(dvaVehicleType);
 
                     SqlParameter dvaNoofVehicle = new SqlParameter();
                     dvaNoofVehicle.ParameterName = "@NoofVehicle";

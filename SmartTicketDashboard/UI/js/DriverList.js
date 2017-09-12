@@ -201,7 +201,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
-        $scope.imageSrc = $scope.listdrivers[0].Photo;
+        $scope.imageSrc = $scope.listdrivers.Photo;
     }
     $scope.docfiles = [];
 

@@ -812,7 +812,7 @@ namespace SmartTicketDashboard.Models
         public string Package { get; set; }
         public string VehicleType { get; set; }
         public int NoofVehicle { get; set; }
-        public string VechID { get; set; }
+        public int VechID { get; set; }
         public string DriverName { get; set; }
         public string PresentDriverLandMark { get; set; }
         public string ExecutiveName { get; set; }
