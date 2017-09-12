@@ -114,6 +114,9 @@
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\images\Indigo-taxi.png" />
+    <Content Include="UI\images\Red-2-icon.png" />
+    <Content Include="UI\images\Untitled.png" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\CardDetails.js" />
@@ -126,7 +129,6 @@
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
-    <Content Include="UI\images\Car.jpg" />
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\VechicleBookingDetails.html" />
