@@ -274,38 +274,42 @@ app.controller('mapCtrl', function ($scope, $http) {
     $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
 
     $scope.markers = [];
-    $scope.cities = [];
+    $scope.location = [];
 
     var infoWindow = new google.maps.InfoWindow();
 
-    $http.get('http://localhost:1476/api/Tracking/GetLatLongHistory').
+    $http.get('http://localhost:1476/api/DriverStatus/GetDriverlocation').
         success(function (data) {
 
-            $scope.cities = data;
-            $scope.cities.forEach(function (city) {
-                createMarker(city);
+            $scope.location = data;
+            $scope.location.forEach(function (loc) {
+                createMarker(loc);
             });
 
         });
 
-    var createMarker = function (spot) {
+    var createMarker = function (loc) {
         var marker = new google.maps.Marker({
             map: $scope.map,
-            position: new google.maps.LatLng(spot.Latitude, spot.Longitude),
-            title: spot.spot
-
+            position: new google.maps.LatLng(loc.Latitude, loc.Longitude),
+            //title: loc.loc
+            //icon: {
+            //    path:'http://localhost:1476/UI/images/Indigo-taxi.png'
+            //    }
+            icon: "/UI/images/Red-2-icon.png"
         });
-        marker.content = '<div class="infoWindowContent"</div>';
+        marker.content = '<div class="infoWindow"</div>' + 'Driver: ' + loc.NAme + '<br> Driver Contact No: ' + loc.DriverNo + '<br> Vehicle Model: ' + loc.VehicleModelId + '</div>';;
 
         google.maps.event.addListener(marker, 'click', function () {
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            //infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent(marker.content);
             infoWindow.open($scope.map, marker);
         });
 
         $scope.markers.push(marker);
     };
 
-    
+
 
 });
 
