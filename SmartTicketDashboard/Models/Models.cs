@@ -2437,6 +2437,22 @@ namespace SmartTicketDashboard.Models
         public int InnovaRate { get; set; }
         public int Tag { get; set; }
     }
+
+    public class VehicleDistancePriceConfiguration
+    {
+        public string SourceLoc {get; set;}
+        public string DestinationLoc {get; set;}
+        public float SourceLat {get; set;}
+        public float SourceLng {get; set;}
+        public float DestinationLat {get; set;}
+        public float DestinationLng {get; set;}
+        public string VehicleModelId {get; set;}
+        public string VehicleTypeId {get; set;}
+        public string PricingTypeId {get; set;}
+        public float UnitPrice {get; set;}
+        public float Amount {get; set;}
+        public string flag {get; set;}
+    }
     public class start
     {
         public string flag { get; set; }
