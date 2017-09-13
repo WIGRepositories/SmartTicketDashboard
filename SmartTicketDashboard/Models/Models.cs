@@ -1762,6 +1762,8 @@ namespace SmartTicketDashboard.Models
         public int? needvehicleMake { get; set; }
         public int? needVehicleGroup { get; set; }
 
+        public int? needDocuments { get; set; }
+
 
     }
 
@@ -2588,6 +2590,49 @@ namespace SmartTicketDashboard.Models
 
     }
 
+    public class VehicleDocuments
+    {
+
+        public int Id { get; set; }
+        public int VehicleId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+       
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string docName { get; set; }
+        public int IsExpired { get; set; }
+        public string docContent { get; set; }
+
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+    }
+
+    public class DriverDocuments
+    {
+
+        public int Id { get; set; }
+        public int DriverId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+     
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string docName { get; set; }
+        public int IsExpired { get; set; }
+        public string docContent { get; set; }
+
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+    }
 
 }
 

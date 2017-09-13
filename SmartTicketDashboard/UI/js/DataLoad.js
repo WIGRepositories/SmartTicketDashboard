@@ -913,8 +913,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         LandMark: data[50],
                         PickupPlace: data[51],
                         DropPlace: data[52],
-                        Package: data[53],
-                        //VehicleType: data[54],
+                        Package: data[53],                        
                         NoofVehicle: data[54],
                         VechID: data[55],
                         DriverName: data[56],
@@ -923,7 +922,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         EffectiveDate: data[59],
                         EffectiveTill: data[60],
                         DriverId: data[61],
-
+                        VehicleType: data[62],
                         active: 1,
                         inspudflag: 'I'
                     }

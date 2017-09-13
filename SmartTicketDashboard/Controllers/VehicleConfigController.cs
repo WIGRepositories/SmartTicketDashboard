@@ -126,6 +126,12 @@ namespace SmartTicketDashboard.Controllers
             vgid.Value = (vc.needVehicleGroup == null) ? 0 : 1;
             cmd.Parameters.Add(vgid);
 
+            SqlParameter vdid = new SqlParameter();
+            vdid.ParameterName = "@needDocuments";
+            vdid.SqlDbType = SqlDbType.Int;
+            vdid.Value = (vc.needDocuments == null) ? 0 : 1;
+            cmd.Parameters.Add(vdid);
+
            
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);

@@ -205,10 +205,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     $scope.docfiles = [];
 
-   
-
-     
-
     $scope.saveNew = function (Driverlist,flag) {
       
         
@@ -220,7 +216,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter NAme');
             return;
         }
-        if (Driverlist.Address1 == null) {
+        if (Driverlist.Address == null) {
             alert('Please Enter Address');
             return;
         }
@@ -263,20 +259,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (Driverlist.BloodGroup == null) {
             alert('Please Enter BloodGroup');
             return;
-        }
-        
-        if (Driverlist.LiCExpDate == null) {
-            alert('Please Enter LiCExpDate');
-            return;
-        }
-        if (Driverlist.BadgeNo == null) {
-            alert('Please Enter BadgeNo');
-            return;
-        }
-        if (Driverlist.BadgeExpDate == null) {
-            alert('Please Enter BadgeExpDate');
-            return;
-        }        
+        }       
+       
         
 
         var Driverlist = {
@@ -285,7 +269,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DId:-1,
             CompanyId: Driverlist.Id,
             NAme: Driverlist.NAme,
-            Address: Driverlist.Address1,
+            Address: Driverlist.Address,
             City: Driverlist.City,
             Pin: Driverlist.Pin,
             PAddress: Driverlist.PAddress,
@@ -295,15 +279,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PMobNo: Driverlist.PMobNo,
             DOB: Driverlist.DOB,
             DOJ: Driverlist.DOJ,
-            BloodGroup: Driverlist.BloodGroup,
-            LicenceNo: Driverlist.LicenceNo,
-            LiCExpDate: Driverlist.LiCExpDate,
-            BadgeNo: Driverlist.BadgeNo,
-            BadgeExpDate: Driverlist.BadgeExpDate,
+            BloodGroup: Driverlist.BloodGroup,          
             Remarks: Driverlist.Remarks,            
-            Photo: $scope.imageSrc,
-            licenseimage: $scope.imageSrc,
-            badgeimage:$scope.imageSrc,
+            Photo: $scope.imageSrc
+           
       
             
         }
@@ -474,6 +453,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.onFileSelect = function () {
         fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     }
+
+    $scope.GetVehicleConfig = function () {
+
+        var vc = {
+            // needfleetowners:'1',
+            needvehicleType: '1',
+            needServiceType: '1',
+            //needCompanyName: '1',
+            needVehicleMake: '1',
+            needVehicleGroup: '1',
+            needDocuments: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
+
+
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+
+    }
    
 
     $scope.showDialog = function (message) {
@@ -490,6 +497,100 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+
+    $scope.onFileSelect = function (files, $event) {
+        $scope.modifiedDoc = null;
+        var found = false;
+        ////check if job already exists 
+        //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
+        //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
+        //        found = true;
+        //    }
+        //}
+
+        //if (found) {
+        //    alert('Cannot add duplicte documents. Document with the same name already exists.');
+        //    $event.stopPropagation();
+        //    $event.preventDefault();
+        //    return;
+        //}
+
+        var ext = files[0].name.split('.').pop();
+        fileReader.readAsDataUrl(files[0], $scope, (ext == 'csv') ? 1 : 4).then(function (result) {
+            //if (result.length > 2097152) {
+            //    alert('Cannot upload file greater than 2 MB.');
+            //    $event.stopPropagation();
+            //    $event.preventDefault();
+            //    return;
+            //}
+
+            var doc =
+                {
+                    Id: -1,
+                    DriverId: $scope.selectedlistdrivers,
+                    createdById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    UpdatedById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    FromDate: null,
+                    ToDate: null,
+
+                    docTypeId: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Id,
+                    docType: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Name,//
+                    docName: files[0].name,
+                    docContent: result,
+
+                    expiryDate: ($scope.assetDoc == null || $scope.assetDoc.expiryDate == null) ? null : getdate($scope.assetDoc.expiryDate),
+                    dueDate: ($scope.assetDoc == null || $scope.assetDoc.dueDate == null) ? null : getdate($scope.assetDoc.dueDate),
+                    insupddelflag: 'I'
+                }
+
+            $scope.modifiedDoc = doc;
+            ////check if already the file exists                       
+            //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
+            //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
+            //        $scope.currobj.files1.splice(cnt, 1);
+            //    }
+            //}
+
+            //$scope.currobj.files1.push(doc);
+            //if ($scope.DocFiles)
+            //{
+            //    $scope.DocFiles.push(doc);
+            //}
+
+        });
+    };
+
+    /*save job documents */
+    $scope.SaveAssetDoc = function () {
+
+        if ($scope.modifiedDoc == null) {
+
+            alert('Select an asset document to modify.');
+            return;
+        }
+        $scope.modifiedDoc.UpdatedById = ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id;
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/SaveDriverDoc',
+            data: $scope.modifiedDoc
+        }
+        $http(req).then(function (response) {
+            //  $scope.DocFiles = response.data.Table;
+            $scope.DocFiles = response.data.Table;
+            alert("Saved Successfully");
+
+            $scope.modifiedDoc = null;
+            $scope.assetDoc = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.modifiedDoc = null;
+            $scope.assetDoc = null;
+            $scope.showDialog(errmssg);
+        });
+    }
 
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {

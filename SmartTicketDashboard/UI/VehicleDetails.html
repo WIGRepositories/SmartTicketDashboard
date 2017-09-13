@@ -406,11 +406,9 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
 
-                                    <!---------------------User Profile Style--------------------------->
-
-                                    <div class="row">
+                                    <div class="row" ng-show="VID==0">
                                         <div class="col-md-12">
-                                            
+
                                             <div class="row mtl">
                                                 <div class="form-group">
                                                     <div class="col-md-3">
@@ -420,16 +418,431 @@
                                                             <div class="col-md-8">
                                                                 <img id="cmpLogo" ng-src="{{imageSrc}}" width="200px" height="150px" />
                                                                 <br />
-                                                                
+
                                                                 <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
                                                                     <i class="fa fa-upload"></i>&nbsp;
                                                                     Upload photo
                                                                 </a>
-                                                                <a href="#" class="btn btn-red" ng-click="clearImg();" style="width:90px;margin-top:10px;margin-bottom:10px;" >
+                                                                <a href="#" class="btn btn-red" ng-click="clearImg();" style="width:90px;margin-top:10px;margin-bottom:10px;">
                                                                     <i class="fa fa-upload"></i>&nbsp;
                                                                     Remove Logo
                                                                 </a>
-                                                                
+
+                                                            </div>
+                                                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                        </div>
+                                                        <table class="table table-striped table-hover" style="margin-top:10px;">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>Owner Name</td>
+                                                                    <td>{{newVehicle.OwnerName}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Owner Phone No</td>
+                                                                    <td>{{newVehicle.OwnerPhoneNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Registration No</td>
+                                                                    <td> {{newVehicle.RegistrationNo}}</td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>Address</td>
+                                                                    <td>{{newVehicle.HomeLandmark}}</td>
+                                                                </tr>
+
+                                                                <tr>
+                                                                    <td>Status</td>
+                                                                    <td><span class="label label-success">Active</span></td>
+                                                                </tr>
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <!--<ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
+                    </ul>-->
+                                                    <div id="generalTabContent" class="tab-content">
+                                                        <div id="tab-edit" class="tab-pane fade in active">
+                                                            <form action="#" class="form-horizontal">
+                                                                <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse1">Owner Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Name</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.OwnerName" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Phone No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.OwnerPhoneNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Fleet Owner Code</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.FleetOwnerCode" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Address</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.HomeLandmark" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse2">Vehicle Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse2" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body" ng-init="GetVehicleConfig()">
+
+
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Company</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="newVehicle.c" ng-init="GetCompanys();" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Registration No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Model</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Group</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vg.Name for vg in initdata.Table3 track by vg.Id" ng-model="newVehicle.vg" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Service Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vr.Name for vr in initdata.Table2 track by vr.Id" ng-model="vr" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Company Vechile</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="newVehicle.CompanyVechile" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Yes">Yes</option>
+                                                                                                        <option value="No">No</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Model Year</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.ModelYear" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Day/Night</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="newVehicle.DayOnly" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="DayOnly">DayOnly</option>
+                                                                                                        <option value="DayNight">DayNight</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vech Mobile No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="newVehicle.VechMobileNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">New Entry</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="newVehicle.NewEntry" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Yes">Yes</option>
+                                                                                                        <option value="No">No</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Entry Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="newVehicle.EntryDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Status</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="newVehicle.Status" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Assigned">Assigned</option>
+                                                                                                        <option value="NotAssigned">NotAssigned</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+
+
+                                                                <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse1">Vehicle Approvals</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+
+                                                                            <!--<div class="alert alert-danger">No records to display.</div>-->
+                                                                            <table class="table table-bordered table-advanced tablesorter">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>File Name</th>
+                                                                                        <th>Document Type</th>
+                                                                                        <th>Expiry Date</th>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <th>Update</th>
+                                                                                        <th>Delete</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr ng-repeat="d in dl = (currobj.files1|filter:{docCatId:docType.DocTypeId,insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
+                                                                                        <td>{{d.docType}}</td>
+                                                                                        <td>
+                                                                                            {{d.expiryDate | date:'MM-dd-yyyy'}}
+                                                                                        </td>
+                                                                                        <!--<td>
+                                                            {{d.dueDate | date:'MM-dd-yyyy'}}
+                                                        </td>-->
+                                                                                        <td>
+                                                                                            <a class="fa fa-arrow-up" ng-click="MoveUp($index)" ng-hide="$first || a.rootid==1" style="padding-right:10px"></a>
+                                                                                            <a class="fa fa-arrow-down" ng-click="MoveDown($index)" ng-hide="$last || a.rootid==1" style="padding-right:10px"></a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-edit"></i>
+
+                                                                                            </button>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-trash-o"></i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                            <div style="margin-left:10px;margin-bottom:0px">
+                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetDocdocCatId(docType.DocTypeId)">Upload Files</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                                <hr />
+                                                                <div style="margin-left:350px">
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(newVehicle, 'I');">Save</button>
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!---------------------User Profile Style--------------------------->
+
+                                    <div class="row" ng-show="{{VID==v.VID}}">
+                                        <div class="col-md-12">
+
+                                            <div class="row mtl">
+                                                <div class="form-group">
+                                                    <div class="col-md-3">
+                                                        <div style="margin-right:100px;margin-top:10px">
+                                                            <label for="Address Id">Front:</label>
+                                                            <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
+                                                            <div class="col-md-8">
+                                                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="200px" height="150px" />
+                                                                <br />
+
+                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                    Upload photo
+                                                                </a>
+                                                                <a href="#" class="btn btn-red" ng-click="clearImg();" style="width:90px;margin-top:10px;margin-bottom:10px;">
+                                                                    <i class="fa fa-upload"></i>&nbsp;
+                                                                    Remove Logo
+                                                                </a>
+
                                                             </div>
                                                             <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
 
@@ -461,469 +874,357 @@
                                                             </tbody>
                                                         </table>
                                                     </div>
-                                                    </div>
-                                                    <div class="col-md-9">
-                                                        <!--<ul class="nav nav-tabs">
-                <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
-            </ul>-->
-                                                        <div id="generalTabContent" class="tab-content">
-                                                            <div id="tab-edit" class="tab-pane fade in active">
-                                                                <form action="#" class="form-horizontal">
-                                                                    <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <!--<ul class="nav nav-tabs">
+                        <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
+                    </ul>-->
+                                                    <div id="generalTabContent" class="tab-content">
+                                                        <div id="tab-edit" class="tab-pane fade in active">
+                                                            <form action="#" class="form-horizontal">
+                                                                <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
 
-                                                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                            <div class="caption"><a href="#collapse1">Owner Details</a></div>
-                                                                            <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
-                                                                        </div>
-
-
-                                                                        <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                                            <div class="panel-body">
-
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Owner Name</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.OwnerName" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Owner Phone No</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.OwnerPhoneNo" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Fleet Owner Code</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.FleetOwnerCode" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Address</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.HomeLandmark" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-                                                                        </div>
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse1">Owner Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
                                                                     </div>
 
-                                                                    <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
 
-                                                                        <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                            <div class="caption"><a href="#collapse2">Vehicle Details</a></div>
-                                                                            <div class="tools" ><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
-                                                                        </div>
+                                                                    <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
 
-
-                                                                        <div id="collapse2" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                                            <div class="panel-body" ng-init="GetVehicleConfig()">
-
-
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Company</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-options="c.Name for c in Companies track by c.Id" ng-model="v.c" ng-init="GetCompanys();" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Registration No</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.RegistrationNo" class="form-control" /></div>
-                                                                                                </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Name</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Vehicle Type</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Owner Phone No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerPhoneNo" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Vehicle Model</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
+                                                                                </div>
 
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Vehicle Group</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-options="vg.Name for vg in initdata.Table3 track by vg.Id" ng-model="v.vg1" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Service Type</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-options="vr.Name for vr in initdata.Table2 track by vr.Id" ng-model="vr" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Fleet Owner Code</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.FleetOwnerCode" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Company Vechile</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">                                                                                                    
-                                                                                                        <select ng-model="v.CompanyVechile1" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                            <option value="Yes">Yes</option>
-                                                                                                            <option value="No">No</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Model Year</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.ModelYear" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Day/Night</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-model="v.DayOnly" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                            <option value="DayOnly">DayOnly</option>
-                                                                                                            <option value="DayNight">DayNight</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Vech Mobile No</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="text" ng-model="v.VechMobileNo" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
 
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">New Entry</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-model="v.NewEntry" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                            <option value="Yes">Yes</option>
-                                                                                                            <option value="No">No</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Address</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.HomeLandmark" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Entry Date</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9"><input type="date" ng-model="v.EntryDate" class="form-control" /></div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-12">
-                                                                                    <div class="col-md-6">
-                                                                                        <div class="form-group">
-                                                                                            <label class="col-sm-3 control-label">Status</label>
-                                                                                            <div class="col-sm-9 controls">
-                                                                                                <div class="row">
-                                                                                                    <div class="col-xs-9">
-                                                                                                        <select ng-model="v.Status" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                            <option value="Assigned">Assigned</option>
-                                                                                                            <option value="NotAssigned">NotAssigned</option>
-                                                                                                        </select>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    
                                                                                 </div>
                                                                             </div>
+
+
                                                                         </div>
                                                                     </div>
-                                                            </div>
-
-
-                                                            <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
-
-                                                                <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                    <div class="caption"><a href="#collapse3">Vehicle  Approvals</a></div>
-                                                                    <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
                                                                 </div>
 
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
 
-                                                                <div id="collapse3" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                                    <div class="panel-body">
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse2">Vehicle Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
 
-                                                                        <!--<div class="alert alert-danger" >No records to display.</div>-->
-                                                                        <div class="col-md-12">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-md-3 control-label">Engine No</label>
-                                                                                    <div class="col-md-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="text" ng-model="v.Engineno" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">Road Tax Date</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="date" ng-model="v.RoadTaxDate" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">Insurance Date</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="date" ng-model="v.InsDate" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">Chasis No</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="text" ng-model="v.ChasisNo" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">PollutionNo</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="text" ng-model="v.PolutionNo" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">Pollution Exp Date</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="date" ng-model="v.PolExpDate" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">RC Book No</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="text" ng-model="v.RCBookNo" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <div class="form-group">
-                                                                                    <label class="col-sm-3 control-label">RC Exp Date</label>
-                                                                                    <div class="col-sm-9 controls">
-                                                                                        <div class="row">
-                                                                                            <div class="col-xs-9"><input type="date" ng-model="v.RCExpDate" class="form-control" /></div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="row">
 
+                                                                    <div id="collapse2" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body" ng-init="GetVehicleConfig()">
+
+
+                                                                            <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="Name" class="col-md-3 control-label">Road Tax:<span class='require'></span></label>
-
-                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                        <div class="col-md-6">
-                                                                                            <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                            <br />
-                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                <i class="fa fa-upload"></i>&nbsp;
-                                                                                                Upload photo
-                                                                                            </a>
+                                                                                        <label class="col-sm-3 control-label">Company</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="v.c" ng-init="GetCompanys();" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="Name" class="col-md-3 control-label">Insurance:<span class='require'></span></label>
-
-                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                        <div class="col-md-6">
-                                                                                            <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                            <br />
-                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                <i class="fa fa-upload"></i>&nbsp;
-                                                                                                Upload photo
-                                                                                            </a>
-
+                                                                                        <label class="col-sm-3 control-label">Registration No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.RegistrationNo" class="form-control" /></div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>
-                                                                        <div class="col-md-12">
-                                                                            <div class="row">
-
+                                                                            <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="Name" class="col-md-3 control-label">Pollution:<span class='require'></span></label>
-
-                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                        <div class="col-md-6">
-                                                                                            <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                            <br />
-                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                <i class="fa fa-upload"></i>&nbsp;
-                                                                                                Upload photo
-                                                                                            </a>
+                                                                                        <label class="col-sm-3 control-label">Vehicle Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label for="Name" class="col-md-3 control-label">RC:<span class='require'></span></label>
-
-                                                                                        <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                                                        <div class="col-md-6">
-                                                                                            <img id="cmpLogo" ng-src="{{imageSrc1}}" width="150px" height="60px" />
-                                                                                            <br />
-                                                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
-                                                                                                <i class="fa fa-upload"></i>&nbsp;
-                                                                                                Upload photo
-                                                                                            </a>
-
+                                                                                        <label class="col-sm-3 control-label">Vehicle Model</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vehicle Group</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vg.Name for vg in initdata.Table3 track by vg.Id" ng-model="v.vg1" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Service Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vr.Name for vr in initdata.Table2 track by vr.Id" ng-model="vr" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Company Vechile</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="v.CompanyVechile1" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Yes">Yes</option>
+                                                                                                        <option value="No">No</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Model Year</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ModelYear" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Day/Night</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="v.DayOnly" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="DayOnly">DayOnly</option>
+                                                                                                        <option value="DayNight">DayNight</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Vech Mobile No</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.VechMobileNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">New Entry</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="v.NewEntry" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Yes">Yes</option>
+                                                                                                        <option value="No">No</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Entry Date</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="v.EntryDate" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Status</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="v.Status" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option value="Assigned">Assigned</option>
+                                                                                                        <option value="NotAssigned">NotAssigned</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-                                                            </div>
 
 
 
-                                                            <hr />
-                                                            <div style="margin-left:350px">
-                                                                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(v, 'U');">Save</button>
-                                                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                                                            </div>
+
+
+                                                                <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="#collapse1">Vehicle Approvals</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+
+                                                                            <!--<div class="alert alert-danger">No records to display.</div>-->
+                                                                            <table class="table table-bordered table-advanced tablesorter">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>File Name</th>
+                                                                                        <th>Document Type</th>
+                                                                                        <th>Expiry Date</th>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <th>Update</th>
+                                                                                        <th>Delete</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr ng-repeat="d in dl = (currobj.files1|filter:{docCatId:docType.DocTypeId,insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
+                                                                                        <td>{{d.docType}}</td>
+                                                                                        <td>
+                                                                                            {{d.expiryDate | date:'MM-dd-yyyy'}}
+                                                                                        </td>
+                                                                                        <!--<td>
+                                                            {{d.dueDate | date:'MM-dd-yyyy'}}
+                                                        </td>-->
+                                                                                        <td>
+                                                                                            <a class="fa fa-arrow-up" ng-click="MoveUp($index)" ng-hide="$first || a.rootid==1" style="padding-right:10px"></a>
+                                                                                            <a class="fa fa-arrow-down" ng-click="MoveDown($index)" ng-hide="$last || a.rootid==1" style="padding-right:10px"></a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-edit"></i>
+
+                                                                                            </button>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-trash-o"></i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                            <div style="margin-left:10px;margin-bottom:0px">
+                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetDocdocCatId(docType.DocTypeId)">Upload Files</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                                <hr />
+                                                                <div style="margin-left:350px">
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(v, 'U');">Save</button>
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                </div>
                                                             </form>
                                                         </div>
 
@@ -941,6 +1242,156 @@
                         </div>
                     </div>
                     </div>
+
+            <div id="Modal-header-new-f" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                            <h4 id="modal-header-primary-label" class="modal-title">Add New files</h4>
+                        </div>
+                        <div class="modal-body" ng-model="assetDoc">
+                            <!--<div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label" style="color:red;">File Name:<span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="inputFirstName" type="text" ng-model="assetDoc.Name" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>-->
+                            <div class="row mbm">
+                                <div style="text-align:right">
+                                    <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <!--<select ng-model="assetDoc.docType" style="width:60%">
+                                <option value="1">Check List</option>
+                                <option value="2">Post Job</option>
+                                <option value="3">Pre Job</option>
+                                <option value="4">Others</option>
+                            </select>-->
+
+                                    <select ng-options="d.Name for d in initdata.Table4 track by d.Id" ng-model="assetDoc.docType" style="width:100%">
+                                        <option value="">Select</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row mbm">
+                                <div style="text-align:right">
+                                    <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <!--<input id="inputFirstName" type="date" ng-model="assetDoc.expiryDate | date:'MM-dd-yyyy'" placeholder="enter" class="form-control" />--><span class="help-block"></span>
+                                    <!--<input type="date" datetime="MM-dd-yyyy" ng-model="assetDoc.expiryDate">-->
+                                    <!--<input type="date" id="exampleInput" name="input" ng-model="{{assetDoc.expiryDate |date:'MM-dd-yyyy'}}" />-->
+
+                                    <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="assetDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                                </div>
+                            </div>
+
+                            <div class="row mbm">
+                                <div style="text-align:right">
+                                    <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="assetDoc.doc" ng-click="validateFile($event)" />
+                                </div>
+                            </div>
+
+                            <div class="row mbm" style="text-align:center">
+                                <font color="red">Note: Only .pdf,.jpg,.png,.gif,.csv file types are supported</font>
+                            </div>
+                            <div class="form-actions">
+                                <div style="text-align:center">
+                                    <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                                    <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveAssetDoc()">Upload</button>
+                                    <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelNewDoc()">Cancel</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div id="Modal-header-new-e" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header modal-header-primary">
+                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                            <h4 id="modal-header-primary-label" class="modal-title">Update selected file</h4>
+                        </div>
+                        <div class="modal-body" ng-model="assetDoc">
+                            <!--<div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label" style="color:red;">File Name:<span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="inputFirstName" type="text" ng-model="assetDoc.Name" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>-->
+                            <div class="row mbm">
+                                <div style="text-align:right">
+                                    <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                                </div>
+                                <div class="col-md-6">
+                                    <!--<select ng-model="assetDoc.docType" style="width:60%">
+                                <option value="1">Check List</option>
+                                <option value="2">Post Job</option>
+                                <option value="3">Pre Job</option>
+                                <option value="4">Others</option>
+                            </select>-->
+
+                                    <select ng-options="a.Name for a in docTypes track by a.Id" ng-model="assetDoc.dt" style="width:100%" ng-value="assetDoc.docTypeId" ng-change="updateDocType()">
+                                        <option value="">Select</option>
+                                    </select>
+
+                                </div>
+                            </div>
+                            <div class="row mbm">
+                                <div style="text-align:right">
+                                    <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
+                                    <div class="col-md-6">
+                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter mbs col-md-6"><input type="text" placeholder="mm/dd/yyyy" class="form-control" ng-model="assetDoc.expiryDate" ng-change="updateDocExpDate()" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                                    </div>
+                                </div>
+                                <!--<div class="row mbm">
+                            <div style="text-align:right">
+                                <label for="Name" class="col-md-4 control-label">Due Date:<span class='require'>*</span></label>
+                            </div>
+                            <div class="col-md-6">
+                                <input id="inputFirstName" type="date" ng-model="assetDoc.dueDate" class="form-control" /><span class="help-block"></span>
+                            </div>
+                        </div>-->
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Description" class="col-md-4 control-label">File Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" style="width:100%" type="text" ng-model="assetDoc.docName" class="form-control" disabled /><span class="help-block"></span>
+                                        <!--<input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files,'U')" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="assetDoc.doc" ng-click="validateFile($event)" />-->
+                                    </div>
+                                </div>
+
+
+
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+                                        <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                                        <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="updateDoc();">Update</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
 
                     <!--BEGIN FOOTER-->
                     <div id="footer">
