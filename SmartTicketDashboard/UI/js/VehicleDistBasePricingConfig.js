@@ -1,18 +1,18 @@
 ﻿var app = angular.module('plunker', ['google-maps']);
 
-app.controller('MainCtrl', function ($scope, $document) {
+app.controller('MainCtrl', function ($scope, $document,$http) {
     // map object
     //---------------------------------
     $scope.GetVehicleConfig = function () {
 
         var vc = {
             // needfleetowners:'1',
-            //needvehicleType: '1',
-
+            needvehicleType: '1',
+            //needServiceType: '1',
             //needCompanyName: '1',
-            needVehicleMake: '1',
-            needServiceType: '1',
-            needVehicleGroup: '1',
+            needVehicleMake: '1'
+            //needVehicleGroup: '1',
+            //needDocuments: '1'
         };
 
         var req = {

@@ -36,7 +36,7 @@
 
 </head>
 
-<body ng-app="plunker" ng-controller="MainCtrl">
+<body ng-app="plunker" ng-controller="MainCtrl" ng-init="GetVehicleConfig()">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -438,7 +438,7 @@
                                                                         <h4 id="modal-header-primary-label" class="modal-title">Add Vehicle Pricing</h4>
                                                                     </div>
 
-                                                                    <div class="modal-body" ng-model="Vprice" ng-init="GetVehicleConfig()">
+                                                                    <div class="modal-body" ng-model="Vprice">
                                                                         <div style="margin-left:250px">
                                                                             <div class="row">
 
@@ -446,7 +446,7 @@
 
                                                                                     <label for="selCountry" class="col-md-4 control-label">Vehicle Model:</label>
                                                                                     <div class="col-md-8">
-                                                                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" ng-init="GetVehicleConfig()" class="form-control">
+                                                                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
                                                                                             <option value="">Select</option>
                                                                                         </select>
                                                                                     </div>
@@ -599,7 +599,7 @@
                                         <div class="container" style="padding-top:10px">
                                             <div class="col-md-12 ">
                                                 <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
-                                                    
+
                                                     <form>
                                                         <div class="form-group row">
                                                             <div class="col-xs-12">
@@ -624,14 +624,14 @@
                                                             <!------------------------------------->
                                                             <div class="col-md-12">
                                                                 <label>Vehicle Model</label>
-                                                                <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vc" class="form-control">
+                                                                <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
                                                                     <option value="">Select</option>
                                                                 </select>
                                                                 <br />
                                                             </div>
                                                             <div class="col-md-12">
                                                                 <label>Vehicle Type</label>
-                                                                <select ng-options="v.Type for v in Vehicles track by v.Id" ng-model="v" class="form-control" style="width:100%">
+                                                                <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="v" class="form-control" style="width:100%">
                                                                     <option value="">Select Type</option>
                                                                 </select>
                                                                 <br />
@@ -666,136 +666,136 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                        </form>
-                                                    </div>
-                                                        <!-------jagan--------------------->
-
-                                                    <div id="full-width-content" class="col-md-6">
-
-                                                        <div class="main">
-                                                            <div class="panel panel-default">
-                                                                <div class="panel-body">
-                                                                    <google-map control="map.control" center="map.center" zoom="map.zoom">
-                                                                        <marker coords="marker.center"></marker>
-                                                                    </google-map>
-                                                                    <form class="form-horizontal" role="form">
-                                                                        <!--<div class="form-group">
-                            <label for="origin" class="col-sm-2 control-label">Origin</label>
-                            <div class="col-sm-8">
-                                <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="destination" class="col-sm-2 control-label">Destination</label>
-                            <div class="col-sm-8">
-                                <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
-                            </div>
-                        </div>-->
-                                                                        <div class="form-group">
-                                                                            <!--<div class="col-sm-offset-2 col-sm-8">
-                                <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
-                            </div>-->
-                                                                        </div>
-                                                                    </form>
-                                                                    <div id="directionsList" ng-show="directions"></div>
-
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-
-                                                        <!--<div class="col-md-6">
-
-                                                        </div>-->
-                                                        <!--<div class="col-md-6">
-                                                            <div>
-
-
-
-
-                                                            </div>
-
-                                                            <div class="small-medium" data-set="content"> </div>
-                                                        </div>-->
-                                                        <!--</div>-->
-                                                        <!---------jagan-------------------->
-                                                        <!--<button type="submit" class="btn-medium green" style="margin-top:15px;margin-left:130px" ng-click="getDirections()">Submit</button>-->
+                                                    </form>
                                                 </div>
-                                                
-                                                <hr>
-                                                <div class="main-and-aside r">
+                                                <!-------jagan--------------------->
+
+                                                <div id="full-width-content" class="col-md-6">
+
                                                     <div class="main">
-                                                        <div class="small-medium" data-set="widget"></div>
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
+                                                                    <marker coords="marker.center"></marker>
+                                                                </google-map>
+                                                                <form class="form-horizontal" role="form">
+                                                                    <!--<div class="form-group">
+                                                                        <label for="origin" class="col-sm-2 control-label">Origin</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="destination" class="col-sm-2 control-label">Destination</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="form-group">
+                                                                        <!--<div class="col-sm-offset-2 col-sm-8">
+                                                                            <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+                                                                        </div>-->
+                                                                    </div>
+                                                                </form>
+                                                                <div id="directionsList" ng-show="directions"></div>
 
-                                                        <div class="clearfix"></div>
-                                                        <div class="module-grid clearfix">
-                                                            <!--<div>
-                                                                <h2 class="active">Ammount</h2>
-
-                                                                <div class="panel col-md-10">
-                                                                    <h4 class="panel-title">
-                                                                        <a href="#" class="collapsed">Fares <p style="text-align:right;margin-top:-25px;">Rs:150</p></a>
-
-                                                                    </h4>
-
-                                                                </div>
-
-
-
-                                                            </div>-->
-
+                                                            </div>
                                                         </div>
+
+                                                    </div>
+                                                </div>
+
+                                                <!--<div class="col-md-6">
+
+                                                </div>-->
+                                                <!--<div class="col-md-6">
+                                                    <div>
+
+
+
+
                                                     </div>
 
+                                                    <div class="small-medium" data-set="content"> </div>
+                                                </div>-->
+                                                <!--</div>-->
+                                                <!---------jagan-------------------->
+                                                <!--<button type="submit" class="btn-medium green" style="margin-top:15px;margin-left:130px" ng-click="getDirections()">Submit</button>-->
+                                            </div>
+
+                                            <hr>
+                                            <div class="main-and-aside r">
+                                                <div class="main">
+                                                    <div class="small-medium" data-set="widget"></div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="module-grid clearfix">
+                                                        <!--<div>
+                                                            <h2 class="active">Ammount</h2>
+
+                                                            <div class="panel col-md-10">
+                                                                <h4 class="panel-title">
+                                                                    <a href="#" class="collapsed">Fares <p style="text-align:right;margin-top:-25px;">Rs:150</p></a>
+
+                                                                </h4>
+
+                                                            </div>
+
+
+
+                                                        </div>-->
+
+                                                    </div>
                                                 </div>
-                                                <div class="aside">
-                                                    <div class="large" data-set="widget">
-                                                        <div class="moving-source-order">
-                                                            <div class="widget-wrapper">
-                                                                <div class="expandable-box">
-                                                                    <div class="content">
-                                                                        <!--<div class="always-visible widget-heading">
-                                                                            <div class="controls"> </div>
-                                                                            <h2 class="active">Confirm Booking</h2>
-                                                                        </div>-->
-                                                                        <!--<div class="toggle-container">
+
+                                            </div>
+                                            <div class="aside">
+                                                <div class="large" data-set="widget">
+                                                    <div class="moving-source-order">
+                                                        <div class="widget-wrapper">
+                                                            <div class="expandable-box">
+                                                                <div class="content">
+                                                                    <!--<div class="always-visible widget-heading">
+                                                                        <div class="controls"> </div>
+                                                                        <h2 class="active">Confirm Booking</h2>
+                                                                    </div>-->
+                                                                    <!--<div class="toggle-container">
+                                                                        <form>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-xs-6">
+                                                                                    <label for="ex1">Enter Mobile Number</label>
+                                                                                    <input class="form-control input-medium bfh-phone" id="ex1" type="text" data-format="+1 (ddd) ddd-dddd" placeholder="Enter Mobile Number">
+                                                                                </div>
+
+                                                                                <button type="submit" class="btn-medium green" style="margin-top:30px">Submit</button>
+                                                                            </div>
+                                                                        </form>
+
+
+
+
+
+                                                                        <div class="panel">
                                                                             <form>
                                                                                 <div class="form-group row">
                                                                                     <div class="col-xs-6">
-                                                                                        <label for="ex1">Enter Mobile Number</label>
-                                                                                        <input class="form-control input-medium bfh-phone" id="ex1" type="text" data-format="+1 (ddd) ddd-dddd" placeholder="Enter Mobile Number">
+                                                                                        <label for="ex1">Enter OTP</label>
+                                                                                        <input class="form-control" id="ex1" type="text" placeholder="OTP">
                                                                                     </div>
 
-                                                                                    <button type="submit" class="btn-medium green" style="margin-top:30px">Submit</button>
+                                                                                    <button type="submit" class="btn-medium green" style="margin-top:23px">Submit</button>
                                                                                 </div>
                                                                             </form>
 
+                                                                        </div>
+                                                                        <div class="panel">
 
 
+                                                                            <button type="submit" class="btn-medium green" style="margin:5px 0px 10px 60px">Go TO Payment</button>
+                                                                        </div>
 
 
-                                                                            <div class="panel">
-                                                                                <form>
-                                                                                    <div class="form-group row">
-                                                                                        <div class="col-xs-6">
-                                                                                            <label for="ex1">Enter OTP</label>
-                                                                                            <input class="form-control" id="ex1" type="text" placeholder="OTP">
-                                                                                        </div>
-
-                                                                                        <button type="submit" class="btn-medium green" style="margin-top:23px">Submit</button>
-                                                                                    </div>
-                                                                                </form>
-
-                                                                            </div>
-                                                                            <div class="panel">
-
-
-                                                                                <button type="submit" class="btn-medium green" style="margin:5px 0px 10px 60px">Go TO Payment</button>
-                                                                            </div>
-
-
-                                                                        </div>-->
+                                                                    </div>-->
 
 
 
@@ -803,7 +803,6 @@
 
 
 
-                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -812,59 +811,60 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--------------------Jagan-------------------------->
-                                    <!--<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                        <thead>
-                                            <tr>
-
-                                                <th>VehicleModel</th>
-                                                <th>Hours</th>
-                                                <th>FromTime</th>
-                                                <th>ToTime</th>
-                                                <th>Price</th>
-                                                <th>Details/Edit</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-
-                                            <tr ng-repeat="vp in VechPricing" class="gradeA">
-                                                <td>{{vp.VehicleModel}}</td>
-                                                <td>{{vp.Hours}}</td>
-                                                <td>{{vp.FromTime}}</td>
-                                                <td>{{vp.ToTime}}</td>
-                                                <td>{{vp.Price}}</td>
-
-
-                                                <td>
-                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechPricing(vp);">
-                                                        <i class="fa fa-edit"></i>&nbsp;
-                                                        Edit
-                                                    </button>
-
-                                                </td>
-
-                                            </tr>
-
-                                        </tbody>
-                                    </table>-->
-
-
                                 </div>
+                                <!--------------------Jagan-------------------------->
+                                <!--<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                    <thead>
+                                        <tr>
+
+                                            <th>VehicleModel</th>
+                                            <th>Hours</th>
+                                            <th>FromTime</th>
+                                            <th>ToTime</th>
+                                            <th>Price</th>
+                                            <th>Details/Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr ng-repeat="vp in VechPricing" class="gradeA">
+                                            <td>{{vp.VehicleModel}}</td>
+                                            <td>{{vp.Hours}}</td>
+                                            <td>{{vp.FromTime}}</td>
+                                            <td>{{vp.ToTime}}</td>
+                                            <td>{{vp.Price}}</td>
+
+
+                                            <td>
+                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechPricing(vp);">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    Edit
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>-->
+
+
                             </div>
-
-
                         </div>
+
+
                     </div>
                 </div>
-
-                <!--END PAGE WRAPPER-->
-                <!--END CONTENT--><!--BEGIN FOOTER-->
-                <div id="footer">
-                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                </div>
-                <!--END FOOTER-->
             </div>
+
+            <!--END PAGE WRAPPER-->
+            <!--END CONTENT--><!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+            </div>
+            <!--END FOOTER-->
         </div>
+    </div>
     </div>
 
 
