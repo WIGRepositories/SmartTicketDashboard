@@ -134,6 +134,7 @@
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\VechicleBookingDetails.html" />
+    <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
