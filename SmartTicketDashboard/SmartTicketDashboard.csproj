@@ -134,6 +134,7 @@
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\VechicleBookingDetails.html" />
+    <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
     <Content Include="UI\Advertisment.html" />
@@ -2109,6 +2110,7 @@
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\TransHistoryController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />

@@ -2,21 +2,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | AssginDriver</title>
+    <title>Home | Vehicle Hour Pricing </title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
+
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
     <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
 
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <!--------------------Jagan---------------------->
+    <meta charset="utf-8" />
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <!--<script>document.write('<base href="' + document.location + '" />');</script>-->
+    <!--<link rel="stylesheet" href="style.css" />-->
+    <link href="css/VehicleDistBasePricingConfig.css" rel="stylesheet" />
+
+    <!--<link href="css/BookHireVechicle.css" rel="stylesheet" />-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
+    <!--<script data-require="google-maps@1.0.0" data-semver="1.0.0" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+    <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-semver="1.2.17"></script>
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
+    <!--<script src="app.js"></script>-->
+    <!-------------------------Jagan------------------>
+
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="Getallocatedriver();" ng-model="drivers">
+
+<body ng-app="plunker" ng-controller="MainCtrl" ng-init="GetVehicleConfig()">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -32,8 +52,8 @@
                     <ul class="nav navbar navbar-top-links navbar-right mbn">
                         <li class="dropdown">
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
-                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
-                                <li><p>You have 0 new alerts</p></li>
+                            <ul class="dropdown-menu dropdown-alerts" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new notifications</p></li>
                             </ul>
                             <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table2">
                                 <li><p>{{A.Message}}</p></li>
@@ -42,7 +62,7 @@
                         <li class="dropdown">
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table1.length}}</span></a>
                             <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table1.length==0">
-                                <li><p>You have 0 new notifications</p></li>
+                                <li><p>You have 0 new messages</p></li>
                             </ul>
                             <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
                                 <li><p>{{A.Message}}</p></li>
@@ -53,7 +73,7 @@
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
 
-                                <li><a href="emailinbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
                                 <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
                                 <li class="divider"></li>
                                 <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
@@ -74,7 +94,7 @@
                                 <div class="info">
                                     <p>{{uname}}</p>
                                     <ul class="list-inline list-unstyled">
-                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="extra-profile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
                                         <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
                                         <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
                                         <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
@@ -353,12 +373,10 @@
                                 <li>
                                     <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                 </li>
-                                <li>
-                                    <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
-                                </li>
+
                             </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#">
                                 <i class="fa fa-taxi">
                                     <div class="icon-bg bg-dark"></div>
@@ -368,15 +386,14 @@
 
                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                                 <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
-                                <li class="active"><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
-                                <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
+                                <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                                 <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                                
+                                <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">Booking Details</span></a></li>
 
                             </ul>
 
@@ -389,13 +406,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Assgin Driver</div>
+                            <div class="page-title">Vehicle Distance Base Pricing Configuration</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-
-                            <li><a href="AssginDriver.html">Assgin Driver</a></li>
+                            <li><a href="#">Company and Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="VehicleHoursBasePricing.html">Vehicle Hours Base Pricing</a>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -405,323 +421,473 @@
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
-                                <div id="table-action" class="row">
-                                    <div class="col-lg-12">
-
-                                        <div id="tableactionTabContent" class="tab-content">
-                                            <div id="table-table-tab" class="tab-pane fade in active">
-                                                <div class="row">
-                                                    <div class="col-lg-12">
-
-
-                                                        <div class="table-container">
-                                                            <div class="row mbm">
-
-                                                                <div class="actions">
-
-                                                                    <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Driver</button>
-                                                                </div>
-
-                                                                <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                                    <div class=" modal-dialog modal-lg">
-                                                                        <div class="modal-content" ng-model="newVehicle">
-                                                                            <div class="modal-header modal-header-primary">
-                                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                                <h4 id="modal-header-primary-label" class="modal-title">Assign Driver</h4>
-                                                                            </div>
-                                                                            <div class="modal-body">
-
-
-                                                                                <div class="row ">
-
-                                                                                    <div class="col-md-12">
-
-                                                                                        <div class="row mtl">
-                                                                                            <div class="col-md-3">
-                                                                                                <div class="form-group">
-                                                                                                    <div class="text-center mbl"><img src="images/user.jpg" alt="" class="img-responsive" /></div>
-                                                                                                    <div class="text-center mbl">
-                                                                                                        <a href="#" class="btn btn-green">
-                                                                                                            <i class="fa fa-upload"></i>&nbsp;
-                                                                                                            Upload
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                            <div class="col-md-9">
-                                                                                                <ul class="nav nav-tabs"></ul>
-                                                                                                <div id="generalTabContent" class="tab-content">
-                                                                                                    <div id="tab-edit" class="tab-pane fade in active">
-                                                                                                        <form action="#" class="form-horizontal"></form>
-
-                                                                                                        <div class="modal-body" ng-init="GetCompanys();" ng-model="newVehicle">
-                                                                                                            <div class="row mbm">
-                                                                                                                <div style="text-align:right">
-                                                                                                                    <label for="selCompany" class="col-md-4 control-label">Company:<span class='require'></span></label>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-
-                                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
-                                                                                                                        <option value="">Select</option>
-                                                                                                                    </select>
-                                                                                                                </div>
-                                                                                                            </div>
-
-
-                                                                                                            <div class="row mbm">
-                                                                                                                <div style="text-align:right">
-                                                                                                                    <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm" class="form-control">
-                                                                                                                        <option value="">Select</option>
-                                                                                                                    </select>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="row mbm">
-                                                                                                                <div style="text-align:right">
-                                                                                                                    <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <select ng-options="d.NAme for d in listdrivers track by d.DId" class="form-control" ng-model="d.DId">
-                                                                                                                        <option value="">Select</option>
-                                                                                                                    </select>
-                                                                                                                </div>
-                                                                                                            </div>
-
-                                                                                                            <div class="row mbm">
-                                                                                                                <div style="text-align:right">
-                                                                                                                    <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="row mbm">
-                                                                                                                <div style="text-align:right">
-                                                                                                                    <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
-                                                                                                                </div>
-                                                                                                                <div class="col-md-6">
-                                                                                                                    <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                        <div class="form-actions">
-                                                                                                            <div style="text-align:center">
-
-                                                                                                                <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
-
-                                                                                                                <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
-
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
+                                            <div class="col-lg-12">
+                                                <div class="table-container">
+                                                    <div class="row mbm">
 
 
 
-                                                                                            </div>
-
-                                                                                        </div>
-
-
-                                                                                    </div>
-                                                                                </div>
-
-
-                                                                            </div>
-                                                                        </div>
-
+                                                        <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                            <div class=" modal-dialog modal-lg">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Add Vehicle Pricing</h4>
                                                                     </div>
-                                                                    <!--END CONTENT-->
-                                                                </div>
 
-                                                            </div>
-                                                            <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                                <thead>
-                                                                    <tr>
-
-
-                                                                        <th width="15%">Registration No</th>
-                                                                        <th width="10%">Vehicle Type</th>
-                                                                        <th width="15%">Driver Name</th>
-                                                                        <th width="15%">Mobile No</th>
-                                                                        <th width="15%">Status</th>
-                                                                        <th width="15%">Booking Status</th>
-                                                                        <th width="15%">Effective Date</th>
-                                                                        <th width="15%">Effective Till</th>
-                                                                        <th width="10%">Active</th>
-                                                                        <th width="10%">Edit</th>
-
-
-                                                                    </tr>
-                                                                <tbody>
-                                                                    <tr ng-repeat="a in drivers">
-
-                                                                        <td><a href="AssginDriverDetails.html?VID={{a.VechID}}"> <font color="blue"> <u> {{a.RegistrationNo}}</u></font></a></td>
-                                                                        <td>{{a.VehicleType}}</td>
-                                                                        <td>{{a.DriverName}}</td>
-                                                                        <td>{{a.PhoneNo}}</td>
-                                                                        <td>{{a.Status}}</td>
-                                                                        <td>{{a.BookingStatus}}</td>
-                                                                        <td>{{a.EffectiveDate}}</td>
-                                                                        <td>{{a.EffectiveTill}}</td>
-
-                                                                        <td><input type="checkbox" checked /></td>
-                                                                        <td>
-                                                                            
-                                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setdrivers(a);">
-                                                                                    <i class="fa fa-edit"></i>&nbsp;
-
-                                                                                </button>
-                                                                            
-                                                                        </td>
-                                                                    </tr>
-
-
-                                                                </tbody>
-
-                                                            </table>
-                                                            <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header modal-header-primary">
-                                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                            <h4 id="modal-header-primary-label" class="modal-title">Edit Vehicle</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" ng-model="AssginDriver">
-
-                                                                            <div class="row" style="margin-bottom:7px">
-                                                                                <div class="col-md-6">
-                                                                                    <label for="selCompany" class="col-md-4 control-label">Company:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select ng-options="cc.Name for cc in Companies track by cc.Id" ng-model="cc" class="form-control" ng-change="GetMaster()">
-                                                                                            <option value="">Select</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
+                                                                    <div class="modal-body" ng-model="Vprice">
+                                                                        <div style="margin-left:250px">
                                                                             <div class="row">
+
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
+
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Vehicle Model:</label>
                                                                                     <div class="col-md-8">
-                                                                                        <select ng-options="v.Type for v in Vehicles track by v.Id" class="form-control" ng-model="v">
+                                                                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
                                                                                             <option value="">Select</option>
                                                                                         </select>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="row">
+
+                                                                            <div class="row" style="margin-top:7px">
+
 
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Phone No:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="AssginDriver.PhoneNo" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input id="Hours" type="text" ng-model="Vprice.Hours" class="form-control" /><span class="help-block"></span></div>
                                                                                 </div>
+
+
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm1" class="form-control">
-                                                                                            <option value="">Select</option>
-                                                                                        </select>
-                                                                                    </div>
+                                                                                    <label for="Fax" class="col-md-4 control-label">FromTime:<span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input id="FromTime" type="time" ng-model="Vprice.FromTime" class="form-control" /><span class="help-block"></span></div>
+
                                                                                 </div>
 
-                                                                            </div>
 
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
-                                                                                    <div class="col-md-8">
-                                                                                        <select ng-options="dd.NAme for dd in listdrivers track by dd.DId" class="form-control" ng-model="dd">
-                                                                                            <option value="">Select</option>
-                                                                                        </select>
-                                                                                    </div>
-                                                                                </div>
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveDate" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <label for="Fax" class="col-md-4 control-label">ToTime:<span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input id="ToTime" type="time" ng-model="Vprice.ToTime" class="form-control" /><span class="help-block"></span></div>
+
                                                                                 </div>
 
-                                                                            </div>
 
+                                                                            </div>
                                                                             <div class="row">
+
+
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input id="inputFirstName" type="date" ng-model="AssginDriver.EffectiveTill" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Price: <span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="Vprice.Price" class="form-control" /><span class="help-block"></span></div>
                                                                                 </div>
-                                                                            </div>
-                                                                            <div class="row">
-                                                                                <div style="text-align:right">
-                                                                                    <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
-                                                                                </div>
-                                                                                <div class="col-md-4">
-                                                                                    <input type="checkbox" checked ng-model="AssginDriver.Active" />
 
-                                                                                </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="form-actions">
-                                                                            <div class="col-md-offset-3 col-md-9">
-                                                                                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(AssginDriver,'U');">Save</button>
-                                                                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                            <div class="col-md-offset-5 col-md-8">
+                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Vprice, 'I');">Save</button>
+
+                                                                                <a href="VehicleHoursBasePricing.html" class="btn btn-primary" ng-click="clearVprice()">Cancel</a>
                                                                             </div>
                                                                         </div>
+
+
+
+
+
                                                                     </div>
+                                                                </div>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                <div class="modal-dialog modal-lg">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header modal-header-primary">
+                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                            <h4 id="modal-header-primary-label" class="modal-title">Edit Company Details</h4>
+                                                        </div>
+                                                        <div class="modal-body" ng-model="DistPricing">
+
+                                                            <div class="row">
+
+                                                                <div class="col-md-6">
+
+                                                                    <label for="selCountry" class="col-md-5 control-label">Vehicle Model</label>
+                                                                    <div class="col-md-7">
+                                                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                                                            <option value="">Select</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <br />
+                                                            <div class="row">
+
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Hours" type="text" ng-model="DistPricing.Hours" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
 
 
                                                             </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">FromTime:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="FromTime" type="text" ng-model="DistPricing.FromTime" class="form-control" /><span class="help-block"></span></div>
 
-                                                            <!--END PAGE WRAPPER-->
+                                                                </div>
+
+
+
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">ToTime:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="ToTime" type="text" ng-model="DistPricing.ToTime" class="form-control" /><span class="help-block"></span></div>
+
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div class="row">
+
+
+                                                                <div class="col-md-6">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Price:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="DistPricing.Price" class="form-control" /><span class="help-block"></span></div>
+                                                                </div>
+
+
+
+                                                            </div>
+
+
+
+
+                                                            <div class="form-actions">
+                                                                <div style="text-align:center">
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="SavePricingChanges(DistPricing, 'U');">Save</button>
+                                                                    <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
 
-                                                    <!--BEGIN FOOTER-->
-                                                    <div id="footer">
-                                                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+
+
+                                                </div>
+
+
+
+                                            </div>
+                                        </div>
+                                        <!------------Jagan-------------------------->
+                                        <div class="container" style="padding-top:10px">
+                                            <div class="col-md-12 ">
+                                                <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
+
+                                                    <form>
+                                                        <div class="form-group row">
+                                                            <div class="col-xs-12">
+                                                                <label for="ex1">Source</label>
+                                                                <input class="form-control" id="origin" type="text" placeholder="Current location" ng-model="directions.origin">
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="ex2">Destination</label>
+                                                                <input class="form-control" id="destination" type="text" placeholder="Enter drop point" ng-model="directions.destination">
+                                                                <br />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                    <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
+                                                                </div>
+                                                            </div>
+                                                            <!--<div class="col-md-12">
+                                                                <select ng-options="x.Name for x in CardTypes track by x.id" ng-model="currCard.Name" ng-change="GetCardUsers(cu);" style="width:100%">
+                                                                    <option value="">Select VehicleModel</option>
+                                                                </select>
+                                                            </div>-->
+                                                            <!------------------------------------->
+                                                            <div class="col-md-12">
+                                                                <label>Vehicle Model</label>
+                                                                <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
+                                                                    <option value="">Select</option>
+                                                                </select>
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label>Vehicle Type</label>
+                                                                <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="v" class="form-control" style="width:100%">
+                                                                    <option value="">Select Type</option>
+                                                                </select>
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <label>Pricing Type</label>
+                                                                <select ng-options="prc" value={{prc}} ng-change="SetPrice();" class="form-control" style="width:100%">
+                                                                    <option value="">Select Price</option>
+                                                                    <option value="20">Per unit pricing</option>
+                                                                    <option value="21">Stage to Stage</option>
+                                                                </select>
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="ex2">Distance</label>
+                                                                <input class="form-control" id="distance" type="text">
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="ex2">Amount</label>
+                                                                <input class="form-control" id="Amount" type="text">
+                                                                <br />
+                                                            </div>
+                                                            <div class="col-xs-12">
+                                                                <label for="ex2">Total</label>
+                                                                <input class="form-control" id="Total" type="text">
+                                                                <br />
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                    <button class="btn-medium green">Save</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-------jagan--------------------->
+
+                                                <div id="full-width-content" class="col-md-6">
+
+                                                    <div class="main">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-body">
+                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
+                                                                    <marker coords="marker.center"></marker>
+                                                                </google-map>
+                                                                <form class="form-horizontal" role="form">
+                                                                    <!--<div class="form-group">
+                                                                        <label for="origin" class="col-sm-2 control-label">Origin</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="destination" class="col-sm-2 control-label">Destination</label>
+                                                                        <div class="col-sm-8">
+                                                                            <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+                                                                        </div>
+                                                                    </div>-->
+                                                                    <div class="form-group">
+                                                                        <!--<div class="col-sm-offset-2 col-sm-8">
+                                                                            <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+                                                                        </div>-->
+                                                                    </div>
+                                                                </form>
+                                                                <div id="directionsList" ng-show="directions"></div>
+
+                                                            </div>
+                                                        </div>
+
                                                     </div>
-                                                    <!--END FOOTER-->
+                                                </div>
+
+                                                <!--<div class="col-md-6">
+
+                                                </div>-->
+                                                <!--<div class="col-md-6">
+                                                    <div>
+
+
+
+
+                                                    </div>
+
+                                                    <div class="small-medium" data-set="content"> </div>
+                                                </div>-->
+                                                <!--</div>-->
+                                                <!---------jagan-------------------->
+                                                <!--<button type="submit" class="btn-medium green" style="margin-top:15px;margin-left:130px" ng-click="getDirections()">Submit</button>-->
+                                            </div>
+
+                                            <hr>
+                                            <div class="main-and-aside r">
+                                                <div class="main">
+                                                    <div class="small-medium" data-set="widget"></div>
+
+                                                    <div class="clearfix"></div>
+                                                    <div class="module-grid clearfix">
+                                                        <!--<div>
+                                                            <h2 class="active">Ammount</h2>
+
+                                                            <div class="panel col-md-10">
+                                                                <h4 class="panel-title">
+                                                                    <a href="#" class="collapsed">Fares <p style="text-align:right;margin-top:-25px;">Rs:150</p></a>
+
+                                                                </h4>
+
+                                                            </div>
+
+
+
+                                                        </div>-->
+
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="aside">
+                                                <div class="large" data-set="widget">
+                                                    <div class="moving-source-order">
+                                                        <div class="widget-wrapper">
+                                                            <div class="expandable-box">
+                                                                <div class="content">
+                                                                    <!--<div class="always-visible widget-heading">
+                                                                        <div class="controls"> </div>
+                                                                        <h2 class="active">Confirm Booking</h2>
+                                                                    </div>-->
+                                                                    <!--<div class="toggle-container">
+                                                                        <form>
+                                                                            <div class="form-group row">
+                                                                                <div class="col-xs-6">
+                                                                                    <label for="ex1">Enter Mobile Number</label>
+                                                                                    <input class="form-control input-medium bfh-phone" id="ex1" type="text" data-format="+1 (ddd) ddd-dddd" placeholder="Enter Mobile Number">
+                                                                                </div>
+
+                                                                                <button type="submit" class="btn-medium green" style="margin-top:30px">Submit</button>
+                                                                            </div>
+                                                                        </form>
+
+
+
+
+
+                                                                        <div class="panel">
+                                                                            <form>
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-xs-6">
+                                                                                        <label for="ex1">Enter OTP</label>
+                                                                                        <input class="form-control" id="ex1" type="text" placeholder="OTP">
+                                                                                    </div>
+
+                                                                                    <button type="submit" class="btn-medium green" style="margin-top:23px">Submit</button>
+                                                                                </div>
+                                                                            </form>
+
+                                                                        </div>
+                                                                        <div class="panel">
+
+
+                                                                            <button type="submit" class="btn-medium green" style="margin:5px 0px 10px 60px">Go TO Payment</button>
+                                                                        </div>
+
+
+                                                                    </div>-->
+
+
+
+
+
+
+
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-                                            <div class="modal-header">
-                                                <h3 class="modal-title">Save confirmation!</h3>
-                                            </div>
-                                            <div class="modal-body">
-                                                <!--<ul>
-                                                    <li ng-repeat="item in items">
-                                                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                                    </li>
-                                                </ul>
-                                                Selected: <b>{{ selected.item }}</b>-->
-                                                {{mssg}}
-                                            </div>
-                                            <div class="modal-footer">
-                                                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                                                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                                            </div>
-
-                                        </script>
                                     </div>
-
-
                                 </div>
+                                <!--------------------Jagan-------------------------->
+                                <!--<table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                    <thead>
+                                        <tr>
+
+                                            <th>VehicleModel</th>
+                                            <th>Hours</th>
+                                            <th>FromTime</th>
+                                            <th>ToTime</th>
+                                            <th>Price</th>
+                                            <th>Details/Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr ng-repeat="vp in VechPricing" class="gradeA">
+                                            <td>{{vp.VehicleModel}}</td>
+                                            <td>{{vp.Hours}}</td>
+                                            <td>{{vp.FromTime}}</td>
+                                            <td>{{vp.ToTime}}</td>
+                                            <td>{{vp.Price}}</td>
+
+
+                                            <td>
+                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setVechPricing(vp);">
+                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                    Edit
+                                                </button>
+
+                                            </td>
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>-->
+
+
                             </div>
                         </div>
+
+
                     </div>
                 </div>
             </div>
+
+            <!--END PAGE WRAPPER-->
+            <!--END CONTENT--><!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+            </div>
+            <!--END FOOTER-->
         </div>
+    </div>
+    </div>
+
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
     </div>
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -729,8 +895,6 @@
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-
-
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
@@ -741,15 +905,14 @@
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-    <!--LOADING SCRIPTS FOR PAGE-->
-    <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
-    <script src="js/angular.js"></script>
+    <!--<script src="js/angular.js"></script>-->
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/AssginDriver.js"></script>
 
+    <!--<script src="js/VehicleHoursBasePricing.js"></script>-->
+    <script src="js/VehicleDistBasePricingConfig.js"></script>
 
 </body>
 </html>
