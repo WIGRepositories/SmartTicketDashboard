@@ -734,6 +734,7 @@
 
                             <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
                             <div class="row mb" ng-init="GetCompanies()">
+                               
                                     <div class="col-lg-12">
                                     <!--Jagan Updated on 08-08-2017-->
                                     <!--<div class="col-md-3" ng-controller="mapCtrl" ng-init="GetCompanies();">
@@ -741,33 +742,35 @@
                                             <option value="">Select</option>
                                         </select>
                                     </div>-->
-                                        <div class="row mbm">
-                                            <div class="col-md-2">
-                                                Country:<select ng-options="n.Name for n in Countries track by n.Id" ng-model="ctry"  ng-change="GetCountry()" style="width:50%">
-    <option value="">Select</option>
-</select>
+                                        <div class="row">
+                                            <div class="col-md-3">
+                                                Country:<select ng-options="n.Name for n in Countries track by n.Id" ng-model="ctry" ng-change="GetCountry()" style="width:50%">
+                                                    <option value="">Select</option>
+                                                </select>
                                             </div>
 
 
-                                            <div class="col-md-4" ng-init="GetCompanies();">
+                                            <div class="col-md-3" ng-init="GetCompanies();">
                                                 Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
                                                     <option value="">Select</option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-4">
+
+                                            <div class="col-md-3">
                                                 Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFleetStaff(s)" id="test1">
 
                                                     <option value="">Select</option>
                                                 </select>
                                             </div>
 
-                                            <div class="col-md-4" ng-init="init">
+                                            <div class="col-md-3" ng-init="init">
                                                 Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-init="GetVehicleConfig()" ng-change="GetVehicleLocation()">
 
                                                     <option value="">Select</option>
                                                 </select>
 
                                             </div>
+                                        </div>
                                         </div>
 
                                 </div>
