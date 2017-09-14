@@ -2109,6 +2109,7 @@
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
+    <Compile Include="Controllers\TransHistoryController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
     <Compile Include="Controllers\UserAccountController.cs" />
     <Compile Include="Controllers\userdetailsController.cs" />

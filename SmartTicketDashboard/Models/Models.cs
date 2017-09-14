@@ -2649,6 +2649,29 @@ namespace SmartTicketDashboard.Models
         public DateTime? dueDate { get; set; }
         public string insupddelflag { get; set; }
     }
+    public class ewallet
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int transhistoryid { get; set; }
+        public decimal Amount { get; set; }
+        public string TransactionType { get; set; }
 
+        public string Status { get; set; }
+        public string Comment { get; set; }
+        public DateTime? Date { get; set; }
+        public DateTime? Time { get; set; }
+        public int TransrefId { get; set; }
+        public string MobileNo { get; set; }
+        public string AccountNo { get; set; }
+        public DateTime UpdatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
+
+        public object Details { get; set; }
+
+        public string TransactionId { get; set; }
+
+        public string TransactionMode { get; set; }
+    }
 }
 
