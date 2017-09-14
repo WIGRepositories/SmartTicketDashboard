@@ -353,7 +353,9 @@
                                 <li>
                                     <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                 </li>
-
+                                <li>
+                                    <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
+                                </li>
                             </ul>
                         </li>
                         <li class="active">
@@ -478,7 +480,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist" ng-init="GetCompanys();" class="form-control">
+                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist.CompanyId" ng-init="GetCompanys();" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -938,7 +940,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Driverlist" ng-init="GetCompanys();" class="form-control">
+                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Dl.CompanyId" ng-init="GetCompanys();" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
