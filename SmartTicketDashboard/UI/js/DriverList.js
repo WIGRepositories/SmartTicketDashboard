@@ -159,7 +159,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
             $scope.Dl = res.data[0];
-
+            
             //if ($scope.listdrivers.length > 0) {
             //    if ($scope.selectedlistdrivers != null) {
             //        for (i = 0; i < $scope.listdrivers.length; i++) {
@@ -193,7 +193,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+            $scope.Dl.CompanyId = $scope.Companies[0];
         });
     }
 
