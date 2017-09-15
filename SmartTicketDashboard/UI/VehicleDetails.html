@@ -436,7 +436,7 @@
                                                                 </a>
 
                                                             </div>
-                                                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+                                                            <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
 
                                                         </div>
                                                         <table class="table table-striped table-hover" style="margin-top:10px;">
@@ -582,7 +582,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="initdata.newfleet.vt" class="form-control">
+                                                                                                    <select ng-options="vt.Name for vt in initdata.Table track by vt.Id" ng-model="v.vt" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>

@@ -125,7 +125,7 @@
                             </li>
                         </ul>
                         </li>
-                        <li class="active">
+                        <li>
                             <a href="#">
                                 <i class="fa fa-truck">
                                     <div class="icon-bg bg-green"></div>
@@ -139,7 +139,7 @@
                                 <li><a href="FleetStaff.html" data-toggle="tooltip" data-placement="right" title="Details of FleetStaff"><i class="fa fa-briefcase"></i><span class="submenu-title">Fleet Staff</span></a></li>
                                 <li><a href="FleetBtpos.html" data-toggle="tooltip" data-placement="right" title="Details of FleetBTPOS"><i class="fa fa-briefcase"></i><span class="submenu-title">Fleet BTPOS</span></a></li>
                                 <li><a href="FleetAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of FleetAvailability"><i class="fa fa-briefcase"></i><span class="submenu-title">Fleet Availability</span></a></li>
-                                <li class="active"><a href="VehicleLayout.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layout"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Layout</span></a></li>
+                                <li><a href="VehicleLayout.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicle Layout"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Layout</span></a></li>
                                 <li><a href="FleetOwnerVehicleLayOut.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwner Vehicle Layout"><i class="fa fa-briefcase"></i><span class="submenu-title">Fleet Owner Vehicle Layout</span></a></li>
 
                             </ul>
@@ -425,6 +425,11 @@
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
+                                                        <div class="col-md-2">
+                                                            Vehicle Group:<select ng-options="vg.Name for vg in initdata.Table3 track by vg.Id" ng-model="v.vg1">
+                                                           <option value="">Select</option>
+                                                                 </select>
+                                                        </div>
                                                         <div class="actions">
                                                             <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
                                                             <a href="VehicleDetails.html?VID=-1"><button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Vehicle</button></a>
@@ -448,8 +453,8 @@
                                                                 <!--<th width="10%">CompanyVechile</th>-->
                                                                 <th width="10%">Owner Phone No</th>
                                                                 <th width="10%">Entry Date</th>
-                                                                <th width="15%">Amount</th>
-                                                                <th width="15%">Booking Status</th>
+                                                                <th width="15%">Vehicle Group</th>
+                                                                <th width="15%">Status</th>
                                                                 <th width="15%">Active</th>
                                                                 <th width="15%">Edit</th>
 
@@ -466,8 +471,8 @@
                                                                 <!--<td>{{v.CompanyVechile}}</td>-->
                                                                 <td>{{v.OwnerPhoneNo}}</td>
                                                                 <td>{{v.EntryDate}}</td>
-                                                                <td>{{v.Amount}}</td>
-                                                                <td>{{v.BookingStatus}}</td>
+                                                                <td>{{v.VehicleGroupId}}</td>
+                                                                <td>{{v.Status}}</td>
                                                                 <td><input type="checkbox" checked /></td>
                                                                 <td>
                                                                     <a href="VehicleDetails.html?VID={{v.VID}}">

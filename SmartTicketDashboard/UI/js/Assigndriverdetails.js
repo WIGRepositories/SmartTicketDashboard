@@ -14,7 +14,7 @@ var ctrl = app.controller('myCtrl1', function ($scope, $http, $localStorage, $ui
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+            $scope.cc.Id = $scope.Companies[0];
         });
     }
 

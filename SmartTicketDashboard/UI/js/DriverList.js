@@ -194,6 +194,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
             $scope.Dl.CompanyId = $scope.Companies[0];
+           
         });
     }
 
@@ -312,7 +313,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.save = function (Dl,flag) {
 
         
-        if (Dl.CompanyId == null) {
+        if (Dl.CompanyId.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -345,7 +346,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         if (Dl.PMobNo == null) {
-            alert('Please Enter PMobNo');
+            alert('Please Enter MobileNo');
             return;
         }
         if (Dl.DOB == null) {
@@ -360,19 +361,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter BloodGroup');
             return;
         }
-
-        if (Dl.LiCExpDate == null) {
-            alert('Please Enter LiCExpDate');
-            return;
-        }
-        if (Dl.BadgeNo == null) {
-            alert('Please Enter BadgeNo');
-            return;
-        }
-        if (Dl.BadgeExpDate == null) {
-            alert('Please Enter BadgeExpDate');
-            return;
-        }
+       
         if (Dl.Remarks == null) {
             alert('Please Enter Remarks');
             return;
@@ -382,9 +371,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var driver = {          
 
-            flag: 'U',
+            flag: ($scope.selectedlistdrivers == -1)?'I':'U',
             DId: Dl.DId,
-            CompanyId: Dl.companyid,
+            CompanyId: Dl.CompanyId.Id,
             NAme: Dl.NAme,
             Address: Dl.Address1,
             City: Dl.City,
@@ -396,11 +385,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             PMobNo: Dl.PMobNo,
             DOB: Dl.DOB,
             DOJ: Dl.DOJ,
-            BloodGroup: Dl.BloodGroup,
-            LicenceNo: Dl.LicenceNo,
-            LiCExpDate: Dl.LiCExpDate,
-            BadgeNo: Dl.BadgeNo,
-            BadgeExpDate: Dl.BadgeExpDate,
+            BloodGroup: Dl.BloodGroup,           
             Remarks: Dl.Remarks,
             Photo: $scope.imageSrc,
             //licenseimage: $scope.imageSrc,
@@ -415,7 +400,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            alert("Updated successfully!");            
+            alert("Saved successfully!");            
 
         }, function (errres) {
             var errdata = errres.data;
@@ -450,7 +435,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
         //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     };   
-    $scope.onFileSelect = function () {
+    $scope.onFileSelect1 = function () {
         fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     }
 

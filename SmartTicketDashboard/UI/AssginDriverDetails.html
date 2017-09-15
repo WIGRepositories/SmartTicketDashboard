@@ -428,135 +428,10 @@
                                                 <div id="tableactionTabContent" class="tab-content">
 
 
-                                                    <div class="row" ng-show="VID==0">
-                                                        <div class="col-md-12">
-
-                                                            <div class="row mtl">
-
-
-
-                                                                <div id="generalTabContent" class="tab-content">
-                                                                    <div id="tab-edit" class="tab-pane fade in active">
-                                                                        <form action="#" class="form-horizontal">
-
-
-                                                                            <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
-
-                                                                                <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                                    <div class="caption"><a href="">Vehicle Assigning</a></div>
-                                                                                    <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
-                                                                                </div>
-
-
-                                                                                <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
-                                                                                    <div class="panel-body">
-
-
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Company</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="cc.Name for cc in Companies track by cc.Id" ng-model="cc" ng-init="GetCompanys()" class="form-control" ng-change="GetMaster()">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Registration No</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm1" class="form-control">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">VehicleType</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="v.Type for v in Vehicles track by v.Id" class="form-control" ng-model="v">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Driver Name</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="dd.NAme for dd in listdrivers track by dd.DId" class="form-control" ng-model="dd">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-
-                                                                                        </div>
-                                                                                        <div class="col-md-12">
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Effective Date</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveDate" class="form-control" /></div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                            <div class="col-md-4">
-                                                                                                <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Effective Till</label>
-                                                                                                    <div class="col-sm-9 controls">
-                                                                                                        <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveTill" class="form-control" /></div>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <hr />
-                                                                            <div style="margin-left:350px">
-                                                                                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(newVehicle,'I');">Save</button>
-                                                                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
-                                                                            </div>
-                                                                        </form>
-                                                                    </div>
-
-                                                                </div>
-
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
                                                     <!---------------------User Profile Style--------------------------->
 
-                                                    <div class="row" ng-show="{{VID==a.VechID}}">
+                                                    <div class="row">
                                                         <div class="col-md-12">
 
                                                             <div class="row mtl">
@@ -593,7 +468,7 @@
                                                                                                     <label class="col-sm-3 control-label">Call Time</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.CallTime" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.CallTime" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -603,7 +478,7 @@
                                                                                                     <label class="col-sm-3 control-label">Request Date</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ReqDate" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ReqDate" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -615,7 +490,7 @@
                                                                                                     <label class="col-sm-3 control-label">Request Time</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ReqTime" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ReqTime" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -626,7 +501,7 @@
                                                                                                     <label class="col-sm-3 control-label">Effective Date</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveDate" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveDate" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -637,7 +512,7 @@
                                                                                                     <label class="col-sm-3 control-label">Effective Till</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveTill" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EffectiveTill" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -669,11 +544,7 @@
                                                                                                     <label class="col-sm-3 control-label">Company</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="cc.Name for cc in Companies track by cc.Id" ng-model="cc" ng-init="GetCompanys()" class="form-control" ng-change="GetMaster()">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.CompanyId" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -683,21 +554,17 @@
                                                                                                     <label class="col-sm-3 control-label">Entry Date</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EntryDate" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EntryDate" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-4">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">VehicleType</label>
+                                                                                                    <label class="col-sm-3 control-label">Vehicle Type</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="v.Type for v in Vehicles track by v.Id" class="form-control" ng-model="v">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.VehicleType" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -709,7 +576,7 @@
                                                                                                     <label class="col-sm-3 control-label">Vech ID</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.VechID" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.VechID" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -719,11 +586,7 @@
                                                                                                     <label class="col-sm-3 control-label">Registration No</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="vm.RegistrationNo for vm in Vehicles track by vm.VID" ng-model="vm1" class="form-control">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.RegistrationNo" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -733,11 +596,7 @@
                                                                                                     <label class="col-sm-3 control-label">Vehicle Model</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" ng-init="GetVehicleConfig()" class="form-control">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.VehicleModelId" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -749,11 +608,7 @@
                                                                                                     <label class="col-sm-3 control-label">Service Type</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="vr.Name for vr in initdata.Table1 track by vr.Id" ng-model="vr" class="form-control">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EntryDate" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -763,11 +618,7 @@
                                                                                                     <label class="col-sm-3 control-label">Vehicle Group</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="vg.Name for vg in initdata.Table2 track by vg.Id" ng-model="vg" class="form-control">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.VehicleGroupId" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -777,7 +628,7 @@
                                                                                                     <label class="col-sm-3 control-label">No of Vehicles</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.NoofVehicle" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.NoofVehicle" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -807,11 +658,7 @@
                                                                                                     <label class="col-sm-3 control-label">Driver Name</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9">
-                                                                                                                <select ng-options="dd.NAme for dd in listdrivers track by dd.DId" class="form-control" ng-model="dd">
-                                                                                                                    <option value="">Select</option>
-                                                                                                                </select>
-                                                                                                            </div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.EntryDate" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -821,7 +668,7 @@
                                                                                                     <label class="col-sm-3 control-label">ExecutiveName</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ExecutiveName" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.ExecutiveName" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -845,7 +692,7 @@
                                                                                                     <label class="col-sm-3 control-label">PhoneNo</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.PhoneNo" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.PhoneNo" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
@@ -855,17 +702,17 @@
                                                                                                     <label class="col-sm-3 control-label">AltPhoneNo</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.AltPhoneNo" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.AltPhoneNo" class="form-control" readonly /></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-4">
                                                                                                 <div class="form-group">
-                                                                                                    <label class="col-sm-3 control-label">Address</label>
+                                                                                                    <label class="col-sm-3 control-label">Status</label>
                                                                                                     <div class="col-sm-9 controls">
                                                                                                         <div class="row">
-                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.Address" class="form-control" /></div>
+                                                                                                            <div class="col-xs-9"><input type="text" ng-model="a.Status" class="form-control" readonly/></div>
                                                                                                         </div>
                                                                                                     </div>
                                                                                                 </div>

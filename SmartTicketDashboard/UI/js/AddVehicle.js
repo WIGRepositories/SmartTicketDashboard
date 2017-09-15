@@ -157,7 +157,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
-            $scope.v = res.data[0];
+            $scope.v = res.data[0];            
 
             //if ($scope.VehiclesList.length > 0) {
             //    if ($scope.selectedVehicleList != null) {
@@ -176,6 +176,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //    $scope.getselectval($scope.selectedVehicleList);
             //}
             $scope.imageSrc = $scope.v.Photo;
+            $scope.v.vt = $scope.v.Type[0];
+            $scope.v.vg1 = $scope.v.VehicleGroupId[0];
+            $scope.v.vm = $scope.v.VehicleModelId[0];
+            
         });
     }
     $scope.getselectval = function (v) {
@@ -189,7 +193,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+            $scope.v.c = $scope.Companies[0];
         });
     }
       
@@ -198,6 +202,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.VehiclesList = res.data;
         });
         $scope.imageSrc = $scope.VehiclesList.Photo;
+        
     }
 
 
@@ -395,7 +400,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         //var newVD = initdata.newfleet;
-        if ($scope.initdata.newfleet.vt.Id == null || $scope.initdata.newfleet.vt.Id == null) {
+        if ($scope.v.vt.Id == null || $scope.v.vt.Id == null) {
             alert('Please Enter Type');
             return;
         }
@@ -438,7 +443,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VID: v.VID,
             CompanyId: v.c.Id,
             RegistrationNo: v.RegistrationNo,
-            Type: $scope.initdata.newfleet.vt.Id,
+            Type: $scope.v.vt.Id,
             VehicleModelId: $scope.vm.Id,
             OwnerName: v.OwnerName,           
             CompanyVechile: v.CompanyVechile,
@@ -452,7 +457,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EntryDate: v.EntryDate,
             NewEntry: v.NewEntry,
             photo: $scope.imageSrc,
-
+            Status: v.Status,
+            Fleetcode:v.FleetOwnerCode,
 
             Active: (v.Active == true) ? 1 : 0,
 
@@ -466,7 +472,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            alert("Updated successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -485,6 +491,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.setVehiclesList = function (v) {
         $scope.vech = v;
         $scope.imageSrc = v.Photo;
+        
     };
 
     $scope.clearnewVehicle = function () {
@@ -530,6 +537,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            
         });
 
     }
