@@ -424,6 +424,17 @@
 
                                             <div class="row mbm">
                                                 <div class="col-md-3">
+                                                    vehicle type:<select  class="form-control" style="width:80%">
+                                                        <option value="">Select</option>
+                                                                     <option value=""> metered taxi</option>
+                                                                     <option value="">car</option>
+                                                                     <option value="">ambulance</option>
+                                                                     <option value="">towing vehicle</option>
+                                                                     <option value="">parcel vehicle</option>
+                                                                     <option value="">bus</option>
+</select>
+                                                </div>
+                                                <div class="col-md-3">
                                                     Vehicles:<select ng-options="v1.RegistrationNo for v1 in Vehicles track by v1.Id" ng-model="v" ng-change="GetBookingHistory()" class="form-control" style="width:80%">
                                                         <option value="">Select</option>
                                                     </select>
@@ -582,8 +593,7 @@
                                                         <th width="15%">DriverNo</th>
                                                         <th width="15%">BookedDate</th>
                                                         <th width="15%">BookedTime</th>
-                                                        <th width="15%">DepartueDate</th>
-                                                        <th width="15%">DepartureTime</th>
+                                                        <th width="15%">Amount</th>
                                                         <th width="9%">BookingStatus</th>
                                                         <!--<th width="9%">Edit</th>-->
 
@@ -599,8 +609,7 @@
                                                         <td>{{b.DriverPhoneNo}}</td>
                                                         <td>{{b.BookedDate}}</td>
                                                         <td>{{b.BookedTime}}</td>
-                                                        <td>{{b.DepartueDate}}</td>
-                                                        <td>{{b.DepartureTime}}</td>
+                                                        <td>{{b.amount}}</td>
                                                         <td>{{b.BookingStatus}}</td>
                                                         <!--<td>
                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbookings(b);">
