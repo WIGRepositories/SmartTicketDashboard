@@ -386,7 +386,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
    
 
     $scope.save = function (v, flag) {
-        if (v.c.Id == null) {
+        if (v.c == null || v.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -434,7 +434,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var vech = {
 
-            flag: 'U',
+            flag: ($scope.selectedVehicleList == -1) ? 'I' : 'U',
             VID: v.VID,
             CompanyId: v.c.Id,
             RegistrationNo: v.RegistrationNo,
