@@ -846,9 +846,9 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         url: '/api/DataLoad/SaveDriverVehicleAssignGroup',
                         data: lines
                     }
-                    $http(req).then(function (res) {
-                        $scope.initdata = res.data;
-                        alert("Saved successfully");
+                    $http(req).then(function (res) {                        
+                        
+                       
                     });
 
                     //$scope.logdata = list;
@@ -927,6 +927,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         inspudflag: 'I'
                     }
                     return list;
+                    
                 }
 
                 $scope.save = function () {
@@ -939,7 +940,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     //if (Code == null) {
                     //    return;
                     //}
-                    if (CustomerName == null) {
+                    if (Name == null) {
                         return;
                     }
                     //if (EmailId == null) {
