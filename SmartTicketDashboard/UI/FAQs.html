@@ -24,12 +24,12 @@
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
     <link type="text/css" rel="stylesheet" href="vendors/jquery-news-ticker/jquery.news-ticker.css">
     <!--Loading style-->
-    <link type="text/css" rel="stylesheet" href="css/themes/style3/pink-blue.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="faqs" ng-controller="myCtrl" ng-init="GetDashboardDS();" ng-model="dashboardDS">
-     
+<body ng-app="faqs" ng-controller="myCtrl" ng-init="Getlist();" ng-model="FAQlist">
+
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
     <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -86,7 +86,7 @@
                         <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" height="20" width="20" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-user pull-right">
                             <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
-                          
+
                             <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
                             <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
                             <li class="divider"></li>
@@ -116,7 +116,7 @@
                             </div>
                             <div class="clearfix"></div>
                         </li>
-                        <li>
+                        <li class="active">
                             <a href="index.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
                                 <i class="fa fa-tachometer fa-fw">
                                     <div class="icon-bg bg-orange"></div>
@@ -289,7 +289,7 @@
                                     <li><a href="LicensePricing.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePricing"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Pricing</span></a></li>
                                     <li><a href="LicensePayments.html" data-toggle="tooltip" data-placement="right" title="Details of LicensePayments"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Payments </span></a></li>
                                     <li><a href="LicenseDetails.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Details </span></a></li>
-                                    <li><a href="LicenseConfguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
+                                    <li><a href="LicenseConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of LicenseConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">License Configuration</span></a></li>
 
                                 </ul>
                             </li>
@@ -300,9 +300,9 @@
                     </li>
 
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#">
-                            <i class="fa fa-ticket">
+                            <i class="fa fa-gavel">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                         </a>
@@ -310,15 +310,14 @@
                             <li><a href="DataLoad.html" data-toggle="tooltip" data-placement="right" title="Details of DataLoad"><i class="fa fa-briefcase"></i><span class="submenu-title">Data Load</span></a></li>
                             <li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Edit History</span></a></li>
                             <li><a href="paymentHistory.html" data-toggle="tooltip" data-placement="right" title="Details of paymentHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Payment History</span></a></li>
-                            <li class="active"><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
-
+                            <li><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
 
                         </ul>
 
                     </li>
                     <li>
                         <a href="#">
-                           <i class="fa fa-ticket">
+                            <i class="fa fa-gavel">
                                 <div class="icon-bg bg-green"></div>
                             </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                         </a>
@@ -348,7 +347,7 @@
 
                     <li>
                         <a href="#">
-                            <i class="fa fa-taxi">
+                            <i class="fa fa-send-o fa-fw">
                                 <div class="icon-bg bg-dark"></div>
                             </i><span class="menu-title">Alerts & Notifications</span><span class="fa arrow"></span>
                         </a>
@@ -379,52 +378,36 @@
 
                     <li>
                         <a href="#">
-                            <i class="fa fa-taxi">
+                            <i class="fa fa-send-o fa-fw">
                                 <div class="icon-bg bg-dark"></div>
-                            </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
+                            </i><span class="menu-title">Web site configuration</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
                             <li>
                                 <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                             </li>
-                            <li>
-                                <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
-                            </li>
+
                         </ul>
                     </li>
                     <li>
                         <a href="#">
-                            <i class="fa fa-taxi">
-                                <div class="icon-bg bg-dark"></div>
-                            </i><span class="menu-title">Cards</span><span class="fa arrow"></span>
-                        </a>
-                        <ul class="nav nav-second-level">
-                            <li><a href="CardList.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">CardList</span></a></li>
-                            <li><a href="CardDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">CardDetails</span></a></li>
-                            <li><a href="CardUser.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">CardUser</span></a></li>
-                            <li><a href="CardTransaction.html" data-toggle="tooltip" data-placement="right" title="Details of Trouble ticket reports"><i class="fa fa-filter"></i><span class="submenu-title">CardTransaction</span></a></li>
-                            <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <i class="fa fa-taxi">
+                            <i class="fa fa-send-o fa-fw">
                                 <div class="icon-bg bg-dark"></div>
                             </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                         </a>
                         <ul class="nav nav-second-level">
-                           
-                             <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
-                           <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>                            
-                            <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
-                            <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
-                            <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
-                            <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
-                            <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
-                            <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                             <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
-                            <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                          
+                            <li><a href="Landmark.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">LandMark</span></a></li>
+                            <li><a href="AddVehicle.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet owner reports"><i class="fa fa-tablet"></i><span class="submenu-title">AddVehicle</span></a></li>
+                            <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of Admin reports"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
+
+                            <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
+                            <li><a href="CustomerList.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CustomerList</span></a></li>
+
+                            <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                            <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
+                            <li><a href="VehicleAvailability.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehicleAvailability </span></a></li>
+                            <li><a href="VehiclePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">VehiclePricing</span></a></li>
+                            <li><a href="BookingDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
                         </ul>
 
@@ -436,363 +419,294 @@
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
-                        <div class="page-title">FAQs</div>
+                        <div class="page-title">FAQ</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
-                        <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li><a href="#">Dashboard</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><a href="#">Extras</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li class="active">FAQ</li>
                     </ol>
                     <div class="clearfix"></div>
                 </div>
-                <div class="col-md-6">
+                <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
 
-                    <label for="filters" class="col-md-3 control-label" style="color:blueviolet;float:left"> Filters:<span class='require'></span></label>
-                    <div class="col-md-9">
-                        <input id="filters" type="text" ng-model="filters" class="form-control" /><span class="help-block"></span>
-                        
-                    </div>
-                </div>
-                
-                <button type="button" class="Add" ng-click="setfaqs();">
-                    <i class="Add"></i>&nbsp;
-                    Add
-                </button>
-                <br/>
-                <br/>
                 <div class="page-content">
-                    <div id="faq" class="row">
-                        <div class="col-lg-9">
-                            <div id="accordion-example" class="panel-group">
-                                <div class="panel">
-                                    <div class="actions">
 
-                                        <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed" ng-click="edit"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                        <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                            <div class="panel-body">
-                                                <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
+                    <div>
+                        <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add A FAQ</button>
+                    </div>
+                    <div id="tableactionTabContent" class="tab-content">
+                        <div id="table-table-tab" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="table-container">
+                                        <div class="row mbm">
+
+                                            <div class="col-lg-9">
+                                                <div id="accordion-example" class="panel-group">
+                                                    <div class="panel well" ng-repeat="q in FAQlist">
+                                                        <div class="panel-heading">
+
+                                                            <a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree{{q.Id}}" class="accordion-toggle collapsed">
+                                                                <strong>Q:</strong>
+                                                                {{q.Question}}&nbsp;
+                                                                
+                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setFAQlist(q);">
+                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    Edit
+                                                                </button>&nbsp;
+                                                                <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="delete(q);">
+                                                                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </a>
+                                                        </div>
+                                                        <div id="collapseThree{{q.Id}}" style="height: 0px;" class="panel-collapse collapse">
+                                                            <div class="panel-body">
+                                                                <strong>A:</strong>
+                                                                {{q.Answer}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
 
+                                                </div>
                                             </div>
-                                           
-                                        </div>
-                                       
-                                    </div>
-                                    <button type="button" class="fa-edit" ng-click="setfaqs(1);">Edit</button>
 
-                                                <button type="button"  class="btn btn-default btn-xs" ng-click="setfaqs(2);">
-                                                    <i class="fa fa-delete"></i>&nbsp;
-                                                    Delete
-                                                </button>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseOne" class="accordion-toggle collapsed"><strong>Q:</strong>How to renew a fleet owner licenes?</a></div>
-                                                    <div id="collapseOne" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>Go to user license details and in the details popup you will find the options to make payment and renew the license. During renewal you can choose different license type or extend the existing license.
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseTwo" class="accordion-toggle"><strong>Q:</strong>How do i know what is being downloaded into BT POS?</a></div>
-                                                    <div id="collapseTwo" style="height: auto;" class="panel-collapse collapse in">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>A copy of every file download that is being downloaded into BT POS is maintained and can be viewed by going to btpos configuration screen under inventory & btpos and then btpos section
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="panel">
-                                                    <div class="panel-heading"><a data-toggle="collapse" data-parent="#accordion-example" href="#collapseThree" class="accordion-toggle collapsed"><strong>Q:</strong>How to block a bt pos or user?</a></div>
-                                                    <div id="collapseThree" style="height: 0px;" class="panel-collapse collapse">
-                                                        <div class="panel-body">
-                                                            <strong>A:</strong>There is a provision to block by going to block list screen under btpos section.
-                                                        </div>
-                                                    </div>
-                                                </div>
 
+
+                                            <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                <div class=" modal-dialog modal-md">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header modal-header-primary">
+                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                            <h4 id="modal-header-primary-label" class="modal-title">Add FAQ</h4>
+                                                        </div>
+
+                                                        <div class="modal-body" ng-model="faq">
+                                                            <div class="row" style="margin-top:5px">
+
+                                                                <div class="col-md-12">
+                                                                    <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">App Type<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <select class="col-md-12 form-control" ng-model="faq.AppType">
+                                                                            <option value="">Select App Type</option>
+                                                                            <option value="1">Web Application</option>
+                                                                            <option value="2">Comercial site</option>
+                                                                            <option value="3">Mobile App</option>
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row" style="margin-top:10px">
+
+
+                                                                <div class="col-md-12">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Category<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <!--<input id="StaffSize" type="text" ng-model="Group.StaffSize" class="form-control" /><span class="help-block"></span>-->
+                                                                        <select class="col-md-12 form-control" ng-model="faq.Category">
+                                                                            <option value="">Select Category</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="row" style="margin-top:10px">
+
+                                                                <div class="col-md-12">
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Sub Category<span class='require'></span></label>
+                                                                    <div class="col-md-8">
+                                                                        <!--<input id="StaffSize" type="text" ng-model="Group.StaffSize" class="form-control" /><span class="help-block"></span>-->
+                                                                        <select class="col-md-12 form-control" ng-model="faq.SubCategory">
+                                                                            <option value="">Select Sub Category</option>
+                                                                            <option value="1">1</option>
+                                                                            <option value="2">2</option>
+                                                                            <option value="3">3</option>
+                                                                            <option value="4">4</option>
+
+                                                                        </select>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="row" style="margin-top:10px">
+
+
+                                                                <div class="col-md-12">
+                                                                    <div>
+                                                                        <label for="Address Id" class="col-md-4 control-label" style=" float: left">Created By</label>
+
+                                                                        <div class="col-md-8"><textarea rows="1" class="form-control" ng-model="faq.CreatedBy"></textarea></div>
+                                                                        <br />
+                                                                    </div>
+                                                                    <br /><br />
+
+                                                                    <div>
+                                                                        <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Question</label>
+
+                                                                        <div class="col-md-8"><textarea rows="2" class="form-control" ng-model="faq.Question"></textarea></div>
+                                                                        <br />
+                                                                    </div>
+
+                                                                    <div style="margin-top:10px">
+                                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Answer:</label>
+                                                                        <div class="col-md-8" style="margin-top:10px"><textarea rows="4" class="form-control" ng-model="faq.Answer"></textarea></div>
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="form-actions">
+                                                                <div class="col-md-offset-5 col-md-8">
+                                                                    <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(faq, 'I');">Save</button>
+
+                                                                    <a href="FAQs.html" class="btn btn-primary" ng-click="clearfaqs()">Cancel</a>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-lg-3">
-                                            <input type="text" placeholder="Enter keyword or question..." class="form-control" />
-                                            <div class="panel mtl">
-                                                <div class="panel-body text-center"><h3 class="mbl">Can't find the answer?</h3><a href="page-contact.html" class="btn btn-lg btn-green">Contact Us</a></div>
-                                            </div>
-                                        </div>
+
                                     </div>
                                 </div>
 
-                   
+                                <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                    <div class=" modal-dialog modal-md">
+                                        <div class="modal-content">
+                                            <div class="modal-header modal-header-primary">
+                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
+                                                <h4 id="modal-header-primary-label" class="modal-title">Edit FAQ</h4>
+                                            </div>
+
+                                            <div class="modal-body" ng-model="question">
+                                                <div class="row" style="margin-top:5px">
+
+                                                    <div class="col-md-12">
+                                                        <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">App Type<span class='require'></span></label>
+                                                        <div class="col-md-8">
+                                                            <select class="col-md-12 form-control" ng-model="question.AppType">
+                                                                <option value="">Select App Type</option>
+                                                                <option value="1">Web Application</option>
+                                                                <option value="2">Comercial site</option>
+                                                                <option value="3">Mobile App</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="row" style="margin-top:10px">
+
+
+                                                    <div class="col-md-12">
+                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Category<span class='require'></span></label>
+                                                        <div class="col-md-8">
+                                                            <!--<input id="StaffSize" type="text" ng-model="Group.StaffSize" class="form-control" /><span class="help-block"></span>-->
+                                                            <select class="col-md-12 form-control" ng-model="question.Category">
+                                                                <option value="">Select Category</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="row" style="margin-top:10px">
+
+                                                    <div class="col-md-12">
+                                                        <label for="Fax" class="col-md-4 control-label" style="float:left">Sub Category<span class='require'></span></label>
+                                                        <div class="col-md-8">
+                                                            <!--<input id="StaffSize" type="text" ng-model="Group.StaffSize" class="form-control" /><span class="help-block"></span>-->
+                                                            <select class="col-md-12 form-control" ng-model="question.SubCategory" >
+                                                                <option value="" >Select Sub Category</option>
+                                                                <option value="1">1</option>
+                                                                <option value="2">2</option>
+                                                                <option value="3">3</option>
+                                                                <option value="4">4</option>
+
+                                                            </select>
+                                                        </div>
+                                                    </div>
 
 
 
 
+                                                </div>
+
+                                                <div class="row" style="margin-top:10px">
 
 
+                                                    <div class="col-md-12">
+                                                        <div>
+                                                            <label for="Address Id" class="col-md-4 control-label" style=" float: left">Created By</label>
 
-                    <!--END CONTENT--><!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                            <div class="col-md-8"><textarea rows="1" class="form-control" ng-model="question.CreatedBy"></textarea></div>
+                                                            <br />
+                                                        </div>
+                                                        <br /><br />
+                                                        <div>
+                                                            <label for="Address Id" class="col-md-4 control-label" style="color: red; float: left">Question</label>
+
+                                                            <div class="col-md-8"><textarea rows="2" class="form-control" ng-model="question.Question"></textarea></div>
+                                                            <br />
+                                                        </div>
+
+                                                        <div style="margin-top:10px">
+                                                            <label for="Fax" class="col-md-4 control-label" style="float:left">Answer:</label>
+                                                            <div class="col-md-8" style="margin-top:10px"><textarea rows="4" class="form-control" ng-model="question.Answer"></textarea></div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                                <div class="form-actions">
+                                                    <div class="col-md-offset-5 col-md-8">
+                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(question);">Save</button>
+                                                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-lg-3">
+                                    <input type="text" placeholder="Enter keyword or question..." class="form-control" />
+                                    <div class="panel mtl">
+                                        <div class="panel-body text-center"><h3 class="mbl">Can't find the answer?</h3><a href="page-contact.html" class="btn btn-lg btn-green">Contact Us</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
                     </div>
-                    <!--END FOOTER-->
                 </div>
-                <!--END PAGE WRAPPER-->
             </div>
+        </div>
     </div>
+    </div>
+
+
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
@@ -812,27 +726,17 @@
     <script src="vendors/holder/holder.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
     <!--LOADING SCRIPTS FOR PAGE-->
-        <script src="js/angular.js"></script>
-    <script src="js/faqs.js"></script>
-       
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
-    <script>
-(function (i, s, o, g, r, a, m) {
-    i['GoogleAnalyticsObject'] = r;
-    i[r] = i[r] || function () {
-        (i[r].q = i[r].q || []).push(arguments)
-    }, i[r].l = 1 * new Date();
-    a = s.createElement(o),
-            m = s.getElementsByTagName(o)[0];
-    a.async = 1;
-    a.src = g;
-    m.parentNode.insertBefore(a, m)
-})(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
-        ga('create', 'UA-145464-12', 'auto');
-        ga('send', 'pageview');
+    <script src="js/angular.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/faqs.js"></script>
 
 
-    </script>
 </body>
 </html>
+
+
