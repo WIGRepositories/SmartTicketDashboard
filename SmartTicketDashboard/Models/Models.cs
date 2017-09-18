@@ -812,7 +812,7 @@ namespace SmartTicketDashboard.Models
         public string Package { get; set; }
         public string VehicleType { get; set; }
         public int NoofVehicle { get; set; }
-        public string VechID { get; set; }
+        public int VechID { get; set; }
         public string DriverName { get; set; }
         public string PresentDriverLandMark { get; set; }
         public string ExecutiveName { get; set; }
@@ -1762,6 +1762,8 @@ namespace SmartTicketDashboard.Models
         public int? needvehicleMake { get; set; }
         public int? needVehicleGroup { get; set; }
 
+        public int? needDocuments { get; set; }
+
 
     }
 
@@ -2168,6 +2170,8 @@ namespace SmartTicketDashboard.Models
         public int ServiceTypeId { get; set; }
         public int VehicleGroupId { get; set; }
         public string photo { get; set; }
+        public string Status { get; set; }
+        public string Fleetcode { get; set; }
     }
     public class allocatedriver
     {
@@ -2437,6 +2441,22 @@ namespace SmartTicketDashboard.Models
         public int InnovaRate { get; set; }
         public int Tag { get; set; }
     }
+
+    public class VehicleDistancePriceConfiguration
+    {
+        public string SourceLoc {get; set;}
+        public string DestinationLoc {get; set;}
+        public float SourceLat {get; set;}
+        public float SourceLng {get; set;}
+        public float DestinationLat {get; set;}
+        public float DestinationLng {get; set;}
+        public string VehicleModelId {get; set;}
+        public string VehicleTypeId {get; set;}
+        public string PricingTypeId {get; set;}
+        public float UnitPrice {get; set;}
+        public float Amount {get; set;}
+        public string flag {get; set;}
+    }
     public class start
     {
         public string flag { get; set; }
@@ -2590,6 +2610,72 @@ namespace SmartTicketDashboard.Models
 
     }
 
+    public class VehicleDocuments
+    {
 
+        public int Id { get; set; }
+        public int VehicleId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+       
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string docName { get; set; }
+        public int IsExpired { get; set; }
+        public string docContent { get; set; }
+
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+    }
+
+    public class DriverDocuments
+    {
+
+        public int Id { get; set; }
+        public int DriverId { get; set; }
+        public int createdById { get; set; }
+        public int UpdatedById { get; set; }
+
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+     
+        public int docTypeId { get; set; }
+        public string docType { get; set; }
+        public string docName { get; set; }
+        public int IsExpired { get; set; }
+        public string docContent { get; set; }
+
+        public DateTime? expiryDate { get; set; }
+        public DateTime? dueDate { get; set; }
+        public string insupddelflag { get; set; }
+    }
+    public class ewallet
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int transhistoryid { get; set; }
+        public decimal Amount { get; set; }
+        public string TransactionType { get; set; }
+
+        public string Status { get; set; }
+        public string Comment { get; set; }
+        public DateTime? Date { get; set; }
+        public DateTime? Time { get; set; }
+        public int TransrefId { get; set; }
+        public string MobileNo { get; set; }
+        public string AccountNo { get; set; }
+        public DateTime UpdatedOn { get; set; }
+        public DateTime CreatedOn { get; set; }
+
+        public object Details { get; set; }
+
+        public string TransactionId { get; set; }
+
+        public string TransactionMode { get; set; }
+    }
 }
 

@@ -157,7 +157,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
-            $scope.v = res.data[0];
+            $scope.v = res.data[0];            
 
             //if ($scope.VehiclesList.length > 0) {
             //    if ($scope.selectedVehicleList != null) {
@@ -176,6 +176,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //    $scope.getselectval($scope.selectedVehicleList);
             //}
             $scope.imageSrc = $scope.v.Photo;
+            $scope.v.vt = $scope.v.Type[0];
+            $scope.v.vg1 = $scope.v.VehicleGroupId[0];
+            $scope.v.vm = $scope.v.VehicleModelId[0];
+            
         });
     }
     $scope.getselectval = function (v) {
@@ -189,7 +193,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+            $scope.v.c = $scope.Companies[0];
         });
     }
       
@@ -197,7 +201,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
-       
+        $scope.imageSrc = $scope.VehiclesList.Photo;
+        
     }
 
 
@@ -296,43 +301,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (newVehicle.OwnerName == null) {
             alert('Please Enter OwnerName');
             return;
-        }
-        if (newVehicle.ChasisNo == null) {
-            alert('Please Enter ChasisNo');
-            return;
-        }
-        if (newVehicle.Engineno == null) {
-            alert('Please Enter Engineno');
-            return;
         }       
-        if (newVehicle.RoadTaxDate == null) {
-            alert('Please Enter RoadTaxDate');
-            return;
-        }
-        if (newVehicle.InsuranceNo == null) {
-            alert('Please Enter InsuranceNo');
-            return;
-        }
-        if (newVehicle.InsDate == null) {
-            alert('Please Enter InsDate');
-            return;
-        }
-        if (newVehicle.PolutionNo == null) {
-            alert('Please Enter PolutionNo');
-            return;
-        }
-        if (newVehicle.PolExpDate == null) {
-            alert('Please Enter PolExpDate');
-            return;
-        }
-        if (newVehicle.RCBookNo == null) {
-            alert('Please Enter RCBookNo');
-            return;
-        }
-        if (newVehicle.RCExpDate == null) {
-            alert('Please Enter RCExpDate');
-            return;
-        }
         if (newVehicle.CompanyVechile == null) {
             alert('Please Enter CompanyVechile');
             return;
@@ -373,22 +342,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var newVehicle = {
 
-            flag: 'I',            
+            flag: 'I',
+            Id:-1,
             VID: newVehicle.VID,
             CompanyId: newVehicle.c.Id,
             RegistrationNo: newVehicle.RegistrationNo,
             Type: $scope.initdata.newfleet.vt.Id,
             VehicleModelId: $scope.vm.Id,
-            OwnerName: newVehicle.OwnerName,
-            ChasisNo: newVehicle.ChasisNo,
-            Engineno: newVehicle.Engineno,
-            RoadTaxDate: newVehicle.RoadTaxDate,
-            InsuranceNo: newVehicle.InsuranceNo,
-            InsDate: newVehicle.InsDate,
-            PolutionNo: newVehicle.PolutionNo,
-            PolExpDate: newVehicle.PolExpDate,
-            RCBookNo: newVehicle.RCBookNo,
-            RCExpDate: newVehicle.RCExpDate,
+            OwnerName: newVehicle.OwnerName,           
             CompanyVechile: newVehicle.CompanyVechile,
             OwnerPhoneNo: newVehicle.OwnerPhoneNo,
             HomeLandmark: newVehicle.HomeLandmark,
@@ -430,7 +391,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
    
 
     $scope.save = function (v, flag) {
-        if (v.c.Id == null) {
+        if (v.c == null || v.c.Id == null) {
             alert('Please Enter CompanyId');
             return;
         }
@@ -439,7 +400,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         //var newVD = initdata.newfleet;
-        if ($scope.initdata.newfleet.vt.Id == null || $scope.initdata.newfleet.vt.Id == null) {
+        if ($scope.v.vt.Id == null || $scope.v.vt.Id == null) {
             alert('Please Enter Type');
             return;
         }
@@ -450,43 +411,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (v.OwnerName == null) {
             alert('Please Enter OwnerName');
             return;
-        }
-        if (v.ChasisNo == null) {
-            alert('Please Enter ChasisNo');
-            return;
-        }
-        if (v.Engineno == null) {
-            alert('Please Enter Engineno');
-            return;
-        }
-        if (v.RoadTaxDate == null) {
-            alert('Please Enter RoadTaxDate');
-            return;
-        }
-        if (v.InsuranceNo == null) {
-            alert('Please Enter InsuranceNo');
-            return;
-        }
-        if (v.InsDate == null) {
-            alert('Please Enter InsDate');
-            return;
-        }
-        if (v.PolutionNo == null) {
-            alert('Please Enter PolutionNo');
-            return;
-        }
-        if (v.PolExpDate == null) {
-            alert('Please Enter PolExpDate');
-            return;
-        }
-        if (v.RCBookNo == null) {
-            alert('Please Enter RCBookNo');
-            return;
-        }
-        if (v.RCExpDate == null) {
-            alert('Please Enter RCExpDate');
-            return;
-        }       
+        }              
         if (v.OwnerPhoneNo == null) {
             alert('Please Enter OwnerPhoneNo');
             return;
@@ -514,22 +439,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var vech = {
 
-            flag: 'U',
+            flag: ($scope.selectedVehicleList == -1) ? 'I' : 'U',
             VID: v.VID,
             CompanyId: v.c.Id,
             RegistrationNo: v.RegistrationNo,
-            Type: $scope.initdata.newfleet.vt.Id,
+            Type: $scope.v.vt.Id,
             VehicleModelId: $scope.vm.Id,
-            OwnerName: v.OwnerName,
-            ChasisNo: v.ChasisNo,
-            Engineno: v.Engineno,
-            RoadTaxDate: v.RoadTaxDate,
-            InsuranceNo: v.InsuranceNo,
-            InsDate: v.InsDate,
-            PolutionNo: v.PolutionNo,
-            PolExpDate: v.PolExpDate,
-            RCBookNo: v.RCBookNo,
-            RCExpDate: v.RCExpDate,
+            OwnerName: v.OwnerName,           
             CompanyVechile: v.CompanyVechile,
             OwnerPhoneNo: v.OwnerPhoneNo,
             HomeLandmark: v.HomeLandmark,
@@ -541,7 +457,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EntryDate: v.EntryDate,
             NewEntry: v.NewEntry,
             photo: $scope.imageSrc,
-
+            Status: v.Status,
+            Fleetcode:v.FleetOwnerCode,
 
             Active: (v.Active == true) ? 1 : 0,
 
@@ -555,7 +472,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            alert("Updated successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -574,6 +491,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.setVehiclesList = function (v) {
         $scope.vech = v;
         $scope.imageSrc = v.Photo;
+        
     };
 
     $scope.clearnewVehicle = function () {
@@ -601,9 +519,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             // needfleetowners:'1',
             needvehicleType: '1',
             needServiceType: '1',            
-            needCompanyName: '1',
+            //needCompanyName: '1',
             needVehicleMake: '1',
             needVehicleGroup: '1',
+            needDocuments: '1'
         };
 
         var req = {
@@ -618,6 +537,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            
         });
 
     }
@@ -634,7 +554,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     };
 
-    $scope.onFileSelect = function () {
+    $scope.onFileSelect1 = function () {
         fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
         
     }
@@ -672,6 +592,100 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //get companies list   
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
+        });
+    }
+
+    $scope.onFileSelect = function (files, $event) {
+        $scope.modifiedDoc = null;
+        var found = false;
+        ////check if job already exists 
+        //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
+        //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
+        //        found = true;
+        //    }
+        //}
+
+        //if (found) {
+        //    alert('Cannot add duplicte documents. Document with the same name already exists.');
+        //    $event.stopPropagation();
+        //    $event.preventDefault();
+        //    return;
+        //}
+
+        var ext = files[0].name.split('.').pop();
+        fileReader.readAsDataUrl(files[0], $scope, (ext == 'csv') ? 1 : 4).then(function (result) {
+            //if (result.length > 2097152) {
+            //    alert('Cannot upload file greater than 2 MB.');
+            //    $event.stopPropagation();
+            //    $event.preventDefault();
+            //    return;
+            //}
+
+            var doc =
+                {
+                    Id: -1,
+                    VehicleId: $scope.selectedVehicleList,
+                    createdById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    UpdatedById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    FromDate: null,
+                    ToDate: null,                   
+
+                    docTypeId: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Id,
+                    docType: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Name,//
+                    docName: files[0].name,
+                    docContent: result,
+
+                    expiryDate: ($scope.assetDoc == null || $scope.assetDoc.expiryDate == null) ? null : getdate($scope.assetDoc.expiryDate),
+                    dueDate: ($scope.assetDoc == null || $scope.assetDoc.dueDate == null) ? null : getdate($scope.assetDoc.dueDate),
+                    insupddelflag: 'I'
+                }
+
+            $scope.modifiedDoc = doc;
+            ////check if already the file exists                       
+            //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
+            //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
+            //        $scope.currobj.files1.splice(cnt, 1);
+            //    }
+            //}
+
+            //$scope.currobj.files1.push(doc);
+            //if ($scope.DocFiles)
+            //{
+            //    $scope.DocFiles.push(doc);
+            //}
+
+        });
+    };
+
+    /*save job documents */
+    $scope.SaveAssetDoc = function () {
+
+        if ($scope.modifiedDoc == null) {
+
+            alert('Select an asset document to modify.');
+            return;
+        }
+        $scope.modifiedDoc.UpdatedById = ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id;
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/SaveVehicleDoc',
+            data: $scope.modifiedDoc
+        }
+        $http(req).then(function (response) {
+            //  $scope.DocFiles = response.data.Table;
+            $scope.DocFiles = response.data.Table;
+            alert("Saved Successfully");
+
+            $scope.modifiedDoc = null;
+            $scope.assetDoc = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.modifiedDoc = null;
+            $scope.assetDoc = null;
+            $scope.showDialog(errmssg);
         });
     }
 });

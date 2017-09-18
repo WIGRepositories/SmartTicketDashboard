@@ -14,7 +14,7 @@ var ctrl = app.controller('myCtrl1', function ($scope, $http, $localStorage, $ui
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-
+            $scope.cc.Id = $scope.Companies[0];
         });
     }
 
@@ -107,6 +107,75 @@ var ctrl = app.controller('myCtrl1', function ($scope, $http, $localStorage, $ui
         });
 
     }
+
+    $scope.saveNew = function (newVehicle, flag) {
+
+        if ($scope.vm.RegistrationNo == null) {
+            alert('Please Enter vechid');
+            return;
+        }
+        if ($scope.vm.VID == null) {
+            alert('Please Enter vechid');
+            return;
+        }
+        if ($scope.c.Id == null) {
+            alert('Please Enter CompanyId');
+            return;
+        }
+
+        if ($scope.d.DId == null || $scope.d.DId.DId == null) {
+            alert('Please Enter DriverName');
+            return;
+        }
+        if (newVehicle.EffectiveDate == null) {
+            alert('Please Enter EffectiveDate');
+            return;
+        }
+        if (newVehicle.EffectiveTill == null) {
+            alert('Please Enter EffectiveTill');
+            return;
+        }
+
+
+        var newVehicle = {
+            Id: -1,
+            VechID: $scope.vm.VID,
+            CompanyId: $scope.c.Id,
+            VehicleType: $scope.vm.Type,
+            PhoneNo: $scope.d.DId.PMobNo,
+            AltPhoneNo: $scope.d.DId.AltPhoneNo,
+            RegistrationNo: $scope.vm.RegistrationNo,
+            DriverName: $scope.d.DId.NAme,
+            DriverId: $scope.d.DId.DId,
+            EffectiveDate: newVehicle.EffectiveDate,
+            EffectiveTill: newVehicle.EffectiveTill,
+            VehicleModelId: $scope.vm.VehicleModelId,
+            ServiceTypeId: $scope.vm.ServiceTypeId,
+            VehicleGroupId: $scope.vm.VehicleGroupId,
+            flag: "I"
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/allocatedriver/AllocateDriver',
+            data: newVehicle
+        }
+        $http(req).then(function (response) {
+
+            alert("Saved successfully!");
+
+            $scope.Group = null;
+            $scope.Getallocatedriver('VID=1');
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
+    };
+
+    $scope.newVehicle = null;
     
     $scope.save = function (a, flag) {
 

@@ -542,7 +542,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     var headers = allTextLines[0].split(',');
 
-                    var header = [$scope.seloption];
+                    //var header = [$scope.seloption];
 
 
                     //validate header
@@ -846,9 +846,9 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         url: '/api/DataLoad/SaveDriverVehicleAssignGroup',
                         data: lines
                     }
-                    $http(req).then(function (res) {
-                        $scope.initdata = res.data;
-                        alert("Saved successfully");
+                    $http(req).then(function (res) {                        
+                        
+                       
                     });
 
                     //$scope.logdata = list;
@@ -913,8 +913,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         LandMark: data[50],
                         PickupPlace: data[51],
                         DropPlace: data[52],
-                        Package: data[53],
-                        //VehicleType: data[54],
+                        Package: data[53],                        
                         NoofVehicle: data[54],
                         VechID: data[55],
                         DriverName: data[56],
@@ -923,11 +922,12 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         EffectiveDate: data[59],
                         EffectiveTill: data[60],
                         DriverId: data[61],
-
+                        VehicleType: data[62],
                         active: 1,
                         inspudflag: 'I'
                     }
                     return list;
+                    
                 }
 
                 $scope.save = function () {
@@ -940,7 +940,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     //if (Code == null) {
                     //    return;
                     //}
-                    if (CustomerName == null) {
+                    if (Name == null) {
                         return;
                     }
                     //if (EmailId == null) {

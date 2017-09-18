@@ -103,44 +103,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter a = new SqlParameter("@OwnerName", SqlDbType.VarChar, 50);
             a.Value = v.OwnerName;
-            cmd.Parameters.Add(a);
-
-            SqlParameter sn = new SqlParameter("@ChasisNo", SqlDbType.VarChar, 50);
-            sn.Value = v.ChasisNo;
-            cmd.Parameters.Add(sn);
-
-            SqlParameter f = new SqlParameter("@Engineno", SqlDbType.VarChar, 50);
-            f.Value = v.Engineno;
-            cmd.Parameters.Add(f);
-                  
-
-            SqlParameter k = new SqlParameter("@RoadTaxDate", System.Data.SqlDbType.Date);
-            k.Value = v.RoadTaxDate;
-            cmd.Parameters.Add(k);
-
-            SqlParameter y = new SqlParameter("@InsuranceNo", SqlDbType.VarChar, 50);
-            y.Value = v.InsuranceNo;
-            cmd.Parameters.Add(y);
-
-            SqlParameter r1 = new SqlParameter("@InsDate", System.Data.SqlDbType.Date);
-            r1.Value = v.InsDate;
-            cmd.Parameters.Add(r1);
-
-            SqlParameter t = new SqlParameter("@PolutionNo", SqlDbType.VarChar, 50);
-            t.Value = v.PolutionNo;
-            cmd.Parameters.Add(t);
-
-            SqlParameter u = new SqlParameter("@PolExpDate", System.Data.SqlDbType.Date);
-            u.Value = v.PolExpDate;
-            cmd.Parameters.Add(u);
-
-            SqlParameter o = new SqlParameter("@RCBookNo", SqlDbType.VarChar, 50);
-            o.Value = v.RCBookNo;
-            cmd.Parameters.Add(o);
-
-            SqlParameter p = new SqlParameter("@RCExpDate", System.Data.SqlDbType.Date);
-            p.Value = v.RCExpDate;
-            cmd.Parameters.Add(p);
+            cmd.Parameters.Add(a);           
 
             SqlParameter jw = new SqlParameter("@CompanyVechile", SqlDbType.Int);
             jw.Value = v.CompanyVechile;
@@ -190,12 +153,98 @@ namespace SmartTicketDashboard.Controllers
             pp.Value = v.photo;
             cmd.Parameters.Add(pp);
 
+            SqlParameter ss = new SqlParameter("@Status", SqlDbType.VarChar);
+            ss.Value = v.photo;
+            cmd.Parameters.Add(ss);
+
+            SqlParameter fl = new SqlParameter("@FleetOwnerCode", SqlDbType.VarChar);
+            fl.Value = v.Fleetcode;
+            cmd.Parameters.Add(fl);
+
 
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
             return dt;
+        }
+
+        [HttpPost]
+        [Route("api/VehicleMaster/SaveVehicleDoc")]
+        public DataSet SaveVehicleDoc(VehicleDocuments a)
+        {
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            DataSet ds = new DataSet();
+            try
+            {
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InsUpdDelVehicleDocs";
+                cmd.Connection = conn;
+
+                SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
+                id.Value = a.Id;
+                cmd.Parameters.Add(id);
+
+                SqlParameter AssetId = new SqlParameter("@VehicleId", SqlDbType.Int);
+                AssetId.Value = a.VehicleId;
+                cmd.Parameters.Add(AssetId);
+
+                SqlParameter Gid = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
+                Gid.Value = a.docName;
+                cmd.Parameters.Add(Gid);
+
+                
+
+                SqlParameter rootassetid = new SqlParameter("@DocTypeId", SqlDbType.Int);
+                rootassetid.Value = a.docTypeId;
+                cmd.Parameters.Add(rootassetid);
+
+                SqlParameter AsstMDLHierarID = new SqlParameter("@UpdatedById", SqlDbType.Int);
+                AsstMDLHierarID.Value = a.UpdatedById;
+                cmd.Parameters.Add(AsstMDLHierarID);
+
+                SqlParameter assetModelId = new SqlParameter("@ExpiryDate", SqlDbType.Date);
+                assetModelId.Value = a.expiryDate;
+                cmd.Parameters.Add(assetModelId);
+
+
+                SqlParameter LocationId = new SqlParameter("@DueDate", SqlDbType.Date);
+                LocationId.Value = a.dueDate;
+                cmd.Parameters.Add(LocationId);
+
+                SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar);
+                parentid.Value = a.docContent;
+                cmd.Parameters.Add(parentid);
+
+                SqlParameter flag = new SqlParameter("@change", SqlDbType.VarChar);
+                flag.Value = a.insupddelflag;
+                cmd.Parameters.Add(flag);
+
+                SqlParameter loggedinUserId1 = new SqlParameter("@loggedinUserId", SqlDbType.Int);
+                loggedinUserId1.Value = a.UpdatedById;
+                cmd.Parameters.Add(loggedinUserId1);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+
+                
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                string str = ex.Message;
+                
+                return ds;
+            }
         }
     }
 }

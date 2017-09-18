@@ -136,23 +136,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter rj = new SqlParameter("@BloodGroup", SqlDbType.VarChar, 50);
             rj.Value = d.BloodGroup;
-            cmd.Parameters.Add(rj);
-
-            SqlParameter t = new SqlParameter("@LicenceNo", SqlDbType.VarChar, 50);
-            t.Value = d.LicenceNo;
-            cmd.Parameters.Add(t);
-
-            SqlParameter u = new SqlParameter("@LiCExpDate", SqlDbType.Date);
-            u.Value = d.LiCExpDate;
-            cmd.Parameters.Add(u);
-
-            SqlParameter o = new SqlParameter("@BadgeNo", SqlDbType.VarChar, 50);
-            o.Value = d.BadgeNo;
-            cmd.Parameters.Add(o);
-
-            SqlParameter p = new SqlParameter("@BadgeExpDate", SqlDbType.Date);
-            p.Value = d.BadgeExpDate;
-            cmd.Parameters.Add(p);
+            cmd.Parameters.Add(rj);            
 
             SqlParameter w = new SqlParameter("@Remarks", SqlDbType.VarChar, 50);
             w.Value = d.Remarks;
@@ -160,16 +144,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
             pr.Value = d.Photo;
-            cmd.Parameters.Add(pr);
-
-            SqlParameter pu = new SqlParameter("@licenseimage", SqlDbType.VarChar);
-            pu.Value = d.licenseimage;
-            cmd.Parameters.Add(pu);
-
-            SqlParameter rr = new SqlParameter("@Badgeimage", SqlDbType.VarChar);
-            rr.Value = d.badgeimage;
-            cmd.Parameters.Add(rr);
-
+            cmd.Parameters.Add(pr);            
 
 
             DataTable dt = new DataTable();
@@ -177,6 +152,83 @@ namespace SmartTicketDashboard.Controllers
             da.Fill(dt);
 
             return dt;
+        }
+
+
+        [HttpPost]
+        [Route("api/DriverMaster/SaveDriverDoc")]
+        public DataSet SaveDriverDoc(DriverDocuments a)
+        {
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            DataSet ds = new DataSet();
+            try
+            {
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InsUpdDelDriverDocs";
+                cmd.Connection = conn;
+
+                SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
+                id.Value = a.Id;
+                cmd.Parameters.Add(id);
+
+                SqlParameter AssetId = new SqlParameter("@DriverId", SqlDbType.Int);
+                AssetId.Value = a.DriverId;
+                cmd.Parameters.Add(AssetId);
+
+                SqlParameter Gid = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
+                Gid.Value = a.docName;
+                cmd.Parameters.Add(Gid);
+
+                SqlParameter rootassetid = new SqlParameter("@DocTypeId", SqlDbType.Int);
+                rootassetid.Value = a.docTypeId;
+                cmd.Parameters.Add(rootassetid);
+
+                SqlParameter AsstMDLHierarID = new SqlParameter("@UpdatedById", SqlDbType.Int);
+                AsstMDLHierarID.Value = a.UpdatedById;
+                cmd.Parameters.Add(AsstMDLHierarID);
+
+                SqlParameter assetModelId = new SqlParameter("@ExpiryDate", SqlDbType.Date);
+                assetModelId.Value = a.expiryDate;
+                cmd.Parameters.Add(assetModelId);
+
+
+                SqlParameter LocationId = new SqlParameter("@DueDate", SqlDbType.Date);
+                LocationId.Value = a.dueDate;
+                cmd.Parameters.Add(LocationId);
+
+                SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar);
+                parentid.Value = a.docContent;
+                cmd.Parameters.Add(parentid);
+
+                SqlParameter flag = new SqlParameter("@change", SqlDbType.VarChar);
+                flag.Value = a.insupddelflag;
+                cmd.Parameters.Add(flag);
+
+                SqlParameter loggedinUserId1 = new SqlParameter("@loggedinUserId", SqlDbType.Int);
+                loggedinUserId1.Value = a.UpdatedById;
+                cmd.Parameters.Add(loggedinUserId1);
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(ds);
+
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                string str = ex.Message;
+
+                return ds;
+            }
         }
     }
 }

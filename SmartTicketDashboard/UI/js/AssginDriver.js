@@ -71,13 +71,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
+            
 
         });
     }
 
     $scope.GetMaster = function () {
-        $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
-            $scope.listdrivers = res.data;
+        $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res1, data) {
+            $scope.listdrivers = res1.data;
         });
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.Vehicles = res.data;
