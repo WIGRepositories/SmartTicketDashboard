@@ -135,6 +135,7 @@
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
+    <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
     <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
