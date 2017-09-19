@@ -107,6 +107,7 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\Bookinglist.html" />
     <Content Include="UI\CardInformation.html" />
@@ -118,6 +119,7 @@
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
+    <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\CardDetails.js" />
