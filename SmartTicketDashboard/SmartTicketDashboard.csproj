@@ -107,6 +107,7 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\Bookinglist.html" />
@@ -135,6 +136,7 @@
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
+    <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
     <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
