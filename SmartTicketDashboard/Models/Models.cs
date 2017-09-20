@@ -2677,5 +2677,29 @@ namespace SmartTicketDashboard.Models
 
         public string TransactionMode { get; set; }
     }
+    public class PricingCredentials
+    {
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public string PriceCode { get; set; }
+
+        public int PriceType { get; set; }
+
+        public int UnitPrice { get; set; }
+
+        public int VehicleGroup { get; set; }
+
+        public int VehicleModel { get; set; }
+
+        public int PackageType { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public int VehicleType { get; set; }
+    }
 }
 
