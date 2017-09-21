@@ -114,6 +114,7 @@
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUser.html" />
     <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\ChargesDiscounts.html" />
     <Content Include="UI\css\VehicleDistBasePricingConfig.css" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
@@ -2053,6 +2054,7 @@
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CarousalController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
+    <Compile Include="Controllers\ChargesDiscountsController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
