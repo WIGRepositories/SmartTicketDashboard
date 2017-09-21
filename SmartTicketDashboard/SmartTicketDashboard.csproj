@@ -130,6 +130,7 @@
     <Content Include="UI\js\CardUser.js" />
     <Content Include="UI\js\DriverStatus.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistBasePricingConfig.js" />
