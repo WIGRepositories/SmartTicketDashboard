@@ -80,40 +80,42 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 $localStorage.uname = res.data[0].uname;
                 $localStorage.userdetails = res.data;
                 var roleid = $localStorage.userdetails[0].roleid;
-                switch (roleid) {
+                window.location.href = "UI/index.html";
+
+                //switch (roleid) {
 
 
-                    case 1:
-                        window.location.href = "UI/index.html";
-                        break;
-                    case 2:
-                        window.location.href = "UI/Index_finAdmin.html";
-                        break;
+                //    case 1:
+                //        window.location.href = "UI/index.html";
+                //        break;
+                //    case 2:
+                //        window.location.href = "UI/Index_finAdmin.html";
+                //        break;
 
 
-                    case 3:
-                        window.location.href = "UI/Index_support.html";
-                        break;
-                    case 4:
-                        window.location.href = "UI/Index_help.html";
-                        break;
-                    case 5:
-                        window.location.href = "UI/Index_sales.html";
-                        break;
-                    case 6:
-                        window.location.href = "UI/Index_FO.html";
-                        break;
-                    case 11:
-                        window.location.href = "UI/Index_G.html";
-                        break;
-                    case 12:
-                        window.location.href = "UI/Index_cmpUser.html";
-                        break;
-                    default:
-                        window.location.href = "UI/index.html";
-                        break;
+                //    case 3:
+                //        window.location.href = "UI/Index_support.html";
+                //        break;
+                //    case 4:
+                //        window.location.href = "UI/Index_help.html";
+                //        break;
+                //    case 5:
+                //        window.location.href = "UI/Index_sales.html";
+                //        break;
+                //    case 6:
+                //        window.location.href = "UI/Index_FO.html";
+                //        break;
+                //    case 11:
+                //        window.location.href = "UI/Index_G.html";
+                //        break;
+                //    case 12:
+                //        window.location.href = "UI/Index_cmpUser.html";
+                //        break;
+                //    default:
+                //        window.location.href = "UI/index.html";
+                //        break;
 
-                }
+                //}
 
             }
         },//error

@@ -6,7 +6,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
-    $scope.canShow = ($scope.Roleid == 1 || $scope.roleid == 2 || ($localStorage.uname == 'check check'));
+    //$scope.canShow = ($scope.Roleid == 1 || $scope.roleid == 6 || $scope.roleid == 13);
 
     $scope.GetCountry = function () {
              

@@ -14,7 +14,6 @@ namespace SmartTicketDashboard.Controllers
     public class VehicleMasterController : ApiController
     {
         [HttpGet]
-
         [Route("api/VehicleMaster/GetVehcileMaster")]
         public DataTable GetVehcileMaster(int VID)
         {
@@ -39,7 +38,6 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpGet]
-
         [Route("api/VehicleMaster/GetVehcileDetails")]
         public DataTable GetVehcileDetails(int VID)
         {
@@ -62,9 +60,9 @@ namespace SmartTicketDashboard.Controllers
             return dt;
 
         }
+
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
-
         public DataTable Vehicles(vehiclemas v)
         {
             SqlConnection conn = new SqlConnection();
