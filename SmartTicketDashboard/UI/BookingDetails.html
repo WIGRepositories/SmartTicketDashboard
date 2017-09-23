@@ -405,56 +405,502 @@
        
     
     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
-        <div class="page-content" ng-model="b">
-            <div id="table-action" class="row">
-                <div class="col-lg-12">
-                    <!---------------------User Profile Style--------------------------->
-                    <!--<div class="page-content">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h2>Booking Details</h2>
-                                <div class="row mtl">-->
-                                    <div class="col-md-3">
-                                        <!--<div class="form-group">
-                                            <div class="text-center mbl"><img ng-src="{{imageSrc}}" alt="" class="img-responsive" /></div>
-                                            <div class="text-center mbl">
-                                                <a href="#" class="btn btn-green">
-                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                    Upload
-                                                </a>
+            <div class="page-content">
+                <div id="table-action" class="row">
+                    <div id="tableactionTabContent" class="tab-content">
+                        <div id="table-table-tab" class="tab-pane fade in active">
+                            <div class="row">
+                                <div class="col-lg-12">
+
+
+                                    <div class="table-container">
+                                        <div class="row mbm">
+
+                                         
+
+                                            <div class="col-sm-6">
+                                                <div class="panel panel-default">
+                                                    <div class="panel-heading">Details <i class="fa fa-link fa-1x"></i></div>
+                                                    
+                                                    <ul class="list-group">
+                                                       
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Source-Destination</strong></span>srnagr-prnagr</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Amount</strong></span> 130</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>No of Seats</strong></span> 3</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>No of Vehicles</strong></span> 2</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Booking Type</strong></span> online</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Booking date time</strong></span> 2-9-2017:10:50</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Closing Date time</strong></span> 2-9-2017:12:50</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Driver PhoneNo</strong></span>7207100143</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Customer PhoneNo</strong></span>7207100143</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Payment Type</strong></span>Wallet</li>
+                                                        <li class="list-group-item text-right"><span class="pull-left"><strong>Payment Status</strong></span>Sucess</li>
+                                                    </ul>
+                                                </div>
+
                                             </div>
-                                        </div>-->
-                                        <!--<table class="table table-striped table-hover">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Customer PhoneNo :</td>
-                                                    <td>{{b.CustomerPhoneNo}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Booking No</td>
-                                                    <td>{{b.BNo}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Booking Type</td>
-                                                    <td> {{b.BookingType}}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Address</td>
-                                                    <td>{{v.HomeLandmark}}</td>
-                                                </tr>
+                                            <div class="col-sm-6">
+                                                <div class="portlet box">
+                                                    
+                                                    <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
+                                                    <!--<div ng-app="mapApp" ng-controller="mapCtrl" ng-change="GetVehicleLocation()">
+                                                        <div id="map" ng-repeat="v in Vehicleloc">
+                                                        </div>-->
 
-                                                <tr>
-                                                    <td>Status</td>
-                                                    <td><span class="label label-success">Active</span></td>
-                                                </tr>
+                                                        <script>
+                                function myMap() {
+                                    var mapOptions = {
+                                        center: new google.maps.LatLng(17.3850, 78.4867),
+                                        zoom: 10,
+                                        mapTypeId: google.maps.MapTypeId.HYBRID
+                                    }
+                                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                }
+                            </script>
 
-                                            </tbody>
-                                        </table>-->
+                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
                                     </div>
-                                    <!--<div class="col-md-9">-->
-                                        <!--<ul class="nav nav-tabs">
-                            <li class="active"><a href="#tab-edit" data-toggle="tab">Edit Profile</a></li>
-                        </ul>-->
+
+
+                               
+                                </div>
+                            <form action="#" class="form-horizontal">
+
+                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                        <div class="caption"><a href="">Payament Details</a></div>
+                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                    </div>
+
+
+                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                        <div class="panel-body">
+
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booking No</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="email" ng-model="b.BNo" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booking Type</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookingType" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booked Date</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookedDate" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booked Time</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookedTime" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Departure Date</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DepartureDate" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Departure Time</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DepartureTime" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Source</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Src" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Destination</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Desc" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">SrcId</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.SrcId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">DestId</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Source Latitude</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.SrcLatitude" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Destination Latitude</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestLatitude" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Destination Longitude</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DestLongitude" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Vehicle Id</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.VechId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Vehicle Model</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.VehicleModelId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Package</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.PackageId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Pricing</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Pricing" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Driver Id</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Driver PhoneNo</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverPhoneNo" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Customer PhoneNo</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.CustomerPhoneNo" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Customer Id</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.CustomerId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">No of Vehicles</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.NoofVehicles" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">No of Seats</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.NoofSeats" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Company</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.CompanyId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Amount</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Amount" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
+                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                        <div class="caption"><a href="">Additional Details</a></div>
+                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                    </div>
+
+
+                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                        <div class="panel-body">
+
+
+                                        
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Cancelled On</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.CancelledOn" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Cancelled By</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.CancelledBy" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booking Channel</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.BookingChannel" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Reasons</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Reasons" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Booking Otp</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.BooKingOTP" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label"> Customer Rating</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Rating" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                               
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Comments</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.Comments" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Driver Rating</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverRating" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Driver Comments</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.DriverComments" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                              
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Updated By</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.UpdatedBy" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-4">
+                                                    <div class="form-group">
+                                                        <label class="col-sm-3 control-label">Updated User</label>
+                                                        <div class="col-sm-9 controls">
+                                                            <div class="row">
+                                                                <div class="col-xs-9"><input type="text" ng-model="b.UpdatedUserId" class="form-control" readonly /></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            
+                              
+                                                       
+                    <!---------------------User Profile Style--------------------------->
+                   
+                                   
+                                       
                                         <div id="generalTabContent" class="tab-content">
                                             <div id="tab-edit" class="tab-pane fade in active">
                                                 <form action="#" class="form-horizontal">
@@ -986,7 +1432,7 @@
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
     <script src="js/BookingDetails.js"></script>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
 
 </body>
 </html>

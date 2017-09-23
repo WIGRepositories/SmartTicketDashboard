@@ -2087,14 +2087,14 @@ namespace SmartTicketDashboard.Models
     {
 
         public string flag { get; set; }
-        public int id { get; set; }
-        public string question { get; set; }
+        public int Id { get; set; }
+        public string Question { get; set; }
 
-        public string answer { get; set; }
-        public string createdon { get; set; }
-        public string createdby { get; set; }
-        public string updatedon { get; set; }
-        public string updatedby { get; set; }
+        public string Answer { get; set; }
+        public string CreatedBy { get; set; }
+        public int AppType { get; set; }
+        public int Category { get; set; }
+        public int SubCategory { get; set; }
         public int active { get; set; }
         public int category { get; set; }
 
@@ -2576,6 +2576,8 @@ namespace SmartTicketDashboard.Models
         public string noofattempts { get; set; }
         public decimal Amount { get; set; }
         public string AccountNo { get; set; }
+
+        
     }
     public class products
     {
@@ -2674,6 +2676,30 @@ namespace SmartTicketDashboard.Models
         public string TransactionId { get; set; }
 
         public string TransactionMode { get; set; }
+    }
+    public class PricingCredentials
+    {
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public string PriceCode { get; set; }
+
+        public int PriceType { get; set; }
+
+        public int UnitPrice { get; set; }
+
+        public int VehicleGroup { get; set; }
+
+        public int VehicleModel { get; set; }
+
+        public int PackageType { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public int VehicleType { get; set; }
     }
 }
 

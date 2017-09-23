@@ -107,6 +107,8 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AppUserDetails.html" />
+    <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
     <Content Include="UI\Bookinglist.html" />
     <Content Include="UI\CardInformation.html" />
@@ -118,6 +120,7 @@
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
+    <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
     <Content Include="UI\js\CardDetails.js" />
@@ -133,6 +136,7 @@
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\car2.jpg" />
     <Content Include="UI\js\VehicleStatus.js" />
+    <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
     <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
@@ -2025,6 +2029,7 @@
     <Compile Include="Controllers\AlertsConfigurationController.cs" />
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
+    <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />
     <Compile Include="Controllers\Blocklistcontroller.cs" />
@@ -2096,6 +2101,7 @@
     <Compile Include="Controllers\prebookController.cs" />
     <Compile Include="Controllers\prebookingdetailsController.cs" />
     <Compile Include="Controllers\pricedetailsController.cs" />
+    <Compile Include="Controllers\PricingCredentialsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
