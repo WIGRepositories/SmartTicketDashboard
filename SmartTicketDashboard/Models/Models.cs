@@ -2701,5 +2701,28 @@ namespace SmartTicketDashboard.Models
 
         public int VehicleType { get; set; }
     }
+    public class ChargesDiscounts
+    {
+        public string Type;
+        public string Value;
+
+        public int Id { get; set; }
+
+        public string Code { get; set; }
+
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+        public int cdType { get; set; }
+        public int Category { get; set; }
+
+        public int ApplyAs { get; set; }
+        public int cdValue { get; set; }
+        public DateTime FromDate { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public string Flag { get; set; }
+    }
 }
 

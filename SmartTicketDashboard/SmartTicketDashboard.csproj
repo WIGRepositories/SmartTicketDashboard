@@ -114,6 +114,7 @@
     <Content Include="UI\CardInformation.html" />
     <Content Include="UI\CardUser.html" />
     <Content Include="UI\CardUserList.html" />
+    <Content Include="UI\ChargesDiscounts.html" />
     <Content Include="UI\css\VehicleDistBasePricingConfig.css" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
@@ -127,8 +128,10 @@
     <Content Include="UI\js\CardDetails1.js" />
     <Content Include="UI\js\CardsList.js" />
     <Content Include="UI\js\CardUser.js" />
+    <Content Include="UI\js\ChargesDiscounts.js" />
     <Content Include="UI\js\DriverStatus.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistBasePricingConfig.js" />
@@ -2053,6 +2056,7 @@
     <Compile Include="Controllers\CardsController.cs" />
     <Compile Include="Controllers\CarousalController.cs" />
     <Compile Include="Controllers\ChangePwdController.cs" />
+    <Compile Include="Controllers\ChargesDiscountsController.cs" />
     <Compile Include="Controllers\ClosingReportController.cs" />
     <Compile Include="Controllers\CountriesController.cs" />
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />

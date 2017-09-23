@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetStatus" ng-model="Status">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetChargesDiscounts()" ng-model="Chargeslist">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -372,8 +372,8 @@
                                 <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                                 <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
-                                <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
-                                <li class="active"><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
+                                <li class="active"><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
+                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
 
@@ -389,13 +389,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Pricing Credentials</div>
+                            <div class="page-title">ChargesDiscounts</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="#">Charges</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="StartReport.html">Pricing Credentials</a></li>
+                            <li><a href="ClosingReport.html">Charges Discounts</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -416,83 +416,108 @@
 
                                                         <div class="actions">
                                                             <!----<button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add New Stop</button></a>--->
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Prcing</button>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Charges</button>
                                                         </div>
-                                                       
+
 
                                                         <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                            <div class="modal-dialog">
+                                                            <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header modal-header-primary">
                                                                         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                        <h4 id="modal-header-primary" class="modal-title">Edit Pricing</h4>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Charges</h4>
                                                                     </div>
-                                                                    <div class="modal-body" >
+                                                                    <div class="modal-body">
+                                                                        <div class="row ">
 
-                                                                        <div class="row">
 
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Price Code:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                            <div class="col-md-12">
+
+                                                                                <div class="row mtl">
+
+
+                                                                                    <div class="col-md-12">
+                                                                                        <div id="generalTabContent" class="tab-content">
+
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Title:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Category:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label"> ApplyAs:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+
+                                                                                            </div>
+
+
+                                                                                        </div>
+
+
+                                                                                        <div class="form-actions">
+                                                                                            <div style="text-align:center">
+
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
+
+                                                                                                <a href="ClosingReport.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+
+
+                                                                                </div>
                                                                             </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Price Type:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Unit Price:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label"> Vehicle Model:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">Package Type:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-                                                                        </div>
-
-
-                                                                        <div class="row">
-
-                                                                            <div class="col-md-6">
-                                                                                <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-
-
-                                                                        </div>
-                                                                    </div>
-                                                                    <div class="form-actions">
-                                                                        <div class="col-md-offset-3 col-md-9">
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(reporting, 'U');">Save</button>
-                                                                            <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -504,40 +529,39 @@
                                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                         <thead>
                                                             <tr>
-
-
-                                                                <th width="10%">Id</th>
-                                                                <th width="10%">Price Code</th>
-                                                                <th width="10%">Price Type</th>
-                                                                <th width="10%">Unit Price</th>
-                                                                <th width="10%">Vehicle Group</th>
-                                                                <th width="10%">Vehicle Model</th>
-                                                                <th width="10%">Vehicle Type</th>
-                                                                <th width="10%">Package Type</th>
+                                                                <th width="10%">Code</th>
+                                                                <th width="10%">Title</th>
+                                                                <th width="10%">Description</th>
+                                                                <th width="10%">Type</th>
+                                                                <th width="10%">Category</th>
+                                                                <th width="10%">ApplyAs</th>
+                                                                <th width="10%">Value</th>
                                                                 <th width="10%">From Date</th>
                                                                 <th width="10%">To Date</th>
-                                                                <th>Active</th>
                                                                 <th>Edit</th>
-
+                                                                <th>Delate</th>
 
                                                             </tr>
                                                         <tbody>
-                                                            <tr>
+                                                            <tr ng-repeat="cd in Chargeslist">
+                                                                <td>{{cd.Code}}</td>
+                                                                <td>{{cd.Title}}</td>
+                                                                <td>{{cd.Description}}</td>
+                                                                <td>{{cd.Type}}</td>
+                                                                <td>{{cd.Category}}</td>
+                                                                <td>{{cd.ApplyAs}}</td>
+                                                                <td>{{cd.Value}}</td>
+                                                                <th width="10%">{{cd.FromDate}}</th>
+                                                                <th width="10%">{{cd.ToDate}}</th>
 
-                                                                <td>12</td>
-                                                                <td>125</td>
-                                                                <td>vehicle</td>
-                                                                <td>125</td>
-                                                                <td>car</td>
-                                                                <td>indica</td>
-                                                                <td>cab</td>
-                                                                <td>trip</td>
-                                                                <td>19-9-2017</td>
-                                                                <td>19-9-2018</td>
-                                                                
-                                                                <td><input type="checkbox" checked /></td>
                                                                 <td>
-                                                                    <button type="button" data-target="#Modal-header-primary" class="btn btn-default btn-xs">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setreportors(r);">
+                                                                        <i class="fa fa-edit"></i>&nbsp;
+
+                                                                    </button>
+                                                                </td>
+                                                                <td>
+                                                                    <button type="button" data-toggle="modal" class="btn btn-default btn-xs">
                                                                         <i class="fa fa-edit"></i>&nbsp;
 
                                                                     </button>
@@ -553,80 +577,98 @@
                                                             <div class="modal-content" ng-model="report">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add Pricing</h4>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add Charges</h4>
                                                                 </div>
                                                                 <div class="modal-body">
+                                                                    <div class="row ">
 
 
-                                                                    <div class="row">
+                                                                        <div class="col-md-12">
 
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Price Code:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Price Type:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Unit Price:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label"> Vehicle Model:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="row">
-
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">Package Type:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input  type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-
-                                                                    </div>
+                                                                            <div class="row mtl">
 
 
-                                                                    <div class="row">
+                                                                                <div class="col-md-12">
+                                                                                    <div id="generalTabContent" class="tab-content">
 
-                                                                        <div class="col-md-6">
-                                                                            <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input type="text"  class="form-control" /><span class="help-block"></span></div>
-                                                                        </div>
-                                                                       
+                                                                                        <div class="row">
 
-                                                                    </div>
-                                                               
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Title:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
 
-                                                                
-                                                                    <div class="form-actions">
-                                                                        <div style="text-align:center">
+                                                                                        </div>
+                                                                                        <div class="row">
 
-                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(report)">Save</button>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Category:<span class='require'></span></label>
+                                                                                                <div class="col-md-8">
+                                                                                                    <select class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
 
-                                                                            <a href="StartReport.html" class="btn btn-primary" ng-click="clearreport()">Cancel</a>
+                                                                                        </div>
+                                                                                        <div class="row">
 
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label"> ApplyAs:<span class='require'></span></label>
+                                                                                                <div class="col-md-8">
+                                                                                                    <select class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
+                                                                                                <div class="col-md-8">
+                                                                                                    <select class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+
+
+                                                                                    </div>
+
+
+                                                                                    <div class="form-actions">
+                                                                                        <div style="text-align:center">
+
+                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
+
+                                                                                            <a href="ClosingReport.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -708,8 +750,9 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/StartReport.js"></script>
-
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
+    <script src="js/chargesdiscounts.js"></script>
 
 </body>
 </html>
