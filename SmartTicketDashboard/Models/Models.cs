@@ -2140,12 +2140,18 @@ namespace SmartTicketDashboard.Models
         
     }
     public class vehiclemas
-    {
+    { 
         public string flag { get; set; }
         public int Id { get; set; }
         public int VID { get; set; }
         public int CompanyId { get; set; }
+        public int OwnerId { get; set; }
+        public int VehicleTypeId { get; set; }
         public string RegistrationNo { get; set; }
+        public int HasAC { get; set; }
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
         public string Type { get; set; }
         public string OwnerName { get; set; }
         public string ChasisNo { get; set; }

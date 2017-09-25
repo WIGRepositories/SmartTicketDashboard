@@ -421,7 +421,7 @@
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <div style="margin-right:100px;margin-top:10px">
-                                                            <label for="Address Id">Photo:</label>
+                                                           
                                                             <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
                                                             <div class="col-md-8">
                                                                 <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
@@ -459,6 +459,10 @@
                                                                 <tr>
                                                                     <td>Status</td>
                                                                     <td><span class="label label-success">Active</span></td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td><span class="label label-success">Approved</span></td>
+                                                                    <td><input type="checkbox" ng-checked="approved" /></td>
                                                                 </tr>
 
                                                             </tbody>
@@ -672,6 +676,70 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+                                                                
+
+                                                                <div class="portlet box portlet-grey" style="margin-bottom:10px;">
+
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="collapse2">Driver Documents</a></div>
+                                                                        <div class="tools"><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+
+
+                                                                    <div id="collapse2" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+
+
+                                                                            <!--<div class="alert alert-danger">No records to display.</div>-->
+                                                                            <table class="table table-bordered table-advanced tablesorter">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>File Name</th>
+                                                                                        <th>Document Type</th>
+                                                                                        <th>Expiry Date</th>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <th>Update</th>
+                                                                                        <th>Delete</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr ng-repeat="d in dl = (currobj.files1|filter:{docCatId:docType.DocTypeId,insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
+                                                                                        <td>{{d.docType}}</td>
+                                                                                        <td>
+                                                                                            {{d.expiryDate | date:'MM-dd-yyyy'}}
+                                                                                        </td>
+                                                                                        <!--<td>
+                                    {{d.dueDate | date:'MM-dd-yyyy'}}
+                                </td>-->
+                                                                                        <td>
+                                                                                            <a class="fa fa-arrow-up" ng-click="MoveUp($index)" ng-hide="$first || a.rootid==1" style="padding-right:10px"></a>
+                                                                                            <a class="fa fa-arrow-down" ng-click="MoveDown($index)" ng-hide="$last || a.rootid==1" style="padding-right:10px"></a>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-edit"></i>
+
+                                                                                            </button>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-trash-o"></i>
+                                                                                            </button>
+                                                                                        </td>
+                                                                                    </tr>
+
+                                                                                </tbody>
+                                                                            </table>
+
+                                                                            <div style="margin-left:10px;margin-bottom:0px">
+                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetDocdocCatId(docType.DocTypeId)">Upload Files</button>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="">Driver Transaction</a></div>
@@ -707,73 +775,12 @@
                                                                                         <td>1200</td>
                                                                                         <td>120</td>
                                                                                     </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="portlet box portlet-grey " style="margin-bottom: 10px;">
-
-                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                        <div class="caption"><a href="#collapse1">Driver Approvals</a></div>
-                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
-                                                                    </div>
-
-
-                                                                    <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px;  border: 1px solid #e5e5e5;">
-                                                                        <div class="panel-body">
-
-
-                                                                            <!--<div class="alert alert-danger">No records to display.</div>-->
-                                                                            <table class="table table-bordered table-advanced tablesorter">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>File Name</th>
-                                                                                        <th>Document Type</th>
-                                                                                        <th>Expiry Date</th>
-                                                                                        <!--<th>Due Date</th>-->
-                                                                                        <th>Update</th>
-                                                                                        <th>Delete</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    <tr ng-repeat="d in dl = (currobj.files1|filter:{docCatId:docType.DocTypeId,insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
-                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
-                                                                                        <td>{{d.docType}}</td>
-                                                                                        <td>
-                                                                                            {{d.expiryDate | date:'MM-dd-yyyy'}}
-                                                                                        </td>
-                                                                                        <!--<td>
-                                                                                            {{d.dueDate | date:'MM-dd-yyyy'}}
-                                                                                        </td>-->
-                                                                                        <td>
-                                                                                            <a class="fa fa-arrow-up" ng-click="MoveUp($index)" ng-hide="$first || a.rootid==1" style="padding-right:10px"></a>
-                                                                                            <a class="fa fa-arrow-down" ng-click="MoveDown($index)" ng-hide="$last || a.rootid==1" style="padding-right:10px"></a>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
-                                                                                                <i class="fa fa-edit"></i>
-
-                                                                                            </button>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
-                                                                                                <i class="fa fa-trash-o"></i>
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-
                                                                                 </tbody>
                                                                             </table>
-
-                                                                            <div style="margin-left:10px;margin-bottom:0px">
-                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetDocdocCatId(docType.DocTypeId)">Upload Files</button>
-                                                                            </div>
-
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="">Booking Details</a></div>
@@ -1012,10 +1019,7 @@
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    </div>
-    </div>
+   
 
 
     <script src="js/jquery-1.10.2.min.js"></script>
