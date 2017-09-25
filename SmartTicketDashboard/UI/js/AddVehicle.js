@@ -147,12 +147,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     }
-    $scope.GetCompanys = function () {
-        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
-            $scope.Companies = response.data;
-           // $scope.v.c = $scope.Companies[0];
-        });
-    }
+    //$scope.GetCompanys = function () {
+    //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+    //        $scope.Companies = response.data;
+    //       // $scope.v.c = $scope.Companies[0];
+    //    });
+    //}
       
     $scope.GetVehcileMaster = function () {
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
@@ -163,31 +163,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
 
-    $scope.GetCompanies = function () {
+    //$scope.GetCompanies = function () {
 
-        $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
-            $scope.Companies = res.data;
-            $scope.Companies1 = res.data;
+    //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (res, data) {
+    //        $scope.Companies = res.data;
+    //        $scope.Companies1 = res.data;
 
 
-            if ($scope.userCmpId != 1) {
-                //loop throug the companies and identify the correct one
-                for (i = 0; i < res.data.length; i++) {
-                    if (res.data[i].Id == $scope.userCmpId) {
-                        $scope.cmp = res.data[i];
-                        document.getElementById('test').disabled = true;
-                        break
-                    }
-                }
-                // $scope.GetFleetOwners();
-            }
-            else {
-                document.getElementById('test').disabled = false;
-            }
-            $scope.GetFleetOwners($scope.cmp);
-        });
+    //        if ($scope.userCmpId != 1) {
+    //            //loop throug the companies and identify the correct one
+    //            for (i = 0; i < res.data.length; i++) {
+    //                if (res.data[i].Id == $scope.userCmpId) {
+    //                    $scope.cmp = res.data[i];
+    //                    document.getElementById('test').disabled = true;
+    //                    break
+    //                }
+    //            }
+    //            // $scope.GetFleetOwners();
+    //        }
+    //        else {
+    //            document.getElementById('test').disabled = false;
+    //        }
+    //        $scope.GetFleetOwners($scope.cmp);
+    //    });
 
-    }
+    //}
 
 
 
@@ -334,7 +334,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Saved successfully!");
 
             $scope.Group = null;
-            $scope.GetVehcileMaster('VID=1');
+            //$scope.GetVehcileMaster('VID=1');
+            window.location.href = "vehicleDetails.html?VID=1";
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
