@@ -422,18 +422,35 @@
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
-                        <div class="page-title">Countries with operations</div>
+                        <div class="page-title">Mandatory User Documents</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li><a href="#">Countries</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><a href="#">Mandatory Documents</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                     </ol>
                     <div class="clearfix"></div>
                 </div>
                 <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                 <div class="page-content">
+
                     <div id="tableadvancedTabContent" class="tab-content">
-                        Country Name   <input type="text" ng-model="query" /><br />
+                        <div class="row mbm">
+                            <div class="col-md-5">
+                                Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
+                                    <option value="">Select</option>
+                                    <option value="1">Zimbabway</option>
+                                    <option value="2">Kenya</option>
+                                    <option value="3">Australia</option>
+                                    <option value="4">India</option>
+                                </select>
+                            </div>
+                            <div class="col-md-5">
+                                User Type: <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)">
+                                    <option value="">Select Type</option>
+                                </select>
+                            </div>
+
+                        </div>
                         <div id="tableactionTabContent" class="tab-content">
                             <div id="table-table-tab" class="tab-pane fade in active">
                                 <div class="row">
@@ -443,50 +460,64 @@
                                         <div class="table-container" ng-model="FORoutes">
                                             <div class="row mbm">
 
-
-
-
                                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                     <thead>
                                                         <tr>
                                                             <th width="10%">Select/Unselect</th>
                                                             <!--<th><input type="checkbox"
-                                                            ng-checked="checkedArr.length == FORoutes.length"
-                                                            ng-click="toggleAll()">Select</th>-->
+                ng-checked="checkedArr.length == FORoutes.length"
+                ng-click="toggleAll()">Select</th>-->
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                            <th>Type Group</th>
+                                                            <th>Active</th>
+                                                            <!--<th>List Key</th>
+                <th>List value</th>-->
+                                                            <th>Update</th>
 
-                                                            <th width="10%">Country Name</th>
-                                                            <th width="5%">Latitude</th>
-                                                            <th width="5%">Longitude</th>
-                                                            <th width="5%">ISO Code</th>
-                                                            <th width="5%">Flag</th>
-                                                            <!--<th>Active</th>-->
                                                         </tr>
                                                     </thead>
                                                     <tbody>
+                                                        <tr >
 
-                                                        <tr ng-repeat="c in Countries| filter:query" ng-on-finish-render>
-
-                                                            <!--<td>
-                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="route.assigned.toString() == '1'" ng-click="toggle(route, checkedArr);" /></td>-->
                                                             <td>
-                                                                <input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(c, checkedArr)" ng-click="toggle(c, checkedArr);" />
+                                                                <input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox"  />
                                                             </td>
-
-
-
-                                                            <td>{{c.Name}}</td>
-                                                            <td>{{c.Latitude}}</td>
-                                                            <td>{{c.Longitude}}</td>
-                                                            <td>{{c.ISOCode}}</td>
-                                                            <td>{{c.flag}}</td>
-
-
+                                                            <td>Rajendra</td>
+                                                            <td>Software</td>
+                                                            <td>Customer</td>
+                                                            <td><input type="checkBox"  /></td>
+                                                           
+                                                            <!--<td>{{T.ListKey}}</td>
+        <td>{{T.Listvalue}}</td>-->
+                                                            <td>
+                                                                
+                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" >
+                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    Edit
+                                                                </button>
+                                                            </td>
                                                         </tr>
+                                                        <tr ng-repeat="T in Types">
 
 
+                                                            <td>{{T.Name}}</td>
+                                                            <td>{{T.Description}}</td>
+                                                            <td>{{T.TypeGroup}}</td>
+                                                            <td><input type="checkBox" ng-checked="T.Active" disabled /></td>
 
-
+                                                            <!--<td>{{T.ListKey}}</td>
+                <td>{{T.Listvalue}}</td>-->
+                                                            <td>
+                                                                {{T.Update}}
+                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
+                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    Edit
+                                                                </button>
+                                                            </td>
+                                                        </tr>
                                                     </tbody>
+                                                   
 
 
                                                 </table>
