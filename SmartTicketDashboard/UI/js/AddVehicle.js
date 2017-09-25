@@ -24,101 +24,58 @@ app.directive('file-input', function ($parse) {
 });
 
 app.directive("ngFileSelect", function () {
-
     return {
-
         link: function ($scope, el) {
-
             el.on('click', function () {
-
                 this.value = '';
-
             });
 
             el.bind("change", function (e) {
-
                 $scope.file = (e.srcElement || e.target).files[0];
 
-
-
                 var allowed = ["jpeg", "png", "gif", "jpg"];
-
                 var found = false;
-
                 var img;
-
                 img = new Image();
 
                 allowed.forEach(function (extension) {
-
                     if ($scope.file.type.match('image/' + extension)) {
-
                         found = true;
-
                     }
-
                 });
 
                 if (!found) {
-
                     alert('file type should be .jpeg, .png, .jpg, .gif');
-
                     return;
-
                 }
 
                 img.onload = function () {
-
                     var dimension = $scope.selectedImageOption.split(" ");
-
                     if (dimension[0] == this.width && dimension[2] == this.height) {
-
                         allowed.forEach(function (extension) {
-
                             if ($scope.file.type.match('image/' + extension)) {
-
                                 found = true;
-
                             }
-
                         });
 
                         if (found) {
-
                             if ($scope.file.size <= 1048576) {
-
                                 $scope.getFile();
-
                             } else {
-
                                 alert('file size should not be grater then 1 mb.');
-
                             }
 
                         } else {
-
                             alert('file type should be .jpeg, .png, .jpg, .gif');
-
                         }
 
                     } else {
-
                         alert('selected image dimension is not equal to size drop down.');
-
                     }
-
-                };
-
-                //  img.src = _URL.createObjectURL($scope.file);
-
-
-
+                };               
             });
-
         }
-
     };
-
 });
 
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, $upload, $timeout, fileReader, $filter) {
@@ -193,7 +150,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-            $scope.v.c = $scope.Companies[0];
+           // $scope.v.c = $scope.Companies[0];
         });
     }
       
@@ -201,7 +158,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
             $scope.VehiclesList = res.data;
         });
-        $scope.imageSrc = $scope.VehiclesList.Photo;
+       // $scope.imageSrc = $scope.VehiclesList.Photo;
         
     }
 

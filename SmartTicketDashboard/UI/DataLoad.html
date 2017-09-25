@@ -441,13 +441,14 @@
                                                                 <option value="9">Drivers</option>
                                                                 <option value="10">Vehicles</option>
                                                                 <option value="11">Cards</option>
-                                                                <option value="12">DriverVehicleAssignGroup</option>
+                                                                <option value="12">Driver Vehicle Assignment</option>
                                                             </select>
                                                         </div>
-                                                        <div class="col-md-3" style="margin-top:15px">
+                                                        <div class="col-md-3">
                                                             <!--<input type="file" width="100%" ng-model="filename" accept=".csv" />-->
                                                             <!--<input type="file" chechfilevalid="FileInvalidMessage" accept="DriversList.csv"/>-->
-                                                            <input type="file" file-reader="fileContent" accept="Company.csv" />
+                                                            CSV file with the data
+                                                            <input type="file" file-reader="fileContent" accept="Company.csv" style="width:100%"/>
 
                                                         </div>
                                                         <div class="col-md-6" style="text-align:right;margin-top:15px">
@@ -458,69 +459,74 @@
                                                             <input type="button" class="btn btn-green" ng-click="downloadTemplate();" value="download csv template" />
                                                             <input type="button" class="btn btn-green" ng-click="importData();" value="Load data" />
                                                         </div>
-
+                                                                                                         
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Mandatory columns</div>
-                                                        <div class="panel-body">{{mandatoryCols}}</div>
-                                                        <div class="panel-body">{{optionsCols}}</div>
-                                                    </div>
+                                                <div class="row mbm">
+                                                    <div>
+                                                        <font color="red">Mandatory columns:</font>{{mandatoryCols}}
+                                                    </div>       
                                                 </div>
-                                                <div class="col-lg-12">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-heading">Log:</div>
-                                                        <div class="panel-body" style="text-align:right">
-                                                            <button ng-click="saveJSON()">Export Log</button>
-                                                            
-                                                            <textarea rows="20" class="form-control" ng-model="logdata" style="margin-top:3px"></textarea>
+                                                    <!--<div class="col-lg-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Mandatory columns</div>
+                <div class="panel-body">{{mandatoryCols}}</div>
+                <div class="panel-body">{{optionsCols}}</div>
+            </div>
+        </div>-->
+                                                    <div class="col-lg-12">
+                                                        <div class="panel panel-default">
+                                                            <div class="panel-heading">Log:</div>
+                                                            <div class="panel-body" style="text-align:right">
+                                                                <button ng-click="saveJSON()">Export Log</button>
 
+                                                                <textarea rows="20" class="form-control" ng-model="logdata" style="margin-top:3px"></textarea>
+
+                                                            </div>
                                                         </div>
                                                     </div>
+                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+
+                                                        <tbody>
+
+                                                            <tr ng-repeat="l in list" class="gradeA">
+                                                                <td>Name:{{l.Name}}</td>
+                                                                <td>Code:{{l.Code}}</td>
+                                                                <td>Address:{{l.Address}}</td>
+                                                                <td>ContactNo1:{{l.ContactNo1}}</td>
+                                                                <td>EmailId:{{l.EmailId}}</td>
+                                                                <td>active:{{l.active}}</td>
+
+
+
+                                                                <!--<td>
+                        <button ng-disabled="Roleid != 1"
+                                type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-
+                                click="setDataLoad;">
+
+                            Load
+                        </button>
+
+                    </td>
+                    <td>
+                        <button ng-disabled="Roleid != 1"
+                                type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-
+                                click="setDataLoad;">
+
+                            Cancel
+                        </button>
+
+                    </td>-->
+                                                            </tr>
+
+                                                        </tbody>
+
+                                                    </table>
+
+
+
+
                                                 </div>
-                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-
-                                                    <tbody>
-
-                                                        <tr ng-repeat="l in list" class="gradeA">
-                                                            <td>Name:{{l.Name}}</td>
-                                                            <td>Code:{{l.Code}}</td>
-                                                            <td>Address:{{l.Address}}</td>
-                                                            <td>ContactNo1:{{l.ContactNo1}}</td>
-                                                            <td>EmailId:{{l.EmailId}}</td>
-                                                            <td>active:{{l.active}}</td>
-
-
-
-                                                            <!--<td>
-                                                                <button ng-disabled="Roleid != 1"
-                                                                        type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-
-                                                                        click="setDataLoad;">
-
-                                                                    Load
-                                                                </button>
-
-                                                            </td>
-                                                            <td>
-                                                                <button ng-disabled="Roleid != 1"
-                                                                        type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-
-                                                                        click="setDataLoad;">
-
-                                                                    Cancel
-                                                                </button>
-
-                                                            </td>-->
-                                                        </tr>
-
-                                                    </tbody>
-
-                                                </table>
-
-
-
-
-                                            </div>
                                         </div>
                                     </div>
                                 </div>

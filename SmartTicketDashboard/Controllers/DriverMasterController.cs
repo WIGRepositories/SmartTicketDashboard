@@ -15,7 +15,6 @@ namespace SmartTicketDashboard.Controllers
     {
        
         [HttpGet]
-
         [Route("api/DriverMaster/GetMaster")]
         public DataTable GetMaster(int DId)
         {
@@ -40,7 +39,6 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpGet]
-
         [Route("api/DriverMaster/Getdriverdetails")]
         public DataTable Getdriverdetails(int DId)
         {
@@ -65,7 +63,6 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpPost]
         [Route("api/DriverMaster/Driverlist")]
-
         public DataTable Driverlist(driverdetails d)
         {
             SqlConnection conn = new SqlConnection();
@@ -153,7 +150,6 @@ namespace SmartTicketDashboard.Controllers
 
             return dt;
         }
-
 
         [HttpPost]
         [Route("api/DriverMaster/SaveDriverDoc")]

@@ -14,7 +14,6 @@ namespace SmartTicketDashboard.Controllers
     public class VehicleMasterController : ApiController
     {
         [HttpGet]
-
         [Route("api/VehicleMaster/GetVehcileMaster")]
         public DataTable GetVehcileMaster(int VID)
         {
@@ -39,7 +38,6 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpGet]
-
         [Route("api/VehicleMaster/GetVehcileDetails")]
         public DataTable GetVehcileDetails(int VID)
         {
@@ -62,9 +60,9 @@ namespace SmartTicketDashboard.Controllers
             return dt;
 
         }
+
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
-
         public DataTable Vehicles(vehiclemas v)
         {
             SqlConnection conn = new SqlConnection();
@@ -170,6 +168,90 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpPost]
+        [Route("api/VehicleMaster/Vehicle")]
+        public DataTable Vehicle(vehiclemas v)
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVInsUpdVehicle";
+            cmd.Connection = conn;
+
+
+            SqlParameter se = new SqlParameter("@flag", SqlDbType.VarChar);
+            se.Value = v.flag;
+            cmd.Parameters.Add(se);
+
+            SqlParameter s = new SqlParameter("@Id", SqlDbType.Int);
+            s.Value = v.Id;
+            cmd.Parameters.Add(s);
+
+            SqlParameter i = new SqlParameter("@VID", SqlDbType.Int);
+            i.Value = v.VID;
+            cmd.Parameters.Add(i);
+
+            SqlParameter cd = new SqlParameter("@CompanyId", SqlDbType.Int);
+            cd.Value = v.CompanyId;
+            cmd.Parameters.Add(cd);
+
+            SqlParameter n = new SqlParameter("@RegistrationNo", SqlDbType.VarChar, 50);
+            n.Value = v.RegistrationNo;
+            cmd.Parameters.Add(n);
+
+            SqlParameter cn = new SqlParameter("@ChasisNo", SqlDbType.VarChar, 50);
+            cn.Value = v.RegistrationNo;
+            cmd.Parameters.Add(cn);
+
+            SqlParameter en = new SqlParameter("@Engineno", SqlDbType.VarChar, 50);
+            en.Value = v.RegistrationNo;
+            cmd.Parameters.Add(en);
+
+            SqlParameter oid = new SqlParameter("@OwnerId", SqlDbType.Int);
+            oid.Value = v.OwnerId;
+            cmd.Parameters.Add(oid);
+
+            SqlParameter vt = new SqlParameter("@VehicleTypeId", SqlDbType.Int);
+            vt.Value = v.VehicleTypeId;
+            cmd.Parameters.Add(vt);
+
+            SqlParameter vv = new SqlParameter("@VehicleModelId", SqlDbType.Int);
+            vv.Value = v.VehicleModelId;
+            cmd.Parameters.Add(vv);
+
+            SqlParameter vg = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+            vg.Value = v.VehicleGroupId;
+            cmd.Parameters.Add(vg);            
+
+            SqlParameter wg = new SqlParameter("@ModelYear", SqlDbType.VarChar,5);
+            wg.Value = v.ModelYear;
+            cmd.Parameters.Add(wg);
+
+            SqlParameter ac = new SqlParameter("@HasAC", SqlDbType.Int);
+            ac.Value = v.HasAC;
+            cmd.Parameters.Add(ac);
+
+            SqlParameter sid = new SqlParameter("@StatusId", SqlDbType.Int);
+            sid.Value = v.StatusId;
+            cmd.Parameters.Add(sid);
+
+            SqlParameter isv = new SqlParameter("@IsVerified", SqlDbType.Int);
+            isv.Value = v.IsVerified;
+            cmd.Parameters.Add(isv);            
+
+            SqlParameter vcode = new SqlParameter("@VehicleCode ", SqlDbType.VarChar,10);
+            vcode.Value = v.VehicleCode;
+            cmd.Parameters.Add(vcode);
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter da = new SqlDataAdapter(cmd);
+            da.Fill(dt);
+
+            return dt;
+        }
+
+        [HttpPost]
         [Route("api/VehicleMaster/SaveVehicleDoc")]
         public DataSet SaveVehicleDoc(VehicleDocuments a)
         {
@@ -197,7 +279,6 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter Gid = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
                 Gid.Value = a.docName;
                 cmd.Parameters.Add(Gid);
-
                 
 
                 SqlParameter rootassetid = new SqlParameter("@DocTypeId", SqlDbType.Int);
