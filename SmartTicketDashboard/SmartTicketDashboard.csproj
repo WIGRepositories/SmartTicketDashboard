@@ -131,6 +131,8 @@
     <Content Include="UI\js\ChargesDiscounts.js" />
     <Content Include="UI\js\DriverStatus.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\MandatoryUserDoc.js" />
+    <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
@@ -2098,6 +2100,7 @@
     <Compile Include="Controllers\LicensePricingController.cs" />
     <Compile Include="Controllers\licenseTController.cs" />
     <Compile Include="Controllers\List.cs" />
+    <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\nearestvehiclesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
