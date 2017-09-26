@@ -15,7 +15,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/GetMandatoryUserDocs")]
-        public DataTable GetMandUserDocs()
+        public DataTable GetMandUserDocs(int ctryId, int utId)
         {
             DataTable Tbl = new DataTable();
 
@@ -29,8 +29,8 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetMandatoryUserDocs";
-            //cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryId;
-            //cmd.Parameters.Add("@vtId", SqlDbType.Int).Value = utId;
+            cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryId;
+            cmd.Parameters.Add("@vtId", SqlDbType.Int).Value = utId;
             cmd.Connection = conn;
 
             //DataSet ds = new DataSet();
@@ -118,7 +118,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/GetMandatoryVehicleDocs")]
-        public DataTable GetMandVehicleDocs()
+        public DataTable GetMandVehicleDocs(int ctryId, int vgId)
         {
             DataTable Tbl = new DataTable();
 
@@ -132,8 +132,8 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetMandatoryVehicleDocs";
-            //cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryId;
-            //cmd.Parameters.Add("@vtId", SqlDbType.Int).Value = utId;
+            cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryId;
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vgId;
             cmd.Connection = conn;
 
             //DataSet ds = new DataSet();
