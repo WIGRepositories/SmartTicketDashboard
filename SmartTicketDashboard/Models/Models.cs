@@ -2761,5 +2761,34 @@ namespace SmartTicketDashboard.Models
 
         public string Flag { get; set; }
     }
+    public class MandUserDocs
+    {
+
+
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int DocTypeId { get; set; }
+
+        public int Countryid { get; set; }
+
+        public int UserTypeId { get; set; }
+    }
+    
+    public class MandVehicleDocs
+    {
+
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int Countryid { get; set; }
+
+        public int VehicleGroupId { get; set; }
+
+        public int DocTypeId { get; set; }
+    }
+
 }
 

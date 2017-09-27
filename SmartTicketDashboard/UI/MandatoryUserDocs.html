@@ -28,7 +28,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCountries();" ng-model="dashboardDS">
+<body ng-app="myApp" ng-controller="myCtrl"  ng-model="Types">
 
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
@@ -436,16 +436,18 @@
                     <div id="tableadvancedTabContent" class="tab-content">
                         <div class="row mbm">
                             <div class="col-md-5">
-                                Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
-                                    <option value="">Select</option>
-                                    <option value="1">Zimbabway</option>
-                                    <option value="2">Kenya</option>
-                                    <option value="3">Australia</option>
-                                    <option value="4">India</option>
-                                </select>
-                            </div>
+                                <!--Type Group: <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)">-->
+                                    Country:
+                                    <select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="Mand" ng-init="GetCountries()" style="width:80%">
+                                        <option value="">Select</option>
+                                        <option value="1">Zimbabway</option>
+                                        <option value="2">Kenya</option>
+                                        <option value="3">Australia</option>
+                                        <option value="4">India</option>
+                                    </select>
+</div>
                             <div class="col-md-5">
-                                User Type: <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)">
+                                User Type: <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="Mand" ng-change="getselectval(s)">
                                     <option value="">Select Type</option>
                                 </select>
                             </div>
@@ -500,7 +502,7 @@
                                                         </tr>
                                                         <tr ng-repeat="T in Types">
 
-
+                                                            <td><input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" /></td>
                                                             <td>{{T.Name}}</td>
                                                             <td>{{T.Description}}</td>
                                                             <td>{{T.TypeGroup}}</td>
@@ -644,7 +646,7 @@
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
     <script src="js/Countries.js"></script>
-
+    <script src="js/MandatoryUserDoc.js"></script>
 
 </body>
 

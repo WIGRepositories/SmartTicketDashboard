@@ -437,17 +437,18 @@
 
 
                                                                                     <div class="col-md-12">
-                                                                                        <div id="generalTabContent" class="tab-content">
+                                                                                        <div id="generalTabContent" ng-model="Editcharges" class="tab-content">
+
 
                                                                                             <div class="row">
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Code" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Title:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Title" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
 
                                                                                             </div>
@@ -455,12 +456,12 @@
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Description" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Category:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select class="form-control">
+                                                                                                        <select ng-model="Editcharges.Category" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
                                                                                                     </div>
@@ -472,7 +473,7 @@
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label"> ApplyAs:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select class="form-control">
+                                                                                                        <select ng-model="Editcharges.ApplyAs" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
                                                                                                     </div>
@@ -480,7 +481,7 @@
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select class="form-control">
+                                                                                                        <select ng-model="Editcharges.cdValue" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
                                                                                                     </div>
@@ -491,11 +492,11 @@
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="date" ng-model="Editcharges.ToDate" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
 
                                                                                             </div>
@@ -507,7 +508,7 @@
                                                                                         <div class="form-actions">
                                                                                             <div style="text-align:center">
 
-                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="EditChargesDiscounts(Editcharges)">Save</button>
 
                                                                                                 <a href="ClosingReport.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 
@@ -555,7 +556,7 @@
                                                                 <th width="10%">{{cd.ToDate}}</th>
 
                                                                 <td>
-                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setreportors(r);">
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCharges(cd);">
                                                                         <i class="fa fa-edit"></i>&nbsp;
 
                                                                     </button>
@@ -595,11 +596,11 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.Code" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Title:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.Title" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
 
                                                                                         </div>
@@ -607,12 +608,12 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.Description" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Category:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select class="form-control">
+                                                                                                    <select ng-model="Addcharges.Category" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -624,7 +625,7 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label"> ApplyAs:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select class="form-control">
+                                                                                                    <select ng-model="Addcharges.ApplyAs" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -632,7 +633,7 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select class="form-control">
+                                                                                                    <select ng-model="Addcharges.cdValue" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -643,11 +644,11 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="Addcharges.FromDate" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="time" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="date" ng-model="Addcharges.ToDate" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
 
                                                                                         </div>
@@ -659,7 +660,7 @@
                                                                                     <div class="form-actions">
                                                                                         <div style="text-align:center">
 
-                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle)">Save</button>
+                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="AddChargesDiscounts(Addcharges,'I')">Save</button>
 
                                                                                             <a href="ClosingReport.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 

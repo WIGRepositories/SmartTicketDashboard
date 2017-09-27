@@ -9,36 +9,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $scope.checkedArr = new Array();
-    $scope.uncheckedArr = new Array();
+    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
+        $scope.TypeGroups = res.data;
+        $scope.getselectval();
+    });
 
     $scope.GetCountries = function () {
 
-        $scope.checkedArr = [];
-        $scope.uncheckedArr = [];
-
         $http.get('/api/Countries/GetCountries').then(function (response, req) {
             $scope.Countries = response.data;
-            $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
-            $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+           
         });
-       
     }
-
-    $scope.saveUserDoc = function (seltype) {
-
-        //from the checked and unchecked array get the actuallly records to be saved
-        //from checked array take the records which have assigned = 0 as there are new assignements
-        //from unchecked array take assgined = 1 as these need to be removed               
+    $scope.getselectval = function (seltype) {
         var grpid = (seltype) ? seltype.Id : -1;
-      
+
 
         $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
             $scope.Types = res.data;
 
         });
 
-      
+        // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
+
+    }
+
+    $scope.saveUserDoc = function (seltype) {
+       
         var countries = [];
 
         for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {

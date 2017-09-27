@@ -103,23 +103,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
                 flag: "I",
                 Id : Addcharges.Id ,
-                EntryDate: Addcharges.EntryDate,
-                VechID: Addcharges.VechID,
-                RegistrationNo: Addcharges.RegistrationNo,
-                DriverName: Addcharges.DriverName,
-                PartyName: Addcharges.PartyName,
-                PickupPlace: Addcharges.PickupPlace,
-                DropPlace: Addcharges.DropPlace,
-                StartMeter: Addcharges.StartMeter,
-                EndMeter: Addcharges.EndMeter,
-                OtherExp: Addcharges.OtherExp,
-                GeneratedAmount: Addcharges.GeneratedAmount,
-                ActualAmount: Addcharges.ActualAmount,
-                ExecutiveName: Addcharges.ExecutiveName,
-                BNo: Addcharges.BNo,
-                DropTime: Addcharges.DropTime,
-                PickupTime: Addcharges.PickupTime,
-                EntryTime: Addcharges.EntryTime,
+                Code: Addcharges.Code,
+                Title: Addcharges.Title,
+                Description: Addcharges.Description,
+                cdType: Addcharges.cdType,
+                Category: Addcharges.Category,
+                ApplyAs: Addcharges.ApplyAs,
+                cdValue: Addcharges.cdValue,
+                FromDate: Addcharges.FromDate,
+                ToDate: Addcharges.ToDate,
+              
 
 
                 Active: (Addcharges.Active == true) ? 1 : 0,
@@ -127,7 +120,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             var req = {
                 method: 'POST',
-                url: '/api/ClosingAddcharges/closerprt',
+                url: '/api/SaveChargesDiscounts',
                 data: Addcharges
             }
             $http(req).then(function (response) {
@@ -145,4 +138,127 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.currGroup = null;
         
     }
+
+    $scope.EditChargesDiscounts = function (Editcharges) {
+
+
+        //if (Addcharges == null) {
+        //    alert('Please Enter Name');
+        //    return;
+        //}
+        //if (Addcharges.EntryDate == null) {
+        //    alert('Please Enter EntryDate');
+        //    return;
+        //}
+        //if (Addcharges.VechID == null) {
+        //    alert('Please Enter VechID');
+        //    return;
+        //}
+        //if (Addcharges.RegistrationNo == null) {
+        //    alert('Please Enter RegistrationNo');
+        //    return;
+        //}
+        //if (Addcharges.DriverName == null) {
+        //    alert('Please Enter DriverName');
+        //    return;
+        //}
+        //if (Addcharges.PartyName == null) {
+        //    alert('Please Enter PartyName');
+        //    return;
+        //}
+        //if (Addcharges.PickupPlace == null) {
+        //    alert('Please Enter PickupPlace');
+        //    return;
+        //}
+        //if (Addcharges.DropPlace == null) {
+        //    alert('Please Enter DropPlace');
+        //    return;
+        //}
+        //if (Addcharges.StartMeter == null) {
+        //    alert('Please Enter StartMeter');
+        //    return;
+        //}
+        //if (Addcharges.EndMeter == null) {
+        //    alert('Please Enter EndMeter');
+        //    return;
+        //}
+        //if (Addcharges.OtherExp == null) {
+        //    alert('Please Enter OtherExp');
+        //    return;
+        //}
+        //if (Addcharges.GeneratedAmount == null) {
+        //    alert('Please Enter GeneratedAmount');
+        //    return;
+        //}
+        //if (Addcharges.ActualAmount == null) {
+        //    alert('Please Enter ActualAmount');
+        //    return;
+        //}
+
+        //if (Addcharges.ExecutiveName == null) {
+        //    alert('Please Enter ExecutiveName');
+        //    return;
+        //}
+        //if (Addcharges.BNo == null) {
+        //    alert('Please Enter BNo');
+        //    return;
+        //}
+        //if (Addcharges.DropTime == null) {
+        //    alert('Please Enter DropTime');
+        //    return;
+        //}
+        //if (Addcharges.PickupTime == null) {
+        //    alert('Please Enter PickupTime');
+        //    return;
+        //}
+        //if (Addcharges.EntryTime == null) {
+        //    alert('Please Enter EntryTime');
+        //    return;
+        //}
+
+
+
+        var Editcharges = {
+
+            flag: "U",
+            Id: Editcharges.Id,
+            Code: Editcharges.Code,
+            Title: Editcharges.Title,
+            Description: Editcharges.Description,
+            cdType: Editcharges.cdType,
+            Category: Editcharges.Category,
+            ApplyAs: Editcharges.ApplyAs,
+            cdValue: Editcharges.cdValue,
+            FromDate: Editcharges.FromDate,
+            ToDate: Editcharges.ToDate,
+
+
+
+            Active: (Editcharges.Active == true) ? 1 : 0,
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/SaveChargesDiscounts',
+            data: Editcharges
+        }
+        $http(req).then(function (response) {
+
+            alert("Updated successfully!");
+
+            $scope.Editcharges = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
+      
+        $scope.currGroup = null;
+
+    }
+    $scope.setCharges = function (cd) {
+        $scope.Editcharges = cd;
+    };
 });
