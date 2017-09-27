@@ -137,6 +137,7 @@
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistBasePricingConfig.js" />
+    <Content Include="UI\js\VehicleList.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\car2.jpg" />

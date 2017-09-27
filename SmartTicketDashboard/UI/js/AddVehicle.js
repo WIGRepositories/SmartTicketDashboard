@@ -114,7 +114,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedVehicleList = parseLocation(window.location.search)['VID'];
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?Vid=' + $scope.selectedVehicleList).then(function (res, data) {
-            $scope.v = res.data[0];            
+            $scope.v = res.data.Table;            
 
             //if ($scope.VehiclesList.length > 0) {
             //    if ($scope.selectedVehicleList != null) {
@@ -132,10 +132,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             //    $scope.getselectval($scope.selectedVehicleList);
             //}
-            $scope.imageSrc = $scope.v.Photo;
-            $scope.v.vt = $scope.v.Type[0];
-            $scope.v.vg1 = $scope.v.VehicleGroupId[0];
-            $scope.v.vm = $scope.v.VehicleModelId[0];
+           // $scope.imageSrc = $scope.v.Photo;
+            //$scope.v.vt = $scope.v.Type[0];
+            //$scope.v.vg1 = $scope.v.VehicleGroupId[0];
+            //$scope.v.vm = $scope.v.VehicleModelId[0];
             
         });
     }
