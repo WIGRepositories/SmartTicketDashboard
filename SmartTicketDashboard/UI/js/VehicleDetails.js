@@ -244,6 +244,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     };
 
+
+    function getdate(date) {
+        var formateddate = date;
+
+        if (date) {
+            formateddate = $filter('date')(date, 'yyyy-MM-dd');
+        }
+
+        return formateddate;
+    }
+
     $scope.EditVehicleDoc = function (f) {
     
         for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
