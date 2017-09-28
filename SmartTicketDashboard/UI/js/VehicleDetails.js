@@ -108,7 +108,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.GetVehicleDetails = function () {
 
-        $scope.selectedVehicle = parseLocation(window.location.search)['VID'];
+        $scope.selectedVehicle = parseLocation(window.location.search)['VID']; 
 
         $http.get('/api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
             $scope.vDetails = res.data.Table[0];
