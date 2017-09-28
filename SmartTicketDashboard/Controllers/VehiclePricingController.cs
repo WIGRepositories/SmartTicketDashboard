@@ -48,12 +48,9 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "HVInsUpdDelTariff";
             cmd.Connection = conn;
 
-            
-
             SqlParameter s = new SqlParameter("@SrNo", SqlDbType.Int);
             s.Value = m.SrNo;
             cmd.Parameters.Add(s);
-
 
             SqlParameter i = new SqlParameter("@Duration", SqlDbType.Int);
             i.Value = m.Duration;
@@ -67,8 +64,6 @@ namespace SmartTicketDashboard.Controllers
             r.Value = m.IndicaRate;
             cmd.Parameters.Add(r);
 
-
-
             SqlParameter a = new SqlParameter("@IndigoRate", SqlDbType.Int);
             a.Value = m.IndigoRate;
             cmd.Parameters.Add(a);
@@ -81,11 +76,30 @@ namespace SmartTicketDashboard.Controllers
             f.Value = m.Tag;
             cmd.Parameters.Add(f);
 
-          
-
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
+
+            return dt;
+        }
+
+
+        [HttpGet]
+        [Route("api/GetVehicleDistancePrices")]
+
+        public DataTable GetVehicleDistancePrices()
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetVehicleDistPrices";
+            cmd.Connection = conn;
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
 
             return dt;
         }
@@ -99,14 +113,18 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "InsUpdDelVehicleDistancePrice";
+            cmd.CommandText = "PSInsUpdDelVehicleDistancePrice";
             cmd.Connection = conn;
 
-            SqlParameter vdpcSourceLoc = new SqlParameter("@SourceLoc", SqlDbType.VarChar, 200);
+            SqlParameter vdpcId = new SqlParameter("@Id", SqlDbType.Int);
+            vdpcId.Value = vdpc.Id;
+            cmd.Parameters.Add(vdpcId);
+
+            SqlParameter vdpcSourceLoc = new SqlParameter("@SourceLoc", SqlDbType.VarChar);
             vdpcSourceLoc.Value = vdpc.SourceLoc;
             cmd.Parameters.Add(vdpcSourceLoc);
 
-            SqlParameter vdpcDestinationLoc = new SqlParameter("@DestinationLoc", SqlDbType.VarChar, 200);
+            SqlParameter vdpcDestinationLoc = new SqlParameter("@DestinationLoc", SqlDbType.VarChar);
             vdpcDestinationLoc.Value = vdpc.DestinationLoc;
             cmd.Parameters.Add(vdpcDestinationLoc);
 
@@ -137,6 +155,10 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter vdpcPricingTypeId = new SqlParameter("@PricingTypeId", SqlDbType.Int);
             vdpcPricingTypeId.Value = vdpc.PricingTypeId;
             cmd.Parameters.Add(vdpcPricingTypeId);
+
+            SqlParameter vdpcDistance = new SqlParameter("@Distance", SqlDbType.Float);
+            vdpcDistance.Value = vdpc.Distance;
+            cmd.Parameters.Add(vdpcDistance);
 
             SqlParameter vdpcUnitPrice = new SqlParameter("@UnitPrice", SqlDbType.Float);
             vdpcUnitPrice.Value = vdpc.UnitPrice;
