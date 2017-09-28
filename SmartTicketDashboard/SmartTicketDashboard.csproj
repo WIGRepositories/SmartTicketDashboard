@@ -119,6 +119,7 @@
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
     <Content Include="UI\images\Indigo-taxi.png" />
+    <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
     <Content Include="UI\js\Appusers.js" />

@@ -15,7 +15,17 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <style>
+        .modal-dialog {
+            width: 600px;
+        }
+
+        .thumbnail {
+            margin-bottom: 6px;
+        }
+        </style>
 </head>
+
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetMaster();" ng-model="listdrivers">
     <div>
         <!--BEGIN THEME SETTING-->
@@ -434,8 +444,8 @@
                                                                     <th width="10%">Fleet Owner</th>
                                                                     <th width="10%">Address</th>
                                                                     <th width="10%">Permanent Address</th>
-                                                                    <th width="10%">QR Code</th>
                                                                     <th width="10%">Email Id</th>
+                                                                    <th width="10%">QR Code</th>
                                                                     <th width="9%">Approved</th>
                                                                     <th width="9%">Update</th>
 
@@ -451,9 +461,9 @@
                                                                     <td>{{Dl.Fleetowner}}</td>
                                                                     <td>{{Dl.Address}}</td>
                                                                     <td>{{Dl.PermanentAddress}}</td>
-                                                                    <td width="10%"> <img src="images/user.jpg" width="50px" height="50px" /></td>
                                                                     <td>{{Dl.Emailid}}</td>
-                                                                  
+                                                                    <td width="10%"> <a title="Image 1" href="#"><img class="thumbnail img-responsive" src="images/qr.png" width="50px" height="50px" /></a></td>
+                                                                   
                                                                     <td><input type="checkbox" checked /></td>
                                                                     <td>
                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
@@ -578,7 +588,14 @@
 
                                                                                 </div>
                                                                                
-                                                                               
+                                                                                <div class="row">
+
+
+                                                                                    <div class="col-md-6">
+                                                                                        <label for="code" class="col-md-4 control-label" style="float:left">E Mail Id:<span class='require'></span></label>
+                                                                                        <div class="col-md-8"><input id="inputPin" type="text" ng-model="Driverlist.Email" class="form-control" /><span class="help-block"></span></div>
+                                                                                    </div>
+                                                                                </div>
                                                                                
                                                                                
 
@@ -841,7 +858,24 @@
                                                     </div>
                                                 </div>
 
+                                                <!------image---->
+                                                <div tabindex="-1" class="modal fade" id="myModal" role="dialog">
+                                                    <div class="modal-dialog">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <button class="close" type="button" data-dismiss="modal">×</button>
+                                                                <h3 class="modal-title">Heading</h3>
+                                                            </div>
+                                                            <div class="modal-body">
 
+                                                            </div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-default" data-dismiss="modal">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-----image--->
                                             </div>
                                             <!--BEGIN FOOTER-->
                                             <div id="footer">
@@ -910,6 +944,6 @@
 
 
     <script src="js/fileupload/Upload.js"></script>
-
+   
 </body>
 </html>
