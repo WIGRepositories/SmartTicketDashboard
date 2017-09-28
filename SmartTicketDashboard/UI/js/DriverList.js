@@ -153,12 +153,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.Getdriverdetails = function () {
 
-        $scope.listdrivers = null;
+        $scope.Dl = null;
 
         $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.Dl = res.data[0];
+            $scope.Dl= res.data[0];
         });
     }
     $scope.getselectval = function (v) {
