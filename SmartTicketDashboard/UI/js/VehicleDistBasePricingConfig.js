@@ -82,13 +82,9 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
     }
 
 
-    $scope.GetDistancePrices = function () {
-        $http.get("/api/GetVehicleDistancePrices").then(function (response, req) {
-            $scope.DistPricelist = response.data;
-        });
-    }
+   
 
-    $scope.SavePricing = function (directions) {
+    $scope.SavePricing = function (directions,flag) {
         alert();
 
         
@@ -107,7 +103,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             Distance: $scope.distval,
             UnitPrice:directions.unitprice,
             Amount: directions.total,
-            flag: 'I'
+            flag: flag
            
         };
 
