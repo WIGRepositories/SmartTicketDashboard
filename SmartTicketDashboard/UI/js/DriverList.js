@@ -159,25 +159,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
             $scope.Dl = res.data[0];
-            
-            //if ($scope.listdrivers.length > 0) {
-            //    if ($scope.selectedlistdrivers != null) {
-            //        for (i = 0; i < $scope.listdrivers.length; i++) {
-            //            if ($scope.listdrivers[i].id == $scope.selectedlistdrivers) {
-            //                $scope.v = $scope.listdrivers[i];
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    else {
-            //        $scope.s = $scope.listdrivers[0];
-            //        $scope.selectedlistdrivers = $scope.listdrivers[0].id;
-            //    }
-
-            //    $scope.getselectval($scope.selectedlistdrivers);
-            //}
-
-            $scope.imageSrc = $scope.Dl.Photo;
         });
     }
     $scope.getselectval = function (v) {
@@ -188,12 +169,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-
-
     $scope.GetCompanys = function () {
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
-            $scope.Dl.CompanyId = $scope.Companies[0];
+           // $scope.Dl.CompanyId = $scope.Companies[0];
            
         });
     }
@@ -202,65 +181,65 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
-        $scope.imageSrc = $scope.listdrivers.Photo;
+       // $scope.imageSrc = $scope.listdrivers.Photo;
     }
     $scope.docfiles = [];
 
     $scope.saveNew = function (Driverlist,flag) {
       
         
-        if (Driverlist.Id == null) {
-            alert('Please Enter CompanyId');
-            return;
-        }
-        if (Driverlist.NAme == null) {
-            alert('Please Enter NAme');
-            return;
-        }
-        if (Driverlist.Address == null) {
-            alert('Please Enter Address');
-            return;
-        }
-        if (Driverlist.City == null) {
-            alert('Please Enter City');
-            return;
-        }
-        if (Driverlist.Pin == null) {
-            alert('Please Enter Pin');
-            return;
-        }
-        if (Driverlist.PAddress == null) {
-            alert('Please Enter PAddress');
-            return;
-        }
-        if (Driverlist.PCity == null) {
-            alert('Please Enter PCity');
-            return;
-        }
-        if (Driverlist.PPin == null) {
-            alert('Please Enter PPin');
-            return;
-        }
-        if (Driverlist.OffMobileNo == null) {
-            alert('Please Enter OffMobileNo');
-            return;
-        }
-        if (Driverlist.PMobNo == null) {
-            alert('Please Enter PMobNo');
-            return;
-        }
-        if (Driverlist.DOB == null) {
-            alert('Please Enter DOB');
-            return;
-        }
-        if (Driverlist.DOJ == null) {
-            alert('Please Enter DOJ');
-            return;
-        }
-        if (Driverlist.BloodGroup == null) {
-            alert('Please Enter BloodGroup');
-            return;
-        }       
+        //if (Driverlist.Id == null) {
+        //    alert('Please Enter CompanyId');
+        //    return;
+        //}
+        //if (Driverlist.NAme == null) {
+        //    alert('Please Enter NAme');
+        //    return;
+        //}
+        //if (Driverlist.Address == null) {
+        //    alert('Please Enter Address');
+        //    return;
+        //}
+        //if (Driverlist.City == null) {
+        //    alert('Please Enter City');
+        //    return;
+        //}
+        //if (Driverlist.Pin == null) {
+        //    alert('Please Enter Pin');
+        //    return;
+        //}
+        //if (Driverlist.PAddress == null) {
+        //    alert('Please Enter PAddress');
+        //    return;
+        //}
+        //if (Driverlist.PCity == null) {
+        //    alert('Please Enter PCity');
+        //    return;
+        //}
+        //if (Driverlist.PPin == null) {
+        //    alert('Please Enter PPin');
+        //    return;
+        //}
+        //if (Driverlist.OffMobileNo == null) {
+        //    alert('Please Enter OffMobileNo');
+        //    return;
+        //}
+        //if (Driverlist.PMobNo == null) {
+        //    alert('Please Enter PMobNo');
+        //    return;
+        //}
+        //if (Driverlist.DOB == null) {
+        //    alert('Please Enter DOB');
+        //    return;
+        //}
+        //if (Driverlist.DOJ == null) {
+        //    alert('Please Enter DOJ');
+        //    return;
+        //}
+        //if (Driverlist.BloodGroup == null) {
+        //    alert('Please Enter BloodGroup');
+        //    return;
+        //}       
        
         
 
@@ -282,10 +261,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DOJ: Driverlist.DOJ,
             BloodGroup: Driverlist.BloodGroup,          
             Remarks: Driverlist.Remarks,            
-            Photo: $scope.imageSrc
-           
-      
-            
+           // Photo: $scope.imageSrc
         }
 
         var req = {
@@ -294,11 +270,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: Driverlist
         }
         $http(req).then(function (response) {
+           
+            var res = response.data;
+            window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
-            alert("Saved successfully!");
-
-            $scope.Group = null;
-            $scope.GetMaster('DId=1');
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your Details Are Incorrect";
@@ -387,7 +362,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DOJ: Dl.DOJ,
             BloodGroup: Dl.BloodGroup,           
             Remarks: Dl.Remarks,
-            Photo: $scope.imageSrc,
+         //   Photo: $scope.imageSrc,
             //licenseimage: $scope.imageSrc,
             //badgeimage: $scope.imageSrc,
 
@@ -399,8 +374,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: driver
         }
         $http(req).then(function (response) {
-
-            alert("Saved successfully!");            
+            var res = response.data;
+            window.location.href = "DriverDetails.html?DId="+res[0].DId;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -442,13 +417,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetVehicleConfig = function () {
 
         var vc = {
-            // needfleetowners:'1',
-            needvehicleType: '1',
-            needServiceType: '1',
-            //needCompanyName: '1',
-            needVehicleMake: '1',
-            needVehicleGroup: '1',
-            needDocuments: '1'
+             needfleetowners:'1'//,
+            //needvehicleType: '1',
+            //needServiceType: '1',
+            ////needCompanyName: '1',
+            //needVehicleMake: '1',
+            //needVehicleGroup: '1',
+            //needDocuments: '1'
         };
 
         var req = {
@@ -589,6 +564,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
         $uibModalInstance.dismiss('cancel');
     };
 });
+
 
 
 

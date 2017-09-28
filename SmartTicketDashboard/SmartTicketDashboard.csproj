@@ -119,6 +119,7 @@
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
     <Content Include="UI\images\Indigo-taxi.png" />
+    <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
     <Content Include="UI\js\Appusers.js" />
@@ -137,6 +138,7 @@
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistBasePricingConfig.js" />
+    <Content Include="UI\js\VehicleList.js" />
     <Content Include="UI\js\Vehiclelogin.js" />
     <Content Include="UI\js\VehicleLogout.js" />
     <Content Include="UI\images\car2.jpg" />
@@ -145,6 +147,7 @@
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
+    <Content Include="UI\VehicleDistancePricing.html" />
     <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />
     <Content Include="UI\AdminReports.html" />
