@@ -18,24 +18,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
         $http.get('/api/Countries/GetCountries').then(function (response, req) {
             $scope.Countries = response.data;
-           
+
         });
     }
+
     $scope.getselectval = function (seltype) {
         var grpid = (seltype) ? seltype.Id : -1;
-
 
         $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
             $scope.Types = res.data;
 
         });
 
-        // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
-
     }
 
     $scope.saveUserDoc = function (seltype) {
-       
+
         var countries = [];
 
         for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {
@@ -72,7 +70,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         });
     };
 
-
     $scope.toggle = function (item) {
         var idx = $scope.checkedArr.indexOf(item);
         if (idx > -1) {
@@ -91,7 +88,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
     };
 
-
     $scope.toggleAll = function () {
         if ($scope.checkedArr.length === $scope.Countries.length) {
             $scope.uncheckedArr = $scope.checkedArr.slice(0);
@@ -108,10 +104,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         return list.indexOf(item) > -1;
     };
 
-
     $scope.isChecked = function () {
         return $scope.checkedArr.length === $scope.Countries.length;
     };
-
 
 });

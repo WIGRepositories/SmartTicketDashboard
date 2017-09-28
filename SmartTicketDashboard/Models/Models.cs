@@ -2450,6 +2450,7 @@ namespace SmartTicketDashboard.Models
 
     public class VehicleDistancePriceConfiguration
     {
+        public int Id { get; set; }      
         public string SourceLoc {get; set;}
         public string DestinationLoc {get; set;}
         public float SourceLat {get; set;}
@@ -2460,8 +2461,10 @@ namespace SmartTicketDashboard.Models
         public string VehicleTypeId {get; set;}
         public string PricingTypeId {get; set;}
         public float UnitPrice {get; set;}
+        public int Distance { get; set; }
         public float Amount {get; set;}
         public string flag {get; set;}
+
     }
     public class start
     {
