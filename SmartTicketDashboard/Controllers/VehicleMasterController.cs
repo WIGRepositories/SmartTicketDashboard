@@ -14,6 +14,26 @@ namespace SmartTicketDashboard.Controllers
     public class VehicleMasterController : ApiController
     {
         [HttpGet]
+        [Route("api/VehicleMaster/GetVehcileList")]
+        public DataTable GetVehcileList()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PSGetVehicleList";            
+            cmd.Connection = conn;
+            
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);            
+            return dt;
+        }
+
+        [HttpGet]
         [Route("api/VehicleMaster/GetVehcileMaster")]
         public DataTable GetVehcileMaster(int VID)
         {
@@ -39,7 +59,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/VehicleMaster/GetVehcileDetails")]
-        public DataTable GetVehcileDetails(int VID)
+        public DataSet GetVehcileDetails(int VID)
         {
             DataTable dt = new DataTable();
 
@@ -49,15 +69,14 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSgetvehilcedetails";
+            cmd.CommandText = "PSgetvehicleDetails";
             cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
-            dt = ds.Tables[0];
-
-            return dt;
+            
+            return ds;
 
         }
 
@@ -201,14 +220,14 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(n);
 
             SqlParameter cn = new SqlParameter("@ChasisNo", SqlDbType.VarChar, 50);
-            cn.Value = v.RegistrationNo;
+            cn.Value = v.ChasisNo;
             cmd.Parameters.Add(cn);
 
             SqlParameter en = new SqlParameter("@Engineno", SqlDbType.VarChar, 50);
-            en.Value = v.RegistrationNo;
+            en.Value = v.Engineno;
             cmd.Parameters.Add(en);
 
-            SqlParameter oid = new SqlParameter("@OwnerId", SqlDbType.Int);
+            SqlParameter oid = new SqlParameter("@FleetOwnerId", SqlDbType.Int);
             oid.Value = v.OwnerId;
             cmd.Parameters.Add(oid);
 
@@ -238,7 +257,12 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter isv = new SqlParameter("@IsVerified", SqlDbType.Int);
             isv.Value = v.IsVerified;
-            cmd.Parameters.Add(isv);            
+            cmd.Parameters.Add(isv);
+
+            SqlParameter isDriverOwned = new SqlParameter("@isDriverOwned", SqlDbType.Int);
+            isDriverOwned.Value = v.isDriverOwned;
+            cmd.Parameters.Add(isDriverOwned); 
+                    
 
             SqlParameter vcode = new SqlParameter("@VehicleCode ", SqlDbType.VarChar,10);
             vcode.Value = v.VehicleCode;
@@ -253,11 +277,11 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpPost]
         [Route("api/VehicleMaster/SaveVehicleDoc")]
-        public DataSet SaveVehicleDoc(VehicleDocuments a)
+        public DataTable SaveVehicleDoc(VehicleDocuments a)
         {
             //connect to database
             SqlConnection conn = new SqlConnection();
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             try
             {
                 //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
@@ -265,9 +289,9 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InsUpdDelVehicleDocs";
+                cmd.CommandText = "PSInsUpdDelVehicleDocs";
                 cmd.Connection = conn;
-
+        
                 SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
                 id.Value = a.Id;
                 cmd.Parameters.Add(id);
@@ -277,9 +301,8 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(AssetId);
 
                 SqlParameter Gid = new SqlParameter("@FileName", SqlDbType.VarChar, 100);
-                Gid.Value = a.docName;
-                cmd.Parameters.Add(Gid);
-                
+                Gid.Value = a.FileName;
+                cmd.Parameters.Add(Gid);               
 
                 SqlParameter rootassetid = new SqlParameter("@DocTypeId", SqlDbType.Int);
                 rootassetid.Value = a.docTypeId;
@@ -299,7 +322,7 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(LocationId);
 
                 SqlParameter parentid = new SqlParameter("@FileContent", SqlDbType.VarChar);
-                parentid.Value = a.docContent;
+                parentid.Value = a.FileContent;
                 cmd.Parameters.Add(parentid);
 
                 SqlParameter flag = new SqlParameter("@change", SqlDbType.VarChar);
@@ -310,11 +333,23 @@ namespace SmartTicketDashboard.Controllers
                 loggedinUserId1.Value = a.UpdatedById;
                 cmd.Parameters.Add(loggedinUserId1);
 
+                 SqlParameter doc = new SqlParameter("@DocumentNo", SqlDbType.VarChar, 50);
+                 doc.Value = a.DocumentNo;
+                 cmd.Parameters.Add(doc);
+
+                 SqlParameter doc2 = new SqlParameter("@DocumentNo2", SqlDbType.VarChar, 50);
+                 doc2.Value = a.DocumentNo2;
+                 cmd.Parameters.Add(doc2);
+
+                 SqlParameter ver = new SqlParameter("@IsVerified", SqlDbType.Int);
+                 ver.Value = a.isVerified;
+                 cmd.Parameters.Add(ver);
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
+                da.Fill(dt);
 
                 
-                return ds;
+                return dt;
             }
             catch (Exception ex)
             {
@@ -324,8 +359,47 @@ namespace SmartTicketDashboard.Controllers
                 }
                 string str = ex.Message;
                 
-                return ds;
+                return dt;
             }
+        }
+
+        [HttpGet]
+        [Route("api/VehicleMaster/FileContent")]
+        public DataTable FileContent(int docId, int docCategoryId)
+        {
+
+            DataTable Tbl = new DataTable();
+            try
+            {
+
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSGetFileContent";
+                cmd.Connection = conn;
+
+                SqlParameter mid = new SqlParameter("@FileId", SqlDbType.Int);
+                mid.Value = docId;
+                cmd.Parameters.Add(mid);
+
+                SqlParameter catId = new SqlParameter("@Category", SqlDbType.Int);
+                catId.Value = docCategoryId;
+                cmd.Parameters.Add(catId);
+
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(Tbl);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Tbl;
         }
     }
 }

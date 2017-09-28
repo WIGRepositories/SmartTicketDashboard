@@ -1740,6 +1740,36 @@ namespace SmartTicketDashboard.Models
         public string insupddelflag { get; set; }
     }
 
+    public class ConfigData
+    {
+        public int includeStatus { get; set; }
+        public int includeCategories { get; set; }
+        public int includeLicenseCategories { get; set; }
+        public int includeVehicleGroup { get; set; }
+        public int includeGender { get; set; }
+        public int includeFrequency { get; set; }
+        public int includePricingType { get; set; }
+        public int includeTransactionType { get; set; }
+        public int includeApplicability { get; set; }
+        public int includeFeeCategory { get; set; }
+        public int includeTransChargeType { get; set; }
+        public int includeVehicleType { get; set; }
+        public int includeVehicleModel { get; set; }
+        public int includeVehicleMake { get; set; }
+        public int includeDocumentType { get; set; }
+        public int includePaymentType { get; set; }
+        public int includeMiscellaneousTypes { get; set; }
+        public int includeCardCategories { get; set; }
+        public int includeCardTypes { get; set; }
+        public int includeVehicleLayoutType { get; set; }
+        public int includeLicenseFeatures { get; set; }
+        public int includeCardModels { get; set; }
+        public int includeCards { get; set; }
+        public int includeTransactions { get; set; }
+        public int includeCountry { get; set; }
+        public int includeActiveCountry { get; set; }
+        public int includeFleetOwner { get; set; }
+    }
     public class VehicleConfig
     {
         public int? needFleetDetails { get; set; }
@@ -2178,6 +2208,8 @@ namespace SmartTicketDashboard.Models
         public string photo { get; set; }
         public string Status { get; set; }
         public string Fleetcode { get; set; }
+        public int isDriverOwned { get; set; }
+        public int VehicleMakeId { get; set; }
     }
     public class allocatedriver
     {
@@ -2623,19 +2655,18 @@ namespace SmartTicketDashboard.Models
         public int VehicleId { get; set; }
         public int createdById { get; set; }
         public int UpdatedById { get; set; }
-
-        public DateTime? FromDate { get; set; }
-        public DateTime? ToDate { get; set; }
-       
         public int docTypeId { get; set; }
         public string docType { get; set; }
-        public string docName { get; set; }
+        public string FileName { get; set; }
         public int IsExpired { get; set; }
-        public string docContent { get; set; }
-
+        public string FileContent { get; set; }
         public DateTime? expiryDate { get; set; }
         public DateTime? dueDate { get; set; }
         public string insupddelflag { get; set; }
+        public string DocumentNo { get; set; }
+        public string DocumentNo2 { get; set; }
+        public int isVerified { get; set; }
+
     }
 
     public class DriverDocuments
