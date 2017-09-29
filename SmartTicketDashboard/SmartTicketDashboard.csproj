@@ -135,6 +135,8 @@
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\PSPricing.js" />
+    <Content Include="UI\js\TaxiSrcDest.js" />
+    <Content Include="UI\js\TreeView\Types1.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistancePricing.js" />
@@ -147,6 +149,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
     <Content Include="UI\VehicleDistancePricing.html" />
@@ -2129,6 +2132,7 @@
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
     <Compile Include="Controllers\SubCategoryController.cs" />
+    <Compile Include="Controllers\TaxiSrcDestController.cs" />
     <Compile Include="Controllers\TrackingController.cs" />
     <Compile Include="Controllers\TransHistoryController.cs" />
     <Compile Include="Controllers\travelstartController.cs" />
