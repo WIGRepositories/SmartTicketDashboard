@@ -231,8 +231,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     UpdatedById: ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
                     expiryDate: ($scope.vehicleDoc == null || $scope.vehicleDoc.expiryDate == null) ? null : getdate($scope.vehicleDoc.expiryDate),
                     dueDate: ($scope.vehicleDoc == null || $scope.vehicleDoc.dueDate == null) ? null : getdate($scope.vehicleDoc.dueDate),
-                    DocumentNo: $scope.vehicleDoc.docNo,                 
-                    DocumentNo2:$scope.vehicleDoc.docNo2,
+                    DocumentNo: ($scope.vehicleDoc.docNo == null) ? null : $scope.vehicleDoc.docNo,
+                    DocumentNo2:($scope.vehicleDoc.docNo2 == null) ? null : $scope.vehicleDoc.docNo2,
                     docTypeId: ($scope.vehicleDoc == null) ? null : $scope.vehicleDoc.docType.Id,                    
                     FileName: files[0].name,
                     FileContent: result,
@@ -347,11 +347,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             //  $scope.DocFiles = response.data.Table;
-            $scope.DocFiles = response.data.Table;           
+            $scope.DocFiles = response.data;           
 
             if ($scope.DocFiles)  {
-                if ($scope.DocFiles.length > 0) {
-                    $scope.DocFiles = [];
+                if ($scope.DocFiles.length > 0) {                    
                     for (i = 0; i < $scope.DocFiles.length; i++) {
                         $scope.DocFiles[i].expiryDate = getdate($scope.DocFiles[i].expiryDate);
                         $scope.DocFiles[i].dueDate = getdate($scope.DocFiles[i].dueDate);

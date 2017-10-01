@@ -123,7 +123,7 @@ app.directive("ngFileSelect", function () {
 
 });
 
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader,$upload) {
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader, $upload, $filter) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -158,7 +158,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.Dl= res.data[0];
+            $scope.Dl = res.data.Table[0];
+            $scope.DocFiles = res.data.Table1;
+            $scope.imageSrc = $scope.Dl.Photo;
+
+            for (i = 0; i < $scope.initdata.Table1.length; i++) {
+                if ($scope.initdata.Table1[i].Id == $scope.Dl.StatusId) {
+                    $scope.Dl.vs = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+
         });
     }
     $scope.getselectval = function (v) {
@@ -169,13 +179,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    $scope.GetCompanys = function () {
-        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
-            $scope.Companies = response.data;
-           // $scope.Dl.CompanyId = $scope.Companies[0];
+    //$scope.GetCompanys = function () {
+    //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
+    //        $scope.Companies = response.data;
+    //       // $scope.Dl.CompanyId = $scope.Companies[0];
            
-        });
-    }
+    //    });
+    //}
 
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
@@ -183,7 +193,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
        // $scope.imageSrc = $scope.listdrivers.Photo;
     }
-    $scope.docfiles = [];
+    $scope.DocFiles = [];
 
     $scope.saveNew = function (Driverlist,flag) {
       
@@ -260,8 +270,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DOB: Driverlist.DOB,
             DOJ: Driverlist.DOJ,
             BloodGroup: Driverlist.BloodGroup,          
-            Remarks: Driverlist.Remarks,            
-           // Photo: $scope.imageSrc
+            Remarks: Driverlist.Remarks,
+            Photo: $scope.imageSrc ,
+            DriverCode: Driverlist.DriverCode
         }
 
         var req = {
@@ -362,7 +373,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             DOJ: Dl.DOJ,
             BloodGroup: Dl.BloodGroup,           
             Remarks: Dl.Remarks,
-         //   Photo: $scope.imageSrc,
+            Photo: $scope.imageSrc
             //licenseimage: $scope.imageSrc,
             //badgeimage: $scope.imageSrc,
 
@@ -398,6 +409,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.clearDriverlist = function () {
         $scope.Dl = null;
+        $scope.imageSrc = null;
     }
     
     $scope.UploadImg = function () {
@@ -411,7 +423,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
     };   
     $scope.onFileSelect1 = function () {
-        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+      
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+           
+            $scope.imageSrc = result;
+        });
     }
 
     $scope.GetVehicleConfig = function () {
@@ -461,71 +477,56 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.onFileSelect = function (files, $event) {
         $scope.modifiedDoc = null;
         var found = false;
-        ////check if job already exists 
-        //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
-        //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
-        //        found = true;
-        //    }
-        //}
+        //check if doc already exists 
+        for (cnt = 0; cnt < $scope.DocFiles.length; cnt++) {
+            if ($scope.DocFiles[cnt].docName == files[0].name) {
+                found = true;
+            }
+        }
 
-        //if (found) {
-        //    alert('Cannot add duplicte documents. Document with the same name already exists.');
-        //    $event.stopPropagation();
-        //    $event.preventDefault();
-        //    return;
-        //}
+        if (found) {
+            alert('Cannot add duplicte documents. Document with the same name already exists.');
+            $event.stopPropagation();
+            $event.preventDefault();
+            return;
+        }
 
-        var ext = files[0].name.split('.').pop();
-        fileReader.readAsDataUrl(files[0], $scope, (ext == 'csv') ? 1 : 4).then(function (result) {
+        fileReader.readAsDataUrl(files[0], $scope, 4).then(function (result) {
             //if (result.length > 2097152) {
             //    alert('Cannot upload file greater than 2 MB.');
             //    $event.stopPropagation();
             //    $event.preventDefault();
             //    return;
-            //}
-
+            //}          
+            
             var doc =
                 {
-                    Id: -1,
+                    Id: ($scope.driverDoc == null) ? -1 : $scope.driverDoc.Id,
                     DriverId: $scope.selectedlistdrivers,
-                    createdById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
-                    UpdatedById: -1,//($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
-                    FromDate: null,
-                    ToDate: null,
-
-                    docTypeId: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Id,
-                    docType: ($scope.assetDoc == null) ? null : $scope.assetDoc.docType.Name,//
+                    createdById: ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    UpdatedById: ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
+                    expiryDate: ($scope.driverDoc == null || $scope.driverDoc.expiryDate == null) ? null : getdate($scope.driverDoc.expiryDate),
+                    dueDate: ($scope.driverDoc == null || $scope.driverDoc.dueDate == null) ? null : getdate($scope.driverDoc.dueDate),
+                    DocumentNo: ($scope.driverDoc.docNo == null) ? null : $scope.driverDoc.docNo,
+                    DocumentNo2: ($scope.driverDoc.docNo2 == null) ? null : $scope.driverDoc.docNo2,
+                    docTypeId: ($scope.driverDoc == null) ? null : $scope.driverDoc.docType.Id,
                     docName: files[0].name,
                     docContent: result,
-
-                    expiryDate: ($scope.assetDoc == null || $scope.assetDoc.expiryDate == null) ? null : getdate($scope.assetDoc.expiryDate),
-                    dueDate: ($scope.assetDoc == null || $scope.assetDoc.dueDate == null) ? null : getdate($scope.assetDoc.dueDate),
+                    isVerified: 0,
                     insupddelflag: 'I'
                 }
 
             $scope.modifiedDoc = doc;
-            ////check if already the file exists                       
-            //for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
-            //    if ($scope.currobj.files1[cnt].docName == files[0].name) {
-            //        $scope.currobj.files1.splice(cnt, 1);
-            //    }
-            //}
-
-            //$scope.currobj.files1.push(doc);
-            //if ($scope.DocFiles)
-            //{
-            //    $scope.DocFiles.push(doc);
-            //}
-
         });
     };
 
+    
     /*save job documents */
-    $scope.SaveAssetDoc = function () {
+    $scope.SaveDriverDoc = function () {
 
         if ($scope.modifiedDoc == null) {
 
-            alert('Select an asset document to modify.');
+            alert('Select a document to modify.');
             return;
         }
         $scope.modifiedDoc.UpdatedById = ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id;
@@ -536,22 +537,58 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             //  $scope.DocFiles = response.data.Table;
-            $scope.DocFiles = response.data.Table;
-            alert("Saved Successfully");
+            $scope.DocFiles = response.data;
+
+            if ($scope.DocFiles) {
+                if ($scope.DocFiles.length > 0) {
+                    for (i = 0; i < $scope.DocFiles.length; i++) {
+                        $scope.DocFiles[i].expiryDate = getdate($scope.DocFiles[i].expiryDate);
+                        $scope.DocFiles[i].dueDate = getdate($scope.DocFiles[i].dueDate);
+                        // $scope.DocFiles.push($scope.DocFiles[i]);
+                    }
+                }
+            }
 
             $scope.modifiedDoc = null;
-            $scope.assetDoc = null;
-
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "";
-            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+           // errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.modifiedDoc = null;
-            $scope.assetDoc = null;
-            $scope.showDialog(errmssg);
+            $scope.showDialog(errdata);
         });
     }
 
+    function getdate(date) {
+        var formateddate = date;
+
+        if (date) {
+            formateddate = $filter('date')(date, 'yyyy-MM-dd');
+        }
+
+        return formateddate;
+    }
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeFleetOwner: '1',         
+            includeActiveCountry: '1',
+            includeStatus: '1',
+            includeDocumentType: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.Getdriverdetails();
+        });
+    }
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 

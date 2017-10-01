@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | DriverDetails</title>
+    <title>Home | Smart Ticket Dashboard | DriverDetails</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="Getdriverdetails();" ng-model="Dl">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -403,34 +403,28 @@
                     </div>
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
 
-
-
                     <div class="page-content">
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
 
                                 <div id="tableactionTabContent" class="tab-content">
 
-
-
-                                    <!---------------------User Profile Style--------------------------->
-
-                                    <div class="row" >
+                                    <div class="row">
                                         <div class="col-md-12">
                                             <div class="row mtl">
-                                                <div class="col-md-3">
+                                                <div class="col-md-2">
                                                     <div class="form-group">
-                                                        <div style="margin-right:100px;margin-top:10px">
+                                                        <div style="text-align:center">
 
                                                             <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
-                                                            <div class="col-md-8">
-                                                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                            <div style="text-align:center">
+                                                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="200px" height="200px" style="border:solid 1px;" />
                                                                 <br />
-                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px;">
                                                                     <i class="fa fa-upload"></i>&nbsp;
                                                                     Upload photo
                                                                 </a>
-
+                                                                <br />
                                                             </div>
                                                             <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
 
@@ -475,15 +469,18 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-9">
-                                                    <div id="Modal-header-primary" class="tab-content">
+                                                    <div id="generalTabContent" class="tab-content">
                                                         <div id="tab-edit" class="tab-pane fade in active">
                                                             <form action="#" class="form-horizontal">
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="#collapse2">Driver Details</a></div>
                                                                         <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-up"></i></div>
                                                                     </div>
-                                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
+
+
+                                                                    <div id="collapse2" class="panel-collapse expanded list-group portlet-body" style="padding: 0px; border: 1px solid #e5e5e5;">
                                                                         <div class="panel-body">
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
@@ -625,7 +622,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="c.Name for c in Companies track by c.Id" ng-model="Dl.CompanyId" ng-init="GetCompanys();" class="form-control">
+                                                                                                    <select ng-options="c.Name for c in initdata.Table2 track by c.Id" ng-model="Dl.CompanyId" ng-init="GetCompanys();" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -640,7 +637,11 @@
                                                                                         <label class="col-sm-3 control-label">Status</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" class="form-control" /></div>
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="vs.Name for vs in initdata.Table track by vs.Id" ng-model="Dl.StatusId" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select> 
+                                                                                                </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -682,12 +683,56 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
+                                                                    <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
+                                                                        <div class="caption"><a href="">Vehicle Details</a></div>
+                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                    </div>
+                                                                    <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px;  border: 1px solid #e5e5e5;">
+                                                                        <div class="panel-body">
+                                                                            <table class="table table-bordered table-advanced tablesorter">
+                                                                                <thead>
+                                                                                    <tr>
+                                                                                        <th>Date</th>
+                                                                                        <th>Trip Id</th>
+                                                                                        <th>From-To</th>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <th> Amount</th>
+                                                                                        <th>Company Amount</th>
+                                                                                    </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>15/9/2017</td>
+                                                                                        <td>5</td>
+                                                                                        <td>-</td>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <td>1000</td>
+                                                                                        <td>100</td>
+                                                                                    </tr>
+                                                                                    <tr>
+                                                                                        <td>16/9/2017</td>
+                                                                                        <td>6</td>
+                                                                                        <td>24</td>
+                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <td>1200</td>
+                                                                                        <td>120</td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
 
                                                                 <div class="portlet box portlet-grey" style="margin-bottom:10px;">
 
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                        <div class="caption"><a href="collapse2">Driver Documents</a></div>
-                                                                        <div class="tools"><i class="fa fa-chevron-down"></i></div>
+                                                                        <div class="caption"><a href="#collapse1">Driver documents & Approvals</a></div>
+                                                                        <div class="tools">
+                                                                            <span class="badge badge-green">{{(dl|filter:{IsExpired:0}).length}}</span>
+                                                                            <span ng-hide="(dl|filter:{IsExpired:1}).length == 0" class="badge badge-red" style="margin-right:3px">{{(dl| filter:{IsExpired:1}).length}}</span>
+                                                                            <span ng-hide="(dl| filter:{IsExpired:2}).length == 0" class="badge badge-yellow" style="margin-right:3px">{{(dl| filter:{IsExpired:2}).length}}</span><i class="fa fa-chevron-down"></i>
+                                                                        </div>
                                                                     </div>
 
 
@@ -702,29 +747,32 @@
                                                                                         <th>File Name</th>
                                                                                         <th>Document Type</th>
                                                                                         <th>Expiry Date</th>
-                                                                                        <!--<th>Due Date</th>-->
+                                                                                        <th>Is Verified?</th>
                                                                                         <th>Update</th>
                                                                                         <th>Delete</th>
+                                                                                        <th>Details</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr ng-repeat="d in dl = (currobj.files1|filter:{docCatId:docType.DocTypeId,insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+                                                                                    <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
                                                                                         <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
                                                                                         <td>{{d.docType}}</td>
                                                                                         <td>
                                                                                             {{d.expiryDate | date:'MM-dd-yyyy'}}
                                                                                         </td>
-                                                                                        <!--<td>
-                                                            {{d.dueDate | date:'MM-dd-yyyy'}}
-                                                        </td>-->
                                                                                         <td>
-                                                                                            <a class="fa fa-arrow-up" ng-click="MoveUp($index)" ng-hide="$first || a.rootid==1" style="padding-right:10px"></a>
-                                                                                            <a class="fa fa-arrow-down" ng-click="MoveDown($index)" ng-hide="$last || a.rootid==1" style="padding-right:10px"></a>
+                                                                                            <input type="checkbox" />
                                                                                         </td>
+
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
 
+                                                                                            </button>
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
+                                                                                                <i class="fa fa-trash-o"></i>
                                                                                             </button>
                                                                                         </td>
                                                                                         <td>
@@ -738,7 +786,7 @@
                                                                             </table>
 
                                                                             <div style="margin-left:10px;margin-bottom:0px">
-                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetDocdocCatId(docType.DocTypeId)">Upload Files</button>
+                                                                                <button ng-disabled="CanUploadDoc == 0" type="button" data-target="#Modal-header-new-f" data-toggle="modal" class="btn btn-info btn-sm" style="float: left; " ng-click="SetMissingDocTypes()">Upload Files</button>
                                                                             </div>
 
                                                                         </div>
@@ -826,6 +874,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+
+
                                                                 <hr />
                                                                 <div style="margin-left:350px">
                                                                     <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(Dl, 'U');">Save</button>
@@ -840,7 +891,6 @@
                                         </div>
                                     </div>
 
-                                    <!---------------------------User Profile Style------------------------------>
                                 </div>
                             </div>
                         </div>
@@ -853,30 +903,39 @@
                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                     <h4 id="modal-header-primary-label" class="modal-title">Add New files</h4>
                                 </div>
-                                <div class="modal-body" ng-init="GetVehicleConfig()" ng-model="assetDoc">
-                                    <!--<div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label" style="color:red;">File Name:<span class='require'>*</span></label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input id="inputFirstName" type="text" ng-model="assetDoc.Name" class="form-control" /><span class="help-block"></span>
-                                        </div>
-                                    </div>-->
+                                <div class="modal-body" ng-model="driverDoc">
+
                                     <div class="row mbm">
                                         <div style="text-align:right">
                                             <label for="Name" class="col-md-4 control-label">Document Type:</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <!--<select ng-model="assetDoc.docType" style="width:60%">
-                                                <option value="1">Check List</option>
-                                                <option value="2">Post Job</option>
-                                                <option value="3">Pre Job</option>
-                                                <option value="4">Others</option>
-                                            </select>-->
 
-                                            <select ng-options="d.Name for d in initdata.Table4 track by d.Id" ng-model="assetDoc.docType" style="width:100%">
+                                            <select ng-options="d.Name for d in initdata.Table1 track by d.Id" ng-model="driverDoc.docType" style="width:100%">
                                                 <option value="">Select</option>
                                             </select>
+
+                                        </div>
+                                    </div>
+                                    <div class="row mbm">
+                                        <div style="text-align:right">
+                                            <label for="Name" class="col-md-4 control-label">Document Number:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="help-block">
+                                                <input type="text" ng-model="driverDoc.docNo" class="form-control" />
+                                            </span>
+
+                                        </div>
+                                    </div>
+                                    <div class="row mbm">
+                                        <div style="text-align:right">
+                                            <label for="Name" class="col-md-4 control-label">Document Number2:</label>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <span class="help-block">
+                                                <input type="text" ng-model="driverDoc.docNo2" class="form-control" />
+                                            </span>
 
                                         </div>
                                     </div>
@@ -885,11 +944,9 @@
                                             <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
                                         </div>
                                         <div class="col-md-6">
-                                            <!--<input id="inputFirstName" type="date" ng-model="assetDoc.expiryDate | date:'MM-dd-yyyy'" placeholder="enter" class="form-control" />--><span class="help-block"></span>
-                                            <!--<input type="date" datetime="MM-dd-yyyy" ng-model="assetDoc.expiryDate">-->
-                                            <!--<input type="date" id="exampleInput" name="input" ng-model="{{assetDoc.expiryDate |date:'MM-dd-yyyy'}}" />-->
+                                            <span class="help-block"></span>
 
-                                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="assetDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+                                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="driverDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
 
                                         </div>
                                     </div>
@@ -899,17 +956,17 @@
                                             <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="assetDoc.doc" ng-click="validateFile($event)" />
+                                            <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="driverDoc.doc" ng-click="validateFile($event)" />
                                         </div>
                                     </div>
 
                                     <div class="row mbm" style="text-align:center">
-                                        <font color="red">Note: Only .pdf,.jpg,.png,.gif,.csv file types are supported</font>
+                                        <font color="red">Note: Only .pdf,.jpg,.png,.gif file types are supported</font>
                                     </div>
                                     <div class="form-actions">
                                         <div style="text-align:center">
                                             <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
-                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveAssetDoc()">Upload</button>
+                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveDriverDoc()">Upload</button>
                                             <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelNewDoc()">Cancel</button>
                                         </div>
                                     </div>
@@ -1033,8 +1090,6 @@
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-
-
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
@@ -1044,10 +1099,19 @@
     <script src="js/jquery.menu.js"></script>
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
+    <script>
+
+        $('.datepicker-filter').datepicker({
+            autoclose: true
+        });
+
+    </script>
+
     <script src="js/main.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>

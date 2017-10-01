@@ -40,12 +40,12 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/DriverMaster/Getdriverdetails")]
-        public DataTable Getdriverdetails(int DId)
+        public DataSet Getdriverdetails(int DId)
         {
-            DataTable dt = new DataTable();
+            DataSet ds = new DataSet();
 
             SqlConnection conn = new SqlConnection();
-
+            try { 
             conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
             SqlCommand cmd = new SqlCommand();
@@ -55,10 +55,18 @@ namespace SmartTicketDashboard.Controllers
             cmd.Connection = conn;
             
             SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(dt);           
+            db.Fill(ds);           
 
-            return dt;
-
+            return ds;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                throw ex;
+            }
         }
 
         [HttpPost]
@@ -66,7 +74,7 @@ namespace SmartTicketDashboard.Controllers
         public DataTable Driverlist(driverdetails d)
         {
             SqlConnection conn = new SqlConnection();
-
+            try { 
             conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
@@ -141,7 +149,11 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
             pr.Value = d.Photo;
-            cmd.Parameters.Add(pr);            
+            cmd.Parameters.Add(pr);
+
+            SqlParameter dc = new SqlParameter("@DriverCode", SqlDbType.VarChar);
+            dc.Value = d.DriverCode;
+            cmd.Parameters.Add(dc);            
 
 
             DataTable dt = new DataTable();
@@ -149,15 +161,24 @@ namespace SmartTicketDashboard.Controllers
             da.Fill(dt);
 
             return dt;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                throw ex;
+            }
         }
 
         [HttpPost]
         [Route("api/DriverMaster/SaveDriverDoc")]
-        public DataSet SaveDriverDoc(DriverDocuments a)
+        public DataTable SaveDriverDoc(DriverDocuments a)
         {
             //connect to database
             SqlConnection conn = new SqlConnection();
-            DataSet ds = new DataSet();
+            DataTable dt = new DataTable();
             try
             {
                 //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
@@ -165,7 +186,7 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "InsUpdDelDriverDocs";
+                cmd.CommandText = "PSInsUpdDelDriverDocs";
                 cmd.Connection = conn;
 
                 SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
@@ -209,11 +230,24 @@ namespace SmartTicketDashboard.Controllers
                 loggedinUserId1.Value = a.UpdatedById;
                 cmd.Parameters.Add(loggedinUserId1);
 
+               
+                SqlParameter doc = new SqlParameter("@DocumentNo", SqlDbType.VarChar, 50);
+                doc.Value = a.DocumentNo;
+                cmd.Parameters.Add(doc);
+
+                SqlParameter doc2 = new SqlParameter("@DocumentNo2", SqlDbType.VarChar, 50);
+                doc2.Value = a.DocumentNo2;
+                cmd.Parameters.Add(doc2);
+
+                SqlParameter ver = new SqlParameter("@IsVerified", SqlDbType.Int);
+                ver.Value = a.isVerified;
+                cmd.Parameters.Add(ver);
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
-                da.Fill(ds);
+                da.Fill(dt);
+                
 
-
-                return ds;
+                return dt;
             }
             catch (Exception ex)
             {
@@ -221,9 +255,7 @@ namespace SmartTicketDashboard.Controllers
                 {
                     conn.Close();
                 }
-                string str = ex.Message;
-
-                return ds;
+                throw ex;
             }
         }
     }

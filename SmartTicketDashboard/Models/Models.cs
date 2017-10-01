@@ -2167,6 +2167,7 @@ namespace SmartTicketDashboard.Models
         public string Photo { get; set; }
         public string licenseimage { get; set; }
         public string badgeimage { get; set; }
+        public string DriverCode { get; set; }
         
     }
     public class vehiclemas
@@ -2692,6 +2693,9 @@ namespace SmartTicketDashboard.Models
         public DateTime? expiryDate { get; set; }
         public DateTime? dueDate { get; set; }
         public string insupddelflag { get; set; }
+        public string DocumentNo { get; set; }
+        public string DocumentNo2 { get; set; }
+        public int isVerified { get; set; }
     }
     public class ewallet
     {
