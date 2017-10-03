@@ -752,15 +752,15 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRegNo);
 
                 SqlParameter vgType = new SqlParameter();
-                vgType.ParameterName = "@Type";
+                vgType.ParameterName = "@VehicleType";
                 vgType.SqlDbType = SqlDbType.NVarChar;
-                vgType.Value = o.Type;
+                vgType.Value = o.vehicleType;
                 cmd.Parameters.Add(vgType);
                  
                 SqlParameter vgOwnerName = new SqlParameter();
                 vgOwnerName.ParameterName = "@OwnerName";
                 vgOwnerName.SqlDbType = SqlDbType.NVarChar;
-                vgOwnerName.Value = o.OwnerName;
+                vgOwnerName.Value = o.FleetOwner;
                 cmd.Parameters.Add(vgOwnerName);
 
                 SqlParameter vgChasisNo = new SqlParameter();
@@ -782,9 +782,9 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRoadTDate);
 
                 SqlParameter vgInsuNo = new SqlParameter();
-                vgInsuNo.ParameterName = "@InsuranceNo";
-                vgInsuNo.SqlDbType = SqlDbType.NVarChar;
-                vgInsuNo.Value = o.InsuranceNo;
+                vgInsuNo.ParameterName = "@HasAC";
+                vgInsuNo.SqlDbType = SqlDbType.Int;
+                vgInsuNo.Value = o.HasAC;
                 cmd.Parameters.Add(vgInsuNo);
 
                 SqlParameter vgInsDate = new SqlParameter();
@@ -818,21 +818,21 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRCExpDate);
 
                 SqlParameter vgCompanyVeh = new SqlParameter();
-                vgCompanyVeh.ParameterName = "@CompanyVechile";
+                vgCompanyVeh.ParameterName = "@StatusId";
                 vgCompanyVeh.SqlDbType = SqlDbType.Int;
-                vgCompanyVeh.Value = o.CompanyVechile;
+                vgCompanyVeh.Value = o.StatusId;
                 cmd.Parameters.Add(vgCompanyVeh);
 
                 SqlParameter vgOwnerPhoneNo = new SqlParameter();
-                vgOwnerPhoneNo.ParameterName = "@OwnerPhoneNo";
-                vgOwnerPhoneNo.SqlDbType = SqlDbType.NVarChar;
-                vgOwnerPhoneNo.Value = o.OwnerPhoneNo;
+                vgOwnerPhoneNo.ParameterName = "@IsVerified";
+                vgOwnerPhoneNo.SqlDbType = SqlDbType.Int;
+                vgOwnerPhoneNo.Value = o.IsVerified;
                 cmd.Parameters.Add(vgOwnerPhoneNo);
 
                 SqlParameter vgHomeLandmark = new SqlParameter();
                 vgHomeLandmark.ParameterName = "@HomeLandmark";
                 vgHomeLandmark.SqlDbType = SqlDbType.NVarChar;
-                vgHomeLandmark.Value = o.HomeLandmark;
+                vgHomeLandmark.Value = o.VehicleCode;
                 cmd.Parameters.Add(vgHomeLandmark);
 
 
@@ -843,15 +843,15 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgMYear);
 
                 SqlParameter vgDayOnly = new SqlParameter();
-                vgDayOnly.ParameterName = "@DayOnly";
-                vgDayOnly.SqlDbType = SqlDbType.NVarChar;
-                vgDayOnly.Value = o.DayOnly;
+                vgDayOnly.ParameterName = "@IsDriverowned";
+                vgDayOnly.SqlDbType = SqlDbType.Int;
+                vgDayOnly.Value = o.IsDriverowned;
                 cmd.Parameters.Add(vgDayOnly);
 
                 SqlParameter vgVechMobileNo = new SqlParameter();
-                vgVechMobileNo.ParameterName = "@VechMobileNo";
+                vgVechMobileNo.ParameterName = "@DriverId";
                 vgVechMobileNo.SqlDbType = SqlDbType.NVarChar;
-                vgVechMobileNo.Value = o.DayOnly;
+                vgVechMobileNo.Value = o.DriverId;
                 cmd.Parameters.Add(vgVechMobileNo);
 
                 SqlParameter vgEntryDate = new SqlParameter();
@@ -861,27 +861,27 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgEntryDate);
 
                 SqlParameter vgNewEntry = new SqlParameter();
-                vgNewEntry.ParameterName = "@NewEntry";
+                vgNewEntry.ParameterName = "@CountryId";
                 vgNewEntry.SqlDbType = SqlDbType.NVarChar;
-                vgNewEntry.Value = o.EntryDate;
+                vgNewEntry.Value = o.Country;
                 cmd.Parameters.Add(vgNewEntry);
 
                 SqlParameter vgVehicleModelId = new SqlParameter();
                 vgVehicleModelId.ParameterName = "@VehicleModelId";
                 vgVehicleModelId.SqlDbType = SqlDbType.Int;
-                vgVehicleModelId.Value = o.VehicleModelId;
+                vgVehicleModelId.Value = o.VehicleModel;
                 cmd.Parameters.Add(vgVehicleModelId);
 
                 SqlParameter vgServiceTypeId = new SqlParameter();
-                vgServiceTypeId.ParameterName = "@ServiceTypeId";
+                vgServiceTypeId.ParameterName = "@VehicleMakeId";
                 vgServiceTypeId.SqlDbType = SqlDbType.Int;
-                vgServiceTypeId.Value = o.VehicleModelId;
+                vgServiceTypeId.Value = o.VehicleMake;
                 cmd.Parameters.Add(vgServiceTypeId);
 
                 SqlParameter vgVehicleGroupId = new SqlParameter();
                 vgVehicleGroupId.ParameterName = "@VehicleGroupId";
                 vgVehicleGroupId.SqlDbType = SqlDbType.Int;
-                vgVehicleGroupId.Value = o.VehicleModelId;
+                vgVehicleGroupId.Value = o.VehicleGroup;
                 cmd.Parameters.Add(vgVehicleGroupId);
                 
                 SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
@@ -980,13 +980,13 @@ namespace SmartTicketDashboard.Controllers
                     SqlParameter dgpadr = new SqlParameter();
                     dgpadr.ParameterName = "@PAddress";
                     dgpadr.SqlDbType = SqlDbType.VarChar;
-                    dgpadr.Value = p.PAddress;
+                    dgpadr.Value = p.PermanentAddress;
                     cmd.Parameters.Add(dgpadr);
 
                     SqlParameter dgPPin = new SqlParameter();
                     dgPPin.ParameterName = "@PPin";
                     dgPPin.SqlDbType = SqlDbType.VarChar;
-                    dgPPin.Value = p.PPin;
+                    dgPPin.Value = p.PermanentPin;
                     cmd.Parameters.Add(dgPPin);
 
                         SqlParameter pc = new SqlParameter();
@@ -1004,7 +1004,7 @@ namespace SmartTicketDashboard.Controllers
                     SqlParameter dgPM = new SqlParameter();
                     dgPM.ParameterName = "@PMobNo";
                     dgPM.SqlDbType = SqlDbType.VarChar;
-                    dgPM.Value = p.PMobNo;
+                    dgPM.Value = p.MobileNumber;
                     cmd.Parameters.Add(dgPM);
 
                     SqlParameter dgDOB = new SqlParameter("@DOB", SqlDbType.DateTime);
@@ -1064,7 +1064,39 @@ namespace SmartTicketDashboard.Controllers
                     dgVehicleModelId.SqlDbType = SqlDbType.VarChar;
                     dgVehicleModelId.Value = p.VehicleModelId;
                     cmd.Parameters.Add(dgVehicleModelId);
+
+                    SqlParameter fd = new SqlParameter();
+                    fd.ParameterName = "@FirstName";
+                    fd.SqlDbType = SqlDbType.VarChar;
+                    fd.Value = p.FirstName;
+                    cmd.Parameters.Add(fd);
+
+                    SqlParameter gf = new SqlParameter();
+                    gf.ParameterName = "@LastName";
+                    gf.SqlDbType = SqlDbType.VarChar;
+                    gf.Value = p.LastName;
+                    cmd.Parameters.Add(gf);
                     
+
+                    SqlParameter yt = new SqlParameter();
+                    yt.ParameterName = "@EmailId";
+                    yt.SqlDbType = SqlDbType.VarChar;
+                    yt.Value = p.EmailId;
+                    cmd.Parameters.Add(yt);
+
+                    SqlParameter dc = new SqlParameter();
+                    dc.ParameterName = "@DriverCode";
+                    dc.SqlDbType = SqlDbType.VarChar;
+                    dc.Value = p.DriverCode;
+                    cmd.Parameters.Add(dc);
+
+                    SqlParameter fo = new SqlParameter();
+                    fo.ParameterName = "@FleetOwner";
+                    fo.SqlDbType = SqlDbType.VarChar;
+                    fo.Value = p.FleetOwner;
+                    cmd.Parameters.Add(fo);
+
+
 
                     SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     insupdflag.Value = p.flag;
@@ -1137,9 +1169,9 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRegNo);
 
                 SqlParameter vgType = new SqlParameter();
-                vgType.ParameterName = "@Type";
+                vgType.ParameterName = "@VehicleType";
                 vgType.SqlDbType = SqlDbType.NVarChar;
-                vgType.Value = o.Type;
+                vgType.Value = o.vehicleType;
                 cmd.Parameters.Add(vgType);
 
                 //SqlParameter gsac = new SqlParameter("@Id", SqlDbType.Int);
@@ -1147,9 +1179,9 @@ namespace SmartTicketDashboard.Controllers
                 //cmd.Parameters.Add(gsac);                    
 
                 SqlParameter vgOwnerName = new SqlParameter();
-                vgOwnerName.ParameterName = "@OwnerName";
-                vgOwnerName.SqlDbType = SqlDbType.NVarChar;
-                vgOwnerName.Value = o.OwnerName;
+                vgOwnerName.ParameterName = "@FleetOwnerId";
+                vgOwnerName.SqlDbType = SqlDbType.Int;
+                vgOwnerName.Value = o.FleetOwner;
                 cmd.Parameters.Add(vgOwnerName);
 
                 SqlParameter vgChasisNo = new SqlParameter();
@@ -1171,9 +1203,9 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRoadTDate);
 
                 SqlParameter vgInsuNo = new SqlParameter();
-                vgInsuNo.ParameterName = "@InsuranceNo";
-                vgInsuNo.SqlDbType = SqlDbType.NVarChar;
-                vgInsuNo.Value = o.InsuranceNo;
+                vgInsuNo.ParameterName = "@HasAC";
+                vgInsuNo.SqlDbType = SqlDbType.Int;
+                vgInsuNo.Value = o.HasAC;
                 cmd.Parameters.Add(vgInsuNo);
 
                 SqlParameter vgInsDate = new SqlParameter();
@@ -1207,21 +1239,21 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgRCExpDate);
 
                 SqlParameter vgCompanyVeh = new SqlParameter();
-                vgCompanyVeh.ParameterName = "@CompanyVechile";
+                vgCompanyVeh.ParameterName = "@StatusId";
                 vgCompanyVeh.SqlDbType = SqlDbType.Int;
-                vgCompanyVeh.Value = o.CompanyVechile;
+                vgCompanyVeh.Value = o.StatusId;
                 cmd.Parameters.Add(vgCompanyVeh);
 
                 SqlParameter vgOwnerPhoneNo = new SqlParameter();
-                vgOwnerPhoneNo.ParameterName = "@OwnerPhoneNo";
-                vgOwnerPhoneNo.SqlDbType = SqlDbType.NVarChar;
-                vgOwnerPhoneNo.Value = o.OwnerPhoneNo;
+                vgOwnerPhoneNo.ParameterName = "@IsVerified";
+                vgOwnerPhoneNo.SqlDbType = SqlDbType.Int;
+                vgOwnerPhoneNo.Value = o.IsVerified;
                 cmd.Parameters.Add(vgOwnerPhoneNo);
 
                 SqlParameter vgHomeLandmark = new SqlParameter();
-                vgHomeLandmark.ParameterName = "@HomeLandmark";
+                vgHomeLandmark.ParameterName = "@VehicleCode";
                 vgHomeLandmark.SqlDbType = SqlDbType.NVarChar;
-                vgHomeLandmark.Value = o.HomeLandmark;
+                vgHomeLandmark.Value = o.VehicleCode;
                 cmd.Parameters.Add(vgHomeLandmark);
 
 
@@ -1232,15 +1264,15 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgMYear);
 
                 SqlParameter vgDayOnly = new SqlParameter();
-                vgDayOnly.ParameterName = "@DayOnly";
-                vgDayOnly.SqlDbType = SqlDbType.NVarChar;
-                vgDayOnly.Value = o.DayOnly;
+                vgDayOnly.ParameterName = "@IsDriverowned";
+                vgDayOnly.SqlDbType = SqlDbType.Int;
+                vgDayOnly.Value = o.IsDriverowned;
                 cmd.Parameters.Add(vgDayOnly);
 
                 SqlParameter vgVechMobileNo = new SqlParameter();
-                vgVechMobileNo.ParameterName = "@VechMobileNo";
-                vgVechMobileNo.SqlDbType = SqlDbType.NVarChar;
-                vgVechMobileNo.Value = o.VechMobileNo;
+                vgVechMobileNo.ParameterName = "@DriverId";
+                vgVechMobileNo.SqlDbType = SqlDbType.Int;
+                vgVechMobileNo.Value = o.DriverId;
                 cmd.Parameters.Add(vgVechMobileNo);
 
                 SqlParameter vgEntryDate = new SqlParameter();
@@ -1250,27 +1282,27 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(vgEntryDate);
 
                 SqlParameter vgNewEntry = new SqlParameter();
-                vgNewEntry.ParameterName = "@NewEntry";
-                vgNewEntry.SqlDbType = SqlDbType.NVarChar;
-                vgNewEntry.Value = o.NewEntry;
+                vgNewEntry.ParameterName = "@CountryId";
+                vgNewEntry.SqlDbType = SqlDbType.VarChar;
+                vgNewEntry.Value = o.Country;
                 cmd.Parameters.Add(vgNewEntry);
 
                 SqlParameter vgVehicleModelId = new SqlParameter();
                 vgVehicleModelId.ParameterName = "@VehicleModelId";
                 vgVehicleModelId.SqlDbType = SqlDbType.VarChar;
-                vgVehicleModelId.Value = o.VehicleModelId;
+                vgVehicleModelId.Value = o.VehicleModel;
                 cmd.Parameters.Add(vgVehicleModelId);
 
                 SqlParameter vgServiceTypeId = new SqlParameter();
-                vgServiceTypeId.ParameterName = "@ServiceTypeId";
+                vgServiceTypeId.ParameterName = "@VehicleMakeId";
                 vgServiceTypeId.SqlDbType = SqlDbType.VarChar;
-                vgServiceTypeId.Value = o.ServiceTypeId;
+                vgServiceTypeId.Value = o.VehicleMake;
                 cmd.Parameters.Add(vgServiceTypeId);
 
                 SqlParameter vgVehicleGroupId = new SqlParameter();
                 vgVehicleGroupId.ParameterName = "@VehicleGroupId";
                 vgVehicleGroupId.SqlDbType = SqlDbType.VarChar;
-                vgVehicleGroupId.Value = o.VehicleGroupId;
+                vgVehicleGroupId.Value = o.VehicleGroup;
                 cmd.Parameters.Add(vgVehicleGroupId);
 
                 SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);

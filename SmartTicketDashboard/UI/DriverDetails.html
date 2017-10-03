@@ -485,14 +485,26 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Driver Id</label>
+                                                                                        <label class="col-sm-3 control-label">First Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="email" ng-model="Dl.DId" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="email" ng-model="Dl.FirstName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Last Name</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.LastName" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Driver Name</label>
@@ -503,40 +515,53 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Mobile Number</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PMobNo" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
                                                                             <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Fleet Owner</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-model="Dl.Foid" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                        <option>f101</option>
+                                                                                                        <option>f102</option>
+                                                                                                        <option>f103</option>
+                                                                                                        <option>f104</option>
+                                                                                                        <option>f105</option>
+                                                                                                        <option>f106</option>
+                                                                                                        <option>f107</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Address</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Address1" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Address" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">City</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.City" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                                
                                                                             </div>
+                                                                            
                                                                             <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">PinCode</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Pin" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Permanent Address</label>
@@ -547,7 +572,19 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Date Of Birth</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOB" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
                                                                             </div>
+
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
@@ -565,29 +602,6 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9"><input type="text" ng-model="Dl.PPin" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Date Of Birth</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOB" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Phone Number</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PMobNo" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>

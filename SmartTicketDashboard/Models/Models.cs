@@ -692,6 +692,14 @@ namespace SmartTicketDashboard.Models
         public DateTime? BadgeExpDate {get; set;}
         public string Remarks { get; set; }
         public string VehicleModelId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNumber { get; set; }
+        public string PermanentAddress { get; set; }
+        public string PermanentPin { get; set; }
+        public string EmailId { get; set; }
+        public string DriverCode { get; set; }
+        public string FleetOwner { get; set; }
 
     }
     //Jagan Updated On18th Aug End
@@ -706,28 +714,28 @@ namespace SmartTicketDashboard.Models
         public string CompanyId { get; set; }
         public int VID { get; set; }
         public string RegistrationNo { get; set; }
-        public string Type { get; set; }
-        public string OwnerName { get; set; }
+        public string vehicleType { get; set; }
+        public int FleetOwner { get; set; }
         public string ChasisNo { get; set; }
         public string Engineno { get; set; }
         public DateTime? RoadTaxDate { get; set; }
-        public string InsuranceNo { get; set; }
+        public int HasAC { get; set; }
         public DateTime? InsDate { get; set; }
         public string PolutionNo { get; set; }
         public DateTime? PolExpDate { get; set; }
         public string RCBookNo { get; set; }
         public DateTime? RCExpDate { get; set; }
-        public int CompanyVechile { get; set; }
-        public string OwnerPhoneNo { get; set; }
-        public string HomeLandmark { get; set; }
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
-        public string DayOnly { get; set; }
-        public string VechMobileNo { get; set; }
+        public int IsDriverowned { get; set; }
+        public int DriverId { get; set; }
         public DateTime? EntryDate { get; set; }
-        public string NewEntry { get; set; }
-        public string VehicleModelId { get; set; }
-        public string ServiceTypeId { get; set; }
-        public string VehicleGroupId { get; set; }
+        public string Country { get; set; }
+        public string VehicleModel { get; set; }
+        public string VehicleMake { get; set; }
+        public string VehicleGroup { get; set; }
     }
 
 
