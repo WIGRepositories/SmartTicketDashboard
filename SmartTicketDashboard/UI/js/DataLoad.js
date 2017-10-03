@@ -59,11 +59,11 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     $scope.InveArr = [{ "Id": 1, "Name": "Category" },
                         { "Id": 2, "Name": "Category" }]
 
-    $scope.DriverCol = 'DriverName, Address, City, Pin, PAddress, PCity, PPin, OffMobileNo, PMobNo, DOB, DOJ, BloodGroup, LicenceNo, LiCExpDate, BadgeNo, BadgeExpDate, Remarks, VehicleModel';
+    $scope.DriverCol = 'First Name,Last Name,Mobile Number,Fleet Owner,Address,Permanent Address,Pin,Permanent Pin,EmailId,Driver Code';
     $scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
                         { "Id": 2, "NAme": "Address" }]
 
-    $scope.VehiclesCol = 'CompanyId, RegistrationNo, Type, OwnerName,	ChasisNo, Engineno,	RoadTaxDate, InsuranceNo, InsDate, PolutionNo, PolExpDate, RCBookNo, RCExpDate,	CompanyVechile,	OwnerPhoneNo, HomeLandmark,	ModelYear, DayOnly,	VechMobileNo, EntryDate, NewEntry, VehicleModelId, ServiceTypeId, VehicleGroupId';
+    $scope.VehiclesCol = 'Registration No,Chasis No,Vehicle Group,Vehicle Model,Country,Vehicle Code,Fleet Owner,Engine No,Vehicle Type,Vehicle Make,Driver,Model Year,Has AC,IsDriverOwned';
     $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         { "Id": 2, "VechMobileNo": "OwnerName" }]
 
@@ -113,7 +113,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     var allTextLines = allText.split(/\r\n|\n/);
 
                     var headers = allTextLines[0].split(',');
-
+                    
                     //validate header
 
                     var header = [$scope.seloption];          
@@ -136,6 +136,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     for (var i = 1; i < allTextLines.length; i++) {
                         // split content based on comma
                         var data = allTextLines[i].split(',');
+                        if (data == '' || data == null) continue;
                         lines.push(GetCompany(data));
 
                         if (data.length == headers.length) {
@@ -266,6 +267,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     for (var i = 1; i < allTextLines.length; i++) {
                         // split content based on comma
                         var data = allTextLines[i].split(',');
+                        if (data == '' || data == null) continue;
                         lines.push(GetUser(data));
 
                         //if (data.length == headers.length) {
@@ -394,33 +396,12 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     var headers = allTextLines[0].split(',');
 
-
-
-
-                    //validate header
-
-                    //var header = [$scope.seloption];          
-
-                    //    switch ($scope.seloption) {
-                    //        case "1":
-                    //            //company                                              
-                    //            $scope.mandatoryCols = $scope.compCol;
-
-                    //            alert("Colums are not matching");
-                    //            if (seloption == "CompanyName")
-
-
-                    //            break;
-
-
-                    //}
-
-
                     var lines = [];
 
                     for (var i = 1; i < allTextLines.length; i++) {
                         // split content based on comma
                         var data = allTextLines[i].split(',');
+                        if (data == '' || data == null) continue;
                         lines.push(GetDrivers(data));
 
                         if (data.length == headers.length) {
@@ -449,26 +430,30 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                 function GetDrivers(data) {
 
                     var list = {
-                        NAme: data[0],
-                        Address: data[1],
-                        City: data[2],
-                        Pin: data[3],
-                        PAddress: data[4],
-                        PCity: data[5],
-                        PPin: data[6],
-                        OffMobileNo: data[7],
-                        PMobNo: data[8],
-                        DOB: data[9],
-                        DOJ: data[10],
-                        BloodGroup: data[11],
-                        LicenceNo: data[12],
-                        LiCExpDate: data[13],
-                        BadgeNo: data[14],
-                        BadgeExpDate: data[15],
-                        Remarks: data[16],
-                        VehicleModelId: data[17],
-                        CompanyId: data[18],
-
+                        FirstName: data[0],
+                        LastName: data[1],
+                        MobileNumber: data[2],
+                        FleetOwner:data[3],
+                        Address: data[4],
+                        PermanentAddress: data[5],                       
+                        Pin: data[6],
+                        PermanentPin: data[7],
+                        EmailId: data[8],
+                        DriverCode:data[9],
+                        PCity: data[10],                        
+                        OffMobileNo: data[11],
+                        City: data[12],
+                        DOB: data[13],
+                        DOJ: data[14],
+                        BloodGroup: data[15],
+                        LicenceNo: data[16],
+                        LiCExpDate: data[17],
+                        BadgeNo: data[18],
+                        BadgeExpDate: data[19],
+                        Remarks: data[20],
+                        VehicleModelId: data[21],
+                        CompanyId: data[22],
+                        NAme:data[23],
                         flag: 'I'
                     }
                     return list;
@@ -542,33 +527,13 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
                     var headers = allTextLines[0].split(',');
 
-                    //var header = [$scope.seloption];
-
-
-                    //validate header
-
-                    //var header = [$scope.seloption];          
-
-                    //    switch ($scope.seloption) {
-                    //        case "1":
-                    //            //company                                              
-                    //            $scope.mandatoryCols = $scope.compCol;
-
-                    //            alert("Colums are not matching");
-                    //            if (seloption == "CompanyName")
-
-
-                    //            break;
-
-
-                    //}
-
-
+                    //var header = [$scope.seloption];                  
                     var lines = [];
 
                     for (var i = 1; i < allTextLines.length; i++) {
                         // split content based on comma
                         var data = allTextLines[i].split(',');
+                        if (data == '' || data == null) continue;
                         lines.push(GetVehicles(data));
 
                         if (data.length == headers.length) {
@@ -594,40 +559,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                      //$scope.logdata = lines;
                 };
 
-                function GetVehicles(data) {
-
-                    var list = {
-                        CompanyId: data[0],
-                        //VID: data[1],
-                        RegistrationNo: data[1],
-                        Type: data[2],
-                        OwnerName: data[3],
-                        ChasisNo: data[4],
-                        Engineno: data[5],
-                        RoadTaxDate: data[6],
-                        InsuranceNo: data[7],
-                        InsDate: data[8],
-                        PolutionNo: data[9],
-                        PolExpDate: data[10],
-                        RCBookNo: data[11],
-                        RCExpDate: data[12],
-                        CompanyVechile: data[13],
-                        OwnerPhoneNo: data[14],
-                        HomeLandmark: data[15],
-                        ModelYear: data[16],
-                        DayOnly: data[17],
-                        VechMobileNo: data[18],
-                        EntryDate: data[19],
-                        NewEntry: data[20],
-                        VehicleModelId: data[21],
-                        ServiceTypeId: data[22],
-                        VehicleGroupId: data[23],
-
-                        flag: 'I'
-
-                    }
-                    return list;
-                }
+              
 
                 $scope.save = function () {
                     if (CompanyId == null) {
@@ -660,7 +592,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         var errdata = errres.data;
                         var errmssg = "Your details are incorrect";
                         errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-                        // $scope.showDialog(errmssg);
+                        $scope.alert(errmssg);
                         alert(errmssg);
                     });
                 };
@@ -829,6 +761,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     for (var i = 1; i < allTextLines.length; i++) {
                         // split content based on comma
                         var data = allTextLines[i].split(',');
+                        if (data == '') continue;
                         lines.push(GetDriversVehicleAssign(data));
 
                         if (data.length == headers.length) {
@@ -978,7 +911,42 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                 };
         }
     }
+    function GetVehicles(data) {
 
+        var list = {
+            RegistrationNo: data[0],
+            ChasisNo: data[1],
+            VehicleGroup: data[2],
+            VehicleModel: data[3],
+            Country: data[4],
+            VehicleCode: data[5],
+            FleetOwner: data[6],
+            Engineno: data[7],
+            VehicleType: data[8],
+            VehicleMake: data[9],
+            DriverId: data[10],
+            ModelYear: data[11],
+            HasAC: data[12],
+            IsDriverowned: data[13],
+            RoadTaxDate: data[14],
+            InsDate: data[15],
+            PolutionNo: data[16],
+            PolExpDate: data[17],
+            RCBookNo: data[18],
+            RCExpDate: data[19],
+            StatusId: data[20],
+            IsVerified: data[21],
+            EntryDate: data[22],
+
+
+
+
+
+            flag: 'I'
+
+        }
+        return list;
+    }
     $scope.downloadTemplate = function () {
 
         switch ($scope.seloption) {
@@ -1018,7 +986,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                 break;
 
             case "10":
-                $scope.downloadFile('DataUploadTemplates/VehiclesList.csv', 'VehiclesList.csv');
+                $scope.downloadFile('DataUploadTemplates/VehiclesList.csv');
                 break;
 
             case "11":

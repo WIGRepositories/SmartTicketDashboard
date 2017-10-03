@@ -1,6 +1,4 @@
-﻿// JavaScript source code
-// JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -17,78 +15,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.drivers = res.data;
         });
     }
+      
+   
+    $scope.GetConfigData = function () {
 
+        var vc = {                     
+            includeVehicleGroup: '1',            
+            includeActiveCountry: '1'
+        };
 
-    var parseLocation = function (location) {
-        var pairs = location.substring(1).split("&");
-        var obj = {};
-        var pair;
-        var i;
-
-        for (i in pairs) {
-            if (pairs[i] === "") continue;
-
-            pair = pairs[i].split("=");
-            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
         }
 
-        return obj;
-    };
-    $scope.GetAssigndetails = function () {
-
-        $scope.drivers = null;
-
-        $scope.selecteddrivers = parseLocation(window.location.search)['VID'];
-
-        $http.get('/api/allocatedriver/GetAssigndetails?VechId=' + $scope.selecteddrivers).then(function (res, data) {
-            $scope.a = res.data[0];
-
-            //if ($scope.drivers.length > 0) {
-            //    if ($scope.selecteddrivers != null) {
-            //        for (i = 0; i < $scope.drivers.length; i++) {
-            //            if ($scope.drivers[i].id == $scope.selecteddrivers) {
-            //                $scope.v = $scope.drivers[i];
-            //                break;
-            //            }
-            //        }
-            //    }
-            //    else {
-            //        $scope.s = $scope.drivers[0];
-            //        $scope.selecteddrivers = $scope.drivers[0].id;
-            //    }
-
-            //    $scope.getselectval($scope.selecteddrivers);
-            //}
-        });
-    }
-    $scope.getselectval = function (v) {
-
-        $http.get('/api/allocatedriver/GetAssigndetails?VechId=' + $scope.selecteddrivers).then(function (res, data) {
-            $scope.drivers = res.data;
-        });
-
-    }
-    $scope.GetCompanys = function () {
-        $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
-            $scope.Companies = response.data;
-            
-
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
         });
     }
 
-    $scope.GetMaster = function () {
-        $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res1, data) {
-            $scope.listdrivers = res1.data;
+
+    $scope.GetAvailableDV = function () {
+        var vgId = ($scope.vg == null || $scope.vg.Id == null) ? '-1' : $scope.vg.Id;
+        $http.get('/api/allocatedriver/AvailableVDList?vGroupId=' + vgId).then(function (res1, data) {
+            $scope.vdlist = res1.data;
         });
-        $http.get('/api/VehicleMaster/GetVehcileMaster?VID=1').then(function (res, data) {
-            $scope.Vehicles = res.data;
-        });        
-    }
-
-   
-
-
-    
+        
+    }   
    
 
     $scope.saveNew = function (newVehicle, flag) {
@@ -97,24 +51,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter vechid');
             return;
         }
-        if ($scope.vm.VID == null) {
+        if ($scope.vm.Id == null) {
             alert('Please Enter vechid');
             return;
         }
-        if ($scope.c.Id == null) {
-            alert('Please Enter CompanyId');
-            return;
-        }      
+        //if ($scope.c.Id == null) {
+        //    alert('Please Enter CompanyId');
+        //    return;
+        //}      
        
         if ($scope.d.DId == null || $scope.d.DId.DId == null) {
             alert('Please Enter DriverName');
             return;
         }        
-        if (newVehicle.EffectiveDate == null) {
+        if (newVehicle == null || newVehicle.EffectiveDate == null) {
             alert('Please Enter EffectiveDate');
             return;
         }
-        if (newVehicle.EffectiveTill == null) {
+        if (newVehicle == null || newVehicle.EffectiveTill == null) {
             alert('Please Enter EffectiveTill');
             return;
         }
@@ -122,7 +76,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var newVehicle1 = {
             Id: -1,
-            VechID: $scope.vm.VID,
+            VechID: $scope.vm.Id,
             CompanyId: $scope.c.Id,
             VehicleType: $scope.vm.Type,
             PhoneNo: $scope.d.DId.PMobNo,

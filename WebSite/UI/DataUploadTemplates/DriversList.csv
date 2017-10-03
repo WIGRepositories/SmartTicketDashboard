@@ -1,0 +1,9 @@
+DriverName,Address,City,Pin,PAddress,PCity,PPin,OffMobileNo,PMobNo,DOB,DOJ,BloodGroup,LicenceNo,LiCExpDate,BadgeNo,BadgeExpDate,Remarks,VehicleModel
+
+
+
+						
+						
+						
+example:						
+Smith, Madhapur, Hyderabad, 500028, gutta, Hyderabad, 54646, 54654682, 54998565, NULL, NULL, B+,546546, NULL, 56, NULL, AllRights, Indigo
