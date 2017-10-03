@@ -201,6 +201,56 @@ namespace SmartTicketDashboard.Controllers
             return dt;
         }
 
+        [HttpGet]
+        [Route("api/allocatedriver/AvailableVDList")]
+
+        public DataSet AvailableVDList(int vGroupId)
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetAvailableVDList";
+            cmd.Connection = conn;
+
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vGroupId;
+
+
+            DataSet dt = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
+
+            return dt;
+
+        }
+
+        [HttpGet]
+        [Route("api/allocatedriver/AvailableDrivers")]
+
+        public DataTable AvailableDrivers(int vGroupId, int notassigned)
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVgetdrivermaster";
+            cmd.Connection = conn;
+                        
+            cmd.Parameters.Add("@DId", SqlDbType.Int).Value = -1;
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vGroupId;
+            cmd.Parameters.Add("@notassigned", SqlDbType.Int).Value = notassigned;
+
+            DataTable dt = new DataTable();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
+
+            return dt;
+
+        }
+
+
         public int Max { get; set; }
     }
 
