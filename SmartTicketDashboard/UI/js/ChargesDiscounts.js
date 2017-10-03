@@ -20,6 +20,35 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.GetCategories = function () {
+        //var grpid = (seltype) ? seltype.Id : -1;
+
+        $http.get('/api/Types/TypesByGroupId?groupid=' + 10).then(function (res, data) {
+            $scope.Categories = res.data;
+
+        });
+
+    }
+    $scope.GetApplyAs = function () {
+        //var grpid = (seltype) ? seltype.Id : -1;
+
+        $http.get('/api/Types/TypesByGroupId?groupid=' + 26).then(function (res, data) {
+            $scope.ApplyAs = res.data;
+
+        });
+
+    }
+    $scope.GetAppTypes = function () {
+        //var grpid = (seltype) ? seltype.Id : -1;
+
+        $http.get('/api/Types/TypesByGroupId?groupid=' + 27).then(function (res, data) {
+            $scope.AppTypes = res.data;
+
+        });
+
+    }
+
+
     $scope.AddChargesDiscounts = function (Addcharges,flag) {
 
         
@@ -106,15 +135,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 Code: Addcharges.Code,
                 Title: Addcharges.Title,
                 Description: Addcharges.Description,
-                cdType: Addcharges.cdType,
-                Category: Addcharges.Category,
-                ApplyAs: Addcharges.ApplyAs,
+                cdType: Addcharges.cdType.Id,
+                Category: Addcharges.Category.Id,
+                ApplyAs: Addcharges.ApplyAs.Id,
                 cdValue: Addcharges.cdValue,
                 FromDate: Addcharges.FromDate,
-                ToDate: Addcharges.ToDate,
-              
-
-
+                ToDate: Addcharges.ToDate,              
                 Active: (Addcharges.Active == true) ? 1 : 0,
             }
 
@@ -225,9 +251,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Code: Editcharges.Code,
             Title: Editcharges.Title,
             Description: Editcharges.Description,
-            cdType: Editcharges.cdType,
-            Category: Editcharges.Category,
-            ApplyAs: Editcharges.ApplyAs,
+            cdType: Editcharges.cdType.Id,
+            Category: Editcharges.Category.Id,
+            ApplyAs: Editcharges.ApplyAs.Id,
             cdValue: Editcharges.cdValue,
             FromDate: Editcharges.FromDate,
             ToDate: Editcharges.ToDate,
@@ -258,6 +284,38 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
 
     }
+
+
+    $scope.DeleteCharge = function (cd, flag) {
+        var val = {
+            flag: 'D',
+
+            Id: cd.Id,
+            Code: cd.Code,
+            Title: cd.Title,
+            Description: cd.Description,
+            cdType: cd.cdType.Id,
+            Category: cd.Category.Id,
+            ApplyAs: cd.ApplyAs.Id,
+            cdValue: cd.cdValue,
+            FromDate: cd.FromDate,
+            ToDate: cd.ToDate,
+            Active: (cd.Active == true) ? 1 : 0,
+        }
+        var req = {
+            method: 'POST',
+            url: '/api/SaveChargesDiscounts',
+            data: val
+        }
+        $http(req).then(function (response) {
+
+            alert("Deleted successfully!");
+
+            $scope.currGroup = null;
+
+        });
+    };
+
     $scope.setCharges = function (cd) {
         $scope.Editcharges = cd;
     };
