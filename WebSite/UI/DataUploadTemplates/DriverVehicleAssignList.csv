@@ -1,0 +1,8 @@
+CompanyId, NAme, Address, City,	Pin, PAddress, PCity, PPin,	OffMobileNo, PMobNo, DOB, DOJ, BloodGroup, LicenceNo, LiCExpDate, BadgeNo, BadgeExpDate, Remarks, RegistrationNo, Type,	OwnerName, ChasisNo, Engineno, RoadTaxDate,	InsuranceNo, InsDate, PolutionNo, PolExpDate, RCBookNo, RCExpDate, CompanyVechile, OwnerPhoneNo, HomeLandmark, ModelYear,DayOnly, VechMobileNo,	EntryDate, NewEntry, VehicleModelId, ServiceTypeId,	VehicleGroupId,	BookingNo, ReqDate,	ReqTime, CallTime, CustomerName, CusID,	PhoneNo, AltPhoneNo, PickupAddress, LandMark, PickupPlace, DropPlace, Package, NoofVehicle, VechID,	DriverName,	PresentDriverLandMark, ExecutiveName, EffectiveDate, EffectiveTill,	DriverId
+
+						
+						
+						
+example:						
+WEBINGATE, krishna,	kphb, hyd, 283423, 2-34 kphb, sec, 234234, 54656, 56465, 1/7/1982, 7/12/2015, b posite,	2343, 1/11/2020, 2343, 8/1/2021, nothing, 123456, AC, balu,	2343, 45453, 4/4/2014, 234543, 6/8/2018, 52343,	1/2/2018, 235432, 1/2/2018,	1, 23455231, j.gutta, 2032, day, 3442342323, 1/2/2018, 1/2/2018, Indigo, Hire, Cab,	23532, 1/2/2018, 1/2/2018, 1/2/2018, kiran, 1, 46546, 465865356, chintal, gajularamaram, tarnaka, balanagar, festival, 1, 23423, mahesh, j.gutta, ram, 1/2/2018, 1/2/2018, 2
+
