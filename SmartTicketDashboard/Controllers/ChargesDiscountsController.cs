@@ -38,7 +38,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "InsUpdDelChargesDiscounts";
 
-            SqlParameter Id = new SqlParameter();
+                SqlParameter Id = new SqlParameter();
             Id.ParameterName = "@Id";
             Id.SqlDbType = SqlDbType.Int;
             Id.Value = Convert.ToString(cd.Id);
