@@ -100,8 +100,7 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter r = new SqlParameter("@Address", SqlDbType.VarChar, 50);
             r.Value = d.Address;
             cmd.Parameters.Add(r);
-
-
+                
 
             SqlParameter a = new SqlParameter("@City", SqlDbType.VarChar, 50);
             a.Value = d.City;
@@ -246,6 +245,69 @@ namespace SmartTicketDashboard.Controllers
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
                 
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        [Route("api/DriverMaster/Bankingdetails")]
+        public DataTable Bankingdetails(bankdetails b)
+        {
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "HVInsUpdBankingdetails";
+                cmd.Connection = conn;
+
+                SqlParameter ff = new SqlParameter("@flag", SqlDbType.VarChar);
+                ff.Value = b.flag;
+                cmd.Parameters.Add(ff);
+
+                SqlParameter i = new SqlParameter("@Id", SqlDbType.Int);
+                i.Value = b.Id;
+                cmd.Parameters.Add(i);                
+
+                SqlParameter n = new SqlParameter("@Accountnumber", SqlDbType.VarChar, 50);
+                n.Value = b.Accountnumber;
+                cmd.Parameters.Add(n);
+
+                SqlParameter r = new SqlParameter("@BankName", SqlDbType.VarChar, 50);
+                r.Value = b.BankName;
+                cmd.Parameters.Add(r);
+
+
+                SqlParameter a = new SqlParameter("@BankCode", SqlDbType.VarChar, 50);
+                a.Value = b.Bankcode;
+                cmd.Parameters.Add(a);
+
+                SqlParameter s = new SqlParameter("@BranchAddress", SqlDbType.VarChar, 50);
+                s.Value = b.BranchAddress;
+                cmd.Parameters.Add(s);                
+
+                SqlParameter j2 = new SqlParameter("@CountryId", SqlDbType.VarChar,50);
+                j2.Value = b.Country;
+                cmd.Parameters.Add(j2);
+
+                SqlParameter f = new SqlParameter("@IsActive", SqlDbType.Int);
+                f.Value = b.IsActive;
+                cmd.Parameters.Add(f);
+
+                
+                DataTable dt = new DataTable();
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
 
                 return dt;
             }

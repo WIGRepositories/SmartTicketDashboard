@@ -1449,391 +1449,168 @@ namespace SmartTicketDashboard.Controllers
                 conn.Open();
                 foreach (DriverVehicleAssignGroup dva in list5)
                 {
-                    SqlParameter dvaCompanyId = new SqlParameter("@CompanyId", SqlDbType.VarChar);
-                    dvaCompanyId.Value = dva.CompanyId;
-                    cmd.Parameters.Add(dvaCompanyId);
-
-                    SqlParameter dvaName = new SqlParameter();
-                    dvaName.ParameterName = "@NAme";
-                    dvaName.SqlDbType = SqlDbType.VarChar;
-                    dvaName.Value = dva.NAme;
-                    cmd.Parameters.Add(dvaName);
-
-                    SqlParameter dvaAddress = new SqlParameter();
-                    dvaAddress.ParameterName = "@Address";
-                    dvaAddress.SqlDbType = SqlDbType.VarChar;
-                    dvaAddress.Value = dva.Address;
-                    cmd.Parameters.Add(dvaAddress);
-
-                    SqlParameter dvaCity = new SqlParameter();
-                    dvaCity.ParameterName = "@City";
-                    dvaCity.SqlDbType = SqlDbType.VarChar;
-                    dvaCity.Value = dva.City;
-                    cmd.Parameters.Add(dvaCity);
-
-                    SqlParameter dvaPin = new SqlParameter();
-                    dvaPin.ParameterName = "@Pin";
-                    dvaPin.SqlDbType = SqlDbType.VarChar;
-                    dvaPin.Value = dva.Pin;
-                    cmd.Parameters.Add(dvaPin);
-
-                    SqlParameter dvaPAddress = new SqlParameter();
-                    dvaPAddress.ParameterName = "@PAddress";
-                    dvaPAddress.SqlDbType = SqlDbType.VarChar;
-                    dvaPAddress.Value = dva.PAddress;
-                    cmd.Parameters.Add(dvaPAddress);
-
-                    SqlParameter dvaPCity = new SqlParameter();
-                    dvaPCity.ParameterName = "@PCity";
-                    dvaPCity.SqlDbType = SqlDbType.VarChar;
-                    dvaPCity.Value = dva.PCity;
-                    cmd.Parameters.Add(dvaPCity);
-
-                    SqlParameter dvaPPin = new SqlParameter();
-                    dvaPPin.ParameterName = "@PPin";
-                    dvaPPin.SqlDbType = SqlDbType.VarChar;
-                    dvaPPin.Value = dva.PPin;
-                    cmd.Parameters.Add(dvaPPin);
-
-                    SqlParameter dvaOffMobileNo = new SqlParameter();
-                    dvaOffMobileNo.ParameterName = "@OffMobileNo";
-                    dvaOffMobileNo.SqlDbType = SqlDbType.VarChar;
-                    dvaOffMobileNo.Value = dva.OffMobileNo;
-                    cmd.Parameters.Add(dvaOffMobileNo);
-
-                    SqlParameter dvaMobNo = new SqlParameter();
-                    dvaMobNo.ParameterName = "@PMobNo";
-                    dvaMobNo.SqlDbType = SqlDbType.VarChar;
-                    dvaMobNo.Value = dva.PMobNo;
-                    cmd.Parameters.Add(dvaMobNo);
-
-                    SqlParameter dvaDOB = new SqlParameter();
-                    dvaDOB.ParameterName = "@DOB";
-                    dvaDOB.SqlDbType = SqlDbType.DateTime;
-                    dvaDOB.Value = dva.DOB;
-                    cmd.Parameters.Add(dvaDOB);
-
-                    SqlParameter dvaDOJ = new SqlParameter();
-                    dvaDOJ.ParameterName = "@DOJ";
-                    dvaDOJ.SqlDbType = SqlDbType.DateTime;
-                    dvaDOJ.Value = dva.DOJ;
-                    cmd.Parameters.Add(dvaDOJ);
-
-                    SqlParameter dvaBloodGroup = new SqlParameter();
-                    dvaBloodGroup.ParameterName = "@BloodGroup";
-                    dvaBloodGroup.SqlDbType = SqlDbType.VarChar;
-                    dvaBloodGroup.Value = dva.BloodGroup;
-                    cmd.Parameters.Add(dvaBloodGroup);
-
-                    SqlParameter dvaLicenceNo = new SqlParameter();
-                    dvaLicenceNo.ParameterName = "@LicenceNo";
-                    dvaLicenceNo.SqlDbType = SqlDbType.VarChar;
-                    dvaLicenceNo.Value = dva.LicenceNo;
-                    cmd.Parameters.Add(dvaLicenceNo);
-
-                    SqlParameter dvaLiCExpDate = new SqlParameter();
-                    dvaLiCExpDate.ParameterName = "@LiCExpDate";
-                    dvaLiCExpDate.SqlDbType = SqlDbType.DateTime;
-                    dvaLiCExpDate.Value = dva.LiCExpDate;
-                    cmd.Parameters.Add(dvaLiCExpDate);
-
-                    SqlParameter dvaBadgeNo = new SqlParameter();
-                    dvaBadgeNo.ParameterName = "@BadgeNo";
-                    dvaBadgeNo.SqlDbType = SqlDbType.VarChar;
-                    dvaBadgeNo.Value = dva.BadgeNo;
-                    cmd.Parameters.Add(dvaBadgeNo);
-
-                    SqlParameter dvaBadgeExpDate = new SqlParameter();
-                    dvaBadgeExpDate.ParameterName = "@BadgeExpDate";
-                    dvaBadgeExpDate.SqlDbType = SqlDbType.DateTime;
-                    dvaBadgeExpDate.Value = dva.BadgeExpDate;
-                    cmd.Parameters.Add(dvaBadgeExpDate);
-
-                    SqlParameter dvaRemarks = new SqlParameter();
-                    dvaRemarks.ParameterName = "@Remarks";
-                    dvaRemarks.SqlDbType = SqlDbType.VarChar;
-                    dvaRemarks.Value = dva.Remarks;
-                    cmd.Parameters.Add(dvaRemarks);
-
-
-                    //Vehicle Table
-                    SqlParameter dvaVID = new SqlParameter();
-                    dvaVID.ParameterName = "@VID";
-                    dvaVID.SqlDbType = SqlDbType.Int;
-                    dvaVID.Value = dva.VID;
-                    cmd.Parameters.Add(dvaVID);
-
-                    SqlParameter dvaRegistrationNo = new SqlParameter();
-                    dvaRegistrationNo.ParameterName = "@RegistrationNo";
-                    dvaRegistrationNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaRegistrationNo.Value = dva.RegistrationNo;
-                    cmd.Parameters.Add(dvaRegistrationNo);
-
-                    SqlParameter dvaType = new SqlParameter();
-                    dvaType.ParameterName = "@Type";
-                    dvaType.SqlDbType = SqlDbType.NVarChar;
-                    dvaType.Value = dva.Type;
-                    cmd.Parameters.Add(dvaType);
-
-                    SqlParameter dvaOwnerName = new SqlParameter();
-                    dvaOwnerName.ParameterName = "@OwnerName";
-                    dvaOwnerName.SqlDbType = SqlDbType.NVarChar;
-                    dvaOwnerName.Value = dva.OwnerName;
-                    cmd.Parameters.Add(dvaOwnerName);
-
-                    SqlParameter dvaChasisNo = new SqlParameter();
-                    dvaChasisNo.ParameterName = "@ChasisNo";
-                    dvaChasisNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaChasisNo.Value = dva.ChasisNo;
-                    cmd.Parameters.Add(dvaChasisNo);
-
-                    SqlParameter dvaEngineno = new SqlParameter();
-                    dvaEngineno.ParameterName = "@Engineno";
-                    dvaEngineno.SqlDbType = SqlDbType.NVarChar;
-                    dvaEngineno.Value = dva.Engineno;
-                    cmd.Parameters.Add(dvaEngineno);
-
-                    SqlParameter dvaRoadTaxDate = new SqlParameter();
-                    dvaRoadTaxDate.ParameterName = "@RoadTaxDate";
-                    dvaRoadTaxDate.SqlDbType = SqlDbType.DateTime;
-                    dvaRoadTaxDate.Value = dva.RoadTaxDate;
-                    cmd.Parameters.Add(dvaRoadTaxDate);
-
-                    SqlParameter dvaInsuranceNo = new SqlParameter();
-                    dvaInsuranceNo.ParameterName = "@InsuranceNo";
-                    dvaInsuranceNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaInsuranceNo.Value = dva.InsuranceNo;
-                    cmd.Parameters.Add(dvaInsuranceNo);
-
-                    SqlParameter dvaInsDate = new SqlParameter();
-                    dvaInsDate.ParameterName = "@InsDate";
-                    dvaInsDate.SqlDbType = SqlDbType.DateTime;
-                    dvaInsDate.Value = dva.InsDate;
-                    cmd.Parameters.Add(dvaInsDate);
-
-                    SqlParameter dvaPolutionNo = new SqlParameter();
-                    dvaPolutionNo.ParameterName = "@PolutionNo";
-                    dvaPolutionNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaPolutionNo.Value = dva.PolutionNo;
-                    cmd.Parameters.Add(dvaPolutionNo);
-
-                    SqlParameter dvaPolExpDate = new SqlParameter();
-                    dvaPolExpDate.ParameterName = "@PolExpDate";
-                    dvaPolExpDate.SqlDbType = SqlDbType.DateTime;
-                    dvaPolExpDate.Value = dva.PolExpDate;
-                    cmd.Parameters.Add(dvaPolExpDate);
-
-                    SqlParameter dvaRCBookNo = new SqlParameter();
-                    dvaRCBookNo.ParameterName = "@RCBookNo";
-                    dvaRCBookNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaRCBookNo.Value = dva.RCBookNo;
-                    cmd.Parameters.Add(dvaRCBookNo);
-
-                    SqlParameter dvaRCExpDate = new SqlParameter();
-                    dvaRCExpDate.ParameterName = "@RCExpDate";
-                    dvaRCExpDate.SqlDbType = SqlDbType.DateTime;
-                    dvaRCExpDate.Value = dva.RCExpDate;
-                    cmd.Parameters.Add(dvaRCExpDate);
-
-                    SqlParameter dvaCompanyVechile = new SqlParameter();
-                    dvaCompanyVechile.ParameterName = "@CompanyVechile";
-                    dvaCompanyVechile.SqlDbType = SqlDbType.Int;
-                    dvaCompanyVechile.Value = dva.CompanyVechile;
-                    cmd.Parameters.Add(dvaCompanyVechile);
-
-                    SqlParameter dvaOwnerPhoneNo = new SqlParameter();
-                    dvaOwnerPhoneNo.ParameterName = "@OwnerPhoneNo";
-                    dvaOwnerPhoneNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaOwnerPhoneNo.Value = dva.OwnerPhoneNo;
-                    cmd.Parameters.Add(dvaOwnerPhoneNo);
-
-                    SqlParameter dvaHomeLandmark = new SqlParameter();
-                    dvaHomeLandmark.ParameterName = "@HomeLandmark";
-                    dvaHomeLandmark.SqlDbType = SqlDbType.NVarChar;
-                    dvaHomeLandmark.Value = dva.HomeLandmark;
-                    cmd.Parameters.Add(dvaHomeLandmark);
-
-                    SqlParameter dvaModelYear = new SqlParameter();
-                    dvaModelYear.ParameterName = "@ModelYear";
-                    dvaModelYear.SqlDbType = SqlDbType.NVarChar;
-                    dvaModelYear.Value = dva.ModelYear;
-                    cmd.Parameters.Add(dvaModelYear);
-
-                    SqlParameter dvaDayOnly = new SqlParameter();
-                    dvaDayOnly.ParameterName = "@DayOnly";
-                    dvaDayOnly.SqlDbType = SqlDbType.NVarChar;
-                    dvaDayOnly.Value = dva.DayOnly;
-                    cmd.Parameters.Add(dvaDayOnly);
-
-                    SqlParameter dvaVechMobileNo = new SqlParameter();
-                    dvaVechMobileNo.ParameterName = "@VechMobileNo";
-                    dvaVechMobileNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaVechMobileNo.Value = dva.VechMobileNo;
-                    cmd.Parameters.Add(dvaVechMobileNo);
-
-                    SqlParameter dvaEntryDate = new SqlParameter();
-                    dvaEntryDate.ParameterName = "@EntryDate";
-                    dvaEntryDate.SqlDbType = SqlDbType.DateTime;
-                    dvaEntryDate.Value = dva.EntryDate;
-                    cmd.Parameters.Add(dvaEntryDate);
-
-                    SqlParameter dvaNewEntry = new SqlParameter();
-                    dvaNewEntry.ParameterName = "@NewEntry";
-                    dvaNewEntry.SqlDbType = SqlDbType.NVarChar;
-                    dvaNewEntry.Value = dva.NewEntry;
-                    cmd.Parameters.Add(dvaNewEntry);
-
-                    SqlParameter dvaVehicleModelId = new SqlParameter();
-                    dvaVehicleModelId.ParameterName = "@VehicleModelId";
-                    dvaVehicleModelId.SqlDbType = SqlDbType.VarChar;
-                    dvaVehicleModelId.Value = dva.VehicleModelId;
-                    cmd.Parameters.Add(dvaVehicleModelId);
-
-                    SqlParameter dvaServiceTypeId = new SqlParameter();
-                    dvaServiceTypeId.ParameterName = "@ServiceTypeId";
-                    dvaServiceTypeId.SqlDbType = SqlDbType.VarChar;
-                    dvaServiceTypeId.Value = dva.ServiceTypeId;
-                    cmd.Parameters.Add(dvaServiceTypeId);
-
-                    SqlParameter dvaVehicleGroupId = new SqlParameter();
-                    dvaVehicleGroupId.ParameterName = "@VehicleGroupId";
-                    dvaVehicleGroupId.SqlDbType = SqlDbType.VarChar;
-                    dvaVehicleGroupId.Value = dva.VehicleGroupId;
-                    cmd.Parameters.Add(dvaVehicleGroupId);
-
-                    //Assign Table
-
-                    SqlParameter dvaBookingNo = new SqlParameter();
-                    dvaBookingNo.ParameterName = "@BookingNo";
-                    dvaBookingNo.SqlDbType = SqlDbType.Int;
-                    dvaBookingNo.Value = dva.BookingNo;
-                    cmd.Parameters.Add(dvaBookingNo);
-
-                    SqlParameter dvaReqDate = new SqlParameter();
-                    dvaReqDate.ParameterName = "@ReqDate";
-                    dvaReqDate.SqlDbType = SqlDbType.DateTime;
-                    dvaReqDate.Value = dva.ReqDate;
-                    cmd.Parameters.Add(dvaReqDate);
-
-                    SqlParameter dvaReqTime = new SqlParameter();
-                    dvaReqTime.ParameterName = "@ReqTime";
-                    dvaReqTime.SqlDbType = SqlDbType.DateTime;
-                    dvaReqTime.Value = dva.ReqTime;
-                    cmd.Parameters.Add(dvaReqTime);
-
-                    SqlParameter dvaCallTime = new SqlParameter();
-                    dvaCallTime.ParameterName = "@CallTime";
-                    dvaCallTime.SqlDbType = SqlDbType.DateTime;
-                    dvaCallTime.Value = dva.CallTime;
-                    cmd.Parameters.Add(dvaCallTime);
-
-                    SqlParameter dvaCustomerName = new SqlParameter();
-                    dvaCustomerName.ParameterName = "@CustomerName";
-                    dvaCustomerName.SqlDbType = SqlDbType.NVarChar;
-                    dvaCustomerName.Value = dva.CustomerName;
-                    cmd.Parameters.Add(dvaCustomerName);
-
-                    SqlParameter dvaCusID = new SqlParameter();
-                    dvaCusID.ParameterName = "@CusID";
-                    dvaCusID.SqlDbType = SqlDbType.NVarChar;
-                    dvaCusID.Value = dva.CusID;
-                    cmd.Parameters.Add(dvaCusID);
-
-                    SqlParameter dvaPhoneNo = new SqlParameter();
-                    dvaPhoneNo.ParameterName = "@PhoneNo";
-                    dvaPhoneNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaPhoneNo.Value = dva.PhoneNo;
-                    cmd.Parameters.Add(dvaPhoneNo);
-
-                    SqlParameter dvaAltPhoneNo = new SqlParameter();
-                    dvaAltPhoneNo.ParameterName = "@AltPhoneNo";
-                    dvaAltPhoneNo.SqlDbType = SqlDbType.NVarChar;
-                    dvaAltPhoneNo.Value = dva.AltPhoneNo;
-                    cmd.Parameters.Add(dvaAltPhoneNo);
-
-                    SqlParameter dvaPickupAddress = new SqlParameter();
-                    dvaPickupAddress.ParameterName = "@PickupAddress";
-                    dvaPickupAddress.SqlDbType = SqlDbType.NVarChar;
-                    dvaPickupAddress.Value = dva.PickupAddress;
-                    cmd.Parameters.Add(dvaPickupAddress);
-
-                    SqlParameter dvaLandMark = new SqlParameter();
-                    dvaLandMark.ParameterName = "@LandMark";
-                    dvaLandMark.SqlDbType = SqlDbType.NVarChar;
-                    dvaLandMark.Value = dva.LandMark;
-                    cmd.Parameters.Add(dvaLandMark);
-
-                    SqlParameter dvaPickupPlace = new SqlParameter();
-                    dvaPickupPlace.ParameterName = "@PickupPlace";
-                    dvaPickupPlace.SqlDbType = SqlDbType.NVarChar;
-                    dvaPickupPlace.Value = dva.PickupPlace;
-                    cmd.Parameters.Add(dvaPickupPlace);
-
-                    SqlParameter dvaDropPlace = new SqlParameter();
-                    dvaDropPlace.ParameterName = "@DropPlace";
-                    dvaDropPlace.SqlDbType = SqlDbType.NVarChar;
-                    dvaDropPlace.Value = dva.DropPlace;
-                    cmd.Parameters.Add(dvaDropPlace);
-
-                    SqlParameter dvaPackage = new SqlParameter();
-                    dvaPackage.ParameterName = "@Package";
-                    dvaPackage.SqlDbType = SqlDbType.NVarChar;
-                    dvaPackage.Value = dva.Package;
-                    cmd.Parameters.Add(dvaPackage);
-
-                    SqlParameter dvaVehicleType = new SqlParameter();
-                    dvaVehicleType.ParameterName = "@VehicleType";
-                    dvaVehicleType.SqlDbType = SqlDbType.NVarChar;
-                    dvaVehicleType.Value = dva.VehicleType;
-                    cmd.Parameters.Add(dvaVehicleType);
-
-                    SqlParameter dvaNoofVehicle = new SqlParameter();
-                    dvaNoofVehicle.ParameterName = "@NoofVehicle";
-                    dvaNoofVehicle.SqlDbType = SqlDbType.Int;
-                    dvaNoofVehicle.Value = dva.NoofVehicle;
-                    cmd.Parameters.Add(dvaNoofVehicle);
-
-                    SqlParameter dvaVechID = new SqlParameter();
-                    dvaVechID.ParameterName = "@VechID";
-                    dvaVechID.SqlDbType = SqlDbType.Int;
-                    dvaVechID.Value = dva.VechID;
-                    cmd.Parameters.Add(dvaVechID);
-
-                    SqlParameter dvaDriverName = new SqlParameter();
-                    dvaDriverName.ParameterName = "@DriverName";
-                    dvaDriverName.SqlDbType = SqlDbType.NVarChar;
-                    dvaDriverName.Value = dva.DriverName;
-                    cmd.Parameters.Add(dvaDriverName);
-
-                    SqlParameter dvaPresentDriverLandMark = new SqlParameter();
-                    dvaPresentDriverLandMark.ParameterName = "@PresentDriverLandMark";
-                    dvaPresentDriverLandMark.SqlDbType = SqlDbType.NVarChar;
-                    dvaPresentDriverLandMark.Value = dva.PresentDriverLandMark;
-                    cmd.Parameters.Add(dvaPresentDriverLandMark);
-
-                    SqlParameter dvaExecutiveName = new SqlParameter();
-                    dvaExecutiveName.ParameterName = "@ExecutiveName";
-                    dvaExecutiveName.SqlDbType = SqlDbType.NVarChar;
-                    dvaExecutiveName.Value = dva.ExecutiveName;
-                    cmd.Parameters.Add(dvaExecutiveName);
-
-                    SqlParameter dvaEffectiveDate = new SqlParameter();
-                    dvaEffectiveDate.ParameterName = "@EffectiveDate";
-                    dvaEffectiveDate.SqlDbType = SqlDbType.DateTime;
-                    dvaEffectiveDate.Value = dva.EffectiveDate;
-                    cmd.Parameters.Add(dvaEffectiveDate);
-
-                    SqlParameter dvaEffectiveTill = new SqlParameter();
-                    dvaEffectiveTill.ParameterName = "@EffectiveTill";
-                    dvaEffectiveTill.SqlDbType = SqlDbType.DateTime;
-                    dvaEffectiveTill.Value = dva.EffectiveTill;
-                    cmd.Parameters.Add(dvaEffectiveTill);
-
-                    SqlParameter dvaDriverId = new SqlParameter();
-                    dvaDriverId.ParameterName = "@DriverId";
-                    dvaDriverId.SqlDbType = SqlDbType.Int;
-                    dvaDriverId.Value = dva.DriverId;
-                    cmd.Parameters.Add(dvaDriverId);
+                    SqlParameter vgRegNo = new SqlParameter();
+                    vgRegNo.ParameterName = "@RegistrationNo";
+                    vgRegNo.SqlDbType = SqlDbType.NVarChar;
+                    vgRegNo.Value = dva.RegistrationNo;
+                    cmd.Parameters.Add(vgRegNo);
+
+                    SqlParameter vgChasisNo = new SqlParameter();
+                    vgChasisNo.ParameterName = "@ChasisNo";
+                    vgChasisNo.SqlDbType = SqlDbType.NVarChar;
+                    vgChasisNo.Value = dva.ChasisNo;
+                    cmd.Parameters.Add(vgChasisNo);
+
+                    SqlParameter vgVehicleGroupId = new SqlParameter();
+                    vgVehicleGroupId.ParameterName = "@VehicleGroupId";
+                    vgVehicleGroupId.SqlDbType = SqlDbType.VarChar;
+                    vgVehicleGroupId.Value = dva.VehicleGroup;
+                    cmd.Parameters.Add(vgVehicleGroupId);
+
+                    SqlParameter vgVehicleModelId = new SqlParameter();
+                    vgVehicleModelId.ParameterName = "@VehicleModelId";
+                    vgVehicleModelId.SqlDbType = SqlDbType.VarChar;
+                    vgVehicleModelId.Value = dva.VehicleModel;
+                    cmd.Parameters.Add(vgVehicleModelId);
+
+                    SqlParameter cv = new SqlParameter();
+                    cv.ParameterName = "@CountryId";
+                    cv.SqlDbType = SqlDbType.VarChar;
+                    cv.Value = dva.Country;
+                    cmd.Parameters.Add(cv);
+
+                    SqlParameter vb = new SqlParameter();
+                    vb.ParameterName = "@VehicleCode";
+                    vb.SqlDbType = SqlDbType.NVarChar;
+                    vb.Value = dva.VehicleCode;
+                    cmd.Parameters.Add(vb);
+
+                    SqlParameter fg = new SqlParameter();
+                    fg.ParameterName = "@FleetOwnerId";
+                    fg.SqlDbType = SqlDbType.Int;
+                    fg.Value = dva.FleetOwner;
+                    cmd.Parameters.Add(fg);
+
+                    SqlParameter vgEngineNo = new SqlParameter();
+                    vgEngineNo.ParameterName = "@Engineno";
+                    vgEngineNo.SqlDbType = SqlDbType.NVarChar;
+                    vgEngineNo.Value = dva.Engineno;
+                    cmd.Parameters.Add(vgEngineNo);
+
+                    SqlParameter vgType = new SqlParameter();
+                    vgType.ParameterName = "@VehicleType";
+                    vgType.SqlDbType = SqlDbType.NVarChar;
+                    vgType.Value = dva.vehicleType;
+                    cmd.Parameters.Add(vgType);
+
+                    SqlParameter vgServiceTypeId = new SqlParameter();
+                    vgServiceTypeId.ParameterName = "@VehicleMakeId";
+                    vgServiceTypeId.SqlDbType = SqlDbType.VarChar;
+                    vgServiceTypeId.Value = dva.VehicleMake;
+                    cmd.Parameters.Add(vgServiceTypeId);
+
+
+                    SqlParameter vgVechMobileNo = new SqlParameter();
+                    vgVechMobileNo.ParameterName = "@DriverId";
+                    vgVechMobileNo.SqlDbType = SqlDbType.Int;
+                    vgVechMobileNo.Value = dva.DriverId;
+                    cmd.Parameters.Add(vgVechMobileNo);
+
+
+                    SqlParameter vgMYear = new SqlParameter();
+                    vgMYear.ParameterName = "@ModelYear";
+                    vgMYear.SqlDbType = SqlDbType.NVarChar;
+                    vgMYear.Value = dva.ModelYear;
+                    cmd.Parameters.Add(vgMYear);
+
+                    SqlParameter vgInsuNo = new SqlParameter();
+                    vgInsuNo.ParameterName = "@HasAC";
+                    vgInsuNo.SqlDbType = SqlDbType.Int;
+                    vgInsuNo.Value = dva.HasAC;
+                    cmd.Parameters.Add(vgInsuNo);
+
+
+                    SqlParameter vgDayOnly = new SqlParameter();
+                    vgDayOnly.ParameterName = "@IsDriverowned";
+                    vgDayOnly.SqlDbType = SqlDbType.Int;
+                    vgDayOnly.Value = dva.IsDriverowned;
+                    cmd.Parameters.Add(vgDayOnly);                 
+
+
+                    SqlParameter vgCompanyVeh = new SqlParameter();
+                    vgCompanyVeh.ParameterName = "@StatusId";
+                    vgCompanyVeh.SqlDbType = SqlDbType.Int;
+                    vgCompanyVeh.Value = dva.StatusId;
+                    cmd.Parameters.Add(vgCompanyVeh);
+
+                    SqlParameter vgOwnerPhoneNo = new SqlParameter();
+                    vgOwnerPhoneNo.ParameterName = "@IsVerified";
+                    vgOwnerPhoneNo.SqlDbType = SqlDbType.Int;
+                    vgOwnerPhoneNo.Value = dva.IsVerified;
+                    cmd.Parameters.Add(vgOwnerPhoneNo);
+                    
+
+                    SqlParameter vgEntryDate = new SqlParameter();
+                    vgEntryDate.ParameterName = "@EntryDate";
+                    vgEntryDate.SqlDbType = SqlDbType.DateTime;
+                    vgEntryDate.Value = dva.EntryDate;
+                    cmd.Parameters.Add(vgEntryDate);
+
+                    SqlParameter fd = new SqlParameter();
+                    fd.ParameterName = "@FirstName";
+                    fd.SqlDbType = SqlDbType.VarChar;
+                    fd.Value = dva.FirstName;
+                    cmd.Parameters.Add(fd);
+
+                    SqlParameter gf = new SqlParameter();
+                    gf.ParameterName = "@LastName";
+                    gf.SqlDbType = SqlDbType.VarChar;
+                    gf.Value = dva.LastName;
+                    cmd.Parameters.Add(gf);
+
+                    SqlParameter dgPM = new SqlParameter();
+                    dgPM.ParameterName = "@PMobNo";
+                    dgPM.SqlDbType = SqlDbType.VarChar;
+                    dgPM.Value = dva.MobileNumber;
+                    cmd.Parameters.Add(dgPM);
+
+                    SqlParameter dgAddr = new SqlParameter();
+                    dgAddr.ParameterName = "@Address";
+                    dgAddr.SqlDbType = SqlDbType.VarChar;
+                    dgAddr.Value = dva.Address;
+                    cmd.Parameters.Add(dgAddr);
+
+                    SqlParameter dgpadr = new SqlParameter();
+                    dgpadr.ParameterName = "@PAddress";
+                    dgpadr.SqlDbType = SqlDbType.VarChar;
+                    dgpadr.Value = dva.PermanentAddress;
+                    cmd.Parameters.Add(dgpadr);
+
+                    SqlParameter dgppin = new SqlParameter();
+                    dgppin.ParameterName = "@Pin";
+                    dgppin.SqlDbType = SqlDbType.VarChar;
+                    dgppin.Value = dva.Pin;
+                    cmd.Parameters.Add(dgppin);
+
+                    SqlParameter dgPPin = new SqlParameter();
+                    dgPPin.ParameterName = "@PPin";
+                    dgPPin.SqlDbType = SqlDbType.VarChar;
+                    dgPPin.Value = dva.PermanentPin;
+                    cmd.Parameters.Add(dgPPin);
+
+                    SqlParameter yt = new SqlParameter();
+                    yt.ParameterName = "@EmailId";
+                    yt.SqlDbType = SqlDbType.VarChar;
+                    yt.Value = dva.EmailId;
+                    cmd.Parameters.Add(yt);
+
+                    SqlParameter dc = new SqlParameter();
+                    dc.ParameterName = "@DriverCode";
+                    dc.SqlDbType = SqlDbType.VarChar;
+                    dc.Value = dva.DriverCode;
+                    cmd.Parameters.Add(dc);                 
+
+                    
 
                     SqlParameter dvaflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     dvaflag.Value = dva.inspudflag;

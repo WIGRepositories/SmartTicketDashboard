@@ -761,73 +761,35 @@ namespace SmartTicketDashboard.Models
     {
         public DriverVehicleAssignGroup[] dva = null;
         public string inspudflag { get; set; }
-        public int DId { get; set; }
-        public string CompanyId { get; set; }
-        public string NAme { get; set; }
-        public string Address { get; set; }
-        public string City { get; set; }
-        public string Pin { get; set; }
-        public string PAddress { get; set; }
-        public string PCity { get; set; }
-        public string PPin { get; set; }
-        public string OffMobileNo { get; set; }
-        public string PMobNo { get; set; }
-        public DateTime? DOB { get; set; }
-        public DateTime? DOJ { get; set; }
-        public string BloodGroup { get; set; }
-        public string LicenceNo { get; set; }
-        public DateTime? LiCExpDate { get; set; }
-        public string BadgeNo { get; set; }
-        public DateTime? BadgeExpDate { get; set; }
-        public string Remarks { get; set; }
-        public int Id { get; set; }
-        public int VID { get; set; }
         public string RegistrationNo { get; set; }
-        public string Type { get; set; }
-        public string OwnerName { get; set; }
+        public string vehicleType { get; set; }
+        public int FleetOwner { get; set; }
         public string ChasisNo { get; set; }
-        public string Engineno { get; set; }
-        public DateTime? RoadTaxDate { get; set; }
-        public string InsuranceNo { get; set; }
-        public DateTime? InsDate { get; set; }
-        public string PolutionNo { get; set; }
-        public DateTime? PolExpDate { get; set; }
-        public string RCBookNo { get; set; }
-        public DateTime? RCExpDate { get; set; }
-        public int CompanyVechile { get; set; }
-        public string OwnerPhoneNo { get; set; }
-        public string HomeLandmark { get; set; }
+        public string Engineno { get; set; }       
+        public int HasAC { get; set; }       
+        public int StatusId { get; set; }
+        public int IsVerified { get; set; }
+        public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
-        public string DayOnly { get; set; }
-        public string VechMobileNo { get; set; }
+        public int IsDriverowned { get; set; }
+        public int DriverId { get; set; }
         public DateTime? EntryDate { get; set; }
-        public string NewEntry { get; set; }
-        public string VehicleModelId { get; set; }
-        public string ServiceTypeId { get; set; }
-        public string VehicleGroupId { get; set; }
-        public int BookingNo { get; set; }
-        public DateTime? ReqDate { get; set; }
-        public DateTime? ReqTime { get; set; }
-        public DateTime? CallTime { get; set; }
-        public string CustomerName { get; set; }
-        public string CusID { get; set; }
-        public string PhoneNo { get; set; }
-        public string AltPhoneNo { get; set; }
-        public string PickupAddress { get; set; }
-        public string LandMark { get; set; }
-        public string PickupPlace { get; set; }
-        public string DropPlace { get; set; }
-        public string Package { get; set; }
-        public string VehicleType { get; set; }
-        public int NoofVehicle { get; set; }
-        public int VechID { get; set; }
-        public string DriverName { get; set; }
-        public string PresentDriverLandMark { get; set; }
-        public string ExecutiveName { get; set; }
+        public string Country { get; set; }
+        public string VehicleModel { get; set; }
+        public string VehicleMake { get; set; }
+        public string VehicleGroup { get; set; }
         public DateTime? EffectiveDate { get; set; }
         public DateTime? EffectiveTill { get; set; }
-        public int DriverId { get; set; }
-
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string MobileNumber { get; set; }
+        public string PermanentAddress { get; set; }
+        public string PermanentPin { get; set; }
+        public string EmailId { get; set; }
+        public string DriverCode { get; set; }        
+        public string Address { get; set; }
+        public string Pin { get; set; }
+       
     }
     public class UsersGroup
     {
@@ -2804,6 +2766,19 @@ namespace SmartTicketDashboard.Models
         public int VehicleGroupId { get; set; }
 
         public int DocTypeId { get; set; }
+    }
+
+    public class bankdetails
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Accountnumber { get; set; }
+        public string BankName { get; set; }
+        public string BranchAddress { get; set; }
+        public string Bankcode { get; set; }       
+        public string Country { get; set; }
+        public int IsActive { get; set; }
+       
     }
 
 }
