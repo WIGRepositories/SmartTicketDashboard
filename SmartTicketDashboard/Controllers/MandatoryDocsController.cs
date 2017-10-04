@@ -43,7 +43,7 @@ namespace SmartTicketDashboard.Controllers
         }
         [HttpPost]
         [Route("api/SaveMandatoryUserDocs")]
-        public DataTable SaveMandUserDocs(MandUserDocs mud)
+        public DataTable SaveMandUserDocs(IEnumerable<MandUserDocs> UserDocs)
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -63,41 +63,45 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Connection = conn;
                 conn.Open();
 
+                foreach (MandUserDocs mud in UserDocs)
+                {
+                    SqlParameter flag = new SqlParameter();
+                    flag.ParameterName = "@flag";
+                    flag.SqlDbType = SqlDbType.VarChar;
+                    flag.Value = mud.flag;
+                    cmd.Parameters.Add(flag);
 
-                SqlParameter flag = new SqlParameter();
-                flag.ParameterName = "@flag";
-                flag.SqlDbType = SqlDbType.VarChar;
-                flag.Value = mud.flag;
-                cmd.Parameters.Add(flag);
+                    SqlParameter id = new SqlParameter();
+                    id.ParameterName = "@Id";
+                    id.SqlDbType = SqlDbType.Int;
+                    id.Value = mud.Id;
+                    cmd.Parameters.Add(id);
 
-                SqlParameter id = new SqlParameter();
-                id.ParameterName = "@Id";
-                id.SqlDbType = SqlDbType.Int;
-                id.Value = mud.Id;
-                cmd.Parameters.Add(id);
+                    SqlParameter DocTId = new SqlParameter();
+                    DocTId.ParameterName = "@DocTypeId";
+                    DocTId.SqlDbType = SqlDbType.Int;
+                    DocTId.Value = mud.DocTypeId;
+                    cmd.Parameters.Add(DocTId);
 
-                SqlParameter DocTId = new SqlParameter();
-                DocTId.ParameterName = "@DocTypeId";
-                DocTId.SqlDbType = SqlDbType.Int;
-                DocTId.Value = mud.DocTypeId;
-                cmd.Parameters.Add(DocTId);
+                    SqlParameter ctrid = new SqlParameter();
+                    ctrid.ParameterName = "@Countryid";
+                    ctrid.SqlDbType = SqlDbType.Int;
+                    ctrid.Value = mud.Countryid;
+                    cmd.Parameters.Add(ctrid);
 
-                SqlParameter ctrid = new SqlParameter();
-                ctrid.ParameterName = "@Countryid";
-                ctrid.SqlDbType = SqlDbType.Int;
-                ctrid.Value = mud.Countryid;
-                cmd.Parameters.Add(ctrid);
+                    SqlParameter ustid = new SqlParameter();
+                    ustid.ParameterName = "@UserTypeId";
+                    ustid.SqlDbType = SqlDbType.Int;
+                    ustid.Value = mud.UserTypeId;
+                    cmd.Parameters.Add(ustid);
+                    //DataSet ds = new DataSet();
+                    //SqlDataAdapter db = new SqlDataAdapter(cmd);
+                    //db.Fill(ds);
+                    // Tbl = Tables[0];
+                    cmd.ExecuteScalar();
+                    cmd.Parameters.Clear();
+                }
 
-                SqlParameter ustid = new SqlParameter();
-                ustid.ParameterName = "@UserTypeId";
-                ustid.SqlDbType = SqlDbType.Int;
-                ustid.Value = mud.UserTypeId;
-                cmd.Parameters.Add(ustid);
-                //DataSet ds = new DataSet();
-                //SqlDataAdapter db = new SqlDataAdapter(cmd);
-                //db.Fill(ds);
-                // Tbl = Tables[0];
-                cmd.ExecuteScalar();
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
                 

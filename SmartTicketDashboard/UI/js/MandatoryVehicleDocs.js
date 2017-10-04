@@ -9,6 +9,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
+    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
+        $scope.TypeGroups = res.data;
+        $scope.getselectval();
+    });
     $scope.checkedArr = new Array();
     $scope.uncheckedArr = new Array();
 
@@ -25,7 +29,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     }
 
-    $scope.saveUserDoc = function (seltype) {
+    $scope.saveVehiclerDoc = function (seltype) {
 
         //from the checked and unchecked array get the actuallly records to be saved
         //from checked array take the records which have assigned = 0 as there are new assignements
@@ -75,6 +79,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         });
     };
 
+    $scope.getselectval = function (seltype) {
+        var grpid = (seltype) ? seltype.Id : -1;
+
+        $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
+            $scope.Types = res.data;
+
+        });
+
+    }
 
     $scope.toggle = function (item) {
         var idx = $scope.checkedArr.indexOf(item);

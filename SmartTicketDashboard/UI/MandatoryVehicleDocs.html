@@ -28,7 +28,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCountries();" ng-model="dashboardDS">
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="Types">
 
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
@@ -436,7 +436,9 @@
                     <div id="tableadvancedTabContent" class="tab-content">
                         <div class="row mbm">
                             <div class="col-md-5">
-                                Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
+
+                                Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="Mand" ng-init="GetCountries()" style="width:80%">
+                                    <!--<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">-->
                                     <option value="">Select</option>
                                     <option value="1">Zimbabway</option>
                                     <option value="2">Kenya</option>
@@ -446,12 +448,12 @@
                             </div>
                             <div class="col-md-5">
                                 <!--ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)"-->
-                                 Vehicle Group: <select >
-                                    <option value="">Select Type</option>
-                                                    <option value="1">Ambulance</option>
-                                                    <option value="2">Cab</option>
-                                                    <option value="3">Travels</option>
-                                </select>
+                                Vehicle Group: <select ng-options="t.Name for t in TypeGroups track by t.Id" ng-model="Mand" ng-change="getselectval(t)">
+    <option value="">Select Type</option>
+    <option value="1">Ambulance</option>
+    <option value="2">Cab</option>
+    <option value="3">Travels</option>
+</select>
                             </div>
 
                         </div>

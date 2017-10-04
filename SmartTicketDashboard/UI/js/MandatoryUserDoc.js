@@ -9,64 +9,85 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
-        $scope.TypeGroups = res.data;
-        $scope.getselectval();
-    });
+    $scope.GetConfigData = function () {
 
-    $scope.GetCountries = function () {
+        var vc = {
+            //includeDocumentType:'1',
+            includeActiveCountry: '1',
+            includeUserType:'1'
+        };
 
-        $http.get('/api/Countries/GetCountries').then(function (response, req) {
-            $scope.Countries = response.data;
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
 
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+           // $scope.checkedArr = $filter('filter')($scope.UserDocs, { Active: "1" });
+            // $scope.uncheckedArr = $filter('filter')($scope.UserDocs, { Active: "0" });
+            $scope.GetAssignedDocuments();
         });
     }
 
-    $scope.getselectval = function (seltype) {
-        var grpid = (seltype) ? seltype.Id : -1;
+    $scope.GetAssignedDocuments = function () {
 
-        $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
-            $scope.Types = res.data;
-
+        var ctryId = ($scope.ctry == null || $scope.ctry.Id == null) ? -1 : $scope.ctry.Id;
+        var utype = ($scope.utype == null || $scope.utype.Id == null) ? -1 : $scope.utype.Id;
+        $http.get('/api/GetMandatoryUserDocs?ctryId=' + ctryId + '&utId=' + utype).then(function (res, data) {
+            $scope.doctypes = res.data;
+            $scope.checkedArr = $filter('filter')($scope.doctypes, { selected: "1" });
+            $scope.uncheckedArr = $filter('filter')($scope.doctypes, { selected: "0" });
+           
         });
 
     }
+    $scope.checkedArr = new Array();
+    $scope.uncheckedArr = new Array();
+    
 
-    $scope.saveUserDoc = function (seltype) {
+    $scope.saveUserDoc = function (ctry,utype) {
 
-        var countries = [];
-
+        var UserDocs = [];
+      
         for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {
-            if ($scope.checkedArr[cnt].HasOperations == 0) {
+            if ($scope.checkedArr[cnt].selected == 0) {
                 var fr = {
-                    Id: $scope.checkedArr[cnt].Id,
-                    HasOperations: 1
+                    flag: 'I',
+                    Id:-1,
+                    CountryId: ctry.Id,
+                    UserTypeId: utype.Id,
+                    DocTypeId:$scope.checkedArr[cnt].Id
                 }
-                countries.push(fr);
+                UserDocs.push(fr);
             }
         }
 
         for (var cnt = 0; cnt < $scope.uncheckedArr.length; cnt++) {
-            if ($scope.uncheckedArr[cnt].HasOperations == 1) {
+            if ($scope.uncheckedArr[cnt].selected == 1) {
                 var fr = {
-                    Id: $scope.uncheckedArr[cnt].Id,
-                    HasOperations: 0
+                    flag: 'D',
+                    Id: -1,
+                    CountryId: ctry.Id,
+                    UserTypeId: utype.Id,
+                    DocTypeId:$scope.checkedArr[cnt].Id
                 }
-                countries.push(fr);
+                UserDocs.push(fr);
             }
         }
 
         $http({
-            url: '/api/Countries/SaveCountries',
+            url: '/api/SaveMandatoryUserDocs',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            data: countries,
+            data: UserDocs,
 
         }).success(function (data, status, headers, config) {
-            alert('Country details Saved Successfully');
+            alert('Documenents details Saved Successfully');
 
         }).error(function (ata, status, headers, config) {
-            alert('Country details NotSaved Successfully');
+            alert('Documenents details Not Saved ');
         });
     };
 
@@ -88,24 +109,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
     };
 
-    $scope.toggleAll = function () {
-        if ($scope.checkedArr.length === $scope.Countries.length) {
-            $scope.uncheckedArr = $scope.checkedArr.slice(0);
-            $scope.checkedArr = [];
-
-        } else if ($scope.checkedArr.length === 0 || $scope.Countries.length > 0) {
-            $scope.checkedArr = $scope.Countries.slice(0);
-            $scope.uncheckedArr = [];
-        }
-
-    };
-
     $scope.exists = function (item, list) {
+        if (list == null) return false;
         return list.indexOf(item) > -1;
     };
 
     $scope.isChecked = function () {
-        return $scope.checkedArr.length === $scope.Countries.length;
+        return $scope.checkedArr.length === $scope.UserDocs.length;
     };
 
 });
