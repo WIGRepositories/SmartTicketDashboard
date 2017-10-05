@@ -422,22 +422,24 @@
                                                     <div class="table-container">
                                                         <div class="row mbm">
                                                             <div class="col-md-2">
-                                                                First Name   <input type="text" ng-model="query" /><br />
-                                                            </div>
-                                                            <div class="col-md-2">
-                                                                Last Name   <input type="text" ng-model="LastName" /><br />
+                                                                Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetUsersForCmp()" style="width:80%">
+                                                                    <option value="">Select</option>
+                                                                </select>
                                                             </div>
                                                             <div class="col-md-2">
                                                                 Country:<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">
                                                                     <option value="">Select</option>
                                                                 </select>
                                                             </div>
-
                                                             <div class="col-md-2">
-                                                                Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetUsersForCmp()" style="width:80%">
-                                                                    <option value="">Select</option>
-                                                                </select>
+                                                                First Name   <input type="text" ng-model="query" /><br />
                                                             </div>
+                                                            <div class="col-md-2">
+                                                                Last Name   <input type="text" ng-model="LastName" /><br />
+                                                            </div>
+                                                            
+
+                                                           
 
                                                             <div class="actions">
                                                                 <button ng-disabled="Roleid != 1" ng-hide="cmp == null" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetUsersinitData();">Add User</button>

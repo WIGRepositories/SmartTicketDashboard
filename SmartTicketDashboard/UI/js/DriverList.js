@@ -257,22 +257,25 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag:'I',
             DId:-1,
-            CompanyId: Driverlist.Id,
+            Company: Driverlist.Id,
             NAme: Driverlist.NAme,
             Address: Driverlist.Address,
             City: Driverlist.City,
             Pin: Driverlist.Pin,
-            PAddress: Driverlist.PAddress,
+            PermanentAddress: Driverlist.PAddress,
             PCity: Driverlist.PCity,
-            PPin: Driverlist.PPin,
+            PermanentPin: Driverlist.PPin,
             OffMobileNo: Driverlist.OffMobileNo,
-            PMobNo: Driverlist.PMobNo,
+            Mobilenumber: Driverlist.PMobNo,
             DOB: Driverlist.DOB,
             DOJ: Driverlist.DOJ,
             BloodGroup: Driverlist.BloodGroup,          
             Remarks: Driverlist.Remarks,
             Photo: $scope.imageSrc ,
-            DriverCode: Driverlist.DriverCode
+            drivercode: Driverlist.DriverCode,
+            FirstName: Driverlist.firstname,
+            LastName: Driverlist.Lname,
+            EmailId:Driverlist.Email
         }
 
         var req = {
@@ -299,59 +302,59 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.save = function (Dl,flag) {
 
         
-        if (Dl.CompanyId.Id == null) {
-            alert('Please Enter CompanyId');
-            return;
-        }
-        if (Dl.NAme == null) {
-            alert('Please Enter NAme');
-            return;
-        }
-        if (Dl.City == null) {
-            alert('Please Enter City');
-            return;
-        }
-        if (Dl.Pin == null) {
-            alert('Please Enter Pin');
-            return;
-        }
-        if (Dl.PAddress == null) {
-            alert('Please Enter PAddress');
-            return;
-        }
-        if (Dl.PCity == null) {
-            alert('Please Enter PCity');
-            return;
-        }
-        if (Dl.PPin == null) {
-            alert('Please Enter PPin');
-            return;
-        }
-        if (Dl.OffMobileNo == null) {
-            alert('Please Enter OffMobileNo');
-            return;
-        }
-        if (Dl.PMobNo == null) {
-            alert('Please Enter MobileNo');
-            return;
-        }
-        if (Dl.DOB == null) {
-            alert('Please Enter DOB');
-            return;
-        }
-        if (Dl.DOJ == null) {
-            alert('Please Enter DOJ');
-            return;
-        }
-        if (Dl.BloodGroup == null) {
-            alert('Please Enter BloodGroup');
-            return;
-        }
+        //if (Dl.CompanyId.Id == null) {
+        //    alert('Please Enter CompanyId');
+        //    return;
+        //}
+        //if (Dl.NAme == null) {
+        //    alert('Please Enter NAme');
+        //    return;
+        //}
+        //if (Dl.City == null) {
+        //    alert('Please Enter City');
+        //    return;
+        //}
+        //if (Dl.Pin == null) {
+        //    alert('Please Enter Pin');
+        //    return;
+        //}
+        //if (Dl.PAddress == null) {
+        //    alert('Please Enter PAddress');
+        //    return;
+        //}
+        //if (Dl.PCity == null) {
+        //    alert('Please Enter PCity');
+        //    return;
+        //}
+        //if (Dl.PPin == null) {
+        //    alert('Please Enter PPin');
+        //    return;
+        //}
+        //if (Dl.OffMobileNo == null) {
+        //    alert('Please Enter OffMobileNo');
+        //    return;
+        //}
+        //if (Dl.PMobNo == null) {
+        //    alert('Please Enter MobileNo');
+        //    return;
+        //}
+        //if (Dl.DOB == null) {
+        //    alert('Please Enter DOB');
+        //    return;
+        //}
+        //if (Dl.DOJ == null) {
+        //    alert('Please Enter DOJ');
+        //    return;
+        //}
+        //if (Dl.BloodGroup == null) {
+        //    alert('Please Enter BloodGroup');
+        //    return;
+        //}
        
-        if (Dl.Remarks == null) {
-            alert('Please Enter Remarks');
-            return;
-        }
+        //if (Dl.Remarks == null) {
+        //    alert('Please Enter Remarks');
+        //    return;
+        //}
 
 
 
@@ -359,21 +362,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             flag: ($scope.selectedlistdrivers == -1)?'I':'U',
             DId: Dl.DId,
-            CompanyId: Dl.CompanyId.Id,
+            Company: Dl.CompanyId.Id,
             NAme: Dl.NAme,
-            Address: Dl.Address1,
-            City: Dl.City,
+            Address: Dl.Address1,            
             Pin: Dl.Pin,
-            PAddress: Dl.PAddress,
-            PCity: Dl.PCity,
-            PPin: Dl.PPin,
-            OffMobileNo: Dl.OffMobileNo,
-            PMobNo: Dl.PMobNo,
+            PermanentAddress: Dl.PAddress,            
+            PermanentPin: Dl.PPin,            
+            Mobilenumber: Dl.PMobNo,
             DOB: Dl.DOB,
             DOJ: Dl.DOJ,
-            BloodGroup: Dl.BloodGroup,           
-            Remarks: Dl.Remarks,
-            Photo: $scope.imageSrc
+            BloodGroup: Dl.BloodGroup,
+            Photo: $scope.imageSrc,
+            drivercode: Dl.DriverCode,
+            Status: Dl.StatusId
+            
             //licenseimage: $scope.imageSrc,
             //badgeimage: $scope.imageSrc,
 

@@ -89,8 +89,8 @@ namespace SmartTicketDashboard.Controllers
             i.Value = d.DId;
             cmd.Parameters.Add(i);
 
-            SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.Int);
-            di.Value = d.CompanyId;
+            SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.VarChar, 50);
+            di.Value = d.Company;
             cmd.Parameters.Add(di);
 
             SqlParameter n = new SqlParameter("@NAme", SqlDbType.VarChar, 50);
@@ -100,59 +100,59 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter r = new SqlParameter("@Address", SqlDbType.VarChar, 50);
             r.Value = d.Address;
             cmd.Parameters.Add(r);
-                
 
-            SqlParameter a = new SqlParameter("@City", SqlDbType.VarChar, 50);
-            a.Value = d.City;
-            cmd.Parameters.Add(a);
+            SqlParameter f = new SqlParameter("@PAddress", SqlDbType.VarChar, 50);
+            f.Value = d.PermanentAddress;
+            cmd.Parameters.Add(f);
 
             SqlParameter s = new SqlParameter("@Pin", SqlDbType.VarChar, 50);
             s.Value = d.Pin;
             cmd.Parameters.Add(s);
 
-            SqlParameter f = new SqlParameter("@PAddress", SqlDbType.VarChar, 50);
-            f.Value = d.PAddress;
-            cmd.Parameters.Add(f);
-
-            SqlParameter j2 = new SqlParameter("@PCity", SqlDbType.VarChar, 255);
-            j2.Value = d.PCity;
-            cmd.Parameters.Add(j2);
-
             SqlParameter g = new SqlParameter("@PPin", SqlDbType.VarChar, 50);
-            g.Value = d.PPin;
+            g.Value = d.PermanentPin;
             cmd.Parameters.Add(g);
 
-            SqlParameter h = new SqlParameter("@OffMobileNo", SqlDbType.Float);
-            h.Value = d.OffMobileNo;
-            cmd.Parameters.Add(h);
-
             SqlParameter j = new SqlParameter("@PMobNo", SqlDbType.VarChar, 255);
-            j.Value = d.PMobNo;
+            j.Value = d.Mobilenumber;
             cmd.Parameters.Add(j);
 
-            SqlParameter k = new SqlParameter("@DOB", SqlDbType.Date);
-            k.Value = d.DOB;
-            cmd.Parameters.Add(k);
+            SqlParameter fr = new SqlParameter("@FirstName", SqlDbType.VarChar, 50);
+            fr.Value = d.FirstName;
+            cmd.Parameters.Add(fr);
 
-            SqlParameter y = new SqlParameter("@DOJ", SqlDbType.Date);
-            y.Value = d.DOJ;
-            cmd.Parameters.Add(y);
+            SqlParameter lk = new SqlParameter("@LastName", SqlDbType.VarChar, 50);
+            lk.Value = d.LastName;
+            cmd.Parameters.Add(lk);
 
-            SqlParameter rj = new SqlParameter("@BloodGroup", SqlDbType.VarChar, 50);
-            rj.Value = d.BloodGroup;
-            cmd.Parameters.Add(rj);            
 
-            SqlParameter w = new SqlParameter("@Remarks", SqlDbType.VarChar, 50);
-            w.Value = d.Remarks;
-            cmd.Parameters.Add(w);           
+            SqlParameter ed = new SqlParameter("@EmailId", SqlDbType.VarChar, 50);
+            ed.Value = d.EmailId;
+            cmd.Parameters.Add(ed);
+
+            SqlParameter dc = new SqlParameter("@DriverCode", SqlDbType.VarChar);
+            dc.Value = d.drivercode;
+            cmd.Parameters.Add(dc);
 
             SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
             pr.Value = d.Photo;
             cmd.Parameters.Add(pr);
 
-            SqlParameter dc = new SqlParameter("@DriverCode", SqlDbType.VarChar);
-            dc.Value = d.DriverCode;
-            cmd.Parameters.Add(dc);            
+            SqlParameter bg = new SqlParameter("@BloodGroup", SqlDbType.VarChar);
+            bg.Value = d.BloodGroup;
+            cmd.Parameters.Add(bg);
+
+            SqlParameter df = new SqlParameter("@DOB", SqlDbType.DateTime);
+            df.Value = d.DOB;
+            cmd.Parameters.Add(df);
+
+            SqlParameter dfs = new SqlParameter("@DOJ", SqlDbType.DateTime);
+            dfs.Value = d.DOJ;
+            cmd.Parameters.Add(dfs);
+
+            SqlParameter sd = new SqlParameter("@Status", SqlDbType.Int);
+            sd.Value = d.Status;
+            cmd.Parameters.Add(sd);
 
 
             DataTable dt = new DataTable();
