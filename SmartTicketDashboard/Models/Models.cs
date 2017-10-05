@@ -2752,6 +2752,8 @@ namespace SmartTicketDashboard.Models
         public int Countryid { get; set; }
 
         public int UserTypeId { get; set; }
+
+        public string FileContent { get; set; }
     }
     
     public class MandVehicleDocs
@@ -2766,6 +2768,7 @@ namespace SmartTicketDashboard.Models
         public int VehicleGroupId { get; set; }
 
         public int DocTypeId { get; set; }
+        public string FileContent { get; set; }
     }
 
     public class bankdetails

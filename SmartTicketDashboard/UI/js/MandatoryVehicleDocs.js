@@ -9,85 +9,99 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
-        $scope.TypeGroups = res.data;
-        $scope.getselectval();
-    });
-    $scope.checkedArr = new Array();
-    $scope.uncheckedArr = new Array();
+    $scope.GetConfigData = function () {
 
-    $scope.GetCountries = function () {
+        var vc = {
+            //includeDocumentType:'1',
+            includeActiveCountry: '1',
+            includeVehicleGroup:'1'
+        };
 
-        $scope.checkedArr = [];
-        $scope.uncheckedArr = [];
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
 
-        $http.get('/api/Countries/GetCountries').then(function (response, req) {
-            $scope.Countries = response.data;
-            $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
-            $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+           // $scope.checkedArr = $filter('filter')($scope.VehicleDocs, { Active: "1" });
+            // $scope.uncheckedArr = $filter('filter')($scope.VehicleDocs, { Active: "0" });
+            $scope.GetAssignedDocuments();
+        });
+    }
+
+    $scope.GetAssignedDocuments = function () {
+
+        var ctryId = ($scope.ctry == null || $scope.ctry.Id == null) ? -1 : $scope.ctry.Id;
+        var vgroup = ($scope.vgroup == null || $scope.vgroup.Id == null) ? -1 : $scope.vgroup.Id;
+        $http.get('/api/GetMandatoryVehicleDocs?ctryId=' + ctryId + '&vgId=' + vgroup).then(function (res, data) {
+            $scope.doctypes = res.data;
+            $scope.checkedArr = $filter('filter')($scope.doctypes, { selected: "1" });
+            $scope.uncheckedArr = $filter('filter')($scope.doctypes, { selected: "0" });
+           
         });
 
     }
+    $scope.checkedArr = new Array();
+    $scope.uncheckedArr = new Array();
+    
 
-    $scope.saveVehiclerDoc = function (seltype) {
+    $scope.saveVehicleDoc = function (ctry,vgroup) {
 
-        //from the checked and unchecked array get the actuallly records to be saved
-        //from checked array take the records which have assigned = 0 as there are new assignements
-        //from unchecked array take assgined = 1 as these need to be removed               
-        var grpid = (seltype) ? seltype.Id : -1;
+        if (ctry == null||ctry.Id==null)
+        {
+            alert("Select Country");
+            return;
+        }
+        if (vgroup == null||vgroup.Id==null) {
+            alert("Select Vehicle Group");
+            return;
+        }
 
-
-        $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
-            $scope.Types = res.data;
-
-        });
-
-
-        var countries = [];
-
+        var VehicleDocs = [];
+      
         for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {
-            if ($scope.checkedArr[cnt].HasOperations == 0) {
+            if ($scope.checkedArr[cnt].selected == 0) {
                 var fr = {
-                    Id: $scope.checkedArr[cnt].Id,
-                    HasOperations: 1
+                    flag: 'I',
+                    Id:-1,
+                    CountryId: ctry.Id,
+                    VehicleGroupId: vgroup.Id,
+                    DocTypeId: $scope.checkedArr[cnt].Id,
+                    FileContent: $scope.checkedArr[cnt].FileContent
                 }
-                countries.push(fr);
+                VehicleDocs.push(fr);
             }
         }
 
         for (var cnt = 0; cnt < $scope.uncheckedArr.length; cnt++) {
-            if ($scope.uncheckedArr[cnt].HasOperations == 1) {
+            if ($scope.uncheckedArr[cnt].selected == 1) {
                 var fr = {
-                    Id: $scope.uncheckedArr[cnt].Id,
-                    HasOperations: 0
+                    flag: 'D',
+                    Id: -1,
+                    CountryId: ctry.Id,
+                    VehicleGroupId: vgroup.Id,
+                    DocTypeId: $scope.checkedArr[cnt].Id,
+                    FileContent: $scope.checkedArr[cnt].FileContent
                 }
-                countries.push(fr);
+                VehicleDocs.push(fr);
             }
         }
 
         $http({
-            url: '/api/Countries/SaveCountries',
+            url: '/api/SaveMandatoryVehicleDocs',
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            data: countries,
+            data: VehicleDocs,
 
         }).success(function (data, status, headers, config) {
-            alert('Country details Saved Successfully');
+            alert('Documenents details Saved Successfully');
 
         }).error(function (ata, status, headers, config) {
-            alert('Country details NotSaved Successfully');
+            alert('Documenents details Not Saved ');
         });
     };
-
-    $scope.getselectval = function (seltype) {
-        var grpid = (seltype) ? seltype.Id : -1;
-
-        $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
-            $scope.Types = res.data;
-
-        });
-
-    }
 
     $scope.toggle = function (item) {
         var idx = $scope.checkedArr.indexOf(item);
@@ -107,27 +121,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
     };
 
-
-    $scope.toggleAll = function () {
-        if ($scope.checkedArr.length === $scope.Countries.length) {
-            $scope.uncheckedArr = $scope.checkedArr.slice(0);
-            $scope.checkedArr = [];
-
-        } else if ($scope.checkedArr.length === 0 || $scope.Countries.length > 0) {
-            $scope.checkedArr = $scope.Countries.slice(0);
-            $scope.uncheckedArr = [];
-        }
-
-    };
-
     $scope.exists = function (item, list) {
+        if (list == null) return false;
         return list.indexOf(item) > -1;
     };
 
-
     $scope.isChecked = function () {
-        return $scope.checkedArr.length === $scope.Countries.length;
+        return $scope.checkedArr.length === $scope.VehicleDocs.length;
     };
-
 
 });
