@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();" ng-model="bankdetails">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -870,27 +870,14 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr>
-                                                                                        <td>00050505050505</td>
-                                                                                        <td>RBZ zimbabwe</td>
-                                                                                        <td>RBZ0001</td>                                                                                        
-                                                                                        <td>Street no 302, msasa road, harare</td>
-                                                                                        <td>Zimbabwe</td>
-                                                                                        <td><span class="label label-success">{{v.Status}}</span></td>
-                                                                                        <td>
-                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
-                                                                                                <i class="fa fa-edit"></i>
-
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>00050505050505</td>
-                                                                                        <td>RBZ zimbabwe</td>
-                                                                                        <td>RBZ0001</td>
-                                                                                        <td>Street no 302, msasa road, harare</td>
-                                                                                        <td>Zimbabwe</td>
-                                                                                        <td><span class="label label-success">{{v.Status}}</span></td>
+                                                                                    
+                                                                                    <tr ng-repeat="b in bankdetails">
+                                                                                        <td>{{b.Accountnumber}}</td>
+                                                                                        <td>{{b.BankName}}</td>
+                                                                                        <td>{{b.BankCode}}</td>
+                                                                                        <td>{{b.BranchAddress}}</td>
+                                                                                        <td>{{b.CountryId}}</td>
+                                                                                        <td>{{b.IsActive}}</td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
@@ -1226,7 +1213,7 @@
                                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                 <h4 id="modal-header-primary-label" class="modal-title">Add Bank Details</h4>
                             </div>
-                            <div class="modal-body" ng-model="driverDoc">
+                            <div class="modal-body" ng-model="b">
 
                                 
 
@@ -1235,7 +1222,7 @@
                                         <label for="selCompany" class="col-md-4 control-label">Account Number:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                        <input type="text" ng-model="b.AccountNumber" class="form-control" />
                                     </div>
                                 </div>
 
@@ -1245,7 +1232,7 @@
                                         <label for="Name" class="col-md-4 control-label">Bank Name:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                        <input type="text" ng-model="b.BankName" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row mbm">
@@ -1253,7 +1240,7 @@
                                         <label for="Name" class="col-md-4 control-label">Bank Code:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                        <input type="text" ng-model="b.BankCode" class="form-control" />
                                     </div>
                                 </div>
 
@@ -1262,7 +1249,7 @@
                                         <label for="Name" class="col-md-4 control-label">Branch Address:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
-                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control" />
+                                        <input type="text" ng-model="b.BranchAddress" class="form-control" />
                                     </div>
                                 </div>
                                 <div class="row mbm">
@@ -1271,20 +1258,21 @@
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                        <select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="b.Country" class="form-control" ng-init="GetCountry()">
                                             <option value="">Select</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row mbm">
                                     <div style="text-align:right">
-                                        <label for="selCompany" class="col-md-4 control-label">IS Active:<span class='require'></span></label>
+                                        <label for="selCompany" class="col-md-4 control-label">Is Active:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select class="form-control" >
-                                            <option value="">yes</option>
-                                            <option value="">No</option>
+                                        <select class="form-control" ng-model="b.IsActive">
+                                            <option value="">Select</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">No</option>
                                         </select>
                                     </div>
                                 </div>
@@ -1292,9 +1280,9 @@
                                 <div class="form-actions">
                                     <div style="text-align:center">
 
-                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="savebank(b,'I')">Save</button>
 
-                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearb()">Cancel</a>
 
                                     </div>
                                 </div>
