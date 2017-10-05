@@ -688,7 +688,7 @@
 
                                                                                 </div>
 
-                                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Vehicle</button>
+                                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-Assign-vehicle" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Vehicle</button>
 
                                                                             </div>
 
@@ -854,7 +854,7 @@
                                                                     </div>
                                                                     <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
                                                                         <div class="panel-body">
-                                                                            <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Bank</button>
+                                                                            <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-Add-Bank" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Bank</button>
 
                                                                         </div>
                                                                             <table class="table table-bordered table-advanced tablesorter">
@@ -865,6 +865,7 @@
                                                                                         <th>Bank Code</th>                                                                                        
                                                                                         <th>Branch Address</th>
                                                                                         <th>Country</th>
+                                                                                        <th>IS Active</th>
                                                                                         <th>Edit</th>
                                                                                     </tr>
                                                                                 </thead>
@@ -875,6 +876,7 @@
                                                                                         <td>RBZ0001</td>                                                                                        
                                                                                         <td>Street no 302, msasa road, harare</td>
                                                                                         <td>Zimbabwe</td>
+                                                                                        <td><span class="label label-success">{{v.Status}}</span></td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
@@ -888,6 +890,7 @@
                                                                                         <td>RBZ0001</td>
                                                                                         <td>Street no 302, msasa road, harare</td>
                                                                                         <td>Zimbabwe</td>
+                                                                                        <td><span class="label label-success">{{v.Status}}</span></td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
@@ -1119,7 +1122,198 @@
 
                     </div>
                 <!----------END Uplode Files------------------->
+                <!----------BEGIN Vehicle Details------------------->
+                <div id="Modal-Assign-vehicle" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Assign Vehicle</h4>
+                            </div>
+                            <div class="modal-body" ng-model="driverDoc">
 
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Country:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="vm.RegistrationNo for vm in vdlist.Table track by vm.Id" ng-model="vm" class="form-control">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="d.NAme for d in vdlist.Table1 track by d.DId" class="form-control" ng-model="d.DId">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" readonly disabled />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
+
+                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Vehicle Details------------------->
+                <!----------BEGIN Banking------------------->
+                <div id="Modal-Add-Bank" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Add Bank Details</h4>
+                            </div>
+                            <div class="modal-body" ng-model="driverDoc">
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Country:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="vm.RegistrationNo for vm in vdlist.Table track by vm.Id" ng-model="vm" class="form-control">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="d.NAme for d in vdlist.Table1 track by d.DId" class="form-control" ng-model="d.DId">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" readonly disabled />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
+
+                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Banking------------------->
                 <!----------ENDpopups------------------->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
