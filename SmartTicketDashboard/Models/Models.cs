@@ -2117,18 +2117,18 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int DId { get; set; }
-        public int CompanyId { get; set; }
+        public int Company { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Pin { get; set; }
-        public string PAddress { get; set; }
+        public string PermanentAddress { get; set; }
         public string PCity { get; set; }
-        public string PPin { get; set; }
+        public string PermanentPin { get; set; }
         public float OffMobileNo { get; set; }
-        public string PMobNo { get; set; }
-        public DateTime DOB { get; set; }
-        public DateTime DOJ { get; set; }
+        public string Mobilenumber { get; set; }
+        public DateTime? DOB { get; set; }
+        public DateTime? DOJ { get; set; }
         public string BloodGroup { get; set; }
         public string LicenceNo { get; set; }
         public DateTime LiCExpDate { get; set; }
@@ -2138,7 +2138,11 @@ namespace SmartTicketDashboard.Models
         public string Photo { get; set; }
         public string licenseimage { get; set; }
         public string badgeimage { get; set; }
-        public string DriverCode { get; set; }
+        public string drivercode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string EmailId { get; set; }
+        public int Status { get; set; }
         
     }
     public class vehiclemas
