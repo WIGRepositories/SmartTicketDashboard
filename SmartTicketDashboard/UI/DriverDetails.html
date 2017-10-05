@@ -1228,6 +1228,43 @@
                             </div>
                             <div class="modal-body" ng-model="driverDoc">
 
+                                
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Account Number:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                    </div>
+                                </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Bank Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Bank Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control"  />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Branch Address:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" class="form-control" />
+                                    </div>
+                                </div>
                                 <div class="row mbm">
                                     <div style="text-align:right">
                                         <label for="selCompany" class="col-md-4 control-label">Country:<span class='require'></span></label>
@@ -1239,66 +1276,19 @@
                                         </select>
                                     </div>
                                 </div>
-
                                 <div class="row mbm">
                                     <div style="text-align:right">
-                                        <label for="selCompany" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
+                                        <label for="selCompany" class="col-md-4 control-label">IS Active:<span class='require'></span></label>
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
-                                            <option value="">Select</option>
+                                        <select class="form-control" >
+                                            <option value="">yes</option>
+                                            <option value="">No</option>
                                         </select>
                                     </div>
                                 </div>
-
-
-                                <div class="row mbm">
-                                    <div style="text-align:right">
-                                        <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <select ng-options="vm.RegistrationNo for vm in vdlist.Table track by vm.Id" ng-model="vm" class="form-control">
-                                            <option value="">Select</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row mbm">
-                                    <div style="text-align:right">
-                                        <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <select ng-options="d.NAme for d in vdlist.Table1 track by d.DId" class="form-control" ng-model="d.DId">
-                                            <option value="">Select</option>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="row mbm">
-                                    <div style="text-align:right">
-                                        <label for="Name" class="col-md-4 control-label">Driver Code:<span class='require'></span></label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input type="text" ng-model="d.DId.DriverCode" readonly disabled />
-                                    </div>
-                                </div>
-
-                                <div class="row mbm">
-                                    <div style="text-align:right">
-                                        <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
-                                    </div>
-                                </div>
-                                <div class="row mbm">
-                                    <div style="text-align:right">
-                                        <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
-                                    </div>
-                                </div>
+                          
                                 <div class="form-actions">
                                     <div style="text-align:center">
 
