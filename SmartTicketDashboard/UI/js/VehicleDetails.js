@@ -113,6 +113,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
             $scope.vDetails = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
+            $scope.imageSrc = $scope.vDetails.Photo;
 
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {

@@ -290,7 +290,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             FirstName: Driverlist.firstname,
             LastName: Driverlist.Lname,
             EmailId: Driverlist.Email,
-            Status:Driverlist.StatusId
+            Status:Driverlist.Status
         }
 
         var req = {
@@ -505,6 +505,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+
+   
+
+    $scope.SetBiggerPhoto = function (dl) {
+        $scope.biggetPhoto = dl.photo;
+    }
+
+
     $scope.GetVehicleConfig = function () {
 
         var vc = {
@@ -681,6 +689,8 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
 
 
+
+ 
 
 
 

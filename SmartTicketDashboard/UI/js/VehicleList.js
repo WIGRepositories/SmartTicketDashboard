@@ -119,6 +119,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetVehcileList = function () {
         $http.get('/api/VehicleMaster/GetVehcileList').then(function (res, data) {
             $scope.VehiclesList = res.data;
+            $scope.imageSrc = $scope.VehiclesList.Photo;
         });
         $scope.GetFleetOwners();
     }
@@ -163,14 +164,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please select type');
             return;
         }
-        if (newVehicle.vm == null || newVehicle.vm.Id == null) {
-            alert('Please select make');
-            return;
-        }
-        if (newVehicle.vmo == null || newVehicle.vmo.Id == null) {
-            alert('Please select model');
-            return;
-        }
+        //if (newVehicle.vm == null || newVehicle.vm.Id == null) {
+        //    alert('Please select make');
+        //    return;
+        //}
+        //if (newVehicle.vmo == null || newVehicle.vmo.Id == null) {
+        //    alert('Please select model');
+        //    return;
+        //}
         if (newVehicle.vg == null || newVehicle.vg.Id == null) {
             alert('Please select group');
             return;
@@ -194,14 +195,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Engineno: newVehicle.Engineno,
             VehicleGroupId: newVehicle.vg.Id,
             VehicleTypeId: newVehicle.vt.Id,
-            VehicleModelId: newVehicle.vmo.Id,
-            VehicleMakeId: newVehicle.vm.Id,
+            VehicleModelId: 13,//newVehicle.vmo.Id,
+            VehicleMakeId: 21,//newVehicle.vm.Id,
             ModelYear: newVehicle.ModelYear,
             StatusId: 15,      // new      
             HasAC: 1,
             isDriverOwned: 1,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
-            DriverId:($scope.d !=null && $scope.d.Id !=null)?$scope.d.Id : null
+            DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
+            Photo:$scope.imageSrc
 
         }
 
@@ -229,6 +231,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.clearnewVehicle = function () {
         $scope.vech = null;
+    }
+
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect1 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc = result;
+        });
     }
 
 
