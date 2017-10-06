@@ -15,7 +15,71 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-   
+    <style>
+        .bc {
+            background-color: black;
+            color: white;
+            height: 35px;
+        }
+
+        .product_view .modal-dialog {
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .product_view1 .modal-dialog {
+            max-width: 300px;
+            width: 100%;
+        }
+
+        .pre-cost {
+            text-decoration: line-through;
+            color: #a5a5a5;
+        }
+
+        .space-ten {
+            padding: 10px 0;
+        }
+
+        top-nav {
+            width: 100%;
+            font-family: tahoma,Helvetica, Sans-Serif;
+        }
+
+        .close-mark {
+            float: right !important;
+            margin-right: 15px;
+            margin-top: -10px;
+        }
+
+        .close-mark1 {
+            float: right !important;
+            margin-right: 10px;
+            margin-top: -15px;
+        }
+
+        /*.btn{
+            position:absolute;
+            width:50px;
+            height:50px;
+            border:none;border-radius:25px;
+            top:350px;
+            background:black;
+            color:white;
+            font-size:20px;
+        }
+        #btn1:hover{
+            box-shadow:10px 0px 20px 0px black;
+
+        }
+        #btn2:hover {
+            box-shadow: -10px 0px 20px 0px black;
+        }
+        #btn2{
+            position:relative;
+            float:right;
+        }*/
+    </style>
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetMaster();" ng-model="listdrivers">
@@ -445,12 +509,12 @@
                                                                             <tbody class="media-thumb">
                                                                                 <tr ng-repeat="Dl in listdrivers">
                                                                                     <td>
-                                                                                        <span class="img-shadow" ng-if="Dl.photo == null">
+                                                                                        <span class="img-shadow" ng-if="Dl.photo == null" >
                                                                                             <img src="images/user.jpg" class="media-object thumb" />
                                                                                         </span>
-                                                                                        <span class="img-shadow" ng-if="Dl.photo != null">
-                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" />
-                                                                                        </span>
+                                                                                        <a href="" class="img-shadow"  ng-if="Dl.photo != null">
+                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal"  data-target="#right-side-1" />
+                                                                                        </a>
                                                                                     </td>
                                                                                     <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>{{Dl.Email}}</div></td>
                                                                                     <td>{{Dl.DriverCode}}</td>
@@ -469,10 +533,28 @@
                                                                                             </button>
                                                                                         </a>
                                                                                     </td>
+                                                                                    
                                                                                 </tr>
                                                                                 
                                                                             </tbody>
                                                                         </table>
+                                                                        <div class="modal fade product_view1" id="right-side-1">
+                                                                            <div class="modal-dialog" >
+                                                                                <div class="modal-content">
+
+                                                                                    <div class="modal-body" >
+                                                                                        <div class="row">
+                                                                                            <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                                                                            <div class="col-md-12 product_img" ng-repeat="Dl in listdrivers">
+
+                                                                                                <img src="{{Dl.photo}}" class="img-responsive">
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -667,7 +749,7 @@
 
                             </div>
 
-                                
+                               
 
                                 
                                 <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
