@@ -515,6 +515,7 @@
                                                                                         <a href="" class="img-shadow"  ng-if="Dl.photo != null">
                                                                                             <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal"  data-target="#right-side-1" />
                                                                                         </a>
+                                                                                        
                                                                                     </td>
                                                                                     <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>{{Dl.Email}}</div></td>
                                                                                     <td>{{Dl.DriverCode}}</td>
@@ -539,15 +540,15 @@
                                                                             </tbody>
                                                                         </table>
                                                                         <div class="modal fade product_view1" id="right-side-1">
-                                                                            <div class="modal-dialog" >
+                                                                            <div class="modal-dialog">
                                                                                 <div class="modal-content">
 
-                                                                                    <div class="modal-body" >
+                                                                                    <div class="modal-body">
                                                                                         <div class="row">
                                                                                             <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
-                                                                                            <div class="col-md-12 product_img" ng-repeat="Dl in listdrivers">
+                                                                                            <div class="col-md-12 product_img">
 
-                                                                                                <img src="{{Dl.photo}}" class="img-responsive">
+                                                                                                <img src="{{photo}}" class="img-responsive">
                                                                                             </div>
 
                                                                                         </div>
@@ -555,6 +556,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        
                                                                     </div>
                                                                 </div>
                                                             </div>
