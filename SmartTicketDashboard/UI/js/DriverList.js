@@ -195,6 +195,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     $scope.DocFiles = [];
 
+    $scope.GetBankdetails = function () {
+        $http.get('/api/DriverMaster/GetBankdetails').then(function (response, req) {
+            $scope.bankdetails = response.data;
+        });
+    }
+
+    $scope.GetCountry = function () {
+        $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
+            $scope.Countries = response.data;            
+        });
+    }
+
+   
+
     $scope.saveNew = function (Driverlist,flag) {
       
         
@@ -275,7 +289,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             drivercode: Driverlist.DriverCode,
             FirstName: Driverlist.firstname,
             LastName: Driverlist.Lname,
-            EmailId:Driverlist.Email
+            EmailId: Driverlist.Email,
+            Status:Driverlist.StatusId
         }
 
         var req = {
@@ -285,7 +300,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
            
-            var res = response.data;
+            var res = response.data;            
             window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
@@ -374,10 +389,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BloodGroup: Dl.BloodGroup,
             Photo: $scope.imageSrc,
             drivercode: Dl.DriverCode,
-            Status: Dl.StatusId
+            Status: Dl.StatusId          
             
-            //licenseimage: $scope.imageSrc,
-            //badgeimage: $scope.imageSrc,
 
         }
 
@@ -399,6 +412,66 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
        
     };
 
+
+    $scope.savebank = function (b, flag) {
+
+
+        if (b.AccountNumber == null) {
+            alert('Please Enter AccountNumber');
+            return;
+        }
+        if (b.BankName == null) {
+            alert('Please Enter BankName');
+            return;
+        }
+        if (b.BankCode == null) {
+            alert('Please Enter BankCode');
+            return;
+        }
+        if (b.BranchAddress == null) {
+            alert('Please Enter BranchAddress');
+            return;
+        }
+        if (b.Country.Id == null) {
+            alert('Please Enter Country');
+            return;
+        }
+        if (b.IsActive == null) {
+            alert('Please Enter IsActive');
+            return;
+        }
+       
+
+        var bank = {
+
+            flag: 'I',           
+            Id: -1,
+            Accountnumber: b.AccountNumber,
+            BankName:b.BankName,
+            Bankcode: b.BankCode,
+            BranchAddress: b.BranchAddress,
+            Country: b.Country.Id,
+            IsActive:b.IsActive
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/Bankingdetails',
+            data: bank
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+            //window.location.href = "DriverDetails.html?DId=" + res[0].DId;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+
+    };
     $scope.driver = null;
 
     $scope.setlistdrivers = function (Dl) {

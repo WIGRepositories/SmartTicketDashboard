@@ -69,6 +69,30 @@ namespace SmartTicketDashboard.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/DriverMaster/GetBankdetails")]
+        public DataTable GetBankdetails()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVGetbankingdetails";
+            
+            cmd.Connection = conn;
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
         [HttpPost]
         [Route("api/DriverMaster/Driverlist")]
         public DataTable Driverlist(driverdetails d)
