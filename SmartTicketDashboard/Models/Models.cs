@@ -2186,6 +2186,8 @@ namespace SmartTicketDashboard.Models
         public string Fleetcode { get; set; }
         public int isDriverOwned { get; set; }
         public int VehicleMakeId { get; set; }
+        public string Photo { get; set; }
+        public int CountryId { get; set; }
     }
     public class allocatedriver
     {
@@ -2758,6 +2760,8 @@ namespace SmartTicketDashboard.Models
         public int UserTypeId { get; set; }
 
         public string FileContent { get; set; }
+
+        public int IsMandatory { get; set; }
     }
     
     public class MandVehicleDocs
@@ -2773,6 +2777,7 @@ namespace SmartTicketDashboard.Models
 
         public int DocTypeId { get; set; }
         public string FileContent { get; set; }
+        public int IsMandatory { get; set; }
     }
 
     public class bankdetails

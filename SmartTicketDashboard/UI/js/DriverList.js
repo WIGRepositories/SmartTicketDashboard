@@ -290,7 +290,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             FirstName: Driverlist.firstname,
             LastName: Driverlist.Lname,
             EmailId: Driverlist.Email,
-            Status:Driverlist.StatusId
+            Status:Driverlist.Status
         }
 
         var req = {

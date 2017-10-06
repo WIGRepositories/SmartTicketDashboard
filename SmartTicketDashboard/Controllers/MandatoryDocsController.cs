@@ -89,6 +89,12 @@ namespace SmartTicketDashboard.Controllers
                     FileCont.Value = mud.FileContent;
                     cmd.Parameters.Add(FileCont);
 
+                    SqlParameter isMand = new SqlParameter();
+                    isMand.ParameterName = "@IsMandatory";
+                    isMand.SqlDbType = SqlDbType.Int;
+                    isMand.Value = mud.IsMandatory;
+                    cmd.Parameters.Add(isMand);
+
                     SqlParameter ctrid = new SqlParameter();
                     ctrid.ParameterName = "@Countryid";
                     ctrid.SqlDbType = SqlDbType.Int;
@@ -202,6 +208,12 @@ namespace SmartTicketDashboard.Controllers
                 FileCont.SqlDbType = SqlDbType.VarChar;
                 FileCont.Value = mvd.FileContent;
                 cmd.Parameters.Add(FileCont);
+
+                SqlParameter isMand = new SqlParameter();
+                isMand.ParameterName = "@IsMandatory";
+                isMand.SqlDbType = SqlDbType.Int;
+                isMand.Value = mvd.IsMandatory;
+                cmd.Parameters.Add(isMand);
 
                 SqlParameter ctrid = new SqlParameter();
                 ctrid.ParameterName = "@Countryid";
