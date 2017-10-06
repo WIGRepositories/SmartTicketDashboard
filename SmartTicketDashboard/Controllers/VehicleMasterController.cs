@@ -268,6 +268,14 @@ namespace SmartTicketDashboard.Controllers
             vcode.Value = v.VehicleCode;
             cmd.Parameters.Add(vcode);
 
+            SqlParameter pr = new SqlParameter("@Photo", SqlDbType.VarChar);
+            pr.Value = v.Photo;
+            cmd.Parameters.Add(pr);
+
+            SqlParameter ctr = new SqlParameter("@CountryId", SqlDbType.Int);
+            ctr.Value = v.CountryId;
+            cmd.Parameters.Add(ctr);
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);

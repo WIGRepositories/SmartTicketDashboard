@@ -2186,6 +2186,8 @@ namespace SmartTicketDashboard.Models
         public string Fleetcode { get; set; }
         public int isDriverOwned { get; set; }
         public int VehicleMakeId { get; set; }
+        public string Photo { get; set; }
+        public int CountryId { get; set; }
     }
     public class allocatedriver
     {
