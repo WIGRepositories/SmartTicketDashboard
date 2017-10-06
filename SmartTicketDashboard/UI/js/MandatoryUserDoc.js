@@ -68,7 +68,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                     CountryId: ctry.Id,
                     UserTypeId: utype.Id,
                     DocTypeId: $scope.checkedArr[cnt].Id,
-                    FileContent:$scope.checkedArr[cnt].FileContent
+                    FileContent: $scope.checkedArr[cnt].FileContent,
+                    IsMandatory:$scope.checkedArr[cnt].IsMandatory
                 }
                 UserDocs.push(fr);
             }
@@ -82,7 +83,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                     CountryId: ctry.Id,
                     UserTypeId: utype.Id,
                     DocTypeId: $scope.checkedArr[cnt].Id,
-                    FileContent: $scope.checkedArr[cnt].FileContent
+                    FileContent: $scope.checkedArr[cnt].FileContent,
+                    IsMandatory: $scope.checkedArr[cnt].IsMandatory
 
                 }
                 UserDocs.push(fr);

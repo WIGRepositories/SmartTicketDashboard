@@ -2758,6 +2758,8 @@ namespace SmartTicketDashboard.Models
         public int UserTypeId { get; set; }
 
         public string FileContent { get; set; }
+
+        public int IsMandatory { get; set; }
     }
     
     public class MandVehicleDocs
@@ -2773,6 +2775,7 @@ namespace SmartTicketDashboard.Models
 
         public int DocTypeId { get; set; }
         public string FileContent { get; set; }
+        public int IsMandatory { get; set; }
     }
 
     public class bankdetails
