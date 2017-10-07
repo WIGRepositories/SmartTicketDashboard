@@ -46,7 +46,36 @@ namespace SmartTicketDashboard.Controllers
             return Tbl;
         }
 
+        [HttpGet]
+        public DataTable GetUserDetails(int UId)//Main Method
+        {
+            DataTable Tbl = new DataTable();
 
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetUsers ....");
+
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;//Stored Procedure
+            cmd.CommandText = "getUsersdetails";
+            cmd.Connection = conn;
+
+            SqlParameter cmpid = new SqlParameter("@UId", SqlDbType.Int);
+            cmpid.Value = UId;
+            cmd.Parameters.Add(cmpid);
+
+            //SqlParameter empid= new SqlParameter("@EmpNo", SqlDbType.Int);
+            //cmpid.Value = empid;
+            //cmd.Parameters.Add(empid);
+
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(Tbl);
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetUsers  completed.");
+
+            return Tbl;
+        }
         [HttpPost]
         public DataTable SaveUsers(Users U)
         {

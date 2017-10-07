@@ -2748,8 +2748,7 @@ namespace SmartTicketDashboard.Models
     }
     public class MandUserDocs
     {
-
-
+        public int VehicleGroupId { get; set; }
         public string flag { get; set; }
 
         public int Id { get; set; }
@@ -2814,6 +2813,38 @@ namespace SmartTicketDashboard.Models
 
         public int MobiOrder { get; set; }
     }
+    public class SOSMessage
+    {
 
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int UserId { get; set; }
+
+        public int UserTypeId { get; set; }
+
+        public string SentTo { get; set; }
+
+        public int MessageId { get; set; }
+
+        public string Message { get; set; }
+
+        public DateTime SentOn { get; set; }
+
+        public TimeSpan SentTime { get; set; }
+
+        public int StatusId { get; set; }
+
+        public string Otp { get; set; }
+
+        public DateTime UpdatedOn { get; set; }
+
+        public int UpdatedBy { get; set; }
+
+        public float Latitude { get; set; }
+
+        public float Longitude { get; set; }
+    }
 }
 

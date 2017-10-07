@@ -15,7 +15,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/GetMandatoryUserDocs")]
-        public DataTable GetMandUserDocs(int ctryId, int utId)
+        public DataTable GetMandUserDocs(int ctryId, int utId, int vgrpId)
         {
             DataTable Tbl = new DataTable();
 
@@ -30,7 +30,8 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetMandatoryUserDocs";
             cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryId;
-            cmd.Parameters.Add("@vtId", SqlDbType.Int).Value = utId;
+            cmd.Parameters.Add("@utId", SqlDbType.Int).Value = utId;
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vgrpId;
             cmd.Connection = conn;
 
             //DataSet ds = new DataSet();
@@ -106,10 +107,13 @@ namespace SmartTicketDashboard.Controllers
                     ustid.SqlDbType = SqlDbType.Int;
                     ustid.Value = mud.UserTypeId;
                     cmd.Parameters.Add(ustid);
-                    //DataSet ds = new DataSet();
-                    //SqlDataAdapter db = new SqlDataAdapter(cmd);
-                    //db.Fill(ds);
-                    // Tbl = Tables[0];
+
+                    SqlParameter vgrpId = new SqlParameter();
+                    vgrpId.ParameterName = "@VehicleGroupId";
+                    vgrpId.SqlDbType = SqlDbType.Int;
+                    vgrpId.Value = mud.VehicleGroupId;
+                    cmd.Parameters.Add(vgrpId);
+                    
                     cmd.ExecuteScalar();
                     cmd.Parameters.Clear();
                 }
@@ -127,7 +131,7 @@ namespace SmartTicketDashboard.Controllers
                 string str = ex.Message;
 
                 traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandUserDocs:" + ex.Message);
-               
+                throw ex;
             }
              return dt;
         }

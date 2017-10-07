@@ -43,7 +43,7 @@ namespace SmartTicketDashboard.Controllers
         }
         [HttpPost]
         [Route("api/SaveSOSNumber")]
-        public DataTable SaveMandUserDocs(SOSNumber sos)
+        public DataTable SaveSOSNumber(SOSNumber sos)
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -114,7 +114,7 @@ namespace SmartTicketDashboard.Controllers
                     cmd.ExecuteScalar();
                    
                 conn.Close();
-                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveSOSNumber  completed.");
 
             }
             catch (Exception ex)
@@ -125,7 +125,7 @@ namespace SmartTicketDashboard.Controllers
                 }
                 string str = ex.Message;
 
-                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandUserDocs:" + ex.Message);
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveSOSNumber:" + ex.Message);
 
             }
             return dt;
