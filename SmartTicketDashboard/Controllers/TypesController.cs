@@ -320,6 +320,10 @@ namespace SmartTicketDashboard.Controllers
             vdid4.Value = vc.includeUserType;
             cmd.Parameters.Add(vdid4);
 
+            SqlParameter at = new SqlParameter("@includeAuthType",SqlDbType.Int);
+            vdid4.Value = vc.includeAuthType;
+            cmd.Parameters.Add(at);
+
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);

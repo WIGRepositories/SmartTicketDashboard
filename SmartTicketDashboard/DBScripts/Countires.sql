@@ -1,4 +1,4 @@
-Set IDENTITY_INSERT [Country] OFF
+Set IDENTITY_INSERT [Country] ON
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('AF','33.93911','67.709953','Afghanistan')
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('AL','41.153332','20.168331','Albania')
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('DZ','28.033886','1.659626','Algeria')
@@ -244,4 +244,4 @@ INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Nam
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('YE','15.552727','48.516388','Yemen')
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('ZM','-13.133897','27.849332','Zambia')
 INSERT INTO [POSDashboard].[dbo].[Country]([ISOCode],[Latitude],[Longitude],[Name])VALUES('ZW','-19.015438','29.154857','Zimbabwe')
-Set IDENTITY_INSERT  [Country] ON
+Set IDENTITY_INSERT  [Country] OFF
