@@ -1309,6 +1309,11 @@ namespace SmartTicketDashboard.Controllers
                 insupdflag.Value = o.flag;
                 cmd.Parameters.Add(insupdflag);
 
+                SqlParameter mssg = new SqlParameter("@mssg", SqlDbType.VarChar,100);
+               // mssg.Value = o.flag;
+                mssg.Direction = ParameterDirection.Output;                
+                cmd.Parameters.Add(mssg);
+
                 cmd.ExecuteScalar();
                 cmd.Parameters.Clear();
                 }

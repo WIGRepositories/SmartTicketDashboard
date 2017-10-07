@@ -18,7 +18,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl"  ng-model="dashboardDS">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetUserDetails()" ng-model="dashboardDS">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -48,7 +48,7 @@
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">{{uname}}</span>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="extra-profile.html"><i class="fa fa-user"></i>User Profile</a></li>
-                              
+
                                 <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
                                 <li><a href="ResetPassword.html"><i class="fa fa-tasks"></i>Reset Password<span class="badge badge-success"></span></a></li>
                                 <li class="divider"></li>
@@ -264,7 +264,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -280,7 +280,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -361,18 +361,18 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                               
-                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
-                               <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>                                
+
+                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
+                                <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                                 <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                                  <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
+                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                               
+
 
                             </ul>
 
@@ -399,11 +399,11 @@
                         <div id="tableactionTabContent" class="tab-content">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2>Profile: User Details</h2>
+                                    <h2>Profile: {{U.FirstName}} {{U.LastName}}</h2>
                                     <div class="row mtl">
                                         <div class="col-md-3">
                                             <div class="form-group">
-                                                <div class="text-center mbl"><img src="http://lorempixel.com/640/480/business/1/" alt="" class="img-responsive" /></div>
+                                                <div class="text-center mbl"><img src="{{U.photo}}" alt="" class="img-responsive" /></div>
                                                 <div class="text-center mbl">
                                                     <a href="#" class="btn btn-green">
                                                         <i class="fa fa-upload"></i>&nbsp;
@@ -413,17 +413,17 @@
                                             </div>
                                             <table class="table table-striped table-hover">
                                                 <tbody>
-                                                    <tr>
+                                                    <!--<tr>
                                                         <td>User Name</td>
-                                                        <td>User</td>
-                                                    </tr>
+                                                        <td>{{U.FirstName}}</td>
+                                                    </tr>-->
                                                     <tr>
                                                         <td>Email</td>
-                                                        <td>name@example.com</td>
+                                                        <td>{{U.EmailId}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Address</td>
-                                                        <td>Street 123, Avenue 45, Country</td>
+                                                        <td>{{U.Address}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>Status</td>
@@ -453,7 +453,7 @@
                                                             <label class="col-sm-3 control-label">Email</label>
                                                             <div class="col-sm-9 controls">
                                                                 <div class="row">
-                                                                    <div class="col-xs-9"><input type="email" placeholder="email@yourcompany.com" class="form-control" /></div>
+                                                                    <div class="col-xs-9"><input type="email" ng-model="U.EmailId"  class="form-control" /></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -461,7 +461,7 @@
                                                             <label class="col-sm-3 control-label">Username</label>
                                                             <div class="col-sm-9 controls">
                                                                 <div class="row">
-                                                                    <div class="col-xs-9"><input type="text" placeholder="username" class="form-control" /></div>
+                                                                    <div class="col-xs-9"><input type="text" ng-model="U.FirstName" class="form-control" /></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -487,7 +487,7 @@
                                                             <label class="col-sm-3 control-label">First Name</label>
                                                             <div class="col-sm-9 controls">
                                                                 <div class="row">
-                                                                    <div class="col-xs-9"><input type="text" placeholder="first name" class="form-control" /></div>
+                                                                    <div class="col-xs-9"><input type="text" ng-model="U.FirstName" class="form-control" /></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -495,7 +495,7 @@
                                                             <label class="col-sm-3 control-label">Last Name</label>
                                                             <div class="col-sm-9 controls">
                                                                 <div class="row">
-                                                                    <div class="col-xs-9"><input type="text" placeholder="last name" class="form-control" /></div>
+                                                                    <div class="col-xs-9"><input type="text" ng-model="U.LastName" class="form-control" /></div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -664,7 +664,7 @@
                                 <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
                             </div>
                         </div>
-                </div>
+                    </div>
                     <!--END FOOTER-->
                 </div>
             </div>
@@ -677,11 +677,11 @@
             </div>
             <div class="modal-body">
                 <!--<ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>-->
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>-->
                 {{mssg}}
             </div>
             <div class="modal-footer">
@@ -691,34 +691,36 @@
 
         </script>
     </div>
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<!--loading bootstrap js-->
-<script src="vendors/bootstrap/js/bootstrap.js"></script>
-<script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-    
-    
-<script src="vendors/metisMenu/jquery.metisMenu.js"></script>
-<script src="vendors/slimScroll/jquery.slimscroll.js"></script>
-<script src="vendors/jquery-cookie/jquery.cookie.js"></script>
-<script src="vendors/iCheck/icheck.min.js"></script>
-<script src="vendors/iCheck/custom.min.js"></script>
-<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
-<script src="js/jquery.menu.js"></script>
-<script src="vendors/jquery-pace/pace.min.js"></script>
-<script src="vendors/holder/holder.js"></script>
-<script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-<!--LOADING SCRIPTS FOR PAGE-->
-<script src="js/table-action.js"></script>
-<!--CORE JAVASCRIPT-->
-<script src="js/main.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
 
-<script src="js/angular.js"></script>
-<script src="js/ngStorage.js"></script>
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+
+    <script src="js/angular.js"></script>
+    <script src="js/ngStorage.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-<script src="js/source.js"></script>
-
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
+    <script src="js/Users.js"></script>
+    <script src="js/fileupload/Upload.js"></script>
     <!--<script src="js/Alerts.js"></script>
 
     <script src="js/Notifications.js"></script>-->

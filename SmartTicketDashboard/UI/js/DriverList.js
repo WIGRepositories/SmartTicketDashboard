@@ -511,7 +511,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.SetBiggerPhoto = function (dl) {
         $scope.biggetPhoto = dl.photo;
     }
-
+    $scope.SetQRPhoto = function () {
+        $scope.SetQRPhoto = Qp.Photo;
+    }
 
     $scope.GetVehicleConfig = function () {
 

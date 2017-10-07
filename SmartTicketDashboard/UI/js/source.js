@@ -16,6 +16,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         });
     }
 
+
+
     $scope.GetFleetDetails = function () {
 
         if ($scope.cmp == null) {

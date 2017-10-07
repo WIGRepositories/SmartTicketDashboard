@@ -147,7 +147,36 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 $scope.GetCountry($scope.ctry);
             }
     });
-}
+    }
+
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+
+    $scope.GetUserDetails = function () {
+
+       
+        $scope.selectedUser = parseLocation(window.location.search)['UId'];
+
+        $http.get('/api/Users/GetUserDetails?UId=' + $scope.selectedUser).then(function (res, data) {
+            $scope.U = res.data[0];           
+            //$scope.imageSrc = $scope.U.photo;            
+
+        });
+    }
     $scope.GetCompanies = function () {    
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
             $scope.Companies = response.data;
