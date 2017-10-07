@@ -314,11 +314,13 @@ namespace SmartTicketDashboard.Controllers
             vdid3.Value =vc.includeFleetOwner;
             cmd.Parameters.Add(vdid3);
 
-            SqlParameter vdid4 = new SqlParameter();
-            vdid4.ParameterName = "@includeUserType";
-            vdid4.SqlDbType = SqlDbType.Int;
+            SqlParameter vdid4 = new SqlParameter("@includeUserType", SqlDbType.Int);
             vdid4.Value = vc.includeUserType;
             cmd.Parameters.Add(vdid4);
+
+            SqlParameter at = new SqlParameter("@includeAuthType",SqlDbType.Int);
+            at.Value = vc.includeAuthType;
+            cmd.Parameters.Add(at);
 
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
