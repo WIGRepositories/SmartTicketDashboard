@@ -2812,6 +2812,9 @@ namespace SmartTicketDashboard.Models
 
         public int MobiOrder { get; set; }
     }
+    public class SOSMessage
+    {
 
+    }
 }
 
