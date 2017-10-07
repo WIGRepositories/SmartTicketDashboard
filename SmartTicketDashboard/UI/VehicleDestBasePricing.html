@@ -19,7 +19,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp1" ng-controller="myCtrl" ng-init="GetDistanceBasePricing();" ng-model="VPricing">
+<body ng-app="myApp1" ng-controller="myCtrl" ng-init="GetConfigData();" ng-model="VPricing">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -271,7 +271,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -287,7 +287,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -379,7 +379,7 @@
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li class="active"><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                               
+
 
                             </ul>
 
@@ -413,6 +413,16 @@
                                             <div class="col-lg-12">
                                                 <div class="table-container">
                                                     <div class="row mbm">
+                                                        <div class="col-md-3">
+                                                            Country:<select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-3">
+                                                            Vehicle Group:<select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg">
+    <option value="">Select</option>
+</select>
+                                                        </div>
                                                         <div class="actions">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Add Pricing</button>
                                                         </div>
@@ -426,24 +436,24 @@
                                                                         <h4 id="modal-header-primary-label" class="modal-title">Add Vehicle Pricing</h4>
                                                                     </div>
 
-                                                                    <div class="modal-body " ng-init="GetVehicleConfig()" >
+                                                                    <div class="modal-body " ng-init="GetVehicleConfig()">
                                                                         <div style="margin-left:250px">
-                                                                        <div class="row" >
+                                                                            <div class="row">
 
-                                                                            <div class="col-md-6">
+                                                                                <div class="col-md-6">
 
-                                                                                <label for="selCountry" class="col-md-4 control-label" >Vehicle Model</label>
-                                                                                <div class="col-md-8">
-                                                                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
-                                                                                        <option value="">Select</option>
-                                                                                    </select>
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Vehicle Model</label>
+                                                                                    <div class="col-md-8">
+                                                                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                                                                            <option value="">Select</option>
+                                                                                        </select>
+                                                                                    </div>
                                                                                 </div>
                                                                             </div>
-                                                                            </div>
-                                                                        
+
                                                                             <div class="row" style="margin-top:7px">
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" >FromKm<span class='require'></span></label>
+                                                                                    <label for="Fax" class="col-md-4 control-label">FromKm<span class='require'></span></label>
                                                                                     <div class="col-md-8"><input id="FromKm" type="text" ng-model="Dist.FromKm" class="form-control" /><span class="help-block"></span></div>
 
                                                                                 </div>
@@ -457,7 +467,7 @@
 
 
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" >ToKm:<span class='require'></span></label>
+                                                                                    <label for="Fax" class="col-md-4 control-label">ToKm:<span class='require'></span></label>
                                                                                     <div class="col-md-8"><input id="ToKm" type="text" ng-model="Dist.ToKm" class="form-control" /><span class="help-block"></span></div>
                                                                                 </div>
 
@@ -467,7 +477,7 @@
 
 
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" >Pricing: <span class='require'></span></label>
+                                                                                    <label for="Fax" class="col-md-4 control-label">Pricing: <span class='require'></span></label>
                                                                                     <div class="col-md-8"><input id="Pricing" type="text" ng-model="Dist.Pricing" class="form-control" /><span class="help-block"></span></div>
                                                                                 </div>
 
@@ -476,8 +486,8 @@
 
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" >FromTime<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input  type="time" ng-model="Dist.FromTime" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <label for="Fax" class="col-md-4 control-label">FromTime<span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input type="time" ng-model="Dist.FromTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                                 </div>
 
@@ -485,29 +495,29 @@
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="col-md-6">
-                                                                                    <label for="Fax" class="col-md-4 control-label" >ToTime<span class='require'></span></label>
-                                                                                    <div class="col-md-8"><input  type="time" ng-model="Dist.ToTime" class="form-control" /><span class="help-block"></span></div>
+                                                                                    <label for="Fax" class="col-md-4 control-label">ToTime<span class='require'></span></label>
+                                                                                    <div class="col-md-8"><input type="time" ng-model="Dist.ToTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                                 </div>
 
 
                                                                             </div>
                                                                         </div>
-                                                                            <div class="form-actions">
-                                                                                <div class="col-md-offset-5 col-md-8">
-                                                                                    <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Dist, 'I');">Save</button>
+                                                                        <div class="form-actions">
+                                                                            <div class="col-md-offset-5 col-md-8">
+                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Dist, 'I');">Save</button>
 
-                                                                                    <a href="VehicleDestBasePricing.html" class="btn btn-primary" ng-click="clearDist()">Cancel</a>
-                                                                                </div>
+                                                                                <a href="VehicleDestBasePricing.html" class="btn btn-primary" ng-click="clearDist()">Cancel</a>
                                                                             </div>
-
-
-
-
-
                                                                         </div>
+
+
+
+
+
                                                                     </div>
-                                                                    </div>
+                                                                </div>
+                                                            </div>
 
 
                                                         </div>
@@ -583,7 +593,7 @@
                                                             <div class="row">
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float: left">ToTime:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input  type="time" ng-model="Changes.ToTime" class="form-control" /><span class="help-block"></span></div>
+                                                                    <div class="col-md-8"><input type="time" ng-model="Changes.ToTime" class="form-control" /><span class="help-block"></span></div>
 
                                                                 </div>
 
@@ -705,13 +715,13 @@
     <script src="js/jquery.menu.js"></script>
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
-    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>    
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/VehicleDistPricing.js"></script>   
-   
+    <script src="js/VehicleDistPricing.js"></script>
+
 </body>
 </html>

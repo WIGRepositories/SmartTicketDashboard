@@ -14,7 +14,7 @@ namespace SmartTicketDashboard.Controllers
     {
 
         [HttpGet]
-        public DataSet getdashboard(int userid, int roleid)
+        public DataSet getdashboard(int userid, int roleid, int ctryId)
         {
             DataTable Ds = new DataTable();
 
@@ -42,6 +42,12 @@ namespace SmartTicketDashboard.Controllers
             rid.SqlDbType = SqlDbType.Int;
             rid.Value = roleid;
             cmd.Parameters.Add(rid);
+
+            SqlParameter ctrId = new SqlParameter();
+            ctrId.ParameterName = "@CountryId";
+            ctrId.SqlDbType = SqlDbType.Int;
+            ctrId.Value = ctryId;
+            cmd.Parameters.Add(ctrId);
 
 
             cmd.Connection = conn;

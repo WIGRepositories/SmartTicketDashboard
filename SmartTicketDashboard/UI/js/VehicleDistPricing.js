@@ -77,6 +77,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.Changes = null;
+
     $scope.GetVehicleConfig = function () {
 
         var vc = {
@@ -99,6 +100,27 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.initdata = res.data;
         });
 
+    }
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+           
+            includeActiveCountry: '1',
+            includeVehicleGroup:'1'
+            
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            
+        });
     }
 
     $scope.Save = function (Changes, flag) {
