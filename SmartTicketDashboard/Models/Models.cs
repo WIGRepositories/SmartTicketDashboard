@@ -1740,6 +1740,7 @@ namespace SmartTicketDashboard.Models
         public int includeActiveCountry { get; set; }
         public int includeFleetOwner { get; set; }
         public int includeUserType { get; set; }
+        public int includeAuthType { get; set; }
     }
     public class VehicleConfig
     {
