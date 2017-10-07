@@ -49,6 +49,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     $scope.saveUserDoc = function (ctry,utype) {
 
+        if (ctry == null || ctry.Id == null) {
+            alert("Select Country");
+            return;
+        }
+        if (utype == null || utype.Id == null) {
+            alert("Select UserType");
+            return;
+        }
+
         var UserDocs = [];
       
         for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {
@@ -58,7 +67,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                     Id:-1,
                     CountryId: ctry.Id,
                     UserTypeId: utype.Id,
-                    DocTypeId:$scope.checkedArr[cnt].Id
+                    DocTypeId: $scope.checkedArr[cnt].Id,
+                    FileContent: $scope.checkedArr[cnt].FileContent,
+                    IsMandatory:$scope.checkedArr[cnt].IsMandatory
                 }
                 UserDocs.push(fr);
             }
@@ -71,7 +82,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                     Id: -1,
                     CountryId: ctry.Id,
                     UserTypeId: utype.Id,
-                    DocTypeId:$scope.checkedArr[cnt].Id
+                    DocTypeId: $scope.checkedArr[cnt].Id,
+                    FileContent: $scope.checkedArr[cnt].FileContent,
+                    IsMandatory: $scope.checkedArr[cnt].IsMandatory
+
                 }
                 UserDocs.push(fr);
             }

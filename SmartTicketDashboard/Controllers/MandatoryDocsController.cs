@@ -83,6 +83,18 @@ namespace SmartTicketDashboard.Controllers
                     DocTId.Value = mud.DocTypeId;
                     cmd.Parameters.Add(DocTId);
 
+                    SqlParameter FileCont = new SqlParameter();
+                    FileCont.ParameterName = "@FileContent";
+                    FileCont.SqlDbType = SqlDbType.VarChar;
+                    FileCont.Value = mud.FileContent;
+                    cmd.Parameters.Add(FileCont);
+
+                    SqlParameter isMand = new SqlParameter();
+                    isMand.ParameterName = "@IsMandatory";
+                    isMand.SqlDbType = SqlDbType.Int;
+                    isMand.Value = mud.IsMandatory;
+                    cmd.Parameters.Add(isMand);
+
                     SqlParameter ctrid = new SqlParameter();
                     ctrid.ParameterName = "@Countryid";
                     ctrid.SqlDbType = SqlDbType.Int;
@@ -150,7 +162,7 @@ namespace SmartTicketDashboard.Controllers
         }
         [HttpPost]
         [Route("api/SaveMandatoryVehicleDocs")]
-        public DataTable SaveMandVehicleDocs(MandVehicleDocs mvd)
+        public DataTable SaveMandVehicleDocs(IEnumerable<MandVehicleDocs> VehicleDocs)
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -171,6 +183,8 @@ namespace SmartTicketDashboard.Controllers
                 conn.Open();
 
 
+                foreach (MandVehicleDocs mvd in VehicleDocs)
+                {
                 SqlParameter flag = new SqlParameter();
                 flag.ParameterName = "@flag";
                 flag.SqlDbType = SqlDbType.VarChar;
@@ -189,6 +203,18 @@ namespace SmartTicketDashboard.Controllers
                 DocTId.Value = mvd.DocTypeId;
                 cmd.Parameters.Add(DocTId);
 
+                SqlParameter FileCont = new SqlParameter();
+                FileCont.ParameterName = "@FileContent";
+                FileCont.SqlDbType = SqlDbType.VarChar;
+                FileCont.Value = mvd.FileContent;
+                cmd.Parameters.Add(FileCont);
+
+                SqlParameter isMand = new SqlParameter();
+                isMand.ParameterName = "@IsMandatory";
+                isMand.SqlDbType = SqlDbType.Int;
+                isMand.Value = mvd.IsMandatory;
+                cmd.Parameters.Add(isMand);
+
                 SqlParameter ctrid = new SqlParameter();
                 ctrid.ParameterName = "@Countryid";
                 ctrid.SqlDbType = SqlDbType.Int;
@@ -205,6 +231,8 @@ namespace SmartTicketDashboard.Controllers
                 //db.Fill(ds);
                 // Tbl = Tables[0];
                 cmd.ExecuteScalar();
+                cmd.Parameters.Clear();
+                }
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandVehiclerDocs  completed.");
 

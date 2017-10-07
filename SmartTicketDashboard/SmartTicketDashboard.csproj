@@ -2128,6 +2128,8 @@
     <Compile Include="Controllers\ShippingOrderController.cs" />
     <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Controllers\SmsGatewayConfigController.cs" />
+    <Compile Include="Controllers\SOSMessageController.cs" />
+    <Compile Include="Controllers\SOSNumberController.cs" />
     <Compile Include="Controllers\StartReportController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />

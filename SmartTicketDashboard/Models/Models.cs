@@ -2118,18 +2118,18 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int DId { get; set; }
-        public int CompanyId { get; set; }
+        public int Company { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
         public string Pin { get; set; }
-        public string PAddress { get; set; }
+        public string PermanentAddress { get; set; }
         public string PCity { get; set; }
-        public string PPin { get; set; }
+        public string PermanentPin { get; set; }
         public float OffMobileNo { get; set; }
-        public string PMobNo { get; set; }
-        public DateTime DOB { get; set; }
-        public DateTime DOJ { get; set; }
+        public string Mobilenumber { get; set; }
+        public DateTime? DOB { get; set; }
+        public DateTime? DOJ { get; set; }
         public string BloodGroup { get; set; }
         public string LicenceNo { get; set; }
         public DateTime LiCExpDate { get; set; }
@@ -2139,7 +2139,11 @@ namespace SmartTicketDashboard.Models
         public string Photo { get; set; }
         public string licenseimage { get; set; }
         public string badgeimage { get; set; }
-        public string DriverCode { get; set; }
+        public string drivercode { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string EmailId { get; set; }
+        public int Status { get; set; }
         
     }
     public class vehiclemas
@@ -2183,6 +2187,8 @@ namespace SmartTicketDashboard.Models
         public string Fleetcode { get; set; }
         public int isDriverOwned { get; set; }
         public int VehicleMakeId { get; set; }
+        public string Photo { get; set; }
+        public int CountryId { get; set; }
     }
     public class allocatedriver
     {
@@ -2753,6 +2759,10 @@ namespace SmartTicketDashboard.Models
         public int Countryid { get; set; }
 
         public int UserTypeId { get; set; }
+
+        public string FileContent { get; set; }
+
+        public int IsMandatory { get; set; }
     }
     
     public class MandVehicleDocs
@@ -2767,6 +2777,8 @@ namespace SmartTicketDashboard.Models
         public int VehicleGroupId { get; set; }
 
         public int DocTypeId { get; set; }
+        public string FileContent { get; set; }
+        public int IsMandatory { get; set; }
     }
 
     public class bankdetails
@@ -2780,6 +2792,26 @@ namespace SmartTicketDashboard.Models
         public string Country { get; set; }
         public int IsActive { get; set; }
        
+    }
+
+    public class SOSNumber
+    {
+
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public int UserId { get; set; }
+
+        public string MobileNumber { get; set; }
+
+        public int UserTypeId { get; set; }
+
+        public DateTime CreatedOn { get; set; }
+
+        public int Active { get; set; }
+
+        public int MobiOrder { get; set; }
     }
 
 }

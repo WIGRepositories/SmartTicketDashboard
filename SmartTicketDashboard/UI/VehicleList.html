@@ -463,7 +463,7 @@
                                                                             <img src="images/car.png" class="media-object thumb" />
                                                                         </span>
                                                                         <span class="img-shadow" ng-if="v.Photo != null">
-                                                                            <img src="{{v.photo}}" class="media-object thumb" />
+                                                                            <img src="{{v.Photo}}" class="media-object thumb" />
                                                                         </span>
                                                                         </td>
                                                                     <td><a href="VehicleDetails.html?VID={{v.Id}}"><h6 class="media-heading">{{v.RegistrationNo}}</h6></a><div>Vehicle Code:{{v.VehicleCode}}</div></td>
@@ -472,7 +472,7 @@
                                                                     <td>{{v.VehicleType}}</td>
                                                                     <td>{{v.VehicleModel}}</td>                                                                  
 
-                                                                    <td>{{v.FleetOwnerCode}}</td>
+                                                                    <td>{{v.FleetOwnerId}}</td>
                                                                     <td>{{v.FleetOwner}}</td>
                                                                     <td>{{v.ContactNo1}}</td>
                                                                     <td>{{v.EmailId}}</td>
@@ -525,95 +525,124 @@
                 </div>
                 <div class="modal-body" ng-model="newVehicle">                                  
 
-                                <div class="row ">
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
-                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label">Fleet Owner:<span class='require'></span></label>
-                                        <div class="col-md-8">
-                                            <select ng-options="f.Name for f in initdata.Table6 track by f.Id" ng-model="newVehicle.f" class="form-control">
-                                                <option value="">Select</option>
-                                            </select>
+                    <div class="row mtl">
+                        <div class="col-md-3">
+
+                            <div class="form-group">
+
+                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                <br />
+                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
+                                    <i class="fa fa-upload"></i>&nbsp;
+                                    Upload photo
+                                </a>
+
+
+                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+
+                            </div>
+
+                        </div>
+                        <div class="col-md-9">
+                            <div id="generalTabContent" class="tab-content">
+                                <div class="modal-body">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span></div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Fleet Owner:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-model="newVehicle.f" class="form-control">
+                                                    <option value="">Select</option>
+                                                    <option>f101</option>
+                                                    <option>f102</option>
+                                                    <option>f103</option>
+                                                    <option>f104</option>
+                                                    <option>f105</option>
+                                                    <option>f106</option>
+                                                    <option>f107</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+
                                     </div>
-                                           
 
-                                </div>
+                                    <div class="row">
 
-                                <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label"> Chasis No:<span class='require'></span></label>
+                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ChasisNo" class="form-control" /><span class="help-block"></span></div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Engine No:<span class='require'></span></label>
+                                            <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Engineno" class="form-control" /><span class="help-block"></span></div>
+                                        </div>
 
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label"> Chasis No:<span class='require'></span></label>
-                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ChasisNo" class="form-control" /><span class="help-block"></span></div>
                                     </div>
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label">Engine No:<span class='require'></span></label>
-                                        <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.Engineno" class="form-control" /><span class="help-block"></span></div>
-                                    </div>
 
-                                </div>
+                                    <div class="row">
 
-                                <div class="row">
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="newVehicle.vg" class="form-control">
 
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
-                                        <div class="col-md-8">
-                                            <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="newVehicle.vg" class="form-control">
-                                                
                                                     <option value="">Select</option>
                                                 </select>
+                                            </div>
                                         </div>
-                                    </div>                                           
-                                    <div class="col-md-6">
-                                        <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
-                                        <div class="col-md-8">
-                                            <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="newVehicle.vt" class="form-control">
-                                                <option value="">Select</option>
-                                            </select>
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="newVehicle.vt" class="form-control">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="row" style="margin-top:8px">
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Vehicle Model:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="vmo.Name for vmo in initdata.Table2 track by vmo.Id" ng-model="newVehicle.vmo" class="form-control">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Vehicle Make:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="vm.Name for vm in initdata.Table3 track by vm.Id" ng-model="newVehicle.vm" class="form-control">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </div>
-                                            
-                                </div>
-                    <div class="row" style="margin-top:8px">
-                        <div class="col-md-6">
-                            <label for="Name" class="col-md-4 control-label">Vehicle Model:<span class='require'></span></label>
-                            <div class="col-md-8">
-                                <select ng-options="vmo.Name for vmo in initdata.Table2 track by vmo.Id" ng-model="newVehicle.vmo" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="Name" class="col-md-4 control-label">Vehicle Make:<span class='require'></span></label>
-                            <div class="col-md-8">
-                                <select ng-options="vm.Name for vm in initdata.Table3 track by vm.Id" ng-model="newVehicle.vm" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row" style="margin-top:8px">
-                        <div class="col-md-6">
-                            <label for="Name" class="col-md-4 control-label">Country:<span class='require'></span></label>
-                            <div class="col-md-8">
-                                <select ng-options="cn.Name for cn in initdata.Table4 track by cn.Id" ng-model="newVehicle.cn" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="Name" class="col-md-4 control-label">Driver:<span class='require'></span></label>
-                            <div class="col-md-8">
-                                <select ng-options="d.Name for vm in drivers track by d.Id" ng-model="d" class="form-control">
-                                    <option value="">Select</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                                            
-                                            
+                                    <div class="row" style="margin-top:8px">
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Country:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="cn.Name for cn in initdata.Table4 track by cn.Id" ng-model="newVehicle.cn" class="form-control">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="Name" class="col-md-4 control-label">Driver:<span class='require'></span></label>
+                                            <div class="col-md-8">
+                                                <select ng-options="d.Name for vm in drivers track by d.Id" ng-model="d" class="form-control">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
                                     <div class="row" style="margin-top:8px">
 
                                         <div class="col-md-6">
@@ -625,7 +654,7 @@
                                             <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="newVehicle.ModelYear" class="form-control" /><span class="help-block"></span></div>
                                         </div>
 
-                                    </div>                                          
+                                    </div>
 
                                     <div class="row">
                                         <div style="text-align:left" class="col-md-6">
@@ -637,19 +666,25 @@
                                         <div style="text-align:left" class="col-md-6">
                                             <label for="Active" class="control-label">Is Driver Owned?<span class='require'></span></label>
 
-                                            <input type="checkbox" ng-model="newVehicle.isDriverOwned"/>
+                                            <input type="checkbox" ng-model="newVehicle.isDriverOwned" />
 
                                         </div>
                                     </div>
-                                    <div class="form-actions">
-                                        <div style="text-align:center">
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
 
-                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
+                                        <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(newVehicle,'I')">Save</button>
 
-                                            <a href="VehicleList.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 
-                                        </div>
+
+                                        <a href="VehicleList.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                                 </div>
                         </div>
                     </div>

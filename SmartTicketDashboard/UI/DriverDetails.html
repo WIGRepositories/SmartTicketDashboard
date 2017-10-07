@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();" ng-model="bankdetails">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -488,7 +488,7 @@
                                                                                         <label class="col-sm-3 control-label">First Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="email" ng-model="Dl.FirstName" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="email" ng-model="Dl.Firstname" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -498,7 +498,7 @@
                                                                                         <label class="col-sm-3 control-label">Last Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.LastName" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.lastname" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -585,23 +585,23 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Permanent City</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PCity" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="col-md-12">                                                                                
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Permanent PinCode</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9"><input type="text" ng-model="Dl.PPin" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Date Of Joining</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOJ" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -654,7 +654,7 @@
                                                                                                 <div class="col-xs-9">
                                                                                                     <select ng-options="vs.Name for vs in initdata.Table track by vs.Id" ng-model="Dl.StatusId" class="form-control">
                                                                                                         <option value="">Select</option>
-                                                                                                    </select> 
+                                                                                                    </select>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
@@ -662,32 +662,10 @@
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Remarks</label>
+                                                                                        <label class="col-sm-3 control-label">Driver Code</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Remarks" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Office Mobile Number</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.OffMobileNo" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Date Of Joining</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOJ" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.DriverCode" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -710,7 +688,7 @@
 
                                                                                 </div>
 
-                                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Vehicle</button>
+                                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-Assign-vehicle" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Assign Vehicle</button>
 
                                                                             </div>
 
@@ -876,7 +854,7 @@
                                                                     </div>
                                                                     <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
                                                                         <div class="panel-body">
-                                                                            <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Bank</button>
+                                                                            <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-Add-Bank" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Bank</button>
 
                                                                         </div>
                                                                             <table class="table table-bordered table-advanced tablesorter">
@@ -887,29 +865,19 @@
                                                                                         <th>Bank Code</th>                                                                                        
                                                                                         <th>Branch Address</th>
                                                                                         <th>Country</th>
+                                                                                        <th>IS Active</th>
                                                                                         <th>Edit</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr>
-                                                                                        <td>00050505050505</td>
-                                                                                        <td>RBZ zimbabwe</td>
-                                                                                        <td>RBZ0001</td>                                                                                        
-                                                                                        <td>Street no 302, msasa road, harare</td>
-                                                                                        <td>Zimbabwe</td>
-                                                                                        <td>
-                                                                                            <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
-                                                                                                <i class="fa fa-edit"></i>
-
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                    <tr>
-                                                                                        <td>00050505050505</td>
-                                                                                        <td>RBZ zimbabwe</td>
-                                                                                        <td>RBZ0001</td>
-                                                                                        <td>Street no 302, msasa road, harare</td>
-                                                                                        <td>Zimbabwe</td>
+                                                                                    
+                                                                                    <tr ng-repeat="b in bankdetails">
+                                                                                        <td>{{b.Accountnumber}}</td>
+                                                                                        <td>{{b.BankName}}</td>
+                                                                                        <td>{{b.BankCode}}</td>
+                                                                                        <td>{{b.BranchAddress}}</td>
+                                                                                        <td>{{b.CountryId}}</td>
+                                                                                        <td>{{b.IsActive}}</td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
@@ -982,7 +950,8 @@
                             </div>
                         </div>
                     </div>
-
+                <!----------BEGIN popups------------------->
+                <!----------BEGIN Uplode Files------------------->
                     <div id="Modal-header-new-f" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -1139,6 +1108,191 @@
 
 
                     </div>
+                <!----------END Uplode Files------------------->
+                <!----------BEGIN Vehicle Details------------------->
+                <div id="Modal-Assign-vehicle" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Assign Vehicle</h4>
+                            </div>
+                            <div class="modal-body" ng-model="driverDoc">
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Country:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Vehicle Group:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Registration No:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="vm.RegistrationNo for vm in vdlist.Table track by vm.Id" ng-model="vm" class="form-control">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <select ng-options="d.NAme for d in vdlist.Table1 track by d.DId" class="form-control" ng-model="d.DId">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Driver Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="d.DId.DriverCode" readonly disabled />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Date:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveDate" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Effective Till:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input id="inputFirstName" type="date" ng-model="newVehicle.EffectiveTill" class="form-control" /><span class="help-block"></span>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
+
+                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Vehicle Details------------------->
+                <!----------BEGIN Banking------------------->
+                <div id="Modal-Add-Bank" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Add Bank Details</h4>
+                            </div>
+                            <div class="modal-body" ng-model="b">
+
+                                
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Account Number:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="b.AccountNumber" class="form-control" />
+                                    </div>
+                                </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Bank Name:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="b.BankName" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Bank Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="b.BankCode" class="form-control" />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Branch Address:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="b.BranchAddress" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Country:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="b.Country" class="form-control" ng-init="GetCountry()">
+                                            <option value="">Select</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">Is Active:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select class="form-control" ng-model="b.IsActive">
+                                            <option value="">Select</option>
+                                            <option value="1">yes</option>
+                                            <option value="0">No</option>
+                                        </select>
+                                    </div>
+                                </div>
+                          
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="savebank(b,'I')">Save</button>
+
+                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearb()">Cancel</a>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Banking------------------->
+                <!----------ENDpopups------------------->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
                         <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>

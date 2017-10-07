@@ -422,7 +422,7 @@
                 <!--BEGIN TITLE & BREADCRUMB PAGE-->
                 <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                     <div class="page-header pull-left">
-                        <div class="page-title">Mandatory User Documents</div>
+                        <div class="page-title">User Documents</div>
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
@@ -440,16 +440,13 @@
                                 Country:
                                 <select ng-options="cc.Name for cc in initdata.Table track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetAssignedDocuments()">
                                     <option value="">Select</option>
-                                    <option value="1">Zimbabway</option>
-                                    <option value="2">Kenya</option>
-                                    <option value="3">Australia</option>
-                                    <option value="4">India</option>
+
                                 </select>
                             </div>
                             <div class="col-md-5">
-                                User Type: <select ng-options="s.Name for s in initdata.Table1 track by s.Id" ng-model="utype" ng-change="GetAssignedDocuments">
-    <option value="">Select Type</option>
-</select>
+                                User Type: <select ng-options="s.Name for s in initdata.Table1 track by s.Id" ng-model="utype" ng-change="GetAssignedDocuments()">
+                                    <option value="">Select Type</option>
+                                </select>
                             </div>
 
                         </div>
@@ -459,7 +456,7 @@
                                     <div class="col-lg-12">
 
 
-                                        <div class="table-container" ng-model="FORoutes">
+                                        <div class="table-container" ng-model="Types">
                                             <div class="row mbm">
 
                                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
@@ -471,7 +468,9 @@
                                                             ng-click="toggleAll()">Select</th>-->
                                                             <th>Name</th>
                                                             <th>Description</th>
-                                                            <th>Type Group</th>
+                                                            <th>Template</th>
+                                                            <th>File Content</th>
+                                                            <th>Is Mandatory</th>
                                                             <th>Active</th>
                                                             <!--<th>List Key</th>
                                                             <th>List value</th>-->
@@ -480,17 +479,19 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        
+
                                                         <tr ng-repeat="T in doctypes">
 
                                                             <td><input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" /></td>
                                                             <td>{{T.DocType}}</td>
                                                             <td>{{T.Description}}</td>
-                                                            <td>{{T.TypeGroup}}</td>
+                                                            <td>{{T.Template}}</td>
+                                                            <td><input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="T.FileContent" ng-click="validateFile($event)" /></td>
+                                                            <td><input type="checkBox" ng-checked="T.IsMandatory" /></td>
                                                             <td><input type="checkBox" ng-checked="T.Active" disabled /></td>
 
                                                             <!--<td>{{T.ListKey}}</td>
-        <td>{{T.Listvalue}}</td>-->
+                                                            <td>{{T.Listvalue}}</td>-->
                                                             <td>
                                                                 {{T.Update}}
                                                                 <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
@@ -626,7 +627,7 @@
     <script src="js/main.js"></script>
     <script src="js/Countries.js"></script>
     <script src="js/MandatoryUserDoc.js"></script>
-
+    <script src="js/fileupload/Upload.js"></script>
 </body>
 
 </html>

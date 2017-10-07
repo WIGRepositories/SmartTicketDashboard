@@ -157,7 +157,29 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
             $scope.dashboardDS = res.data;
             $localStorage.dashboardDS = res.data;
         });
+       
+       $scope.GetConfigData();
+     
     }
+
+    $scope.GetConfigData = function () {
+
+        var vc = {            
+            includeActiveCountry: '1',
+            includeVehicleGroup: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
+
     $scope.myVar = false;
     $scope.toggle = function () {
         $scope.myVar = !$scope.myVar;
@@ -265,28 +287,39 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
 app.controller('mapCtrl', function ($scope, $http) {
 
-    var mapOptions = {
-        zoom: 8,
-        center: new google.maps.LatLng(17.3850, 78.4867),
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-    }
-
-    $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
     $scope.markers = [];
     $scope.location = [];
 
-    var infoWindow = new google.maps.InfoWindow();
 
-    $http.get('http://localhost:1476/api/DriverStatus/GetDriverlocation').
-        success(function (data) {
+    $scope.CenterMap = function (country) {
 
-            $scope.location = data;
-            $scope.location.forEach(function (loc) {
-                createMarker(loc);
-            });
+        var lat = (country.Latitude == null) ? 17.3850 : country.Latitude;
+        var long = (country.Longitude == null) ? 78.4867 : country.Longitude;
+        var mapOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
 
-        });
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+               
+        var infoWindow = new google.maps.InfoWindow();
+
+        createMarker(country);
+
+        //$http.get('http://localhost:1476/api/DriverStatus/GetDriverlocation').
+        //success(function (data) {
+
+        //    $scope.location = data;
+        //    $scope.location.forEach(function (loc) {
+        //        createMarker(loc);
+        //    });
+
+        //});
+
+    }
+    
+    
 
     var createMarker = function (loc) {
         var marker = new google.maps.Marker({
@@ -309,14 +342,12 @@ app.controller('mapCtrl', function ($scope, $http) {
         $scope.markers.push(marker);
     };
 
-
-
 });
 
 
 
 //JAGAN UPDATED START
-var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var mycrtl1 = app.controller('myCtrl1', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -568,6 +599,8 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         });
 
     }
+
+    
 
     $scope.GetFleetStaff = function () {
         if ($scope.cmp == null || $scope.cmp.Id == null) {
