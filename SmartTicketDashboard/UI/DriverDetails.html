@@ -865,7 +865,8 @@
                                                                                         <th>Bank Code</th>                                                                                        
                                                                                         <th>Branch Address</th>
                                                                                         <th>Country</th>
-                                                                                        <th>IS Active</th>
+                                                                                        <th>Active</th>
+                                                                                        <th>QRCode</th>
                                                                                         <th>Edit</th>
                                                                                     </tr>
                                                                                 </thead>
@@ -878,6 +879,9 @@
                                                                                         <td>{{b.BranchAddress}}</td>
                                                                                         <td>{{b.CountryId}}</td>
                                                                                         <td>{{b.IsActive}}</td>
+                                                                                        <td> <span class="img-shadow">
+                                                                                                 <img src="{{b.QRCode}}" class="media-object thumb" />
+                                                                                            </span></td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
@@ -1276,6 +1280,17 @@
                                         </select>
                                     </div>
                                 </div>
+
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="selCompany" class="col-md-4 control-label">QR Code:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">                                         
+                                        <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="b.qrcode"/>
+                                    </div>
+                                </div>
+                                
                           
                                 <div class="form-actions">
                                     <div style="text-align:center">

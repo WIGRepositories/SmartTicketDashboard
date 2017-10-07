@@ -2790,7 +2790,8 @@ namespace SmartTicketDashboard.Models
         public string Bankcode { get; set; }       
         public string Country { get; set; }
         public int IsActive { get; set; }
-       
+        public int DriverId { get; set; }
+        public string qrcode { get; set; }
     }
 
     public class SOSNumber

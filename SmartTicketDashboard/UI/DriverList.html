@@ -19,7 +19,7 @@
        
 
         .product_view .modal-dialog {
-            max-width: 800px;
+            max-width: 100px;
             width: 100%;
         }
 
@@ -49,7 +49,10 @@
             margin-right: 10px;
             margin-top: -15px;
         }
-
+        .imgsize{
+            width:400px;
+            height:400px
+        }
         
     </style>
 </head>
@@ -485,7 +488,7 @@
                                                                                             <img src="images/user.jpg" class="media-object thumb" />
                                                                                         </span>
                                                                                         <a href="" class="img-shadow"  ng-if="Dl.photo != null" ng-click="SetBiggerPhoto(Dl)">
-                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal"  data-target="#right-side-1" />
+                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal"  data-target="#driver-image" />
                                                                                         </a>
                                                                                     </td>
                                                                                     <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>{{Dl.Email}}</div></td>
@@ -496,7 +499,7 @@
                                                                                     <td><span>{{Dl.PAddress}}</span></td>
                                                                                     <td><input type="checkbox" checked /></td>
                                                                                     <td><span class="label label-success">online</span></td>
-                                                                                    <td><a title="Image 1" href="#"><img class="media-object thumb" src="images/qr.png" width="40px" height="40px" /></a></td>
+                                                                                    <td><a title="Image 1" href="#" ng-click="SetBiggerPhoto(Dl)"><img class=" media-object thumb" src="images/qr.png" width="40px" height="40px" data-toggle="modal" data-target="#QRCode-Imge" /></a></td>
                                                                                     <td>
                                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
                                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" >
@@ -510,16 +513,33 @@
                                                                                 
                                                                             </tbody>
                                                                         </table>
-                                                                        <div class="modal fade product_view1" id="right-side-1">
-                                                                            <div class="modal-dialog" >
+                                                                        <div class="modal fade product_view1" id="driver-image">
+                                                                            <div class="modal-dialog">
                                                                                 <div class="modal-content">
 
-                                                                                    <div class="modal-body" >
+                                                                                    <div class="modal-body">
                                                                                         <div class="row">
                                                                                             <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
                                                                                             <div class="col-md-12 product_img">
 
-                                                                                                <img src="{{biggetPhoto}}" class="img-responsive">
+                                                                                                <img src="{{biggetPhoto}}" class="img-responsive imgsize">
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="modal fade product_view1" id="QRCode-Imge">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+
+                                                                                    <div class="modal-body">
+                                                                                        <div class="row">
+                                                                                            <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
+                                                                                            <div class="col-md-12 product_img" >
+
+                                                                                                <img src="images/qr.png" class="img-responsive imgsize">
                                                                                             </div>
 
                                                                                         </div>
