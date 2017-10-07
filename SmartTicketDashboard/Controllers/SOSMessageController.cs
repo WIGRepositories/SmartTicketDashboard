@@ -1,12 +1,15 @@
-﻿using System;
+﻿using SmartTicketDashboard.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Diagnostics;
+
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Tracing;
+
 
 namespace SmartTicketDashboard.Controllers
 {
@@ -19,7 +22,7 @@ namespace SmartTicketDashboard.Controllers
             DataTable Tbl = new DataTable();
 
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetSOSMessage ....");
+           traceWriter.Trace(Request, "0",TraceLevel.Info, "{0}", "GetSOSMessage ....");
             //connect to database
             SqlConnection conn = new SqlConnection();
             //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
@@ -27,7 +30,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetSOSMessage";
+            cmd.CommandText = "GetSOSMessages";
             cmd.Parameters.Add("@UserTypeId", SqlDbType.Int).Value = utypeId;
             cmd.Parameters.Add("@UserId", SqlDbType.Int).Value = userId;
             cmd.Connection = conn;
@@ -36,7 +39,7 @@ namespace SmartTicketDashboard.Controllers
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);
             //Tbl = ds.Tables[0];
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetSOSMessage completed.");
+           traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetSOSMessage completed.");
             // int found = 0;
             return Tbl;
         }
@@ -80,40 +83,78 @@ namespace SmartTicketDashboard.Controllers
                 UserId.Value = sos.UserId;
                 cmd.Parameters.Add(UserId);
 
-                SqlParameter mobile = new SqlParameter();
-                mobile.ParameterName = "@MobileNumber";
-                mobile.SqlDbType = SqlDbType.VarChar;
-                mobile.Value = sos.MobileNumber;
-                cmd.Parameters.Add(mobile);
-
                 SqlParameter ustid = new SqlParameter();
                 ustid.ParameterName = "@UserTypeId";
                 ustid.SqlDbType = SqlDbType.Int;
                 ustid.Value = sos.UserTypeId;
                 cmd.Parameters.Add(ustid);
 
-                SqlParameter CreatedOn = new SqlParameter();
-                CreatedOn.ParameterName = "@CreatedOn";
-                CreatedOn.SqlDbType = SqlDbType.DateTime;
-                CreatedOn.Value = sos.CreatedOn;
-                cmd.Parameters.Add(CreatedOn);
+                SqlParameter SentTo = new SqlParameter();
+                SentTo.ParameterName = "@SentTo";
+                SentTo.SqlDbType = SqlDbType.VarChar;
+                SentTo.Value = sos.SentTo;
+                cmd.Parameters.Add(SentTo);
 
-                SqlParameter Active = new SqlParameter();
-                Active.ParameterName = "@Active";
-                Active.SqlDbType = SqlDbType.Int;
-                Active.Value = sos.Active;
-                cmd.Parameters.Add(Active);
+                 SqlParameter MessageId = new SqlParameter();
+                MessageId.ParameterName = "@MessageId";
+                MessageId.SqlDbType = SqlDbType.Int;
+                MessageId.Value = sos.MessageId;
+                cmd.Parameters.Add(MessageId);
 
+                SqlParameter msg = new SqlParameter();
+                msg.ParameterName = "@Message";
+                msg.SqlDbType = SqlDbType.VarChar;
+                msg.Value = sos.Message;
+                cmd.Parameters.Add(msg);
 
-                SqlParameter order = new SqlParameter();
-                order.ParameterName = "@MobiOrder";
-                order.SqlDbType = SqlDbType.Int;
-                order.Value = sos.MobiOrder;
-                cmd.Parameters.Add(order);
+                SqlParameter SentOn = new SqlParameter();
+                SentOn.ParameterName = "@SentOn";
+                SentOn.SqlDbType = SqlDbType.DateTime;
+                SentOn.Value = sos.SentOn;
+                cmd.Parameters.Add(SentOn);
+
+                SqlParameter SentTime = new SqlParameter();
+                SentTime.ParameterName = "@SentTime";
+                SentTime.SqlDbType = SqlDbType.Time;
+                SentTime.Value = sos.SentTime;
+                cmd.Parameters.Add(SentTime);
+
+                SqlParameter Status = new SqlParameter();
+                Status.ParameterName = "@StatusId";
+                Status.SqlDbType = SqlDbType.Int;
+                Status.Value = sos.StatusId;
+                cmd.Parameters.Add(Status);
+
+                SqlParameter otp = new SqlParameter();
+                otp.ParameterName = "@Otp";
+                otp.SqlDbType = SqlDbType.VarChar;
+                otp.Value = sos.Otp;
+                cmd.Parameters.Add(otp);
+
+                SqlParameter UpdatedOn = new SqlParameter();
+                UpdatedOn.ParameterName = "@UpdatedOn";
+                UpdatedOn.SqlDbType = SqlDbType.DateTime;
+                UpdatedOn.Value = sos.UpdatedOn;
+                cmd.Parameters.Add(UpdatedOn);
+
+                SqlParameter UpdatedBy = new SqlParameter();
+                UpdatedBy.ParameterName = "@UpdatedBy";
+                UpdatedBy.SqlDbType = SqlDbType.Int;
+                UpdatedBy.Value = sos.UpdatedBy;
+                cmd.Parameters.Add(UpdatedBy);
+
+                 SqlParameter Lat = new SqlParameter("@Latitude", SqlDbType.Float);
+            Lat.Value = sos.Latitude;
+            cmd.Parameters.Add(Lat);
+
+            SqlParameter Lng = new SqlParameter("@Longitude", SqlDbType.Float);
+            Lng.Value = sos.Longitude;
+            cmd.Parameters.Add(Lng);
+
                 cmd.ExecuteScalar();
 
                 conn.Close();
-                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
 
             }
             catch (Exception ex)
