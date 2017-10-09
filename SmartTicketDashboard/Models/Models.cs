@@ -2852,5 +2852,32 @@ namespace SmartTicketDashboard.Models
 
         public float Longitude { get; set; }
     }
+    public class MailBox
+    {
+
+        public string flag { get; set; }
+
+        public int Id { get; set; }
+
+        public string ToMailId { get; set; }
+
+        public string FromMailId { get; set; }
+
+        public string Subject { get; set; }
+
+        public string CarbonCopy { get; set; }
+
+        public string BlindCarbonCopy { get; set; }
+
+        public string Text { get; set; }
+
+        public string Attachments { get; set; }
+
+        public DateTime ToDate { get; set; }
+
+        public DateTime FromDate { get; set; }
+
+       
+    }
 }
 
