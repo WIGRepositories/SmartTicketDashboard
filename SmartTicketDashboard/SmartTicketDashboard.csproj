@@ -146,6 +146,7 @@
     <Content Include="UI\js\SOSMessages.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\TreeView\Types1.js" />
+    <Content Include="UI\js\Types1.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistancePricing.js" />

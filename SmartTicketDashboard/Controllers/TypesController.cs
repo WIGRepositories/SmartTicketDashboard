@@ -56,7 +56,59 @@ namespace SmartTicketDashboard.Controllers
             // int found = 0;
             return Tbl;
         }
-        
+
+        [HttpGet]
+        [Route("api/Types/TypesPaging")]
+        public DataTable TypesPaging(int groupid,int curpage,int maxrows)
+        {
+            DataTable Tbl = new DataTable();
+
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetTypesByGroupId credentials....");
+
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetTypesByPaging";
+            cmd.Connection = conn;
+
+            SqlParameter Gid = new SqlParameter();
+            Gid.ParameterName = "@typegrpid";
+            Gid.SqlDbType = SqlDbType.Int;
+            Gid.Value = groupid;
+            cmd.Parameters.Add(Gid);
+
+            SqlParameter cpage = new SqlParameter();
+            cpage.ParameterName = "@curpage";
+            cpage.SqlDbType = SqlDbType.Int;
+            cpage.Value = curpage;
+            cmd.Parameters.Add(cpage);
+
+            SqlParameter mrows = new SqlParameter();
+            mrows.ParameterName = "@maxrows";
+            mrows.SqlDbType = SqlDbType.Int;
+            mrows.Value = maxrows;
+            cmd.Parameters.Add(mrows);
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            Tbl = ds.Tables[0];
+
+            //prepare a file
+            StringBuilder str = new StringBuilder();
+
+            str.Append(string.Format("test\n{0}", groupid.ToString()));
+
+
+
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetTypesByGroupId Credentials completed.");
+            // int found = 0;
+            return Tbl;
+        }
         [HttpPost]
         public HttpResponseMessage SaveType(Types b)
         {
