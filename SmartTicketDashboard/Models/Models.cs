@@ -2302,6 +2302,12 @@ namespace SmartTicketDashboard.Models
         public object Mobileotp { get; set; }
 
         public object Emailotp { get; set; }
+
+        public string Photo { get; set; }
+        public int Gender { get; set; }
+        public int Status { get; set; }
+
+        public decimal Amount { get; set; }
     }
     public class DriverAccount
     {
@@ -2852,5 +2858,7 @@ namespace SmartTicketDashboard.Models
 
         public float Longitude { get; set; }
     }
+
+    
 }
 
