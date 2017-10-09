@@ -86,6 +86,21 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\PayPal.dll" />
+    <Content Include="bin\QRCoder.dll" />
+    <Content Include="bin\SmartTicketDashboard.dll" />
+    <Content Include="bin\SmartTicketDashboard.pdb" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Web.Cors.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\UnityEngine.dll" />
     <Content Include="DBScripts\Countires.sql" />
     <Content Include="DBScripts\Data.sql" />
     <Content Include="DBScripts\DBScripts.sql" />
@@ -2561,6 +2576,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\SmartTicketDashboard.dll.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
