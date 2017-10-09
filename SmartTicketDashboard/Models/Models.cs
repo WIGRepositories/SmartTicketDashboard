@@ -2428,12 +2428,18 @@ namespace SmartTicketDashboard.Models
     {
         public string insupddelflag { get; set; }
         public int Id { get; set; }
-        public string VehicleModelId { get; set; }
+        public int VehicleTypeId { get; set; }
         public int FromKm { get; set; }
         public int ToKm { get; set; }
-        public decimal Pricing { get; set; }
-        public DateTime FromTime { get; set; }
-        public DateTime ToTime { get; set; }
+        public int PricingType { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }        
+        public int CreatedBy { get; set; }        
+        public int UpdatedBy { get; set; }
+        public decimal Amount { get; set; }
+        public decimal PerUnitPrice { get; set; }
+        public int CountryId { get; set; }
+        public int VehicleGroupId { get; set; }
 }
     public class HourBase
     {

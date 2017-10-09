@@ -1169,7 +1169,7 @@
                                                         <th width="9%">Update</th>
                                                     </tr>
                                                 <tbody>
-                                                    <tr ng-repeat="U in User| filter:query || filter:LastName" ng-on-finish-render>
+                                                    <tr ng-repeat="U in User|filter:{FirstName:query,LastName:LastName} " ng-on-finish-render>
 
                                                         <td>{{U.FirstName}}</td>
                                                         <td>{{U.LastName}}</td>
