@@ -436,19 +436,18 @@
 
                     <div id="tableadvancedTabContent" class="tab-content">
                         <div class="row mbm">
-                            <div class="col-md-5">
+                            <div class="col-md-3">
 
-                                Country:<select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="ctry" ng-change="GetAssignedDocuments();" style=" width:80%">
-                                    <!--<select ng-options="cc.Name for cc in Countries track by cc.Id" ng-model="ctry" ng-init="GetCountry(ctry)" style="width:80%">-->
+                                Country:<select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetAssignedDocuments()">
                                     <option value="">Select</option>
-                                   
+
                                 </select>
+
                             </div>
-                            <div class="col-md-5">
-                                <!--ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)"-->
+                            <div class="col-md-3">
                                 Vehicle Group: <select ng-options="t.Name for t in initdata.Table track by t.Id" ng-model="vgroup" ng-change="GetAssignedDocuments();">
                                     <option value="">Select Type</option>
-                                    
+
                                 </select>
                             </div>
 
@@ -466,63 +465,39 @@
                                                     <thead>
                                                         <tr>
                                                             <th width="10%">Select/Unselect</th>
-                                                            <!--<th><input type="checkbox"
-                                                            ng-checked="checkedArr.length == FORoutes.length"
-                                                            ng-click="toggleAll()">Select</th>-->
+                                                            <th>Is Mandatory</th>
                                                             <th>Name</th>
                                                             <th>Description</th>
                                                             <th>Template</th>
                                                             <th>File Content</th>
-                                                            <th>Is Mandatory</th>
-                                                            <th>Active</th>
-                                                            <!--<th>List Key</th>
-                                                            <th>List value</th>-->
                                                             <th>Update</th>
-
+                                                            
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-
-                                                            <td>
-                                                                <input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" />
-                                                            </td>
-                                                            <td>Rajendra</td>
-                                                            <td>Software</td>
-                                                            <td>RAj.jpg</td>
-                                                            <td>Customer</td>
-                                                            <td><input type="checkBox" /> </td>
-                                                            <td><input type="checkBox" /></td>
-
-                                                            <!--<td>{{T.ListKey}}</td>
-                                                            <td>{{T.Listvalue}}</td>-->
-                                                            <td>
-
-                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs">
-                                                                    <i class="fa fa-edit"></i>&nbsp;
-                                                                    Edit
-                                                                </button>
-                                                            </td>
-                                                        </tr>
+                                                        
                                                         <tr ng-repeat="T in doctypes">
-
                                                             <td><input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" /></td>
+                                                            <td><input type="checkBox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="existsMandatory(T,checkedArr)" ng-click="toggleMandatory(T, checkedArr);" /></td>
                                                             <td>{{T.DocType}}</td>
                                                             <td>{{T.Description}}</td>
                                                             <td>{{T.Template}}</td>
-                                                            <td><input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="T.FileContent" ng-click="validateFile($event)" /></td>
-                                                            <td><input type="checkBox" ng-checked="T.IsMandatory" /></td>
-                                                            <td><input type="checkBox" ng-checked="T.Active" disabled /></td>
+                                                            <td>
 
+                                                                <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="T.FileContent" ng-click="validateFile($event)" />
+                                                            </td>
+
+                                                            <!--<td><input type="checkBox" ng-checked="T.Active == 1" disabled /></td>-->
                                                             <!--<td>{{T.ListKey}}</td>
                                                             <td>{{T.Listvalue}}</td>-->
                                                             <td>
                                                                 {{T.Update}}
                                                                 <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
-                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    <i class="fa fa-edit"></i>
                                                                     Edit
                                                                 </button>
                                                             </td>
+                                                            
                                                         </tr>
                                                     </tbody>
 
