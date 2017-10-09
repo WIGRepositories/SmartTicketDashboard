@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SmartTicketDashboard.Models;
-using QRCoder;
+//using QRCode;
 using System.Drawing;
 using System.IO;
 
