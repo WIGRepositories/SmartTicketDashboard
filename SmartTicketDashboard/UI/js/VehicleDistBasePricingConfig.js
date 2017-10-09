@@ -31,6 +31,8 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
 
     }
 
+    
+
     $scope.map = {
         control: {},
         center: {

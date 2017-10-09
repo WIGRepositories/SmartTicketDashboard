@@ -158,6 +158,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
 
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
+            $scope.bankdetails = res.data.Table2;
             $scope.Dl = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
             $scope.imageSrc = $scope.Dl.Photo;
@@ -186,20 +187,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
            
     //    });
     //}
-
+    
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
        // $scope.imageSrc = $scope.listdrivers.Photo;
     }
-    $scope.DocFiles = [];
-
-    $scope.GetBankdetails = function () {
-        $http.get('/api/DriverMaster/GetBankdetails').then(function (response, req) {
-            $scope.bankdetails = response.data;
-        });
-    }
+    $scope.DocFiles = [];    
 
     $scope.GetCountry = function () {
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
@@ -207,7 +202,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-   
+    $scope.GetBankdetails = function () {
+        $http.get('/api/DriverMaster/GetBankdetails?DId=21').then(function (response, req) {
+            $scope.bankdetails = response.data;
+        });
+    }
 
     $scope.saveNew = function (Driverlist,flag) {
       
@@ -451,8 +450,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Bankcode: b.BankCode,
             BranchAddress: b.BranchAddress,
             Country: b.Country.Id,
-            IsActive:b.IsActive
-
+            IsActive: b.IsActive,
+            DriverId:$scope.selectedlistdrivers,
+            qrcode: $scope.imageSrc1
         }
 
         var req = {
@@ -504,9 +504,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.imageSrc = result;
         });
     }
-
-
-   
+       
 
     $scope.SetBiggerPhoto = function (dl) {
         $scope.biggetPhoto = dl.photo;

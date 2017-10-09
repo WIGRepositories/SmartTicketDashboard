@@ -157,7 +157,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
         else {
             item.IsMandatory = 1;
-            $scope.checkedArr[idx].IsChanged = 1;
+            item.IsChanged = 1;
             $scope.checkedArr.push(item);
         }       
     };

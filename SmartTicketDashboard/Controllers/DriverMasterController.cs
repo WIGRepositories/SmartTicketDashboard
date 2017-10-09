@@ -8,6 +8,9 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SmartTicketDashboard.Models;
+using QRCoder;
+using System.Drawing;
+using System.IO;
 
 namespace SmartTicketDashboard.Controllers
 {
@@ -71,7 +74,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/DriverMaster/GetBankdetails")]
-        public DataTable GetBankdetails()
+        public DataTable GetBankdetails(int DId)
         {
             DataTable dt = new DataTable();
 
@@ -82,7 +85,7 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "HVGetbankingdetails";
-            
+            cmd.Parameters.Add("@DId", SqlDbType.Int).Value = DId;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
@@ -328,11 +331,32 @@ namespace SmartTicketDashboard.Controllers
                 f.Value = b.IsActive;
                 cmd.Parameters.Add(f);
 
+                SqlParameter ddd = new SqlParameter("@DriverId", SqlDbType.Int);
+                ddd.Value = b.DriverId;
+                cmd.Parameters.Add(ddd);
+
+                SqlParameter er = new SqlParameter("@QRCode", SqlDbType.VarChar);
+                er.Value = b.qrcode;
+                cmd.Parameters.Add(er);
+
                 
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
 
+                //update the qr code 
+                if (dt.Rows.Count > 0) {
+                    i.Value = dt.Rows[0]["Id"].ToString();
+                    var code = dt.Rows[0]["Code"].ToString();
+                    if (code != "") {
+                        ff.Value = "U";
+                        var qrcode = GetQRCode(code);
+                        er.Value = qrcode;
+
+                        dt = new DataTable();                        
+                        da.Fill(dt);
+                    }
+                }
                 return dt;
             }
             catch (Exception ex)
@@ -344,5 +368,43 @@ namespace SmartTicketDashboard.Controllers
                 throw ex;
             }
         }
+
+        private string GetQRCode(string code)
+        {
+            string str = "";
+            QRCodeGenerator.ECCLevel eccLevel = (QRCodeGenerator.ECCLevel)3;
+            using (QRCodeGenerator qrGenerator = new QRCodeGenerator())
+            {
+                using (QRCodeData qrCodeData = qrGenerator.CreateQrCode(code, eccLevel))
+                {
+                    using (QRCode qrCode = new QRCode(qrCodeData))
+                    {
+
+                       Bitmap img = qrCode.GetGraphic(20, Color.Black, Color.White,
+                            null, 15);
+                        str = ImageToBase64((Image)img, System.Drawing.Imaging.ImageFormat.Png);
+                    }
+                }
+            }
+
+            return str;
+        }
+
+        public string ImageToBase64(Image image, System.Drawing.Imaging.ImageFormat format)
+        {
+            using (MemoryStream ms = new MemoryStream())
+            {
+                // Convert Image to byte[]
+                image.Save(ms, format);
+                byte[] imageBytes = ms.ToArray();
+
+                // Convert byte[] to Base64 String
+                string base64String = Convert.ToBase64String(imageBytes);
+                return base64String;
+            }
+        }
+
+       
+
     }
 }

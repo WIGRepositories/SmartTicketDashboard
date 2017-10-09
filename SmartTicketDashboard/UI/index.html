@@ -467,54 +467,19 @@
 
 
                                         <div class="table-container">
-
-
-
+                                            <div class="row">
+                                            <div class="col-md-3">
+                                                Country:<select ng-options="ct.Name for ct in initdata.Table1 track by ct.Id" ng-model="nn" style="width:50%">
+                                                    <option value="">Select</option>
+                                                </select>
+                                            </div>
+                                            </div>
                                             <div class="actions">
 
-                                                <div class="pull-left">                                                    
-                                                <button type="button" class="btn btn-primary" style="float:right;margin:10px;height:20px" ng-click="GetDashboardDS();">Refresh </button>
-                                                
+                                                <div class="pull-right">
+                                                    <button type="button" class="btn btn-primary" style="float:left;margin:10px;height:20px" ng-click="GetDashboardDS();">Refresh </button>
+
                                                 </div>
-                                            </div>
-                                        </div>
-                                        </div>
-                                        </div>
-                                <div id="sum_box" class="row mbl">
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="panel profit db "style="border: 8px solid #b8bac7">
-                                            <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-car"></i></p><h4 class="value"><span data-counter="" data-start="10" data-end="50" data-step="1" data-duration="0">3</span><br/><span>Hailing Car</span></h4>
-                                                <p>1 Approved and 2 Pending</p>
-                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="panel income db  " style="border: 8px solid #b8bac7">
-                                            <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-taxi"></i></p><h4 class="value"><span>5</span><br/><span>Metered Taxi</span></h4>
-                                                <p>2 Approved and 3 Pending</p>
-                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="panel task db " style="border: 8px solid #b8bac7">
-                                            <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-ambulance"></i></p><h4 class="value"><span>3</span><br/><span>Ambulances</span></h4>
-                                                <p>2 Approved and 1 Pending</p>
-                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
-                                                
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 col-md-3">
-                                        <div class="panel visit db " style="border: 8px solid #b8bac7">
-                                            <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-truck"></i></p><h4 class="value"><span>4</span><br/><span>Towing Vehicle</span></h4>
-                                                <p>3 Approved and 1 Pending</p>
-                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>                                               
                                             </div>
                                         </div>
                                     </div>
@@ -523,322 +488,361 @@
                                     <div class="col-sm-6 col-md-3">
                                         <div class="panel profit db " style="border: 8px solid #b8bac7">
                                             <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-truck"></i></p><h4 class="value"><span>4</span><br/><span>Parcel Vans</span></h4>
-                                                <p>3 Approved and 1 Pending</p>
+                                                <p class="icon"><i class="fa fa-car"></i></p><h4 class="value"><span data-counter="" data-start="10" data-end="50" data-step="1" data-duration="0">{{dashboardDS.Table[0].vehiclecount}}  {{dashboardDS.Table[0].Name}}</span></h4>
+                                                <p>1 Approved and 2 Pending</p>
                                                 <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
-                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="panel income db  " style="border: 8px solid #b8bac7">
                                             <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-car"></i></p><h4 class="value"><span>4</span><br/><span>Buses</span></h4>
-                                                <p>3 Approved and 1 Pending</p>
-                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>                                               
+                                                <p class="icon"><i class="fa fa-taxi"></i></p><h4 class="value"><span>{{dashboardDS.Table1[0].vehiclecount}} {{dashboardDS.Table1[0].Name}}</span></h4>
+                                                <p>2 Approved and 3 Pending</p>
+                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="panel task db " style="border: 8px solid #b8bac7">
                                             <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-money"></i></p><h4 class="value"><span>4</span><br/><span>Licenses</span></h4>
-                                                <p>3 Approved and 1 Pending</p>
-                                                <a href="LicenseTypes.html"><button class="btn btn-primary" type="button">Details</button></a>
-                                                
+                                                <p class="icon"><i class="fa fa-ambulance"></i></p><h4 class="value"><span>{{dashboardDS.Table2[0].vehiclecount}} {{dashboardDS.Table2[0].Name}}</span></h4>
+                                                <p>2 Approved and 1 Pending</p>
+                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
+
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6 col-md-3">
                                         <div class="panel visit db " style="border: 8px solid #b8bac7">
                                             <div class="panel-body">
-                                                <p class="icon"><i class="fa fa-group"></i></p><h4 class="value"><span>3</span><br/><span>Fleet Owners</span></h4>
+                                                <p class="icon"><i class="fa fa-truck"></i></p><h4 class="value"><span>{{dashboardDS.Table3[0].vehiclecount}} {{dashboardDS.Table3[0].Name}}</span></h4>
                                                 <p>3 Approved and 1 Pending</p>
-                                                <a href="FleetOwners.html"><button class="btn btn-primary" type="button">Details</button></a>                                                
+                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                        <div class="row">
-                                            <div class="col-md-12">
+                                <div id="sum_box" class="row mbl">
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="panel profit db " style="border: 8px solid #b8bac7">
+                                            <div class="panel-body">
+                                                <p class="icon"><i class="fa fa-truck"></i></p><h4 class="value"><span>{{dashboardDS.Table4[0].vehiclecount}}  {{dashboardDS.Table4[0].Name}}</span></h4>
+                                                <p>3 Approved and 1 Pending</p>
+                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="panel income db  " style="border: 8px solid #b8bac7">
+                                            <div class="panel-body">
+                                                <p class="icon"><i class="fa fa-car"></i></p><h4 class="value"><span>{{dashboardDS.Table5[0].vehiclecount}} {{dashboardDS.Table5[0].Name}}</span></h4>
+                                                <p>3 Approved and 1 Pending</p>
+                                                <a href="VehicleList.html"><button class="btn btn-primary" type="button">Details</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="panel task db " style="border: 8px solid #b8bac7">
+                                            <div class="panel-body">
+                                                <p class="icon"><i class="fa fa-money"></i></p><h4 class="value"><span>4</span><br /><span>Licenses</span></h4>
+                                                <p>3 Approved and 1 Pending</p>
+                                                <a href="LicenseTypes.html"><button class="btn btn-primary" type="button">Details</button></a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-6 col-md-3">
+                                        <div class="panel visit db " style="border: 8px solid #b8bac7">
+                                            <div class="panel-body">
+                                                <p class="icon"><i class="fa fa-group"></i></p><h4 class="value"><span>3</span><br /><span>Fleet Owners</span></h4>
+                                                <p>3 Approved and 1 Pending</p>
+                                                <a href="FleetOwners.html"><button class="btn btn-primary" type="button">Details</button></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
 
 
-                                                <div class="col-md-6">
-                                                    <div style="border: 8px solid #b8bac7; margin-bottom: 10px; ">
-                                                        <div class="row mbl">
-                                                           
-                                                                <div class="panel box">
-                                                                    <div class="portlet box">
-                                                                        <div class="portlet-header">
-                                                                            <div class="caption">Interbus</div>
-                                                                            <!--<div class="tools"><i class="fa fa-chevron-up"></i><i data-toggle="modal" data-target="#modal-config" class="fa fa-cog"></i><i class="fa fa-refresh"></i><i class="fa fa-times"></i></div>-->
-                                                                        </div>
-                                                                        <div class="portlet-body" >
-                                                                            <div id="ajax-loaded-data" style="height:240px"></div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                           
+                                        <div class="col-md-6">
+                                            <div style="border: 8px solid #b8bac7; margin-bottom: 10px; ">
+                                                <div class="row mbl">
+
+                                                    <div class="panel box">
+                                                        <div class="portlet box">
+                                                            <div class="portlet-header">
+                                                                <div class="caption">Interbus</div>
+                                                                <!--<div class="tools"><i class="fa fa-chevron-up"></i><i data-toggle="modal" data-target="#modal-config" class="fa fa-cog"></i><i class="fa fa-refresh"></i><i class="fa fa-times"></i></div>-->
+                                                            </div>
+                                                            <div class="portlet-body">
+                                                                <div id="ajax-loaded-data" style="height:240px"></div>
+                                                            </div>
                                                         </div>
                                                     </div>
+
                                                 </div>
+                                            </div>
+                                        </div>
 
-                                              
-                                                <div class="col-md-6">
-                                                    <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
-                                                        <div class="row mbl">
-                                                           
-                                                                <div class="portlet box">
-                                                                    <div class="portlet-header">
-                                                                        <div class="caption">Todo List</div>
-                                                                    </div>
-                                                                    <div  class="portlet-body" >
-                                                                        <ul class="todo-list sortable" style="height:250px">
-                                                                            <li class="clearfix">
-                                                                                <span class="drag-drop"><i></i></span>
-                                                                                <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
-                                                                                <div class="todo-title">Configure license types, license pricing and license details</div>
-                                                                                <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
-                                                                            </li>
-                                                                            <li class="clearfix">
-                                                                                <span class="drag-drop"><i></i></span>
-                                                                                <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
-                                                                                <div class="todo-title">Create stops, routes and configure routes with add stops </div>
-                                                                                <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
-                                                                            </li>
-                                                                            <li class="clearfix">
-                                                                                <span class="drag-drop"><i></i></span>
-                                                                                <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
-                                                                                <div class="todo-title">Enter the purchase order to enter the initial BT POS stock</div>
-                                                                                <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
-                                                                            </li>
-                                                                            <li class="clearfix">
-                                                                                <span class="drag-drop"><i></i></span>
-                                                                                <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
-                                                                                <div class="todo-title">Configure staff and assign roles to the staff</div>
-                                                                                <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
-                                                                            </li>
-                                                                            <li class="clearfix">
-                                                                                <span class="drag-drop"><i></i></span>
-                                                                                <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
-                                                                                <div class="todo-title">Configure vehicle layouts and seating</div>
-                                                                                <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
-                                                                            </li>
 
-                                                                        </ul>
-                                                                    </div>
-                                                                </div>
-                                                           
+                                        <div class="col-md-6">
+                                            <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
+                                                <div class="row mbl">
+
+                                                    <div class="portlet box">
+                                                        <div class="portlet-header">
+                                                            <div class="caption">Todo List</div>
                                                         </div>
+                                                        <div class="portlet-body">
+                                                            <ul class="todo-list sortable" style="height:250px">
+                                                                <li class="clearfix">
+                                                                    <span class="drag-drop"><i></i></span>
+                                                                    <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
+                                                                    <div class="todo-title">Configure license types, license pricing and license details</div>
+                                                                    <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <span class="drag-drop"><i></i></span>
+                                                                    <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
+                                                                    <div class="todo-title">Create stops, routes and configure routes with add stops </div>
+                                                                    <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <span class="drag-drop"><i></i></span>
+                                                                    <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
+                                                                    <div class="todo-title">Enter the purchase order to enter the initial BT POS stock</div>
+                                                                    <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <span class="drag-drop"><i></i></span>
+                                                                    <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
+                                                                    <div class="todo-title">Configure staff and assign roles to the staff</div>
+                                                                    <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
+                                                                </li>
+                                                                <li class="clearfix">
+                                                                    <span class="drag-drop"><i></i></span>
+                                                                    <div class="todo-check pull-left"><input type="checkbox" value="" /></div>
+                                                                    <div class="todo-title">Configure vehicle layouts and seating</div>
+                                                                    <div class="todo-actions pull-right clearfix"><a href="#" class="todo-complete"><i class="fa fa-check"></i></a><a href="#" class="todo-edit"><i class="fa fa-edit"></i></a><a href="#" class="todo-remove"><i class="fa fa-trash-o"></i></a></div>
+                                                                </li>
+
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="tab-general">
+                                        <h3 class="mtn">BTPOS Details</h3>
+                                        <table class="table table-hover table-striped table-bordered table-advanced tablesorter" ng-hide="dashboardDS.Table.length == 0">
+                                            <thead>
+                                                <tr>
+
+                                                    <th>POSID</th>
+                                                    <th>IMEI</th>
+                                                    <th width="15%">Company</th>
+                                                    <th>IP Config</th>
+                                                    <th>Owner</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+
+
+                                            <tbody>
+
+                                                <tr ng-repeat="pos in dashboardDS.Table" class="gradeA">
+                                                    <td>{{pos.POSID}}</td>
+                                                    <td>{{pos.IMEI}}</td>
+
+                                                    <td>{{pos.company}}</td>
+                                                    <td>{{pos.ipconfig}}</td>
+                                                    <td>{{pos.fleetowner}}</td>
+                                                    <td>
+                                                        <span class="label label-sm label-success" ng-if="pos.StatusId == 2">
+                                                            {{pos.status}}
+                                                        </span>
+                                                        <span class="label label-sm label-info" ng-if="pos.StatusId == 4">
+                                                            {{pos.status}}
+                                                        </span>
+                                                        <span class="label label-sm label-warning" ng-if="pos.StatusId == 1">
+                                                            {{pos.status}}
+                                                        </span>
+                                                        <span class="label label-sm label-danger" ng-if="pos.StatusId == 3">
+                                                            {{pos.status}}
+                                                        </span>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                            <tfoot ng-show="dashboardDS.Table.length > 5">
+                                                <tr>
+                                                    <td colspan="6" align="right"><span class="label label-sm label-info"><a style="color:white" href="BTPOSDetails.html" class="button">More...</a></span></td>
+                                                </tr>
+                                            </tfoot>
+                                        </table>
+                                        <div class="alert alert-danger" ng-show="dashboardDS.Table.length == 0"> No BTPOS Details to show</div>
+
+                                    </div>
+                                    <div>
+                                        <h3 class="mtn">License Details</h3>
+
+                                        <div class="alert alert-danger" style="grid-row-align:end">No License Details to show</div>
+
+                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table3.length > 5"><a style=" color:white" href="LicenseDetails.html">More...</a></span>
+                                    </div>
+                                    <div>
+                                        <h3><b>Alerts</b></h3>
+                                        <div id="home" class="tab-pane fade in active">
+                                            <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
+                                                <a href="#" class="list-group-item">
+                                                    <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                        </br>
+                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                    </div>
+                                    <div>
+                                        <h3><b>Notifications</b></h3>
+                                        <div id="home" class="tab-pane fade in active">
+                                            <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                                <a href="#" class="list-group-item">
+                                                    <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                </a>
+
+                                            </div>
+                                        </div>
+                                        <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+                                        <!--<a style="float:right" href="Notifications.html" class="button" ng-click="label label-sm label-success">More...</a>-->
+                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+
+                                    </div>
+
+
+
+
+
+
+                                    <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
+                                        <div class="row mb" ng-controller="mapCtrl">
+
+                                            <div class="col-lg-12">
+                                                <!--Jagan Updated on 08-08-2017-->
+                                                <!--<div class="col-md-3" ng-controller="mapCtrl" ng-init="GetCompanies();">
+                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners()" id="test" style="width:80%">
+                                <option value="">Select</option>
+                            </select>
+                        </div>-->
+                                                <div class="row">
+                                                    <div class="col-md-3">
+                                                        Country:<select ng-options="n.Name for n in initdata.Table1 track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)" style="width:50%">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+
+
+                                                    <div class="col-md-3">
+                                                        Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" id="test">
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3">
+                                                        Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" id="test1">
+
+                                                            <option value="">Select</option>
+                                                        </select>
+                                                    </div>
+
+                                                    <div class="col-md-3" ng-init="init">
+                                                        Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r">
+
+                                                            <option value="">Select</option>
+                                                        </select>
+
                                                     </div>
                                                 </div>
                                             </div>
-                            <div id="tab-general">
-                                <h3 class="mtn">BTPOS Details</h3>
-                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter" ng-hide="dashboardDS.Table.length == 0">
-                                    <thead>
-                                        <tr>
 
-                                            <th>POSID</th>
-                                            <th>IMEI</th>
-                                            <th width="15%">Company</th>
-                                            <th>IP Config</th>
-                                            <th>Owner</th>
-                                            <th>Status</th>
-                                        </tr>
-                                    </thead>
+                                        </div>
+                                        <div class="col-md-12">
 
-
-                                    <tbody>
-
-                                        <tr ng-repeat="pos in dashboardDS.Table" class="gradeA">
-                                            <td>{{pos.POSID}}</td>
-                                            <td>{{pos.IMEI}}</td>
-
-                                            <td>{{pos.company}}</td>
-                                            <td>{{pos.ipconfig}}</td>
-                                            <td>{{pos.fleetowner}}</td>
-                                            <td>
-                                                <span class="label label-sm label-success" ng-if="pos.StatusId == 2">
-                                                    {{pos.status}}
-                                                </span>
-                                                <span class="label label-sm label-info" ng-if="pos.StatusId == 4">
-                                                    {{pos.status}}
-                                                </span>
-                                                <span class="label label-sm label-warning" ng-if="pos.StatusId == 1">
-                                                    {{pos.status}}
-                                                </span>
-                                                <span class="label label-sm label-danger" ng-if="pos.StatusId == 3">
-                                                    {{pos.status}}
-                                                </span>
-                                            </td>
-                                        </tr>
-
-                                    </tbody>
-                                    <tfoot ng-show="dashboardDS.Table.length > 5">
-                                        <tr>
-                                            <td colspan="6" align="right"><span class="label label-sm label-info"><a style="color:white" href="BTPOSDetails.html" class="button">More...</a></span></td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
-                                <div class="alert alert-danger" ng-show="dashboardDS.Table.length == 0"> No BTPOS Details to show</div>
-
-                            </div>
-                            <div>
-                                <h3 class="mtn">License Details</h3>
-
-                                <div class="alert alert-danger" style="grid-row-align:end">No License Details to show</div>
-
-                                <span class="label label-sm label-info" ng-show="dashboardDS.Table3.length > 5"><a style=" color:white" href="LicenseDetails.html">More...</a></span>
-                            </div>
-                            <div>
-                                <h3><b>Alerts</b></h3>
-                                <div id="home" class="tab-pane fade in active">
-                                    <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
-                                        <a href="#" class="list-group-item">
-                                            <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
-                                </br>
-                                <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
-                                </div>
-                            <div>
-                                <h3><b>Notifications</b></h3>
-                                <div id="home" class="tab-pane fade in active">
-                                    <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
-                                        <a href="#" class="list-group-item">
-                                            <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                        </a>
-
-                                    </div>
-                                </div>
-                                <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
-                                <!--<a style="float:right" href="Notifications.html" class="button" ng-click="label label-sm label-success">More...</a>-->
-                                <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
-                            
-                                </div>
-
-
-
-
-
-
-                            <div style="border: 8px solid #b8bac7; margin-bottom: 10px">
-                                <div class="row mb" ng-controller="mapCtrl">
-
-                                    <div class="col-lg-12">
+                                        </div>
                                         <!--Jagan Updated on 08-08-2017-->
-                                        <!--<div class="col-md-3" ng-controller="mapCtrl" ng-init="GetCompanies();">
-                Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners()" id="test" style="width:80%">
-                    <option value="">Select</option>
-                </select>
-            </div>-->
-                                        <div class="row">
-                                            <div class="col-md-3">
-                                                Country:<select ng-options="n.Name for n in initdata.Table1 track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)" style="width:50%">
-    <option value="">Select</option>
-</select>
-                                            </div>
-
-
-                                            <div class="col-md-3">
-                                                Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp"  id="test">
-                                                    <option value="">Select</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-3">
-                                                Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s"  id="test1">
-
-                                                    <option value="">Select</option>
-                                                </select>
-                                            </div>
-
-                                            <div class="col-md-3" ng-init="init">
-                                                Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r">
-
-                                                    <option value="">Select</option>
-                                                </select>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="col-md-12">
-
-                                </div>
-                                <!--Jagan Updated on 08-08-2017-->
 
                                         <div class="portlet box">
                                             <div class="portlet-header">
                                                 <div class="caption">Vehicles</div>
-                                        
+
                                             </div>
                                             <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
-                                    <div ng-app="mapApp">
-                                        <div id="map" ng-repeat="v in Vehicleloc">
-                                        </div>
+                                            <div ng-app="mapApp">
+                                                <div id="map" ng-repeat="v in Vehicleloc">
+                                                </div>
 
-                                            <!--<script>
-                                                function myMap() {
-                                                    var mapOptions = {
-                                                        center: new google.maps.LatLng(17.3850, 78.4867),
-                                                        zoom: 10,
-                                                        mapTypeId: google.maps.MapTypeId.HYBRID
-                                                    }
-                                                    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                                <!--<script>
+                                            function myMap() {
+                                                var mapOptions = {
+                                                    center: new google.maps.LatLng(17.3850, 78.4867),
+                                                    zoom: 10,
+                                                    mapTypeId: google.maps.MapTypeId.HYBRID
                                                 }
-                                            </script>
+                                                var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                            }
+                                        </script>
 
-                                            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-                                        </div>
+                                        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
                                     </div>
                                 </div>
                             </div>
-                          
-                                                    </div>
+                        </div>
+
+                                                </div>
 
 
-                                                    
-                                                </div><br />
 
-                                                
-                                                <!--<div style="width:100%;">
-                                                    <div class="tab-content" style="width:49%;float:left; ">
-                                                        <h3><b>Alerts</b></h3>
-                                                        <div id="home" class="tab-pane fade in active">
-                                                            <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
-                                                                <a href="#" class="list-group-item">
-                                                                    <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                        <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
-                                                        </br>
-                                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
-                                                    </div>
+                                            </div><br />
 
-                                                </div>-->
-                                                <!--<div class="tab-content" style="width:49%;float:right; ">
-                                                    <h3><b>Notifications</b></h3>
+
+                                            <!--<div style="width:100%;">
+                                                <div class="tab-content" style="width:49%;float:left; ">
+                                                    <h3><b>Alerts</b></h3>
                                                     <div id="home" class="tab-pane fade in active">
-                                                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                                        <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
                                                             <a href="#" class="list-group-item">
-                                                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
                                                             </a>
-
                                                         </div>
                                                     </div>
-                                                    <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
-                                                   
-                                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+                                                    <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                                    </br>
+                                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                                </div>
 
-                                                </div>-->
+                                            </div>-->
+                                                <!--<div class="tab-content" style="width:49%;float:right; ">
+                            <h3><b>Notifications</b></h3>
+                            <div id="home" class="tab-pane fade in active">
+                                <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                                    <a href="#" class="list-group-item">
+                                        <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                    </a>
 
-                   
+                                </div>
+                            </div>
+                            <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+
+                            <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+
+                        </div>-->
+
+
 
 
 
@@ -849,8 +853,8 @@
                                     </div>
 
 
-                                    
-      
+
+
 
                                 </div>
 

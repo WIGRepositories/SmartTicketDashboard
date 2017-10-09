@@ -445,14 +445,14 @@
                             </div>
                             <div class="col-md-3">
                                 User Type: <select ng-options="s.Name for s in initdata.Table2 track by s.Id" ng-model="utype" style="width:80%" ng-change="GetAssignedDocuments()">
-    <option value="">Select Type</option>
-</select>
+                                    <option value="">Select Type</option>
+                                </select>
                             </div>
-                            <div class="col-md-3">                                
+                            <div class="col-md-3">
                                 Vehicle Group: <select ng-options="t.Name for t in initdata.Table track by t.Id" ng-model="vgroup" style="width:80%" ng-change="GetAssignedDocuments();">
-    <option value="">Select Type</option>
+                                    <option value="">Select Type</option>
 
-</select>
+                                </select>
                             </div>
                         </div>
                         <div id="tableactionTabContent" class="tab-content">
@@ -472,7 +472,7 @@
                                                             <th>Name</th>
                                                             <th>Description</th>
                                                             <th>Template</th>
-                                                            <th>File Content</th>                                                            
+                                                            <th>File Content</th>
                                                             <th>Update</th>
 
                                                         </tr>
@@ -487,13 +487,13 @@
                                                             <td>{{T.Description}}</td>
                                                             <td>{{T.Template}}</td>
                                                             <td>
-                                                            
-                                                            <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="T.FileContent" ng-click="validateFile($event)" /></td>
-                                                           
-                                                            <!--<td><input type="checkBox" ng-checked="T.Active == 1" disabled /></td>-->
 
+                                                                <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="T.FileContent" ng-click="validateFile($event)" />
+                                                            </td>
+
+                                                            <!--<td><input type="checkBox" ng-checked="T.Active == 1" disabled /></td>-->
                                                             <!--<td>{{T.ListKey}}</td>
-                                                            <td>{{T.Listvalue}}</td>-->
+                                                <td>{{T.Listvalue}}</td>-->
                                                             <td>
                                                                 {{T.Update}}
                                                                 <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
@@ -507,8 +507,8 @@
                                                 </table>
 
                                                 <!--checked: {{checkedArr | json}}
-                                                <br />
-                                                unchecked: {{uncheckedArr | json}}-->
+                                    <br />
+                                    unchecked: {{uncheckedArr | json}}-->
                                             </div>
 
 

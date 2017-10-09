@@ -3,7 +3,13 @@
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
     $scope.GetDistanceBasePricing = function () {
-        $http.get("/api/VehicleDistPricing/GetDistanceBasePricing").then(function (response, req) {
+        var countryId = $scope.ct.Id;
+        if (countryId == null) return;
+
+        var vgId = $scope.vg.Id;
+        if (vgId == null) return;
+
+        $http.get('/api/VehicleDistPricing/GetDistanceBasePricing?ctryId=' + countryId + '&vgId=' + vgId).then(function (response, req) {
             $scope.VPricing = response.data;
 
         });
@@ -14,8 +20,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter Pricing.');
             return;
         }
-        if ($scope.vm.Id == null || $scope.vm.Id == "") {
-            alert('Please enter VehicleModel.');
+        if ($scope.vt.Id == null || $scope.vt.Id == "") {
+            alert('Please enter VehicleType.');
             return;
         }
         if (Dist.FromKm == null || Dist.FromKm == "") {
@@ -28,28 +34,41 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (Dist.Pricing == null) {
+        if (Dist.PricingType == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (Dist.FromTime == null) {
-            alert('Please enter FromTime.');
+        if (Dist.FromDate == null) {
+            alert('Please enter FromDate.');
             return;
         }
-        if (Dist.ToTime == null) {
-            alert('Please enter ToTime.');
+        if (Dist.ToDate == null) {
+            alert('Please enter ToDate.');
+            return;
+        }            
+       
+        if (Dist.c.Id == null) {
+            alert('Please enter Country.');
+            return;
+        }
+        if (Dist.v.Id == null) {
+            alert('Please enter VehicleGroup.');
             return;
         }
 
         var Pricing = {
 
-            Id: Dist.Id,
-            VehicleModelId: $scope.vm.Id,
+            Id: -1,
+            VehicleTypeId: $scope.vt.Id,
             FromKm: Dist.FromKm,
             ToKm: Dist.ToKm,
-            Pricing: Dist.Pricing,
-            FromTime: Dist.FromTime,
-            ToTime: Dist.ToTime,
+            PricingType: Dist.PricingType,
+            FromDate: Dist.FromDate,
+            ToDate: Dist.ToDate,
+            Amount: Dist.Amount,
+            PerUnitPrice: Dist.PerUnitPrice,
+            CountryId: Dist.c.Id,
+            VehicleGroupId:Dist.v.Id,
             insupddelflag: 'I'
         }
 
@@ -62,7 +81,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
 
             alert("Saved successfully!!");
-
+            $scope.GetDistanceBasePricing();
             $scope.Group = null;
             //$scope.GetCompanys();
 
@@ -77,6 +96,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.Changes = null;
+
     $scope.GetVehicleConfig = function () {
 
         var vc = {
@@ -101,13 +121,35 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    $scope.Save = function (Changes, flag) {
+    $scope.GetConfigData = function () {
+
+        var vc = {
+           
+            includeActiveCountry: '1',
+            includeVehicleGroup: '1',
+            includeVehicleType:'1'
+            
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.GetDistanceBasePricing();
+        });
+    }
+
+    $scope.Save = function (Changes) {
         if (Changes == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if ($scope.vm1.Id == null || $scope.vm1.Id == "") {
-            alert('Please enter VehicleModel.');
+        if ($scope.vt.Id == null || $scope.vt.Id == "") {
+            alert('Please enter VehicleType.');
             return;
         }
         if (Changes.FromKm == null || Changes.FromKm == "") {
@@ -120,32 +162,43 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (Changes.Pricing == null) {
+        if (Changes.PricingType == null) {
             alert('Please enter Pricing.');
             return;
         }
-        if (Changes.FromTime == null) {
-            alert('Please enter FromTime.');
+        if (Changes.FromDate == null) {
+            alert('Please enter FromDate.');
             return;
         }
-        if (Changes.ToTime == null) {
-            alert('Please enter ToTime.');
+        if (Changes.ToDate == null) {
+            alert('Please enter ToDate.');
             return;
         }
-
+        if (Changes.c.Id == null) {
+            alert('Please enter Country.');
+            return;
+        }
+        if (Changes.v.Id == null) {
+            alert('Please enter VehicleGroup.');
+            return;
+        }
 
         var Changes = {
+
             Id: Changes.Id,
-            VehicleModelId: $scope.vm1.Id,
+            VehicleTypeId: $scope.vt.Id,
             FromKm: Changes.FromKm,
             ToKm: Changes.ToKm,
-            Pricing: Changes.Pricing,
-           
-            FromTime: Changes.FromTime,
-            ToTime: Changes.ToTime,
+            PricingType: Changes.PricingType1,
+            FromDate: Changes.FromDate,
+            ToDate: Changes.ToDate,
+            Amount: Changes.Amount,
+            PerUnitPrice: Changes.PerUnitPrice,
+            CountryId: Changes.c.Id,
+            VehicleGroupId: Changes.v.Id,
             insupddelflag: 'U'
-
         }
+
 
 
         var req = {
@@ -156,7 +209,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
 
             alert("Updated successfully!");
-
+            $scope.GetDistanceBasePricing();
             $scope.Group = null;
 
         }, function (errres) {
