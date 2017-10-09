@@ -51,7 +51,7 @@ namespace SmartTicketDashboard.Controllers
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs ...");
 
             //connect to database
-            DataTable dt=new DataTable();
+            DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection();
             try
             {
@@ -113,14 +113,14 @@ namespace SmartTicketDashboard.Controllers
                     vgrpId.SqlDbType = SqlDbType.Int;
                     vgrpId.Value = mud.VehicleGroupId;
                     cmd.Parameters.Add(vgrpId);
-                    
+
                     cmd.ExecuteScalar();
                     cmd.Parameters.Clear();
                 }
 
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
-                
+
             }
             catch (Exception ex)
             {
@@ -133,7 +133,7 @@ namespace SmartTicketDashboard.Controllers
                 traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandUserDocs:" + ex.Message);
                 throw ex;
             }
-             return dt;
+            return dt;
         }
 
         [HttpGet]
@@ -189,53 +189,53 @@ namespace SmartTicketDashboard.Controllers
 
                 foreach (MandVehicleDocs mvd in VehicleDocs)
                 {
-                SqlParameter flag = new SqlParameter();
-                flag.ParameterName = "@flag";
-                flag.SqlDbType = SqlDbType.VarChar;
-                flag.Value = mvd.flag;
-                cmd.Parameters.Add(flag);
+                    SqlParameter flag = new SqlParameter();
+                    flag.ParameterName = "@flag";
+                    flag.SqlDbType = SqlDbType.VarChar;
+                    flag.Value = mvd.flag;
+                    cmd.Parameters.Add(flag);
 
-                SqlParameter id = new SqlParameter();
-                id.ParameterName = "@Id";
-                id.SqlDbType = SqlDbType.Int;
-                id.Value = mvd.Id;
-                cmd.Parameters.Add(id);
-                
-                SqlParameter DocTId = new SqlParameter();
-                DocTId.ParameterName = "@DocTypeId";
-                DocTId.SqlDbType = SqlDbType.Int;
-                DocTId.Value = mvd.DocTypeId;
-                cmd.Parameters.Add(DocTId);
+                    SqlParameter id = new SqlParameter();
+                    id.ParameterName = "@Id";
+                    id.SqlDbType = SqlDbType.Int;
+                    id.Value = mvd.Id;
+                    cmd.Parameters.Add(id);
 
-                SqlParameter FileCont = new SqlParameter();
-                FileCont.ParameterName = "@FileContent";
-                FileCont.SqlDbType = SqlDbType.VarChar;
-                FileCont.Value = mvd.FileContent;
-                cmd.Parameters.Add(FileCont);
+                    SqlParameter DocTId = new SqlParameter();
+                    DocTId.ParameterName = "@DocTypeId";
+                    DocTId.SqlDbType = SqlDbType.Int;
+                    DocTId.Value = mvd.DocTypeId;
+                    cmd.Parameters.Add(DocTId);
 
-                SqlParameter isMand = new SqlParameter();
-                isMand.ParameterName = "@IsMandatory";
-                isMand.SqlDbType = SqlDbType.Int;
-                isMand.Value = mvd.IsMandatory;
-                cmd.Parameters.Add(isMand);
+                    SqlParameter FileCont = new SqlParameter();
+                    FileCont.ParameterName = "@FileContent";
+                    FileCont.SqlDbType = SqlDbType.VarChar;
+                    FileCont.Value = mvd.FileContent;
+                    cmd.Parameters.Add(FileCont);
 
-                SqlParameter ctrid = new SqlParameter();
-                ctrid.ParameterName = "@Countryid";
-                ctrid.SqlDbType = SqlDbType.Int;
-                ctrid.Value = mvd.Countryid;
-                cmd.Parameters.Add(ctrid);
+                    SqlParameter isMand = new SqlParameter();
+                    isMand.ParameterName = "@IsMandatory";
+                    isMand.SqlDbType = SqlDbType.Int;
+                    isMand.Value = mvd.IsMandatory;
+                    cmd.Parameters.Add(isMand);
 
-                SqlParameter vgrid = new SqlParameter();
-                vgrid.ParameterName = "@VehicleGroupId";
-                vgrid.SqlDbType = SqlDbType.Int;
-                vgrid.Value = mvd.VehicleGroupId;
-                cmd.Parameters.Add(vgrid);
-                //DataSet ds = new DataSet();
-                //SqlDataAdapter db = new SqlDataAdapter(cmd);
-                //db.Fill(ds);
-                // Tbl = Tables[0];
-                cmd.ExecuteScalar();
-                cmd.Parameters.Clear();
+                    SqlParameter ctrid = new SqlParameter();
+                    ctrid.ParameterName = "@Countryid";
+                    ctrid.SqlDbType = SqlDbType.Int;
+                    ctrid.Value = mvd.Countryid;
+                    cmd.Parameters.Add(ctrid);
+
+                    SqlParameter vgrid = new SqlParameter();
+                    vgrid.ParameterName = "@VehicleGroupId";
+                    vgrid.SqlDbType = SqlDbType.Int;
+                    vgrid.Value = mvd.VehicleGroupId;
+                    cmd.Parameters.Add(vgrid);
+                    //DataSet ds = new DataSet();
+                    //SqlDataAdapter db = new SqlDataAdapter(cmd);
+                    //db.Fill(ds);
+                    // Tbl = Tables[0];
+                    cmd.ExecuteScalar();
+                    cmd.Parameters.Clear();
                 }
                 conn.Close();
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandVehiclerDocs  completed.");

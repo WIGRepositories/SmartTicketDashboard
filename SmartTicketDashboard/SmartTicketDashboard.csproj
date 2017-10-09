@@ -86,6 +86,21 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\log4net.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\PayPal.dll" />
+    <Content Include="bin\QRCoder.dll" />
+    <Content Include="bin\SmartTicketDashboard.dll" />
+    <Content Include="bin\SmartTicketDashboard.pdb" />
+    <Content Include="bin\System.Net.Http.Formatting.dll" />
+    <Content Include="bin\System.Net.Http.Formatting.xml" />
+    <Content Include="bin\System.Web.Cors.dll" />
+    <Content Include="bin\System.Web.Http.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.dll" />
+    <Content Include="bin\System.Web.Http.WebHost.xml" />
+    <Content Include="bin\System.Web.Http.xml" />
+    <Content Include="bin\UnityEngine.dll" />
     <Content Include="DBScripts\Countires.sql" />
     <Content Include="DBScripts\Data.sql" />
     <Content Include="DBScripts\DBScripts.sql" />
@@ -135,6 +150,7 @@
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\PSPricing.js" />
+    <Content Include="UI\js\SOSMessages.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\TreeView\Types1.js" />
     <Content Include="UI\js\UserLicense.js" />
@@ -149,6 +165,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\SOSMessages.html" />
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
@@ -2077,6 +2094,7 @@
     <Compile Include="Controllers\DriverStatusController.cs" />
     <Compile Include="Controllers\EditHistoryController.cs" />
     <Compile Include="Controllers\EditHistoryDetailsController.cs" />
+    <Compile Include="Controllers\EmailBoxController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmailGatewayConfigController.cs" />
     <Compile Include="Controllers\faqsController.cs" />
@@ -2561,6 +2579,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="UI\DataUploadTemplates\DriverVehicleAssignList.csv" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\SmartTicketDashboard.dll.config" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

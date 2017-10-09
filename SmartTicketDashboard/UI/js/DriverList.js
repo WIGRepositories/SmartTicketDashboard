@@ -472,6 +472,61 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
 
     };
+
+    $scope.sendemail = function (m, flag) {
+       
+        if (m.ToMailId == null) {
+            alert('Please Enter Email Id');
+            return;
+        }
+       
+        if (m.Subject == null) {
+            alert('Please Enter Subject');
+            return;
+        }
+        //if (m.CarbonCopy == null) {
+        //    alert('Please Enter cc');
+        //    return;
+        //}
+        //if (m.BlindCarbonCopy == null) {
+        //    alert('Please Enter bcc');
+        //    return;
+        //}
+        if (m.Text == null) {
+            alert('Please Enter Text');
+            return;
+        }
+        
+       
+
+        var bank = {
+
+            flag: 'I',
+            Id: -1,
+            ToMailId: m.ToMailId,
+            Subject: m.Subject,
+            CarbonCopy: m.CarbonCopy,
+            BlindCarbonCopy: m.BlindCarbonCopy,
+            Text: m.Text,
+            Attachments: m.Attachments
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/EmailBox/Email',
+            data: bank
+        }
+        $http(req).then(function (response) {
+            var res = response.data;           
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+
+    };
     $scope.driver = null;
 
     $scope.setlistdrivers = function (Dl) {

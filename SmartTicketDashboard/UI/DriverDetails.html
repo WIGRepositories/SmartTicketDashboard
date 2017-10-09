@@ -15,6 +15,7 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <script src="vendors/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();" ng-model="bankdetails">
     <div>
@@ -463,10 +464,15 @@
                                                         </table>
                                                     </div>
                                                     <div class="row mbm">
+                                                        <button type="button" data-target="#email-sent" data-toggle="modal" class="btn btn-info btn-sm fa fa-envelope"> Email</button>
+                                                        <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-paper-plane-o"> SMS</button>
+                                                    </div>
+                                                    <div class="row mbm">
                                                         <div>
                                                             <font color="red">Mandatory Documents:</font>Driving License,Insurance
                                                         </div>
                                                     </div>
+                                                   
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div id="generalTabContent" class="tab-content">
@@ -1307,6 +1313,68 @@
                     </div>
                 </div>
                 <!----------END Banking------------------->
+                <!----------BEGIN Email ------------------->
+                <div id="email-sent" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Send Email</h4>
+                            </div>
+                            <div class="modal-body" ng-model="m">
+
+                                <div class="compose-mail">
+                                    <div class="portlet box portlet-white">
+                                        <div class="portlet-header">
+                                            <div class="caption">Compose Mail</div>
+                                            <div class="tools"><a onclick="$(this).hide(); $('#cc').parent().parent().removeClass('hidden'); $('#cc').focus();" href="javascript:;" class="mrm">Cc</a><a onclick="$(this).hide(); $('#bcc').parent().parent().removeClass('hidden'); $('#bcc').focus();" href="javascript:;">Bcc</a></div>
+                                        </div>
+                                        <div class="portlet-body">
+                                            <form role="form-horizontal" method="post">
+                                                <div class="form-group">
+                                                    <div class="input-group"><span class="input-group-addon">To:</span><input id="to" type="text" ng-model="m.ToMailId" class="form-control" /></div>
+                                                </div>
+                                                <div class="form-group hidden">
+                                                    <div class="input-group"><span class="input-group-addon">Cc:</span><input id="cc" type="text"  ng-model="m.CarbonCopy" class="form-control" /></div>
+                                                </div>
+                                                <div class="form-group hidden">
+                                                    <div class="input-group"><span class="input-group-addon">Bcc:</span><input id="bcc" type="text" ng-model="m.BlindCarbonCopy" class="form-control" /></div>
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="input-group"><span class="input-group-addon">Subject:</span><input id="subject" type="text" ng-model="m.Subject" class="form-control" /></div>
+                                                </div>
+                                                <div class="compose-editor mbl"><textarea rows="6" class="wysihtml5 form-control" ng-model="m.Text"></textarea></div>
+                                                <div class="form-group">
+                                                    <input type="file" ng-model="m.Attachments" />
+                                                    <p class="help-block">
+                                                        <i class="fa fa-paperclip"></i>&nbsp;
+                                                        Attachments
+                                                    </p>
+                                                </div>
+                                                <hr />
+                                                <div class="compose-btn">
+                                                    <button class="btn btn-sm btn-primary" data-dismiss="modal" ng-click="sendemail(m,'I')">
+                                                        <i class="fa fa-check"></i>&nbsp;
+                                                        Send
+                                                    </button>
+                                                    &nbsp;
+                                                    <button class="btn btn-default btn-sm">
+                                                        <i class="fa fa-times"></i>&nbsp;
+                                                        Discard
+                                                    </button>
+                                                    &nbsp;
+                                                    <button class="btn btn-sm btn-default">Draft</button>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Email------------------->
                 <!----------ENDpopups------------------->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
@@ -1377,6 +1445,7 @@
     <script src="js/DriverList.js"></script>
 
     <script src="js/fileupload/Upload.js"></script>
+    <script src="vendors/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 </body>
 </html>
 
