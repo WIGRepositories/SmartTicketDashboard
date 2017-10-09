@@ -20,7 +20,7 @@
     
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-model="sossms">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="Getlist();" ng-model="sossms">
     <div>
 
         <!--BEGIN THEME SETTINGS-->
@@ -422,10 +422,6 @@
                                                 <div class="row mbm">
 
 
-                                                    <div class="actions">
-                                                        <!----   <button ng-disabled="Roleid != 1" type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add TypeGroup</button>--->
-                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Type Group</button>
-                                                    </div>
                                                     <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
                                                         <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -485,24 +481,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter" ng-model="sossms">
                                                     <thead>
                                                         <tr>
                                                             <th>User Name</th>
                                                             <th>User Type</th>
                                                             <th>Mobile Number</th>
+                                                            <th>Message</th>
                                                             <th>Date & time </th>
                                                             <th>Status </th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="T in sossms" class="gradeA">
+                                                        <tr ng-repeat="T in sossms" >
 
-                                                            <td>{{T.Name}}</td>
-
+                                                            <td>{{T.Username}}</td>
                                                             <td>{{T.UserType}}</td>
-                                                            <td>{{T.MobileNumber}}</td>
-                                                            <td>{{T.DateTime}}</td>
+                                                            <td>{{T.SentTo}}</td>
+                                                            <td>{{T.Message}}</td>
+                                                            <td>{{T.SentOn}}</td>
                                                             <td>{{T.Status}}</td>
                                                         </tr>
                                                     </tbody>

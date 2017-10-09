@@ -8,106 +8,12 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
 
-    $scope.dashboardDS = $localStorage.dashboardDS;
-    $http.get('/api/GetSOSMessage').then(function (res, data) {
-        $scope.sossms = res.data;
-    });
-
-    //$scope.save = function (TypeGroup) {
-
-    //    if (TypeGroup == null) {
-    //        alert('Please enter name.');
-    //        return;
-    //    }
-
-    //    if (TypeGroup.Name == null) {
-    //        alert('Please enter name.');
-    //        return;
-    //    }
-
-    //    var SelTypeGroup = {
-    //        Name: TypeGroup.Name,
-    //        Description: TypeGroup.Description,
-    //        Active: TypeGroup.Active,
-    //        Update: TypeGroup.Update,
-    //        Id: TypeGroup.Id,
-    //        insupddelflag: 'U'
-    //    };
-
-    //    var req = {
-    //        method: 'POST',
-    //        url: '/api/sossms/savesossms',
-    //        //headers: {
-    //        //    'Content-Type': undefined
-    //        data: SelTypeGroup
-    //    }
-    //    $http(req).then(function (response) {
-
-    //        $scope.showDialog("Saved successfully!");
-
-    //        $scope.Group = null;
-
-    //    }, function (errres) {
-    //        var errdata = errres.data;
-    //        var errmssg = "TypeGroup is Not Saved";
-    //        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-    //        $scope.showDialog(errmssg);
-    //    });
-    //    $scope.sossms();
-    //    $scope.currGroup = null;
-
-    //};
-
-
-    //$scope.saveNew = function (TypeGroup) {
-
-    //    if (TypeGroup == null) {
-    //        alert('Please enter name.');
-    //        return;
-    //    }
-
-    //    if (TypeGroup.Name == null) {
-    //        alert('Please enter name.');
-    //        return;
-    //    }
-
-    //    var SelTypeGroup = {
-    //        Name: TypeGroup.Name,
-    //        Description: TypeGroup.Description,
-    //        Active: TypeGroup.Active,
-    //        Update: TypeGroup.Update,
-    //        Id: -1,
-    //        insupddelflag: 'I'
-    //    };
-
-    //    var req = {
-    //        method: 'POST',
-    //        url: '/api/sossms/savesossms',
-    //        //headers: {
-    //        //    'Content-Type': undefined
-    //        data: SelTypeGroup
-    //    }
-    //    $http(req).then(function (response) {
-    //        $scope.Group = null;
-
-    //        $scope.showDialog("Saved successfully!");
-
-
-
-    //    }, function (errres) {
-    //        var errdata = errres.data;
-    //        var errmssg = "Your details are incorrect";
-    //        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-    //        $scope.showDialog(errmssg);
-    //    });
-    //    $scope.currGroup = null;
-    //};
-
-
-    $scope.setTypeGroup = function (grp) {
-        $scope.currGroup = grp;
-    };
-
+    $scope.Getlist = function () {
+        $http.get('/api/GetSOSMessage?utypeId='+1+'&userId='+1).then(function (res, data) {
+            $scope.sossms = res.data;
+        });
+    }
+   
     $scope.clearGroup = function () {
         $scope.currGroup = null;
     };
@@ -128,19 +34,5 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
 });
-
-myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
-
-    $scope.mssg = mssg;
-    $scope.ok = function () {
-        $uibModalInstance.close('test');
-    };
-
-    $scope.cancel = function () {
-        $uibModalInstance.dismiss('cancel');
-    };
-});
-
-
 
 
