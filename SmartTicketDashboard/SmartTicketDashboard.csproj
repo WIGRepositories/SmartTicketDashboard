@@ -126,6 +126,7 @@
     <Content Include="UI\css\VehicleDistBasePricingConfig.css" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\images\car.png" />
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
