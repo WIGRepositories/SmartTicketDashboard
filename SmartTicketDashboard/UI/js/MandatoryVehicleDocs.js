@@ -119,7 +119,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             alert('Documenents details Saved Successfully');
             $scope.GetAssignedDocuments();
         }).error(function (ata, status, headers, config) {
-            alert('Documenents details Not Saved ');
+            alert(ata);
         });
     };
 
