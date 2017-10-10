@@ -445,14 +445,18 @@
                                                             <tr ng-repeat="a in users">
 
 
-                                                                <td width="10%" class="img"><img src={{a.UserPhoto}} alt="" title="" style="height:50px;width:50px" /></td>
+                                                                <td width="10%" class="img">
+                                                                    <a href="" class="img-shadow" ng-if="a.UserPhoto != null" ng-click="SetBiggerPhoto(a)">
+                                                                        <img src="{{a.UserPhoto}}" style="height:50px;width:50px" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
+                                                                    </a>
+                                                                <!--<img src={{a.UserPhoto}} alt="" title="" style="height:50px;width:50px" ng-click="SetBiggerPhoto(a)" data-target="#driver-image" /></td>-->
                                                                 <td><a href="AppUserDetails.html?UId={{a.Id}}"> <font color="blue"> <u>{{a.Username}}</u></font></a></td>
                                                                 <td>{{a.Mobilenumber}}</td>
                                                                 <td>{{a.Email}}</td>
                                                                 <td>{{a.Gender}}</td>
                                                                 <td>{{a.Altemail}}</td>
                                                                 <td>{{a.Amount}}</td>
-                                                                <td>{{a.StatusId}}</td>
+                                                                <td>{{a.Status}}</td>
                                                                 <td>
                                                                     <a href="AppUserDetails.html?UId={{a.Id}}">
                                                                         <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setusers(a);">
@@ -466,6 +470,27 @@
                                                         </tbody>
 
                                                     </table>
+
+                                                    <div class="modal fade product_view1" id="driver-image">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+
+                                                                <div class="modal-body">
+                                                                    <div class="row">
+                                                                        <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
+
+                                                                        <div class="col-md-12 product_img">
+
+                                                                            <img src="{{biggetPhoto}}" class="img-responsive imgsize">
+                                                                        </div>
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
 
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                         <div class=" modal-dialog modal-lg">
