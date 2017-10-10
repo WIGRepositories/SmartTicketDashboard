@@ -8,7 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using SmartTicketDashboard.Models;
-//using QRCode;
+using QRCoder;
 using System.Drawing;
 using System.IO;
 
@@ -383,6 +383,7 @@ namespace SmartTicketDashboard.Controllers
                        Bitmap img = qrCode.GetGraphic(20, Color.Black, Color.White,
                             null, 15);
                         str = ImageToBase64((Image)img, System.Drawing.Imaging.ImageFormat.Png);
+                        str = "data:image/jpeg;base64," + str;
                     }
                 }
             }

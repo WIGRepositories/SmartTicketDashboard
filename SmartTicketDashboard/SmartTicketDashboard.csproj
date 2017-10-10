@@ -126,6 +126,7 @@
     <Content Include="UI\css\VehicleDistBasePricingConfig.css" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\images\car.png" />
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
@@ -159,6 +160,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />
@@ -2088,6 +2090,7 @@
     <Compile Include="Controllers\DriverStatusController.cs" />
     <Compile Include="Controllers\EditHistoryController.cs" />
     <Compile Include="Controllers\EditHistoryDetailsController.cs" />
+    <Compile Include="Controllers\EmailBoxController.cs" />
     <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\EmailGatewayConfigController.cs" />
     <Compile Include="Controllers\faqsController.cs" />
@@ -2132,6 +2135,7 @@
     <Compile Include="Controllers\PricingCredentialsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
     <Compile Include="Controllers\RouteFareController.cs" />

@@ -250,7 +250,7 @@ namespace SmartTicketDashboard.Controllers
                 string str = ex.Message;
 
                 traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandVehicleDocs:" + ex.Message);
-
+                throw ex;
             }
             return dt;
         }
