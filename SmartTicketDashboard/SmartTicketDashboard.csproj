@@ -158,6 +158,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />

@@ -13,9 +13,25 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <!--maping-->
+    <meta charset="utf-8" />
+    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <!--<script>document.write('<base href="' + document.location + '" />');</script>-->
+    <!--<link rel="stylesheet" href="style.css" />-->
+    <link href="css/VehicleDistBasePricingConfig.css" rel="stylesheet" />
+
+    <!--<link href="css/BookHireVechicle.css" rel="stylesheet" />-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
+    <!--<script data-require="google-maps@1.0.0" data-semver="1.0.0" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
+    <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-semver="1.2.17"></script>
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
+    <!--maping-->
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanies();" ng-model="RouteDetails">
     <div>
+       
         <!--BEGIN THEME SETTING-->
         <!--END THEME SETTING--><!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
         <div>
@@ -27,6 +43,7 @@
                         <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                         <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
                     </div>
+                    {{2+2}}
                     <div class="topbar-main">
                         <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
 
@@ -748,7 +765,7 @@
                                                                         </div>
                                                                     </div>
 
-                                                                    <div class="row mbm">
+                                                                    <!--<div class="row mbm">
                                                                         <div class="col-md-4">
                                                                             Route Code: <input type="text" disabled ng-model="r.code" />
                                                                         </div>
@@ -761,145 +778,190 @@
                                                                             </div>
 
                                                                         </div>
-                                                                    </div>
+                                                                    </div>-->
 
 
 
                                                                 </div>
 
-                                                                <div class="panel panel-violet">
+                                                                <div class="container" style="padding-top:10px">
+                                                                    <div class="col-md-12 ">
+                                                                        <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
 
-                                                                    <div class="panel-heading">Route configuration</div>
-                                                                    <div class="portlet-body" ng-model="RouteDetails.Table1">
-                                                                        <br />
-                                                                        <form role="form" class="form-horizontal">
-                                                                            <div class="row">
-                                                                                <div class="col-md-3">
-                                                                                    <div class="col-md-12" style="display:table-cell;">
-                                                                                        <ul class="nav nav-pills nav-stacked fade in">
-                                                                                            <li class="btn-default" ng-repeat="stop in RouteDetails.Table1">
-                                                                                                <a ng-click="SetCurrStop(stop,$index);" data-toggle="tab">
-                                                                                                    <i class="fa fa-cogs"></i>&nbsp;{{stop.StopName}}
-                                                                                                </a>
+                                                                            <form class="form-horizontal">
+                                                                                <div class="form-group row">
+                                                                                    <div class="col-xs-12">
+                                                                                        <label for="ex1">Source</label>
+                                                                                        <input class="form-control" id="origin" type="text" placeholder="Current location" ng-model="directions.origin">
+                                                                                    </div>
+                                                                                    <div class="col-xs-12">
+                                                                                        <label for="ex2">Destination</label>
+                                                                                        <input class="form-control" id="destination" type="text" placeholder="Enter drop point" ng-model="directions.destination">
+                                                                                        <br />
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                                            <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--<div class="col-md-12">
+                <select ng-options="x.Name for x in CardTypes track by x.id" ng-model="currCard.Name" ng-change="GetCardUsers(cu);" style="width:100%">
+                    <option value="">Select VehicleModel</option>
+                </select>
+            </div>-->
+                                                                                    <h6>Create Stops</h6>
+                                                                                    <div class="col-xs-12">
+                                                                                        <div class="form-group form-group-sm">
+                                                                                            <label class="col-sm-2 control-label" for="sm"><span class="badge">1</span></label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <input class="form-control" type="text" id="sm">
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="col-xs-12">
+                                                                                        <div class="form-group form-group-sm">
+                                                                                            <label class="col-sm-2 control-label" for="sm"><span class="badge">2</span></label>
+                                                                                            <div class="col-sm-10">
+                                                                                                <input class="form-control" type="text" id="sm">
+                                                                                            </div>
+                                                                                        </div>
 
-                                                                                            </li>
-                                                                                        </ul>
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                                            <button class="btn-medium green" ng-click="SavePricing(directions,'I')">Save</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </form>
+                                                                        </div>
+                                                                        <!-------maping--------------------->
+
+                                                                        <div id="full-width-content" class="col-md-6">
+
+                                                                            <div class="main">
+                                                                                <div class="panel panel-default">
+                                                                                    <div class="panel-body">
+                                                                                        <google-map control="map.control" center="map.center" zoom="map.zoom">
+                                                                                            <marker coords="marker.center"></marker>
+                                                                                        </google-map>
+                                                                                        <form class="form-horizontal" role="form">
+                                                                                            <!--<div class="form-group">
+                            <label for="origin" class="col-sm-2 control-label">Origin</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="destination" class="col-sm-2 control-label">Destination</label>
+                            <div class="col-sm-8">
+                                <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+                            </div>
+                        </div>-->
+                                                                                            <div class="form-group">
+                                                                                                <!--<div class="col-sm-offset-2 col-sm-8">
+                                <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+                            </div>-->
+                                                                                            </div>
+                                                                                        </form>
+                                                                                        <div id="directionsList" ng-show="directions"></div>
+
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-md-8" ng-hide="RouteDetails.Table1.length == 0">
-                                                                                    <div class="panel panel-violet">
-                                                                                        <div class="panel-heading" ng-hide="S">Stop Details</div>
-
-                                                                                        <table>
-                                                                                            <tr>
-                                                                                                <td>
-
-                                                                                                    <div class="form-group" style="">
-                                                                                                        <div class="col-sm-12 controls" style="text-align: center;">
-                                                                                                            <br />
-                                                                                                            <input class="icheckbox_minimal-grey activeCheckbox" type="checkbox" ng-true-value="1" ng-false-value="0" ng-checked="currStop.assigned" ng-model="currStop.newassigned" /><font color="red"><b> Include in Route </b></font>
-                                                                                                        </div>
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                                <td></td>
-                                                                                            </tr>
-                                                                                            <tr>
-                                                                                                <td>
-                                                                                                    <div class="panel-body pan">
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Stop name:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.StopName" readonly /></div>
-                                                                                                        </div>
-
-
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Stop Code:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.StopCode" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Previous stop:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.prevstop" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Next stop:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.nextstop" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Stop no:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.StopNo" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                    </div>
-
-                                                                                                </td>
-                                                                                                <td>
-                                                                                                    <div class="panel-body pan">
-
-
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Distance from previous stop:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.DistanceFromPreviousStop" readonly /></div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Distance from next stop:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.DistanceFromNextStop" readonly /></div>
-                                                                                                        </div>
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Distance from destination:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.DistanceFromDestination" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                        <div class="form-group">
-                                                                                                            <label class="col-md-5 control-label">Distance from source:</label>
-                                                                                                            <div class="col-md-5"><input type="text" class="form-control" ng-model="currStop.DistanceFromSource" readonly /></div>
-                                                                                                        </div>
-
-                                                                                                    </div>
-                                                                                                </td>
-                                                                                            </tr>
-                                                                                            <!--<tr>
-
-                                                                                                    <td colspan="2">
-                                                                                                                <div class="form-group">
-                                                                                                                    <div class="col-sm-12 controls" style="text-align:center">
-                                                                                                                        <button data-target="#Modal-prev" data-toggle="modal" class="btn btn-primary btn-xs">Add Previous Stop</button>
-                                                                                                                        <button data-target="#Modal-next" data-toggle="modal" class="btn btn-primary btn-xs">Add Next Stop</button>
-                                                                                                                        <button class="btn btn-primary btn-xs">Delete</button>
-                                                                                                                    </div>
-                                                                                                                </div>
-
-
-                                                                                            </td>
-                                                                                                    </tr>-->
-                                                                                        </table>
-
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="form-group" ng-hide="RouteDetails.Table1.length == 0">
-                                                                                    <div class="col-md-12" style="text-align:center">
-                                                                                        <button ng-click="save();" class="btn btn-success">
-                                                                                            <i class="fa fa-save"></i>&nbsp;
-                                                                                            Save
-                                                                                        </button>&nbsp; &nbsp;<a href="#" class="btn btn-default">Cancel</a>
-                                                                                    </div>
-                                                                                    <br />
-                                                                                </div>
                                                                             </div>
-                                                                        </form>
+                                                                        </div>
 
-
+                                                                      
                                                                     </div>
 
+                                                                    <hr>
+                                                                    <div class="main-and-aside r">
+                                                                        <div class="main">
+                                                                            <div class="small-medium" data-set="widget"></div>
 
+                                                                            <div class="clearfix"></div>
+                                                                            <div class="module-grid clearfix">
+                                                                                <!--<div>
+                        <h2 class="active">Ammount</h2>
+
+                        <div class="panel col-md-10">
+                            <h4 class="panel-title">
+                                <a href="#" class="collapsed">Fares <p style="text-align:right;margin-top:-25px;">Rs:150</p></a>
+
+                            </h4>
+
+                        </div>
+
+
+
+                    </div>-->
+
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+                                                                    <div class="aside">
+                                                                        <div class="large" data-set="widget">
+                                                                            <div class="moving-source-order">
+                                                                                <div class="widget-wrapper">
+                                                                                    <div class="expandable-box">
+                                                                                        <div class="content">
+                                                                                            <!--<div class="always-visible widget-heading">
+                                    <div class="controls"> </div>
+                                    <h2 class="active">Confirm Booking</h2>
+                                </div>-->
+                                                                                            <!--<div class="toggle-container">
+                                    <form>
+                                        <div class="form-group row">
+                                            <div class="col-xs-6">
+                                                <label for="ex1">Enter Mobile Number</label>
+                                                <input class="form-control input-medium bfh-phone" id="ex1" type="text" data-format="+1 (ddd) ddd-dddd" placeholder="Enter Mobile Number">
+                                            </div>
+
+                                            <button type="submit" class="btn-medium green" style="margin-top:30px">Submit</button>
+                                        </div>
+                                    </form>
+
+
+
+
+
+                                    <div class="panel">
+                                        <form>
+                                            <div class="form-group row">
+                                                <div class="col-xs-6">
+                                                    <label for="ex1">Enter OTP</label>
+                                                    <input class="form-control" id="ex1" type="text" placeholder="OTP">
+                                                </div>
+
+                                                <button type="submit" class="btn-medium green" style="margin-top:23px">Submit</button>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                    <div class="panel">
+
+
+                                        <button type="submit" class="btn-medium green" style="margin:5px 0px 10px 60px">Go TO Payment</button>
+                                    </div>
+
+
+                                </div>-->
+
+
+
+
+
+
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                             <!--END CONTENT-->

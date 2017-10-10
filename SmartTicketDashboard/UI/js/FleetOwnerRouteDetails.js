@@ -1,7 +1,7 @@
 ﻿// JavaScript source code
-var myapp1 = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+var myapp1 = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'google-maps'])
 
-var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage, $document) {
    
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -17,6 +17,102 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     stopsList = [];
     $scope.RouteDetails = [];
+
+    $scope.map = {
+        control: {},
+        center: {
+            latitude: 17.3850,
+            longitude: 78.4867
+        },
+        zoom: 16
+    };
+
+
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+    var geocoder = new google.maps.Geocoder();
+
+
+    $scope.getDirections = function () {
+        var request = {
+            origin: $scope.directions.origin,
+            destination: $scope.directions.destination,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                directionsDisplay.setMap($scope.map.control.getGMap());
+                // directionsDisplay.setPanel(document.getElementById('distance').innerHTML += response.routes[0].legs[0].distance.value + " meters");
+                $scope.distText = response.routes[0].legs[0].distance.text;
+                $scope.distval = response.routes[0].legs[0].distance.value;
+                //response.routes[0].bounds["f"].b
+                //17.43665
+                //response.routes[0].bounds["b"].b
+                //78.41263000000001
+
+
+                //response.routes[0].bounds["f"].f
+                //17.45654
+                //response.routes[0].bounds["b"].f
+                //78.44829                
+
+                $scope.srcLat = response.routes[0].bounds["f"].b;
+                $scope.srcLon = response.routes[0].bounds["b"].b;
+                $scope.destLat = response.routes[0].bounds["f"].f;
+                $scope.destLon = response.routes[0].bounds["b"].f;
+                $scope.directions.showList = true;
+            } else {
+                alert('Google route unsuccesfull!');
+            }
+        });
+    }
+
+
+
+
+    $scope.SavePricing = function (directions, flag) {
+        alert();
+
+
+        var directions = {
+            Id: directions.Id,
+            SourceLoc: directions.origin,
+            DestinationLoc: directions.destination,
+            SourceLat: $scope.srcLat,
+            SourceLng: $scope.srcLon,
+            DestinationLat: $scope.destLat,
+            DestinationLng: $scope.destLon,
+            VehicleModelId: directions.vm.Id,
+            VehicleTypeId: directions.v.Id,
+            //PricingTypeId: directions.pricing,
+            PricingTypeId: 1,
+            Distance: $scope.distval,
+            UnitPrice: directions.unitprice,
+            Amount: directions.total,
+            flag: flag
+
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehiclePricing/VehicleDistanceConfig',
+            data: directions
+        }
+
+        $http(req).then(function (response) {
+
+            alert("Saved successfully!");
+            $scope.Group = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
+    }
+
 
     //$scope.GetRoutes = function () {
     //    $http.get('/api/FleetOwnerRouteDetails/GetRoutes').then(function (res, data) {
