@@ -16,3 +16,24 @@
         }
     });
 });
+
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
+    if ($localStorage.uname == null) {
+        window.location.href = "login.html";
+        
+    }
+    $scope.uname = $localStorage.uname;
+    $scope.userdetails = $localStorage.userdetails;
+    $scope.Roleid = $scope.userdetails[0].roleid;
+
+    $scope.dashboardDS = $localStorage.dashboardDS;
+
+    $scope.GetEmailBox = function () {
+        $http.get('/api/EmailBox/GetEmailBox').then(function (res, data) {
+            $scope.email = res.data;
+        });
+        // $scope.imageSrc = $scope.listdrivers.Photo;
+    }
+});

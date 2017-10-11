@@ -679,8 +679,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             method: 'POST',
             url: '/api/DriverMaster/SaveDriverDoc',
             data: $scope.modifiedDoc
+
         }
         $http(req).then(function (response) {
+            alert("Saved Successfully");
             //  $scope.DocFiles = response.data.Table;
             $scope.DocFiles = response.data;
 

@@ -465,7 +465,7 @@
                                                     </div>
                                                     <div class="row mbm">
                                                         <button type="button" data-target="#email-sent" data-toggle="modal" class="btn btn-info btn-sm fa fa-envelope"> Email</button>
-                                                        <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-paper-plane-o"> SMS</button>
+                                                        <button type="button" data-target="#Sms-Sent" data-toggle="modal" class="btn btn-info btn-sm fa fa-paper-plane-o"> SMS</button>
                                                     </div>
                                                     <div class="row mbm">
                                                         <div>
@@ -1375,6 +1375,51 @@
                     </div>
                 </div>
                 <!----------END Email------------------->
+                <!----------BEGIN Sms ------------------->
+                <div id="Sms-Sent" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Send Sms</h4>
+                            </div>
+                            <div class="modal-body" ng-model="m">
+
+                                <div class="compose-mail">
+                                    <div class="portlet box portlet-white">
+                                        <div class="portlet-header">
+                                            <div class="caption">Compose Sms</div>
+                                           
+                                        </div>
+                                        <div class="portlet-body">
+                                            <form role="form-horizontal" method="post">
+                                                <div class="form-group">
+                                                    <div class="input-group"><span class="input-group-addon">Mobile Number:</span><input id="to" type="text" ng-model="m.ToMailId" class="form-control" /></div>
+                                                </div>
+                                               
+                                                <div class="form-group">
+                                                    <div class="input-group"><span class="input-group-addon">Subject:</span><input id="subject" type="text" ng-model="m.Subject" class="form-control" /></div>
+                                                </div>
+                                                <div class="compose-editor mbl"><textarea rows="6" class="wysihtml5 form-control" ng-model="m.Text"></textarea></div>
+                                               
+                                                <div class="compose-btn">
+                                                    <button class="btn btn-sm btn-primary" data-dismiss="modal" ng-click="sendemail(m,'I')">
+                                                        <i class="fa fa-check"></i>&nbsp;
+                                                        Send
+                                                    </button>
+                                                   
+                                                   
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!----------END Sms------------------->
                 <!----------ENDpopups------------------->
                     <!--BEGIN FOOTER-->
                     <div id="footer">
