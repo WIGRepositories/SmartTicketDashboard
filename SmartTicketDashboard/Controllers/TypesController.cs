@@ -59,9 +59,9 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/Types/TypesPaging")]
-        public DataTable TypesPaging(int groupid,int curpage,int maxrows)
+        public DataSet TypesPaging(int groupid,int curpage,int maxrows)
         {
-            DataTable Tbl = new DataTable();
+            //DataTable Tbl = new DataTable();
 
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetTypesByGroupId credentials....");
@@ -96,7 +96,7 @@ namespace SmartTicketDashboard.Controllers
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
-            Tbl = ds.Tables[0];
+            //Tbl = ds.Tables[0];
 
             //prepare a file
             StringBuilder str = new StringBuilder();
@@ -107,7 +107,7 @@ namespace SmartTicketDashboard.Controllers
 
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetTypesByGroupId Credentials completed.");
             // int found = 0;
-            return Tbl;
+            return ds;
         }
         [HttpPost]
         public HttpResponseMessage SaveType(Types b)

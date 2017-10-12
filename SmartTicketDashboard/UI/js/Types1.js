@@ -7,26 +7,35 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
-
+    $scope.page = 1;
     $scope.dashboardDS = $localStorage.dashboardDS;
     $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
         $scope.TypeGroups = res.data;
         $scope.getselectval();
+
     });
 
-    $scope.getselectval = function (seltype) {
+    $scope.getselectval = function (seltype, flag) {
         var grpid = (seltype) ? seltype.Id : -1;
-        var curpage = seltype.curpage ;
-        var maxrows = seltype.maxrows ;
+        if (flag == 'n') {
+            var curpage = $scope.page + 1;
+        } else if(flag == 'p') {
+            var curpage = $scope.page - 1;
+        }
+        else
+            var curpage = 1;
 
-        $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + 1 + '&maxrows=' + 10).then(function (res, data) {
-            $scope.Types = res.data;
+        $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + curpage + '&maxrows=' + 5).then(function (res, data) {
+            $scope.Types = res.data.Table;
+            $scope.paging = res.data.Table1;
 
+            ///loop to fill seltype
         });
-
+        $scope.page = curpage;
         // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
 
     }
+
 
     $scope.save = function (Types) {
 
