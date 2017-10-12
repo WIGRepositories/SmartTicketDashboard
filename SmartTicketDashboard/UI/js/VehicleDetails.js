@@ -348,6 +348,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             //  $scope.DocFiles = response.data.Table;
+            alert("Saved Successfully");
             $scope.DocFiles = response.data;           
 
             if ($scope.DocFiles)  {

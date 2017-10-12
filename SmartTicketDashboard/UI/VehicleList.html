@@ -422,9 +422,12 @@
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
+                                                        <div >
+                                                                Search Registration <input type="text" ng-model="Registration" />  
+                                                        </div>
                                                         <div class="actions">
                                                            
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetConfigData();">Add Vehicle</button>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: -20px;" ng-click="GetConfigData();">Add Vehicle</button>
                                                         </div>
                                                         
                                                         </div>
@@ -457,7 +460,7 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="media-thumb">
-                                                                <tr ng-repeat="v in VehiclesList">
+                                                                <tr ng-repeat="v in VehiclesList | filter:Registration">
                                                                     <td>
                                                                         <span class="img-shadow" ng-if="v.Photo == null">
                                                                             <img src="images/car.png" class="media-object thumb" />
@@ -465,12 +468,12 @@
                                                                         <span class="img-shadow" ng-if="v.Photo != null">
                                                                             <img src="{{v.Photo}}" class="media-object thumb" />
                                                                         </span>
-                                                                        </td>
+                                                                    </td>
                                                                     <td><a href="VehicleDetails.html?VID={{v.Id}}"><h6 class="media-heading">{{v.RegistrationNo}}</h6></a><div>Vehicle Code:{{v.VehicleCode}}</div></td>
 
                                                                     <td>{{v.VehicleGroup}}</td>
                                                                     <td>{{v.VehicleType}}</td>
-                                                                    <td>{{v.VehicleModel}}</td>                                                                  
+                                                                    <td>{{v.VehicleModel}}</td>
 
                                                                     <td>{{v.FleetOwnerId}}</td>
                                                                     <td>{{v.FleetOwner}}</td>
@@ -478,7 +481,7 @@
                                                                     <td>{{v.EmailId}}</td>
 
                                                                     <td><input type="checkbox" checked /></td>
-                                                                    <td><span class="label label-success">{{v.Status}}</span></td>                                                                  
+                                                                    <td><span class="label label-success">{{v.Status}}</span></td>
                                                                     <td>
                                                                         <a href="VehicleDetails.html?VID={{v.Id}}">
                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setlistdrivers(Dl);">

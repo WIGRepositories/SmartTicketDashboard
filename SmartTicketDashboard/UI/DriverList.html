@@ -479,10 +479,12 @@
 
                                                 <div class="table-container">
                                                     <div class="row mbm">
-
+                                                       
                                                         <div class="actions">
-
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Driver</button>
+                                                            <div>
+                                                                User Name <input type="text" ng-model="Name" />
+                                                            </div>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px; margin-top:-20px;">Add Driver</button>
                                                         </div>
 
                                                         <div class="row">
@@ -507,13 +509,13 @@
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody class="media-thumb">
-                                                                                <tr ng-repeat="Dl in listdrivers">
+                                                                                <tr ng-repeat="Dl in listdrivers | filter:Name">
                                                                                     <td>
-                                                                                        <span class="img-shadow" ng-if="Dl.photo == null" >
+                                                                                        <span class="img-shadow" ng-if="Dl.photo == null">
                                                                                             <img src="images/user.jpg" class="media-object thumb" />
                                                                                         </span>
-                                                                                        <a href="" class="img-shadow"  ng-if="Dl.photo != null" ng-click="SetBiggerPhoto(Dl)">
-                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal"  data-target="#driver-image" />
+                                                                                        <a href="" class="img-shadow" ng-if="Dl.photo != null" ng-click="SetBiggerPhoto(Dl)">
+                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
                                                                                         </a>
                                                                                     </td>
                                                                                     <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>{{Dl.Email}}</div></td>
@@ -527,13 +529,13 @@
                                                                                     <td><a title="Image 1" href="#" ng-click="SetBiggerPhoto(Dl)"><img class=" media-object thumb" src="images/qr.png" width="40px" height="40px" data-toggle="modal" data-target="#QRCode-Imge" /></a></td>
                                                                                     <td>
                                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
-                                                                                            <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" >
+                                                                                            <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs">
                                                                                                 <i class="fa fa-edit"></i>&nbsp;
                                                                                                 Edit
                                                                                             </button>
                                                                                         </a>
                                                                                     </td>
-                                                                                    
+
                                                                                 </tr>
                                                                                 
                                                                             </tbody>
