@@ -198,7 +198,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VehicleModelId: 13,//newVehicle.vmo.Id,
             VehicleMakeId: 21,//newVehicle.vm.Id,
             ModelYear: newVehicle.ModelYear,
-            StatusId: 15,      // new      
+            //StatusId: 15,      // new      
             HasAC: 1,
             isDriverOwned: 1,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
@@ -215,6 +215,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
 
             alert("Saved successfully!");
+            $scope.GetVehcileList();
             var data = res.data;
 
             window.location.href = "vehicleDetails.html?VID="+res.data[0].Id;
