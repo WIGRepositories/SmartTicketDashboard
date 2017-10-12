@@ -54,7 +54,7 @@
     </Reference>
     <Reference Include="QRCoder, Version=1.3.1.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\QRCoder.dll</HintPath>
+      <HintPath>References\QRCoder.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
@@ -90,7 +90,7 @@
     <Reference Include="System.Xml.Linq" />
     <Reference Include="UnityEngine, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>bin\UnityEngine.dll</HintPath>
+      <HintPath>References\UnityEngine.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +106,8 @@
     <Content Include="Global.asax" />
     <Content Include="References\log4net.dll" />
     <Content Include="References\PayPal.dll" />
+    <Content Include="References\QRCoder.dll" />
+    <Content Include="References\UnityEngine.dll" />
     <Content Include="UI\AddFleetAvailability.html" />
     <Content Include="UI\AddFleetDetails.html" />
     <Content Include="UI\AddFleetowner.html" />
@@ -124,6 +126,7 @@
     <Content Include="UI\CardUserList.html" />
     <Content Include="UI\ChargesDiscounts.html" />
     <Content Include="UI\css\VehicleDistBasePricingConfig.css" />
+    <Content Include="UI\DriverBookinglist.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
     <Content Include="UI\images\car.png" />
@@ -166,6 +169,7 @@
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
+    <Content Include="UI\VehicleBookinglist.html" />
     <Content Include="UI\VehicleDistancePricing.html" />
     <Content Include="UI\VehicleDistBasePricingConfig.html" />
     <Content Include="UI\VehicleList.html" />

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | BookingDetails</title>
+    <title>Home | BTPOS | Session file</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -16,7 +16,7 @@
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetUsers()" ng-model="users">
+<body ng-app="myApp" ng-controller="myCtrl">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -359,7 +359,7 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="#">
                             <i class="fa fa-taxi">
                                 <div class="icon-bg bg-dark"></div>
@@ -370,7 +370,7 @@
                             <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
                             <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                             <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
-                            <li class="active"><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
+                            <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
                             <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                             <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                             <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
@@ -390,11 +390,11 @@
             <!--BEGIN TITLE & BREADCRUMB PAGE-->
             <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                 <div class="page-header pull-left">
-                    <div class="page-title">App Users</div>
+                    <div class="page-title">Session file</div>
                 </div>
                 <ol class="breadcrumb page-breadcrumb pull-right">
                     <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                    <li><a href="#">App Users</a></li>
+                    <li><a href="#">Session file</a></li>
                 </ol>
                 <div class="clearfix"></div>
             </div>
@@ -404,255 +404,35 @@
                 <div id="table-action" class="row">
                     <div class="col-lg-12">
 
-                        <div id="tableactionTabContent" class="tab-content">
-                            <div id="table-table-tab" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-lg-12">
-
-
-                                        <div class="table-container">
-
-
-                                            <div class="table-container">
-                                                <div class="row mbm">
-                                                    <div class="actions">
-
-                                                        <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetConfigData();">Add  User</button>
-                                                    </div>
-
-                                                    
-
-
-                                                    <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
-                                                        <thead>
-                                                            <tr>
-
-
-                                                                <!--<th width="10%">DId</th>-->
-                                                                <th>Image</th>
-                                                                <th width="10%">Name</th>
-                                                                <th width="10%">Mobile No</th>
-                                                                <th width="10%">Email Id</th>
-                                                                <th width="10%">Gender</th>
-                                                                <th width="10%">Alternate Email</th>
-                                                                <th width="10%">Amount</th>
-                                                                <th width="10%">Status</th>
-                                                                <th>Edit</th>
-
-
-                                                            </tr>
-                                                        <tbody>
-                                                            <tr ng-repeat="a in users">
-
-
-                                                                <td width="10%" class="img">
-                                                                    <a href="" class="img-shadow" ng-if="a.UserPhoto != null" ng-click="SetBiggerPhoto(a)">
-                                                                        <img src="{{a.UserPhoto}}" style="height:50px;width:50px" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
-                                                                    </a>
-                                                                <!--<img src={{a.UserPhoto}} alt="" title="" style="height:50px;width:50px" ng-click="SetBiggerPhoto(a)" data-target="#driver-image" /></td>-->
-                                                                <td><a href="AppUserDetails.html?UId={{a.Id}}"> <font color="blue"> <u>{{a.Username}}</u></font></a></td>
-                                                                <td>{{a.Mobilenumber}}</td>
-                                                                <td>{{a.Email}}</td>
-                                                                <td>{{a.Gender}}</td>
-                                                                <td>{{a.Altemail}}</td>
-                                                                <td>{{a.Amount}}</td>
-                                                                <td>{{a.Status}}</td>
-                                                                <td>
-                                                                    <a href="AppUserDetails.html?UId={{a.Id}}">
-                                                                        <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setusers(a);">
-                                                                            <i class="fa fa-edit"></i>
-                                                                        </button>
-                                                                    </a>
-                                                                </td>
-                                                            </tr>
-
-
-                                                        </tbody>
-
-                                                    </table>
-
-                                                    <div class="modal fade product_view1" id="driver-image">
-                                                        <div class="modal-dialog">
-                                                            <div class="modal-content">
-
-                                                                <div class="modal-body">
-                                                                    <div class="row">
-                                                                        <a href="#" data-dismiss="modal" class="class close-mark1"><span class="glyphicon glyphicon-remove-circle"></span></a>
-
-                                                                        <div class="col-md-12 product_img">
-
-                                                                            <img src="{{biggetPhoto}}" class="img-responsive imgsize">
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-
-                                                    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class=" modal-dialog modal-lg">
-                                                            <div class="modal-content">
-                                                                <div class="modal-header modal-header-primary">
-                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                    <h4 id="modal-header-primary-label" class="modal-title">Add User</h4>
-                                                                </div>
-                                                                <div class="modal-body" ng-model="app">
-
-                                                                    <div class="row mtl">
-                                                                        <div class="col-md-3">
-
-                                                                            <div class="form-group">
-
-                                                                                <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
-                                                                                <br />
-                                                                                <a href="#" class="btn btn-green" ng-click="UploadImg();" style="width:90px">
-                                                                                    <i class="fa fa-upload"></i>&nbsp;
-                                                                                    Upload photo
-                                                                                </a>
-
-
-                                                                                <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect1($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
-
-
-
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="col-md-9">
-                                                                                <div id="generalTabContent" class="tab-content">
-                                                                                    <div class="modal-body">
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">User Name:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="app.Username" class="form-control" /><span class="help-block"></span></div>
-                                                                                            </div>
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">First Name:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <input id="inputFirstName" type="text" ng-model="app.Firstname" class="form-control" /><span class="help-block"></span>
-                                                                                                </div>
-                                                                                            </div>
-
-
-                                                                                        </div>
-
-                                                                                        <div class="row">
-
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Last Name:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="app.lastname" class="form-control" /><span class="help-block"></span></div>
-                                                                                            </div>
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Mobile Number:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input id="inputFirstName" type="text" ng-model="app.Mobilenumber" class="form-control" /><span class="help-block"></span></div>
-                                                                                            </div>
-
-                                                                                        </div>
-
-                                                                                        <div class="row">
-
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Email Id:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <input id="inputFirstName" type="text" ng-model="app.Email" class="form-control" /><span class="help-block"></span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Gender:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <select ng-options="g.Name for g in initdata.Table1 track by g.Id" ng-model="app.Gender" ng-init="GetConfigData()" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                        <div class="row" style="margin-top:8px">
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Alternate Email:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <input id="inputFirstName" type="text" ng-model="app.Altemail" class="form-control" /><span class="help-block"></span>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Status:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <select ng-options="s.Name for s in initdata.Table track by s.Id" ng-model="app.Status"  class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                    <div class="form-actions">
-                                                                                        <div style="text-align:center">
-
-                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="saveNew(app,'I')">Save</button>
-
-
-
-                                                                                            <a href="AppUsers.html" class="btn btn-primary" ng-click="clearapp()">Cancel</a>
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <!--END CONTENT-->
-                                                </div>
-                                                <!--END PAGE WRAPPER-->
-                                            </div>
-                                        </div>
-                                        <!--END PAGE WRAPPER-->
-                                    </div>
-                                </div>
-
-
-
-                                <!--BEGIN FOOTER-->
-                                <div id="footer">
-                                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                                </div>
-                                <!--END FOOTER-->
-                            </div>
-                        </div>
+                        
                     </div>
-                    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-                        <div class="modal-header">
-                            <h3 class="modal-title">Save confirmation!</h3>
-                        </div>
-                        <div class="modal-body">
-                            al
-                            >
-
-                            <!--<ul>
-                                <li ng-repeat="item in items">
-                                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                </li>
-                            </ul>
-                            Selected: <b>{{ selected.item }}</b>-->
-                            {{mssg}}
-                        </div>
-                    </script>
                 </div>
+                <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
+                    <div class="modal-header">
+                        <h3 class="modal-title">Save confirmation!</h3>
+                    </div>
+                    <div class="modal-body">
+                        al
+                        >
 
-
-
+                        <!--<ul>
+                            <li ng-repeat="item in items">
+                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                            </li>
+                        </ul>
+                        Selected: <b>{{ selected.item }}</b>-->
+                        {{mssg}}
+                    </div>
+                </script>
             </div>
+
+
+
+
         </div>
     </div>
+
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -679,11 +459,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/fileupload/angular-file-upload.js"></script>
-    <script src="js/fileupload/angular-file-upload-shim.js"></script>
-    <script src="js/appusers.js"></script>
-
-    <script src="js/fileupload/Upload.js"></script>
+    <script src="js/logfile.js"></script>
 
 </body>
 </html>
