@@ -17,7 +17,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanies();" ng-model="Companies">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetVehcileList();" ng-model="Companies">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -53,7 +53,7 @@
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">Admin Admin</span>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="MyProfile.html"><i class="fa fa-user"></i>My Profile</a></li>
-                              
+
                                 <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox</a></li>
                                 <li><a href="#"><i class="fa fa-tasks"></i>My Tasks</a></li>
                                 <li class="divider"></li>
@@ -269,7 +269,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
                             </a>
@@ -285,7 +285,7 @@
                         </li>
                         <li>
                             <a href="#">
-                               <i class="fa fa-ticket">
+                                <i class="fa fa-ticket">
                                     <div class="icon-bg bg-green"></div>
                                 </i><span class="menu-title">Trouble Ticket</span><span class="fa arrow"></span>
                             </a>
@@ -381,15 +381,15 @@
                                 </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
-                              
-                                 <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
-                               <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
+
+                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">VehicleList</span></a></li>
+                                <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">DriverList</span></a></li>
                                 <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">AssignDriver</span></a></li>
                                 <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Details of Customers"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
                                 <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Details of Landmark"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
                                 <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">ClosingReport</span></a></li>
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
-                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
+                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
                                 <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">BookingDetails</span></a></li>
 
@@ -397,7 +397,7 @@
 
                         </li>
                         </ul>
-             
+
                     </div>
                 </nav>
                 <!--END SIDEBAR MENU--><!--BEGIN PAGE WRAPPER-->
@@ -440,16 +440,16 @@
 
                                                         <div class="col-md-3" ng-init="GetCompanies();">
                                                             Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test" style="width:80%">
-                                                            <option value="">Select</option>
-                                                              </select>
+                                                                <option value="">Select</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-md-3">
                                                             Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFleetDetails(s)" id="test1" style="width:70%">
 
-                                                         <option value="">Select</option>
+                                                                <option value="">Select</option>
                                                             </select>
                                                         </div>
-                                                        
+
                                                         <div class="col-md-3">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="text-align-last:right">Add Fleet Details</button>
 
@@ -458,7 +458,7 @@
 
                                                     </div>
 
-                                                   
+
 
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                         <div class="modal-dialog modal-lg">
@@ -468,22 +468,22 @@
                                                                     <h4 id="modal-header-primary-label" class="modal-title">Add Fleet Details</h4>
                                                                 </div>
                                                                 <div class="modal-body" ng-init="GetVehicleConfig()" ng-model="initdata">
-                                                                    
-                                                                        <div class="row mbm">
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Description" class="col-md-5 control-label">Vehicle RegNo <span class='require'>*</span></label>
 
-                                                                                    <div class="col-md-6"> <input id="Description" type="text" class="form-control" ng-model="initdata.newfleet.VehicleRegNo" /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Description" class="col-md-5 control-label">Engine No<span class='require'>*</span></label>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <label for="Description" class="col-md-5 control-label">Vehicle RegNo <span class='require'>*</span></label>
 
-                                                                                    <div class="col-md-6"><input id="Description" type="text" class="form-control" ng-model="initdata.newfleet.EngineNo" /><span class="help-block"></span></div>
-                                                                                </div>
+                                                                                <div class="col-md-6"> <input id="Description" type="text" class="form-control" ng-model="initdata.newfleet.VehicleRegNo" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Description" class="col-md-5 control-label">Engine No<span class='require'>*</span></label>
+
+                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control" ng-model="initdata.newfleet.EngineNo" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
-                                                                   
+                                                                    </div>
+
 
                                                                     <div class="row mbm">
                                                                         <div class="col-md-12">
@@ -499,7 +499,7 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="Description" class="col-md-5 control-label">Fuel Used <span class='require'>*</span></label>
 
-                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control"  ng-model="initdata.newfleet.FuelUsed" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control" ng-model="initdata.newfleet.FuelUsed" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -634,22 +634,22 @@
 
                                                                 <div class="modal-body" ng-model="currVD">
 
-                                                                    
-                                                                        <div class="row mbm">
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Description" class="col-md-4 control-label">Vehicle RegNo <span class='require'>*</span></label>
 
-                                                                                    <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.VehicleRegNo}}" ng-model="currVD.VehicleRegNo" /><span class="help-block"></span></div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <label for="Description" class="col-md-5 control-label">Engine No<span class='require'>*</span></label>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <label for="Description" class="col-md-4 control-label">Vehicle RegNo <span class='require'>*</span></label>
 
-                                                                                    <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.EngineNo}}" ng-model="currVD.EngineNo" /><span class="help-block"></span></div>
-                                                                                </div>
+                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.VehicleRegNo}}" ng-model="currVD.VehicleRegNo" /><span class="help-block"></span></div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <label for="Description" class="col-md-5 control-label">Engine No<span class='require'>*</span></label>
+
+                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.EngineNo}}" ng-model="currVD.EngineNo" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
-                                                                    
+                                                                    </div>
+
                                                                     <div class="row mbm">
                                                                         <div class="col-md-12">
                                                                             <div class="col-md-6">
@@ -664,7 +664,7 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="Description" class="col-md-5 control-label">Fuel Used <span class='require'>*</span></label>
 
-                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control"  value="{{currVD.FuelUsed}}" ng-m ng-model="currVD.FuelUsed" /><span class="help-block"></span></div>
+                                                                                <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.FuelUsed}}" ng-m ng-model="currVD.FuelUsed" /><span class="help-block"></span></div>
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -723,7 +723,7 @@
                                                                                 <div class="col-md-6">
                                                                                     <label for="Description" class="col-md-4 control-label">Seating Capacity <span class='require'>*</span></label>
 
-                                                                                    <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.SeatingCapacity}}" ng-keypress="filterValue($event)"ng-model="currVD.newfleet.SeatingCapacity" /><span class="help-block"></span></div>
+                                                                                    <div class="col-md-6"><input id="Description" type="text" class="form-control" value="{{currVD.SeatingCapacity}}" ng-keypress="filterValue($event)" ng-model="currVD.newfleet.SeatingCapacity" /><span class="help-block"></span></div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <label for="Description" class="col-md-5 control-label">Date Of Registration:<span class='require'>*</span></label>
@@ -780,7 +780,7 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>-->
-                                                                                      <div class="form-actions">
+                                                                    <div class="form-actions">
                                                                         <div class="col-md-offset-5 col-md-9">
                                                                             <button class="btn btn-green" type="button" ng-click="save(currVD);">Save</button>
                                                                             <a href="FleetDetails.html" class="btn btn-primary" ng-click="clearGroup()">Cancel</a>
@@ -822,11 +822,11 @@
                                                     <th>Vehicle Layout</th>
                                                     <th>Service Type </th>
                                                     <!--<th>Engine No </th>
-                    <th>Fuel Used </th>
-                    <th>Month And Yr. Of Mfr </th>
-                    <th>Chasis No </th>
-                    <th>Date Of Registration </th>
-                    <th>Seating Capacity </th>-->
+                                                    <th>Fuel Used </th>
+                                                    <th>Month And Yr. Of Mfr </th>
+                                                    <th>Chasis No </th>
+                                                    <th>Date Of Registration </th>
+                                                    <th>Seating Capacity </th>-->
 
 
                                                     <th>Active</th>
@@ -835,9 +835,9 @@
                                             </thead>
                                             <tbody>
 
-                                                <tr ng-repeat="F in Fleet" class="gradeA">
+                                                <tr ng-repeat="F in VehiclesList" class="gradeA">
                                                     <td>
-                                                        {{F.VehicleRegNo}}
+                                                        {{F.RegistrationNo}}
 
                                                     </td>
                                                     <td>
@@ -850,24 +850,24 @@
                                                         {{F.ServiceType}}
                                                     </td>
                                                     <!--<td>
-                        {{F.EngineNo }}
-                    </td>
-                    <td>
-                        {{F.FuelUsed}}
-                    </td>
-                    <td>
-                        {{F.MonthAndYrOfMfr}}
-                    </td>
-                    <td>
-                        {{F.ChasisNo}}
-                    </td>
-                    <td>
-                        {{F.DateOfRegistration}}
-                    </td>
+            {{F.EngineNo }}
+        </td>
+        <td>
+            {{F.FuelUsed}}
+        </td>
+        <td>
+            {{F.MonthAndYrOfMfr}}
+        </td>
+        <td>
+            {{F.ChasisNo}}
+        </td>
+        <td>
+            {{F.DateOfRegistration}}
+        </td>
 
-                    <td>
-                        {{F.SeatingCapacity}}
-                    </td>-->
+        <td>
+            {{F.SeatingCapacity}}
+        </td>-->
 
                                                     <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="F.Active == 1" id="Active" ng-model="F.Active" /></td>
                                                     <td>
@@ -884,8 +884,8 @@
 
                                         </table>
                                     </div>
-                                      
-                                    </div>
+
+                                </div>
 
                             </div>
 
@@ -921,42 +921,42 @@
                     </script>
                 </div>
 
-                </div>
             </div>
         </div>
+    </div>
 
 
-<script src="js/jquery-1.10.2.min.js"></script>
-<script src="js/jquery-migrate-1.2.1.min.js"></script>
-<script src="js/jquery-ui.js"></script>
-<!--loading bootstrap js-->
-<script src="vendors/bootstrap/js/bootstrap.js"></script>
-<script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
 
 
-<script src="vendors/metisMenu/jquery.metisMenu.js"></script>
-<script src="vendors/slimScroll/jquery.slimscroll.js"></script>
-<script src="vendors/jquery-cookie/jquery.cookie.js"></script>
-<script src="vendors/iCheck/icheck.min.js"></script>
-<script src="vendors/iCheck/custom.min.js"></script>
-<script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
-<script src="js/jquery.menu.js"></script>
-<script src="vendors/jquery-pace/pace.min.js"></script>
-<script src="vendors/holder/holder.js"></script>
-<script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-<script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-<script>
-    $('.datepicker-filter').datepicker({
-        autoclose: true
-    });
-</script>
-<!--LOADING SCRIPTS FOR PAGE-->
-<!--CORE JAVASCRIPT-->
-<script src="js/main.js"></script>
-<script src="js/angular.js"></script>
-<script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-<script src="js/ngStorage.js"></script>
-<script src="js/FleetDetail1.js"></script>
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+    <script src="vendors/jquery-news-ticker/jquery.news-ticker.js"></script>
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <script src="vendors/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+    <script>
+        $('.datepicker-filter').datepicker({
+            autoclose: true
+        });
+    </script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <!--CORE JAVASCRIPT-->
+    <script src="js/main.js"></script>
+    <script src="js/angular.js"></script>
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+    <script src="js/ngStorage.js"></script>
+    <script src="js/FleetDetail.js"></script>
 
 </body>
 </html>

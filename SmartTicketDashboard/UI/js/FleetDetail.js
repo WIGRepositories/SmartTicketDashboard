@@ -123,6 +123,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.GetVehcileList = function () {
+        $http.get('/api/VehicleMaster/GetVehcileList').then(function (res, data) {
+            $scope.VehiclesList = res.data;
+            $scope.imageSrc = $scope.VehiclesList.Photo;
+        });
+        $scope.GetFleetOwners();
+    }
+
     //This will hide the DIV by default.
     //$scope.IsHidden = true;
     //$scope.ShowHide = function () {
