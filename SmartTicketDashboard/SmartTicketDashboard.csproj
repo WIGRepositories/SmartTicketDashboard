@@ -129,6 +129,7 @@
     <Content Include="UI\DriverBookinglist.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\images\car.png" />
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
@@ -149,6 +150,7 @@
     <Content Include="UI\js\SOSMessages.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\TreeView\Types1.js" />
+    <Content Include="UI\js\Types1.js" />
     <Content Include="UI\js\UserLicense.js" />
     <Content Include="UI\js\VehicleDetails.js" />
     <Content Include="UI\js\VehicleDistancePricing.js" />
@@ -161,6 +163,7 @@
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />

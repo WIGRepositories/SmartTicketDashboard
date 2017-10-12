@@ -16,7 +16,7 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-
+    
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-model="Types">
     <div>
@@ -425,15 +425,15 @@
                                                         </div>
                                                         <div class="pagination-panel">
                                                             Page
-                                                            &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" ng-model="s.curpage" maxlenght="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
+                                                            &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" ng-model="s.curpage" ng-change="getselectval(s)" maxlength="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
                                                             of 6 | View
-                                                            &nbsp;<select ng- model="s.maxrows "class="form-control input-xsmall input-sm input-inline">
-                                                                <option value="20" selected="selected">20</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                                <option value="150">150</option>
-                                                                <option value="-1">All</option>
-                                                            </select>&nbsp;
+                                                            &nbsp;<select ng-model="s.maxrows " class="form-control input-xsmall input-sm input-inline" ng-change="getselectval(s)">
+    <option value="10">10</option>
+    <option value="50">50</option>
+    <option value="100">100</option>
+    <option value="150">150</option>
+    <option value="-1">All</option>
+</select>&nbsp;
                                                             records | Found total 58 records
                                                         </div>
 

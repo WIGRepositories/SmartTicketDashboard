@@ -875,8 +875,8 @@ hr {
 }
 .navbar-static-side ul li .nav-second-level li .nav-third-level li a {
     padding: 15px 15px 15px 40px;
-    background: #366794;
-    color: #efefef;
+    background: #f0f0f0;
+    color: #777;
 }
 .navbar-static-side ul li .nav-second-level li .nav-third-level li a span.submenu-title {
     margin-left: 10px;
