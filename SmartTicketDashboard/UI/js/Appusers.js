@@ -319,4 +319,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.SetBiggerPhoto = function (a) {
+        $scope.biggetPhoto = a.UserPhoto;
+    }
+
 });

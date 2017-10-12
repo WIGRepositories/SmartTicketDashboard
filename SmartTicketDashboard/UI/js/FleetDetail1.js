@@ -1,4 +1,4 @@
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+﻿var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
 
     if ($localStorage.uname == null) {
@@ -53,7 +53,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                         break
                     }
                 }
-               // $scope.GetFleetOwners();
+                // $scope.GetFleetOwners();
             }
             else {
                 document.getElementById('test').disabled = false;
@@ -86,30 +86,30 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         // //   $scope.GetFleetDetails($scope.s);
         //});
 
-           
-            var vc = {
-                needfleetowners: '1',
-                cmpId: $scope.cmp.Id
-            };
 
-            var req = {
-                method: 'POST',
-                url: '/api/VehicleConfig/VConfig',
-                //headers: {
-                //    'Content-Type': undefined
+        var vc = {
+            needfleetowners: '1',
+            cmpId: $scope.cmp.Id
+        };
 
-                data: vc
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleConfig/VConfig',
+            //headers: {
+            //    'Content-Type': undefined
+
+            data: vc
 
 
-                        }
-            $http(req).then(function (res) {
-                $scope.cmpdata = res.data;
+        }
+        $http(req).then(function (res) {
+            $scope.cmpdata = res.data;
 
             if ($scope.userSId != 1) {
-                            //loop throug the fleetowners and identify the correct one
-                            for (i = 0; i < res.data.Table.length; i++) {
-                                if (res.data.Table[i].UserId == $scope.userSId) {
-                                    $scope.s = res.data.Table[i];
+                //loop throug the fleetowners and identify the correct one
+                for (i = 0; i < res.data.Table.length; i++) {
+                    if (res.data.Table[i].UserId == $scope.userSId) {
+                        $scope.s = res.data.Table[i];
                         document.getElementById('test1').disabled = true;
                         break
                     }
@@ -121,14 +121,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.GetFleetDetails($scope.s);
 
         });
-    }
-
-    $scope.GetVehcileList = function () {
-        $http.get('/api/VehicleMaster/GetVehcileList').then(function (res, data) {
-            $scope.VehiclesList = res.data;
-            $scope.imageSrc = $scope.VehiclesList.Photo;
-        });
-        $scope.GetFleetOwners();
     }
 
     //This will hide the DIV by default.
@@ -236,7 +228,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter ChasisNo.');
             return;
         }
-        
+
         //if (Fleet.group == null || Fleet.VehicleTypeId.group.Id == null) {
         //    alert('Please select a type group');
         //    return;
@@ -273,11 +265,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         }
         $http(req).then(function (res) {
-           $scope.showDialog("Updated successfully!");
-           
+            $scope.showDialog("Updated successfully!");
+
         });
 
-        $scope. GetCompanies();
+        $scope.GetCompanies();
     }
 
     $scope.savenewfleetdetails = function (initdata, flag) {
@@ -328,7 +320,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (response) {
 
-          $scope.showDialog("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
