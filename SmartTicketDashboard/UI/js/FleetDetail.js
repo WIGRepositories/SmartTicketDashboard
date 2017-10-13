@@ -345,6 +345,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currVD = F;
     }
 
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeFleetOwner: '1',
+            
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata1 = res.data;
+        });
+    }
+
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({
