@@ -371,6 +371,66 @@ namespace SmartTicketDashboard.Controllers
             }
         }
 
+
+        [HttpPost]
+        [Route("api/VehicleMaster/DocumentVerification")]
+        public DataTable DocumentVerification(VehicleDocuments v)
+        {
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            DataTable dt = new DataTable();
+            try
+            {
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSinsupdvehicledocsverifying";
+                cmd.Connection = conn;
+
+                SqlParameter AssetId = new SqlParameter("@VehicleId", SqlDbType.Int);
+                AssetId.Value = v.VehicleId;
+                cmd.Parameters.Add(AssetId);
+
+                SqlParameter rootassetid = new SqlParameter("@DocType", SqlDbType.VarChar);
+                rootassetid.Value = v.docType;
+                cmd.Parameters.Add(rootassetid);
+
+                
+                SqlParameter flag = new SqlParameter("@change", SqlDbType.VarChar);
+                flag.Value = v.insupddelflag;
+                cmd.Parameters.Add(flag);               
+
+                SqlParameter ver = new SqlParameter("@IsVerified", SqlDbType.Int);
+                ver.Value = v.isVerified;
+                cmd.Parameters.Add(ver);
+
+
+                SqlParameter IA = new SqlParameter("@IsApproved", SqlDbType.Int);
+                IA.Value = v.IsApproved;
+                cmd.Parameters.Add(IA);
+
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                string str = ex.Message;
+
+                return dt;
+            }
+        }
+
+
         [HttpGet]
         [Route("api/VehicleMaster/FileContent")]
         public DataTable FileContent(int docId, int docCategoryId)

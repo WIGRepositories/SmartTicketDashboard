@@ -2125,7 +2125,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int DId { get; set; }
-        public int Company { get; set; }
+        public int Country { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -2151,6 +2151,9 @@ namespace SmartTicketDashboard.Models
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public int Status { get; set; }
+        public int VehicleGroup { get; set; }
+        public int IsVerified { get; set; }
+        public int IsApproved { get; set; }
         
     }
     public class vehiclemas
@@ -2667,6 +2670,8 @@ namespace SmartTicketDashboard.Models
         public string DocumentNo { get; set; }
         public string DocumentNo2 { get; set; }
         public int isVerified { get; set; }
+        public int IsApproved { get; set; }
+        public int DriverId { get;set; }
 
     }
 
@@ -2693,6 +2698,7 @@ namespace SmartTicketDashboard.Models
         public string DocumentNo { get; set; }
         public string DocumentNo2 { get; set; }
         public int isVerified { get; set; }
+        public int IsApproved { get; set; }
     }
     public class ewallet
     {
