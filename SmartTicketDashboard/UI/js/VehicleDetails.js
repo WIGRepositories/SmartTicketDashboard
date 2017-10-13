@@ -441,7 +441,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
     $scope.UpdateIsVerified = function (d) {
-        alert();
+       // alert();
         
         VehicleId: d.VehicleId;
         IsVerified: d.isVerified;       

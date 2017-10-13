@@ -740,7 +740,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     docName: files[0].name,
                     docContent: result,
                     isVerified: 0,
-                    insupddelflag: 'I'
+                    insupddelflag: 'I' 
                 }
 
             $scope.modifiedDoc = doc;
@@ -796,6 +796,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+
+
     function getdate(date) {
         var formateddate = date;
 
@@ -805,6 +807,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         return formateddate;
     }
+   
 
     $scope.GetConfigData = function () {
 
