@@ -349,17 +349,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
             //  $scope.DocFiles = response.data.Table;
             alert("Saved Successfully");
-            $scope.DocFiles = response.data;           
+            $scope.GetVehicleDetails();
+            $scope.DocFiles = response.data;          
 
             if ($scope.DocFiles)  {
                 if ($scope.DocFiles.length > 0) {                    
                     for (i = 0; i < $scope.DocFiles.length; i++) {
                         $scope.DocFiles[i].expiryDate = getdate($scope.DocFiles[i].expiryDate);
                         $scope.DocFiles[i].dueDate = getdate($scope.DocFiles[i].dueDate);
+                        
                        // $scope.DocFiles.push($scope.DocFiles[i]);
                     }
                 }
-            }
+            }            
 
             $scope.modifiedDoc = null;
         }, function (errres) {
@@ -438,7 +440,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
     }
 
+    $scope.UpdateIsVerified = function (d) {
+        alert();
+        
+        VehicleId: d.VehicleId;
+        IsVerified: d.isVerified;       
+        IsApproved: d.isApproved;
+        DocType: d.docType;
 
+
+        var Docs = {
+            VehicleId: d.VehicleId,
+            IsVerified: d.isVerified,            
+            IsApproved: d.isApproved,
+            DocType: d.docType,
+            insupddelflag: '2'
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/DocumentVerification',
+            data: Docs
+        }
+        $http(req).then(function (response) {
+            alert("Saved Successfully");
+        });
+    }
     var winLookup;
     var showToolbar = false;
     function openReportWindow(m_title, m_url, m_width, m_height) {
@@ -525,6 +553,90 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         var blob = new Blob(byteArrays, { type: contentType });
         return blob;
     }
+
+    $scope.save = function (vDetails, flag) {
+
+        if (vDetails.RegistrationNo == null) {
+            alert('Please Enter RegistrationNo');
+            return;
+        }
+
+        if (vDetails.ChasisNo == null || vDetails.ChasisNo == '') {
+            alert('Please Enter chasis number');
+            return;
+        }
+        if (vDetails.Engineno == null || vDetails.Engineno == '') {
+            alert('Please Enter Engine number');
+            return;
+        }
+        if (vDetails.vt == null || vDetails.vt.Id == null) {
+            alert('Please select type');
+            return;
+        }
+        //if (newVehicle.vm == null || newVehicle.vm.Id == null) {
+        //    alert('Please select make');
+        //    return;
+        //}
+        //if (newVehicle.vmo == null || newVehicle.vmo.Id == null) {
+        //    alert('Please select model');
+        //    return;
+        //}
+        if (vDetails.vg == null || vDetails.vg.Id == null) {
+            alert('Please select group');
+            return;
+        }
+
+
+        if (vDetails.ModelYear == null) {
+            alert('Please Enter ModelYear');
+            return;
+        }
+
+
+        var vDetails = {
+
+            flag: 'U',
+            Id: vDetails.Id,
+            VehicleCode: vDetails.VehicleCode,
+            OwnerId: (vDetails.f == null || vDetails.f.Id == '') ? null : vDetails.f.Id,
+            RegistrationNo: vDetails.RegistrationNo,
+            ChasisNo: vDetails.ChasisNo,
+            Engineno: vDetails.Engineno,
+            VehicleGroupId: vDetails.vg.Id,
+            VehicleTypeId: vDetails.vt.Id,
+            VehicleModelId: 13,//newVehicle.vmo.Id,
+            VehicleMakeId: 21,//newVehicle.vm.Id,
+            ModelYear: vDetails.ModelYear,
+            StatusId: vDetails.StatusId.Id,    
+            HasAC: 1,
+            isDriverOwned: 1,
+            CountryId: (vDetails.cn == null || vDetails.cn.Id == '') ? null : vDetails.cn.Id,
+            DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
+            Photo: $scope.imageSrc,
+            
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/Vehicle',
+            data: vDetails
+        }
+        $http(req).then(function (res) {
+
+            alert("Updated successfully!");
+            $scope.GetVehicleDetails();
+            var data = res.data;
+
+            window.location.href = "vehicleDetails.html?VID=" + res.data[0].Id;
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
+    };
 
 
     $scope.saveAssetDetails = function () {
@@ -624,6 +736,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         document.getElementById('fileInput').value = null;
 
         $scope.CurrDocdocCatId = docCatId;
+    }
+
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect1 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc = result;
+        });
     }
 
 });

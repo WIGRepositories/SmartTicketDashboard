@@ -32,14 +32,21 @@ namespace SmartTicketDashboard.Models
 
     public class Alerts
     {
+        public string flag { get; set; }
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public int RoleId { get; set; }
+        public int UserId { get; set; }
+        public string Title { get; set; }
         public string Message { get; set; }
-        public string MessageTypeId { get; set; }
-        public string StatusId { get; set; }
-        public string UserId { get; set; }
-
-        public string Name { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
+        public int UpdatedBy { get; set; }
+        public int StateId { get; set; }
+        public int StatusId { get; set; }
+        public int CategoryId { get; set; }
+        public int SubCategoryId { get; set; }
+        public int Active { get; set; }
+       
     }
     public class Notifications
     {
@@ -2118,7 +2125,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int DId { get; set; }
-        public int Company { get; set; }
+        public int Country { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
         public string City { get; set; }
@@ -2144,6 +2151,9 @@ namespace SmartTicketDashboard.Models
         public string LastName { get; set; }
         public string EmailId { get; set; }
         public int Status { get; set; }
+        public int VehicleGroup { get; set; }
+        public int IsVerified { get; set; }
+        public int IsApproved { get; set; }
         
     }
     public class vehiclemas
@@ -2660,6 +2670,8 @@ namespace SmartTicketDashboard.Models
         public string DocumentNo { get; set; }
         public string DocumentNo2 { get; set; }
         public int isVerified { get; set; }
+        public int IsApproved { get; set; }
+        public int DriverId { get;set; }
 
     }
 
@@ -2686,6 +2698,7 @@ namespace SmartTicketDashboard.Models
         public string DocumentNo { get; set; }
         public string DocumentNo2 { get; set; }
         public int isVerified { get; set; }
+        public int IsApproved { get; set; }
     }
     public class ewallet
     {
