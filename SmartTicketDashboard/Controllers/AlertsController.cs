@@ -30,12 +30,41 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetAlerts";
+            cmd.CommandText = "PsGetAlerts";
             cmd.Connection = conn;
+
+            SqlParameter uid = new SqlParameter("@roleid", SqlDbType.Int);
+            uid.Value = roleid;
+            cmd.Parameters.Add(uid);
+
+            SqlParameter rid = new SqlParameter("@userid", SqlDbType.Int);
+            rid.Value = userid;
+            cmd.Parameters.Add(rid);
+
+            SqlParameter fdate = new SqlParameter("@fromdate", SqlDbType.DateTime);
+            fdate.Value = fromdate;
+            cmd.Parameters.Add(fdate);
+
+            SqlParameter tdate = new SqlParameter("@todate", SqlDbType.DateTime);
+            tdate.Value = todate;
+            cmd.Parameters.Add(tdate);
+
+            SqlParameter stid = new SqlParameter("@statusid", SqlDbType.Int);
+            stid.Value = statusid;
+            cmd.Parameters.Add(stid);
+
+            SqlParameter catid = new SqlParameter("@categoryid", SqlDbType.Int);
+            catid.Value = categoryid;
+            cmd.Parameters.Add(catid);
+
+            SqlParameter scatid = new SqlParameter("@subcategoryid", SqlDbType.Int);
+            scatid.Value = subcategoryid;
+            cmd.Parameters.Add(scatid);
+
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            Tbl = ds.Tables[0];
+            db.Fill(Tbl);
+            
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts Credentials completed.");
             
             // int found = 0;
@@ -44,6 +73,7 @@ namespace SmartTicketDashboard.Controllers
         }
 
         [HttpPost]
+        [Route("api/Alerts/SaveAlerts")]
         public DataTable SaveAlerts(Alerts a)
         {
             DataTable Tbl = new DataTable();
