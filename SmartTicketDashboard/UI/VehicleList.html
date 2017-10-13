@@ -558,15 +558,8 @@
                                         <div class="col-md-6">
                                             <label for="Name" class="col-md-4 control-label">Fleet Owner:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <select ng-model="newVehicle.f" class="form-control">
+                                                <select ng-options="f.FleetOwnerCode for f in initdata1.Table track by f.Id" ng-model="s" class="form-control">
                                                     <option value="">Select</option>
-                                                    <option>f101</option>
-                                                    <option>f102</option>
-                                                    <option>f103</option>
-                                                    <option>f104</option>
-                                                    <option>f105</option>
-                                                    <option>f106</option>
-                                                    <option>f107</option>
                                                 </select>
                                             </div>
                                         </div>
