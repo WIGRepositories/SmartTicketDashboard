@@ -144,7 +144,6 @@
     <Content Include="UI\js\ChargesDiscounts.js" />
     <Content Include="UI\js\DriverDetails.js" />
     <Content Include="UI\js\DriverStatus.js" />
-    <Content Include="UI\js\FleetDetail1.js" />
     <Content Include="UI\js\GetLocation.js" />
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />

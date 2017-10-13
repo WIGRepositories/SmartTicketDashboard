@@ -480,11 +480,17 @@
                                                 <div class="table-container">
                                                     <div class="row mbm">
                                                        
-                                                        <div class="actions">
-                                                            <div>
-                                                                User Name <input type="text" ng-model="Name" />
+                                                        <div class="actions" style="margin-bottom:50px">
+                                                            <div class="col-md-2">
+                                                                User Name <input type="text" ng-model="query" />
                                                             </div>
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px; margin-top:-20px;">Add Driver</button>
+                                                            <div class="col-md-2">
+                                                                Driver Code <input type="text" ng-model="list" />
+                                                            </div>
+                                                            <div class="col-md-2">
+                                                                Mobile no <input type="text" ng-model="Mobileno" />
+                                                            </div>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px; margin-top:20px;">Add Driver</button>
                                                         </div>
 
                                                         <div class="row">
@@ -508,7 +514,7 @@
                                                                                 </tr>
                                                                             </thead>
                                                                             <tbody class="media-thumb">
-                                                                                <tr ng-repeat="Dl in listdrivers | filter:Name">
+                                                                                <tr ng-repeat="Dl in listdrivers | filter:{NAme:query,DriverCode:list,PMobNo:Mobileno}" ng-on-finish-render>
                                                                                     <td>
                                                                                         <span class="img-shadow" ng-if="Dl.photo == null">
                                                                                             <img src="images/user.jpg" class="media-object thumb" />
@@ -525,7 +531,7 @@
                                                                                     <td><span>{{Dl.PAddress}}</span></td>
                                                                                     <td><input type="checkbox" checked /></td>
                                                                                     <td><span class="label label-success">online</span></td>
-                                                                                    
+
                                                                                     <td>
                                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
                                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs">
