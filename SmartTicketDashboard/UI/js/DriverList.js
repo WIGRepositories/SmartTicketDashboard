@@ -208,6 +208,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.CurrentState = function () {
+        $http.get('/api/DriverMaster/CurrentState').then(function (response, req) {
+            $scope.CurrentState = response.data;
+        });
+    }
+
     $scope.saveNew = function (Driverlist,flag) {
       
         
@@ -736,6 +742,55 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.Getdriverdetails();
         });
     }
+
+    $scope.toggle = function (item) {
+        var idx = $scope.checkedArr.indexOf(item);
+        if (idx > -1) {
+            $scope.checkedArr.splice(idx, 1);
+        }
+        else {
+            $scope.checkedArr.push(item);
+        }
+
+        var idx = $scope.uncheckedArr.indexOf(item);
+        if (idx > -1) {
+            $scope.uncheckedArr.splice(idx, 1);
+        }
+        else {
+            $scope.uncheckedArr.push(item);
+        }
+    };
+
+    $scope.toggleMandatory = function (item) {
+        var idx = $scope.checkedArr.indexOf(item);
+        if (idx > -1) {
+            //$scope.checkedArr.splice(idx, 1);
+            $scope.checkedArr[idx].IsMandatory = ($scope.checkedArr[idx].IsMandatory == 0) ? 1 : 0;
+            $scope.checkedArr[idx].IsChanged = 1;
+        }
+        else {
+            item.IsMandatory = 1;
+            item.IsChanged = 1;
+            $scope.checkedArr.push(item);
+        }
+    };
+
+    $scope.exists = function (item, list) {
+        if (list == null) return false;
+        return list.indexOf(item) > -1;
+    };
+
+    $scope.existsMandatory = function (item, list) {
+        if (list == null) return false;
+        if (list.indexOf(item) > -1 && item.IsMandatory == 1)
+            return true;
+        else
+            false;
+    };
+
+    $scope.isChecked = function () {
+        return $scope.checkedArr.length === $scope.UserDocs.length;
+    };
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 

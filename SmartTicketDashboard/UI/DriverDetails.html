@@ -469,7 +469,8 @@
                                                     </div>
                                                     <div class="row mbm">
                                                         <div>
-                                                            <font color="red">Mandatory Documents:</font>Driving License,Insurance
+                                                            <font color="red">Mandatory Documents:</font>
+                                                            {{Dl.docType}}
                                                         </div>
                                                     </div>
                                                    
@@ -808,6 +809,7 @@
                                                                                         <th>Document Type</th>
                                                                                         <th>Expiry Date</th>
                                                                                         <th>Is Verified?</th>
+                                                                                        <th>Is Approved</th>
                                                                                         <th>Update</th>
                                                                                         <th>Delete</th>
                                                                                         <th>Details</th>
@@ -815,15 +817,19 @@
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
-                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a></td>
+                                                                                        <td><a ng-if="d.uploaded=1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a>
+                                                                                            <span ng-if ="d.uploaded=0">{{d.docName}}</span>                                                                                  </td>
                                                                                         <td>{{d.docType}}</td>
                                                                                         <td>
                                                                                             {{d.expiryDate | date:'MM-dd-yyyy'}}
                                                                                         </td>
                                                                                         <td>
-                                                                                            <input type="checkbox" />
+                                                                                            
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" />
                                                                                         </td>
-
+                                                                                        <td>
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" />
+                                                                                        </td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
