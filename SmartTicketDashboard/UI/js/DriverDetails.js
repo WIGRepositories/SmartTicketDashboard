@@ -1,6 +1,6 @@
 ﻿// JavaScript source code
 // JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap',  'angularFileUpload'])
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
 
 app.directive('file-input', function ($parse) {
     return {
@@ -184,21 +184,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
     //        $scope.Companies = response.data;
     //       // $scope.Dl.CompanyId = $scope.Companies[0];
-           
+
     //    });
     //}
-    
+
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
         });
-       // $scope.imageSrc = $scope.listdrivers.Photo;
+        // $scope.imageSrc = $scope.listdrivers.Photo;
     }
-    $scope.DocFiles = [];    
+    $scope.DocFiles = [];
 
     $scope.GetCountry = function () {
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
-            $scope.Countries = response.data;            
+            $scope.Countries = response.data;
         });
     }
 
@@ -214,115 +214,165 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.saveNew = function (Driverlist,flag) {
-      
-        
-        //if (Driverlist.Id == null) {
-        //    alert('Please Enter CompanyId');
-        //    return;
-        //}
-        //if (Driverlist.NAme == null) {
-        //    alert('Please Enter NAme');
-        //    return;
-        //}
-        //if (Driverlist.Address == null) {
-        //    alert('Please Enter Address');
-        //    return;
-        //}
-        //if (Driverlist.City == null) {
-        //    alert('Please Enter City');
-        //    return;
-        //}
-        //if (Driverlist.Pin == null) {
-        //    alert('Please Enter Pin');
-        //    return;
-        //}
-        //if (Driverlist.PAddress == null) {
-        //    alert('Please Enter PAddress');
-        //    return;
-        //}
-        //if (Driverlist.PCity == null) {
-        //    alert('Please Enter PCity');
-        //    return;
-        //}
-        //if (Driverlist.PPin == null) {
-        //    alert('Please Enter PPin');
-        //    return;
-        //}
-        //if (Driverlist.OffMobileNo == null) {
-        //    alert('Please Enter OffMobileNo');
-        //    return;
-        //}
-        //if (Driverlist.PMobNo == null) {
-        //    alert('Please Enter PMobNo');
-        //    return;
-        //}
-        //if (Driverlist.DOB == null) {
-        //    alert('Please Enter DOB');
-        //    return;
-        //}
-        //if (Driverlist.DOJ == null) {
-        //    alert('Please Enter DOJ');
-        //    return;
-        //}
-        //if (Driverlist.BloodGroup == null) {
-        //    alert('Please Enter BloodGroup');
-        //    return;
-        //}       
-       
-        
+    $scope.GetFileContent = function (f) {
+        if (f.Id == -1) {
+            //this is newly added document, hence show without going to db
+            for (cnt = 0; cnt < $scope.currobj.files1.length; cnt++) {
+                if ($scope.currobj.files1[cnt].docName == f.docName) {
+                    openPDF(f.docContent, f.docName);
+                }
+            }
 
-        var Driverlist = {
+        }
+        else {
+            // var data = $scope.currobj.files1[0];  
 
-            flag:'I',
-            DId:-1,
-            Country: Driverlist.Country.Id,
-            NAme: Driverlist.NAme,
-            Address: Driverlist.Address,
-            City: Driverlist.City,
-            Pin: Driverlist.Pin,
-            PermanentAddress: Driverlist.PAddress,
-            PCity: Driverlist.PCity,
-            PermanentPin: Driverlist.PPin,
-            OffMobileNo: Driverlist.OffMobileNo,
-            Mobilenumber: Driverlist.PMobNo,
-            DOB: Driverlist.DOB,
-            DOJ: Driverlist.DOJ,
-            BloodGroup: Driverlist.BloodGroup,          
-            Remarks: Driverlist.Remarks,
-            Photo: $scope.imageSrc ,
-            drivercode: Driverlist.DriverCode,
-            FirstName: Driverlist.firstname,
-            LastName: Driverlist.Lname,
-            EmailId: Driverlist.Email,
-            Status: Driverlist.Status.Id,
-            VehicleGroup: Driverlist.Vg.Id
+            //get the file content from db
+            $http.get('/api/DriverMaster/FileContent?docId=' + f.Id + '&docCategoryId=1').then(function (res, data) {
+                $scope.docDetails = res.data[0];
+                openPDF($scope.docDetails.FileContent, res.data[0].FileName);
+            });
+        }
+    }
+
+    function openPDF(resData, fileName) {
+
+        var blob = null;
+        var ext = fileName.split('.').pop();
+        if (ext == 'csv') {
+            blob = new Blob([resData], { type: "text/csv" });
+            saveAs(blob, fileName);
+        }
+        else {
+
+            var ieEDGE = navigator.userAgent.match(/Edge/g);
+            var ie = navigator.userAgent.match(/.NET/g); // IE 11+
+            var oldIE = navigator.userAgent.match(/MSIE/g);
+
+            if (ie || oldIE || ieEDGE) {
+                blob = b64toBlob(resData, (ext == 'csv') ? 'text/csv' : 'application/pdf');
+                // window.open(blob, '_blank');
+                //  window.navigator.msSaveBlob(blob, fileName);
+                saveAs(blob, fileName);
+                //openReportWindow('test', resData, 1000, 700);
+                //window.open(resData, '_blank');
+                //  var a = document.createElement("a");
+                //  document.body.appendChild(a);
+                //  a.style = "display: none";
+                //  a.href = resData;
+                //  a.download = fileName;
+                ////  a.onclick = "window.open(" + fileURL + ", 'mywin','left=200,top=20,width=1000,height=800,toolbar=1,resizable=0')";
+                //  a.click(); 
+
+            }
+            else {
+
+                if (ext == 'csv' || ext == 'pdf') {
+                    blob = b64toBlob(resData, (ext == 'csv') ? 'text/csv' : 'application/pdf');
+                    saveAs(blob, fileName);
+                }
+                else {
+                    openReportWindow(fileName, resData, 1000, 700);
+                }
+                // newWindow =   window.open(resData, 'newwin', 'left=200,top=20,width=1000,height=700,toolbar=1,resizable=0');
+                //   timerObj = window.setInterval("ResetTitle('"+fileName+"')", 10);
+            }
+        }
+    }
+
+
+    var winLookup;
+    var showToolbar = false;
+    function openReportWindow(m_title, m_url, m_width, m_height) {
+        var strURL;
+        var intLeft, intTop;
+
+        strURL = m_url;
+
+        // Check if we've got an open window.
+        if ((winLookup) && (!winLookup.closed))
+            winLookup.close();
+
+        // Set up the window so that it's centered.
+        intLeft = (screen.width) ? ((screen.width - m_width) / 2) : 0;
+        intTop = 20;//(screen.height) ? ((screen.height - m_height) / 2) : 0;
+
+        // Open the window.
+        winLookup = window.open('', 'winLookup', 'scrollbars=no,resizable=yes,toolbar=' + (showToolbar ? 'yes' : 'no') + ',height=' + m_height + ',width=' + m_width + ',top=' + intTop + ',left=' + intLeft);
+        checkPopup(m_url, m_title);
+
+        // Set the window opener.
+        if ((document.window != null) && (!winLookup.opener))
+            winLookup.opener = document.window;
+
+        // Set the focus.
+        if (winLookup.focus)
+            winLookup.focus();
+    }
+
+    function checkPopup(m_url, m_title) {
+        if (winLookup.document) {
+            // winLookup.document.write('<html><head><title>' + m_title + '</title></head><body height="100%" width="100%"><embed src="' + m_url + '" height="100%" width="100%" /></body></html>');
+
+            var ext = m_title.split('.').pop();
+            switch (ext) {
+                case 'pdf':
+
+                    var objbuilder = '';
+                    objbuilder += ('<object width="100%" height="100%"      data="');
+                    objbuilder += (m_url);
+                    objbuilder += ('" type="application/pdf" class="internal">');
+                    objbuilder += ('<embed src="');
+                    objbuilder += (m_url);
+                    objbuilder += ('" type="application/pdf" />');
+                    objbuilder += ('</object>');
+
+                    // winLookup.document.write('<html><head><title>' + m_title + '</title></head><body height="100%" width="100%"><object  data="' + m_url + '" height="100%" width="100%" ></object></body></html>');
+                    winLookup.document.write('<html><head><title>' + m_title + '</title></head><body height="100%" width="100%">' + objbuilder + '</body></html>');
+                    //winLookup.document.href = m_url;
+                    break;
+                default:
+                    winLookup.document.write('<html><head><title>' + m_title + '</title></head><body height="100%" width="100%"><img src="' + m_url + '" height="100%" width="100%" /></body></html>');
+                    break;
+            }
+
+        } else {
+            // if not loaded yet
+            setTimeout(checkPopup(m_url, m_title), 10); // check in another 10ms
+        }
+    }
+
+
+    function b64toBlob(b64Data, contentType) {
+        contentType = contentType || '';
+        var sliceSize = 512;
+        b64Data = b64Data.replace(/^[^,]+,/, '');
+        b64Data = b64Data.replace(/\s/g, '');
+        var byteCharacters = window.atob(b64Data);
+        var byteArrays = [];
+
+        for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+            var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+            var byteNumbers = new Array(slice.length);
+            for (var i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            var byteArray = new Uint8Array(byteNumbers);
+
+            byteArrays.push(byteArray);
         }
 
-        var req = {
-            method: 'POST',
-            url: '/api/DriverMaster/Driverlist',
-            data: Driverlist
-        }
-        $http(req).then(function (response) {
-           
-            var res = response.data;            
-            window.location.href = "DriverDetails.html?DId=" + res[0].DId;
-
-        }, function (errres) {
-            var errdata = errres.data;
-            var errmssg = "Your Details Are Incorrect";
-            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            alert(errmssg);
-        });
-        $scope.currGroup = null;
-    };   
+        var blob = new Blob(byteArrays, { type: contentType });
+        return blob;
+    }
 
     $scope.Driverlist = null;
 
-    $scope.save = function (Dl,flag) {
+    $scope.save = function (Dl, flag) {
 
-        
+
         //if (Dl.CompanyId.Id == null) {
         //    alert('Please Enter CompanyId');
         //    return;
@@ -371,7 +421,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter BloodGroup');
         //    return;
         //}
-       
+
         //if (Dl.Remarks == null) {
         //    alert('Please Enter Remarks');
         //    return;
@@ -379,16 +429,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var driver = {          
+        var driver = {
 
-            flag: ($scope.selectedlistdrivers == -1)?'I':'U',
+            flag: ($scope.selectedlistdrivers == -1) ? 'I' : 'U',
             DId: Dl.DId,
             Country: Dl.Country.Id,
             NAme: Dl.NAme,
-            Address: Dl.Address,            
+            Address: Dl.Address,
             Pin: Dl.Pin,
-            PermanentAddress: Dl.PAddress,            
-            PermanentPin: Dl.PPin,            
+            PermanentAddress: Dl.PAddress,
+            PermanentPin: Dl.PPin,
             Mobilenumber: Dl.PMobNo,
             DOB: Dl.DOB,
             DOJ: Dl.DOJ,
@@ -398,8 +448,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Status: Dl.StatusId.Id,
             FirstName: Dl.Firstname,
             LastName: Dl.lastname,
-            VehicleGroup: Dl.Vg.Id
-            
+            VehicleGroup: Dl.Vg.Id,
+            IsVerified: Dl.Isverified,
+            IsApproved:Dl.IsApproved
+
 
         }
 
@@ -410,7 +462,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            window.location.href = "DriverDetails.html?DId="+res[0].DId;
+            window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -418,7 +470,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             alert(errmssg);
         });
-       
+
     };
 
 
@@ -449,19 +501,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter IsActive');
             return;
         }
-       
+
 
         var bank = {
 
-            flag: 'I',           
+            flag: 'I',
             Id: -1,
             Accountnumber: b.AccountNumber,
-            BankName:b.BankName,
+            BankName: b.BankName,
             Bankcode: b.BankCode,
             BranchAddress: b.BranchAddress,
             Country: b.Country.Id,
             IsActive: b.IsActive,
-            DriverId:$scope.selectedlistdrivers,
+            DriverId: $scope.selectedlistdrivers,
             qrcode: $scope.imageSrc1
         }
 
@@ -484,12 +536,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.sendemail = function (m, flag) {
-       
+
         if (m.ToMailId == null) {
             alert('Please Enter Email Id');
             return;
         }
-       
+
         if (m.Subject == null) {
             alert('Please Enter Subject');
             return;
@@ -506,8 +558,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter Text');
             return;
         }
-        
-       
+
+
 
         var bank = {
 
@@ -527,7 +579,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: bank
         }
         $http(req).then(function (response) {
-            var res = response.data;           
+            var res = response.data;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -551,7 +603,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.Dl = null;
         $scope.imageSrc = null;
     }
-    
+
     $scope.UploadImg = function () {
         var fileinput = document.getElementById('fileInput');
         fileinput.click();
@@ -561,15 +613,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //{ $scope.file = fileinput.files[0]; }
         //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
         //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
-    };   
+    };
     $scope.onFileSelect1 = function () {
-      
+
         fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
-           
+
             $scope.imageSrc = result;
         });
     }
-       
+
 
     $scope.SetBiggerPhoto = function (dl) {
         $scope.biggetPhoto = dl.photo;
@@ -581,7 +633,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetVehicleConfig = function () {
 
         var vc = {
-             needfleetowners:'1'//,
+            needfleetowners: '1'//,
             //needvehicleType: '1',
             //needServiceType: '1',
             ////needCompanyName: '1',
@@ -605,7 +657,34 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
 
     }
-   
+
+    $scope.UpdateIsVerified = function (d) {
+
+        DriverId: d.DriverId;
+        isVerified: d.isVerified;
+        IsApproved: d.isApproved;
+        DocType: d.docType;
+
+
+        var Docs = {
+            DriverId: d.DriverId,
+            isVerified: d.isVerified,
+            IsApproved: d.isApproved,
+            DocType: d.docType,
+            insupddelflag: '2'
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/DocumentVerification',
+            data: Docs
+        }
+        $http(req).then(function (response) {
+            alert("Saved Successfully");
+        });
+    }
+
 
     $scope.showDialog = function (message) {
 
@@ -646,7 +725,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //    $event.preventDefault();
             //    return;
             //}          
-            
+
             var doc =
                 {
                     Id: ($scope.driverDoc == null) ? -1 : $scope.driverDoc.Id,
@@ -667,15 +746,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.modifiedDoc = doc;
         });
     };
-    
-        $scope.printToCart = function (printSectionId) {
-            var innerContents = document.getElementById(printSectionId).innerHTML;
-            var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
-            popupWinindow.document.open();
-            popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + innerContents + '</html>');
-            popupWinindow.document.close();
-        }
-    
+
+    $scope.printToCart = function (printSectionId) {
+        var innerContents = document.getElementById(printSectionId).innerHTML;
+        var popupWinindow = window.open('', '_blank', 'width=600,height=700,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+        popupWinindow.document.open();
+        popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + innerContents + '</html>');
+        popupWinindow.document.close();
+    }
+
     /*save job documents */
     $scope.SaveDriverDoc = function () {
 
@@ -694,6 +773,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
             alert("Saved Successfully");
             //  $scope.DocFiles = response.data.Table;
+            $scope.Getdriverdetails();
             $scope.DocFiles = response.data;
 
             if ($scope.DocFiles) {
@@ -710,7 +790,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "";
-           // errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            // errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             $scope.modifiedDoc = null;
             $scope.showDialog(errdata);
         });
@@ -729,9 +809,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetConfigData = function () {
 
         var vc = {
-            includeFleetOwner: '1',         
+            includeFleetOwner: '1',
             includeActiveCountry: '1',
-            includeStatus: '1',           
+            includeStatus: '1',
+            includeDocumentType: '1',
             includeVehicleGroup: '1',
         };
 
@@ -813,7 +894,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
 
 
- 
+
 
 
 

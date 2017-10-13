@@ -746,6 +746,27 @@
                                                                             </div>
                                                                         </div>
                                                                     </div>
+
+                                                                    <div class="row">
+
+
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Country:<span class='require'></span></label>
+                                                                            <div class="col-md-8">
+                                                                                <select ng-options="vs.Name for vs in initdata.Table2 track by vs.Id" ng-model="Driverlist.Country" ng-init="GetConfigData();" class="form-control">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-6">
+                                                                            <label for="code" class="col-md-4 control-label" style="float:left">Vehicle Group:<span class='require'></span></label>
+                                                                            <div class="col-md-8">
+                                                                                <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Driverlist.Vg" ng-init="GetConfigData();" class="form-control">
+                                                                                    <option value="">Select</option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="form-actions">
                                                                     <div style="text-align:center">

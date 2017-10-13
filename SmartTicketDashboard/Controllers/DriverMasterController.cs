@@ -117,8 +117,8 @@ namespace SmartTicketDashboard.Controllers
             i.Value = d.DId;
             cmd.Parameters.Add(i);
 
-            SqlParameter di = new SqlParameter("@CompanyId", SqlDbType.VarChar, 50);
-            di.Value = d.Company;
+            SqlParameter di = new SqlParameter("@CountryId", SqlDbType.VarChar, 50);
+            di.Value = d.Country;
             cmd.Parameters.Add(di);
 
             SqlParameter n = new SqlParameter("@NAme", SqlDbType.VarChar, 50);
@@ -181,6 +181,18 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter sd = new SqlParameter("@Status", SqlDbType.Int);
             sd.Value = d.Status;
             cmd.Parameters.Add(sd);
+
+            SqlParameter vf = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+            vf.Value = d.VehicleGroup;
+            cmd.Parameters.Add(vf);
+
+            SqlParameter gf = new SqlParameter("@IsVerified", SqlDbType.Int);
+            gf.Value = d.IsVerified;
+            cmd.Parameters.Add(gf);
+
+            SqlParameter hd = new SqlParameter("@IsApproved", SqlDbType.Int);
+            hd.Value = d.IsApproved;
+            cmd.Parameters.Add(hd);
 
 
             DataTable dt = new DataTable();
@@ -446,6 +458,104 @@ namespace SmartTicketDashboard.Controllers
             return dt;
 
         }
+
+        [HttpGet]
+        [Route("api/DriverMaster/FileContent")]
+        public DataTable FileContent(int docId, int docCategoryId)
+        {
+
+            DataTable Tbl = new DataTable();
+            try
+            {
+
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSGetFileContent";
+                cmd.Connection = conn;
+
+                SqlParameter mid = new SqlParameter("@FileId", SqlDbType.Int);
+                mid.Value = docId;
+                cmd.Parameters.Add(mid);
+
+                SqlParameter catId = new SqlParameter("@Category", SqlDbType.Int);
+                catId.Value = docCategoryId;
+                cmd.Parameters.Add(catId);
+
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(Tbl);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return Tbl;
+        }
+
+        [HttpPost]
+        [Route("api/DriverMaster/DocumentVerification")]
+        public DataTable DocumentVerification(DriverDocuments d)
+        {
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            DataTable dt = new DataTable();
+            try
+            {
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSinsupddriverdocsverifying";
+                cmd.Connection = conn;
+
+                SqlParameter AssetId = new SqlParameter("@DriverId", SqlDbType.Int);
+                AssetId.Value = d.DriverId;
+                cmd.Parameters.Add(AssetId);
+
+                SqlParameter rootassetid = new SqlParameter("@DocType", SqlDbType.VarChar);
+                rootassetid.Value = d.docType;
+                cmd.Parameters.Add(rootassetid);
+
+
+                SqlParameter flag = new SqlParameter("@change", SqlDbType.VarChar);
+                flag.Value = d.insupddelflag;
+                cmd.Parameters.Add(flag);
+
+                SqlParameter ver = new SqlParameter("@IsVerified", SqlDbType.Int);
+                ver.Value = d.isVerified;
+                cmd.Parameters.Add(ver);
+
+
+                SqlParameter IA = new SqlParameter("@IsApproved", SqlDbType.Int);
+                IA.Value = d.IsApproved;
+                cmd.Parameters.Add(IA);
+
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                string str = ex.Message;
+
+                return dt;
+            }
+        }
+
 
        
 
