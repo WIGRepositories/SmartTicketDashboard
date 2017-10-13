@@ -740,7 +740,8 @@
                                                                                         <th>File Name</th>
                                                                                         <th>Document Type</th>
                                                                                         <th>Expiry Date</th>  
-                                                                                        <th>Is Verified?</th>                                                                                      
+                                                                                        <th>Is Verified?</th> 
+                                                                                        <th>Is Approved</th>                                                                                     
                                                                                         <th>Update</th>
                                                                                         <th>Delete</th>
                                                                                         <th>Details</th>
@@ -748,10 +749,16 @@
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
-                                                                                        <td><a href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.FileName}}</font></a></td>
+                                                                                        <td>
+                                                                                        <a ng-if="d.uploaded=1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.FileName}}</font></a>
+                                                                                            <span ng-if="d.uploaded=0">{{d.FileName}}</span>
+                                                                                        </td>
                                                                                         <td>{{d.docType}}</td>
                                                                                         <td>
                                                                                             {{d.expiryDate | date:'MM-dd-yyyy'}}
+                                                                                        </td>
+                                                                                        <td>
+                                                                                            <input type="checkbox" />
                                                                                         </td>
                                                                                         <td>
                                                                                             <input type="checkbox" />
