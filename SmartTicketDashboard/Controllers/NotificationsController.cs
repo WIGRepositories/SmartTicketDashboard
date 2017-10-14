@@ -13,12 +13,13 @@ namespace SmartTicketDashboard.Controllers
 {
     public class NotificationsController : ApiController
     {
-        [HttpGet]
-        public DataTable getNotification()
+        [HttpPost]
+        [Route("api/Notifications/GetNotifications")]
+        public DataTable GetNotifications(Notifications  not)
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getNotification credentials....");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetNotifications credentials....");
 
             //connect to database
             SqlConnection conn = new SqlConnection();
@@ -27,83 +28,130 @@ namespace SmartTicketDashboard.Controllers
 
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetNotifications";
+            cmd.CommandText = "PsGetNotifications";
             cmd.Connection = conn;
+
+            SqlParameter rid = new SqlParameter("@roleid", SqlDbType.Int);
+            rid.Value = not.RoleId;
+            cmd.Parameters.Add(rid);
+
+            SqlParameter uid = new SqlParameter("@userid", SqlDbType.Int);
+            uid.Value = not.UserId;
+            cmd.Parameters.Add(uid);
+
+            SqlParameter fdate = new SqlParameter("@fromdate", SqlDbType.DateTime);
+            fdate.Value = not.fromdate;
+            cmd.Parameters.Add(fdate);
+
+            SqlParameter tdate = new SqlParameter("@todate", SqlDbType.DateTime);
+            tdate.Value = not.todate;
+            cmd.Parameters.Add(tdate);
+
+            SqlParameter stid = new SqlParameter("@statusid", SqlDbType.Int);
+            stid.Value = not.StatusId;
+            cmd.Parameters.Add(stid);
+
+            SqlParameter catid = new SqlParameter("@categoryid", SqlDbType.Int);
+            catid.Value = not.CategoryId;
+            cmd.Parameters.Add(catid);
+
+            SqlParameter scatid = new SqlParameter("@subcategoryid", SqlDbType.Int);
+            scatid.Value = not.SubCategoryId;
+            cmd.Parameters.Add(scatid);
+
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            Tbl = ds.Tables[0];
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getNotification Credentials completed.");
+            db.Fill(Tbl);
+
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetNotifications Credentials completed.");
+
             // int found = 0;
+            return Tbl;
+
+        }
+
+        [HttpPost]
+        [Route("api/Notifications/SaveNotifications")]
+        public DataTable SaveNotifications(Notifications n)
+        {
+            DataTable Tbl = new DataTable();
+            SqlConnection conn = new SqlConnection();
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveNotifications credentials....");
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "InsUpdDeLNotifications";
+            cmd.Connection = conn;
+            conn.Open();
+
+            SqlParameter flag = new SqlParameter("@flag", SqlDbType.VarChar);
+            flag.Value = n.flag;
+            cmd.Parameters.Add(flag);
+
+            SqlParameter Aid = new SqlParameter("@Id", SqlDbType.Int);
+            Aid.Value = n.Id;
+            cmd.Parameters.Add(Aid);
+
+            SqlParameter roleid = new SqlParameter("@RoleId", SqlDbType.Int);
+            roleid.Value = n.RoleId;
+            cmd.Parameters.Add(roleid);
+
+            SqlParameter userid = new SqlParameter("@UserId", SqlDbType.Int);
+            userid.Value = n.UserId;
+            cmd.Parameters.Add(userid);
+
+            SqlParameter Title = new SqlParameter("@Title", SqlDbType.VarChar);
+            Title.Value = n.Title;
+            cmd.Parameters.Add(Title);
+
+            SqlParameter Message = new SqlParameter("@Message", SqlDbType.VarChar);
+            Message.Value = n.Message;
+            cmd.Parameters.Add(Message);
+
+            SqlParameter CreatedOn = new SqlParameter("@CreatedOn", SqlDbType.DateTime);
+            CreatedOn.Value = n.CreatedOn;
+            cmd.Parameters.Add(CreatedOn);
+
+            SqlParameter UpdatedOn = new SqlParameter("@UpdatedOn", SqlDbType.DateTime);
+            UpdatedOn.Value = n.UpdatedOn;
+            cmd.Parameters.Add(UpdatedOn);
+
+            SqlParameter updBy = new SqlParameter("@UpdatedBy", SqlDbType.Int);
+            updBy.Value = n.UpdatedBy;
+            cmd.Parameters.Add(updBy);
+
+            SqlParameter StateId = new SqlParameter("@StateId", SqlDbType.Int);
+            StateId.Value = n.StateId;
+            cmd.Parameters.Add(StateId);
+
+            SqlParameter StatusId = new SqlParameter("@StatusId", SqlDbType.Int);
+            StatusId.Value = n.StatusId;
+            cmd.Parameters.Add(StatusId);
+
+            SqlParameter CategoryId = new SqlParameter("@CategoryId", SqlDbType.Int);
+            CategoryId.Value = n.CategoryId;
+            cmd.Parameters.Add(CategoryId);
+
+            SqlParameter subcatId = new SqlParameter("@SubCategoryId", SqlDbType.Int);
+            subcatId.Value = n.SubCategoryId;
+            cmd.Parameters.Add(subcatId);
+
+            SqlParameter Active = new SqlParameter("@Active", SqlDbType.Int);
+            Active.Value = n.Active;
+            cmd.Parameters.Add(Active);
+
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(Tbl);
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveNotifications Credentials completed.");
+
             return Tbl;
         }
     }
 }
-//}
-//        [HttpPost]
-//        public DataTable saveNotifications(Notifications n)
-//        {
-//            DataTable Tbl = new DataTable();
 
-
-//            //connect to database
-//            SqlConnection conn = new SqlConnection();
-//            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
-//            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-          
-//            SqlCommand cmd = new SqlCommand();
-//            cmd.CommandType = CommandType.StoredProcedure;
-//            cmd.CommandText = "InsUpdDelNotifications";
-//            cmd.Connection = conn;
-//            conn.Open();
-
-//            SqlParameter Aid = new SqlParameter();
-//            Aid.ParameterName = "@Id";
-//            Aid.SqlDbType = SqlDbType.Int;
-//            Aid.Value = Convert.ToString(n.Id);
-//            SqlParameter gsac = new SqlParameter("@Date", SqlDbType.DateTime);
-//            gsac.Value = n.Date;
-//            cmd.Parameters.Add(gsac);
-
-//            SqlParameter mm = new SqlParameter();
-//            mm.ParameterName = "@Message";
-//            mm.SqlDbType = SqlDbType.VarChar;
-//            mm.Value = n.Message;
-//            cmd.Parameters.Add(mm);
-//            SqlParameter md = new SqlParameter();
-//            md.ParameterName = "@MessageTypeId";
-//            md.SqlDbType = SqlDbType.Int;
-//            md.Value = Convert.ToString(n.MessageTypeId);
-//            cmd.Parameters.Add(md);
-//            SqlParameter ss = new SqlParameter();
-//            ss.ParameterName = "@StatusId";
-//            ss.SqlDbType = SqlDbType.Int;
-//            ss.Value = Convert.ToString(n.StatusId);
-//            cmd.Parameters.Add(ss);
-//            SqlParameter ssi = new SqlParameter();
-//            ssi.ParameterName = "@UserId";
-//            ssi.SqlDbType = SqlDbType.Int;
-//            ssi.Value = Convert.ToString(n.UserId);
-//            cmd.Parameters.Add(ssi);
-
-//            SqlParameter nmm = new SqlParameter();
-//            nmm.ParameterName = "@Name";
-//            nmm.SqlDbType = SqlDbType.VarChar;
-//            nmm.Value = n.Name;
-//            cmd.Parameters.Add(nmm);
-//            //DataSet ds = new DataSet();
-//            //SqlDataAdapter db = new SqlDataAdapter(cmd);
-//            //db.Fill(ds);
-//            // Tbl = Tables[0];
-//            cmd.ExecuteScalar();
-//            conn.Close();
-//            // int found = 0;
-//            return Tbl;
-//        }
-//              public void Options(){}
-           
-//    }
-//}
 
 
 
