@@ -418,12 +418,12 @@
                                                             </select>
                                                         </div>-->
                                                         <div class="col-md-2">
-                                                            Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s"  id="test1">
+                                                            Fleet Owner:<select ng-options="s.Name for s in initdata.Table5 track by s.Id" ng-model="s"  id="test1">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
                                                         <div >
-                                                                Search Registration <input type="text" ng-model="Registration" />  
+                                                                Registration Number <input type="text" ng-model="Registration" />  
                                                         </div>
                                                         <div class="actions">
                                                            
@@ -558,7 +558,7 @@
                                         <div class="col-md-6">
                                             <label for="Name" class="col-md-4 control-label">Fleet Owner:<span class='require'></span></label>
                                             <div class="col-md-8">
-                                                <select ng-options="f.FleetOwnerCode for f in initdata.Table5 track by f.Id" ng-model="s" class="form-control">
+                                                <select ng-options="f.FleetOwnerCode for f in initdata.Table5  track by f.Id" ng-model="s" class="form-control">
                                                     <option value="">Select</option>
                                                 </select>
                                             </div>

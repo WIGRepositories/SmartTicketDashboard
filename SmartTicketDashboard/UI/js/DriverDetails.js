@@ -203,7 +203,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
     $scope.GetBankdetails = function () {
-        $http.get('/api/DriverMaster/GetBankdetails?DId=21').then(function (response, req) {
+        $http.get('/api/DriverMaster/GetBankdetails?DId='+$scope.selectedlistdrivers).then(function (response, req) {
             $scope.bankdetails = response.data;
         });
     }
@@ -524,6 +524,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
+            alert("Saved successfully");
             //window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
@@ -623,8 +624,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
 
-    $scope.SetBiggerPhoto = function (dl) {
-        $scope.biggetPhoto = dl.photo;
+    $scope.SetBiggerPhoto = function (b) {
+        $scope.biggetPhoto = b.QRCode;
     }
     $scope.SetQRPhoto = function () {
         $scope.SetQRPhoto = Qp.Photo;
