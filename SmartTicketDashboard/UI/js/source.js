@@ -1,5 +1,5 @@
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap']);
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $interval) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
@@ -81,31 +81,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         });
     }
 
-    //$scope.GetVehicleConfig = function () {
-
-    //    var vc = {
-    //        // needfleetowners:'1',
-    //        needvehicleType: '1',
-    //        needServiceType: '1',
-    //        needvehiclelayout: '1',
-    //        needCompanyName: '1'
-    //    };
-
-    //    var req = {
-    //        method: 'POST',
-    //        url: '/api/VehicleConfig/VConfig',
-    //        //headers: {
-    //        //    'Content-Type': undefined
-
-    //        data: vc
-
-
-    //    }
-    //    $http(req).then(function (res) {
-    //        $scope.initdata = res.data;
-    //    });
-
-    //}
+    
 
     $scope.displocations = function () {
         var maplocations = $scope.locations;
@@ -271,6 +247,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
         });
     }
 
+    $scope.activeRefresh = true;
+    $scope.c = 0; 
+    $interval(function(){
+        if($scope.activeRefresh){
+            $scope.GetDashboardDS();
+          //$scope.mssg = 'this is call no:'+ $scope.c++;
+        }
+    },10000);
+    $scope.$on('$destroy', function() {
+        $scope.activeRefresh = false; // STOP THE REFRESH
+    });
+
 });
 
 
@@ -432,37 +420,7 @@ var mycrtl1 = app.controller('myCtrl1', function ($scope, $http, $localStorage, 
     }
 
     
-    //$scope.GetVehicleConfig = function () {
-
-    //    $scope.vehicles = null;
-
-    //    var fleetowner = $scope.s;
-
-    //    if (fleetowner == null) {
-    //        return;
-    //    }
-
-
-    //    var vc = {
-    //        needvehicleRegno: '1',
-    //        fleetownerId: fleetowner.Id,
-
-    //    };
-
-    //    var req = {
-    //        method: 'POST',
-    //        url: '/api/VehicleConfig/VConfig',
-    //        //headers: {
-    //        //    'Content-Type': undefined
-    //        data: vc
-    //    }
-    //    //$http(req).then(function (res) {
-    //    //    $scope.vehicles = res.data;
-    //    //    $scope.showdialogue("Saved successfully")
-    //    //});
-    //    $scop.message = 'Hai';
-
-    //}
+    
 
     $scope.getUsersnRoles = function () {
         var s = $scope.cmp;

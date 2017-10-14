@@ -517,10 +517,10 @@
                                                                                 <tr ng-repeat="Dl in listdrivers | filter:{NAme:query,DriverCode:list,PMobNo:Mobileno}" ng-on-finish-render>
                                                                                     <td>
                                                                                         <span class="img-shadow" ng-if="Dl.photo == null">
-                                                                                            <img src="images/user.jpg" class="media-object thumb" />
+                                                                                            <img src="images/user.jpg" class="img-responsive img-circle" />
                                                                                         </span>
                                                                                         <a href="" class="img-shadow" ng-if="Dl.photo != null" ng-click="SetBiggerPhoto(Dl)">
-                                                                                            <img src="{{Dl.photo}}" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
+                                                                                            <img src="{{Dl.photo}}" class="img-responsive img-circle" data-toggle="modal" data-target="#driver-image" />
                                                                                         </a>
                                                                                     </td>
                                                                                     <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>Mobile No:{{Dl.PMobNo}}</div></td>
