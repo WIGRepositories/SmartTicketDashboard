@@ -17,13 +17,18 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     $scope.getselectval = function (seltype, flag) {
         var grpid = (seltype) ? seltype.Id : -1;
+        var curpage = $scope.page;
         if (flag == 'n') {
-            var curpage = $scope.page + 1;
-        } else if(flag == 'p') {
-            var curpage = $scope.page - 1;
+           $scope.page++;
+             curpage = $scope.page;
+        } else if (flag == 'p') {
+            $scope.page--
+             curpage = $scope.page;
         }
-        else
-            var curpage = 1;
+        else {
+            $scope.page = 1;
+             curpage = $scope.page;
+        }
 
         $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + curpage + '&maxrows=' + 5).then(function (res, data) {
             $scope.Types = res.data.Table;
@@ -31,7 +36,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
             ///loop to fill seltype
         });
-        $scope.page = curpage;
+       
         // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
 
     }

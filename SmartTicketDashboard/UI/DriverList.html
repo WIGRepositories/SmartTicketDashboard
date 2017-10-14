@@ -503,13 +503,13 @@
                                                                                 <tr class="condensed">
                                                                                     <th scope="col">Photo<span class="column-sorter"></span></th>
                                                                                     <th scope="col">User<span class="column-sorter"></span></th>
-                                                                                    <th scope="col">Driver Code<span class="column-sorter"></span></th>
-                                                                                    <th scope="col">Mobile no<span class="column-sorter"></span></th>
+                                                                                    <th scope="col">Driver Code<span class="column-sorter"></span></th>                                                                                    
                                                                                     <th scope="col">Alt. Mobile no<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Address<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Permenant Address<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Approved<span class="column-sorter"></span></th>
-                                                                                    <th scope="col">Status<span class="column-sorter"></span></th>                                                                                   
+                                                                                    <th scope="col">Status<span class="column-sorter"></span></th> 
+                                                                                    <th scope="col">State<span class="column-sorter"></span></th>                                                                                   
                                                                                     <th scope="col">Edit<span class="column-sorter"></span></th>
                                                                                 </tr>
                                                                             </thead>
@@ -523,20 +523,18 @@
                                                                                             <img src="{{Dl.photo}}" class="img-responsive img-circle" data-toggle="modal" data-target="#driver-image" />
                                                                                         </a>
                                                                                     </td>
-                                                                                    <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>{{Dl.Email}}</div></td>
+                                                                                    <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>Mobile No:{{Dl.PMobNo}}</div></td>
                                                                                     <td>{{Dl.DriverCode}}</td>
-                                                                                    <td>{{Dl.PMobNo}}</td>
                                                                                     <td>{{Dl.AltPhonenumber}}</td>
-                                                                                    <td><span>{{Dl.Address}}</span></td>
-                                                                                    <td><span>{{Dl.PAddress}}</span></td>
+                                                                                    <td>{{Dl.Address}}</td>
+                                                                                    <td><span>{{Dl.PAddress}}</span></td>                                                                                    
                                                                                     <td><input type="checkbox" checked /></td>
                                                                                     <td><span class="label label-success">online</span></td>
-
+                                                                                    <td><span>{{Dl.State}}</span></td>
                                                                                     <td>
                                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
                                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs">
-                                                                                                <i class="fa fa-edit"></i>&nbsp;
-                                                                                                Edit
+                                                                                                <i class="fa fa-edit"></i>&nbsp;                                                                                                
                                                                                             </button>
                                                                                         </a>
                                                                                     </td>

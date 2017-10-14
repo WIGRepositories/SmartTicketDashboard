@@ -623,10 +623,12 @@
 
                                             </div>
                                         </div>
-                                        <div ng-repeat=" P in paging" ng-model="Types" >
-                                            {{page}} of {{P.totalpages}} pages                          <a href="#" ng-click="getselectval(s,'p')">Prev page </a> <a href="#" ng-click="getselectval(s, 'n')">Next page </a>
+                                        <div ng-repeat=" P in paging" ng-model="Types">
+                                            {{page}} of {{P.totalpages}} pages
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <a href="#" ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </a> <a href="#" ng-click="getselectval(s, 'n')">Next page </a>
+                                            </div>
                                         </div>
-
                                     </div>
 
                                 </div>
