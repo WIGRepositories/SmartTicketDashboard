@@ -535,7 +535,7 @@
                                                     <div class="row mbm">
                                                         <div>
                                                             <font color="red">Mandatory Documents not uploaded:</font>
-                                                            <span ng-repeat="md in PendDocFiles"><a href="#" data-target="#Modal-header-new-f" data-toggle="modal"  ng-click="SetMissingDocTypes()"> {{md.Name}}</a></span>
+                                                            <span ng-repeat="md in (PendDocFiles|filter:{IsMandatory:1,uploaded:0})"><a href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()"> {{md.Name}}</a></span>
                                                         </div>
                                                     </div>
                                                    
@@ -645,7 +645,7 @@
                                                                                     </div>
                                                                                 </div>
 
-                                                                                <div class="col-md-6">
+                                                                                <!--<div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Date Of Birth</label>
                                                                                         <div class="col-sm-9 controls">
@@ -654,7 +654,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>-->
                                                                             </div>
 
                                                                             <div class="col-md-12">                                                                                
@@ -668,7 +668,7 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-md-6">
+                                                                                <!--<div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Date Of Joining</label>
                                                                                         <div class="col-sm-9 controls">
@@ -677,7 +677,7 @@
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
-                                                                                </div>
+                                                                                </div>-->
                                                                             </div>
                                                                             <div class="col-md-12">
 
@@ -1081,7 +1081,7 @@
                                         </div>
                                         <div class="col-md-6">
 
-                                            <select ng-options="d.Name for d in initdata.Table2 track by d.Id" ng-model="driverDoc.docType" style="width:100%">
+                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{uploaded:0}) track by d.Id" ng-model="driverDoc.docType" style="width:100%">
                                                 <option value="">Select</option>
                                             </select>
 
