@@ -110,17 +110,10 @@ app.directive("ngFileSelect", function () {
                     }
 
                 };
-
                 //  img.src = _URL.createObjectURL($scope.file);
-
-
-
             });
-
         }
-
     };
-
 });
 
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, fileReader, $upload, $filter) {
@@ -161,6 +154,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.bankdetails = res.data.Table2;
             $scope.Dl = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
+            $scope.PendDocFiles = res.data.Table3;
             $scope.imageSrc = $scope.Dl.Photo;
 
             for (i = 0; i < $scope.initdata.Table1.length; i++) {
@@ -195,7 +189,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         // $scope.imageSrc = $scope.listdrivers.Photo;
     }
     $scope.DocFiles = [];
-
+    $scope.PendDocFiles = [];
     $scope.GetCountry = function () {
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {
             $scope.Countries = response.data;

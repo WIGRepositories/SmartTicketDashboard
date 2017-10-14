@@ -469,8 +469,8 @@
                                                     </div>
                                                     <div class="row mbm">
                                                         <div>
-                                                            <font color="red">Mandatory Documents:</font>
-                                                            {{Dl.docType}}
+                                                            <font color="red">Mandatory Documents not uploaded:</font>
+                                                            <span ng-repeat="md in PendDocFiles"><a href="#" data-target="#Modal-header-new-f" data-toggle="modal"  ng-click="SetMissingDocTypes()"> {{md.Name}}</a></span>
                                                         </div>
                                                     </div>
                                                    
@@ -738,10 +738,10 @@
                                                                                         </td>
                                                                                         <td>
                                                                                             
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.isVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox"  ng-model="d.isApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox"  ng-model="d.IsApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
