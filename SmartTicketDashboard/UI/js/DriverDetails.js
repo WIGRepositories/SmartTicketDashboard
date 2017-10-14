@@ -150,10 +150,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
 
-        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.bankdetails = res.data.Table2;
+        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {            
             $scope.Dl = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
+            $scope.bankdetails = res.data.Table2;
             $scope.PendDocFiles = res.data.Table3;
             $scope.imageSrc = $scope.Dl.Photo;
 
@@ -167,6 +167,20 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             for (i = 0; i < $scope.initdata.Table1.length; i++) {
                 if ($scope.initdata.Table1[i].Id == $scope.Dl.VehicleGroupId) {
                     $scope.Dl.vg = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table3.length; i++) {
+                if ($scope.initdata.Table3[i].Id == $scope.Dl.CountryId) {
+                    $scope.Dl.c = $scope.initdata.Table3[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table4.length; i++) {
+                if ($scope.initdata.Table4[i].Id == $scope.Dl.FleetOwnerId) {
+                    $scope.Dl.f = $scope.initdata.Table4[i];
                     break;
                 }
             }
@@ -192,19 +206,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 }
             }
 
-            //for (i = 0; i < $scope.initdata.Table6.length; i++) {
-            //    if ($scope.initdata.Table6[i].Id == $scope.Dl.CountryId) {
-            //        $scope.Dl.cn = $scope.initdata.Table6[i];
-            //        break;
-            //    }
-            //}
+            
 
-            //for (i = 0; i < $scope.initdata.Table7.length; i++) {
-            //    if ($scope.initdata.Table7[i].Id == $scope.Dl.FleetOwnerId) {
-            //        $scope.Dl.f = $scope.initdata.Table7[i];
-            //        break;
-            //    }
-            //}
+            
 
         });
     }
@@ -406,6 +410,111 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.Driverlist = null;
 
+
+    $scope.saveNew = function (Driverlist, flag) {
+
+
+        //if (Driverlist.Id == null) {
+        //    alert('Please Enter CompanyId');
+        //    return;
+        //}
+        //if (Driverlist.NAme == null) {
+        //    alert('Please Enter NAme');
+        //    return;
+        //}
+        //if (Driverlist.Address == null) {
+        //    alert('Please Enter Address');
+        //    return;
+        //}
+        //if (Driverlist.City == null) {
+        //    alert('Please Enter City');
+        //    return;
+        //}
+        //if (Driverlist.Pin == null) {
+        //    alert('Please Enter Pin');
+        //    return;
+        //}
+        //if (Driverlist.PAddress == null) {
+        //    alert('Please Enter PAddress');
+        //    return;
+        //}
+        //if (Driverlist.PCity == null) {
+        //    alert('Please Enter PCity');
+        //    return;
+        //}
+        //if (Driverlist.PPin == null) {
+        //    alert('Please Enter PPin');
+        //    return;
+        //}
+        //if (Driverlist.OffMobileNo == null) {
+        //    alert('Please Enter OffMobileNo');
+        //    return;
+        //}
+        //if (Driverlist.PMobNo == null) {
+        //    alert('Please Enter PMobNo');
+        //    return;
+        //}
+        //if (Driverlist.DOB == null) {
+        //    alert('Please Enter DOB');
+        //    return;
+        //}
+        //if (Driverlist.DOJ == null) {
+        //    alert('Please Enter DOJ');
+        //    return;
+        //}
+        //if (Driverlist.BloodGroup == null) {
+        //    alert('Please Enter BloodGroup');
+        //    return;
+        //}       
+
+
+
+        var Driverlist = {
+
+            flag: 'I',
+            DId: -1,
+            Country: Driverlist.Country.Id,
+            NAme: Driverlist.NAme,
+            Address: Driverlist.Address,
+            City: Driverlist.City,
+            Pin: Driverlist.Pin,
+            PermanentAddress: Driverlist.PAddress,
+            PCity: Driverlist.PCity,
+            PermanentPin: Driverlist.PPin,
+            OffMobileNo: Driverlist.OffMobileNo,
+            Mobilenumber: Driverlist.PMobNo,
+            DOB: Driverlist.DOB,
+            DOJ: Driverlist.DOJ,
+            BloodGroup: Driverlist.BloodGroup,
+            Remarks: Driverlist.Remarks,
+            Photo: $scope.imageSrc,
+            drivercode: Driverlist.DriverCode,
+            FirstName: Driverlist.firstname,
+            LastName: Driverlist.Lname,
+            EmailId: Driverlist.Email,
+            Status: Driverlist.Status.Id,
+            VehicleGroup: Driverlist.Vg.Id
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/Driverlist',
+            data: Driverlist
+        }
+        $http(req).then(function (response) {
+
+            var res = response.data;
+            window.location.href = "DriverDetails.html?DId=" + res[0].DId;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
+    };
+
     $scope.save = function (Dl, flag) {
 
 
@@ -561,6 +670,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
             var res = response.data;
             alert("Saved successfully");
+            $scope.GetBankdetails();
             //window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
@@ -940,3 +1050,4 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
 
 
+ 
