@@ -529,8 +529,6 @@
                                                             <th>Description</th>
                                                             <th>Type Group</th>
                                                             <th>Active</th>
-                                                            <!--<th>List Key</th>
-                            <th>List value</th>-->
                                                             <th>Update</th>
 
                                                         </tr>
@@ -538,21 +536,13 @@
                                                     <tbody>
 
                                                         <tr ng-repeat="T in Types">
-
-
                                                             <td>{{T.Name}}</td>
                                                             <td>{{T.Description}}</td>
                                                             <td>{{T.TypeGroup}}</td>
                                                             <td><input type="checkBox" ng-checked="T.Active" disabled /></td>
 
-                                                            <!--<td>{{T.ListKey}}</td>
-                            <td>{{T.Listvalue}}</td>-->
-                                                            <td>
-                                                                {{T.Update}}
-                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
-                                                                    <i class="fa fa-edit"></i>&nbsp;
-                                                                    Edit
-                                                                </button>
+                                                            <td>{{T.Update}}<button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCompany(T);">
+                                                                    <i class="fa fa-edit"></i>&nbsp; Edit</button>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -623,10 +613,10 @@
 
                                             </div>
                                         </div>
-                                        <div ng-repeat=" P in paging" ng-model="Types">
+                                        <div ng-repeat=" P in paging" ng-model="Types" >
                                             {{page}} of {{P.totalpages}} pages
                                             <div class="col-md-offset-3 col-md-9">
-                                                <a href="#" ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </a> <a href="#" ng-click="getselectval(s, 'n')">Next page </a>
+                                                <button ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </button> <button ng-click="getselectval(s, 'n')">Next page </button>
                                             </div>
                                         </div>
                                     </div>

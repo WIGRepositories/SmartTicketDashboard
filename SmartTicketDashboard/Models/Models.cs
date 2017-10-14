@@ -54,13 +54,25 @@ namespace SmartTicketDashboard.Models
     }
     public class Notifications
     {
+        public string flag { get; set; }
         public int Id { get; set; }
-        public DateTime Date { get; set; }
+        public int RoleId { get; set; }
+        public int UserId { get; set; }
+        public string Title { get; set; }
         public string Message { get; set; }
-        public string MessageTypeId { get; set; }
-        public string StatusId { get; set; }
-        public string UserId { get; set; }
-        public string Name { get; set; }
+        public DateTime CreatedOn { get; set; }
+        public DateTime UpdatedOn { get; set; }
+        public int UpdatedBy { get; set; }
+        public int StateId { get; set; }
+        public int StatusId { get; set; }
+        public int CategoryId { get; set; }
+        public int SubCategoryId { get; set; }
+        public int Active { get; set; }
+
+
+        public object fromdate { get; set; }
+
+        public object todate { get; set; }
     }
     public class Btpos
     {
