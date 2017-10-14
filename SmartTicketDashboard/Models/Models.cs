@@ -46,7 +46,11 @@ namespace SmartTicketDashboard.Models
         public int CategoryId { get; set; }
         public int SubCategoryId { get; set; }
         public int Active { get; set; }
-       
+
+
+        public object fromdate { get; set; }
+
+        public object todate { get; set; }
     }
     public class Notifications
     {

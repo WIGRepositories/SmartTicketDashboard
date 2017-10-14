@@ -15,9 +15,9 @@ namespace SmartTicketDashboard.Controllers
 {
     public class AlertsController : ApiController
     {
-        [HttpGet]
+        [HttpPost]
         [Route("api/Alerts/GetAlerts")]
-        public DataTable GetAlerts(int roleid, int userid, DateTime fromdate, DateTime todate,int statusid, int categoryid, int  subcategoryid )
+        public DataTable GetAlerts(Alerts al)
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -33,32 +33,32 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "PsGetAlerts";
             cmd.Connection = conn;
 
-            SqlParameter uid = new SqlParameter("@roleid", SqlDbType.Int);
-            uid.Value = roleid;
-            cmd.Parameters.Add(uid);
-
-            SqlParameter rid = new SqlParameter("@userid", SqlDbType.Int);
-            rid.Value = userid;
+            SqlParameter rid = new SqlParameter("@roleid", SqlDbType.Int);
+            rid.Value = al.RoleId;
             cmd.Parameters.Add(rid);
 
+            SqlParameter uid = new SqlParameter("@userid", SqlDbType.Int);
+            uid.Value = al.UserId;
+            cmd.Parameters.Add(uid);
+
             SqlParameter fdate = new SqlParameter("@fromdate", SqlDbType.DateTime);
-            fdate.Value = fromdate;
+            fdate.Value = al.fromdate;
             cmd.Parameters.Add(fdate);
 
             SqlParameter tdate = new SqlParameter("@todate", SqlDbType.DateTime);
-            tdate.Value = todate;
+            tdate.Value = al.todate;
             cmd.Parameters.Add(tdate);
 
             SqlParameter stid = new SqlParameter("@statusid", SqlDbType.Int);
-            stid.Value = statusid;
+            stid.Value = al.StatusId;
             cmd.Parameters.Add(stid);
 
             SqlParameter catid = new SqlParameter("@categoryid", SqlDbType.Int);
-            catid.Value = categoryid;
+            catid.Value = al.CategoryId;
             cmd.Parameters.Add(catid);
 
             SqlParameter scatid = new SqlParameter("@subcategoryid", SqlDbType.Int);
-            scatid.Value = subcategoryid;
+            scatid.Value = al.SubCategoryId;
             cmd.Parameters.Add(scatid);
 
             DataSet ds = new DataSet();
