@@ -157,12 +157,54 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.PendDocFiles = res.data.Table3;
             $scope.imageSrc = $scope.Dl.Photo;
 
-            for (i = 0; i < $scope.initdata.Table1.length; i++) {
-                if ($scope.initdata.Table1[i].Id == $scope.Dl.StatusId) {
-                    $scope.Dl.vs = $scope.initdata.Table1[i];
+            for (i = 0; i < $scope.initdata.Table.length; i++) {
+                if ($scope.initdata.Table[i].Id == $scope.Dl.StatusId) {
+                    $scope.Dl.vs = $scope.initdata.Table[i];
                     break;
                 }
             }
+
+            for (i = 0; i < $scope.initdata.Table1.length; i++) {
+                if ($scope.initdata.Table1[i].Id == $scope.Dl.VehicleGroupId) {
+                    $scope.Dl.vg = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table2.length; i++) {
+                if ($scope.initdata.Table2[i].Id == $scope.Dl.VehicleTypeId) {
+                    $scope.Dl.vt = $scope.initdata.Table2[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table3.length; i++) {
+                if ($scope.initdata.Table3[i].Id == $scope.Dl.VehicleModelId) {
+                    $scope.Dl.vmo = $scope.initdata.Table3[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table4.length; i++) {
+                if ($scope.initdata.Table4[i].Id == $scope.Dl.VehicleMakeId) {
+                    $scope.Dl.vm = $scope.initdata.Table4[i];
+                    break;
+                }
+            }
+
+            //for (i = 0; i < $scope.initdata.Table6.length; i++) {
+            //    if ($scope.initdata.Table6[i].Id == $scope.Dl.CountryId) {
+            //        $scope.Dl.cn = $scope.initdata.Table6[i];
+            //        break;
+            //    }
+            //}
+
+            //for (i = 0; i < $scope.initdata.Table7.length; i++) {
+            //    if ($scope.initdata.Table7[i].Id == $scope.Dl.FleetOwnerId) {
+            //        $scope.Dl.f = $scope.initdata.Table7[i];
+            //        break;
+            //    }
+            //}
 
         });
     }
@@ -656,15 +698,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.UpdateIsVerified = function (d) {
 
         DriverId: d.DriverId;
-        isVerified: d.isVerified;
-        IsApproved: d.isApproved;
+        isVerified: d.IsVerified;
+        IsApproved: d.IsApproved;
         DocType: d.docType;
 
 
         var Docs = {
             DriverId: d.DriverId,
-            isVerified: d.isVerified,
-            IsApproved: d.isApproved,
+            isVerified: d.IsVerified,
+            IsApproved: d.IsApproved,
             DocType: d.docType,
             insupddelflag: '2'
 
@@ -676,6 +718,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: Docs
         }
         $http(req).then(function (response) {
+            var res = response.data;
             alert("Saved Successfully");
         });
     }
