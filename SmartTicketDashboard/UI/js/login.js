@@ -79,6 +79,7 @@ var myCtrl = myapp1.controller('myCtrl', function ($scope, $http, $localStorage,
                 //if the user has role, then get the details and save in session
                 $localStorage.uname = res.data[0].uname;
                 $localStorage.userdetails = res.data;
+                $localStorage.pagesize = 10;
                 var roleid = $localStorage.userdetails[0].roleid;
                 window.location.href = "UI/index.html";
 

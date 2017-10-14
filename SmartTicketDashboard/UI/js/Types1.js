@@ -8,6 +8,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
     $scope.page = 1;
+    $scope.pagesize=$localStorage.pagesize;
     $scope.dashboardDS = $localStorage.dashboardDS;
     $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
         $scope.TypeGroups = res.data;
@@ -30,7 +31,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
              curpage = $scope.page;
         }
 
-        $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + curpage + '&maxrows=' + 5).then(function (res, data) {
+        $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + curpage + '&maxrows=' +10).then(function (res, data) {
             $scope.Types = res.data.Table;
             $scope.paging = res.data.Table1;
 

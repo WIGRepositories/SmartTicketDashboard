@@ -723,6 +723,7 @@ namespace SmartTicketDashboard.Models
         public string EmailId { get; set; }
         public string DriverCode { get; set; }
         public string FleetOwner { get; set; }
+        public int CurrentStateId { get; set; }
 
     }
     //Jagan Updated On18th Aug End
@@ -812,6 +813,7 @@ namespace SmartTicketDashboard.Models
         public string DriverCode { get; set; }        
         public string Address { get; set; }
         public string Pin { get; set; }
+        public int CurrentStateId { get; set; }
        
     }
     public class UsersGroup
