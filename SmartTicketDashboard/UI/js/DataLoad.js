@@ -453,7 +453,8 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         Remarks: data[20],
                         VehicleModelId: data[21],
                         CompanyId: data[22],
-                        NAme:data[23],
+                        NAme: data[23],
+                        CurrentStateId:data[24],
                         flag: 'I'
                     }
                     return list;
@@ -813,7 +814,8 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         Pin: data[19],
                         PermanentPin: data[20],
                         EmailId: data[21],
-                        DriverCode: data[22],                                                                                               
+                        DriverCode: data[22],
+                        CurrentStateId:data[23],
                         inspudflag: 'I'
                     }
                     return list;
