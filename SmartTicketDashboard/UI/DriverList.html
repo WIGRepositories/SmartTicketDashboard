@@ -15,71 +15,7 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-    <style>
-       
-
-        .product_view .modal-dialog {
-            max-width: 100px;
-            width: 100%;
-        }
-
-        .product_view1 .modal-dialog {
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .pre-cost {
-            text-decoration: line-through;
-            color: #a5a5a5;
-        }
-
-        .space-ten {
-            padding: 10px 0;
-        }
-
-        /*top-nav {
-            width: 100%;
-            font-family: tahoma,Helvetica, Sans-Serif;
-        }*/
-
-       
-
-        .close-mark1 {
-            float: right !important;
-            margin-right: 10px;
-            margin-top: -15px;
-        }
-        .imgsize{
-            width:400px;
-            height:400px
-        }
-        .button {
-            border: 4px solid #26759E;
-            -webkit-box-shadow: #878787 0px 2px 2px;
-            -moz-box-shadow: #878787 0px 2px 2px;
-            box-shadow: #878787 0px 2px 2px;
-            -webkit-border-radius: 23px;
-            -moz-border-radius: 23px;
-            border-radius: 23px;
-            font-size: 13px;
-            font-family: arial, helvetica, sans-serif;
-            padding: 10px 20px 10px 20px;
-            text-decoration: none;
-            display: inline-block;
-            text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
-            font-weight: bold;
-            color: #FFFFFF;
-            background-color: #3093C7;
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#3093C7), to(#1C5A85));
-            background-image: -webkit-linear-gradient(top, #3093C7, #1C5A85);
-            background-image: -moz-linear-gradient(top, #3093C7, #1C5A85);
-            background-image: -ms-linear-gradient(top, #3093C7, #1C5A85);
-            background-image: -o-linear-gradient(top, #3093C7, #1C5A85);
-            background-image: linear-gradient(to bottom, #3093C7, #1C5A85);
-            filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#3093C7, endColorstr=#1C5A85);
-        }
-    </style>
-
+   
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetMaster();" ng-model="listdrivers">
@@ -490,7 +426,7 @@
                                                             <div class="col-md-2">
                                                                 Mobile no <input type="text" ng-model="Mobileno" />
                                                             </div>
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px; margin-top:20px;">Add Driver</button>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px; margin-top:20px;" ng-click="GetConfigData();">Add Driver</button>
                                                         </div>
 
                                                         <div class="row">
@@ -503,13 +439,14 @@
                                                                                 <tr class="condensed">
                                                                                     <th scope="col">Photo<span class="column-sorter"></span></th>
                                                                                     <th scope="col">User<span class="column-sorter"></span></th>
-                                                                                    <th scope="col">Driver Code<span class="column-sorter"></span></th>                                                                                    
+                                                                                    <th scope="col">Mobile No.<span class="column-sorter"></span></th> 
                                                                                     <th scope="col">Alt. Mobile no<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Address<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Permenant Address<span class="column-sorter"></span></th>
+                                                                                    <th scope="col">Vehicle Group<span class="column-sorter"></span></th> 
                                                                                     <th scope="col">Approved<span class="column-sorter"></span></th>
                                                                                     <th scope="col">Status<span class="column-sorter"></span></th> 
-                                                                                    <th scope="col">State<span class="column-sorter"></span></th>                                                                                   
+                                                                                    <th scope="col">State<span class="column-sorter"></span></th>                                                                                       
                                                                                     <th scope="col">Edit<span class="column-sorter"></span></th>
                                                                                 </tr>
                                                                             </thead>
@@ -523,14 +460,15 @@
                                                                                             <img src="{{Dl.photo}}" class="img-responsive img-circle" data-toggle="modal" data-target="#driver-image" />
                                                                                         </a>
                                                                                     </td>
-                                                                                    <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>Mobile No:{{Dl.PMobNo}}</div></td>
-                                                                                    <td>{{Dl.DriverCode}}</td>
+                                                                                    <td><a href="DriverDetails.html?DId={{Dl.DId}}"><h6 class="media-heading">{{Dl.NAme}}</h6></a><div>Driver Code:{{Dl.DriverCode}}</div></td>
+                                                                                    <td>{{Dl.PMobNo}}</td>
                                                                                     <td>{{Dl.AltPhonenumber}}</td>
                                                                                     <td>{{Dl.Address}}</td>
-                                                                                    <td><span>{{Dl.PAddress}}</span></td>                                                                                    
+                                                                                    <td><span>{{Dl.PAddress}}</span></td>                                                                                                               <td><span>{{Dl.VehicleGroup}}</span></td>
                                                                                     <td><input type="checkbox" checked /></td>
-                                                                                    <td><span class="label label-success">online</span></td>
-                                                                                    <td><span>{{Dl.State}}</span></td>
+                                                                                    <td><span class="label label-success">{{Dl.Status}}</span></td>
+                                                                                    <td><span>{{Dl.CurrentState}}</span></td>
+                                                                                  
                                                                                     <td>
                                                                                         <a href="DriverDetails.html?DId={{Dl.DId}}">
                                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs">
@@ -651,7 +589,7 @@
                                                                     <div class="row">
                                                                         <div class="col-md-6">
                                                                             <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Mobile Number:</label>
-                                                                            <div class="col-md-8"><input id="inputMobileNumber" type="text" ng-model="Driverlist.PMobNo" class="form-control" /><span class="help-block"></span></div>
+                                                                            <div class="col-md-8"><input id="inputMobileNumber" type="text" ng-model="Driverlist.PMobNo" class="form-control" ng-change="setDCode()"/><span class="help-block"></span></div>
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Fleet Owner:</label>
@@ -699,7 +637,7 @@
                                                                         </div>
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" style="float:left">Driver Code:<span class='require'></span></label>
-                                                                            <div class="col-md-8"><input id="inputPin" type="text" ng-model="Driverlist.DriverCode" class="form-control" /><span class="help-block"></span></div>
+                                                                            <div class="col-md-8"><input id="inputPin" type="text" ng-model="Driverlist.DriverCode" class="form-control" disabled/><span class="help-block"></span></div>
                                                                         </div>
                                                                     </div>
 
@@ -737,7 +675,7 @@
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" style="float:left">Status:<span class='require'></span></label>
                                                                             <div class="col-md-8">
-                                                                                <select ng-options="vs.Name for vs in initdata.Table track by vs.Id" ng-model="Driverlist.Status" ng-init="GetConfigData();" class="form-control">
+                                                                                <select ng-options="vs.Name for vs in initdata.Table track by vs.Id" ng-model="Driverlist.Status"  class="form-control">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
@@ -750,7 +688,7 @@
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" style="float:left">Country:<span class='require'></span></label>
                                                                             <div class="col-md-8">
-                                                                                <select ng-options="vs.Name for vs in initdata.Table2 track by vs.Id" ng-model="Driverlist.Country" ng-init="GetConfigData();" class="form-control">
+                                                                                <select ng-options="vs.Name for vs in initdata.Table2 track by vs.Id" ng-model="Driverlist.Country"  class="form-control">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
@@ -758,7 +696,7 @@
                                                                         <div class="col-md-6">
                                                                             <label for="code" class="col-md-4 control-label" style="float:left">Vehicle Group:<span class='require'></span></label>
                                                                             <div class="col-md-8">
-                                                                                <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Driverlist.Vg" ng-init="GetConfigData();" class="form-control">
+                                                                                <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Driverlist.Vg"  class="form-control">
                                                                                     <option value="">Select</option>
                                                                                 </select>
                                                                             </div>

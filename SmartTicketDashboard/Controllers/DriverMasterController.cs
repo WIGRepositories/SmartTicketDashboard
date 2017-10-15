@@ -352,7 +352,10 @@ namespace SmartTicketDashboard.Controllers
                 er.Value = b.qrcode;
                 cmd.Parameters.Add(er);
 
-                
+                SqlParameter Code1 = new SqlParameter("@Code", SqlDbType.VarChar);
+                Code1.Value = b.DriverCode;
+                cmd.Parameters.Add(Code1);
+
                 DataTable dt = new DataTable();
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
@@ -366,6 +369,7 @@ namespace SmartTicketDashboard.Controllers
                         var qrcode = GetQRCode(code);
                         er.Value = qrcode;
 
+                        Code1.Value = code;
                         dt = new DataTable();                        
                         da.Fill(dt);
                     }

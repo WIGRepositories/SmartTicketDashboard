@@ -1766,6 +1766,7 @@ namespace SmartTicketDashboard.Models
         public int includeFleetOwner { get; set; }
         public int includeUserType { get; set; }
         public int includeAuthType { get; set; }
+        public int includeState { get; set; }
     }
     public class VehicleConfig
     {
@@ -2834,6 +2835,7 @@ namespace SmartTicketDashboard.Models
         public string Country { get; set; }
         public int IsActive { get; set; }
         public int DriverId { get; set; }
+        public string DriverCode { get; set; }
         public string qrcode { get; set; }
     }
 

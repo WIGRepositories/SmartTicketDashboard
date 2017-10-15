@@ -151,42 +151,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
 
-    $scope.Getdriverdetails = function () {
-
-        $scope.Dl = null;
-
-        $scope.selectedlistdrivers = parseLocation(window.location.search)['DId'];
-
-        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.bankdetails = res.data.Table2;
-            $scope.Dl = res.data.Table[0];
-            $scope.DocFiles = res.data.Table1;
-            $scope.imageSrc = $scope.Dl.Photo;
-
-            for (i = 0; i < $scope.initdata.Table1.length; i++) {
-                if ($scope.initdata.Table1[i].Id == $scope.Dl.StatusId) {
-                    $scope.Dl.vs = $scope.initdata.Table1[i];
-                    break;
-                }
-            }
-
-        });
-    }
-    $scope.getselectval = function (v) {
-
-        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.listdrivers = res.data;
-        });
-
-    }
-
-    //$scope.GetCompanys = function () {
-    //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
-    //        $scope.Companies = response.data;
-    //       // $scope.Dl.CompanyId = $scope.Companies[0];
-           
-    //    });
-    //}
+    
     
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
@@ -212,6 +177,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/CurrentState').then(function (response, req) {
             $scope.CurrentState = response.data;
         });
+    }
+
+    $scope.setDCode = function () {
+        $scope.Driverlist.DriverCode = 'D'+$scope.Driverlist.PMobNo;
     }
 
     $scope.saveNew = function (Driverlist,flag) {
@@ -268,9 +237,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //if (Driverlist.BloodGroup == null) {
         //    alert('Please Enter BloodGroup');
         //    return;
-        //}       
-       
-        
+        //}             
 
         var Driverlist = {
 
@@ -291,7 +258,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             BloodGroup: Driverlist.BloodGroup,          
             Remarks: Driverlist.Remarks,
             Photo: $scope.imageSrc ,
-            drivercode: Driverlist.DriverCode,
+            drivercode: 'D'+Driverlist.PMobNo,
             FirstName: Driverlist.firstname,
             LastName: Driverlist.Lname,
             EmailId: Driverlist.Email,
@@ -743,7 +710,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.Getdriverdetails();
+           // $scope.Getdriverdetails();
         });
     }
 

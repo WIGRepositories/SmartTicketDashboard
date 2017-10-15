@@ -142,8 +142,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         return obj;
     };
-
-
+    
     $scope.Getdriverdetails = function () {
 
         $scope.Dl = null;
@@ -157,9 +156,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.PendDocFiles = res.data.Table3;
             $scope.imageSrc = $scope.Dl.Photo;
 
+            //assign fleet owner
+            //assign country
+            //assign vehicle group
+            //assign state
+            //assign blood group
+
+            for (i = 0; i < $scope.initdata.Table5.length; i++) {
+                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
+                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
+                    break;
+                }
+            }
+
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.Dl.StatusId) {
-                    $scope.Dl.vs = $scope.initdata.Table[i];
+                    $scope.Dl.StatusId = $scope.initdata.Table[i];
                     break;
                 }
             }
@@ -173,14 +185,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             for (i = 0; i < $scope.initdata.Table3.length; i++) {
                 if ($scope.initdata.Table3[i].Id == $scope.Dl.CountryId) {
-                    $scope.Dl.c = $scope.initdata.Table3[i];
+                    $scope.Dl.Country = $scope.initdata.Table3[i];
                     break;
                 }
             }
 
             for (i = 0; i < $scope.initdata.Table4.length; i++) {
                 if ($scope.initdata.Table4[i].Id == $scope.Dl.FleetOwnerId) {
-                    $scope.Dl.f = $scope.initdata.Table4[i];
+                    $scope.Dl.fleetowner = $scope.initdata.Table4[i];
                     break;
                 }
             }
@@ -212,22 +224,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
-    $scope.getselectval = function (v) {
-
-        $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {
-            $scope.listdrivers = res.data;
-        });
-
-    }
-
-    //$scope.GetCompanys = function () {
-    //    $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
-    //        $scope.Companies = response.data;
-    //       // $scope.Dl.CompanyId = $scope.Companies[0];
-
-    //    });
-    //}
-
+    
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;
@@ -493,7 +490,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             LastName: Driverlist.Lname,
             EmailId: Driverlist.Email,
             Status: Driverlist.Status.Id,
-            VehicleGroup: Driverlist.Vg.Id
+            VehicleGroup: Driverlist.vg.Id
         }
 
         var req = {
@@ -593,7 +590,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Status: Dl.StatusId.Id,
             FirstName: Dl.Firstname,
             LastName: Dl.lastname,
-            VehicleGroup: Dl.Vg.Id,
+            VehicleGroup: Dl.vg.Id,
             IsVerified: Dl.Isverified,
             IsApproved:Dl.IsApproved
 
@@ -943,9 +940,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.showDialog(errdata);
         });
     }
-
-
-
+    
     function getdate(date) {
         var formateddate = date;
 
@@ -965,6 +960,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             includeStatus: '1',
             includeDocumentType: '1',
             includeVehicleGroup: '1',
+            includeState:'1'
         };
 
         var req = {
@@ -1027,6 +1023,37 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.isChecked = function () {
         return $scope.checkedArr.length === $scope.UserDocs.length;
     };
+       
+    $scope.printDiv = function (b) {
+
+        var printContents = b.QRCode;//document.getElementById(divName).innerHTML;
+        var originalContents = document.body.innerHTML;
+
+        if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
+            var popupWin = window.open('', '_blank', 'width=800,height=610,scrollbars=no,menubar=no,toolbar=no,location=no,status=no,titlebar=no');
+            popupWin.window.focus();
+            popupWin.document.write('<!DOCTYPE html><html><head>' +
+                '<link rel="stylesheet" type="text/css" href="style.css" />' +
+                '</head><body onload="window.print()"><div class="reward-body"> <img src="' + printContents + '"/></div></html>');
+            popupWin.onbeforeunload = function (event) {
+                popupWin.close();
+                return '.\n';
+            };
+            popupWin.onabort = function (event) {
+                popupWin.document.close();
+                popupWin.close();
+            }
+           
+        } else {
+            var popupWin = window.open('', '_blank', 'width=800,height=800');
+            popupWin.document.open();
+            popupWin.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()"><img src="' + printContents + '"/></html>');
+            popupWin.document.close();
+        }
+        popupWin.document.close();
+
+        return false;
+    }
 });
 app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
