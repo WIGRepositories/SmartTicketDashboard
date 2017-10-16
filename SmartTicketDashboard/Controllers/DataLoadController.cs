@@ -1096,6 +1096,12 @@ namespace SmartTicketDashboard.Controllers
                     fo.Value = p.FleetOwner;
                     cmd.Parameters.Add(fo);
 
+                    SqlParameter cs = new SqlParameter();
+                    cs.ParameterName = "@CurrentStateId";
+                    cs.SqlDbType = SqlDbType.VarChar;
+                    cs.Value = p.CurrentStateId;
+                    cmd.Parameters.Add(cs);
+
 
 
                     SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
@@ -1613,9 +1619,13 @@ namespace SmartTicketDashboard.Controllers
                     dc.ParameterName = "@DriverCode";
                     dc.SqlDbType = SqlDbType.VarChar;
                     dc.Value = dva.DriverCode;
-                    cmd.Parameters.Add(dc);                 
+                    cmd.Parameters.Add(dc);
 
-                    
+                    SqlParameter cs = new SqlParameter();
+                    cs.ParameterName = "@CurrentStateId";
+                    cs.SqlDbType = SqlDbType.VarChar;
+                    cs.Value = dva.CurrentStateId;
+                    cmd.Parameters.Add(cs);
 
                     SqlParameter dvaflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     dvaflag.Value = dva.inspudflag;
