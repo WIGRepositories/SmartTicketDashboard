@@ -150,9 +150,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         return obj;
     };
 
-
-    
-    
+ 
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?DId=1').then(function (res, data) {
             $scope.listdrivers = res.data;

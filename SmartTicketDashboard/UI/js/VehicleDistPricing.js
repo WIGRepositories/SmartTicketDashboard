@@ -45,8 +45,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         if (Dist.ToDate == null) {
             alert('Please enter ToDate.');
             return;
-        }            
-       
+        }
+
         if (Dist.c.Id == null) {
             alert('Please enter Country.');
             return;
@@ -68,7 +68,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Amount: Dist.Amount,
             PerUnitPrice: Dist.PerUnitPrice,
             CountryId: Dist.c.Id,
-            VehicleGroupId:Dist.v.Id,
+            VehicleGroupId: Dist.v.Id,
             insupddelflag: 'I'
         }
 
@@ -124,11 +124,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetConfigData = function () {
 
         var vc = {
-           
+
             includeActiveCountry: '1',
             includeVehicleGroup: '1',
-            includeVehicleType:'1'
-            
+            includeVehicleType: '1'
+
         };
 
         var req = {
