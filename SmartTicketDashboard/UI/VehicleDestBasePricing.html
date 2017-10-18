@@ -415,13 +415,13 @@
                                                     <div class="row mbm" ng-init="GetConfigData()">
                                                         <div class="col-md-3">
                                                             Country:<select ng-options="ct.Name for ct in initdata.Table2 track by ct.Id" ng-model="ct" ng-change="GetDistanceBasePricing()">
-    <option value="">Select</option>
-</select>
+                                                                <option value="">Select</option>
+                                                            </select>
                                                         </div>
                                                         <div class="col-md-3">
                                                             Vehicle Group:<select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" ng-change="GetDistanceBasePricing()">
-    <option value="">Select</option>
-</select>
+                                                                <option value="">Select</option>
+                                                            </select>
                                                         </div>
                                                         <div class="actions">
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Add Pricing</button>
@@ -456,7 +456,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
-                                                                           
+
                                                                         </div>
 
                                                                         <div class="row">
@@ -469,7 +469,7 @@
                                                                                 <label for="Fax" class="col-md-4 control-label">ToKm:<span class='require'></span></label>
                                                                                 <div class="col-md-8"><input id="ToKm" type="text" ng-model="Dist.ToKm" class="form-control" /><span class="help-block"></span></div>
                                                                             </div>
-                                                                            
+
                                                                         </div>
 
 
@@ -518,7 +518,7 @@
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
-                                                                        </div>  
+                                                                        </div>
                                                                         <div class="form-actions">
                                                                             <div class="col-md-offset-5 col-md-8">
                                                                                 <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Dist, 'I');">Save</button>

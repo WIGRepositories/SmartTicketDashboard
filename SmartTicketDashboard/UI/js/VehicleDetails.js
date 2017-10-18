@@ -113,7 +113,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileDetails?VID=' + $scope.selectedVehicle).then(function (res, data) {
             $scope.vDetails = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
+            $scope.PendDocFiles = res.data.Table2;
             $scope.imageSrc = $scope.vDetails.Photo;
+            $scope.imageSrc1 = $scope.vDetails.FrontImage;
+            $scope.imageSrc2 = $scope.vDetails.BackImage;
+            $scope.imageSrc3 = $scope.vDetails.RightImage;
+            $scope.imageSrc4 = $scope.vDetails.LeftImage;
 
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {
@@ -193,7 +198,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });       
     }
 
-
+    $scope.PendDocFiles = [];
     $scope.SetMissingDocTypes = function () {
 
     }
@@ -613,7 +618,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             CountryId: (vDetails.cn == null || vDetails.cn.Id == '') ? null : vDetails.cn.Id,
             DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
             Photo: $scope.imageSrc,
-            
+            FrontImage: $scope.imageSrc1,
+            BackImage: $scope.imageSrc2,
+            RightImage: $scope.imageSrc3,
+            LeftImage:$scope.imageSrc4
 
         }
 
@@ -756,4 +764,79 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+
+    $scope.UploadImg1 = function () {
+        var fileinput1 = document.getElementById('fileInput1');
+        fileinput1.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect2 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc1 = result;
+        });
+    }
+
+
+    $scope.UploadImg2 = function () {
+        var fileinput2 = document.getElementById('fileInput2');
+        fileinput2.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect3 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc2 = result;
+        });
+    }
+
+    $scope.UploadImg3 = function () {
+        var fileinput3 = document.getElementById('fileInput3');
+        fileinput3.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect4 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc3 = result;
+        });
+    }
+
+    $scope.UploadImg4 = function () {
+        var fileinput4 = document.getElementById('fileInput4');
+        fileinput4.click();
+
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect5 = function () {
+
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
+
+            $scope.imageSrc4 = result;
+        });
+    }
+
+    
 });

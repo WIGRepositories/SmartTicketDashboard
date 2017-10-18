@@ -300,6 +300,22 @@ namespace SmartTicketDashboard.Controllers
             ctr.Value = v.CountryId;
             cmd.Parameters.Add(ctr);
 
+            SqlParameter fi = new SqlParameter("@FrontImage", SqlDbType.VarChar);
+            fi.Value = v.FrontImage;
+            cmd.Parameters.Add(fi);
+
+            SqlParameter bi = new SqlParameter("@BackImage", SqlDbType.VarChar);
+            bi.Value = v.BackImage;
+            cmd.Parameters.Add(bi);
+
+            SqlParameter ri = new SqlParameter("@RightImage", SqlDbType.VarChar);
+            ri.Value = v.RightImage;
+            cmd.Parameters.Add(ri);
+
+            SqlParameter li = new SqlParameter("@LeftImage", SqlDbType.VarChar);
+            li.Value = v.LeftImage;
+            cmd.Parameters.Add(li);
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
