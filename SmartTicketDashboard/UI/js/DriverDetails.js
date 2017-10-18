@@ -152,8 +152,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/Getdriverdetails?DId=' + $scope.selectedlistdrivers).then(function (res, data) {            
             $scope.Dl = res.data.Table[0];
             $scope.DocFiles = res.data.Table1;
-            $scope.bankdetails = res.data.Table2;
-            $scope.PendDocFiles = res.data.Table3;
+            $scope.VehicleList = res.data.Table2;
+            $scope.bankdetails = res.data.Table3;
+            $scope.PendDocFiles = res.data.Table4;
             $scope.imageSrc = $scope.Dl.Photo;
 
             //assign fleet owner

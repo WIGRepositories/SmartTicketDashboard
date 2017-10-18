@@ -203,7 +203,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             isDriverOwned: 1,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
             DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
-            Photo:$scope.imageSrc
+            Photo: $scope.imageSrc,
+            FrontImage: 1,
+            BackImage: 1,
+            RightImage: 1,
+            LeftImage: 1
 
         }
 

@@ -80,6 +80,30 @@ namespace SmartTicketDashboard.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/DriverMaster/GetVehicleApproval")]
+        public DataTable GetVehicleApproval(String RegNo)
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "PSGetVehicleApproval";
+            cmd.Parameters.Add("@RegistrationNo", SqlDbType.VarChar).Value = RegNo;
+            cmd.Connection = conn;
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
         public DataTable Vehicles(vehiclemas v)
@@ -276,6 +300,22 @@ namespace SmartTicketDashboard.Controllers
             ctr.Value = v.CountryId;
             cmd.Parameters.Add(ctr);
 
+            SqlParameter fi = new SqlParameter("@FrontImage", SqlDbType.VarChar);
+            fi.Value = v.FrontImage;
+            cmd.Parameters.Add(fi);
+
+            SqlParameter bi = new SqlParameter("@BackImage", SqlDbType.VarChar);
+            bi.Value = v.BackImage;
+            cmd.Parameters.Add(bi);
+
+            SqlParameter ri = new SqlParameter("@RightImage", SqlDbType.VarChar);
+            ri.Value = v.RightImage;
+            cmd.Parameters.Add(ri);
+
+            SqlParameter li = new SqlParameter("@LeftImage", SqlDbType.VarChar);
+            li.Value = v.LeftImage;
+            cmd.Parameters.Add(li);
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
@@ -468,6 +508,54 @@ namespace SmartTicketDashboard.Controllers
             }
 
             return Tbl;
+        }
+
+
+        [HttpPost]
+        [Route("api/DriverMaster/SaveVehicleApprovals")]
+        public DataTable SaveVehicleApprovals(Approvals a)
+        {
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            DataTable dt = new DataTable();
+            try
+            {
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSinsupdVehicleApprovals";
+                cmd.Connection = conn;
+
+
+                SqlParameter LocationId = new SqlParameter("@Change", SqlDbType.VarChar);
+                LocationId.Value = a.change;
+                cmd.Parameters.Add(LocationId);
+
+                SqlParameter parentid = new SqlParameter("@IsApproved", SqlDbType.Int);
+                parentid.Value = a.IsApproved;
+                cmd.Parameters.Add(parentid);
+
+                SqlParameter flag = new SqlParameter("@RegistrationNo", SqlDbType.VarChar);
+                flag.Value = a.RegistrationNo;
+                cmd.Parameters.Add(flag);
+
+
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+
+
+                return dt;
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                throw ex;
+            }
         }
     }
 }

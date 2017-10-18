@@ -2218,6 +2218,10 @@ namespace SmartTicketDashboard.Models
         public int VehicleMakeId { get; set; }
         public string Photo { get; set; }
         public int CountryId { get; set; }
+        public string FrontImage { get; set; }
+        public string BackImage { get; set; }
+        public string RightImage { get; set; }
+        public string LeftImage { get; set; }
     }
     public class allocatedriver
     {
@@ -2917,6 +2921,14 @@ namespace SmartTicketDashboard.Models
         public DateTime FromDate { get; set; }
 
        
+    }
+
+    public class Approvals
+    {
+        public string change { get; set; }
+        public int IsApproved { get; set; }
+        public string MobileNo { get; set; }
+        public string RegistrationNo { get; set; }
     }
 }
 

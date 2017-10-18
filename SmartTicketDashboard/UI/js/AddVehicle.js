@@ -318,7 +318,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EntryDate: newVehicle.EntryDate,
             NewEntry: newVehicle.NewEntry,
             photo: $scope.imageSrc,
-
+            FrontImage: 1,
+            BackImage: 1,
+            RightImage: 1,
+            LeftImage: 1,
             Active: (newVehicle.Active == true) ? 1 : 0,
 
 
