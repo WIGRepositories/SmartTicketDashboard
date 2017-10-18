@@ -612,22 +612,22 @@
 
 
                                                 </div>
+                                                <div ng-repeat=" P in paging" ng-model="Types" class="form-actions">
+                                                    <div style="margin-top: -10px; margin-left: 10px">
+                                                        {{page}} of {{P.totalpages}} pages
+                                                    </div>
+                                                    <div style="text-align: center; margin-top: -15px;">
+                                                        <button class="btn btn-primary btn-lg" ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </button> 
+                                                        <button class="btn btn-green btn-lg" ng-click="getselectval(s, 'n')" ng-disabled="page == P.totalpages">Next page </button>
+                                                    </div>
+                                                    <div style="float:right;margin-top:-20px;margin-right:10px">
+                                                        {{(P.recordcount < 10) ? P.recordcount : 10}} of total {{P.recordcount }} results
+                                                    </div>
 
+                                                </div>
                                             </div>
                                         </div>
-                                        <div ng-repeat=" P in paging" ng-model="Types" class="row form-actions" >
-                                            <div>
-                                                {{page}} of {{P.totalpages}} pages
-                                            </div>
-                                            <div style="
-    ">
-                                                <button ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </button> <button ng-click="getselectval(s, 'n')" ng-disabled="page == P.totalpages">Next page </button>
-                                            </div>
-                                            <div style="float:right">
-                                                {{(P.recordcount < 5) ? P.recordcount : 5}} of total {{P.recordcount }} results
-                                            </div>
-
-                                        </div>
+                                      
                                     </div>
 
                                 </div>
@@ -698,7 +698,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/Types1.js"></script>
+    <script src="js/Types.js"></script>
 
 
 </body>

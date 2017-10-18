@@ -7,35 +7,50 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
-
+    $scope.page = 1;
+    $scope.pagesize = $localStorage.pagesize;
     $scope.dashboardDS = $localStorage.dashboardDS;
     $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
         $scope.TypeGroups = res.data;
         $scope.getselectval();
+
     });
 
-    $scope.getselectval = function (seltype) {
+    $scope.getselectval = function (seltype, flag) {
         var grpid = (seltype) ? seltype.Id : -1;
-      
+        var curpage = $scope.page;
+        if (flag == 'n') {
+            $scope.page++;
+            curpage = $scope.page;
+        } else if (flag == 'p') {
+            $scope.page--
+            curpage = $scope.page;
+        }
+        else {
+            $scope.page = 1;
+            curpage = $scope.page;
+        }
 
-        $http.get('/api/Types/TypesByGroupId?groupid=' + grpid).then(function (res, data) {
-            $scope.Types = res.data;
+        $http.get('/api/Types/TypesPaging?groupid=' + grpid + '&curpage=' + curpage + '&maxrows=' + 10).then(function (res, data) {
+            $scope.Types = res.data.Table;
+            $scope.paging = res.data.Table1;
 
+            ///loop to fill seltype
         });
 
-       // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
-        
+        // $scope.selectedvalues = 'Name: ' + $scope.selitem.name + ' Id: ' + $scope.selitem.Id;
+
     }
 
-    $scope.save = function (Types) {       
+
+    $scope.save = function (Types) {
 
         if (Types == null) {
             alert('Please enter name.');
             return;
         }
 
-        if (Types.Name == null)
-        {
+        if (Types.Name == null) {
             alert('Please enter name.');
 
 
@@ -48,7 +63,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         var Types = {
 
-            Id:Types.Id,
+            Id: Types.Id,
             Name: Types.Name,
             Description: Types.Description,
             Active: Types.Active,
@@ -70,16 +85,16 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
             alert("Saved successfully!");
 
-           
+
 
             $scope.Group = null;
 
         }, function (errres) {
-    var errdata = errres.data;
-    var errmssg = "";
-    errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-    $scope.showDialog(errmssg);
-});
+            var errdata = errres.data;
+            var errmssg = "";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            $scope.showDialog(errmssg);
+        });
         $scope.currGroup = null;
     };
 
@@ -99,7 +114,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         if (newType.group == null || newType.group.Id == null) {
             alert('Please select a type group');
             return;
-        }       
+        }
 
         var newTypeData = {
 
@@ -115,7 +130,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         var req = {
             method: 'POST',
-            url: '/api/Types/SaveType',           
+            url: '/api/Types/SaveType',
             data: newTypeData
         }
 
@@ -123,15 +138,15 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
             alert("Saved successfully!");
 
-            
+
             $scope.Group = null;
 
         }, function (errres) {
-      var errdata = errres.data;
-      var errmssg = "";            
-      errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;            
-      alert(errmssg);
-        }); 
+            var errdata = errres.data;
+            var errmssg = "";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
         $scope.currGroup = null;
     };
 
@@ -175,7 +190,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
 });
- 
+
 myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
     $scope.mssg = mssg;
@@ -185,7 +200,7 @@ myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg
 
     $scope.cancel = function () {
         $uibModalInstance.dismiss('cancel');
-    };    
+    };
 
     $scope.showDialog = function (message) {
 
