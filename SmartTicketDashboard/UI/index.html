@@ -477,8 +477,8 @@
                                                 <div>
                                                     <span> Country:</span>
                                                 </div>
-                                                <div class="col-md-3 pull-left">
-                                                    <select ng-options="ct.Name for ct in initdata.Table1 track by ct.Id" ng-model="nn" style="width:100%;margin-left:-10px">
+                                                <div class="col-md-3 pull-left" ng-init="GetConfigData()">
+                                                    <select ng-options="ct.Name for ct in initdata.Table1 track by ct.Id" ng-model="nn" ng-change="GetDashboardDS()" style="width:100%;margin-left:-10px">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>                                             

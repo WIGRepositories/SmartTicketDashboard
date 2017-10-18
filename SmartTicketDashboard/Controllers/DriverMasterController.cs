@@ -20,7 +20,7 @@ namespace SmartTicketDashboard.Controllers
        
         [HttpGet]
         [Route("api/DriverMaster/GetMaster")]
-        public DataTable GetMaster(int DId)
+        public DataTable GetMaster(int ctryId)
         {
             DataTable dt = new DataTable();
 
@@ -31,7 +31,7 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "HVgetdrivermaster";
-            cmd.Parameters.Add("@DId", SqlDbType.Int).Value = DId;
+            cmd.Parameters.Add("@ctryId", SqlDbType.Int).Value = ctryId;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);

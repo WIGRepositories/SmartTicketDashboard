@@ -117,7 +117,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
    
     $scope.GetVehcileList = function () {
-        $http.get('/api/VehicleMaster/GetVehcileList').then(function (res, data) {
+        $http.get('/api/VehicleMaster/GetVehcileList?ctryId='+ $scope.ct.Id+'&fid='+$scope.s.Id).then(function (res, data) {
             $scope.VehiclesList = res.data;
             $scope.imageSrc = $scope.VehiclesList.Photo;
         });
@@ -203,11 +203,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             isDriverOwned: 1,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
             DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
-            Photo: $scope.imageSrc,
-            FrontImage: 1,
-            BackImage: 1,
-            RightImage: 1,
-            LeftImage: 1
+            Photo: $scope.imageSrc
+            
 
         }
 

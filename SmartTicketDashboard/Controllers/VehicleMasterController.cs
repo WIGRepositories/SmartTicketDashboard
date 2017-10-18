@@ -15,7 +15,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/VehicleMaster/GetVehcileList")]
-        public DataTable GetVehcileList()
+        public DataTable GetVehcileList(int ctryId, int fid)
         {
             DataTable dt = new DataTable();
 
@@ -27,7 +27,8 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "PSGetVehicleList";            
             cmd.Connection = conn;
-            
+            cmd.Parameters.Add("@ctryId", SqlDbType.Int).Value = ctryId;
+            cmd.Parameters.Add("@fleetId", SqlDbType.Int).Value = fid;
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);            
             return dt;

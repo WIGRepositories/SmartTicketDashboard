@@ -415,8 +415,8 @@
 
                                                 <div class="table-container">
                                                     <div class="row mbm">
-                                                        <div class="col-md-3">
-                                                            Country:<select ng-options="ct.Name for ct in initdata.Table2 track by ct.Id" ng-model="ct" ng-click="GetConfigData();">
+                                                        <div class="col-md-3" ng-init="GetConfigData();">
+                                                            Country:<select ng-options="ct.Name for ct in initdata.Table2 track by ct.Id" ng-model="ct" ng-change="GetMaster()">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
