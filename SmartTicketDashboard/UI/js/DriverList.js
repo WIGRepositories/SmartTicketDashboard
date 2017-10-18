@@ -182,60 +182,51 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
     $scope.saveNew = function (Driverlist,flag) {
-      
-        
-        //if (Driverlist.Id == null) {
-        //    alert('Please Enter CompanyId');
-        //    return;
-        //}
-        //if (Driverlist.NAme == null) {
-        //    alert('Please Enter NAme');
-        //    return;
-        //}
-        //if (Driverlist.Address == null) {
-        //    alert('Please Enter Address');
-        //    return;
-        //}
-        //if (Driverlist.City == null) {
-        //    alert('Please Enter City');
-        //    return;
-        //}
-        //if (Driverlist.Pin == null) {
-        //    alert('Please Enter Pin');
-        //    return;
-        //}
-        //if (Driverlist.PAddress == null) {
-        //    alert('Please Enter PAddress');
-        //    return;
-        //}
-        //if (Driverlist.PCity == null) {
-        //    alert('Please Enter PCity');
-        //    return;
-        //}
-        //if (Driverlist.PPin == null) {
-        //    alert('Please Enter PPin');
-        //    return;
-        //}
-        //if (Driverlist.OffMobileNo == null) {
-        //    alert('Please Enter OffMobileNo');
-        //    return;
-        //}
-        //if (Driverlist.PMobNo == null) {
-        //    alert('Please Enter PMobNo');
-        //    return;
-        //}
-        //if (Driverlist.DOB == null) {
-        //    alert('Please Enter DOB');
-        //    return;
-        //}
-        //if (Driverlist.DOJ == null) {
-        //    alert('Please Enter DOJ');
-        //    return;
-        //}
-        //if (Driverlist.BloodGroup == null) {
-        //    alert('Please Enter BloodGroup');
-        //    return;
-        //}             
+        if (Driverlist.DId == null) {
+            alert('Please Enter Details');
+            return;
+        }       
+       
+        if (Driverlist.Address == null) {
+            alert('Please Enter Address');
+            return;
+        }       
+        if (Driverlist.Pin == null) {
+            alert('Please Enter Pin');
+            return;
+        }
+        if (Driverlist.PAddress == null) {
+            alert('Please Enter PermanentAddress');
+            return;
+        }       
+        if (Driverlist.PPin == null) {
+            alert('Please Enter PermanentPin');
+            return;
+        }       
+        if (Driverlist.PMobNo == null) {
+            alert('Please Enter Mobilenumber');
+            return;
+        }
+        if (Driverlist.DOB == null) {
+            alert('Please Enter DOB');
+            return;
+        }
+        if (Driverlist.DOJ == null) {
+            alert('Please Enter DOJ');
+            return;
+        }
+        if (Driverlist.BloodGroup == null) {
+            alert('Please Enter BloodGroup');
+            return;
+        }
+        if (Driverlist.Country.Id == null) {
+            alert('Please Enter Country');
+            return;
+        }
+        if (Driverlist.Vg.Id == null) {
+            alert('Please Enter VehicleGroup');
+            return;
+        }
 
         var Driverlist = {
 
