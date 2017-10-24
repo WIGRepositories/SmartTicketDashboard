@@ -150,7 +150,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         return obj;
     };
 
- 
+    
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?ctryId='+$scope.ct.Id).then(function (res, data) {
             $scope.listdrivers = res.data;
@@ -508,6 +508,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.imageSrc = null;
     }
     
+    
+
     $scope.UploadImg = function () {
         var fileinput = document.getElementById('fileInput');
         fileinput.click();

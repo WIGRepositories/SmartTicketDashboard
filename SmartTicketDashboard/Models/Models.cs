@@ -769,11 +769,11 @@ namespace SmartTicketDashboard.Models
         public CardsGroup[] cg = null;
         //public List<VehiclesGroups> list3 { get; set; }
         public int Id { get; set; }
-        public int CardNumber { get; set; }
+        public string CardNumber { get; set; }
         public string CardModel { get; set; }
         public string CardType  { get; set; }
         public string CardCategory { get; set; }
-        public int StatusId { get; set; }
+        public int Status { get; set; }
         public int UserId { get; set; }
         public string Customer { get; set; }
         public DateTime? EffectiveFrom { get; set; }

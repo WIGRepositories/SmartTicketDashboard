@@ -1362,7 +1362,7 @@ namespace SmartTicketDashboard.Controllers
                 conn.Open();
                 foreach (CardsGroup cg in list4)
                 {
-                    SqlParameter cgCardNumber = new SqlParameter("@CardNumber", SqlDbType.Int);
+                    SqlParameter cgCardNumber = new SqlParameter("@CardNumber", SqlDbType.VarChar);
                     cgCardNumber.Value = cg.CardNumber;
                     cmd.Parameters.Add(cgCardNumber);
 
@@ -1386,8 +1386,8 @@ namespace SmartTicketDashboard.Controllers
 
                     SqlParameter cgStatusId = new SqlParameter();
                     cgStatusId.ParameterName = "@StatusId";
-                    cgStatusId.SqlDbType = SqlDbType.Int;
-                    cgStatusId.Value = cg.StatusId;
+                    cgStatusId.SqlDbType = SqlDbType.VarChar;
+                    cgStatusId.Value = cg.Status;
                     cmd.Parameters.Add(cgStatusId);
 
                     SqlParameter cgUserId = new SqlParameter();

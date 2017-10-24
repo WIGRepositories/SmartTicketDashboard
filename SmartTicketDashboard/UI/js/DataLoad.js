@@ -668,7 +668,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         CardModel: data[1],
                         CardType: data[2],
                         CardCategory: data[3],
-                        StatusId: data[4],
+                        Status: data[4],
                         UserId: data[5],
                         Customer: data[6],
                         EffectiveFrom: data[7],
