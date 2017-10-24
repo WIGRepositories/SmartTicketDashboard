@@ -129,6 +129,7 @@
     <Content Include="UI\DriverBookinglist.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\googleapi.html" />
     <Content Include="UI\images\car.png" />
     <Content Include="UI\images\Indigo-taxi.png" />
     <Content Include="UI\images\Qr.png" />
@@ -145,6 +146,7 @@
     <Content Include="UI\js\DriverDetails.js" />
     <Content Include="UI\js\DriverStatus.js" />
     <Content Include="UI\js\GetLocation.js" />
+    <Content Include="UI\js\googleapi.js" />
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\PSPricing.js" />

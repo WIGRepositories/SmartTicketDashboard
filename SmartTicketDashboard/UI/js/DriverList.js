@@ -181,9 +181,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.Driverlist.DriverCode = 'D'+$scope.Driverlist.PMobNo;
     }
 
-    $scope.saveNew = function (Driverlist,flag) {
-        if (Driverlist.DId == null) {
+    $scope.saveNew = function (Driverlist, flag) {
+
+        if (Driverlist == null) {
             alert('Please Enter Details');
+            return;
+        }
+        if (Driverlist.firstname == null) {
+            alert('Please Enter FirstName');
             return;
         }       
        
@@ -631,7 +636,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             popupWinindow.document.write('<html><head><link rel="stylesheet" type="text/css" href="style.css" /></head><body onload="window.print()">' + innerContents + '</html>');
             popupWinindow.document.close();
         }
-    
+
+
+        $scope.Mobile = function check() {
+
+            var pass1 = document.getElementById('mobile');
+
+
+            var message = document.getElementById('message');
+
+            var goodColor = "#0C6";
+            var badColor = "#FF9B37";
+
+            if (mobile.value.length != 10) {
+
+                mobile.style.backgroundColor = badColor;
+                message.style.color = badColor;
+                message.innerHTML = "required 10 digits, match requested format!"
+            }
+        }
+        
     /*save job documents */
     $scope.SaveDriverDoc = function () {
 

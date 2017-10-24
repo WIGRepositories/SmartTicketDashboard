@@ -719,10 +719,20 @@
                                             <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
                                             <!--<a style="float:right" href="Notifications.html" class="button" ng-click="label label-sm label-success">More...</a>-->
                                             <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+                                            <div class="col-md-12">
+                                                this is to test
+                                                <table>
+                                                    <tr ng-repeat="loc in markers">
+                                                        <td>
+                                                            this is to test {{loc.position.lat}}
+                                                        </td>
+                                                    </tr>
+                                                </table>
 
+                                            </div>
                                         </div>
 
-
+                                      
 
 
 
@@ -764,9 +774,7 @@
                                                 </div>
 
                                             </div>
-                                            <div class="col-md-12">
-
-                                            </div>
+                                            
                                             <!--Jagan Updated on 08-08-2017-->
 
                                             <div class="portlet box">
@@ -835,7 +843,6 @@
                             <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
 
                         </div>-->
-
 
 
 

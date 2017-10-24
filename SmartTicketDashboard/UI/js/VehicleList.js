@@ -146,6 +146,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     
     $scope.saveNew = function (newVehicle, flag) {
+
+        if (newVehicle == null) {
+            alert('Please Enter Details');
+            //return;
+        }
         
         if (newVehicle.RegistrationNo == null) {
             alert('Please Enter RegistrationNo');

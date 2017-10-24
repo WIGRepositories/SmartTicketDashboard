@@ -814,7 +814,7 @@
                                                                                         <div class="form-group form-group-sm">
                                                                                             <label class="col-sm-2 control-label" for="sm"><span class="badge">1</span></label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm">
+                                                                                                <input class="form-control" type="text" id="sm"{{d.srcLat}}>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -822,7 +822,7 @@
                                                                                         <div class="form-group form-group-sm">
                                                                                             <label class="col-sm-2 control-label" for="sm"><span class="badge">2</span></label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm">
+                                                                                                <input class="form-control" type="text" id="sm" {{d.srcLon}}>
                                                                                             </div>
                                                                                         </div>
 
@@ -844,25 +844,28 @@
                                                                                 <div class="panel panel-default">
                                                                                     <div class="panel-body">
                                                                                         <google-map control="map.control" center="map.center" zoom="map.zoom">
+
                                                                                             <marker coords="marker.center"></marker>
+                                                                                            
                                                                                         </google-map>
+
                                                                                         <form class="form-horizontal" role="form">
                                                                                             <!--<div class="form-group">
-                            <label for="origin" class="col-sm-2 control-label">Origin</label>
-                            <div class="col-sm-8">
-                                <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="destination" class="col-sm-2 control-label">Destination</label>
-                            <div class="col-sm-8">
-                                <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
-                            </div>
-                        </div>-->
+                <label for="origin" class="col-sm-2 control-label">Origin</label>
+                <div class="col-sm-8">
+                    <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="destination" class="col-sm-2 control-label">Destination</label>
+                <div class="col-sm-8">
+                    <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+                </div>
+            </div>-->
                                                                                             <div class="form-group">
                                                                                                 <!--<div class="col-sm-offset-2 col-sm-8">
-                                <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
-                            </div>-->
+                    <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
+                </div>-->
                                                                                             </div>
                                                                                         </form>
                                                                                         <div id="directionsList" ng-show="directions"></div>
@@ -872,10 +875,11 @@
 
                                                                             </div>
                                                                         </div>
-
-                                                                      
-                                                                    </div>
-
+                                                                        
+                                                                        
+                                                                    </div>                                                                    
+                                                                    
+                                                                    
                                                                     <hr>
                                                                     <div class="main-and-aside r">
                                                                         <div class="main">
@@ -963,6 +967,8 @@
                                                                         </div>
                                                                     </div>
                                                                 </div>
+
+                                                                
                                                             </div>
                                                             <!--END CONTENT-->
                                                         </div><!--BEGIN FOOTER-->

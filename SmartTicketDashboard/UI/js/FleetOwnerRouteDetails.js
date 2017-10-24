@@ -8,13 +8,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
- //   $scope.userdetails = $localStorage.userdetails;
+    //   $scope.userdetails = $localStorage.userdetails;
     $scope.userCmpId = $scope.userdetails[0].CompanyId;
     $scope.userSId = $scope.userdetails[0].UserId;
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
-
+    $scope.markers = [];
     stopsList = [];
     $scope.RouteDetails = [];
 
@@ -24,8 +24,9 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             latitude: 17.3850,
             longitude: 78.4867
         },
-        zoom: 16
-    };
+        zoom: 16       
+
+    };    
 
 
     var directionsDisplay = new google.maps.DirectionsRenderer();
@@ -68,9 +69,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         });
     }
 
-
-
-
+    
+   
     $scope.SavePricing = function (directions, flag) {
         alert();
 
