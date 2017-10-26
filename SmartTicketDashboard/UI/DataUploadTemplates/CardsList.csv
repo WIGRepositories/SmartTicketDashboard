@@ -4,5 +4,5 @@ CardNumber,	CardModel, CardType, CardCategory, StatusId, UserId, Customer, Effec
 						
 						
 example:						
-4886, Silver, Visa,	Contact card, 1, 1, ramu, 1/1/2015, 1/1/2015
+4886, Silver,Contact card,Visa, 1, 1, ramu, 1/1/2015, 1/1/2015
 

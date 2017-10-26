@@ -295,6 +295,14 @@ app.controller('mapCtrl', function ($scope, $http) {
                
         var infoWindow = new google.maps.InfoWindow();
 
+        google.maps.event.addListener($scope.map, 'click', function (e) {
+            createMarkerWithLatLon(e.latLng.lat(), e.latLng.lng());
+            //$scope.lat = e.latLng.lat();
+            //$scope.lag = e.latLng.lng();
+
+            //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+
         createMarker(country);
 
         $http.get('http://localhost:1476/api/DriverStatus/GetDriverlocation').
@@ -309,7 +317,24 @@ app.controller('mapCtrl', function ($scope, $http) {
 
     }
     
-    
+    var createMarkerWithLatLon = function (lat,long) {
+        var marker = new google.maps.Marker({
+            map: $scope.map,
+            position: new google.maps.LatLng(lat, long),
+            //title: loc.loc
+
+            icon: marker
+        });
+       
+        google.maps.event.addListener(marker, 'click', function () {
+            alert();
+            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent(marker.content);
+            infoWindow.open($scope.map, marker);
+        });
+
+        $scope.markers.push(marker);
+    };
 
     var createMarker = function (loc) {
         var marker = new google.maps.Marker({
@@ -322,6 +347,7 @@ app.controller('mapCtrl', function ($scope, $http) {
         marker.content = '<div class="infoWindow"</div>' + 'Driver: ' + loc.NAme + '<br> Driver Contact No: ' + loc.DriverNo + '<br> Vehicle Model: ' + loc.VehicleGroupId + '</div>';;
 
         google.maps.event.addListener(marker, 'click', function () {
+            alert();
             infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
             infoWindow.setContent(marker.content);
             infoWindow.open($scope.map, marker);

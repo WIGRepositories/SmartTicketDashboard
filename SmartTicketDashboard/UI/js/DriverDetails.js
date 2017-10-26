@@ -515,6 +515,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.save = function (Dl, flag) {
 
+       
 
         //if (Dl.CompanyId.Id == null) {
         //    alert('Please Enter CompanyId');
