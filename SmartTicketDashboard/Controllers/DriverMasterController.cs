@@ -613,8 +613,8 @@ namespace SmartTicketDashboard.Controllers
                 parentid.Value = a.IsApproved;
                 cmd.Parameters.Add(parentid);
 
-                SqlParameter flag = new SqlParameter("@MobileNo", SqlDbType.VarChar);
-                flag.Value = a.MobileNo;
+                SqlParameter flag = new SqlParameter("@DId", SqlDbType.Int);
+                flag.Value = a.DId;
                 cmd.Parameters.Add(flag);               
 
                

@@ -832,6 +832,32 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.Approval = function (a) {
+        alert();
+        DId: a.DId;
+        IsApproved: a.Approved;
+        
+
+
+        var Approve = {
+
+            DId: a.DId,
+            IsApproved: a.Approved,            
+            change: '1'
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/SaveDriverApprovals',
+            data: Approve
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+            alert("Saved Successfully");
+        });
+    }
+
 
     $scope.showDialog = function (message) {
 

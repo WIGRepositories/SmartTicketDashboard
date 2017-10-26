@@ -455,9 +455,9 @@
                                                                     <td>Status</td>
                                                                     <td><span class="label label-success">Active</span></td>
                                                                 </tr>
-                                                                <tr>
+                                                                <tr ng-model="a">
                                                                     <td><span class="label label-success">Approved</span></td>
-                                                                    <td><input type="checkbox" ng-checked="approved" /></td>
+                                                                    <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-change="Approval(a)" ng-model="a.Approved" ng-true-value="1" ng-false-value="0" /></td>
                                                                 </tr>
 
                                                             </tbody>
