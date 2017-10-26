@@ -61,7 +61,7 @@ namespace SmartTicketDashboard.Controllers
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);           
 
-            return ds;
+            
             }
             catch (Exception ex)
             {
@@ -71,6 +71,7 @@ namespace SmartTicketDashboard.Controllers
                 }
                 throw ex;
             }
+            return ds;
         }
 
         [HttpGet]
