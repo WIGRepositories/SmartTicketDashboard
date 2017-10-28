@@ -457,7 +457,7 @@
                                                                 </tr>
                                                                 <tr ng-model="a">
                                                                     <td><span class="label label-success">Approved</span></td>
-                                                                    <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-change="Approval(a)" ng-model="a.Approved" ng-true-value="1" ng-false-value="0" /></td>
+                                                                    <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="a.Approved" ng-true-value="1" ng-false-value="0" ng-change="Approval(a)" /></td>
                                                                 </tr>
 
                                                             </tbody>
@@ -915,7 +915,7 @@
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="">Driver Transaction</a></div>
-                                                                        <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-down"></i></div>
+                                                                        <div class="tools"><span class="badge badge-green">{{transactions.length}}</span><i class="fa fa-chevron-down"></i></div>
                                                                     </div>
                                                                     <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
                                                                         <div class="panel-body">
@@ -924,29 +924,22 @@
                                                                                     <tr>
                                                                                         <th>Date</th>
                                                                                         <th>Trips</th>
-                                                                                        <th>Passengers</th>
+                                                                                        <th>Seats</th>
                                                                                         <!--<th>Due Date</th>-->
                                                                                         <th>Total Amount</th>
                                                                                         <th>Company Amount</th>
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr>
-                                                                                        <td>15/9/2017</td>
-                                                                                        <td>5</td>
-                                                                                        <td>-</td>
+                                                                                    <tr ng-repeat="t in transactions">
+                                                                                        <td>{{t.BookedDate}}</td>
+                                                                                        <td>{{t.TripCount}}</td>
+                                                                                        <td>{{t.NoofSeats}}</td>
                                                                                         <!--<th>Due Date</th>-->
-                                                                                        <td>1000</td>
-                                                                                        <td>100</td>
+                                                                                        <td>{{t.Amount}}</td>
+                                                                                        <td>{{t.Amount}}</td>
                                                                                     </tr>
-                                                                                    <tr>
-                                                                                        <td>16/9/2017</td>
-                                                                                        <td>6</td>
-                                                                                        <td>24</td>
-                                                                                        <!--<th>Due Date</th>-->
-                                                                                        <td>1200</td>
-                                                                                        <td>120</td>
-                                                                                    </tr>
+                                                                                   
                                                                                 </tbody>
                                                                             </table>
                                                                         </div>
@@ -1152,7 +1145,7 @@
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                        <select ng-options="c.Name for c in initdata.Table3 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
                                             <option value="">Select</option>
                                         </select>
                                     </div>
@@ -1164,7 +1157,7 @@
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select ng-options="vg.Name for vg in initdata.Table track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
+                                        <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="vg" class="form-control" ng-change="GetAvailableDV();">
                                             <option value="">Select</option>
                                         </select>
                                     </div>
@@ -1220,9 +1213,9 @@
                                 <div class="form-actions">
                                     <div style="text-align:center">
 
-                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="saveNew(newVehicle,'I')">Save</button>
+                                        <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="AssignVehicle(newVehicle,'I')">Save</button>
 
-                                        <a href="AssginDriver.html" data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                        <a  data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 
                                     </div>
                                 </div>

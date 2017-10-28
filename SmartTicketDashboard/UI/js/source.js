@@ -15,7 +15,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
        
         });
     }
-
+    
 
 
     $scope.GetFleetDetails = function () {
@@ -136,7 +136,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
             $localStorage.dashboardDS = res.data;
         });
        
-       $scope.GetConfigData();
+    //   $scope.GetConfigData();
      
     }
 
@@ -155,6 +155,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.nn = $scope.initdata.Table1[0];
+            
         });
     }
 

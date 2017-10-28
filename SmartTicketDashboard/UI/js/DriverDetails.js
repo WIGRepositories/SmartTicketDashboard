@@ -155,6 +155,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.VehicleList = res.data.Table2;
             $scope.bankdetails = res.data.Table3;
             $scope.PendDocFiles = res.data.Table4;
+            $scope.transactions = res.data.Table5;
             $scope.imageSrc = $scope.Dl.Photo;
 
             //assign fleet owner
@@ -244,6 +245,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/DriverMaster/GetBankdetails?DId='+$scope.selectedlistdrivers).then(function (response, req) {
             $scope.bankdetails = response.data;
         });
+    }
+
+    $scope.GetAvailableDV = function () {
+        var vgId = ($scope.vg == null || $scope.vg.Id == null) ? '-1' : $scope.vg.Id;
+        $http.get('/api/allocatedriver/AvailableVDList?vGroupId=' + vgId).then(function (res1, data) {
+            $scope.vdlist = res1.data;
+        });
+
     }
 
     $scope.CurrentState = function () {
@@ -679,6 +688,73 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert(errmssg);
         });
 
+    };
+
+    $scope.AssignVehicle = function (newVehicle, flag) {
+
+        if ($scope.vm.RegistrationNo == null) {
+            alert('Please Enter vechid');
+            return;
+        }
+        if ($scope.vm.Id == null) {
+            alert('Please Enter vechid');
+            return;
+        }
+        //if ($scope.c.Id == null) {
+        //    alert('Please Enter CompanyId');
+        //    return;
+        //}      
+
+        if ($scope.d.DId == null || $scope.d.DId.DId == null) {
+            alert('Please Enter DriverName');
+            return;
+        }
+        if (newVehicle == null || newVehicle.EffectiveDate == null) {
+            alert('Please Enter EffectiveDate');
+            return;
+        }
+        if (newVehicle == null || newVehicle.EffectiveTill == null) {
+            alert('Please Enter EffectiveTill');
+            return;
+        }
+
+
+        var newVehicle1 = {
+            Id: -1,
+            VechID: $scope.vm.Id,
+            CompanyId: $scope.c.Id,
+            VehicleType: $scope.vm.Type,
+            PhoneNo: $scope.d.DId.PMobNo,
+            AltPhoneNo: $scope.d.DId.AltPhoneNo,
+            RegistrationNo: $scope.vm.RegistrationNo,
+            DriverName: $scope.d.DId.NAme,
+            DriverId: $scope.d.DId.DId,
+            EffectiveDate: newVehicle.EffectiveDate,
+            EffectiveTill: newVehicle.EffectiveTill,
+            VehicleModelId: $scope.vm.VehicleModelId,
+            ServiceTypeId: $scope.vm.ServiceTypeId,
+            VehicleGroupId: $scope.vm.VehicleGroupId,
+            flag: "I"
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/allocatedriver/AllocateDriver',
+            data: newVehicle1
+        }
+        $http(req).then(function (response) {
+
+            alert("Saved successfully!");
+
+            $scope.Group = null;
+            //$scope.Getallocatedriver('VID=1');
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
     };
 
     $scope.sendemail = function (m, flag) {

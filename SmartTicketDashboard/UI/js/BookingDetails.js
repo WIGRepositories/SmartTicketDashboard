@@ -63,6 +63,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
 
     }
+
+
+                                                          
+    $scope.mapping = function myMap() {
+        var mapOptions = {
+        center: new google.maps.LatLng(17.3850, 78.4867),
+        zoom: 10,
+        mapTypeId: google.maps.MapTypeId.HYBRID
+    }
+    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+}
+                                                    
     
 
     $scope.showDialog = function (message) {

@@ -15,9 +15,9 @@ namespace SmartTicketDashboard.Controllers
 {
     public class AlertsController : ApiController
     {
-        [HttpPost]
+        [HttpGet]
         [Route("api/Alerts/GetAlerts")]
-        public DataTable GetAlerts(Alerts al)
+        public DataTable GetAlerts(int roleid)
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -33,34 +33,9 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "PsGetAlerts";
             cmd.Connection = conn;
 
-            SqlParameter rid = new SqlParameter("@roleid", SqlDbType.Int);
-            rid.Value = al.RoleId;
-            cmd.Parameters.Add(rid);
 
-            SqlParameter uid = new SqlParameter("@userid", SqlDbType.Int);
-            uid.Value = al.UserId;
-            cmd.Parameters.Add(uid);
-
-            SqlParameter fdate = new SqlParameter("@fromdate", SqlDbType.DateTime);
-            fdate.Value = al.fromdate;
-            cmd.Parameters.Add(fdate);
-
-            SqlParameter tdate = new SqlParameter("@todate", SqlDbType.DateTime);
-            tdate.Value = al.todate;
-            cmd.Parameters.Add(tdate);
-
-            SqlParameter stid = new SqlParameter("@statusid", SqlDbType.Int);
-            stid.Value = al.StatusId;
-            cmd.Parameters.Add(stid);
-
-            SqlParameter catid = new SqlParameter("@categoryid", SqlDbType.Int);
-            catid.Value = al.CategoryId;
-            cmd.Parameters.Add(catid);
-
-            SqlParameter scatid = new SqlParameter("@subcategoryid", SqlDbType.Int);
-            scatid.Value = al.SubCategoryId;
-            cmd.Parameters.Add(scatid);
-
+            cmd.Parameters.Add("@roleid", SqlDbType.Int).Value = roleid;
+            
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);

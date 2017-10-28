@@ -11,8 +11,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
 
     $scope.GetAlerts = function () {
 
-        $http.get('/api/Alerts/GetAlerts').then(function (response, req) {
-            $scope.GetAlerts = response.data;
+        $http.get('/api/Alerts/GetAlerts?roleid=1').then(function (response, req) {
+            $scope.Alerts = response.data;
 
         });
     }

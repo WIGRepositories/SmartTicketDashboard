@@ -112,6 +112,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.ct = $scope.initdata.Table4[0];
+            //$scope.s = $scope.initdata.Table5[0];
         });
     }
 
@@ -120,8 +122,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleMaster/GetVehcileList?ctryId='+ $scope.ct.Id+'&fid='+$scope.s.Id).then(function (res, data) {
             $scope.VehiclesList = res.data;
             $scope.imageSrc = $scope.VehiclesList.Photo;
+           
         });
-        $scope.GetFleetOwners();
+        //$scope.GetFleetOwners();
     }
     
     $scope.GetFleetOwners = function () {
@@ -194,7 +197,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             flag: 'I',
             Id: -1,
             VehicleCode: newVehicle.VCode,
-            OwnerId: (newVehicle.f == null || newVehicle.f.Id == '') ? null : newVehicle.f.Id,
+            OwnerId: (newVehicle.s == null || newVehicle.s.Id == '') ? null : newVehicle.s.Id,
             RegistrationNo: newVehicle.RegistrationNo,
             ChasisNo: newVehicle.ChasisNo,
             Engineno: newVehicle.Engineno,

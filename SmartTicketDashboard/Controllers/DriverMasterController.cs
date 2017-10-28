@@ -220,6 +220,10 @@ namespace SmartTicketDashboard.Controllers
             hd.Value = d.IsApproved;
             cmd.Parameters.Add(hd);
 
+            SqlParameter cdd = new SqlParameter("@CurrentStateId", SqlDbType.Int);
+            cdd.Value = d.CurrentStateId;
+            cmd.Parameters.Add(cdd);
+
 
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);

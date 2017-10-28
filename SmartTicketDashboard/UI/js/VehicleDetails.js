@@ -163,7 +163,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
 
             for (i = 0; i < $scope.initdata.Table7.length; i++) {
-                if ($scope.initdata.Table7[i].Id == $scope.vDetails.f) {
+                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetownerId) {
                     $scope.vDetails.f = $scope.initdata.Table7[i];
                     break;
                 }

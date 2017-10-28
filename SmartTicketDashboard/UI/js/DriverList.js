@@ -153,7 +153,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     
     $scope.GetMaster = function () {
         $http.get('/api/DriverMaster/GetMaster?ctryId='+$scope.ct.Id).then(function (res, data) {
-            $scope.listdrivers = res.data;
+            $scope.listdrivers = res.data;            
         });
        // $scope.imageSrc = $scope.listdrivers.Photo;
     }
@@ -257,7 +257,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             LastName: Driverlist.Lname,
             EmailId: Driverlist.Email,
             Status: Driverlist.Status.Id,
-            VehicleGroup: Driverlist.Vg.Id
+            VehicleGroup: Driverlist.Vg.Id,
+            CuurentStateId:1
         }
 
         var req = {
@@ -725,7 +726,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-           // $scope.Getdriverdetails();
+            // $scope.Getdriverdetails();
+            $scope.ct = $scope.initdata.Table2[0];
         });
     }
 
