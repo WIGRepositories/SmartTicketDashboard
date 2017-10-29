@@ -338,7 +338,7 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlCommand cmd = new SqlCommand();
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "PSInsUpdDelVehicleDocs";
+                cmd.CommandText = "HVInsUpdDelVehicleDocs";
                 cmd.Connection = conn;
         
                 SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
