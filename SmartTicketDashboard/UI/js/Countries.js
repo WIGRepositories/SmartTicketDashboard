@@ -21,6 +21,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             $scope.Countries = response.data;
             $scope.checkedArr = $filter('filter')($scope.Countries, { HasOperations: "1" });
             $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
+            $scope.Flag = $scope.Countries.Flag[0];
         });
     }
 
