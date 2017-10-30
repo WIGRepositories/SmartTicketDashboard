@@ -113,6 +113,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.initdata = res.data;
             $scope.ct = $scope.initdata.Table4[0];
+            $scope.s = $scope.initdata.Table5[0];
             $scope.GetVehcileList();
         });
     }
