@@ -904,7 +904,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            alert("Saved Successfully");
+            //alert("Saved Successfully");
         });
     }
 

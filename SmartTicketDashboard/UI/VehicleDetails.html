@@ -411,7 +411,7 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     
-                                    <div class="row" ng-model="vDetails">
+                                    <div class="row" ng-model="v">
                                         <div class="col-md-12">
 
                                             <div class="row mtl">
@@ -448,19 +448,19 @@
                                                             <tbody>
                                                                 <tr>
                                                                     <td>Owner Name</td>
-                                                                    <td>{{v.OwnerName}}</td>
+                                                                    <td>{{v.Username}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Owner Phone No</td>
-                                                                    <td>{{v.OwnerPhoneNo}}</td>
+                                                                    <td>{{v.ContactNo1}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Registration No</td>
-                                                                    <td> {{v.RegistrationNo}}</td>
+                                                                    <td> {{vDeatils.RegistrationNo}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Address</td>
-                                                                    <td>{{v.HomeLandmark}}</td>
+                                                                    <td>{{v.Address}}</td>
                                                                 </tr>
 
                                                                 <tr>
@@ -689,7 +689,7 @@
 
 
                                                                     <div id="collapse1" class="panel-collapse  collapse in  list-group portlet-body" style="padding: 0px; border: 1px solid #e5e5e5;">
-                                                                        <div class="panel-body">
+                                                                        <div class="panel-body" ng-model="v">
 
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
@@ -697,7 +697,7 @@
                                                                                         <label class="col-sm-3 control-label">Owner Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerName" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Username" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -707,7 +707,7 @@
                                                                                         <label class="col-sm-3 control-label">Owner Phone No</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.OwnerPhoneNo" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ContactNo1" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -731,7 +731,7 @@
                                                                                         <label class="col-sm-3 control-label">Address</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.HomeLandmark" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.Address" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
