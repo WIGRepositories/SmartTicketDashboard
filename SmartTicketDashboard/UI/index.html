@@ -722,7 +722,7 @@
                                     <!--<a style="float:right" href="Notifications.html" class="button" ng-click="label label-sm label-success">More...</a>-->
                                     <span class="label label-sm label-info" ng-show="dashboardDS.Table3.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
                                     <div class="col-md-12">
-                                        this is to test
+                                        
                                         <table>
                                             <tr ng-repeat="loc in markers">
                                                 <td>
@@ -746,9 +746,9 @@
 
                                             <div class="row">
                                                 <div class="col-md-3">
-                                                    Country:<select ng-options="n.Name for n in initdata.Table1 track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)" style="width:50%">
-                                                        <option value="">Select</option>
-                                                    </select>
+                                                    Country:<select ng-options="n.Name for n in initdata.Table1 track by n.Id" ng-model="ctry" ng-change="CenterMap()" style="width:50%">
+    <option value="">Select</option>
+</select>
                                                 </div>
 
 
@@ -759,10 +759,10 @@
                                                 </div>
 
                                                 <div class="col-md-3">
-                                                    Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" id="test1">
+                                                    Fleet Owner:<select ng-options="s.Name for s in initdata.Table2 track by s.Id" ng-model="s" id="test1">
 
-                                                        <option value="">Select</option>
-                                                    </select>
+    <option value="">Select</option>
+</select>
                                                 </div>
 
                                                 <div class="col-md-3" ng-init="init">
