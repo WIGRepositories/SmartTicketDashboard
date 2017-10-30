@@ -184,6 +184,12 @@ namespace SmartTicketDashboard.Models
         public string Latitude { get; set; }
         public string Longitude { get; set; }
 
+
+        public string Flag { get; set; }
+
+        public string Code { get; set; }
+
+        public string flg { get; set; }
     }
 
     public class Cards
