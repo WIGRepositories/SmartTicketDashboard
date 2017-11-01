@@ -470,7 +470,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: Docs
         }
         $http(req).then(function (response) {
-            alert("Saved Successfully");
+            //alert("Saved Successfully");
         });
     }
     var winLookup;

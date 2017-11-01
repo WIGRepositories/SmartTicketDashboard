@@ -135,7 +135,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
             $scope.dashboardDS = res.data;
             $localStorage.dashboardDS = res.data;
         });
-        $scope.CenterMap();
+       
     //   $scope.GetConfigData();
      
     }
@@ -158,7 +158,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         $http(req).then(function (res) {
             $scope.initdata = res.data;
             $scope.nn = $scope.initdata.Table1[0];
-            $scope.ctry = $scope.initdata.Table1[0];
+            //$scope.ctry = $scope.initdata.Table1[0];
             
         });
     }
@@ -288,8 +288,8 @@ app.controller('mapCtrl', function ($scope, $http) {
 
     $scope.CenterMap = function (country) {
 
-        var lat = (country.Latitude == null) ? 17.3850 : country.lat;
-        var long = (country.Longitude == null) ? 78.4867 : country.long;
+        var lat = (country.Latitude == null) ? 17.3850 : country.Latitude;
+        var long = (country.Longitude == null) ? 78.4867 : country.Longitude;
         var mapOptions = {
             zoom: 8,
             center: new google.maps.LatLng(lat, long),
@@ -360,6 +360,8 @@ app.controller('mapCtrl', function ($scope, $http) {
 
         $scope.markers.push(marker);
     };
+
+   
 
 });
 

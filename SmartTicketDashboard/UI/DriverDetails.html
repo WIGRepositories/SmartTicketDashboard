@@ -839,7 +839,7 @@
                                                                                         <td><input type="checkbox" checked /></td>
                                                                                         <td>{{v.Status}}</td>
                                                                                         <td>
-                                                                                            <a href="VehicleDetails.html?VID={{v.Id}}">
+                                                                                            <a href="VehicleDetails.html?VID={{v.VechID}}">
                                                                                                 <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setlistdrivers(Dl);">
                                                                                                     <i class="fa fa-edit"></i>
                                                                                                 </button>
@@ -1062,7 +1062,7 @@
                                         </div>
                                         <div class="col-md-6">
 
-                                            <select ng-options="d.Name for d in initdata.Table2 track by d.Id" ng-model="driverDoc.docType" style="width:100%">
+                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{IsMandatory:1,uploaded:0}) track by d.Id" ng-model="driverDoc.docType" style="width:100%">
                                                 <option value="">Select</option>
                                             </select>
 
