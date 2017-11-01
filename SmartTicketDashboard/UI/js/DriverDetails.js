@@ -163,14 +163,6 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //assign vehicle group
             //assign state
             //assign blood group
-
-            for (i = 0; i < $scope.initdata.Table5.length; i++) {
-                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
-                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
-                    break;
-                }
-            }
-
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.Dl.StatusId) {
                     $scope.Dl.StatusId = $scope.initdata.Table[i];
@@ -185,6 +177,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 }
             }
 
+            for (i = 0; i < $scope.initdata.Table2.length; i++) {
+                if ($scope.initdata.Table2[i].Id == $scope.Dl.VehicleTypeId) {
+                    $scope.Dl.vt = $scope.initdata.Table2[i];
+                    break;
+                }
+            }
+
             for (i = 0; i < $scope.initdata.Table3.length; i++) {
                 if ($scope.initdata.Table3[i].Id == $scope.Dl.CountryId) {
                     $scope.Dl.Country = $scope.initdata.Table3[i];
@@ -194,31 +193,41 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             for (i = 0; i < $scope.initdata.Table4.length; i++) {
                 if ($scope.initdata.Table4[i].Id == $scope.Dl.FleetOwnerId) {
-                    $scope.Dl.fleetowner = $scope.initdata.Table4[i];
+                    $scope.Dl.Dl.fleetowner = $scope.initdata.Table4[i];
                     break;
                 }
             }
 
-            for (i = 0; i < $scope.initdata.Table2.length; i++) {
-                if ($scope.initdata.Table2[i].Id == $scope.Dl.VehicleTypeId) {
-                    $scope.Dl.vt = $scope.initdata.Table2[i];
+            for (i = 0; i < $scope.initdata.Table5.length; i++) {
+                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
+                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
                     break;
                 }
             }
 
-            for (i = 0; i < $scope.initdata.Table3.length; i++) {
-                if ($scope.initdata.Table3[i].Id == $scope.Dl.VehicleModelId) {
-                    $scope.Dl.vmo = $scope.initdata.Table3[i];
-                    break;
-                }
-            }
+            
+            //for (i = 0; i < $scope.initdata.Table3.length; i++) {
+            //    if ($scope.initdata.Table3[i].Id == $scope.Dl.VehicleModelId) {
+            //        $scope.Dl.vmo = $scope.initdata.Table3[i];
+            //        break;
+            //    }
+            //}
 
-            for (i = 0; i < $scope.initdata.Table4.length; i++) {
-                if ($scope.initdata.Table4[i].Id == $scope.Dl.VehicleMakeId) {
-                    $scope.Dl.vm = $scope.initdata.Table4[i];
-                    break;
-                }
-            }
+            //for (i = 0; i < $scope.initdata.Table4.length; i++) {
+            //    if ($scope.initdata.Table4[i].Id == $scope.Dl.VehicleMakeId) {
+            //        $scope.Dl.vm = $scope.initdata.Table4[i];
+            //        break;
+            //    }
+            //}
+            
+
+            
+
+            
+
+            
+
+            
 
             
 

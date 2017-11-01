@@ -887,7 +887,7 @@
                                                                                         <td>{{b.BranchAddress}}</td>
                                                                                         <td>{{b.Country}}</td>
                                                                                         <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey" checked />
                                                                                         </td>
                                                                                         <td> 
                                                                                         <span class="img-shadow">
@@ -1330,15 +1330,13 @@
                                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                 <h4 id="modal-header-primary-label" class="modal-title">Edit Bank Details</h4>
                             </div>
-                            <div class="modal-body" ng-model="banking">
-
-                              
+                            <div class="modal-body" ng-model="b">                              
                                     <div class="row mbm">
                                         <div style="text-align:right">
                                             <label for="Fax" class="col-md-4 control-label">Account Number<span class='require'></span></label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" ng-model="banking.Accountnumber" class="form-control" />
+                                            <input type="text" ng-model="b.Accountnumber" class="form-control" />
                                         </div>
                                     </div>
                                     
@@ -1348,7 +1346,7 @@
                                         <label for="selCountry" class="col-md-4 control-label">Bank Name<span class='require'></span></label>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" ng-model="banking.BankName" class="form-control" />
+                                            <input type="text" ng-model="b.BankName" class="form-control" />
                                         </div>
                                     </div>
 
@@ -1356,13 +1354,13 @@
                                     <div style="text-align:right">
                                         <label for="Fax" class="col-md-4 control-label">Bank Code<span class='require'></span></label>
                                        </div>
-                                         <div class="col-md-6"><input id="FromKm" type="text" ng-model="banking.BankCode" class="form-control" /><span class="help-block"></span></div>
+                                         <div class="col-md-6"><input id="FromKm" type="text" ng-model="b.BankCode" class="form-control" /><span class="help-block"></span></div>
                                    </div>
                                 <div class="row mbm">
                                     <div style="text-align:right">
                                         <label for="Fax" class="col-md-4 control-label">Branch Address:<span class='require'></span></label>
                                         </div>
-                                        <div class="col-md-6"><input id="ToKm" type="text" ng-model="banking.BranchAddress" class="form-control" /><span class="help-block"></span></div>
+                                        <div class="col-md-6"><input id="ToKm" type="text" ng-model="b.BranchAddress" class="form-control" /><span class="help-block"></span></div>
 
                                     </div>
 
@@ -1371,7 +1369,7 @@
                                     <div style="text-align:right">
                                         <label for="Fax" class="col-md-4 control-label">Country<span class='require'></span></label>
                                         </div>
-                                        <div class="col-md-6"><input type="date" ng-model="banking.Country" class="form-control" /><span class="help-block"></span></div>
+                                        <div class="col-md-6"><input type="date" ng-model="b.Country" class="form-control" /><span class="help-block"></span></div>
 
                                     </div>
                                 <div class="row mbm">
@@ -1379,7 +1377,7 @@
                                         <label for="Fax" class="col-md-4 control-label">Is Active<span class='require'></span></label>
                                         </div>
                                         <div class="col-md-6">
-                                            <select class="form-control" ng-model="banking.IsActive">
+                                            <select class="form-control" ng-model="b.IsActive">
                                                 <option value="">Select</option>
                                                 <option value="1">yes</option>
                                                 <option value="0">No</option>
@@ -1390,7 +1388,7 @@
 
                                 <div class="form-actions">
                                     <div style="text-align:center">
-                                        <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="Save(Changes, 'U');">Save</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="Save(b, 'U');">Save</button>
                                         <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
                                     </div>
                                 </div>
@@ -1404,6 +1402,8 @@
 
 
                 </div>
+
+                
                 <!----------END Banking------------------->
                 <!----------BEGIN Email ------------------->
                 <div id="email-sent" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">

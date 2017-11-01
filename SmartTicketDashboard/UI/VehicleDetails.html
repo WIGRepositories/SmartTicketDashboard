@@ -456,7 +456,7 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Registration No</td>
-                                                                    <td> {{vDeatils.RegistrationNo}}</td>
+                                                                    <td> {{v.RegistrationNo}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Address</td>
@@ -958,7 +958,7 @@
                     <option value="4">Others</option>
                 </select>-->
 
-                                        <select ng-options="d.Name for d in initdata.Table5 track by d.Id" ng-model="vehicleDoc.docType" style="width:100%">
+                                        <select ng-options="d.Name for d in (PendDocFiles|filter:{IsMandatory:1,uploaded:0}) track by d.Id" ng-model="vehicleDoc.docName" style="width:100%">
                                             <option value="">Select</option>
                                         </select>
 
@@ -970,7 +970,7 @@
                                     </div>
                                     <div class="col-md-6">
                                         <span class="help-block">
-                                            <input type="text" ng-model="vehicleDoc.docNo" class="form-control" />
+                                            <input type="text" ng-model="vehicleDoc.DocumentNo" class="form-control" />
                                         </span>
 
                                     </div>
