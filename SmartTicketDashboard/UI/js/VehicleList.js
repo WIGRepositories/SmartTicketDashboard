@@ -114,6 +114,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.initdata = res.data;
             $scope.ct = $scope.initdata.Table4[0];
             $scope.s = $scope.initdata.Table5[0];
+            $scope.r = $scope.initdata.Table[0];
             $scope.GetVehcileList();
         });
     }
@@ -121,7 +122,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
    
     $scope.GetVehcileList = function () {
         var fid = ($scope.s == null) ? -1 : ($scope.s.Id);
-        $http.get('/api/VehicleMaster/GetVehcileList?ctryId=' + $scope.ct.Id + '&fid=' + fid).then(function (res, data) {
+        $http.get('/api/VehicleMaster/GetVehcileList?ctryId=' + $scope.ct.Id + '&fid=' + fid+'&vgId='+$scope.r.Id).then(function (res, data) {
             $scope.VehiclesList = res.data;
             $scope.imageSrc = $scope.VehiclesList.Photo;
            
