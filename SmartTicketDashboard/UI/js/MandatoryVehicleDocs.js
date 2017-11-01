@@ -97,12 +97,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             if ($scope.uncheckedArr[cnt].selected == 1) {
                 var fr = {
                     flag: 'D',
-                    Id: -1,
+                    Id: $scope.uncheckedArr[cnt].Docid,
                     CountryId: ctry.Id,
                     VehicleGroupId: vgroup.Id,
-                    DocTypeId: $scope.checkedArr[cnt].Id,
-                    FileContent: $scope.checkedArr[cnt].FileContent,
-                    IsMandatory: $scope.checkedArr[cnt].IsMandatory,
+                    DocTypeId: $scope.uncheckedArr[cnt].Id,
+                    FileContent: $scope.uncheckedArr[cnt].FileContent,
+                    IsMandatory: $scope.uncheckedArr[cnt].IsMandatory,
                   
                 }
                 VehicleDocs.push(fr);
@@ -145,7 +145,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         var idx = $scope.checkedArr.indexOf(item);
         if (idx > -1) {
             //$scope.checkedArr.splice(idx, 1);
-            $scope.checkedArr[idx].IsMandatory = ($scope.checkedArr[idx].IsMandatory == 0) ? 1 : 0;
+            $scope.checkedArr[idx].IsMandatory = ($scope.checkedArr[idx].IsMandatory == null || $scope.checkedArr[idx].IsMandatory == 0) ? 1 : 0;
             $scope.checkedArr[idx].IsChanged = 1;
         }
         else {
