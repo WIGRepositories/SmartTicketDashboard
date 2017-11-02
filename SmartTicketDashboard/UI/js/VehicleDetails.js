@@ -164,7 +164,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
 
             for (i = 0; i < $scope.initdata.Table7.length; i++) {
-                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetownerId) {
+                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetOwnerId) {
                     $scope.vDetails.f = $scope.initdata.Table7[i];
                     break;
                 }
@@ -746,6 +746,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         document.getElementById('fileInput').value = null;
 
         $scope.CurrDocdocCatId = docCatId;
+    }
+
+    $scope.Approval = function (vDetails) {
+        //alert();
+        RegistrationNo: vDetails.RegistrationNo;
+        IsApproved: vDetails.Approved;
+
+
+
+        var Approve = {
+
+            RegistrationNo: vDetails.RegistrationNo,
+            IsApproved: vDetails.Approved,
+            change: '1'
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/SaveVehicleApprovals',
+            data: Approve
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+
+            //alert("Saved Successfully");
+        });
     }
 
     $scope.UploadImg = function () {

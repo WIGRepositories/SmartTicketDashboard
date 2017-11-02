@@ -131,11 +131,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         //retive the userid and roleid
         var roleid = $localStorage.userdetails[0].roleid;
 
-        $http.get('/api/dashboard/getdashboard?userid=-1&roleid='+ roleid+'&ctryId='+$scope.nn.Id).then(function (res, data) {
+        $http.get('/api/dashboard/getdashboard?userid=-1&roleid=' + roleid + '&ctryId=' + $scope.nn.Id).then(function (res, data) {
+            
             $scope.dashboardDS = res.data;
             $localStorage.dashboardDS = res.data;
         });
-       
+        
     //   $scope.GetConfigData();
      
     }

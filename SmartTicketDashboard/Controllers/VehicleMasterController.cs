@@ -514,7 +514,7 @@ namespace SmartTicketDashboard.Controllers
 
 
         [HttpPost]
-        [Route("api/DriverMaster/SaveVehicleApprovals")]
+        [Route("api/VehicleMaster/SaveVehicleApprovals")]
         public DataTable SaveVehicleApprovals(Approvals a)
         {
             //connect to database

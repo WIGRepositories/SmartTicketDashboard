@@ -174,8 +174,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/Users/GetUserDetails?UId=' + $scope.selectedUser).then(function (res, data) {
             $scope.U = res.data[0];           
             //$scope.imageSrc = $scope.U.photo;            
-
+           
         });
+        
     }
     $scope.GetCompanies = function () {    
         $http.get('/api/GetCompanyGroups?userid=-1').then(function (response, data) {
@@ -195,8 +196,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //        document.getElementById('test').disabled =false;
         //    }
 
-        //    $scope.getUserRolesForCompany($scope.cmp);
+            //    $scope.getUserRolesForCompany($scope.cmp);
+           
         });
+        
         //if ($scope.Roleid != 1) { $scope.cmpId = $scope.UserCmpid;}
     }
 
@@ -216,6 +219,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/Roles/GetCompanyRoles?companyId=' + $scope.cmp.Id).then(function (res, data) {
             $scope.cmproles = res.data;
+            
            
         });
     }

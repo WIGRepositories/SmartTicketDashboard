@@ -2936,6 +2936,8 @@ namespace SmartTicketDashboard.Models
         public int IsApproved { get; set; }
         public int DId { get; set; }
         public string RegistrationNo { get; set; }
+        public string MobileNo { get; set; }
+        public int VID { get; set; }
     }
 }
 

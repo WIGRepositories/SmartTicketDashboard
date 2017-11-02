@@ -164,7 +164,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //assign state
             //assign blood group
             for (i = 0; i < $scope.initdata.Table.length; i++) {
-                if ($scope.initdata.Table[i].Id == $scope.Dl.StatusId) {
+                if ($scope.initdata.Table[i].Id == $scope.Dl.Status) {
                     $scope.Dl.StatusId = $scope.initdata.Table[i];
                     break;
                 }
@@ -917,17 +917,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.Approval = function (a) {
-        alert();
-        DId: a.DId;
-        IsApproved: a.Approved;
+    $scope.Approval = function (Dl) {
+        //alert();
+        MobileNo: Dl.PMobNo;
+        IsApproved: Dl.Approved;
         
 
 
         var Approve = {
 
-            DId: a.DId,
-            IsApproved: a.Approved,            
+            MobileNo: Dl.PMobNo,
+            IsApproved: Dl.Approved,
             change: '1'
 
         }
@@ -939,7 +939,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            alert("Saved Successfully");
+            
+            //alert("Saved Successfully");
         });
     }
 
