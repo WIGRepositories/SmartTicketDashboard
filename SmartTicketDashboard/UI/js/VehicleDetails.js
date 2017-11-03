@@ -123,7 +123,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {
-                    $scope.vDetails.vs = $scope.initdata.Table[i];
+                    $scope.vDetails.StatusId = $scope.initdata.Table[i];
                     break;
                 }
             }
@@ -471,6 +471,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: Docs
         }
         $http(req).then(function (response) {
+            var res = response.data;
             //alert("Saved Successfully");
         });
     }

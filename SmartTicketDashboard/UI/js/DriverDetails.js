@@ -203,7 +203,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
                     break;
                 }
-            }
+            }         
 
             
             //for (i = 0; i < $scope.initdata.Table3.length; i++) {
@@ -218,20 +218,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //        $scope.Dl.vm = $scope.initdata.Table4[i];
             //        break;
             //    }
-            //}
-            
+            //}          
 
-            
-
-            
-
-            
-
-            
-
-            
-
-            
 
         });
     }
@@ -253,6 +241,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetBankdetails = function () {
         $http.get('/api/DriverMaster/GetBankdetails?DId='+$scope.selectedlistdrivers).then(function (response, req) {
             $scope.bankdetails = response.data;
+            
         });
     }
 
@@ -688,6 +677,71 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var res = response.data;
             alert("Saved successfully");
             $scope.GetBankdetails();
+            $scope.Getdriverdetails();
+           // window.location.href = "DriverDetails.html?DId=" + res[0].DId;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+
+    };
+
+    $scope.updatebank = function (b, flag) {
+
+
+        if (b.AccountNumber == null) {
+            alert('Please Enter AccountNumber');
+            return;
+        }
+        if (b.BankName == null) {
+            alert('Please Enter BankName');
+            return;
+        }
+        if (b.BankCode == null) {
+            alert('Please Enter BankCode');
+            return;
+        }
+        if (b.BranchAddress == null) {
+            alert('Please Enter BranchAddress');
+            return;
+        }
+        if (b.Country.Id == null) {
+            alert('Please Enter Country');
+            return;
+        }
+        if (b.IsActive == null) {
+            alert('Please Enter IsActive');
+            return;
+        }
+
+
+        var bank = {
+
+            flag: 'U',
+            Id: $scope.b.Id,
+            Accountnumber: b.AccountNumber,
+            BankName: b.BankName,
+            Bankcode: b.BankCode,
+            BranchAddress: b.BranchAddress,
+            Country: b.Country.Id,
+            IsActive: b.IsActive,
+            DriverId: $scope.selectedlistdrivers,
+            qrcode: $scope.imageSrc1
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/Bankingdetails',
+            data: bank
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+            alert("Saved successfully");
+            $scope.GetBankdetails();
+            $scope.Getdriverdetails();
             //window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
@@ -999,7 +1053,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     docName: files[0].name,
                     docContent: result,
                     isVerified: 0,
-                    insupddelflag: 'I' 
+                    insupddelflag: 'U' 
                 }
 
             $scope.modifiedDoc = doc;
