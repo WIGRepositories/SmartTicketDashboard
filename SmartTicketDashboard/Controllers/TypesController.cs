@@ -167,7 +167,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(flag);
            
             
-            cmd.ExecuteScalar();
+             cmd.ExecuteScalar();
             conn.Close();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveType Credentials completed.");
              return new HttpResponseMessage(HttpStatusCode.OK);
