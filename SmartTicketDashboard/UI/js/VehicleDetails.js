@@ -123,7 +123,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             for (i = 0; i < $scope.initdata.Table.length; i++) {
                 if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {
-                    $scope.vDetails.vs = $scope.initdata.Table[i];
+                    $scope.vDetails.StatusId = $scope.initdata.Table[i];
                     break;
                 }
             }
@@ -164,7 +164,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
 
             for (i = 0; i < $scope.initdata.Table7.length; i++) {
-                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetownerId) {
+                if ($scope.initdata.Table7[i].Id == $scope.vDetails.FleetOwnerId) {
                     $scope.vDetails.f = $scope.initdata.Table7[i];
                     break;
                 }
@@ -353,8 +353,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: $scope.modifiedDoc
         }
         $http(req).then(function (response) {
+            
             //  $scope.DocFiles = response.data.Table;
-            alert("Saved Successfully");
+            //alert("Saved Successfully");
             $scope.GetVehicleDetails();
             $scope.DocFiles = response.data;          
 
@@ -470,6 +471,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             data: Docs
         }
         $http(req).then(function (response) {
+            var res = response.data;
             //alert("Saved Successfully");
         });
     }
@@ -745,6 +747,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         document.getElementById('fileInput').value = null;
 
         $scope.CurrDocdocCatId = docCatId;
+    }
+
+    $scope.Approval = function (vDetails) {
+        //alert();
+        RegistrationNo: vDetails.RegistrationNo;
+        IsApproved: vDetails.Approved;
+
+
+
+        var Approve = {
+
+            RegistrationNo: vDetails.RegistrationNo,
+            IsApproved: vDetails.Approved,
+            change: '1'
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/SaveVehicleApprovals',
+            data: Approve
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+
+            //alert("Saved Successfully");
+        });
     }
 
     $scope.UploadImg = function () {

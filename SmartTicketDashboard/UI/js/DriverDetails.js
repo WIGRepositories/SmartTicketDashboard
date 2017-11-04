@@ -163,16 +163,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             //assign vehicle group
             //assign state
             //assign blood group
-
-            for (i = 0; i < $scope.initdata.Table5.length; i++) {
-                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
-                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
-                    break;
-                }
-            }
-
             for (i = 0; i < $scope.initdata.Table.length; i++) {
-                if ($scope.initdata.Table[i].Id == $scope.Dl.StatusId) {
+                if ($scope.initdata.Table[i].Id == $scope.Dl.Status) {
                     $scope.Dl.StatusId = $scope.initdata.Table[i];
                     break;
                 }
@@ -181,6 +173,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             for (i = 0; i < $scope.initdata.Table1.length; i++) {
                 if ($scope.initdata.Table1[i].Id == $scope.Dl.VehicleGroupId) {
                     $scope.Dl.vg = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table2.length; i++) {
+                if ($scope.initdata.Table2[i].Id == $scope.Dl.VehicleTypeId) {
+                    $scope.Dl.vt = $scope.initdata.Table2[i];
                     break;
                 }
             }
@@ -194,35 +193,33 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             for (i = 0; i < $scope.initdata.Table4.length; i++) {
                 if ($scope.initdata.Table4[i].Id == $scope.Dl.FleetOwnerId) {
-                    $scope.Dl.fleetowner = $scope.initdata.Table4[i];
+                    $scope.Dl.Dl.fleetowner = $scope.initdata.Table4[i];
                     break;
                 }
             }
 
-            for (i = 0; i < $scope.initdata.Table2.length; i++) {
-                if ($scope.initdata.Table2[i].Id == $scope.Dl.VehicleTypeId) {
-                    $scope.Dl.vt = $scope.initdata.Table2[i];
+            for (i = 0; i < $scope.initdata.Table5.length; i++) {
+                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
+                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
                     break;
                 }
-            }
-
-            for (i = 0; i < $scope.initdata.Table3.length; i++) {
-                if ($scope.initdata.Table3[i].Id == $scope.Dl.VehicleModelId) {
-                    $scope.Dl.vmo = $scope.initdata.Table3[i];
-                    break;
-                }
-            }
-
-            for (i = 0; i < $scope.initdata.Table4.length; i++) {
-                if ($scope.initdata.Table4[i].Id == $scope.Dl.VehicleMakeId) {
-                    $scope.Dl.vm = $scope.initdata.Table4[i];
-                    break;
-                }
-            }
+            }         
 
             
+            //for (i = 0; i < $scope.initdata.Table3.length; i++) {
+            //    if ($scope.initdata.Table3[i].Id == $scope.Dl.VehicleModelId) {
+            //        $scope.Dl.vmo = $scope.initdata.Table3[i];
+            //        break;
+            //    }
+            //}
 
-            
+            //for (i = 0; i < $scope.initdata.Table4.length; i++) {
+            //    if ($scope.initdata.Table4[i].Id == $scope.Dl.VehicleMakeId) {
+            //        $scope.Dl.vm = $scope.initdata.Table4[i];
+            //        break;
+            //    }
+            //}          
+
 
         });
     }
@@ -244,6 +241,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetBankdetails = function () {
         $http.get('/api/DriverMaster/GetBankdetails?DId='+$scope.selectedlistdrivers).then(function (response, req) {
             $scope.bankdetails = response.data;
+            
         });
     }
 
@@ -679,6 +677,71 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var res = response.data;
             alert("Saved successfully");
             $scope.GetBankdetails();
+            $scope.Getdriverdetails();
+           // window.location.href = "DriverDetails.html?DId=" + res[0].DId;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+
+    };
+
+    $scope.updatebank = function (b, flag) {
+
+
+        if (b.AccountNumber == null) {
+            alert('Please Enter AccountNumber');
+            return;
+        }
+        if (b.BankName == null) {
+            alert('Please Enter BankName');
+            return;
+        }
+        if (b.BankCode == null) {
+            alert('Please Enter BankCode');
+            return;
+        }
+        if (b.BranchAddress == null) {
+            alert('Please Enter BranchAddress');
+            return;
+        }
+        if (b.Country.Id == null) {
+            alert('Please Enter Country');
+            return;
+        }
+        if (b.IsActive == null) {
+            alert('Please Enter IsActive');
+            return;
+        }
+
+
+        var bank = {
+
+            flag: 'U',
+            Id: $scope.b.Id,
+            Accountnumber: b.AccountNumber,
+            BankName: b.BankName,
+            Bankcode: b.BankCode,
+            BranchAddress: b.BranchAddress,
+            Country: b.Country.Id,
+            IsActive: b.IsActive,
+            DriverId: $scope.selectedlistdrivers,
+            qrcode: $scope.imageSrc1
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/DriverMaster/Bankingdetails',
+            data: bank
+        }
+        $http(req).then(function (response) {
+            var res = response.data;
+            alert("Saved successfully");
+            $scope.GetBankdetails();
+            $scope.Getdriverdetails();
             //window.location.href = "DriverDetails.html?DId=" + res[0].DId;
 
         }, function (errres) {
@@ -908,17 +971,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.Approval = function (a) {
-        alert();
-        DId: a.DId;
-        IsApproved: a.Approved;
+    $scope.Approval = function (Dl) {
+        //alert();
+        MobileNo: Dl.PMobNo;
+        IsApproved: Dl.Approved;
         
 
 
         var Approve = {
 
-            DId: a.DId,
-            IsApproved: a.Approved,            
+            MobileNo: Dl.PMobNo,
+            IsApproved: Dl.Approved,
             change: '1'
 
         }
@@ -930,7 +993,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            alert("Saved Successfully");
+            
+            //alert("Saved Successfully");
         });
     }
 
@@ -989,7 +1053,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     docName: files[0].name,
                     docContent: result,
                     isVerified: 0,
-                    insupddelflag: 'I' 
+                    insupddelflag: 'U' 
                 }
 
             $scope.modifiedDoc = doc;

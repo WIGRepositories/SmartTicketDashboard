@@ -15,7 +15,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/VehicleMaster/GetVehcileList")]
-        public DataTable GetVehcileList(int ctryId, int fid)
+        public DataTable GetVehcileList(int ctryId, int fid,int vgId)
         {
             DataTable dt = new DataTable();
 
@@ -29,6 +29,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.Connection = conn;
             cmd.Parameters.Add("@ctryId", SqlDbType.Int).Value = ctryId;
             cmd.Parameters.Add("@fleetId", SqlDbType.Int).Value = fid;
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vgId;
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);            
             return dt;
@@ -513,7 +514,7 @@ namespace SmartTicketDashboard.Controllers
 
 
         [HttpPost]
-        [Route("api/DriverMaster/SaveVehicleApprovals")]
+        [Route("api/VehicleMaster/SaveVehicleApprovals")]
         public DataTable SaveVehicleApprovals(Approvals a)
         {
             //connect to database
