@@ -31,7 +31,29 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
 
     }
 
-    
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            
+            includeVehicleType: '1',
+            includeVehicleGroup: '1',              
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.ct = $scope.initdata.Table4[0];
+            $scope.s = $scope.initdata.Table5[0];
+            $scope.r = $scope.initdata.Table[0];
+            $scope.GetVehcileList();
+        });
+    }
+
 
     $scope.map = {
         control: {},
@@ -39,7 +61,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             latitude: 17.3850,
             longitude: 78.4867
         },
-        zoom: 16
+        zoom: 16 
     };
 
    
@@ -87,7 +109,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
    
 
     $scope.SavePricing = function (directions,flag) {
-        alert();
+        //alert();
 
         
         var directions = {
@@ -98,7 +120,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             SourceLng : $scope.srcLon  ,
             DestinationLat : $scope.destLat,
             DestinationLng :$scope.destLon,
-            VehicleModelId : directions.vm.Id,
+            VehicleGroupId : directions.vm.Id,
             VehicleTypeId : directions.v.Id,
             //PricingTypeId: directions.pricing,
             PricingTypeId:1,

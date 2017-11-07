@@ -4,7 +4,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 {
     $scope.GetHourBasePricing = function ()
     {
-        $http.get("/api/HourBasedPricing/GetHourBasePricing").then(function (response, req) {
+
+        var countryId = $scope.ct.Id;
+        if (countryId == null) return;
+
+        var vgId = $scope.vg.Id;
+        if (vgId == null) return;
+
+        $http.get("/api/HourBasedPricing/GetHourBasePricing?ctryId=" + countryId + "&vgId=" + vgId).then(function (response, req) {
             $scope.VechPricing = response.data;
         
         });
@@ -15,40 +22,57 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter Pricing.');
             return;
         }
-        if ($scope.vm.Id == null || $scope.vm.Id == "") {
-            alert('Please enter VehicleModel.');
-            return;
-        }      
-       
-        if (Vprice.Hours == null) {
-            alert('Please enter Hours.');
+        if ($scope.vt.Id == null || $scope.vt.Id == "") {
+            alert('Please enter VehicleType.');
             return;
         }
-        if (Vprice.FromTime == null) {
-            alert('Please enter FromTime.');
+        if (Vprice.FromTime == null || Vprice.FromTime == "") {
+            alert('Please enter Time.');
             return;
         }
+        //emailid
         if (Vprice.ToTime == null) {
-            alert('Please enter ToTime.');
+            alert('Please enter Time.');
             return;
         }
 
-        if (Vprice.Price == null) {
-            alert('Please enter Price.');
+        if (Vprice.PricingType == null) {
+            alert('Please enter Pricing.');
             return;
         }
+        if (Vprice.FromDate == null) {
+            alert('Please enter FromDate.');
+            return;
+        }
+        if (Vprice.ToDate == null) {
+            alert('Please enter ToDate.');
+            return;
+        }
+
+        if (Vprice.c.Id == null) {
+            alert('Please enter Country.');
+            return;
+        }
+        if ($scope.vm.Id == null) {
+            alert('Please enter VehicleGroup.');
+            return;
+        }
+
 
 
         var newSavePricing = {
 
-            Id: Vprice.Id,
-            VehicleModelId: $scope.vm.Id,
-           // VehicleModelId: (Vprice.vm.Id != null) ? Vprice.vm.Id : Vprice.VehicleModel.Id,
-            Hours: Vprice.Hours,
+            Id: -1,
+            VehicleTypeId: $scope.vt.Id,
             FromTime: Vprice.FromTime,
             ToTime: Vprice.ToTime,
-            Price: Vprice.Price,
-
+            Hours:Vprice.Hours,
+            PricingType: Vprice.PricingType,
+            FromDate: Vprice.FromDate,
+            ToDate: Vprice.ToDate,                        
+            CountryId: Vprice.c.Id,
+            VehicleGroupId: $scope.vm.Id,
+            price:Vprice.Price,
             insupddelflag: 'I'
         }
 
@@ -98,6 +122,28 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeVehicleType: '1',
+            includeVehicleGroup: '1',           
+            includeActiveCountry: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.ct = $scope.initdata.Table2[0];
+            $scope.vg = $scope.initdata.Table[0];
+            $scope.GetHourBasePricing();
+        });
+    }
+
     $scope.SavePricingChanges = function (DistPricing, flag) {
         if (DistPricing == null) {
             alert('Please enter Pricing.');
@@ -127,11 +173,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var DistPricing = {
             Id: DistPricing.Id,
-            VehicleModelId: $scope.vm.Id,
+            VehicleGroupId: $scope.vm.Id,
+            VehicleTypeId:$scope.vt.Id,
             Hours: DistPricing.Hours,
             FromTime: DistPricing.FromTime,
             ToTime: DistPricing.ToTime,
+            FromDate: DistPricing.FromDate,
+            ToDate:DistPricing.ToDate,
             Price: DistPricing.Price,
+            PricingType:DistPricing.PricingType1,
             insupddelflag: 'U'
 
         }
@@ -145,7 +195,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
 
             alert("Updated successfully!!");
-            
+            $scope.GetHourBasePricing();
             $scope.DistPricing = null;
 
         }

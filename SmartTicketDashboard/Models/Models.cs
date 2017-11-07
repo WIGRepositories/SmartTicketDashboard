@@ -2491,12 +2491,18 @@ namespace SmartTicketDashboard.Models
     {
         public string insupddelflag { get; set; }
         public int Id { get; set; }
-        public int VehicleModelId { get; set; }
-        //public string VehicleModel { get; set; }
-        public string Hours { get; set; }
-        public DateTime FromTime { get; set; }
-        public DateTime ToTime { get; set; }
-        public decimal Price { get; set; }
+        public int VehicleTypeId { get; set; }
+        public DateTime? FromTime { get; set; }
+        public DateTime? ToTime { get; set; }
+        public int PricingType { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedBy { get; set; } 
+        public int CountryId { get; set; }
+        public int VehicleGroupId { get; set; }
+        public int Hours { get; set; }
+        public decimal price { get; set; }
 
     }
     public class Pricing
@@ -2520,9 +2526,9 @@ namespace SmartTicketDashboard.Models
         public float SourceLng {get; set;}
         public float DestinationLat {get; set;}
         public float DestinationLng {get; set;}
-        public string VehicleModelId {get; set;}
-        public string VehicleTypeId {get; set;}
-        public string PricingTypeId {get; set;}
+        public int VehicleGroupId { get; set; }
+        public int VehicleTypeId {get; set;}
+        public int PricingTypeId {get; set;}
         public float UnitPrice {get; set;}
         public int Distance { get; set; }
         public float Amount {get; set;}

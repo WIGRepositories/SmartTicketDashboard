@@ -15,7 +15,7 @@ namespace SmartTicketDashboard.Controllers
         
         [HttpGet]
         [Route("api/HourBasedPricing/GetHourBasePricing")]
-        public DataTable GetHourBasePricing()
+        public DataTable GetHourBasePricing(int ctryId,int vgId )
         {
             DataTable Tbl = new DataTable();
 
@@ -29,6 +29,9 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "PSGetHourBasePricing";
             cmd.Connection = conn;
+
+            cmd.Parameters.Add("@ctryId", SqlDbType.Int).Value = ctryId;
+            cmd.Parameters.Add("@vgId", SqlDbType.Int).Value = vgId;
 
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);
@@ -62,29 +65,50 @@ namespace SmartTicketDashboard.Controllers
             q.Value = c.Id;
             cmd.Parameters.Add(q);
 
-            SqlParameter v = new SqlParameter("@VehicleModelId", SqlDbType.Int);
-            v.Value = c.VehicleModelId;
-            cmd.Parameters.Add(v);
+            SqlParameter q1 = new SqlParameter("@VehicleTypeId", SqlDbType.Int);
+            q1.Value = c.VehicleTypeId;
+            cmd.Parameters.Add(q1);
 
-            //SqlParameter q1 = new SqlParameter("@VehicleModel", SqlDbType.VarChar, 50);
-            //q1.Value = c.VehicleModel;
-            //cmd.Parameters.Add(q1);
-
-           SqlParameter e = new SqlParameter("@Hours", SqlDbType.VarChar, 5);
-            e.Value = c.Hours;
+            SqlParameter e = new SqlParameter("@FromTime", SqlDbType.DateTime);
+            e.Value = c.FromTime;
             cmd.Parameters.Add(e);
 
-            SqlParameter p = new SqlParameter("@Price", SqlDbType.Decimal);
-            p.Value = c.Price;
-            cmd.Parameters.Add(p);
+            SqlParameter t = new SqlParameter("@ToTime", SqlDbType.DateTime);
+            t.Value = c.ToTime;
+            cmd.Parameters.Add(t);
 
-            SqlParameter ft = new SqlParameter("@FromTime", SqlDbType.DateTime);
-            ft.Value = c.FromTime;
+            SqlParameter c1 = new SqlParameter("@PricingType", SqlDbType.Int);
+            c1.Value = c.PricingType;
+            cmd.Parameters.Add(c1);
+
+            SqlParameter ft = new SqlParameter("@FromDate", SqlDbType.DateTime);
+            ft.Value = c.FromDate;
             cmd.Parameters.Add(ft);
 
-            SqlParameter tf = new SqlParameter("@ToTime", SqlDbType.DateTime);
-            tf.Value = c.ToTime;
+            SqlParameter tf = new SqlParameter("@ToDate", SqlDbType.DateTime);
+            tf.Value = c.ToDate;
             cmd.Parameters.Add(tf);
+
+
+            SqlParameter cd = new SqlParameter("@Createdby", SqlDbType.Int);
+            cd.Value = c.CreatedBy;
+            cmd.Parameters.Add(cd);
+
+            SqlParameter up = new SqlParameter("@Hours", SqlDbType.Int);
+            up.Value = c.Hours;
+            cmd.Parameters.Add(up);           
+
+            SqlParameter cc = new SqlParameter("@CountryId", SqlDbType.Int);
+            cc.Value = c.CountryId;
+            cmd.Parameters.Add(cc);
+
+            SqlParameter vc = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+            vc.Value = c.VehicleGroupId;
+            cmd.Parameters.Add(vc);
+
+            SqlParameter uo = new SqlParameter("@price", SqlDbType.Decimal);
+            uo.Value = c.price;
+            cmd.Parameters.Add(uo);
          
 
             DataTable dt = new DataTable();

@@ -12,6 +12,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleDistPricing/GetDistanceBasePricing?ctryId=' + countryId + '&vgId=' + vgId).then(function (response, req) {
             $scope.VPricing = response.data;
 
+            //for (i = 0; i < $scope.initdata.Table.length; i++) {
+            //    if ($scope.initdata.Table[i].Id == $scope.VehicleGroupId) {
+            //        $scope.Changes.v = $scope.initdata.Table[i];
+            //        break;
+            //    }
+            //}
+
         });
     }
     $scope.SavePricing = function (Dist, flag) {
@@ -139,6 +146,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
+            $scope.ct = $scope.initdata.Table2[0];
+            $scope.vg = $scope.initdata.Table[0];
             $scope.GetDistanceBasePricing();
         });
     }
