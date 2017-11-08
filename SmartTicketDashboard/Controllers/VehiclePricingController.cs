@@ -144,8 +144,8 @@ namespace SmartTicketDashboard.Controllers
             vdpcDestinationLng.Value = vdpc.DestinationLng;
             cmd.Parameters.Add(vdpcDestinationLng);
 
-            SqlParameter vdpcVehicleModelId = new SqlParameter("@VehicleModelId", SqlDbType.Int);
-            vdpcVehicleModelId.Value = vdpc.VehicleModelId;
+            SqlParameter vdpcVehicleModelId = new SqlParameter("@VehicleGroupId", SqlDbType.Int);
+            vdpcVehicleModelId.Value = vdpc.VehicleGroupId;
             cmd.Parameters.Add(vdpcVehicleModelId);
 
             SqlParameter vdpcVehicleTypeId = new SqlParameter("@VehicleTypeId", SqlDbType.Int);
