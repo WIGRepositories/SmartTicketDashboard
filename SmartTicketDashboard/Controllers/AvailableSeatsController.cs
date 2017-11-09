@@ -31,12 +31,6 @@ namespace SmartTicketDashboard.Controllers
 
             cmd.Connection = conn;
 
-
-
-
-
-
-
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);
 
