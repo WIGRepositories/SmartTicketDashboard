@@ -13,6 +13,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get("/api/HourBasedPricing/GetHourBasePricing?ctryId=" + countryId + "&vgId=" + vgId).then(function (response, req) {
             $scope.VechPricing = response.data;
+
+            for (i = 0; i < $scope.initdata.Table.length; i++) {
+                if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {
+                    $scope.vDetails.StatusId = $scope.initdata.Table[i];
+                    break;
+                }
+            }
         
         });
     }

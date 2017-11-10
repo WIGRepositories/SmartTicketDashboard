@@ -129,6 +129,7 @@
     <Content Include="UI\DriverBookinglist.html" />
     <Content Include="UI\DriverDetails.html" />
     <Content Include="UI\DriverStatus.html" />
+    <Content Include="UI\dropdownfilling.html" />
     <Content Include="UI\Flags\flags\128\Afghanistan.png" />
     <Content Include="UI\Flags\flags\128\African-Union.png" />
     <Content Include="UI\Flags\flags\128\Aland.png" />
