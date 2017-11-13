@@ -55,19 +55,19 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
     }
 
 
-    $scope.map = {
-        control: {},
-        center: {
-            latitude: 17.3850,
-            longitude: 78.4867
-        },
-        zoom: 16 
-    };
+    //$scope.map = {
+    //    control: {},
+    //    center: {
+    //        latitude: 17.3850,
+    //        longitude: 78.4867
+    //    },
+    //    zoom: 16 
+    //};
 
    
-    var directionsDisplay = new google.maps.DirectionsRenderer();
-    var directionsService = new google.maps.DirectionsService();
-    var geocoder = new google.maps.Geocoder();
+    //var directionsDisplay = new google.maps.DirectionsRenderer();
+    //var directionsService = new google.maps.DirectionsService();
+    //var geocoder = new google.maps.Geocoder();
 
    
     $scope.getDirections = function () {
@@ -102,12 +102,12 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             } else {
                 alert('Google route unsuccesfull!');
             }
+         
         });
     }
 
-
-   
-
+    
+    
     $scope.SavePricing = function (directions,flag) {
         //alert();
 
