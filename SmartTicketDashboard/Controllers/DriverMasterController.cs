@@ -638,8 +638,5 @@ namespace SmartTicketDashboard.Controllers
             }
         }
 
-
-       
-
     }
 }
