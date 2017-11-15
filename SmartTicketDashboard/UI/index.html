@@ -125,7 +125,7 @@
                         </li>
                         <li class="active">
                             <a href="index.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
-                                <i class="fa fa-tachometer fa-fw">
+                                <i class="fa fa-tachometer fa-fw active">
                                     <div class="icon-bg bg-orange"></div>
                                 </i><span class="menu-title">Dashboard</span>
                             </a>
@@ -434,16 +434,16 @@
                             </a>
                             <ul class="nav nav-second-level">
 
-                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-tablet"></i><span class="submenu-title">Vehicle List</span></a></li>
-                                <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-tencent-weibo"></i><span class="submenu-title">Driver List</span></a></li>
-                                <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-filter"></i><span class="submenu-title">Assign Driver</span></a></li>
-                                <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-filter"></i><span class="submenu-title">Booking Details</span></a></li>
-                                <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Login Details of Vehicle"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Login</span></a></li>
-                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Logout Details of Vehicle"><i class="fa fa-th-large"></i><span class="submenu-title">Vehicle Logout</span></a></li>
-                                <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-filter"></i><span class="submenu-title">Closing Report</span></a></li>
-                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">Start Report </span></a></li>
-                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">Metered taxi</span></a></li>
-                                <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
+                                <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle List</span></a></li>
+                                <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-list-ol"></i><span class="submenu-title">Driver List</span></a></li>
+                                <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-columns"></i><span class="submenu-title">Assign Driver</span></a></li>
+                                <li><a href="Bookinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Booking"><i class="fa fa-info"></i><span class="submenu-title">Booking Details</span></a></li>
+                                <li><a href="Vehiclelogin.html" data-toggle="tooltip" data-placement="right" title="Login Details of Vehicle"><i class="fa fa-user"></i><span class="submenu-title">Vehicle Login</span></a></li>
+                                <li><a href="VehicleLogout.html" data-toggle="tooltip" data-placement="right" title="Logout Details of Vehicle"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Logout</span></a></li>
+                                <li><a href="ClosingReport.html" data-toggle="tooltip" data-placement="right" title="Details of report closing"><i class="fa fa-times"></i><span class="submenu-title">Closing Report</span></a></li>
+                                <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-list-alt"></i><span class="submenu-title">Start Report </span></a></li>
+                                <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
+                                <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-clock-o"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
 
                                 <li><a href="Vehicledistbasepricingconfig.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
                                 <li><a href="Vehicledistancepricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
@@ -724,9 +724,9 @@
                                     <div class="col-md-12">
                                         
                                         <table>
-                                            <tr ng-repeat="loc in markers">
+                                            <tr ng-repeat="c in currentloc">
                                                 <td>
-                                                    this is to test {{loc.position.lat}}
+                                                    this is to test {{c.Latitude}}
                                                 </td>
                                             </tr>
                                         </table>
@@ -786,8 +786,8 @@
                                         </div>
                                         <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
                                         <div ng-app="mapApp">
-                                            <div id="map" ng-repeat="v in Vehicleloc">
-
+                                            <div id="map" ng-repeat="v in currentloc">
+                                                latitude:{{v.Latitude}}
                                             </div>
 
                                             <!--<script>

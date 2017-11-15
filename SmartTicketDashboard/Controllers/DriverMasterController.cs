@@ -202,6 +202,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter dfs = new SqlParameter("@DOJ", SqlDbType.DateTime);
             dfs.Value = d.DOJ;
+
             cmd.Parameters.Add(dfs);
 
             SqlParameter sd = new SqlParameter("@Status", SqlDbType.Int);
