@@ -13,7 +13,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/DriverStatus/GetDriverlocation")]
-        public DataTable GetDriverlocation()
+        public DataTable GetDriverlocation(int ctnyId)
         {
             DataTable dt = new DataTable();
 
@@ -25,6 +25,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "PSGetDriverlocation";
            
+           cmd.Parameters.Add("@ctryId", SqlDbType.Int).Value = ctnyId;
             cmd.Connection = conn;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);

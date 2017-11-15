@@ -88,7 +88,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
 
         var map = new google.maps.Map(document.getElementById('gmap_canvas'), {
             zoom: 15,
-            center: new google.maps.LatLng(-17.8252, 31.0335), //17.8252° S, 31.0335° E
+            center: new google.maps.LatLng(lat,long), //17.8252° S, 31.0335° E
             mapTypeId: google.maps.MapTypeId.ROADMAP
         });
 
@@ -134,7 +134,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         $http.get('/api/dashboard/getdashboard?userid=-1&roleid=' + roleid + '&ctryId=' + $scope.nn.Id).then(function (res, data) {
             
             $scope.dashboardDS = res.data;
-            $localStorage.dashboardDS = res.data;
+            $localStorage.dashboardDS = res.data;            
         });
         
     //   $scope.GetConfigData();
@@ -287,10 +287,19 @@ app.controller('mapCtrl', function ($scope, $http) {
     $scope.location = [];
 
 
-    $scope.CenterMap = function (country) {
 
-        var lat = (country.Latitude == null) ? 17.3850 : country.Latitude;
-        var long = (country.Longitude == null) ? 78.4867 : country.Longitude;
+    //$scope.currentlocation = function () {
+    //    $http.get('/api/DriverStatus/GetDriverlocation').then(function (res, data) {
+    //       $scope.currentloc = res.data;          
+    //       $scope.CenterMap();
+    //    });
+        
+    //}
+
+
+    $scope.CenterMap = function (ctry) {
+        var lat = (ctry.latitude == null) ? 17.499800 : ctry.latitude;
+        var long = (ctry.longitude == null) ? 78.399597 : ctry.longitude;
         var mapOptions = {
             zoom: 8,
             center: new google.maps.LatLng(lat, long),
@@ -298,7 +307,7 @@ app.controller('mapCtrl', function ($scope, $http) {
         }
 
         $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-               
+
         var infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener($scope.map, 'click', function (e) {
@@ -308,20 +317,17 @@ app.controller('mapCtrl', function ($scope, $http) {
 
             //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
         });
-
-        createMarker(country);
-
-        $http.get('http://localhost:1476/api/DriverStatus/GetDriverlocation').
-        success(function (data) {
-
-            $scope.location = data;
-            $scope.location.forEach(function (loc) {
+        $http.get('/api/DriverStatus/GetDriverlocation?ctnyId='+$scope.ctry.Id).then(function (res, data) {
+            $scope.currentloc = res.data;
+            
+            $scope.currentloc.forEach(function (loc) {
                 createMarker(loc);
             });
-
+            
         });
 
-    }
+        
+    }   
     
     var createMarkerWithLatLon = function (lat,long) {
         var marker = new google.maps.Marker({
@@ -350,10 +356,12 @@ app.controller('mapCtrl', function ($scope, $http) {
            
             icon: marker            
         });
-        marker.content = '<div class="infoWindow"</div>' + 'Driver: ' + loc.NAme + '<br> Driver Contact No: ' + loc.DriverNo + '<br> Vehicle Model: ' + loc.VehicleGroupId + '</div>';;
+        marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + loc.NAme + '<br> Driver Number: ' + loc.DriverNo + '<br> Vehicle Model: ' + loc.VehicleGroupId + '</div>';;
+
+        var infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener(marker, 'click', function () {
-            alert();
+            
             infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
             infoWindow.setContent(marker.content);
             infoWindow.open($scope.map, marker);
