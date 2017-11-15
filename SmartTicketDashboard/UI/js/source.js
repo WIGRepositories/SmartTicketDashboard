@@ -301,7 +301,7 @@ app.controller('mapCtrl', function ($scope, $http) {
         var lat = (ctry.latitude == null) ? 17.499800 : ctry.latitude;
         var long = (ctry.longitude == null) ? 78.399597 : ctry.longitude;
         var mapOptions = {
-            zoom: 8,
+            zoom: 15,
             center: new google.maps.LatLng(lat, long),
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
@@ -356,7 +356,7 @@ app.controller('mapCtrl', function ($scope, $http) {
            
             icon: marker            
         });
-        marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + loc.NAme + '<br> Driver Number: ' + loc.DriverNo + '<br> Vehicle Model: ' + loc.VehicleGroupId + '</div>';;
+        marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + loc.NAme + '<br> Driver Number: ' + loc.DriverNo + '<br> Vehicle Group: ' + loc.VehicleGroupId + '</div>';;
 
         var infoWindow = new google.maps.InfoWindow();
 
