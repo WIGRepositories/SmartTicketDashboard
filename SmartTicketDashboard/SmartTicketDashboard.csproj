@@ -3587,6 +3587,8 @@
     <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
+    <Content Include="UI\OperationChargesDiscounts.html" />
+    <Content Include="UI\operations.html" />
     <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
@@ -5555,6 +5557,8 @@
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\nearestvehiclesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\OperationChargesDiscountController.cs" />
+    <Compile Include="Controllers\OperationsController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Controllers\PaymentGatewayConfigurationController.cs" />
     <Compile Include="Controllers\PaymentHistoryController.cs" />

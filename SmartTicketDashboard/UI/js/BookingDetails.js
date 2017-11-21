@@ -54,6 +54,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             //    $scope.getselectval($scope.selectedbookings);
             //}
+            mapping($scope.b);
         });
     }
     $scope.getselectval = function (v) {
@@ -64,18 +65,43 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-
+    $scope.markers = [];
                                                           
-    $scope.mapping = function myMap() {
+    $scope.mapping = function myMap(b) {
+
+             
         var mapOptions = {
+         
         center: new google.maps.LatLng(17.3850, 78.4867),
-        zoom: 10,
+        zoom: 10,      
         mapTypeId: google.maps.MapTypeId.HYBRID
     }
-    var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+        createMarker($scope.b);
 }
                                                     
     
+    var createMarker = function (b) {
+        var marker = new google.maps.Marker({
+            map: $scope.map,
+            position: new google.maps.LatLng(b.SrcLatitude, b.SrcLongitude,b.DestLatitude,b.DestLongitude),
+            //title: loc.loc
+
+            icon: marker
+        });
+        marker.content = '<div class="infoWindow"</div>' + 'Driver Name: ' + b.NAme + '<br> Driver Number: ' + b.DriverNo + '<br> Vehicle Group: ' + b.VehicleGroupId + '</div>';;
+
+        var infoWindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener(marker, 'click', function () {
+
+            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+            infoWindow.setContent(marker.content);
+            infoWindow.open($scope.map, marker);
+        });
+
+        $scope.markers.push(marker);
+    };
 
     $scope.showDialog = function (message) {
 

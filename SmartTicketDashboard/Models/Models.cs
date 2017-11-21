@@ -2936,7 +2936,7 @@ namespace SmartTicketDashboard.Models
        
     }
 
-    public class Approvals
+    public class Approvals 
     {
         public string change { get; set; }
         public int IsApproved { get; set; }
@@ -2967,6 +2967,24 @@ namespace SmartTicketDashboard.Models
          public string OtpVerfied { get; set; }
          public string Active { get; set; }
          public string CountryId { get;set;}
+    }
+    public class Operations
+         {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string OpName { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public int Active { get; set; }
+         }
+    public class OperationChargesDiscount
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string ChargeDisId { get; set; }
+        public string OperationId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }
 
