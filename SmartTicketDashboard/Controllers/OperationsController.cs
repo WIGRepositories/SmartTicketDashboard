@@ -19,8 +19,8 @@ namespace SmartTicketDashboard.Controllers
         public DataTable GetOperations()
         {
             DataTable Tbl = new DataTable();
-            LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetOperations credentials....");
+            //LogTraceWriter traceWriter = new LogTraceWriter();
+            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetOperations credentials....");
 
 
             //connect to database
@@ -36,7 +36,7 @@ namespace SmartTicketDashboard.Controllers
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
             Tbl = ds.Tables[0];
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetOperations Credentials completed.");
+           // traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetOperations Credentials completed.");
             // int found = 0;
             return Tbl;
 
