@@ -2796,11 +2796,16 @@ namespace SmartTicketDashboard.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-        public int cdType { get; set; }
-        public int Category { get; set; }
+        public int cdTypeId { get; set; }
+        public int CategoryId { get; set; }
 
-        public int ApplyAs { get; set; }
-        public int cdValue { get; set; }
+        public int ApplyAsId { get; set; }
+
+        public string cdType { get; set; }
+        public string Category { get; set; }
+
+        public string ApplyAs { get; set; }
+        public decimal cdValue { get; set; }
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }
@@ -3009,7 +3014,7 @@ namespace SmartTicketDashboard.Models
     public class PackagesPricing
     {
         public string flag { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public string PackageTypeId { get; set; }
         public string FromKm { get; set; }
         public string ToKm { get; set; }
@@ -3026,7 +3031,7 @@ namespace SmartTicketDashboard.Models
     public class PackagesTypes
     {
         public string flag { get; set; }
-        public string Id { get; set; }
+        public int Id { get; set; }
         public int PackageId { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }

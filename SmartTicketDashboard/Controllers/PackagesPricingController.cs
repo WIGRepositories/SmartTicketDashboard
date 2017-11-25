@@ -90,7 +90,7 @@ namespace SmartTicketDashboard.Controllers
                 fk.Value = P.FromKm;
                 cmd.Parameters.Add(fk);
                 SqlParameter tk = new SqlParameter("@ToKm", SqlDbType.VarChar, 50);
-                tk.Value = P.@ToKm;
+                tk.Value = P.ToKm;
                 cmd.Parameters.Add(tk);
                 SqlParameter pp = new SqlParameter("@PerKmPrice", SqlDbType.VarChar, 50);
                 pp.Value = P.PerKmPrice;
@@ -104,9 +104,7 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter th = new SqlParameter("@ToHrs", SqlDbType.DateTime, 7);
                 th.Value = P.ToHrs;
                 cmd.Parameters.Add(th);
-                SqlParameter Name = new SqlParameter("@Name", SqlDbType.VarChar, 150);
-                Name.Value = P.Name;
-                cmd.Parameters.Add(Name);
+
                
             }
             catch
