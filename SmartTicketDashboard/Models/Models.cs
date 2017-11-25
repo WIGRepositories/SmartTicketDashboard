@@ -2796,11 +2796,16 @@ namespace SmartTicketDashboard.Models
         public string Title { get; set; }
 
         public string Description { get; set; }
-        public int cdType { get; set; }
-        public int Category { get; set; }
+        public int cdTypeId { get; set; }
+        public int CategoryId { get; set; }
 
-        public int ApplyAs { get; set; }
-        public int cdValue { get; set; }
+        public int ApplyAsId { get; set; }
+
+        public string cdType { get; set; }
+        public string Category { get; set; }
+
+        public string ApplyAs { get; set; }
+        public decimal cdValue { get; set; }
         public DateTime FromDate { get; set; }
 
         public DateTime ToDate { get; set; }

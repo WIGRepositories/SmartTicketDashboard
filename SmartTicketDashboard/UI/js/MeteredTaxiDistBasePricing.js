@@ -1,4 +1,4 @@
-﻿var app = angular.module('plunker', ['google-maps']);
+﻿var app = angular.module('plunker', ['google-maps','vsGoogleAutocomplete']);
 
 app.controller('MainCtrl', function ($scope, $document,$http) {
     // map object
@@ -33,25 +33,25 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
 
     $scope.GetConfigData = function () {
 
-        var vc = {
+        //var vc = {
             
-            includeVehicleType: '1',
-            includeVehicleGroup: '1',              
-        };
+        //    includeVehicleType: '1',
+        //    includeVehicleGroup: '1',              
+        //};
 
-        var req = {
-            method: 'POST',
-            url: '/api/Types/ConfigData',
-            data: vc
-        }
+        //var req = {
+        //    method: 'POST',
+        //    url: '/api/Types/ConfigData',
+        //    data: vc
+        //}
 
-        $http(req).then(function (res) {
-            $scope.initdata = res.data;
-            $scope.ct = $scope.initdata.Table4[0];
-            $scope.s = $scope.initdata.Table5[0];
-            $scope.r = $scope.initdata.Table[0];
-            $scope.GetVehcileList();
-        });
+        //$http(req).then(function (res) {
+        //    $scope.initdata = res.data;
+        //    $scope.ct = $scope.initdata.Table4[0];
+        //    $scope.s = $scope.initdata.Table5[0];
+        //    $scope.r = $scope.initdata.Table[0];
+        //    $scope.GetVehcileList();
+        //});
     }
 
 
@@ -71,6 +71,10 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
 
    
     $scope.getDirections = function () {
+        //get the source latitude and longitude
+        //get the target latitude and longitude
+
+        alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: $scope.directions.origin,
             destination: $scope.directions.destination,

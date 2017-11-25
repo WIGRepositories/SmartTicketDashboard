@@ -63,26 +63,26 @@ namespace SmartTicketDashboard.Controllers
             cmd.Parameters.Add(Description);
 
              SqlParameter Type = new SqlParameter();
-            Type.ParameterName = "@Type";
+            Type.ParameterName = "@TypeId";
             Type.SqlDbType = SqlDbType.Int;
-            Type.Value = Convert.ToString(cd.cdType);
+            Type.Value = Convert.ToString(cd.cdTypeId);
             cmd.Parameters.Add(Type);
 
              SqlParameter Category = new SqlParameter();
-            Category.ParameterName = "@Category";
+            Category.ParameterName = "@CategoryId";
             Category.SqlDbType = SqlDbType.Int;
-            Category.Value = Convert.ToString(cd.Category);
+            Category.Value = Convert.ToString(cd.CategoryId);
             cmd.Parameters.Add(Category);
 
              SqlParameter ApplyAs = new SqlParameter();
-            ApplyAs.ParameterName = "@ApplyAs";
+            ApplyAs.ParameterName = "@ApplyAsId";
             ApplyAs.SqlDbType = SqlDbType.Int;
-            ApplyAs.Value = Convert.ToString(cd.ApplyAs);
+            ApplyAs.Value = Convert.ToString(cd.ApplyAsId);
             cmd.Parameters.Add(ApplyAs);
 
              SqlParameter Value = new SqlParameter();
             Value.ParameterName = "@Value";
-            Value.SqlDbType = SqlDbType.Int;
+            Value.SqlDbType = SqlDbType.Decimal;
             Value.Value = Convert.ToString(cd.cdValue);
             cmd.Parameters.Add(Value);
 

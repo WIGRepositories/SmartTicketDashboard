@@ -41,7 +41,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetAppTypes = function () {
         //var grpid = (seltype) ? seltype.Id : -1;
 
-        $http.get('/api/Types/TypesByGroupId?groupid=' + 27).then(function (res, data) {
+        $http.get('/api/Types/TypesByGroupId?groupid=' + 11).then(function (res, data) {
             $scope.AppTypes = res.data;
 
         });
@@ -135,9 +135,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 Code: Addcharges.Code,
                 Title: Addcharges.Title,
                 Description: Addcharges.Description,
-                cdType: Addcharges.cdType.Id,
-                Category: Addcharges.Category.Id,
-                ApplyAs: Addcharges.ApplyAs.Id,
+                cdTypeId: Addcharges.cdType.Id,
+                CategoryId: Addcharges.Category.Id,
+                ApplyAsId: Addcharges.ApplyAs.Id,
                 cdValue: Addcharges.cdValue,
                 FromDate: Addcharges.FromDate,
                 ToDate: Addcharges.ToDate,              
