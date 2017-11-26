@@ -2973,5 +2973,77 @@ namespace SmartTicketDashboard.Models
          public string Active { get; set; }
          public string CountryId { get;set;}
     }
+    public class Operations
+         {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string OpName { get; set; }
+        public string Code { get; set; }
+        public string Description { get; set; }
+        public int Active { get; set; }
+         }
+    public class OperationChargesDiscount
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string ChargeDisId { get; set; }
+        public string OperationId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+    }
+    public class Packages
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int VehicleGroupId { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+        public string Code { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public int CreatedOn { get; set; }
+        public int CreatedBy { get; set; }
+        public int UpdatedOn { get; set; }
+        public int UpdatedBy { get; set; }
+        public string Title { get; set; }
+        public string ImageOne { get; set; }
+        public string ImageTwo { get; set; }
+        public string VehicleType { get; set; }
+        public int CountryId { get; set; }
+    }
+    public class PackagesPricing
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string PackageTypeId { get; set; }
+        public string FromKm { get; set; }
+        public string ToKm { get; set; }
+        public string Code { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string PerKmPrice { get; set; }
+        public string Amount { get; set; }
+        public DateTime FromHrs { get; set; }
+        public DateTime ToHrs { get; set; }
+        public string Name { get; set; }
+        public string Description { get; set; }
+    }
+    public class PackagesTypes
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int PackageId { get; set; }
+        public string Name { get; set; }
+        public string Code { get; set; }
+        public string CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
+        public string UpdatedOn { get; set; }
+        public string UpdatedBy { get; set; }
+        public string Title { get; set; }
+        public string ImageOne { get; set; }
+        public string ImageTwo { get; set; }
+    }
 }
 

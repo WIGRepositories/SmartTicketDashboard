@@ -1,6 +1,12 @@
 ﻿var app = angular.module('plunker', ['google-maps','vsGoogleAutocomplete']);
 
 app.controller('MainCtrl', function ($scope, $document,$http) {
+
+    $scope.options = {
+        types: ['(geocode)'],
+        componentRestrictions: { country: 'FR' }
+    }
+
     // map object
     //---------------------------------
     $scope.GetVehicleConfig = function () {
@@ -33,25 +39,23 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
 
     $scope.GetConfigData = function () {
 
-        //var vc = {
+        var vc = {
             
-        //    includeVehicleType: '1',
-        //    includeVehicleGroup: '1',              
-        //};
+            includeVehicleType: '1',
+            includeVehicleGroup: '1',              
+        };
 
-        //var req = {
-        //    method: 'POST',
-        //    url: '/api/Types/ConfigData',
-        //    data: vc
-        //}
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
 
-        //$http(req).then(function (res) {
-        //    $scope.initdata = res.data;
-        //    $scope.ct = $scope.initdata.Table4[0];
-        //    $scope.s = $scope.initdata.Table5[0];
-        //    $scope.r = $scope.initdata.Table[0];
-        //    $scope.GetVehcileList();
-        //});
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.ct = $scope.initdata.Table[0];
+            $scope.s = $scope.initdata.Table1[0];
+        });
     }
 
 
@@ -73,11 +77,15 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
     $scope.getDirections = function () {
         //get the source latitude and longitude
         //get the target latitude and longitude
+        $scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
+        $scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
+        $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
+        $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
 
-        alert($scope.dropPoint.place.geometry.location.lat);
+        //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
-            origin: $scope.directions.origin,
-            destination: $scope.directions.destination,
+            origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
+            destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };
         directionsService.route(request, function (response, status) {
@@ -98,11 +106,12 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
                 //response.routes[0].bounds["b"].f
                 //78.44829                
                 
-                $scope.srcLat = response.routes[0].bounds["f"].b;
-                $scope.srcLon = response.routes[0].bounds["b"].b;
-                $scope.destLat = response.routes[0].bounds["f"].f;
-                $scope.destLon = response.routes[0].bounds["b"].f;
-                $scope.directions.showList = true;
+                //$scope.srcLat = response.routes[0].bounds["f"].b;
+                //$scope.srcLon = response.routes[0].bounds["b"].b;
+                //$scope.destLat = response.routes[0].bounds["f"].f;
+                //$scope.destLon = response.routes[0].bounds["b"].f;              
+
+                //$scope.directions.showList = true;
             } else {
                 alert('Google route unsuccesfull!');
             }

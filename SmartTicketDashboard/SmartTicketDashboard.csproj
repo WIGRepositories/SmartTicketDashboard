@@ -3571,6 +3571,9 @@
     <Content Include="UI\js\googleapi.js" />
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
+    <Content Include="UI\js\PackagePricing.js" />
+    <Content Include="UI\js\Packages.js" />
+    <Content Include="UI\js\PackageType.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\SOSMessages.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
@@ -3587,6 +3590,11 @@
     <Content Include="UI\js\VehicleStatus.js" />
     <Content Include="UI\MandatoryUserDocs.html" />
     <Content Include="UI\MandatoryVehicleDocs.html" />
+    <Content Include="UI\OperationChargesDiscounts.html" />
+    <Content Include="UI\operations.html" />
+    <Content Include="UI\PackagePricing.html" />
+    <Content Include="UI\packages.html" />
+    <Content Include="UI\PackageType.html" />
     <Content Include="UI\Maps\vs-autocomplete-validator.js" />
     <Content Include="UI\Maps\vs-google-autocomplete.js" />
     <Content Include="UI\pricingcredentials.html" />
@@ -5557,6 +5565,11 @@
     <Compile Include="Controllers\MandatoryDocsController.cs" />
     <Compile Include="Controllers\nearestvehiclesController.cs" />
     <Compile Include="Controllers\NotificationsController.cs" />
+    <Compile Include="Controllers\OperationChargesDiscountController.cs" />
+    <Compile Include="Controllers\OperationsController.cs" />
+    <Compile Include="Controllers\PackagesController.cs" />
+    <Compile Include="Controllers\PackagesPricingController.cs" />
+    <Compile Include="Controllers\PackagesTypesController.cs" />
     <Compile Include="Controllers\PassengerController.cs" />
     <Compile Include="Controllers\PaymentGatewayConfigurationController.cs" />
     <Compile Include="Controllers\PaymentHistoryController.cs" />

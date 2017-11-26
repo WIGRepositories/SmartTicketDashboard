@@ -1,10 +1,9 @@
-﻿
-<!DOCTYPE html>
-<html lang="en" ng-app="plunker">
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <title>Home | Vehicle Hour Pricing </title>
+    {{4+5}}
+    <title>Home | Configuration | Types Paging</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
 
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -17,106 +16,15 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-    <!--------------------Jagan---------------------->
-    <meta charset="utf-8" />
-    <link data-require="bootstrap-css@3.2.0" data-semver="3.2.0" rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
-
-    <link href="css/VehicleDistBasePricingConfig.css" rel="stylesheet" />
-
-
-   
-  
-    
-   
-    <style>
-        /* Always set the map height explicitly to define the size of the div
-            * element that contains the map. */
-        #map {
-            height: 100%;
-        }
-        /* Optional: Makes the sample page fill the window. */
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        #description {
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-        }
-
-        #infowindow-content .title {
-            font-weight: bold;
-        }
-
-        #infowindow-content {
-            display: none;
-        }
-
-        #map #infowindow-content {
-            display: inline;
-        }
-
-        .pac-card {
-            margin: 10px 10px 0 0;
-            border-radius: 2px 0 0 2px;
-            box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            outline: none;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
-            background-color: #fff;
-            font-family: Roboto;
-        }
-
-        #pac-container {
-            padding-bottom: 12px;
-            margin-right: 12px;
-        }
-
-        .pac-controls {
-            display: inline-block;
-            padding: 5px 11px;
-        }
-
-            .pac-controls label {
-                font-family: Roboto;
-                font-size: 13px;
-                font-weight: 300;
-            }
-
-        #pac-input {
-            background-color: #fff;
-            font-family: Roboto;
-            font-size: 15px;
-            font-weight: 300;
-            margin-left: 12px;
-            padding: 0 11px 0 13px;
-            text-overflow: ellipsis;
-            width: 400px;
-        }
-
-            #pac-input:focus {
-                border-color: #4d90fe;
-            }
-
-        #title {
-            color: #fff;
-            background-color: #4d90fe;
-            font-size: 25px;
-            font-weight: 500;
-            padding: 6px 12px;
-        }
-    </style>
 
 </head>
-
-<body ng-controller="MainCtrl" ng-init="GetConfigData()">
-
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="Types">
     <div>
         <!--BEGIN THEME SETTING-->
-        <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <!--BEGIN BACK TO TOP-->
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a>
+        <!--END BACK TO TOP-->
+        <!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
@@ -129,8 +37,8 @@
                     <ul class="nav navbar navbar-top-links navbar-right mbn">
                         <li class="dropdown">
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
-                            <ul class="dropdown-menu dropdown-alerts" ng-show="dashboardDS.Table2.length==0">
-                                <li><p>You have 0 new notifications</p></li>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new alerts</p></li>
                             </ul>
                             <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table2">
                                 <li><p>{{A.Message}}</p></li>
@@ -139,7 +47,7 @@
                         <li class="dropdown">
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table1.length}}</span></a>
                             <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table1.length==0">
-                                <li><p>You have 0 new messages</p></li>
+                                <li><p>You have 0 new notifications</p></li>
                             </ul>
                             <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
                                 <li><p>{{A.Message}}</p></li>
@@ -160,6 +68,7 @@
                     </ul>
                 </div>
             </nav>
+            <!--END TOPBAR-->
             <!--END TOPBAR-->
             <div id="wrapper">
                 <!--BEGIN SIDEBAR MENU-->
@@ -315,7 +224,7 @@
                                         <ul class="nav nav-third-level">
                                             <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Countries</span></a></li>
                                             <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type Groups</span></a></li>
-                                            <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
+                                            <li class="active"><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
                                             <li><a href="SubCategory.html" data-toggle="tooltip" data-placement="right" title="Details of SubCategory"><i class="fa fa-angle-double-right"></i><span class="submenu-title"> Sub Categories</span></a></li>
                                             <li><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Stops</span></a></li>
                                             <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Roles</span></a></li>
@@ -360,6 +269,7 @@
                                     <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
                                     <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
                                     <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
+                                    <li><a href="Operations.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Operations</span></a></li>
                                 </ul>
                             </li>
 
@@ -471,7 +381,7 @@
                                     <li><a href="CardTrasactionDetails.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-filter"></i><span class="submenu-title">CardTrasactionDetails</span></a></li>
                                 </ul>
                             </li>
-                            <li>
+                            <li class="active">
                                 <a href="#">
                                     <i class="fa fa-money">
                                         <div class="icon-bg bg-dark"></div>
@@ -479,10 +389,13 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li><a href="ChargesDiscounts.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">Charges Discounts</span></a></li>
-
+                                    <li><a href="operationchargesdiscounts.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">Operation charges Discounts</span></a></li>
+                                    <li><a href="packages.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">Packages</span></a></li>
+                                    <li><a href="PackageType.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">Package Type</span></a></li>
+                                    <li class="active"><a href="PackagePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Company reports"><i class="fa fa-th-large"></i><span class="submenu-title">Package Pricing</span></a></li>
                                 </ul>
                             </li>
-                            <li class="active">
+                            <li>
                                 <a href="#">
                                     <i class="fa fa-taxi">
                                         <div class="icon-bg bg-dark"></div>
@@ -501,7 +414,7 @@
                                     <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-car"></i><span class="submenu-title">Vehicle Dist Base Pricing</span></a></li>
                                     <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-clock-o"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
 
-                                    <li class="active"><a href="Vehicledistbasepricingconfig.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
+                                    <li><a href="Vehicledistbasepricingconfig.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
                                     <li><a href="Vehicledistancepricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
                                     <li><a href="TaxiSrcDest.html" data-toggle="tooltip" data-placement="right" title="List of all saved stops"><i class="fa fa-stop"></i><span class="submenu-title">Taxi Stops List</span></a></li>
                                 </ul>
@@ -515,12 +428,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Metered Taxi  Pricing Configuration</div>
+                            <div class="page-title">Package Pricing</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Company and Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="VehicleHoursBasePricing.html">Metered Taxi  Hours Base Pricing</a>
+                            <li><a href="#">Charges</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="Types.html">Package Pricing</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -532,152 +445,352 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row">
 
-                                        <!------------Jagan-------------------------->
-                                        <div class="container" style="padding-top:10px">
-                                            <div class="col-md-12 ">
-                                                <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
+                                            <div class="col-lg-12">
 
-                                                    <form>
-                                                        <div class="form-group row">
-                                                            <div class="col-xs-12">
-                                                                <label for="pickupPoint">Source</label>
-                                                                <input vs-google-autocomplete
-                                                                       vs-autocomplete-validator
-                                                                       ng-model="pickupPoint.name"
-                                                                       vs-place="pickupPoint.place"
-                                                                       vs-place-id="pickupPoint.components.placeId"
-                                                                       vs-street-number="pickupPoint.components.streetNumber"
-                                                                       vs-street="pickupPoint.components.street"
-                                                                       vs-city="pickupPoint.components.city"
-                                                                       vs-state="pickupPoint.components.state"
-                                                                       vs-country-short="pickupPoint.components.countryCode"
-                                                                       vs-country="pickupPoint.components.country"
-                                                                       vs-district="pickupPoint.components.district"
-                                                                       vs-post-code="pickupPoint.components.postCode"
-                                                                       vs-latitude="pickupPoint.components.location.lat"
-                                                                       vs-longitude="pickupPoint.components.location.long"
-                                                                       type="text"
-                                                                       name="pickupPoint"
-                                                                       id="pickupPoint"
-                                                                       class="form-control"
-                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />                                                              
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="dropPoint">Destination</label>
-                                                                <input vs-google-autocomplete
-                                                                       vs-autocomplete-validator
-                                                                       ng-model="dropPoint.name"
-                                                                       vs-place="dropPoint.place"
-                                                                       vs-place-id="dropPoint.components.placeId"
-                                                                       vs-street-number="dropPoint.components.streetNumber"
-                                                                       vs-street="dropPoint.components.street"
-                                                                       vs-city="dropPoint.components.city"
-                                                                       vs-state="dropPoint.components.state"
-                                                                       vs-country-short="dropPoint.components.countryCode"
-                                                                       vs-country="dropPoint.components.country"
-                                                                       vs-district="dropPoint.components.district"
-                                                                       vs-post-code="dropPoint.components.postCode"
-                                                                       vs-latitude="dropPoint.components.location.lat"
-                                                                       vs-longitude="dropPoint.components.location.long"
-                                                                       type="text"
-                                                                       name="dropPoint"
-                                                                       id="dropPoint"
-                                                                       class="form-control"
-                                                                       placeholder="Enter any address" value="{{dropPoint.name}}" />
-                                                                <br />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
-                                                                    <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
-                                                                </div>
-                                                            </div>
+                                                <div class="table-container">
+                                                    <div class="row mbm">
+                                                        <div class="col-md-3">
+                                                            Country:<select ng-options="c.Name for c in initdata.Table4 track by c.Id" ng-model="ct" ng-change="GetVehcileList()">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>
+                                                        <!--<div class="col-md-3">
+                                                            Fleet Owner:<select ng-options="s.Name for s in initdata.Table5 track by s.Id" ng-model="s" ng-change="GetVehcileList()" id="test1">
+                                                                <option value="">Select</option>
+                                                            </select>
+                                                        </div>-->
+                                                        <div class="col-md-3" ng-init="init">
+                                                            Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-change="GetVehcileList()">
 
-                                                            <div class="col-md-12">
-                                                                <label>Vehicle Group</label>
-                                                                <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="directions.vm" class="form-control">
-                                                                    <option value="">Select</option>
-                                                                </select>
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <label>Vehicle Type</label>
-                                                                <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="directions.v" class="form-control" style="width:100%">
-                                                                    <option value="">Select Type</option>
-                                                                </select>
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <label>Pricing Type</label>
-                                                                <select class="form-control" style="width:100%" ng-model="directions.pricing">
-                                                                    <option value="">Select Price</option>
-                                                                    <option value="52">Per unit pricing</option>
-                                                                    <option value="53">Stage to Stage</option>
-                                                                </select>
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="ex2">Distance</label>
-                                                                <input class="form-control" id="distance" type="text" ng-model="distval">
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="ex2">Unit Price/Amount</label>
-                                                                <input class="form-control" id="unitprice" type="text" ng-model="directions.unitprice">
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="ex2">Total Amount</label>
-                                                                <input class="form-control" id="Total" type="text" ng-model="directions.total">
-                                                                <br />
-                                                            </div>
-                                                            <div class="form-group">
-                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
-                                                                    <button class="btn-medium green" ng-click="SavePricing(directions,'I')">Save</button>
+                                                                <option value="">Select</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="col-md-3" ng-init="init">
+                                                            Package:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-change="GetVehcileList()">
+
+                                                                <option value="">Select</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <div class="col-md-3" ng-init="init">
+                                                            Package Type:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-change="GetVehcileList()">
+
+                                                                <option value="">Select</option>
+                                                            </select>
+
+                                                        </div>
+                                                        <!--<div>
+                                                            Registration Number <input type="text" ng-model="Registration" />
+                                                        </div>-->
+
+                                                        <div class="actions">
+                                                            <!----   <button  type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Type</button>--->
+                                                            <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add New Package</button>
+
+                                                        </div>
+                                                        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                                                            <div class="modal-dialog">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header modal-header-primary">
+                                                                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title"> Types</h4>
+                                                                    </div>
+                                                                    <div class="modal-body" ng-model="currGroup">
+
+
+                                                                        <div class="modal-body" ng-model="Types">
+
+                                                                            <div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Operation:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Type:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Descount Charge:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="Description" class="col-md-4 control-label"> From Date: <span class='require'></span></label>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="Description" class="col-md-4 control-label"> To Date: <span class='require'></span></label>
+                                                                                </div>
+                                                                                <div class="col-md-6">
+                                                                                    <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <!--<div class="row mbm">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label" style="color:red;">Type Group:<span class='require'>*</span></label>
+                                                                                </div>
+
+                                                                                <div class="col-md-6">
+                                                                                    <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                        <option value="">Select</option>
+                                                                                    </select>
+                                                                                </div>
+                                                                            </div>-->
+
+                                                                            <div class="row mbm">
+
+                                                                                <div style="text-align:right">
+                                                                                    <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
+                                                                                </div>
+                                                                                <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
+                                                                            </div>
+                                                                        </div>
+
+                                                                    </div>
+
+                                                                    <div class="modal-footer">
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(currGroup, 'U');">Save</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
-                                                    </form>
-                                                </div>
-                                                <!-------jagan--------------------->
-
-                                                <div id="full-width-content" class="col-md-6">
-
-                                                    <div class="main">
-                                                        <div class="panel panel-default">
-                                                            <div class="panel-body">
-                                                                <div id="map1"></div>
-                                                                <div id="infowindow-content">
-                                                                    <img src="" width="16" height="16" id="place-icon">
-                                                                    <span id="place-name" class="title"></span><br>
-                                                                    <span id="place-address"></span>
-                                                                </div>
-                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
-                                                                    <marker coords="marker.center"></marker>
-                                                                </google-map>
-
-                                                                <div id="directionsList" ng-show="directions"></div>
-
-                                                            </div>
-                                                        </div>
-
                                                     </div>
+
                                                 </div>
 
+                                                <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                                                    <div class="modal-dialog modal-lg">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header modal-header-primary">
+                                                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                <h4 id="modal-header-primary-label" class="modal-title">Add New Packag Type</h4>
+                                                            </div>
+                                                            <div class="modal-body" ng-model="currGroup">
+
+
+                                                                <div class="modal-body" ng-model="Types">
+
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Name:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Code:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Title:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Description:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">From Date:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">To Date:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">From Km:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">To Km:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row mbm">
+                                                                        <div class="col-md-12">
+                                                                            <div class="col-md-6">
+                                                                                <div style="text-align:right">
+                                                                                    <label for="selCountry" class="col-md-4 control-label">Amount:</label>
+                                                                                </div>
+
+                                                                                <div class="col-md-8">
+                                                                                    <input id="inputFirstName" type="text" ng-model="newVehicle.RegistrationNo" class="form-control" /><span class="help-block"></span>
+                                                                                </div>
+                                                                            </div>
+                                                                           
+                                                                        </div>
+                                                                    </div>
+                                                                    <!--<div class="row mbm">
+                                                                        <div style="text-align:right">
+                                                                            <label for="selCountry" class="col-md-4 control-label" style="color:red;">Type Group:<span class='require'>*</span></label>
+                                                                        </div>
+
+                                                                        <div class="col-md-6">
+                                                                            <select ng-options="s.Name for s in TypeGroups track by s.Id" class="form-control" ng-model="Types.group">
+                                                                                <option value="">Select</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>-->
+
+                                                                    <div class="row mbm">
+
+                                                                        <div style="text-align:right">
+                                                                            <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
+                                                                        </div>
+                                                                        <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+
+                                                            <div class="modal-footer">
+                                                                <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="save(currGroup, 'U');">Save</button>
+                                                                <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </div>
+                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
+                                                    <thead>
+                                                        <tr>
+
+                                                            <th>Name</th>
+                                                            <th>Code</th>
+                                                            <th>Title</th>
+                                                            <th>From Km</th>
+                                                            <th>To Km</th>
+                                                            <th>From Date</th>
+                                                            <th>To Date</th>
+                                                            <th>Amount</th>
+                                                          <th>Description</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+
+                                                        <tr ng-repeat="T in Types">
+                                                            <td>Matered Taxi</td>
+                                                            <td>A1</td>
+                                                            <td>Matered Taxi</td>
+                                                            <td>0.1</td>
+                                                            <td>5</td>
+                                                            <td>10-12-2017</td>
+                                                            <td>09-12-2018</td>
+                                                            <td>10</td>
+                                                         <td>Matered TaxiMatered Taxi</td>
+                                                        </tr>
+                                                    </tbody>
+
+                                                </table>
+                                                <div ng-repeat=" P in paging" ng-model="Types" class="form-actions">
+                                                    <div style="margin-top: -10px; margin-left: 10px">
+                                                        {{page}} of {{P.totalpages}} pages
+                                                    </div>
+                                                    <div style="text-align: center; margin-top: -15px;">
+                                                        <button class="btn btn-primary btn-lg" ng-click="getselectval(s,'p')" ng-disabled="page == 1">Prev page </button>
+                                                        <button class="btn btn-green btn-lg" ng-click="getselectval(s, 'n')" ng-disabled="page == P.totalpages">Next page </button>
+                                                    </div>
+                                                    <div style="float:right;margin-top:-20px;margin-right:10px">
+                                                        {{Types.length}} of total {{P.recordcount }} results
+                                                    </div>
+
+                                                </div>
                                             </div>
-
-                                            <hr>
-
                                         </div>
+
                                     </div>
+
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
 
-            <!--END PAGE WRAPPER-->
             <!--END CONTENT--><!--BEGIN FOOTER-->
             <div id="footer">
                 <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
@@ -685,198 +798,42 @@
             <!--END FOOTER-->
         </div>
 
-
-        <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header modal-header-primary">
-                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                        <h4 id="modal-header-primary-label" class="modal-title">Edit Company Details</h4>
-                    </div>
-                    <div class="modal-body" ng-model="DistPricing">
-
-                        <div class="row">
-
-                            <div class="col-md-6">
-
-                                <label for="selCountry" class="col-md-5 control-label">Vehicle Model</label>
-                                <div class="col-md-7">
-                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
-                                        <option value="">Select</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <br />
-                        <div class="row">
-
-                            <div class="col-md-6">
-                                <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
-                                <div class="col-md-8"><input id="Hours" type="text" ng-model="DistPricing.Hours" class="form-control" /><span class="help-block"></span></div>
-                            </div>
-
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">FromTime:<span class='require'></span></label>
-                                <div class="col-md-8"><input id="FromTime" type="text" ng-model="DistPricing.FromTime" class="form-control" /><span class="help-block"></span></div>
-
-                            </div>
-
-
-
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <label for="Fax" class="col-md-4 control-label" style="color: red;float: left">ToTime:<span class='require'></span></label>
-                                <div class="col-md-8"><input id="ToTime" type="text" ng-model="DistPricing.ToTime" class="form-control" /><span class="help-block"></span></div>
-
-
-                            </div>
-
-                        </div>
-                        <div class="row">
-
-
-                            <div class="col-md-6">
-                                <label for="Fax" class="col-md-4 control-label" style="float:left">Price:<span class='require'></span></label>
-                                <div class="col-md-8"><input id="Price" type="text" ng-model="DistPricing.Price" class="form-control" /><span class="help-block"></span></div>
-                            </div>
-
-
-
-                        </div>
-
-
-
-
-                        <div class="form-actions">
-                            <div style="text-align:center">
-                                <button type="button" data-dismiss="modal" class="btn btn-green" ng-click="SavePricingChanges(DistPricing, 'U');">Save</button>
-                                <button type="button" data-dismiss="modal" class="btn btn-primary">Close</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-
-
-            </div>
-
-
-
-        </div>
-
-
-        <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-            <div class=" modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header modal-header-primary">
-                        <button type="button" data-dismiss="modal" aria-hidden="true" class="close" ng-click="clearImg();">&times;</button>
-                        <h4 id="modal-header-primary-label" class="modal-title">Add Vehicle Pricing</h4>
-                    </div>
-
-                    <div class="modal-body" ng-model="Vprice">
-                        <div style="margin-left:250px">
-                            <div class="row">
-
-                                <div class="col-md-6">
-
-                                    <label for="selCountry" class="col-md-4 control-label">Vehicle Model:</label>
-                                    <div class="col-md-8">
-                                        <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
-                                            <option value="">Select</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <div class="row" style="margin-top:7px">
-
-
-                                <div class="col-md-6">
-                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Hours:<span class='require'></span></label>
-                                    <div class="col-md-8"><input id="Hours" type="text" ng-model="Vprice.Hours" class="form-control" /><span class="help-block"></span></div>
-                                </div>
-
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="Fax" class="col-md-4 control-label">FromTime:<span class='require'></span></label>
-                                    <div class="col-md-8"><input id="FromTime" type="time" ng-model="Vprice.FromTime" class="form-control" /><span class="help-block"></span></div>
-
-                                </div>
-
-
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <label for="Fax" class="col-md-4 control-label">ToTime:<span class='require'></span></label>
-                                    <div class="col-md-8"><input id="ToTime" type="time" ng-model="Vprice.ToTime" class="form-control" /><span class="help-block"></span></div>
-
-                                </div>
-
-
-                            </div>
-                            <div class="row">
-
-
-                                <div class="col-md-6">
-                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Price: <span class='require'></span></label>
-                                    <div class="col-md-8"><input id="Price" type="text" ng-model="Vprice.Price" class="form-control" /><span class="help-block"></span></div>
-                                </div>
-
-                            </div>
-                        </div>
-                        <div class="form-actions">
-                            <div class="col-md-offset-5 col-md-8">
-                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SavePricing(Vprice, 'I');">Save</button>
-
-                                <a href="VehicleHoursBasePricing.html" class="btn btn-primary" ng-click="clearVprice()">Cancel</a>
-                            </div>
-                        </div>
-
-
-
-
-
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-
-        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-            <div class="modal-header">
-                <h3 class="modal-title">Save confirmation!</h3>
-            </div>
-            <div class="modal-body">
-                <!--<ul>
-                    <li ng-repeat="item in items">
-                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ selected.item }}</b>-->
-                {{mssg}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-            </div>
-
-        </script>
     </div>
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static" style="z-index:1055">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+
+
+    <!--END PAGE WRAPPER-->
+
+
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
@@ -887,23 +844,14 @@
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
-
-    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
-    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
-    <script src="Maps/vs-google-autocomplete.js"></script>
-
-    <!-- validator for autocomplete -->
-    <script src="Maps/vs-autocomplete-validator.js"></script>
-
-    <!--<script src="js/VehicleHoursBasePricing.js"></script>-->
-    <script src="js/MeteredTaxiDistBasePricing.js"></script>
+    <script src="js/packagepricing.js"></script>
 
 
 </body>
