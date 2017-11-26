@@ -45,6 +45,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
+    $scope.getRoleDetails = function (r) {
+        if (r == null) {
+            $scope.roleobjects = null;
+            return;
+        }
+        var cmpId = (r) ? r.id : -1;
+
+        $http.get('/api/Roles/GetCompanyRoles?companyId=' + cmpId).then(function (res, data) {
+            $scope.roleobjects = res.data;
+        });
+    }
 
     $scope.save = function (Roledetails) {
         alert("ok");

@@ -25,11 +25,9 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
     
 </head>
-<body ng-app="myApp" ng-controller="myCtrl"   ng-init="GetCompanies();" ng-model="initdata">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanies();" ng-model="initdata">
     <div>
-        <!--BEGIN THEME SETTING-->
-        <!--BEGIN BACK TO TOP--><a id=" totop" href="#">
-    <i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
     <div id="header-topbar-option-demo" class="page-header-topbar">
         <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
             <div class="navbar-header">
@@ -434,7 +432,7 @@
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                         <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li><a href="Objects.html">Roledetails</a></li>
+                            <li><a href="Objects.html">Role details</a></li>
 
                     </ol>
                     <div class="clearfix"></div>
@@ -452,12 +450,12 @@
                                             <div class="table-container">
                                                 <div class="row mbm">
                                                     <div class="col-md-5">
-                                                        Company: <select ng-options="s.Name for s in initdata.Table track by s.Id" ng-model="cmp" ng-change="getRolesForCompany()">
+                                                            Company: <select ng-options="s.Name for s in initdata.Table track by s.Id" ng-model="cmp" ng-change="getRolesForCompany(cmp)">
                                                         <option value="">Select</option>
                                                             </select>
                                                     </div>
                                                     <div class="col-md-5">
-                                                        Role: <select ng-options="r.Name for r in cmpdata.Table track by r.Id" ng-model="r" ng-change="get()">
+                                                            Role: <select ng-options="r.rolename for r in cmproles track by r.id" ng-model="r" ng-change="getRoleDetails(r)">
                                                     <option value="">Select</option>
                                                        </select>
                                                     </div>
@@ -649,6 +647,8 @@
 
         </script>
     </div>
+        </div>
+
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
     <script src="js/jquery-ui.js"></script>
