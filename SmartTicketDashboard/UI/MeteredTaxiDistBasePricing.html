@@ -502,7 +502,7 @@
                                     <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-clock-o"></i><span class="submenu-title">Vehicle Hour Base Pricing</span></a></li>
 
                                     <li class="active"><a href="Vehicledistbasepricingconfig.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi  Distance Prices</span></a></li>
-                                    <li><a href="Vehicledistancepricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
+                                    <li><a href=" MeteredTaxiPricinglist.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa Example of car fa-car"></i><span class="submenu-title">metered taxi Distance Pricing</span></a></li>
                                     <li><a href="TaxiSrcDest.html" data-toggle="tooltip" data-placement="right" title="List of all saved stops"><i class="fa fa-stop"></i><span class="submenu-title">Taxi Stops List</span></a></li>
                                 </ul>
 
@@ -531,20 +531,32 @@
                             <div class="col-lg-12">
 
                                 <div id="tableactionTabContent" class="tab-content">
+                                    <div class="row mbm">
+                                        <div class="col-md-3">
+
+                                            Country:<select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetAssignedDocuments()">
+                                                <option value="">Select</option>
+
+                                            </select>
+
+                                        </div>
+                                       
+
+                                    </div>
                                     <div id="table-table-tab" class="tab-pane fade in active">
 
                                         <!------------Jagan-------------------------->
                                         <div class="container" style="padding-top:10px">
                                             <div class="col-md-12 ">
-                                                <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
+                                                <div class="col-md-6" style="padding-top:10px;margin-left:-20px">
 
                                                     <form>
                                                         <div class="form-group row">
-                                                            <div class="col-xs-12">
+                                                            <div class="col-xs-6">
                                                                 <label for="pickupPoint">Source</label>
                                                                 <input vs-google-autocomplete
                                                                        vs-autocomplete-validator
-                                                                       ng-model="pickupPoint.name"
+                                                                       ng-model="pickupPoint.place.name"
                                                                        vs-place="pickupPoint.place"
                                                                        vs-place-id="pickupPoint.components.placeId"
                                                                        vs-street-number="pickupPoint.components.streetNumber"
@@ -563,11 +575,11 @@
                                                                        class="form-control"
                                                                        placeholder="Enter any address" value="{{pickupPoint.name}}" />                                                              
                                                             </div>
-                                                            <div class="col-xs-12">
+                                                            <div class="col-xs-6">
                                                                 <label for="dropPoint">Destination</label>
                                                                 <input vs-google-autocomplete
                                                                        vs-autocomplete-validator
-                                                                       ng-model="dropPoint.name"
+                                                                       ng-model="dropPoint.place.name"
                                                                        vs-place="dropPoint.place"
                                                                        vs-place-id="dropPoint.components.placeId"
                                                                        vs-street-number="dropPoint.components.streetNumber"
@@ -588,60 +600,66 @@
                                                                 <br />
                                                             </div>
                                                             <div class="form-group">
-                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
                                                                     <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
                                                                 </div>
                                                             </div>
 
                                                             <div class="col-md-12">
+                                                                <div class="col-xs-6">
                                                                 <label>Vehicle Group</label>
-                                                                <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="directions.vm" class="form-control">
+                                                                <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
                                                                     <option value="">Select</option>
                                                                 </select>
-                                                                <br />
-                                                            </div>
+                                                                    </div>
+                                                                <div class="col-xs-6">
+                                                                    <label>Vehicle Type</label>
+                                                                    <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control" style="width:100%">
+                                                                        <option value="">Select Type</option>
+                                                                    </select>
+                                                                    </div>
+                                                                </div>
+                                                          
                                                             <div class="col-md-12">
-                                                                <label>Vehicle Type</label>
-                                                                <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="directions.v" class="form-control" style="width:100%">
-                                                                    <option value="">Select Type</option>
-                                                                </select>
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-md-12">
-                                                                <label>Pricing Type</label>
-                                                                <select class="form-control" style="width:100%" ng-model="directions.pricing">
-                                                                    <option value="">Select Price</option>
-                                                                    <option value="52">Per unit pricing</option>
-                                                                    <option value="53">Stage to Stage</option>
-                                                                </select>
-                                                                <br />
-                                                            </div>
+                                                                <div class="col-xs-6">
+                                                                    <label>Pricing Type</label>
+                                                                    <select class="form-control" style="width:100%" ng-model="pricing">
+                                                                        <option value="">Select Price</option>
+                                                                        <option value="52">Per unit pricing</option>
+                                                                        <option value="53">Stage to Stage</option>
+                                                                    </select>
+                                                                    </div>
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Distance</label>
+                                                                    <input class="form-control" id="distance" type="text" ng-model="distText" ng-change="SetTotal();">
+                                                                    </div>
+                                                                  
+                                                                </div>
+                                                           
                                                             <div class="col-xs-12">
-                                                                <label for="ex2">Distance</label>
-                                                                <input class="form-control" id="distance" type="text" ng-model="distval">
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="ex2">Unit Price/Amount</label>
-                                                                <input class="form-control" id="unitprice" type="text" ng-model="directions.unitprice">
-                                                                <br />
-                                                            </div>
-                                                            <div class="col-xs-12">
-                                                                <label for="ex2">Total Amount</label>
-                                                                <input class="form-control" id="Total" type="text" ng-model="directions.total">
-                                                                <br />
-                                                            </div>
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Unit Price/Amount</label>
+                                                                    <input class="form-control" id="unitprice" type="text" ng-model="unitprice" ng-change="SetTotal();">
+                                                                    </div>
+                                                                <div class="col-xs-6">
+                                                                    <label for="ex2">Total Amount</label>
+                                                                    <input class="form-control" id="Total" type="text" ng-model="total" ng-disabled="pricing == 52 || pricing ==''" disabled>
+                                                                    </div>
+                                                                    
+                                                                </div>
+                                                           <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
-                                                                    <button class="btn-medium green" ng-click="SavePricing(directions,'I')">Save</button>
+                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                    <button class="btn-medium green" ng-click="SavePricing('I')">Save</button>
                                                                 </div>
                                                             </div>
+                                                               </div>
                                                         </div>
                                                     </form>
                                                 </div>
-                                                <!-------jagan--------------------->
+                                              
 
-                                                <div id="full-width-content" class="col-md-6">
+                                                <div id="full-width-content" class="col-md-5" style="margin-left:-10px">
 
                                                     <div class="main">
                                                         <div class="panel panel-default">
