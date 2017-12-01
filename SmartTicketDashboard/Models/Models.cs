@@ -2526,16 +2526,16 @@ namespace SmartTicketDashboard.Models
         public int Id { get; set; }      
         public string SourceLoc {get; set;}
         public string DestinationLoc {get; set;}
-        public float SourceLat {get; set;}
-        public float SourceLng {get; set;}
-        public float DestinationLat {get; set;}
-        public float DestinationLng {get; set;}
+        public string SourceLat { get; set; }
+        public string SourceLng { get; set; }
+        public string DestinationLat { get; set; }
+        public string DestinationLng { get; set; }
         public int VehicleGroupId { get; set; }
         public int VehicleTypeId {get; set;}
         public int PricingTypeId {get; set;}
-        public float UnitPrice {get; set;}
-        public int Distance { get; set; }
-        public float Amount {get; set;}
+        public decimal UnitPrice {get; set;}
+        public decimal Distance { get; set; }
+        public decimal Amount {get; set;}
         public string flag {get; set;}
 
     }

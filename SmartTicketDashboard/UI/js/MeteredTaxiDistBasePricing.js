@@ -73,7 +73,9 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
     var directionsService = new google.maps.DirectionsService();
     var geocoder = new google.maps.Geocoder();
 
-   
+    $scope.distval = 0;
+    $scope.unitprice = 0;
+
     $scope.getDirections = function () {
         //get the source latitude and longitude
         //get the target latitude and longitude
@@ -82,6 +84,8 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
         $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
 
+        $scope.srcName = $scope.pickupPoint.place.name;
+        $scope.destName = $scope.dropPoint.place.name;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
@@ -93,8 +97,10 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
                 directionsDisplay.setDirections(response);
                 directionsDisplay.setMap($scope.map.control.getGMap());
                 // directionsDisplay.setPanel(document.getElementById('distance').innerHTML += response.routes[0].legs[0].distance.value + " meters");
-                $scope.distText = response.routes[0].legs[0].distance.text;
-                $scope.distval = response.routes[0].legs[0].distance.value;
+                
+                $scope.distval = response.routes[0].legs[0].distance.value / 1000;
+                $scope.distText = $scope.distval+" KM";
+
                 //response.routes[0].bounds["f"].b
                 //17.43665
                 //response.routes[0].bounds["b"].b
@@ -119,35 +125,36 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         });
     }
 
+    $scope.SetTotal = function () {
+        $scope.total = eval($scope.unitprice) * eval($scope.distval);
+    }
     
-    
-    $scope.SavePricing = function (directions,flag) {
+    $scope.SavePricing = function (flag) {
         //alert();
 
         
-        var directions = {
-            Id: directions.Id,
-            SourceLoc : directions.origin,
-            DestinationLoc: directions.destination,
-            SourceLat : $scope.srcLat, 
-            SourceLng : $scope.srcLon  ,
-            DestinationLat : $scope.destLat,
-            DestinationLng :$scope.destLon,
-            VehicleGroupId : directions.vm.Id,
-            VehicleTypeId : directions.v.Id,
+        var vdpc = {
+            Id: -1,
+            SourceLoc: $scope.srcName,
+            DestinationLoc: $scope.destName,
+            SourceLat: $scope.srcLat,
+            SourceLng: $scope.srcLon,
+            DestinationLat: $scope.destLat,
+            DestinationLng: $scope.destLon,
+            VehicleGroupId: $scope.vm.Id,
+            VehicleTypeId: $scope.vt.Id,
             //PricingTypeId: directions.pricing,
-            PricingTypeId:1,
+            PricingTypeId: $scope.pricing,
             Distance: $scope.distval,
-            UnitPrice:directions.unitprice,
-            Amount: directions.total,
+            UnitPrice: $scope.unitprice,
+            Amount: $scope.total,
             flag: flag
-           
-        };
+        }
 
         var req = {
             method: 'POST',
             url: '/api/VehiclePricing/VehicleDistanceConfig',
-            data: directions
+            data: vdpc
         }
 
         $http(req).then(function (response) {
