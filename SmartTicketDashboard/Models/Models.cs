@@ -1773,6 +1773,10 @@ namespace SmartTicketDashboard.Models
         public int includeUserType { get; set; }
         public int includeAuthType { get; set; }
         public int includeState { get; set; }
+
+        public int includePackageNames { get; set; }
+
+        public int includePackageTypeName { get; set; }
     }
     public class VehicleConfig
     {
@@ -3019,12 +3023,12 @@ namespace SmartTicketDashboard.Models
         public string FromKm { get; set; }
         public string ToKm { get; set; }
         public string Code { get; set; }
-        public DateTime FromDate { get; set; }
-        public DateTime ToDate { get; set; }
+        public DateTime? FromDate { get; set; }
+        public DateTime? ToDate { get; set; }
         public string PerKmPrice { get; set; }
         public string Amount { get; set; }
-        public DateTime FromHrs { get; set; }
-        public DateTime ToHrs { get; set; }
+        public DateTime? FromHrs { get; set; }
+        public DateTime? ToHrs { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
     }
