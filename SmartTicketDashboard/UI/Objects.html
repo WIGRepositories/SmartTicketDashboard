@@ -455,6 +455,7 @@
                                                             <th width="30%">Add Child</th>                                                           
                                                             <th>Delete</th>
                                                         </tr>
+
                                                     </thead>
                                                     <tbody>
 
@@ -469,7 +470,7 @@
                                                             </td>
                                                            
                                                             <td>
-                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="align-content:center">Add Child Equipment</button>
+                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="align-content:center">Add Child Object</button>
                                                             </td>
                                                             <td style="text-align:center">
                                                                 <button ng-click="remove_node(a)" ng-disabled="CanUploadDoc == 0" ng-hide="a.ParentId == null" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
@@ -734,12 +735,10 @@
             </script>
             </div>
 
-        </div>
+        
         <!--END PAGE WRAPPER-->
        
-    </div>
-
-    <!--END PAGE WRAPPER-->
+   
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>

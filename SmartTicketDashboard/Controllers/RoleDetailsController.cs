@@ -15,9 +15,9 @@ namespace SmartTicketDashboard.Controllers
     public class RoleDetailsController : ApiController
     {
         [HttpGet]
-        public DataTable getroledetails()
-        {
-            DataTable Tbl = new DataTable();
+        [Route("api/RoleDetails/GetRoleDetails")]
+        public DataSet GetRoleDetails(int roleId)
+        {            
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getroledetails credentials....");
  
@@ -31,13 +31,19 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "getRoledetails";
             cmd.Connection = conn;
+
+            SqlParameter Aid = new SqlParameter("@roleId",SqlDbType.Int);
+            Aid.Value = roleId;
+            cmd.Parameters.Add(Aid);
+
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
-            Tbl = ds.Tables[0];
+            
+
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getroledetails Credentials completed.");
             // int found = 0;
-            return Tbl;
+            return ds;
         }
         [HttpPost]
         public HttpResponseMessage saveroledetails(roledetails b)

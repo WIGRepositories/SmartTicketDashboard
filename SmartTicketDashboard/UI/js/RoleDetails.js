@@ -1,4 +1,21 @@
 var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+
+
+app.directive('onFinishRender', function ($timeout) {
+
+    return {
+        restrict: 'A',
+        link: function (scope, element, attr) {
+            if (scope.$last === true) {
+                $timeout(function () {
+                    scope.$emit('ngRepeatFinished');
+                });
+
+            }
+        }
+    }
+});
+
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -9,9 +26,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $http.get('/api/Roledetails/getroledetails').then(function (res, data) {
-        $scope.Roledetails = res.data;
-    });
+    //$http.get('/api/Roledetails/getroledetails').then(function (res, data) {
+    //    $scope.Roledetails = res.data;
+    //});
 
 
     $scope.GetCompanies = function () {
@@ -52,8 +69,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         var cmpId = (r) ? r.id : -1;
 
-        $http.get('/api/Roles/GetCompanyRoles?companyId=' + cmpId).then(function (res, data) {
-            $scope.roleobjects = res.data;
+        $http.get('/api/RoleDetails/GetRoleDetails?roleId=' + cmpId).then(function (res, data) {
+            $scope.roleobjects = res.data.Table;
         });
     }
 
@@ -100,6 +117,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
         });
     }
+
+    $scope.$on('ngRepeatFinished', function (ngRepeatFinishedEvent) {
+        //you also get the actual event object
+        //do stuff, execute functions -- whatever...
+        //alert("ng-repeat finished");
+        $("#example-advanced").treetable({ initialState: 'expanded', expandable: true }, true);
+        $("#example-advanced tbody tr:first").toggleClass("selected");
+
+
+    });
 
 
 });
