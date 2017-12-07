@@ -464,14 +464,15 @@
                                                        </select>
                                                     </div>                                                    
                                                 </div>
+                                            
                                                 <table id="example-advanced">
                                                     <!--<caption class="mbl mtl"><a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>&nbsp; | &nbsp;<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a></caption>-->
                                                     <thead>
                                                         <tr>
-                                                            <th width="20%">Name</th>
-                                                            <th width="15%">Details</th>
-                                                            <th width="30%">Add Child</th>
-                                                            <th>Delete</th>
+                                                            <th width="30%">Name</th>
+                                                            <th width="20%">Details</th>
+                                                            <th width="50%">Accesses</th>
+                                                           
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -484,16 +485,9 @@
 
                                                             <td style="text-align:center">
                                                                 <button ng-click="ViewDetails(a)" class="btn btn-default btn-sm">Details</button>
-                                                            </td>
-
+                                                            </td>                                                                                                                      
                                                             <td>
-                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="align-content:center">Add Child Object</button>
-                                                            </td>
-                                                            <td style="text-align:center">
-                                                                <button ng-click="remove_node(a)" ng-disabled="CanUploadDoc == 0" ng-hide="a.ParentId == null" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                                                            </td>
-                                                            <td>
-                                                                <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
+                                                                <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model" extra-settings="example13settings">test</div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -637,7 +631,7 @@
     <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
-
+   
     <script src="vendors/jstree/dist/jstree.min.js"></script>
     <script src="vendors/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
     <!--CORE JAVASCRIPT-->
@@ -645,6 +639,8 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
+    <script src="js/multiselect/loadAsh.js"></script>
+    <script src="js/multiselect/angularjs-dropdown-multiselect.js"></script>
     <script src="js/Roledetails.js"></script>
 
 </body>

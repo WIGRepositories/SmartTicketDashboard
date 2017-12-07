@@ -2537,6 +2537,7 @@ namespace SmartTicketDashboard.Models
         public decimal Distance { get; set; }
         public decimal Amount {get; set;}
         public string flag {get; set;}
+        public int CountryId { get; set; }
 
     }
     public class start

@@ -9,6 +9,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
 
     //$scope.dashboardDS = $localStorage.dashboardDS;
     $scope.StopsList = null;
+
     $scope.GetTaxiStops = function () {
         $http.get("/api/GetTaxiStopsList").then(function (response, req) {
             $scope.StopsList = response.data;
@@ -28,7 +29,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             $scope.uncheckedArr = $filter('filter')($scope.Countries, { HasOperations: "0" });
         });
     }
-  
+
+
+    $scope.GetConfigData = function () {
+
+        var vc = {            
+            includeActiveCountry: '1',
+           
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            
+        });
+    }
     $scope.toggle = function (item) {
         var idx = $scope.checkedArr.indexOf(item);
         if (idx > -1) {

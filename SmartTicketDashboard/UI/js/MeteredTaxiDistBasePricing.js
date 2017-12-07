@@ -42,7 +42,8 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         var vc = {
             
             includeVehicleType: '1',
-            includeVehicleGroup: '1',              
+            includeVehicleGroup: '1',
+            includeActiveCountry: '1',
         };
 
         var req = {
@@ -148,6 +149,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             Distance: $scope.distval,
             UnitPrice: $scope.unitprice,
             Amount: $scope.total,
+            CountryId:$scope.ctry.Id,
             flag: flag
         }
 

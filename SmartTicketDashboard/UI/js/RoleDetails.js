@@ -1,5 +1,4 @@
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
-
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularjs-dropdown-multiselect'])
 
 app.directive('onFinishRender', function ($timeout) {
 
@@ -30,6 +29,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     //    $scope.Roledetails = res.data;
     //});
 
+    $scope.example1model = [];
+    $scope.example1data = [{ id: 1, label: "View" }, { id: 2, label: "Edit" }, { id: 3, label: "Delete" }, , { id: 4, label: "Create" }];
+    $scope.example13settings = { smartButtonMaxItems: 5, smartButtonTextConverter: function (itemText, originalItem) { if (itemText === 'Jhon') { return 'Jhonny!'; } return itemText; } };
 
     $scope.GetCompanies = function () {
 

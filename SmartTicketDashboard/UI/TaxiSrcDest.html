@@ -470,9 +470,9 @@
                                         <div class="col-lg-12">
 
                                             <div class="row mbm">
-                                                <div class="col-lg-12">
-                                                    Country: <select ng-options="c.Name for c in Countries track by c.Id" ng-model="Countries" ng-change="GetCountries()">
-    <option value="">Select Country</option>
+                                                <div class="col-lg-12" ng-init="GetConfigData();">
+                                                    Country: <select ng-options="c.Name for c in initdata.Table track by c.Id" ng-model="Countries">
+    <option value="">Select </option>
 </select>
                                                 </div>
                                             </div>

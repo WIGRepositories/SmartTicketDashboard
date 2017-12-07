@@ -168,6 +168,10 @@ namespace SmartTicketDashboard.Controllers
             vdpcAmount.Value = vdpc.Amount;
             cmd.Parameters.Add(vdpcAmount);
 
+            SqlParameter ctry = new SqlParameter("@CountryId", SqlDbType.Int);
+            ctry.Value = vdpc.CountryId;
+            cmd.Parameters.Add(ctry);
+
             SqlParameter flag = new SqlParameter("@flag", SqlDbType.VarChar);
             flag.Value = vdpc.flag;
             cmd.Parameters.Add(flag);
