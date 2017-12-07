@@ -3572,6 +3572,7 @@
     <Content Include="UI\js\MandatoryUserDoc.js" />
     <Content Include="UI\js\MandatoryVehicleDocs.js" />
     <Content Include="UI\js\MeteredTaxiPricinglist.js" />
+    <Content Include="UI\js\Operations.js" />
     <Content Include="UI\js\PackagePricing.js" />
     <Content Include="UI\js\Packages.js" />
     <Content Include="UI\js\PackageType.js" />
