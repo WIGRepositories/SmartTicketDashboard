@@ -19,8 +19,7 @@ namespace SmartTicketDashboard.Controllers
         public DataTable GetOperations()
         {
             DataTable Tbl = new DataTable();
-            //LogTraceWriter traceWriter = new LogTraceWriter();
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetOperations credentials....");
+          
 
 
             //connect to database
