@@ -149,8 +149,8 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             Distance: $scope.distval,
             UnitPrice: $scope.unitprice,
             Amount: $scope.total,
-            CountryId:$scope.ctry.Id,
-            flag: flag
+            CountryId: $scope.ctry.Id,
+            flag: 'I'
         }
 
         var req = {
