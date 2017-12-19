@@ -59,7 +59,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     $scope.InveArr = [{ "Id": 1, "Name": "Category" },
                         { "Id": 2, "Name": "Category" }]
 
-    $scope.DriverCol = 'First Name,Last Name,Mobile Number,Fleet Owner,Address,Permanent Address,Pin,Permanent Pin,EmailId,Driver Code';
+    $scope.DriverCol = 'First Name,Last Name,Mobile Number,Fleet Owner,Address,Permanent Address,Pin,Permanent Pin,EmailId,Driver Code,Country';
     $scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
                         { "Id": 2, "NAme": "Address" }]
 
@@ -422,7 +422,14 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;
                         alert("Saved successfully")
+
+                    }, function (errres) {
+                        var errdata = errres.data;
+                        var errmssg = "Your Details Are Incorrect";
+                        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+                        alert(errmssg);
                     });
+                    
 
                     // $scope.logdata = lines;
                 };
@@ -439,8 +446,9 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         Pin: data[6],
                         PermanentPin: data[7],
                         EmailId: data[8],
-                        DriverCode:data[9],
-                        CurrentStateId:data[24],
+                        DriverCode: data[9],                        
+                        CurrentStateId: data[10],
+                        Country: data[11],
                         flag: 'I'
                     }
                     return list;
@@ -541,8 +549,15 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     $http(req).then(function (res) {
                         $scope.initdata = res.data;                        
                         alert("Saved successfully");
-                    });
 
+                    }, function (errres) {
+                        var errdata = errres.data;
+                        var errmssg = "Your details are incorrect";
+                        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+                        alert(errmssg);
+                        alert(errmssg);
+                    });
+                
                      //$scope.logdata = lines;
                 };
 
@@ -768,7 +783,17 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                     }
                     $http(req).then(function (res) {                        
                         
-                       
+                        alert("Saved successfully!!");
+
+                        $scope.data = null;
+                        //$scope.GetCompanys();
+
+                    }, function (errres) {
+                        var errdata = errres.data;
+                        var errmssg = "Your details are incorrect";
+                        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+                        // $scope.showDialog(errmssg);
+                        alert(errmssg);
                     });
 
                     //$scope.logdata = list;
@@ -801,7 +826,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         PermanentPin: data[20],
                         EmailId: data[21],
                         DriverCode: data[22],
-                        CurrentStateId:data[23],
+                        CurrentStateId: data[23],
                         inspudflag: 'I'
                     }
                     return list;

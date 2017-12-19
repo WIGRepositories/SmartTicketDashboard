@@ -730,6 +730,7 @@ namespace SmartTicketDashboard.Models
         public string DriverCode { get; set; }
         public string FleetOwner { get; set; }
         public int CurrentStateId { get; set; }
+        public string Country { get; set; }
 
     }
     //Jagan Updated On18th Aug End
