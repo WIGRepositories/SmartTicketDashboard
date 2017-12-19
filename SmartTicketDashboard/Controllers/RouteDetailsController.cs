@@ -14,6 +14,7 @@ namespace SmartTicketDashboard.Controllers
     public class RouteDetailsController : ApiController
     {
          [HttpGet]
+         [Route("api/RouteDetails/getRouteDetails")]
         public DataSet getroutedetails(int routeid)
         {
            // DataTable Tbl = new DataTable();
@@ -48,6 +49,7 @@ namespace SmartTicketDashboard.Controllers
          
 
          [HttpPost]
+         [Route("api/RouteDetails/InsUpdDelRouteDetails")]
          public DataTable saveroutedetails(IEnumerable<RouteDetails> routestops)
          {
              DataTable Tbl = new DataTable();
