@@ -35,6 +35,27 @@ namespace SmartTicketDashboard.Controllers
             return dt;
         }
 
+
+        [HttpGet]
+        [Route("api/VehiclePricing/GetPricinglist")]
+
+        public DataTable GetPricinglist(int vdpid)
+        {
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVGetPricingDetails";
+            cmd.Connection = conn;
+            cmd.Parameters.Add("vdpid", SqlDbType.Int).Value = vdpid;
+            DataTable dt = new DataTable();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(dt);
+
+            return dt;
+        }
+
         [HttpPost]
         [Route("api/VehiclePricing/VehiclePrices")]
 
