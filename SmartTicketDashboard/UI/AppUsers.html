@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | BookingDetails</title>
+    <title>Home | BTPOS | App Users</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -466,7 +466,7 @@
                                                                     <th width="10%">Gender</th>
                                                                     <th width="10%">Alternate Email</th>
                                                                     <th width="10%">Amount</th>
-                                                                    <th width="10%">Status</th>
+                                                                    <th width="5%">Status</th>
                                                                     <th>Edit</th>
 
 
@@ -477,7 +477,7 @@
 
                                                                     <td width="10%" class="img">
                                                                         <a href="" class="img-shadow" ng-if="a.UserPhoto != null" ng-click="SetBiggerPhoto(a)">
-                                                                            <img src="{{a.UserPhoto}}" style="height:50px;width:50px" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
+                                                                            <img src="{{a.UserPhoto}}" style="height:50px;width:70px" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
                                                                         </a>
                                                                         <!--<img src={{a.UserPhoto}} alt="" title="" style="height:50px;width:50px" ng-click="SetBiggerPhoto(a)" data-target="#driver-image" /></td>-->
                                                                     <td><a href="AppUserDetails.html?UId={{a.Id}}"> <font color="blue"> <u>{{a.Username}}</u></font></a></td>
@@ -486,7 +486,7 @@
                                                                     <td>{{a.Gender}}</td>
                                                                     <td>{{a.Altemail}}</td>
                                                                     <td>{{a.Amount}}</td>
-                                                                    <td>{{a.Status}}</td>
+                                                                    <td><input type="checkbox" checked/></td>
                                                                     <td>
                                                                         <a href="AppUserDetails.html?UId={{a.Id}}">
                                                                             <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setusers(a);">

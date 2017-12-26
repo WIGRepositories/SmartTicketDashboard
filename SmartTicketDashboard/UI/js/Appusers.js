@@ -139,11 +139,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.User = res.data[0];
             $scope.imageSrc = $scope.User.UserPhoto;
 
-            //for (i = 0; i < $scope.initdata.Table1.length; i++) {
-            //    if ($scope.initdata.Table1[i].Id == $scope.user.StatusId) {                   
-            //        break;
-            //    }
-            //}
+            for (i = 0; i < $scope.initdata.Table.length; i++) {
+                if ($scope.initdata.Table[i].Id == $scope.User.Status) {
+                    $scope.User.Status = $scope.initdata.Table[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table1.length; i++) {
+                if ($scope.initdata.Table1[i].Id == $scope.User.Gender) {
+                    $scope.User.Gender = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
 
         });
     }
@@ -274,7 +281,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Photo: $scope.imageSrc,
             Altemail: User.Altemail,
             Gender: User.Gender.Id,
-            Amount:User.Amount
+            Amount: User.Amount,
+            Status: User.Status.Id,
+            AltPhonenumber:User.AltPhonenumber
 
         }
 
