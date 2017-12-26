@@ -220,6 +220,27 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         });
     }
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeActiveCountry: '1',
+            
+
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            $scope.nn = $scope.initdata.Table1;
+            //$scope.ctry = $scope.initdata.Table1[0];
+
+        });
+    }
     $scope.save = function (Group, flag) {
 
         if (Group == null) {
@@ -250,7 +271,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
         //country
-        if (Group.Country == null) {
+        if (Group.Country.Id == null) {
             alert('Please select Country.');
             return;
         }
@@ -277,7 +298,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EmailId:Group.EmailId,
             Title:Group.Title,
             Caption:Group.Caption,
-            Country:Group.Country,
+            Country:Group.Country.Id,
             ZipCode:Group.ZipCode,
             State: Group.State,
             FleetSize:Group.FleetSize,
