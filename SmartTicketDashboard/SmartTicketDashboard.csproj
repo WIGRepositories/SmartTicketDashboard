@@ -5584,7 +5584,6 @@
     <Compile Include="Controllers\PricingCredentialsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
-    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
     <Compile Include="Controllers\RouteFareController.cs" />

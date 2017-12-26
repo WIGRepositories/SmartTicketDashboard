@@ -107,7 +107,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.GetUsers = function () {
-        $http.get('/api/RegisterUser/GetUsers').then(function (res, data) {
+        $http.get('/api/AppUsers/GetUsers').then(function (res, data) {
             $scope.users = res.data;
         });
         // $scope.imageSrc = $scope.VehiclesList.Photo;
@@ -135,7 +135,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.selectedUser = parseLocation(window.location.search)['UId'];
 
-        $http.get('/api/RegisterUser/GetUserdetails?UId=' + $scope.selectedUser).then(function (res, data) {
+        $http.get('/api/AppUsers/UserDetails?id=' + $scope.selectedUser).then(function (res, data) {
             $scope.User = res.data[0];
             $scope.imageSrc = $scope.User.UserPhoto;
 
@@ -289,7 +289,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var req = {
             method: 'POST',
-            url: '/api/RegisterUser/Appusers',
+            url: '/api/AppUsers/Appusers',
             data: User
         }
         $http(req).then(function (response) {
