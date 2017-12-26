@@ -514,44 +514,34 @@
                                                             <div>
                                                                 <a data-lightbox="example-set" data-title="Click the right half of the image to move forward."><img class="media-thumb thumb" ng-src="{{imageSrc1}}" alt="" style="height:35px;width:40px" /></a>                                                               
                                                                 
-                                                                
+                                                                <a href="#" style="width:90px" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard." class="img-shadow"><img class="example-image img-shadow" src={{imageSrc2}} alt="" style="height:35px;width:40px" /></a>
+                                                                <a href="#" ng-click="UploadImg3();" data-lightbox="example-set" data-title="The next image in the set is preloaded as you're viewing."><img class="example-image img-shadow" src={{imageSrc3}} alt="" style="height:35px;width:40px" /></a>
+                                                                <a href="#" ng-click="UploadImg4();" data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close."><img class="example-image img-shadow" src={{imageSrc4}} alt="" style="height:35px;width:40px" /></a>
                                                             </div>
                                                         </div>
                                                         <div class="row mbm">
-                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:90px">
+                                                            <a href="#" class="btn btn-green" ng-click="UploadImg1();" style="width:40px">
                                                                 <i class="fa fa-upload"></i>&nbsp;
                                                                
                                                             </a>
                                                             <input type="file" name="fileInput" id="fileInput1" ng-file-select="onFileSelect2($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc1" ng-change="setimg();" />
-                                                        </div>
-                                                        <div>
-                                                            <a href="#" style="width:90px" data-lightbox="example-set" data-title="Or press the right arrow on your keyboard." class="img-shadow"><img class="example-image img-shadow" src={{imageSrc2}} alt="" style="height:35px;width:40px" /></a>
-                                                        </div>
-                                                       
-                                                        <div class="row mbm">
-                                                            <a href="#" class="btn btn-green" ng-click="UploadImg2();" style="width:90px">
+                                                            <a href="#" class="btn btn-green" ng-click="UploadImg2();" style="width:40px">
                                                                 <i class="fa fa-upload"></i>&nbsp;
-                                                               
+
                                                             </a>
                                                             <input type="file" name="fileInput" id="fileInput2" ng-file-select="onFileSelect3($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc2" ng-change="setimg();" />
-                                                        </div>
-
-                                                        <div><a href="#" ng-click="UploadImg3();"  data-lightbox="example-set" data-title="The next image in the set is preloaded as you're viewing."><img class="example-image img-shadow" src={{imageSrc3}} alt="" style="height:35px;width:40px" /></a></div>
-                                                        <div class="row mbm">
-                                                            <a href="#" class="btn btn-green" ng-click="UploadImg3();" style="width:90px">
+                                                            <a href="#" class="btn btn-green" ng-click="UploadImg3();" style="width:40px">
                                                                 <i class="fa fa-upload"></i>&nbsp;
-                                                                
+
                                                             </a>
                                                             <input type="file" name="fileInput" id="fileInput3" ng-file-select="onFileSelect4($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc3" ng-change="setimg();" />
-                                                        </div>
-                                                        <div><a href="#" ng-click="UploadImg4();"  data-lightbox="example-set" data-title="Click anywhere outside the image or the X to the right to close."><img class="example-image img-shadow" src={{imageSrc4}} alt="" style="height:35px;width:40px" /></a></div>
-                                                        <div class="row mbm">
-                                                            <a href="#" class="btn btn-green" ng-click="UploadImg4();" style="width:90px">
+                                                            <a href="#" class="btn btn-green" ng-click="UploadImg4();" style="width:40px">
                                                                 <i class="fa fa-upload"></i>&nbsp;
-                                                                
+
                                                             </a>
                                                             <input type="file" name="fileInput" id="fileInput4" ng-file-select="onFileSelect5($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc4" ng-change="setimg();" />
                                                         </div>
+                                                       
                                                             <div class="row mbm">
                                                                 <div>
                                                                     <font color="red">Mandatory Documents:</font>

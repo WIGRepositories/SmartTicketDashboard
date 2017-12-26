@@ -522,10 +522,15 @@
 
                                                                         <div class="col-md-6">
                                                                             <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
-                                                                            <div class="col-md-8">
+                                                                            <!--<div class="col-md-8">
                                                                                 <select class="col-md-12 form-control" ng-model="Group.Country">
                                                                                     <option value="">select Country</option>
                                                                                     <option value="245">Zimbabwe</option>
+                                                                                </select>
+                                                                            </div>-->
+                                                                            <div class="col-md-8 ">
+                                                                                <select class="col-md-12 form-control" ng-options="ct.Name for ct in initdata.Table track by ct.Id" ng-model="Group.Country" ng-change="GetDashboardDS()" ng-init="GetConfigData()" style="width:100%;margin-left:-10px">
+                                                                                    <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
@@ -751,10 +756,15 @@
 
                                                                         <div class="col-md-6">
                                                                             <label for="inputMiddleName" class="col-md-4 control-label" style="color: red; float: left">Country:<span class='require'>*</span></label>
-                                                                            <div class="col-md-8">
+                                                                            <!--<div class="col-md-8">
                                                                                 <select class="col-md-12 form-control" ng-model="currGroup.Country">
                                                                                     <option value="">select Country</option>
                                                                                     <option value="245">Zimbabwe</option>
+                                                                                </select>
+                                                                            </div>-->
+                                                                            <div class="col-md-8 ">
+                                                                                <select ng-options="ct.Name for ct in initdata.Table track by ct.Id" ng-model="currGroup.Country" ng-change="GetDashboardDS()" ng-init="GetConfigData()" style="width:100%;margin-left:-10px">
+                                                                                    <option value="">Select</option>
                                                                                 </select>
                                                                             </div>
                                                                         </div>
