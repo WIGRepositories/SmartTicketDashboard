@@ -112,7 +112,7 @@
 
 </head>
 
-<body ng-controller="MainCtrl" ng-init="GetConfigData()">
+<body ng-controller="MainCtrl" ng-init="GetPricinglist()">
 
     <div>
         <!--BEGIN THEME SETTING-->
@@ -532,15 +532,15 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div class="row mbm">
-                                        <div class="col-md-3">
+                                        <div class="col-md-3" ng-init="GetConfigData()">
 
-                                            Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetAssignedDocuments()">
-                                                <option value="">Select</option>
+                                            Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetPricinglist()">
+    <option value="">Select</option>
 
-                                            </select>
+</select>
 
                                         </div>
-                                       
+
 
                                     </div>
                                     <div id="table-table-tab" class="tab-pane fade in active">
@@ -573,7 +573,7 @@
                                                                        name="pickupPoint"
                                                                        id="pickupPoint"
                                                                        class="form-control"
-                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />                                                              
+                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />
                                                             </div>
                                                             <div class="col-xs-6">
                                                                 <label for="dropPoint">Destination</label>
@@ -607,19 +607,19 @@
 
                                                             <div class="col-md-12">
                                                                 <div class="col-xs-6">
-                                                                <label>Vehicle Group</label>
-                                                                <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
-                                                                    <option value="">Select</option>
-                                                                </select>
-                                                                    </div>
+                                                                    <label>Vehicle Group</label>
+                                                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
                                                                 <div class="col-xs-6">
                                                                     <label>Vehicle Type</label>
                                                                     <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control" style="width:100%">
                                                                         <option value="">Select Type</option>
                                                                     </select>
-                                                                    </div>
                                                                 </div>
-                                                          
+                                                            </div>
+
                                                             <div class="col-md-12">
                                                                 <div class="col-xs-6">
                                                                     <label>Pricing Type</label>
@@ -628,36 +628,36 @@
                                                                         <option value="52">Per unit pricing</option>
                                                                         <option value="53">Stage to Stage</option>
                                                                     </select>
-                                                                    </div>
+                                                                </div>
                                                                 <div class="col-xs-6">
                                                                     <label for="ex2">Distance</label>
                                                                     <input class="form-control" id="distance" type="text" ng-model="distText" ng-change="SetTotal();">
-                                                                    </div>
-                                                                  
                                                                 </div>
-                                                           
+
+                                                            </div>
+
                                                             <div class="col-xs-12">
                                                                 <div class="col-xs-6">
                                                                     <label for="ex2">Unit Price/Amount</label>
                                                                     <input class="form-control" id="unitprice" type="text" ng-model="unitprice" ng-change="SetTotal();">
-                                                                    </div>
+                                                                </div>
                                                                 <div class="col-xs-6">
                                                                     <label for="ex2">Total Amount</label>
                                                                     <input class="form-control" id="Total" type="text" ng-model="total" ng-disabled="pricing == 52 || pricing ==''" disabled>
-                                                                    </div>
-                                                                    
                                                                 </div>
-                                                           <div class="col-md-12">
-                                                            <div class="form-group">
-                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
-                                                                    <button class="btn-medium green" ng-click="SavePricing('I')">Save</button>
+
+                                                            </div>
+                                                            <div class="col-md-12">
+                                                                <div class="form-group">
+                                                                    <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                        <button class="btn-medium green" ng-click="SavePricing('I')">Save</button>
+                                                                    </div>
                                                                 </div>
                                                             </div>
-                                                               </div>
                                                         </div>
                                                     </form>
                                                 </div>
-                                              
+
 
                                                 <div id="full-width-content" class="col-md-5" style="margin-left:-10px">
 
