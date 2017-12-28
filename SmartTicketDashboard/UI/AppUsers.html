@@ -445,10 +445,10 @@
 
                                                 <div class="table-container">
                                                     <div class="row mbm">
-                                                        <div class="actions">
+                                                        <!--<div class="actions">
 
                                                             <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="GetConfigData();">Add  User</button>
-                                                        </div>
+                                                        </div>-->
 
 
 
@@ -461,8 +461,7 @@
                                                                     <!--<th width="10%">DId</th>-->
                                                                     <th>Image</th>
                                                                     <th width="10%">Name</th>
-                                                                    <th width="10%">Mobile No</th>
-                                                                    <th width="10%">Email Id</th>
+                                                                    <th width="10%">Mobile No</th>                                                                    
                                                                     <th width="10%">Gender</th>
                                                                     <th width="10%">Alternate Email</th>
                                                                     <th width="10%">Amount</th>
@@ -479,10 +478,10 @@
                                                                         <a href="" class="img-shadow" ng-if="a.UserPhoto != null" ng-click="SetBiggerPhoto(a)">
                                                                             <img src="{{a.UserPhoto}}" style="height:50px;width:70px" class="media-object thumb" data-toggle="modal" data-target="#driver-image" />
                                                                         </a>
+                                                                        
                                                                         <!--<img src={{a.UserPhoto}} alt="" title="" style="height:50px;width:50px" ng-click="SetBiggerPhoto(a)" data-target="#driver-image" /></td>-->
-                                                                    <td><a href="AppUserDetails.html?UId={{a.Id}}"> <font color="blue"> <u>{{a.Username}}</u></font></a></td>
-                                                                    <td>{{a.Mobilenumber}}</td>
-                                                                    <td>{{a.Email}}</td>
+                                                                    <td><a href="AppUserDetails.html?UId={{a.Id}}"><font color="blue"> <u>{{a.Username}}</u></font></a><br/>Email : {{a.Email}}</td>
+                                                                    <td>{{a.Mobilenumber}}</td>                                                                   
                                                                     <td>{{a.Gender}}</td>
                                                                     <td>{{a.Altemail}}</td>
                                                                     <td>{{a.Amount}}</td>
