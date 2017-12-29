@@ -39,6 +39,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpGet]
         [Route("api/VehiclePricing/GetPricinglist")]
 
+
         public DataTable GetPricinglist(int vdpid)
         {
             SqlConnection conn = new SqlConnection();

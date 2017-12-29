@@ -5500,6 +5500,7 @@
     <Compile Include="Controllers\AlertsConfigurationController.cs" />
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
+    <Compile Include="Controllers\AppStateController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />
