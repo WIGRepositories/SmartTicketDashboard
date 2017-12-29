@@ -117,6 +117,8 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AppStates.html" />
+    <Content Include="UI\AppStates.js" />
     <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
@@ -5500,6 +5502,7 @@
     <Compile Include="Controllers\AlertsConfigurationController.cs" />
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
+    <Compile Include="Controllers\AppStatesController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />

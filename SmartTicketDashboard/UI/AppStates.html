@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Configuration | SOSMessage</title>
+    <title>Home | Configuration | Type Groups</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
@@ -17,10 +17,10 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
-    
+
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetTicketDetails();" ng-model="TicketDetails">
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="TypeGroups">
     <div>
 
         <!--BEGIN THEME SETTINGS-->
@@ -30,7 +30,7 @@
                 <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                     <div class="navbar-header">
                         <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                        <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">�</span></a>
+                        <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
                     </div>
                     <div class="topbar-main">
                         <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
@@ -221,11 +221,11 @@
                                 </a>
                                 <ul class="nav nav-second-level">
 
-                                    <li>
+                                    <li class="active">
                                         <a href="#"><i class="fa fa-angle-right"></i><span class="submenu-title">Master Data</span><span class="fa arrow"></span></a>
                                         <ul class="nav nav-third-level">
                                             <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Countries</span></a></li>
-                                            <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type Groups</span></a></li>
+                                            <li class="active"><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type Groups</span></a></li>
                                             <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
                                             <li><a href="SubCategory.html" data-toggle="tooltip" data-placement="right" title="Details of SubCategory"><i class="fa fa-angle-double-right"></i><span class="submenu-title"> Sub Categories</span></a></li>
                                             <li><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Stops</span></a></li>
@@ -270,7 +270,7 @@
                                     <li><a href="BlockList.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Block List</span></a></li>
                                     <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
                                     <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
-                                    <li class="active"><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
+                                    <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
                                 </ul>
                             </li>
 
@@ -400,7 +400,7 @@
                                     </i><span class="menu-title">Hire Vehicle</span><span class="fa arrow"></span>
                                 </a>
                                 <ul class="nav nav-second-level">
-
+                                    <li><a href="appusers.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-group"></i><span class="submenu-title">App Users</span></a></li>
                                     <li><a href="VehicleList.html" data-toggle="tooltip" data-placement="right" title="Details of Vehicles"><i class="fa fa-list-alt"></i><span class="submenu-title">Vehicle List</span></a></li>
                                     <li><a href="DriverList.html" data-toggle="tooltip" data-placement="right" title="Details of drivers"><i class="fa fa-list-ol"></i><span class="submenu-title">Driver List</span></a></li>
                                     <li><a href="AssginDriver.html" data-toggle="tooltip" data-placement="right" title="Details of Assingdrivers"><i class="fa fa-columns"></i><span class="submenu-title">Assign Driver</span></a></li>
@@ -427,153 +427,157 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Trouble Ticketing </div>
+                            <div class="page-title">Type Groups</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i><a href="index.html">Home</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="TroubleTicketingDetails.html">Trouble ticketing</a></li>
+                            <li><a href="#">Configuration</a><i class="fa fa-angle-right"></i></li>
+                            <li><a href="TypeGroup.html">Type Group</a></li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
                     <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
                     <div class="page-content">
-
-                        <div id="tableactionTabContent" class="tab-content">
-                            <div id="table-table-tab" class="tab-pane fade in active">
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div class="table-container">
+                        <div id="table-action" class="row">
 
 
+                            <div id="tableactionTabContent" class="tab-content">
+                                <div id="table-table-tab" class="tab-pane fade in active">
+                                    <div class="row">
+                                        <div class="col-lg-12">
 
-                                            <div class="col-lg-12">
 
-                                                <div class="col-md-5">
-                                                    Category: <select ng-options="s.Name for s in Categories track by s.Id" ng-model="s" ng-change="getselectval(s)">
-                                                        <option value="">All</option>
-                                                    </select>
+                                            <div class="table-container">
+                                                <div class="row mbm">
+
+
+                                                    <div class="actions">
+                                                        <!----   <button ng-disabled="Roleid != 1" type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add TypeGroup</button>--->
+                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Type Group</button>
+                                                    </div>
+                                                    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                                                        <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                                <div class="modal-header modal-header-primary">
+                                                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                                                    <h4 id="modal-header-primary-label" class="modal-title">Edit TypeGroups</h4>
+                                                                </div>
+                                                                <div class="modal-body" ng-model="currGroup">
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="text" class="form-control" id="cName" ng-model="currGroup.Name" /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Description:</label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-5">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="text" class="form-control" id="Desc" ng-model="currGroup.Description" /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="row">
+
+                                                                        <div class="col-md-3">
+                                                                            <div class="form-group has-success" style="text-align:right">
+                                                                                <label for="inputFirstName" class="control-label">Active:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="col-md-4">
+                                                                            <div class="form-group">
+                                                                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currGroup.Active" checked /></div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+
+                                                                    <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save(currGroup, 'U');">Save</button>
+                                                                    <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-
-
-                                                <div class="actions">
-                                                    <!---     <button type="button" data-target="#Modal-header-new" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add Subcategory</button>--->
-                                                    <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add Subcategory</button>
-                                                </div>
-
-
-                                                <table id="user-last-logged-table" class="table table-striped table-hover thumb-small">
+                                                <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                     <thead>
                                                         <tr>
-
-                                                            <th width="10%">Mobile No</th>
-                                                            <th width="10%">EmailId</th>
-                                                            <th width="10%">CreatedOn</th>
-                                                            <th width="10%">Title</th>
-                                                            <th width="10%">Description</th>
-                                                            <th width="10%">TicketNo</th>                                                          
-                                                           
-                                                            <th width="10%">StatusId</th>
-                                                            <th>Edit</th>
-
+                                                            <th>Name</th>
+                                                            <th>Description</th>
+                                                            <th>Active</th>
+                                                            <th>Update</th>
                                                         </tr>
+                                                    </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="T in TicketDetails">
+                                                        <tr ng-repeat="T in TypeGroups" class="gradeA">
 
-                                                            <td>{{T.PhoneNumber}}</td>
-                                                            <td>{{T.EmailId}}</td>
-                                                            <td>{{T.CreatedOn}}</td>                                                            
-                                                            <td>{{T.Title}}</td>
-                                                            <td>{{Description}}</td>
-                                                            <td>{{T.TicketNo}}</td>
-                                                            
-                                                            
+                                                            <td>{{T.Name}}</td>
+
+                                                            <td>{{T.Description}}</td>
                                                             <td><input type="checkbox" checked /></td>
                                                             <td>
-
-                                                                <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setdrivers(a);">
-                                                                    <i class="fa fa-edit"></i>
-
+                                                                {{T.Update}}
+                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setTypeGroup(T);">
+                                                                    <i class="fa fa-edit"></i>&nbsp;
+                                                                    Edit
                                                                 </button>
-
                                                             </td>
                                                         </tr>
-
-
                                                     </tbody>
-
                                                 </table>
-
-
-                                                <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+                                                <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
                                                     <div class="modal-dialog">
                                                         <div class="modal-content">
                                                             <div class="modal-header modal-header-primary">
                                                                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                <h4 id="modal-header-primary-label" class="modal-title">Generate A ticket</h4>
+                                                                <h4 id="modal-header-primary-label" class="modal-title">Add Current State</h4>
                                                             </div>
-                                                            <div class="modal-body" ng-init="GetCategories();" ng-model="Subcategory">
+                                                            <div class="modal-body" ng-model="AppStates">
+                                                                <div class="row">
 
+                                                                    <label for="Name" class="col-md-3 control-label" style="color:red;"> Response <span class='require'>*</span></label>
 
-
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="Name" class="col-md-4 control-label" style="color:red;">Ticket title <span class='require'>*</span></label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <input id="Name" type="text" class="form-control" ng-model="SubCategory.Name" /><span class="help-block"></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="Description" class="col-md-4 control-label">Created by <span class='require'></span></label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <input id="Description" type="text" class="form-control" ng-model="SubCategory.Description" /><span class="help-block"></span>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="Description" class="col-md-4 control-label">Description <span class='require'></span></label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <input id="Description" type="text" class="form-control" ng-model="SubCategory.Description" /><span class="help-block"></span>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="selCountry" class="col-md-4 control-label" style="color:red;">App Category:<span class='require'>*</span></label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <select ng-options="s.Name for s in Categories track by s.Id" class="form-control" ng-model="SubCategory.Category">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="selCountry" class="col-md-4 control-label" style="color:red;">user Category:<span class='require'>*</span></label>
-                                                                    </div>
-                                                                    <div class="col-md-6">
-                                                                        <select ng-options="s.Name for s in Categories track by s.Id" class="form-control" ng-model="SubCategory.Category">
-                                                                            <option value="">Select</option>
-                                                                        </select>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="row mbm">
-                                                                    <div style="text-align:right">
-                                                                        <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
-                                                                    </div>
                                                                     <div class="col-md-4">
-                                                                        <div><input type="checkbox" ng-checked="Types.Active" /></div>
-
+                                                                        <input id="inputFirstName" type="text" ng-model="AppStates.Response" class="form-control" />
+                                                                        <span class="help-block"></span>
                                                                     </div>
                                                                 </div>
+
+
+                                                                <div class="row">
+                                                                    <label for="Description" class="col-md-3 control-label"> Description <span class='require'></span></label>
+
+
+                                                                    <div class="col-md-4">
+                                                                        <input id="Description" type="text" ng-model="AppStates.Description" class="form-control" />
+                                                                        <span class="help-block"></span>
+                                                                    </div>
+                                                                </div>
+
+
+
+                                                                
                                                                 <div class="form-actions">
                                                                     <div class="col-md-offset-3 col-md-9">
-                                                                        <button class="btn btn-primary" data-dismiss="modal" type="button" ng-click="saveNewSubCategory(SubCategory);">Save</button>
+                                                                        <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(AppStates,'I');">Save</button>
 
-                                                                        <a href="SubCategory.html" class="btn btn-green" ng-click="clearGroup()">Cancel</a>
+
+                                                                        <a href="AppStates.html" class="btn btn-green">Cancel</a>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -584,24 +588,19 @@
                                                     </div>
 
                                                 </div>
+
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
-
-
                             </div>
                         </div>
-
-
-
-                        <!--END PAGE WRAPPER-->
                     </div>
+
 
                     <!--END CONTENT--><!--BEGIN FOOTER-->
                     <div id="footer">
-                        <div class="copyright">2016 � Interbus - Smart Ticketing Dashboard portal</div>
+                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
                     </div>
                     <!--END FOOTER-->
 
@@ -655,8 +654,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/SOSMessages.js"></script>
-    <script src="js/TroubleTicketingDetails.js"></script>
+    <script src="js/TypeGroups.js"></script>
 
 </body>
 </html>
