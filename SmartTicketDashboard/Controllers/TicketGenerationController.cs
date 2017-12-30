@@ -13,6 +13,32 @@ namespace SmartTicketDashboard.Controllers
 {
     public class TicketGenerationController : ApiController
     {
+
+        [HttpGet]
+
+        public DataTable GetTicketDetails()
+        {
+               SqlConnection conn = new SqlConnection();
+           
+
+            // connetionString = "Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password";
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.CommandText = "GetTicketDetails";
+
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            DataTable tbl = new DataTable();
+
+            db.Fill(tbl);
+
+            return tbl;
+
+        }
         [HttpPost]
         public HttpResponseMessage saveTicketGeneration(TicketGeneration n)
         {

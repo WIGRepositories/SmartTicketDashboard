@@ -3054,11 +3054,11 @@ namespace SmartTicketDashboard.Models
     public class AppStates
     {
         public string Id { get; set; }
-        public string Response { get; set; }
+        public string Response { get; set;}
         public string Description { get; set; }
         public string flag { get; set; }
     }
 
-
 }
+
 
