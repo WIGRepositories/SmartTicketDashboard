@@ -118,7 +118,6 @@
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
     <Content Include="UI\AppStates.html" />
-    <Content Include="UI\AppStates.js" />
     <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
@@ -3559,6 +3558,7 @@
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
+    <Content Include="UI\js\AppStates.js" />
     <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />

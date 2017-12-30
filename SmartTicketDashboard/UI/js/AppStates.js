@@ -8,11 +8,11 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
 
-    $scope.dashboardDS = $localStorage.dashboardDS;
-    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
-        $scope.TypeGroups = res.data;
-    });
-
+    $scope.getAppStates = function () {
+        $http.get('/api/AppStates/getAppStates?DId=1').then(function (res, data) {
+            $scope.AppStates = res.data;
+        });
+    }
     $scope.save = function (TypeGroup) {
 
         if (TypeGroup == null) {
@@ -102,8 +102,8 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     };
 
 
-    $scope.setTypeGroup = function (grp) {
-        $scope.currGroup = grp;
+    $scope.setAppStates = function (I) {
+        $scope.currGroup = I;
     };
 
     $scope.clearGroup = function () {

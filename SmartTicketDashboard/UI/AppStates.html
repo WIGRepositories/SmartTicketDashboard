@@ -20,7 +20,7 @@
 
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-model="TypeGroups">
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="AppStates" ng-init="getAppStates()">
     <div>
 
         <!--BEGIN THEME SETTINGS-->
@@ -427,12 +427,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Type Groups</div>
+                            <div class="page-title">App States</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i><a href="index.html">Home</a><i class="fa fa-angle-right"></i></li>
                             <li><a href="#">Configuration</a><i class="fa fa-angle-right"></i></li>
-                            <li><a href="TypeGroup.html">Type Group</a></li>
+                            <li class="active"><a href="AppStates.html">App States</a></li>
                         </ol>
                         <div class="clearfix"></div>
                     </div>
@@ -453,7 +453,7 @@
 
                                                     <div class="actions">
                                                         <!----   <button ng-disabled="Roleid != 1" type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add TypeGroup</button>--->
-                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Type Group</button>
+                                                        <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add App States</button>
                                                     </div>
                                                     <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
                                                         <div class="modal-dialog">
@@ -517,24 +517,21 @@
                                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Description</th>
-                                                            <th>Active</th>
+                                                            <th>Response</th>
+                                                            <th>Description</th>                                                           
                                                             <th>Update</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr ng-repeat="T in TypeGroups" class="gradeA">
+                                                        <tr ng-repeat="I in AppStates" class="gradeA">
 
-                                                            <td>{{T.Name}}</td>
+                                                            <td>{{I.Response}}</td>
 
-                                                            <td>{{T.Description}}</td>
-                                                            <td><input type="checkbox" checked /></td>
-                                                            <td>
-                                                                {{T.Update}}
-                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setTypeGroup(T);">
+                                                            <td>{{I.Description}}</td>
+                                                            
+                                                            <td>                                                                
+                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setAppStates(I);">
                                                                     <i class="fa fa-edit"></i>&nbsp;
-                                                                    Edit
                                                                 </button>
                                                             </td>
                                                         </tr>
@@ -571,7 +568,7 @@
 
 
 
-                                                                
+
                                                                 <div class="form-actions">
                                                                     <div class="col-md-offset-3 col-md-9">
                                                                         <button type="button" data-dismiss="modal" class="btn btn-primary" ng-click="saveNew(AppStates,'I');">Save</button>
@@ -654,7 +651,7 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
-    <script src="js/TypeGroups.js"></script>
+    <script src="js/AppStates.js"></script>
 
 </body>
 </html>
