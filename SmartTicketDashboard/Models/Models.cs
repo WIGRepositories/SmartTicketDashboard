@@ -3051,5 +3051,14 @@ namespace SmartTicketDashboard.Models
         public string ImageOne { get; set; }
         public string ImageTwo { get; set; }
     }
+    public class AppStates
+    {
+        public string Id { get; set; }
+        public string Response { get; set;}
+        public string Description { get; set; }
+        public string flag { get; set; }
+    }
+
 }
+
 
