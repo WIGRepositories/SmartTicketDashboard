@@ -28,7 +28,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-model="Types" ng-init="GetConfigData();">
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="template" ng-init="GetConfigData()">
 
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
@@ -467,13 +467,13 @@
                             <div class="col-md-3">
                                 <!--Type Group: <select ng-options="s.Name for s in TypeGroups track by s.Id" ng-model="s" ng-change="getselectval(s)">-->
                                 Country:
-                                <select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetAssignedDocuments()">
+                                <select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="Gettemplates()">
                                     <option value="">Select</option>
 
                                 </select>
                             </div>
                             <div class="col-md-3">
-                                User Type: <select ng-options="s.Name for s in initdata.Table2 track by s.Id" ng-model="utype" style="width:80%" ng-change="GetAssignedDocuments()">
+                                User Type: <select ng-options="s.Name for s in initdata.Table2 track by s.Id" ng-model="utype" style="width:80%" ng-change="Gettemplates()">
                                     <option value="">Select Type</option>
                                 </select>
                             </div>
@@ -490,7 +490,7 @@
                                     <div class="col-lg-12">
 
 
-                                        <div class="table-container" ng-model="Types">
+                                        <div class="table-container" ng-model="template">
                                             <div class="row mbm">
 
                                                 <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
@@ -501,21 +501,21 @@
                                                             <th>Name</th>
                                                             <th>Description</th>
                                                             <th>Template</th>
-                                                         
+
                                                             <th>Update</th>
 
                                                         </tr>
                                                     </thead>
                                                     <tbody>
 
-                                                        <tr ng-repeat="">
+                                                        <tr ng-repeat="t in template">
 
                                                             <td><input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" /></td>
                                                             <td><input type="checkBox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="existsMandatory(T,checkedArr)" ng-click="toggleMandatory(T, checkedArr);" /></td>
-                                                            <td>{{T.DocType}}</td>
-                                                            <td>{{T.Description}}</td>
-                                                            <td>{{T.Template}}</td>
-                                                         
+                                                            <td>{{t.DocType}}</td>
+                                                            <td>{{t.Description}}</td>
+                                                            <td>{{t.Template}}</td>
+
 
                                                             <!--<td><input type="checkBox" ng-checked="T.Active == 1" disabled /></td>-->
                                                             <!--<td>{{T.ListKey}}</td>
@@ -653,7 +653,8 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <!--CORE JAVASCRIPT-->
     <script src="js/main.js"></script>
-    <script src="js/Countries.js"></script>
+
+    <script src="js/sostemplates.js"></script>
     <script src="js/MandatoryUserDoc.js"></script>
     <script src="js/fileupload/Upload.js"></script>
 </body>

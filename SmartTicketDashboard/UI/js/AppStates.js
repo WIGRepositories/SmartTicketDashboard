@@ -80,7 +80,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         var req = {
             method: 'POST',
-            url: '/api/typegroups/savetypegroups',
+            url: '/api/AppStates/saveAppStates',
             //headers: {
             //    'Content-Type': undefined
             data: selAppStates
