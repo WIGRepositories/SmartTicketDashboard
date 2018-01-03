@@ -3580,6 +3580,7 @@
     <Content Include="UI\js\PackageType.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\SOSMessages.js" />
+    <Content Include="UI\js\sostemplates.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\TreeView\Types1.js" />
     <Content Include="UI\js\Types1.js" />
@@ -5597,6 +5598,7 @@
     <Compile Include="Controllers\SmsGatewayConfigController.cs" />
     <Compile Include="Controllers\SOSMessageController.cs" />
     <Compile Include="Controllers\SOSNumberController.cs" />
+    <Compile Include="Controllers\SostemplatesController.cs" />
     <Compile Include="Controllers\StartReportController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />
