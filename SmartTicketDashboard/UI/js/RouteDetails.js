@@ -175,6 +175,73 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         });
     }
 
+    $scope.map = {
+        control: {},
+        center: {
+            latitude: 17.3850,
+            longitude: 78.4867
+        },
+        zoom: 16
+    };
+
+
+    var directionsDisplay = new google.maps.DirectionsRenderer();
+    var directionsService = new google.maps.DirectionsService();
+    var geocoder = new google.maps.Geocoder();
+
+    $scope.distval = 0;
+    $scope.unitprice = 0;
+
+    $scope.getDirections = function () {
+        //get the source latitude and longitude
+        //get the target latitude and longitude
+        $scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
+        $scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
+        $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
+        $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
+
+        $scope.srcName = $scope.pickupPoint.place.name;
+        $scope.destName = $scope.dropPoint.place.name;
+        //alert($scope.dropPoint.place.geometry.location.lat);
+        var request = {
+            origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
+            destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
+            travelMode: google.maps.DirectionsTravelMode.DRIVING
+        };
+        directionsService.route(request, function (response, status) {
+            if (status == google.maps.DirectionsStatus.OK) {
+                directionsDisplay.setDirections(response);
+                directionsDisplay.setMap($scope.map.control.getGMap());
+                // directionsDisplay.setPanel(document.getElementById('distance').innerHTML += response.routes[0].legs[0].distance.value + " meters");
+
+                $scope.distval = response.routes[0].legs[0].distance.value / 1000;
+                $scope.distText = $scope.distval + " KM";
+
+                //response.routes[0].bounds["f"].b
+                //17.43665
+                //response.routes[0].bounds["b"].b
+                //78.41263000000001
+
+
+                //response.routes[0].bounds["f"].f
+                //17.45654
+                //response.routes[0].bounds["b"].f
+                //78.44829                
+
+                //$scope.srcLat = response.routes[0].bounds["f"].b;
+                //$scope.srcLon = response.routes[0].bounds["b"].b;
+                //$scope.destLat = response.routes[0].bounds["f"].f;
+                //$scope.destLon = response.routes[0].bounds["b"].f;              
+
+                //$scope.directions.showList = true;
+            } else {
+                alert('Google route unsuccesfull!');
+            }
+
+        });
+    }
+
+
 });
 
 
