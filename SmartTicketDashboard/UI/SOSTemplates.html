@@ -476,7 +476,7 @@
                                 </select>
                             </div>-->
                         </div>
-                        <div id="tableactionTabContent" class="tab-content">
+                      
                             <div id="table-table-tab" class="tab-pane fade in active">
                                 <div class="row">
                                     <div class="col-lg-12">
@@ -489,12 +489,13 @@
                                                     <thead>
                                                         <tr>
                                                             <th width="10%">Select/Unselect</th>
-                                                            <th>Is Mandatory</th>
+                                                            
                                                             <th>Template</th>
                                                             <th>Description</th>
-                                                            
 
                                                             <th>Update</th>
+
+                                                         
 
                                                         </tr>
                                                     </thead>
@@ -506,19 +507,13 @@
                                                             <td><input type="checkBox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="existsMandatory(T,checkedArr)" ng-click="toggleMandatory(T, checkedArr);" /></td>
                                                             <td>{{t.Template}}</td>
                                                             <td>{{t.Description}}</td>
-                                                            
+
 
 
                                                             <!--<td><input type="checkBox" ng-checked="T.Active == 1" disabled /></td>-->
                                                             <!--<td>{{T.ListKey}}</td>
                                                             <td>{{T.Listvalue}}</td>-->
-                                                            <td>
-                                                                {{T.Update}}
-                                                                <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="settemplate(t);">
-                                                                    <i class="fa fa-edit"></i>&nbsp;
-
-                                                                </button>
-                                                            </td>
+                                                           
                                                         </tr>
                                                     </tbody>
 
@@ -547,7 +542,7 @@
 
                                 </div>
                             </div>
-                        </div>
+                        
                     </div>
 
                     <!--END PAGE WRAPPER-->
