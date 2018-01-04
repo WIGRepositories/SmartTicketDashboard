@@ -241,11 +241,7 @@ namespace SmartTicketDashboard.Controllers
             aa.SqlDbType = SqlDbType.VarChar;
             aa.Value = b.TransactionId;
             cmd.Parameters.Add(aa);
-            SqlParameter ca = new SqlParameter();
-            ca.ParameterName = "@TransactionId";
-            ca.SqlDbType = SqlDbType.VarChar;
-            ca.Value = b.TransactionId;
-            cmd.Parameters.Add(ca);
+            
             SqlParameter cas = new SqlParameter();
             cas.ParameterName = "@transactionType";
             cas.SqlDbType = SqlDbType.VarChar;
