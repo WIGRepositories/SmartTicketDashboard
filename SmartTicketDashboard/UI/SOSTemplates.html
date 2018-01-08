@@ -297,6 +297,7 @@
                                 <li class="active"><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
                                 <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
                                 <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
+                                <li><a href="SosTemplates.html" data-toggle="tooltip" data-placement="right" title="Details of SOS Templates"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Templates</span></a></li>
                             </ul>
                         </li>
 
@@ -455,7 +456,8 @@
                     </div>
                     <ol class="breadcrumb page-breadcrumb pull-right">
                         <li><i class="fa fa-home"></i>&nbsp;<a href="#">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                        <li><a href="#">SOS Templates </a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><i class="fa fa-home"></i>&nbsp;<a href="#">Configuaration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                        <li><a href="SOSTemplates.html">SOS Templates</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                     </ol>
                     <div class="clearfix"></div>
                 </div>
@@ -466,7 +468,7 @@
                         <div class="row mbm">
                             <div class="col-md-3">
                                 User Type: <select ng-options="s.Name for s in initdata.Table1 track by s.Id" ng-model="utype" style="width:80%" ng-change="Gettemplates()">
-                                    <option value="">Select Type</option>
+                                    <option value="">Select</option>
                                 </select>
                             </div>
                             <!--<div class="col-md-3">
@@ -493,7 +495,7 @@
                                                             <th>Template</th>
                                                             <th>Description</th>
 
-                                                            <th>Update</th>
+                                                           
 
                                                          
 
@@ -504,7 +506,7 @@
                                                         <tr ng-repeat="t in template">
 
                                                             <td><input type="checkbox" style="margin-left:40px" class="icheckbox_minimal-grey activeCheckbox" ng-checked="exists(T,checkedArr)" ng-click="toggle(T, checkedArr);" /></td>
-                                                            <td><input type="checkBox" class="icheckbox_minimal-grey activeCheckbox" ng-checked="existsMandatory(T,checkedArr)" ng-click="toggleMandatory(T, checkedArr);" /></td>
+                                                            
                                                             <td>{{t.Template}}</td>
                                                             <td>{{t.Description}}</td>
 
@@ -529,7 +531,7 @@
 
                                         <div class="form-actions">
                                             <div style="text-align:center">
-                                                <button class="btn btn-primary" type="button" ng-click="saveUserDoc(ctry,utype,vgroup);">Save</button>
+                                                <button class="btn btn-primary" type="button" ng-click="saveNew(AppStates,'I');">Save</button>
 
                                                 <button class="btn btn-green" ng-click="clearCountry()">Cancel</button>
                                             </div>
