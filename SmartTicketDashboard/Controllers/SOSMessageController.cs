@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
+using System.Text;
 using System.Web.Http;
 using System.Web.Http.Tracing;
 
@@ -44,18 +45,94 @@ namespace SmartTicketDashboard.Controllers
             return Tbl;
         }
         [HttpPost]
-        [Route("api/SaveSOSMessage")]
-        public DataTable SaveSOSMessage(SOSMessage sos)
+        [Route("api/SOSMessage/SOSVerification")]
+        public DataTable SOSVerification(SOSMessage sos)
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveSOSMessage ...");
+            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification ...");
 
             //connect to database
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection();
+            StringBuilder str = new StringBuilder();
             try
             {
+
+                str.Append("UserTypeId:" + sos.UserTypeId + ",");
+                str.Append("UserId:" + sos.UserId + ",");
+
+                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "SOSotpverification";
+                cmd.Connection = conn;
+                conn.Open();
+
+
+                SqlParameter id = new SqlParameter();
+                id.ParameterName = "@Mobilenumber";
+                id.SqlDbType = SqlDbType.VarChar;
+                id.Value = sos.Mobilenumber;
+                cmd.Parameters.Add(id);
+
+                SqlParameter UserId = new SqlParameter();
+                UserId.ParameterName = "@Otp";
+                UserId.SqlDbType = SqlDbType.VarChar;
+                UserId.Value = sos.Otp;
+                cmd.Parameters.Add(UserId);
+
+                SqlParameter ustid = new SqlParameter();
+                ustid.ParameterName = "@UserTypeId";
+                ustid.SqlDbType = SqlDbType.Int;
+                ustid.Value = sos.UserTypeId;
+                cmd.Parameters.Add(ustid);
+
+
+                cmd.ExecuteScalar();
+
+                conn.Close();
+                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification  completed.");
+
+            }
+            catch (Exception ex)
+            {
+                if (conn != null && conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                string st = ex.Message;
+
+                //traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SOSVerification:" + ex.Message);
+
+            }
+            return dt;
+        }
+
+
+
+        [HttpPost]
+        [Route("api/SOSMessage/SaveSOSMessage")]
+        public DataTable SaveSOSMessage(SOSMessage sos)
+        {
+
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            // traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveSOSMessage ...");
+
+            //connect to database
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+            StringBuilder str = new StringBuilder();
+            try
+            {
+
+                str.Append("UserTypeId:" + sos.UserTypeId + ",");
+                str.Append("UserId:" + sos.UserId + ",");
+
+                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
                 //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
                 conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
@@ -95,7 +172,7 @@ namespace SmartTicketDashboard.Controllers
                 SentTo.Value = sos.SentTo;
                 cmd.Parameters.Add(SentTo);
 
-                 SqlParameter MessageId = new SqlParameter();
+                SqlParameter MessageId = new SqlParameter();
                 MessageId.ParameterName = "@MessageId";
                 MessageId.SqlDbType = SqlDbType.Int;
                 MessageId.Value = sos.MessageId;
@@ -125,17 +202,7 @@ namespace SmartTicketDashboard.Controllers
                 Status.Value = sos.StatusId;
                 cmd.Parameters.Add(Status);
 
-                SqlParameter otp = new SqlParameter();
-                otp.ParameterName = "@Otp";
-                otp.SqlDbType = SqlDbType.VarChar;
-                otp.Value = sos.Otp;
-                cmd.Parameters.Add(otp);
 
-                SqlParameter UpdatedOn = new SqlParameter();
-                UpdatedOn.ParameterName = "@UpdatedOn";
-                UpdatedOn.SqlDbType = SqlDbType.DateTime;
-                UpdatedOn.Value = sos.UpdatedOn;
-                cmd.Parameters.Add(UpdatedOn);
 
                 SqlParameter UpdatedBy = new SqlParameter();
                 UpdatedBy.ParameterName = "@UpdatedBy";
@@ -143,18 +210,95 @@ namespace SmartTicketDashboard.Controllers
                 UpdatedBy.Value = sos.UpdatedBy;
                 cmd.Parameters.Add(UpdatedBy);
 
-                 SqlParameter Lat = new SqlParameter("@Latitude", SqlDbType.Float);
-            Lat.Value = sos.Latitude;
-            cmd.Parameters.Add(Lat);
+                SqlParameter Lat = new SqlParameter("@Latitude", SqlDbType.Float);
+                Lat.Value = sos.Latitude;
+                cmd.Parameters.Add(Lat);
 
-            SqlParameter Lng = new SqlParameter("@Longitude", SqlDbType.Float);
-            Lng.Value = sos.Longitude;
-            cmd.Parameters.Add(Lng);
+                SqlParameter Lng = new SqlParameter("@Longitude", SqlDbType.Float);
+                Lng.Value = sos.Longitude;
+                cmd.Parameters.Add(Lng);
 
-                cmd.ExecuteScalar();
+                SqlDataAdapter ds = new SqlDataAdapter(cmd);
+                ds.Fill(dt);
 
-                conn.Close();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
+                #region SOS opt
+                string sotp = dt.Rows[0]["Otp"].ToString();
+                if (sotp != null)
+                {
+                    try
+                    {
+                        MailMessage mail = new MailMessage();
+                        string emailserver = System.Configuration.ConfigurationManager.AppSettings["emailserver"].ToString();
+
+                        string username = System.Configuration.ConfigurationManager.AppSettings["username"].ToString();
+                        string pwd = System.Configuration.ConfigurationManager.AppSettings["password"].ToString();
+                        string fromaddress = System.Configuration.ConfigurationManager.AppSettings["fromaddress"].ToString();
+                        string port = System.Configuration.ConfigurationManager.AppSettings["port"].ToString();
+
+                        SmtpClient SmtpServer = new SmtpClient(emailserver);
+
+                        mail.From = new MailAddress(fromaddress);
+                        mail.To.Add(fromaddress);
+                        mail.Subject = "User registration - Email OTP";
+                        mail.IsBodyHtml = true;
+
+                        string verifcodeMail = @"<table>
+                                                        <tr>
+                                                            <td>
+                                                                <h2>Thank you for registering with PaySmart APP</h2>
+                                                                <table width=\""760\"" align=\""center\"">
+                                                                    <tbody style='background-color:#F0F8FF;'>
+                                                                        <tr>
+                                                                            <td style=\""font-family:'Zurich BT',Arial,Helvetica,sans-serif;font-size:15px;text-align:left;line-height:normal;background-color:#F0F8FF;\"" >
+<div style='padding:10px;border:#0000FF solid 2px;'>    <br /><br />
+                                                                             
+                                                       Your email OTP is:<h3>" + sotp + @" </h3>
+
+                                                        If you didn't make this request, <a href='http://154.120.237.198:52800'>click here</a> to cancel.
+
+                                                                                <br/>
+                                                                                <br/>             
+                                                                       
+                                                                                Warm regards,<br>
+                                                                                PAYSMART Customer Service Team<br/><br />
+</div>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>";
+
+
+                        mail.Body = verifcodeMail;
+                        //SmtpServer.Port = 465;
+                        //SmtpServer.Port = 587;
+                        SmtpServer.Port = Convert.ToInt32(port);
+                        SmtpServer.UseDefaultCredentials = false;
+
+                        SmtpServer.Credentials = new System.Net.NetworkCredential(username, pwd);
+                        SmtpServer.EnableSsl = true;
+                        //SmtpServer.TargetName = "STARTTLS/smtp.gmail.com";
+                        SmtpServer.Send(mail);
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw new HttpResponseException(Request.CreateErrorResponse(HttpStatusCode.BadRequest, ex.Message));
+                    }
+
+                }
+
+                //send mobile otp
+
+
+                // return dt;
+
+                #endregion email otp
+                //  traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveMandUserDocs  completed.");
 
             }
             catch (Exception ex)
@@ -163,9 +307,9 @@ namespace SmartTicketDashboard.Controllers
                 {
                     conn.Close();
                 }
-                string str = ex.Message;
+                string st = ex.Message;
 
-                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandUserDocs:" + ex.Message);
+                //traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveMandUserDocs:" + ex.Message);
 
             }
             return dt;

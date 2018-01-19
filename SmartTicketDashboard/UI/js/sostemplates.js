@@ -9,7 +9,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.Gettemplates = function () {
-        $http.get('/api/Sostemplates/Gettemplates?ctryid=1&Usertypeid=1').then(function (res, data) {
+        $http.get('/api/Sostemplates/Gettemplates?Usertypeid='+$scope.utype.Id).then(function (res, data) {
             $scope.template = res.data;
         });
     }

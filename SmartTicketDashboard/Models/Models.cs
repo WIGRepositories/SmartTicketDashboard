@@ -2918,6 +2918,7 @@ namespace SmartTicketDashboard.Models
         public float Latitude { get; set; }
 
         public float Longitude { get; set; }
+        public string Mobilenumber { get; set; }
     }
     public class MailBox
     {

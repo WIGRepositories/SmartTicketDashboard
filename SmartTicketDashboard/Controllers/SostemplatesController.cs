@@ -14,7 +14,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/Sostemplates/Gettemplates")]
-        public DataTable Gettemplates(int ctryid, int Usertypeid)
+        public DataTable Gettemplates(int Usertypeid)
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
@@ -29,11 +29,10 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetSostemplates";
             cmd.Connection = conn;
-
-
-            cmd.Parameters.Add("@countryid", SqlDbType.Int).Value = ctryid;
+            
             cmd.Parameters.Add("@usertypeid", SqlDbType.Int).Value = Usertypeid;
-            DataSet ds = new DataSet();
+            
+
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(Tbl);
 

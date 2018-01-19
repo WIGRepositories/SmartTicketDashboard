@@ -570,30 +570,73 @@
                                                                                   
 
                                                                                 </div>
-                                                                                <div class="row">
-                                                                                    <div class="col-md-6">
-                                                                                        <label for="inputFirstName" class="col-md-4 control-label">Source: </label>
-                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" placeholder="Source" class="form-control" ng-model="newStop.Source" /><span class="help-block"></span></div>
-                                                                                    </div>
-                                                                                    <div class="col-md-6">
-                                                                                        <label for="inputFirstName" class="col-md-4 control-label">Destination: </label>
-                                                                                        <div class="col-md-8">
-                                                                                            <input id="inputFirstName" type="text" placeholder="Destination" class="form-control" ng-model="newStop.Destination" /><span class="help-block"></span>
+                                                                                <form>
+                                                                                    <div class="form-group row">
+                                                                                        <div class="col-xs-6">
+                                                                                            <label for="pickupPoint">Source</label>
+                                                                                            <input vs-google-autocomplete
+                                                                                                   vs-autocomplete-validator
+                                                                                                   ng-model="pickupPoint.place.name"
+                                                                                                   vs-place="pickupPoint.place"
+                                                                                                   vs-place-id="pickupPoint.components.placeId"
+                                                                                                   vs-street-number="pickupPoint.components.streetNumber"
+                                                                                                   vs-street="pickupPoint.components.street"
+                                                                                                   vs-city="pickupPoint.components.city"
+                                                                                                   vs-state="pickupPoint.components.state"
+                                                                                                   vs-country-short="pickupPoint.components.countryCode"
+                                                                                                   vs-country="pickupPoint.components.country"
+                                                                                                   vs-district="pickupPoint.components.district"
+                                                                                                   vs-post-code="pickupPoint.components.postCode"
+                                                                                                   vs-latitude="pickupPoint.components.location.lat"
+                                                                                                   vs-longitude="pickupPoint.components.location.long"
+                                                                                                   type="text"
+                                                                                                   name="pickupPoint"
+                                                                                                   id="pickupPoint"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter any address" value="{{pickupPoint.name}}" />
                                                                                         </div>
+                                                                                        <div class="col-xs-6">
+                                                                                            <label for="dropPoint">Destination</label>
+                                                                                            <input vs-google-autocomplete
+                                                                                                   vs-autocomplete-validator
+                                                                                                   ng-model="dropPoint.place.name"
+                                                                                                   vs-place="dropPoint.place"
+                                                                                                   vs-place-id="dropPoint.components.placeId"
+                                                                                                   vs-street-number="dropPoint.components.streetNumber"
+                                                                                                   vs-street="dropPoint.components.street"
+                                                                                                   vs-city="dropPoint.components.city"
+                                                                                                   vs-state="dropPoint.components.state"
+                                                                                                   vs-country-short="dropPoint.components.countryCode"
+                                                                                                   vs-country="dropPoint.components.country"
+                                                                                                   vs-district="dropPoint.components.district"
+                                                                                                   vs-post-code="dropPoint.components.postCode"
+                                                                                                   vs-latitude="dropPoint.components.location.lat"
+                                                                                                   vs-longitude="dropPoint.components.location.long"
+                                                                                                   type="text"
+                                                                                                   name="dropPoint"
+                                                                                                   id="dropPoint"
+                                                                                                   class="form-control"
+                                                                                                   placeholder="Enter any address" value="{{dropPoint.name}}" />
+                                                                                            <br />
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                                                <button class="btn-medium green" ng-click="getDirections()">Confirm</button>
+                                                                                            </div>
+                                                                                        </div>                                                                                      
+                                                                                       
                                                                                     </div>
-                                                                                   
-
-
-                                                                                </div>
+                                                                                </form>
+                                                                                
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
                                                                                         <label for="inputFirstName" class="col-md-4 control-label">Latitude: </label>
-                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.Source" /><span class="help-block"></span></div>
+                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.latitude" /><span class="help-block"></span></div>
                                                                                     </div>
                                                                                     <div class="col-md-6">
                                                                                         <label for="inputFirstName" class="col-md-4 control-label">longitude: </label>
                                                                                         <div class="col-md-8">
-                                                                                            <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.Destination" /><span class="help-block"></span>
+                                                                                            <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.longitude" /><span class="help-block"></span>
                                                                                         </div>
                                                                                     </div>
                                                                                     <!--<div class="col-md-6">
@@ -604,7 +647,28 @@
 
                                                                                 </div>
 
-                                                                               
+                                                                                <div id="full-width-content" class="col-md-5" style="margin-left:-10px">
+
+                                                                                    <div class="main">
+                                                                                        <div class="panel panel-default">
+                                                                                            <div class="panel-body">
+                                                                                                <div id="map1"></div>
+                                                                                                <div id="infowindow-content">
+                                                                                                    <img src="" width="16" height="16" id="place-icon">
+                                                                                                    <span id="place-name" class="title"></span><br>
+                                                                                                    <span id="place-address"></span>
+                                                                                                </div>
+                                                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
+                                                                                                    <marker coords="marker.center"></marker>
+                                                                                                </google-map>
+
+                                                                                                <div id="directionsList" ng-show="directions"></div>
+
+                                                                                            </div>
+                                                                                        </div>
+
+                                                                                    </div>
+                                                                                </div>
 
                                                                             </div>
 
@@ -830,11 +894,19 @@
     <!--LOADING SCRIPTS FOR PAGE-->
     <script src="js/table-action.js"></script>
     <!--CORE JAVASCRIPT-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
+
     <script src="js/main.js"></script>
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
+
+    <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
+    <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
+    <script src="Maps/vs-google-autocomplete.js"></script>
+    <script src="Maps/vs-autocomplete-validator.js"></script>
+    
     
     <script src="js/Stops.js"></script>
 
