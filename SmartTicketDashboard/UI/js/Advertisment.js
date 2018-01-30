@@ -289,7 +289,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
     $scope.Advertisment = null;
 
-    $scope.setCMPCode = function (a) {
+    $scope.setadvertisement = function (a) {
         $scope.Advertisment = a;
     };
 

@@ -1102,6 +1102,11 @@ namespace SmartTicketDashboard.Controllers
                     cs.Value = p.CurrentStateId;
                     cmd.Parameters.Add(cs);
 
+                    SqlParameter ct = new SqlParameter();
+                    ct.ParameterName = "@CountryId";
+                    ct.SqlDbType = SqlDbType.VarChar;
+                    ct.Value = p.Country;
+                    cmd.Parameters.Add(ct);
 
 
                     SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);

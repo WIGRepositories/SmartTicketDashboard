@@ -730,6 +730,7 @@ namespace SmartTicketDashboard.Models
         public string DriverCode { get; set; }
         public string FleetOwner { get; set; }
         public int CurrentStateId { get; set; }
+        public string Country { get; set; }
 
     }
     //Jagan Updated On18th Aug End
@@ -2917,6 +2918,7 @@ namespace SmartTicketDashboard.Models
         public float Latitude { get; set; }
 
         public float Longitude { get; set; }
+        public string Mobilenumber { get; set; }
     }
     public class MailBox
     {
@@ -3050,5 +3052,14 @@ namespace SmartTicketDashboard.Models
         public string ImageOne { get; set; }
         public string ImageTwo { get; set; }
     }
+    public class AppStates
+    {
+        public string Id { get; set; }
+        public string Response { get; set;}
+        public string Description { get; set; }
+        public string flag { get; set; }
+    }
+
 }
+
 

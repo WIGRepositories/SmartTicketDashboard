@@ -117,6 +117,7 @@
     <Content Include="UI\AddNewInventoryItem.html" />
     <Content Include="UI\AddNewSeats.html" />
     <Content Include="UI\AdvertismentConfiguration.html" />
+    <Content Include="UI\AppStates.html" />
     <Content Include="UI\AppUserDetails.html" />
     <Content Include="UI\AppUsers.html" />
     <Content Include="UI\AssginDriverDetails.html" />
@@ -3557,6 +3558,7 @@
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
+    <Content Include="UI\js\AppStates.js" />
     <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\Assigndriverdetails.js" />
     <Content Include="UI\js\Bookinglist.js" />
@@ -3578,6 +3580,7 @@
     <Content Include="UI\js\PackageType.js" />
     <Content Include="UI\js\PSPricing.js" />
     <Content Include="UI\js\SOSMessages.js" />
+    <Content Include="UI\js\sostemplates.js" />
     <Content Include="UI\js\TaxiSrcDest.js" />
     <Content Include="UI\js\TreeView\Types1.js" />
     <Content Include="UI\js\Types1.js" />
@@ -3604,6 +3607,7 @@
     <Content Include="UI\pricingcredentials.html" />
     <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
+    <Content Include="UI\SOSTemplates.html" />
     <Content Include="UI\TaxiSrcDest.html" />
     <Content Include="UI\Types1.html" />
     <Content Include="UI\VechicleBookingDetails.html" />
@@ -5500,6 +5504,7 @@
     <Compile Include="Controllers\AlertsConfigurationController.cs" />
     <Compile Include="Controllers\AlertsController.cs" />
     <Compile Include="Controllers\allocatedriverController.cs" />
+    <Compile Include="Controllers\AppStatesController.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\AvailableSeatsController.cs" />
     <Compile Include="Controllers\BalanceController.cs" />
@@ -5584,7 +5589,6 @@
     <Compile Include="Controllers\PricingCredentialsController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
-    <Compile Include="Controllers\RegisterUserController.cs" />
     <Compile Include="Controllers\registrationformController.cs" />
     <Compile Include="Controllers\RouteDetailsController.cs" />
     <Compile Include="Controllers\RouteFareController.cs" />
@@ -5594,6 +5598,7 @@
     <Compile Include="Controllers\SmsGatewayConfigController.cs" />
     <Compile Include="Controllers\SOSMessageController.cs" />
     <Compile Include="Controllers\SOSNumberController.cs" />
+    <Compile Include="Controllers\SostemplatesController.cs" />
     <Compile Include="Controllers\StartReportController.cs" />
     <Compile Include="Controllers\StatesController.cs" />
     <Compile Include="Controllers\StopsController.cs" />

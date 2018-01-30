@@ -1,4 +1,4 @@
-// JavaScript source code
+﻿// JavaScript source code
 var myapp1 = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
 var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
@@ -8,13 +8,33 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
 
-    $scope.dashboardDS = $localStorage.dashboardDS;
-    $http.get('/api/typegroups/gettypegroups').then(function (res, data) {
-        $scope.TypeGroups = res.data;
-    });
+    $scope.Gettemplates = function () {
+        $http.get('/api/Sostemplates/Gettemplates?Usertypeid='+$scope.utype.Id).then(function (res, data) {
+            $scope.template = res.data;
+        });
+    }
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeActiveCountry: '1',            
+            includeUserType: '1'
+
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
 
     $scope.save = function (TypeGroup) {
-      
+
         if (TypeGroup == null) {
             alert('Please enter name.');
             return;
@@ -31,7 +51,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             Active: TypeGroup.Active,
             Update: TypeGroup.Update,
             Id: TypeGroup.Id,
-            insupddelflag:'U'
+            insupddelflag: 'U'
         };
 
         var req = {
@@ -43,7 +63,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-            alert("Saved successfully!");
+            $scope.showDialog("Saved successfully!");
 
             $scope.Group = null;
 
@@ -51,7 +71,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             var errdata = errres.data;
             var errmssg = "TypeGroup is Not Saved";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            alert(errmssg);
+            $scope.showDialog(errmssg);
         });
         $scope.TypeGroups();
         $scope.currGroup = null;
@@ -59,53 +79,51 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     };
 
 
-    $scope.saveNew = function (TypeGroup) {
+    $scope.saveNew = function (AppStates) {
 
-        if (TypeGroup == null) {
+        if (AppStates == null) {
             alert('Please enter name.');
             return;
         }
 
-        if (TypeGroup.Name == null) {
-            alert('Please enter name.');
+        if (AppStates.Response == null) {
+            alert('Please enter Response.');
             return;
         }
 
-        var SelTypeGroup = {
-            Name: TypeGroup.Name,
-            Description: TypeGroup.Description,
-            Active: TypeGroup.Active,
-            Update: TypeGroup.Update,
+        var selAppStates = {
+            Response: AppStates.Response,
+            Description: AppStates.Description,
             Id: -1,
-            insupddelflag:'I'
+            insupddelflag: 'I'
         };
 
         var req = {
             method: 'POST',
-            url: '/api/typegroups/savetypegroups',
+            url: '/api/AppStates/saveAppStates',
             //headers: {
             //    'Content-Type': undefined
-            data: SelTypeGroup
+            data: selAppStates
         }
         $http(req).then(function (response) {
             $scope.Group = null;
 
             alert("Saved successfully!");
 
-            
+
 
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             alert(errmssg);
-        });       
+        });
         $scope.currGroup = null;
     };
 
 
-    $scope.setTypeGroup = function (grp) {
-        $scope.currGroup = grp;
+    $scope.setAppStates = function (I) {
+        $scope.currGroup = I;
     };
 
     $scope.clearGroup = function () {
@@ -126,7 +144,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             }
         });
     }
-    
+
 });
 
 myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {

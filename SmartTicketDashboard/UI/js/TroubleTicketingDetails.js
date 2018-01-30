@@ -1,6 +1,6 @@
 // JavaScript source code
 // JavaScript source code
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap',])
 var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -11,10 +11,19 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
 
     $scope.dashboardDS = $localStorage.dashboardDS;
 
-    $http.get('/api/TroubleTicketingDetails/getTroubleTicketingDetails').then(function (response, req) {
-        $scope.Group = response.data;
+    $scope.GetTicketDetails = function () {
+        $http.get('/api/TicketGeneration/GetTicketDetails')
+        .then(function (res) {
+            $scope.TicketDetails = res.data;
 
-    });
+        });
+
+        $scope.AddTicket = function () {
+            $http.get()
+        }
+    } 
+
+   
     $scope.save = function (Group) {
         if (Group == null)
         {

@@ -59,7 +59,7 @@ namespace SmartTicketDashboard.Controllers
             conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
             SqlCommand cmd = new SqlCommand();
             cmd.CommandType = CommandType.StoredProcedure;//Stored Procedure
-            cmd.CommandText = "getUsersdetails";
+            cmd.CommandText = "getUserdetails";
             cmd.Connection = conn;
 
             SqlParameter cmpid = new SqlParameter("@UId", SqlDbType.Int);

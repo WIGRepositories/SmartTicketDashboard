@@ -59,6 +59,32 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         });
     }
 
+    var parseLocation = function (location) {
+        var pairs = location.substring(1).split("&");
+        var obj = {};
+        var pair;
+        var i;
+
+        for (i in pairs) {
+            if (pairs[i] === "") continue;
+
+            pair = pairs[i].split("=");
+            obj[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+        }
+
+        return obj;
+    };
+
+    $scope.GetPricinglist = function () {
+        $scope.DistPricelist = null;
+
+        $scope.selectedprice = parseLocation(window.location.search)['vdpid'];
+
+        $http.get("/api/VehiclePricing/GetPricinglist?vdpid="+$scope.selectedprice).then(function (response, req) {
+            $scope.Pricelist = response.data;
+        });
+    }
+
 
     $scope.map = {
         control: {},
@@ -149,8 +175,8 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             Distance: $scope.distval,
             UnitPrice: $scope.unitprice,
             Amount: $scope.total,
-            CountryId:$scope.ctry.Id,
-            flag: flag
+            CountryId: $scope.ctry.Id,
+            flag: 'I'
         }
 
         var req = {
