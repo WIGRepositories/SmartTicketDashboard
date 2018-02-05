@@ -5488,9 +5488,9 @@
     <Content Include="UI\vendors\slimScroll\jquery.slimscroll.min.js" />
     <Content Include="UI\vendors\summernote\summernote.css" />
     <Content Include="UI\vendors\summernote\summernote.js" />
-    <Content Include="UI\Website\Carousel.html" />
+    <Content Include="UI\Carousel.html" />
     <Content Include="UI\Website\CarouselPreview.html" />
-    <Content Include="UI\Website\js\Carousel.js" />
+    <Content Include="UI\js\Carousel.js" />
     <Content Include="UI\Website\js\Carousle\jquery.carouFredSel-6.0.4-packed.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
