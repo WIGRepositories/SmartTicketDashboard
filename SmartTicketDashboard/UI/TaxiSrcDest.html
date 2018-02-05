@@ -28,7 +28,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetTaxiStops();" ng-model="StopsList">
+<body ng-app="myApp" ng-controller="myCtrl" ng-model="StopsList">
 
     <!--BEGIN THEME SETTING-->
     <!--BEGIN BACK TO TOP-->
@@ -471,7 +471,7 @@
 
                                             <div class="row mbm">
                                                 <div class="col-lg-12" ng-init="GetConfigData();">
-                                                    Country: <select ng-options="c.Name for c in initdata.Table track by c.Id" ng-model="Countries">
+                                                    Country: <select ng-options="c.Name for c in initdata.Table track by c.Id" ng-model="Countries" ng-change="GetTaxiStops()">
     <option value="">Select </option>
 </select>
                                                 </div>
