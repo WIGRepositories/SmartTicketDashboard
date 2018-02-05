@@ -26,7 +26,7 @@ namespace SmartTicketDashboard.Controllers
            traceWriter.Trace(Request, "0",TraceLevel.Info, "{0}", "GetSOSMessage ....");
             //connect to database
             SqlConnection conn = new SqlConnection();
-            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+            
             conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
             SqlCommand cmd = new SqlCommand();
@@ -50,7 +50,7 @@ namespace SmartTicketDashboard.Controllers
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification ...");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification ...");
 
             //connect to database
             DataTable dt = new DataTable();
@@ -62,8 +62,8 @@ namespace SmartTicketDashboard.Controllers
                 str.Append("UserTypeId:" + sos.UserTypeId + ",");
                 str.Append("UserId:" + sos.UserId + ",");
 
-                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
-                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
+               
                 conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
                 SqlCommand cmd = new SqlCommand();
@@ -95,7 +95,7 @@ namespace SmartTicketDashboard.Controllers
                 cmd.ExecuteScalar();
 
                 conn.Close();
-                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification  completed.");
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SOSVerification  completed.");
 
             }
             catch (Exception ex)
@@ -106,7 +106,7 @@ namespace SmartTicketDashboard.Controllers
                 }
                 string st = ex.Message;
 
-                //traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SOSVerification:" + ex.Message);
+                traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SOSVerification:" + ex.Message);
 
             }
             return dt;
@@ -120,7 +120,7 @@ namespace SmartTicketDashboard.Controllers
         {
 
             LogTraceWriter traceWriter = new LogTraceWriter();
-            // traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveSOSMessage ...");
+            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveSOSMessage ...");
 
             //connect to database
             DataTable dt = new DataTable();
@@ -132,8 +132,8 @@ namespace SmartTicketDashboard.Controllers
                 str.Append("UserTypeId:" + sos.UserTypeId + ",");
                 str.Append("UserId:" + sos.UserId + ",");
 
-                //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
-                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Input sent...." + str.ToString());
+                
                 conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
                 SqlCommand cmd = new SqlCommand();
@@ -245,14 +245,14 @@ namespace SmartTicketDashboard.Controllers
                         string verifcodeMail = @"<table>
                                                         <tr>
                                                             <td>
-                                                                <h2>Thank you for registering with PaySmart APP</h2>
+                                                                <h2>Your SOS Message Otp</h2>
                                                                 <table width=\""760\"" align=\""center\"">
                                                                     <tbody style='background-color:#F0F8FF;'>
                                                                         <tr>
                                                                             <td style=\""font-family:'Zurich BT',Arial,Helvetica,sans-serif;font-size:15px;text-align:left;line-height:normal;background-color:#F0F8FF;\"" >
 <div style='padding:10px;border:#0000FF solid 2px;'>    <br /><br />
                                                                              
-                                                       Your email OTP is:<h3>" + sotp + @" </h3>
+                                                       Your SOS OTP is:<h3>" + sotp + @" </h3>
 
                                                         If you didn't make this request, <a href='http://154.120.237.198:52800'>click here</a> to cancel.
 
