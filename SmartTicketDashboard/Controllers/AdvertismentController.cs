@@ -75,7 +75,7 @@ namespace SmartTicketDashboard.Controllers
                 at.Value = A.AdvertisementTitle;
                 cmd.Parameters.Add(at);
 
-                SqlParameter d = new SqlParameter("@Description", SqlDbType.VarChar,250);
+                SqlParameter d = new SqlParameter("@Description", SqlDbType.VarChar, 250);
                 d.Value = A.Description;
                 cmd.Parameters.Add(d);
 
@@ -106,7 +106,7 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter aa = new SqlParameter("@AdvertisementAmount", SqlDbType.Float);
                 aa.Value = A.AdvertisementAmount;
                 cmd.Parameters.Add(aa);
-                SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar,100);
+                SqlParameter cn = new SqlParameter("@CompanyName", SqlDbType.VarChar, 100);
                 cn.Value = A.CompanyName;
                 cmd.Parameters.Add(cn);
                 SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
@@ -123,5 +123,102 @@ namespace SmartTicketDashboard.Controllers
 
             return dt;
         }
+
+
+        [HttpGet]
+        [Route("api/Advertisement/GetActivityLog")]
+
+        public DataTable GetActivityLog()
+        {
+            SqlConnection conn = new SqlConnection();
+            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.Connection = conn;
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetActivityLog";
+
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            DataTable tbl = new DataTable();
+
+            db.Fill(tbl);
+
+            return tbl;
+
+        }
+ 
+        
+        [HttpPost]
+        [Route("api/Advertisement/ActivityLog")]
+        public int ActivityLog(Activity ac)
+        {
+            SqlConnection conn = new SqlConnection();
+            try
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InsUpdDelActivityLog";
+
+                SqlParameter id = new SqlParameter("@Id", SqlDbType.Int);
+                id.Value = ac.Id;
+                cmd.Parameters.Add(id);
+
+                SqlParameter Ti = new SqlParameter("@Title", SqlDbType.VarChar,100);
+                Ti.Value = ac.Title;
+                cmd.Parameters.Add(Ti);
+
+                SqlParameter rt = new SqlParameter("@Rating", SqlDbType.VarChar,20);
+                rt.Value = ac.Rating;
+                cmd.Parameters.Add(rt);
+
+                SqlParameter im = new SqlParameter("@Image", SqlDbType.VarChar);
+                im.Value = ac.Image;
+                cmd.Parameters.Add(im);
+
+                SqlParameter co = new SqlParameter("@CreatedOn", SqlDbType.Date);
+                co.Value = ac.CreatedOn;
+                cmd.Parameters.Add(co);
+
+                SqlParameter cb = new SqlParameter("@CreatedBy", SqlDbType.VarChar, 50);
+                cb.Value = ac.CreatedBy;
+                cmd.Parameters.Add(cb);
+
+                SqlParameter uo = new SqlParameter("@UpdatedOn", SqlDbType.Date);
+                uo.Value = ac.UpdatedOn;
+                cmd.Parameters.Add(uo);
+
+                SqlParameter ub = new SqlParameter("@UpdatedBy", SqlDbType.VarChar, 50);
+                ub.Value = ac.UpdatedBy;
+                cmd.Parameters.Add(ub);
+
+                SqlParameter fl = new SqlParameter("@flag", SqlDbType.VarChar);
+                fl.Value = ac.flag;
+                cmd.Parameters.Add(fl);
+
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                                
+            }
+            catch(Exception ex)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                throw ex;
+            }
+            finally
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+            }
+            return 7;
+        }
     }
+
 }

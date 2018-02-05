@@ -3060,6 +3060,19 @@ namespace SmartTicketDashboard.Models
         public string flag { get; set; }
     }
 
+    public class Activity
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Rating { get; set; }
+        public string Image { get; set; }
+        public string CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public string UpdatedOn { get; set; }
+        public string UpdatedBy { get; set; }
+        public string flag { get; set; }
+    }
+
 }
 
 
