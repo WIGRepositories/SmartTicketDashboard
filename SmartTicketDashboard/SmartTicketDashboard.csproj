@@ -108,6 +108,7 @@
     <Content Include="References\PayPal.dll" />
     <Content Include="References\QRCoder.dll" />
     <Content Include="References\UnityEngine.dll" />
+    <Content Include="UI\Activity Log.html" />
     <Content Include="UI\AddFleetAvailability.html" />
     <Content Include="UI\AddFleetDetails.html" />
     <Content Include="UI\AddFleetowner.html" />
@@ -3558,6 +3559,7 @@
     <Content Include="UI\images\Qr.png" />
     <Content Include="UI\images\Red-2-icon.png" />
     <Content Include="UI\images\Untitled.png" />
+    <Content Include="UI\js\ActivityLog.js" />
     <Content Include="UI\js\AppStates.js" />
     <Content Include="UI\js\Appusers.js" />
     <Content Include="UI\js\Assigndriverdetails.js" />
