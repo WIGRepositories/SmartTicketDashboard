@@ -11,7 +11,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
     $scope.StopsList = null;
 
     $scope.GetTaxiStops = function () {
-        $http.get("/api/GetTaxiStopsList").then(function (response, req) {
+        $http.get("/api/GetTaxiStopsList?ctryid=" + $scope.Countries.Id).then(function (response, req) {
             $scope.StopsList = response.data;
         });
     }

@@ -13,7 +13,7 @@ namespace SmartTicketDashboard.Controllers
     {
         [HttpGet]
         [Route("api/GetTaxiStopsList")]
-        public DataTable GetTaxiStopsList()
+        public DataTable GetTaxiStopsList(int ctryid)
         {
             DataTable Tbl = new DataTable();
 
@@ -26,6 +26,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetTaxiStopsList";
             cmd.Connection = conn;
+            cmd.Parameters.Add("ctryId", SqlDbType.Int).Value = ctryid;
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
