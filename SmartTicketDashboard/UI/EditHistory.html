@@ -484,13 +484,10 @@
                                                     <div class="table-container">
                                                        
                                                         <div class="row">
-                                                            <div class="col-md-3" style="margin-left:12px">
-                                                                Task/Functionality:<select class=" form-control">
-                                                                     <option value="">Select</option>
-                                                                    <option value="0">Vehicle</option>
-                                                                    <option value="1">FleetOwner</option>
-                                                                    <option value="2">Licence</option>
-                                                                    <option value="3">BTPOS</option>
+                                                            <div class="col-md-3" style="margin-left:12px" ng-init="GetHistoryTask()">
+                                                                Task/Functionality:
+                                                                <select ng-options="e.Task for e in historytask track by e.Id" ng-model="nn" ng-change="GetEditHistory(nn)" style="width:100%;margin-left:-10px">
+                                                                    <option value="">Select</option>
                                                                 </select>
                                                             </div>
 
@@ -523,7 +520,9 @@
                                                                 <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
                                                             </div>
                                                         </div>
-
+                                                        <div>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-search" style="float: right; margin: 10px;">Search</button>
+                                                            </div>
                                                     </div>
                                                 </div>
                                             </div>
