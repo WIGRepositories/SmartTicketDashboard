@@ -452,7 +452,7 @@
 
 
                                                         <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                            <div class="modal-dialog">
+                                                            <div class="modal-dialog modal-lg">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header modal-header-primary">
                                                                         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
@@ -545,7 +545,7 @@
 
                                                     </table>
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class="modal-dialog">
+                                                        <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
@@ -555,14 +555,66 @@
 
 
 
-                                                                    <div>
-                                                                        <div class="row mb">
+                                                                    <div class="col-md-6">
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="inputFirstName" class="col-md-4 control-label">Country: </label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <select class="form-control" ng-options="n.Name for n in initdata.Table track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)">
+                                                                                    <option value="">Select</option>
+                                                                                </select><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
 
-                                                                            <div class="col-md-12">
-                                                                                <div class="row" style="margin-top:10px">
-                                                                                    <div class="col-md-6">
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Stop Name:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input vs-google-autocomplete
+                                                                                       vs-autocomplete-validator
+                                                                                       ng-model="pickupPoint.place.name"
+                                                                                       vs-place="pickupPoint.place"
+                                                                                       vs-place-id="pickupPoint.components.placeId"
+                                                                                       vs-street-number="pickupPoint.components.streetNumber"
+                                                                                       vs-street="pickupPoint.components.street"
+                                                                                       vs-city="pickupPoint.components.city"
+                                                                                       vs-state="pickupPoint.components.state"
+                                                                                       vs-country-short="pickupPoint.components.countryCode"
+                                                                                       vs-country="pickupPoint.components.country"
+                                                                                       vs-district="pickupPoint.components.district"
+                                                                                       vs-post-code="pickupPoint.components.postCode"
+                                                                                       vs-latitude="pickupPoint.components.location.lat"
+                                                                                       vs-longitude="pickupPoint.components.location.long"
+                                                                                       type="text"
+                                                                                       name="pickupPoint"
+                                                                                       id="pickupPoint"
+                                                                                       class="form-control"
+                                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Latitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.srcLat" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row mbm">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">longitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-6">
+                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.srcLon" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                         
+                                                                                <!--<div class="row mbm" style="margin-left:20px">
+                                                                                    <div class="col-md-6" style="text-align:right">
                                                                                         <label for="inputFirstName" class="col-md-4 control-label">Country: </label>
-                                                                                        <div class="col-md-8">
+                                                                                        <div class="col-md-6">
                                                                                             <select class="form-control" ng-options="n.Name for n in initdata.Table track by n.Id" ng-model="ctry" ng-change="CenterMap(ctry)">
                                                                                                 <option value="">Select</option>
                                                                                             </select><span class="help-block"></span>
@@ -622,7 +674,7 @@
                                                                                             <br />
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                                                                                            <div class="btn-medium green" style="margin-top:15px;margin-left:165px">
                                                                                                 <button type="submit" class="btn-medium green" ng-click="getDirections()">Confirm</button>
                                                                                             </div>
                                                                                         </div>
@@ -632,113 +684,89 @@
 
                                                                                 <div class="row">
                                                                                     <div class="col-md-6">
-                                                                                        <label for="inputFirstName" class="col-md-4 control-label">Latitude: </label>
-                                                                                        <div class="col-md-8"><input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.srcLat" /><span class="help-block"></span></div>
+                                                                                        <label for="inputFirstName" >Latitude: </label>
+                                                                                        <div class="col-md-12"><input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.srcLat" /><span class="help-block"></span></div>
                                                                                     </div>
                                                                                     <div class="col-md-6">
-                                                                                        <label for="inputFirstName" class="col-md-4 control-label">longitude: </label>
-                                                                                        <div class="col-md-8">
+                                                                                        <label for="inputFirstName" >longitude: </label>
+                                                                                        <div class="col-md-12">
                                                                                             <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.srcLon" /><span class="help-block"></span>
                                                                                         </div>
                                                                                     </div>
 
-                                                                                </div>
+                                                                                </div>-->
 
-                                                                                <div id="full-width-content" class="col-md-5" style="margin-left:-10px">
+                                                                               
 
-                                                                                    <div class="main">
-                                                                                        <div class="panel panel-default">
-                                                                                            <div class="panel-body">
-                                                                                                <div id="map1"></div>
-                                                                                                <div id="infowindow-content">
-                                                                                                    <img src="" width="16" height="16" id="place-icon">
-                                                                                                    <span id="place-name" class="title"></span><br>
-                                                                                                    <span id="place-address"></span>
-                                                                                                </div>
-                                                                                                <google-map control="map.control" center="map.center" zoom="map.zoom">
-                                                                                                    <marker coords="marker.center"></marker>
-                                                                                                </google-map>
+                                                                           
 
-                                                                                                <div id="directionsList" ng-show="directions"></div>
-
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
+                                                                  
                                                                         </div>
-
                                                                         <!--Jagan Updated on 08-08-2017-->
-
+                                                                    <div class="col-md-6">
                                                                         <div class="portlet box">
-                                                                            <div class="portlet-header">
-                                                                                <!--<div class="caption">Vehicles</div>-->
-
-                                                                            </div>
-                                                                            <div id="map" style="width:100%;height:500px;background:yellow;margin-top:5px;"></div>
+                                                                            
+                                                                            <div id="map" style="width:100%;height:300px;background:yellow;margin-top:5px;"></div>
                                                                             <div ng-app="mapApp">
                                                                                 <div id="map" ng-repeat="v in currentloc">
                                                                                     latitude:{{v.Latitude}}
                                                                                 </div>
 
                                                                                 <!--<script>
-                                                                                                    function myMap() {
-                                                                                                        var mapOptions = {
-                                                                                                            center: new google.maps.LatLng(17.3850, 78.4867),
-                                                                                                            zoom: 10,
-                                                                                                            mapTypeId: google.maps.MapTypeId.HYBRID
-                                                                                                        }
-                                                                                                        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                                                                                                    }
-                                                                                                </script>
+                                    function myMap() {
+                                        var mapOptions = {
+                                            center: new google.maps.LatLng(17.3850, 78.4867),
+                                            zoom: 10,
+                                            mapTypeId: google.maps.MapTypeId.HYBRID
+                                        }
+                                        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                    }
+                                </script>
 
-                                                                                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                                                                        </div>
-
-
-
-                                                                                                    </div><br />
+                                        </div>
 
 
-                                                                                                    <!--<div style="width:100%;">
-                                                                                                        <div class="tab-content" style="width:49%;float:left; ">
-                                                                                                            <h3><b>Alerts</b></h3>
-                                                                                                            <div id="home" class="tab-pane fade in active">
-                                                                                                                <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
-                                                                                                                    <a href="#" class="list-group-item">
-                                                                                                                        <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                                                                                                    </a>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
-                                                                                                            </br>
-                                                                                                            <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
-                                                                                                        </div>
 
-                                                                                                    </div>-->
+                                    </div><br />
+
+
+                                    <!--<div style="width:100%;">
+                                        <div class="tab-content" style="width:49%;float:left; ">
+                                            <h3><b>Alerts</b></h3>
+                                            <div id="home" class="tab-pane fade in active">
+                                                <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
+                                                    <a href="#" class="list-group-item">
+                                                        <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                            </br>
+                                            <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                        </div>
+
+                                    </div>-->
                                                                                 <!--<div class="tab-content" style="width:49%;float:right; ">
-                                                                                    <h3><b>Notifications</b></h3>
-                                                                                    <div id="home" class="tab-pane fade in active">
-                                                                                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
-                                                                                            <a href="#" class="list-group-item">
-                                                                                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                                                                            </a>
+                    <h3><b>Notifications</b></h3>
+                    <div id="home" class="tab-pane fade in active">
+                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                            <a href="#" class="list-group-item">
+                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                            </a>
 
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
 
-                                                                                    <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+                    <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
 
-                                                                                </div>-->
+                </div>-->
 
 
 
@@ -750,60 +778,60 @@
                                                                     </div>
 
                                                                     <!--<script>
-                                                                                        function myMap() {
-                                                                                            var mapOptions = {
-                                                                                                center: new google.maps.LatLng(17.3850, 78.4867),
-                                                                                                zoom: 10,
-                                                                                                mapTypeId: google.maps.MapTypeId.HYBRID
-                                                                                            }
-                                                                                            var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-                                                                                        }
-                                                                                    </script>
+                                    function myMap() {
+                                        var mapOptions = {
+                                            center: new google.maps.LatLng(17.3850, 78.4867),
+                                            zoom: 10,
+                                            mapTypeId: google.maps.MapTypeId.HYBRID
+                                        }
+                                        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+                                    }
+                                </script>
 
-                                                                                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
+                                <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-                                                                                            </div>
-
-
-
-                                                                                        </div><br />
+                                        </div>
 
 
-                                                                                        <!--<div style="width:100%;">
-                                                                                            <div class="tab-content" style="width:49%;float:left; ">
-                                                                                                <h3><b>Alerts</b></h3>
-                                                                                                <div id="home" class="tab-pane fade in active">
-                                                                                                    <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
-                                                                                                        <a href="#" class="list-group-item">
-                                                                                                            <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                                                                                        </a>
-                                                                                                    </div>
-                                                                                                </div>
-                                                                                                <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
-                                                                                                </br>
-                                                                                                <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
-                                                                                            </div>
 
-                                                                                        </div>-->
+                                    </div><br />
+
+
+                                    <!--<div style="width:100%;">
+                                        <div class="tab-content" style="width:49%;float:left; ">
+                                            <h3><b>Alerts</b></h3>
+                                            <div id="home" class="tab-pane fade in active">
+                                                <div class="list-group mail-box" ng-repeat="A in dashboardDS.Table1" ng-hide="dashboardDS.Table1.length == 0">
+                                                    <a href="#" class="list-group-item">
+                                                        <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{A.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name"></span><span>{{A.LastName}}</span>&nbsp;<span style="font-size: 11px;" class="text-muted"></span>{{A.Message}}<span class="time-badge">{{A.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="alert alert-danger" ng-show="dashboardDS.Table1.length == 0">No Alerts to show</div>
+                                            </br>
+                                            <span class="label label-sm label-info" ng-show="dashboardDS.Table1.length > 5"><a style=" color:white" href="Alerts.html">More...</a></span>
+                                        </div>
+
+                                    </div>-->
                                                                     <!--<div class="tab-content" style="width:49%;float:right; ">
-                                                                        <h3><b>Notifications</b></h3>
-                                                                        <div id="home" class="tab-pane fade in active">
-                                                                            <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
-                                                                                <a href="#" class="list-group-item">
-                                                                                    <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
-                                                                                </a>
+                    <h3><b>Notifications</b></h3>
+                    <div id="home" class="tab-pane fade in active">
+                        <div class="list-group mail-box" ng-repeat="N in dashboardDS.Table2" ng-hide="dashboardDS.Table2.length == 0">
+                            <a href="#" class="list-group-item">
+                                <input type="checkbox" /><span class="fa fa-star-o mrm mlm"></span>{{N.FirstName}}<span style="min-width: 120px; display: inline-block;" class="name">{{N.LastName}}</span><span>{{N.Message}}</span>&nbsp;  &nbsp;<span style="font-size: 11px;" class="text-muted"></span><span class="time-badge">{{N.Date}}</span><span class="pull-right mrl"><span class="glyphicon glyphicon-paperclip"></span></span>
+                            </a>
 
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
+                        </div>
+                    </div>
+                    <div class="alert alert-danger" ng-show="dashboardDS.Table2.length == 0">No Notifications to show</div><br />
 
-                                                                        <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
+                    <span class="label label-sm label-info" ng-show="dashboardDS.Table2.length > 5"><a style="color:white" href="Notifications.html">More...</a></span>
 
-                                                                    </div>-->
+                </div>-->
 
 
 
