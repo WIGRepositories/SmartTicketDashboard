@@ -1415,6 +1415,8 @@ namespace SmartTicketDashboard.Models
         public string Code { get; set; }
         public int Active { get; set; }
         public string insupdflag { get; set; }
+        public string srcLat { get; set; }
+        public string srcLon { get; set; }
     }
     public class Objects
     {

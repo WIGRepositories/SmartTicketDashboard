@@ -132,15 +132,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //get the target latitude and longitude
         $scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
         $scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
-        $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
-        $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
+        //$scope.destLat = $scope.dropPoint.place.geometry.location.lat();
+        //$scope.destLon = $scope.dropPoint.place.geometry.location.lng();
 
         $scope.srcName = $scope.pickupPoint.place.name;
-        $scope.destName = $scope.dropPoint.place.name;
+       // $scope.destName = $scope.dropPoint.place.name;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
-            destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
+            //destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };
         directionsService.route(request, function (response, status) {
@@ -216,11 +216,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter Name');
         //    return;
         //}
-        if ($scope.srcName == null)
-        {
-            alert('Please Enter source');
-            return;
-        }       
+        //if ($scope.srcName == null)
+        //{
+        //    alert('Please Enter source');
+        //    return;
+        //}       
         if ($scope.destName == null)
         {
             alert('Please Enter destination');
@@ -232,7 +232,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Name: $scope.srcName,
             //Description: newStop.Description,
             Code: $scope.destName,
-           
+            srcLat: $scope.srcLat ,
+            srcLon: $scope.srcLon,
             //Active: (newStop.Active == true) ? 1 : 0,
           
             insupdflag: "I"
@@ -268,7 +269,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     //-----------------Hideend-------------------
 
+    
 
+    
 
     $scope.save = function (Stops, flag) {
         if (Stops == null) {
