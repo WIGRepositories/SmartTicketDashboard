@@ -216,22 +216,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter Name');
         //    return;
         //}
-        if ($scope.srcName == null)
+        if (pickupPoint.name == null)
         {
             alert('Please Enter source');
             return;
         }       
-        if ($scope.destName == null)
-        {
-            alert('Please Enter destination');
-            return;
-        }
-
+       
         var newStop = {
             Id: -1,
-            Name: $scope.srcName,
-            //Description: newStop.Description,
-            Code: $scope.destName,
+            Source: pickupPoint.name,
+            //Description: newStop.Description,           
+            latitude:newStop.srcLat,
+            longitude: newStop.srcLon,
            
             //Active: (newStop.Active == true) ? 1 : 0,
           
