@@ -78,11 +78,11 @@ namespace SmartTicketDashboard.Controllers
                 sActive.Value = s.Active;
                 cmd.Parameters.Add(sActive);
 
-                SqlParameter srcLat = new SqlParameter("@srcLat", SqlDbType.VarChar,15);
+                SqlParameter srcLat = new SqlParameter("@latitude", SqlDbType.VarChar, 15);
                 srcLat.Value = s.srcLat;
                 cmd.Parameters.Add(srcLat);
 
-                SqlParameter srcLon = new SqlParameter("@srcLon", SqlDbType.VarChar,15);
+                SqlParameter srcLon = new SqlParameter("@longitude", SqlDbType.VarChar, 15);
                 srcLon.Value = s.srcLon;
                 cmd.Parameters.Add(srcLon);
 

@@ -499,6 +499,22 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
+                                                                        <div class="row">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">Latitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="srcLat" ng-change="location()" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="row">
+                                                                            <div style="text-align:right">
+                                                                                <label for="selCountry" class="col-md-4 control-label">longitude:<span class='require'>*</span></label>
+                                                                            </div>
+                                                                            <div class="col-md-5">
+                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="srcLon" ng-change="location()" /><span class="help-block"></span>
+                                                                            </div>
+                                                                        </div>
                                                                     </div>
                                                                     <div class="form-actions">
                                                                         <div class="col-md-offset-3 col-md-9">
@@ -591,7 +607,7 @@
                                                                                        name="pickupPoint"
                                                                                        id="pickupPoint"
                                                                                        class="form-control"
-                                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />
+                                                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" ng-change="getDirections()" />
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mbm">
@@ -599,7 +615,7 @@
                                                                                 <label for="selCountry" class="col-md-4 control-label">Latitude:<span class='require'>*</span></label>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="newStop.srcLat" /><span class="help-block"></span>
+                                                                                <input id="inputFirstName" type="text" placeholder="Latitude" class="form-control" ng-model="srcLat" ng-change="location()" /><span class="help-block"></span>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row mbm">
@@ -607,7 +623,7 @@
                                                                                 <label for="selCountry" class="col-md-4 control-label">longitude:<span class='require'>*</span></label>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="newStop.srcLon" /><span class="help-block"></span>
+                                                                                <input id="inputFirstName" type="text" placeholder="longitude" class="form-control" ng-model="srcLon" ng-change="location()" /><span class="help-block"></span>
                                                                             </div>
                                                                         </div>
                                                                          

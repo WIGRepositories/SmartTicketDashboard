@@ -172,9 +172,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             } else {
                 alert('Google route unsuccesfull!');
             }
+           
 
         });
+        $scope.location();
         
+    }
+
+    $scope.location = function () {
+        srcLat: $scope.srcLat;
+        srcLon: $scope.srcLon;
     }
 
     $scope.CenterMap = function (ctry) {
@@ -221,17 +228,17 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter source');
         //    return;
         //}       
-        if ($scope.destName == null)
+        if ($scope.srcName == null)
         {
-            alert('Please Enter destination');
+            alert('Please Enter stop');
             return;
         }
 
         var newStop = {
             Id: -1,
             Name: $scope.srcName,
-            //Description: newStop.Description,
-            Code: $scope.destName,
+            Description: $scope.srcName,
+            Code: $scope.srcName,
             srcLat: $scope.srcLat ,
             srcLon: $scope.srcLon,
             //Active: (newStop.Active == true) ? 1 : 0,
@@ -249,12 +256,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Stop Created Successfully!");
 
             $scope.Group = null;
+            $scope.GetStops();
 
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
