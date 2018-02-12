@@ -182,6 +182,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.location = function () {
         srcLat: $scope.srcLat;
         srcLon: $scope.srcLon;
+        
     }
 
     $scope.CenterMap = function (ctry) {
@@ -209,6 +210,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             $scope.currentloc.forEach(function (loc) {
                 createMarker(loc);
+
             });
 
         });
@@ -406,24 +408,24 @@ app.controller('mapCtrl', function ($scope, $http) {
 
     }
 
-    var createMarkerWithLatLon = function (lat, long) {
-        var marker = new google.maps.Marker({
-            map: $scope.map,
-            position: new google.maps.LatLng(lat, long),
-            //title: loc.loc
+    //var createMarkerWithLatLon = function (lat, long) {
+    //    var marker = new google.maps.Marker({
+    //        map: $scope.map,
+    //        position: new google.maps.LatLng(lat, long),
+    //        //title: loc.loc
 
-            icon: marker
-        });
+    //        icon: marker
+    //    });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            alert();
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.setContent(marker.content);
-            infoWindow.open($scope.map, marker);
-        });
+    //    google.maps.event.addListener(marker, 'click', function () {
+    //        alert();
+    //        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+    //        infoWindow.setContent(marker.content);
+    //        infoWindow.open($scope.map, marker);
+    //    });
 
-        $scope.markers.push(marker);
-    };
+    //    $scope.markers.push(marker);
+    //};
 
     var createMarker = function (loc) {
         var marker = new google.maps.Marker({
