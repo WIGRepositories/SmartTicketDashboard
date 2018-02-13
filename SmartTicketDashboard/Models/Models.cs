@@ -6,7 +6,19 @@ using System.Web;
 namespace SmartTicketDashboard.Models
 {
 
-    
+    public class advdeals {
+        
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string AdvertisementTitle { get; set; }
+        public string Description { get; set; }
+        public string Dealsoffer { get; set; }
+        public int Rating { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public string Area { get; set; }
+    }
     public class CardUsers
     {
         public object Id { get; set; }
