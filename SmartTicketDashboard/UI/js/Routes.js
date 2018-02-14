@@ -1,6 +1,6 @@
 // JavaScript source code
 
-var myapp1 = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
+var myapp1 = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'google-maps', 'vsGoogleAutocomplete'])
 var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -26,7 +26,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             $scope.Stops = res.data;
         });
     }
-
+    
     $scope.GetConfigData = function () {
 
         var vc = {
@@ -70,17 +70,17 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             return;
         }
 
-        if (routes.Source == null) {
+        if ($scope.src.Id == null) {
             alert('Please enter Source');
             return;
         }
 
-        if (routes.Destination == null) {
+        if ($scope.dest.Id == null) {
             alert('Please enter Destination');
             return;
         }
 
-        if (routes.Distance == null) {
+        if ($scope.distval == null) {
             alert('Please enter Distance');
             return;
         }
@@ -92,9 +92,9 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             Description: routes.Description,
             Active: 1,//(routes.Active==true)?1:0,
             //BTPOSGroupId: routes.BTPOSGroupId,
-            SourceId: routes.Source.Id,
-            DestinationId: routes.Destination.Id,
-            Distance: routes.Distance
+            SourceId: $scope.src.Id,
+            DestinationId: $scope.dest.Id,
+            Distance: $scope.distval
         };
 
         var req = {
@@ -214,13 +214,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.getDirections = function () {
         //get the source latitude and longitude
         //get the target latitude and longitude
-        //$scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
-        //$scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
-        //$scope.destLat = $scope.dropPoint.place.geometry.location.lat();
-        //$scope.destLon = $scope.dropPoint.place.geometry.location.lng();
+        $scope.srcLat = $scope.src.Latitude;
+        $scope.srcLon = $scope.src.Longitude;
+        $scope.destLat = $scope.dest.Latitude;
+        $scope.destLon = $scope.dest.Longitude;
 
-        $scope.srcName = $scope.routes.Source;
-        $scope.destName = $scope.routes.Destination;
+        $scope.srcName = $scope.src.Id;
+        $scope.destName = $scope.dest.Id;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
@@ -258,8 +258,20 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             }
 
         });
-        $scope.createMarker();
+        
     }
+
+    $scope.SetTotal = function () {
+        $scope.total = eval($scope.unitprice) * eval($scope.distval);
+    }
+
+    //-----------------Hidestart-------------------
+    $scope.IsVisible = false;
+    $scope.ShowHide = function () {
+        //If DIV is visible it will be hidden and vice versa.
+        $scope.IsVisible = $scope.IsVisible ? false : true;
+    }
+    //-----------------Hideend-------------------
 
     $scope.CenterMap = function (ctry) {
         var lat = (ctry.latitude == null) ? 17.499800 : ctry.latitude;
@@ -290,7 +302,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         //});
 
-
+        $scope.createMarker();
     }
 
     $scope.showDialog = function (message) {
