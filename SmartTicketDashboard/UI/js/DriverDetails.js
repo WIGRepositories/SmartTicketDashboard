@@ -878,6 +878,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.setlistdrivers = function (Dl) {
         $scope.driver = Dl;
+        $scope.bank = b;
         $scope.imageSrc = null;
         document.getElementById('cmpNewLogo').src = "";
         $scope.imageSrc = Dl.photo;
@@ -888,6 +889,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.Dl = null;
         $scope.imageSrc = null;
     }
+
+   
 
     $scope.UploadImg = function () {
         var fileinput = document.getElementById('fileInput');
