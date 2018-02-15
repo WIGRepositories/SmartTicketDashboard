@@ -143,6 +143,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http.get('/api/InventoryItem/GetInventoryItem?subCatId=-1').then(function (response, req) {
             $scope.InventoryItems = response.data;
+           
           //  $scope.getselectval();
 
         });
@@ -275,7 +276,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.setItem = function (item) {
-        $scope.CurrItem = item;        
+        $scope.CurrItem = item;
+        $scope.imageSrc = null;
+        document.getElementById('cmpNewLogo').src = "";
+        $scope.imageSrc = InventoryItem.ItemImage;
     };
 
     $scope.clearItems1 = function () {

@@ -106,7 +106,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
 
         $http(req).then(function (res) {
-            // alert('Route created successfully');
+            alert('Route created successfully');
             $scope.GetRoutes();
         });
 
