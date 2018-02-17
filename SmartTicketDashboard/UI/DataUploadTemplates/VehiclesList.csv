@@ -1,8 +1,9 @@
-RegistrationNo,ChasisNo,VehicleGroup,VehicleModel,Country,VehicleCode,FleetOwner,EngineNo,VehicleType,VehicleMake,Driver,ModelYear,Has AC,IsDriverOwned
+RegistrationNo	ChasisNo	VehicleGroup	VehicleModel	Country	VehicleCode	FleetOwner	EngineNo	VehicleType	VehicleMake	Driver	ModelYear	Has AC	IsDriverOwned
 ,,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "example:						",,,,,,,,,,,,,
-TS01ED0335,Td5689,Hailing Car,,zimbabwe,TY0123,23,Yu4526,sedan,,Sai,2015,0,0
-AP001,YU0546,Metered Taxi,,Zambia,TH785,22,IJ4589,SUV,,kumar,2014,1,1
+TS001	Td5689	Hailing Car		India	TY0001	99	Yu4526	sedan		Smith	2015	0	0
+TS002	Td5689	Hailing Car		Zombia	TY0002	98	Yu4526	sedan		Kiran	2015	0	0
+
