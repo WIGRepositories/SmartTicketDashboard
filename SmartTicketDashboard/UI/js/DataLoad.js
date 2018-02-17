@@ -827,6 +827,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
                         EmailId: data[21],
                         DriverCode: data[22],
                         CurrentStateId: data[23],
+                        
                         inspudflag: 'I'
                     }
                     return list;
