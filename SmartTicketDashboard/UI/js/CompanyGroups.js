@@ -379,18 +379,18 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         
         var Group = {
             Id: Group.Id,
-            Name: Group.Name,            
+            Name: Group.Name,
             code: Group.Code,
             desc: Group.desc,
-            Address:Group.Address,
-            EmailId:Group.EmailId,
-            ContactNo1:Group.ContactNo1,
-            ContactNo2:Group.ContactNo2,
-            Fax:Group.Fax,
-            Title:Group.Title,
-            Caption:Group.Caption,
-            Country:Group.Country,
-            ZipCode:Group.ZipCode,
+            Address: Group.Address,
+            EmailId: Group.EmailId,
+            ContactNo1: Group.ContactNo1,
+            ContactNo2: Group.ContactNo2,
+            Fax: Group.Fax,
+            Title: Group.Title,
+            Caption: Group.Caption,
+            Country: Group.Country,
+            ZipCode: Group.ZipCode,
             State: Group.State,
             FleetSize: Group.FleetSize,
             StaffSize: Group.StaffSize,
@@ -409,7 +409,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!!");
+            alert("Saved successfully!!");
            
             $scope.GetCompanys();
             $scope.currGroup = null;

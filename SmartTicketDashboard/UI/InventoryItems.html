@@ -351,7 +351,7 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                        <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                     </li>
                                     <li>
                                         <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -507,6 +507,22 @@
                                                     <h4 id="modal-header-primary-label" class="modal-title">Edit InventoryItems</h4>
                                                 </div>
                                                 <div class="modal-body" ng-model="Sales1">
+
+
+                                                    <div class="row mbm">
+                                                        <label for="Address Id" class="col-md-4 control-label" style="float:left">Photo:</label>
+                                                        <div class="col-md-8">
+                                                            <img id="cmpLogo" ng-src="{{imageSrc}}" width="150px" height="120px" />
+                                                            <br />
+                                                            <a href="#" class="btn btn-green" ng-click="UploadImg();" style="margin-top:5px">
+                                                                <i class="fa fa-upload"></i>&nbsp;
+                                                                Upload photo
+                                                            </a>
+                                                        </div>
+                                                        <input type="file" name="fileInput" id="fileInput" ng-file-select="onFileSelect($files)" class="btn btn-green" accept=".jpg,.png,.gif,.jpeg" style="display:none" ng-model="$scope.imageSrc" ng-change="setimg();" />
+
+                                                    </div>
+
                                                     <div class="row">
 
                                                         <div class="col-md-3">

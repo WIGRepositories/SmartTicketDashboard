@@ -132,15 +132,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //get the target latitude and longitude
         $scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
         $scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
-        $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
-        $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
+        //$scope.destLat = $scope.dropPoint.place.geometry.location.lat();
+        //$scope.destLon = $scope.dropPoint.place.geometry.location.lng();
 
         $scope.srcName = $scope.pickupPoint.place.name;
-        $scope.destName = $scope.dropPoint.place.name;
+       // $scope.destName = $scope.dropPoint.place.name;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
-            destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
+            //destination: new google.maps.LatLng($scope.destLat, $scope.destLon),//$scope.directions.destination,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };
         directionsService.route(request, function (response, status) {
@@ -172,8 +172,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             } else {
                 alert('Google route unsuccesfull!');
             }
+           
 
         });
+        $scope.location();
+        
+    }
+
+    $scope.location = function () {
+        srcLat: $scope.srcLat;
+        srcLon: $scope.srcLon;
         
     }
 
@@ -202,6 +210,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             $scope.currentloc.forEach(function (loc) {
                 createMarker(loc);
+
             });
 
         });
@@ -216,23 +225,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         //    alert('Please Enter Name');
         //    return;
         //}
+        //if ($scope.srcName == null)
+        //{
+        //    alert('Please Enter source');
+        //    return;
+        //}       
         if ($scope.srcName == null)
         {
-            alert('Please Enter source');
-            return;
-        }       
-        if ($scope.destName == null)
-        {
-            alert('Please Enter destination');
+            alert('Please Enter stop');
             return;
         }
 
         var newStop = {
             Id: -1,
             Name: $scope.srcName,
-            //Description: newStop.Description,
-            Code: $scope.destName,
-           
+            Description: $scope.srcName,
+            Code: $scope.srcName,
+            srcLat: $scope.srcLat ,
+            srcLon: $scope.srcLon,
             //Active: (newStop.Active == true) ? 1 : 0,
           
             insupdflag: "I"
@@ -248,12 +258,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert("Stop Created Successfully!");
 
             $scope.Group = null;
+            $scope.GetStops();
 
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };
@@ -268,7 +279,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
     //-----------------Hideend-------------------
 
+    
 
+    
 
     $scope.save = function (Stops, flag) {
         if (Stops == null) {
@@ -395,24 +408,24 @@ app.controller('mapCtrl', function ($scope, $http) {
 
     }
 
-    var createMarkerWithLatLon = function (lat, long) {
-        var marker = new google.maps.Marker({
-            map: $scope.map,
-            position: new google.maps.LatLng(lat, long),
-            //title: loc.loc
+    //var createMarkerWithLatLon = function (lat, long) {
+    //    var marker = new google.maps.Marker({
+    //        map: $scope.map,
+    //        position: new google.maps.LatLng(lat, long),
+    //        //title: loc.loc
 
-            icon: marker
-        });
+    //        icon: marker
+    //    });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            alert();
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.setContent(marker.content);
-            infoWindow.open($scope.map, marker);
-        });
+    //    google.maps.event.addListener(marker, 'click', function () {
+    //        alert();
+    //        infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+    //        infoWindow.setContent(marker.content);
+    //        infoWindow.open($scope.map, marker);
+    //    });
 
-        $scope.markers.push(marker);
-    };
+    //    $scope.markers.push(marker);
+    //};
 
     var createMarker = function (loc) {
         var marker = new google.maps.Marker({
