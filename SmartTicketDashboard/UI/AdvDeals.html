@@ -58,8 +58,7 @@
                 max-width: 180px;
             }
         }
-
-        </style>
+    </style>
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetAdvertisment();" ng-model="advertisement">
@@ -72,7 +71,7 @@
                     <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
                     <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
                 </div>
-               
+
             </nav>
             <!--END TOPBAR-->
             <div id="wrapper">
@@ -93,7 +92,7 @@
                                 </div>
                                 <div class="clearfix"></div>
                             </li>
-                            <li >
+                            <li>
                                 <a href="index.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
                                     <i class="fa fa-tachometer fa-fw">
                                         <div class="icon-bg bg-orange"></div>
@@ -356,18 +355,18 @@
 
                         <li class="active">
                             <a href="#">
-                                <i class="fa fa-taxi">
+                                <i class="fa fa-globe">
                                     <div class="icon-bg bg-dark"></div>
                                 </i><span class="menu-title">Portal</span><span class="fa arrow"></span>
                             </a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
-                                </li>
-                                <li class="actigve">
-                                    <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
+                                    <a href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                 </li>
                                 <li>
+                                    <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
+                                </li>
+                                <li class="active">
                                     <a href="AdvDeals.html" data-toggle="tooltip" data-placement="right" title="Details of Advertisement Deals"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Deals</span></a>
                                 </li>
                             </ul>
@@ -390,7 +389,7 @@
                                 <li><a href="StartReport.html" data-toggle="tooltip" data-placement="right" title="Details of report starting"><i class="fa fa-filter"></i><span class="submenu-title">StartReport </span></a></li>
                                 <li><a href="VehicleDestBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Distance Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleDistBasePricing</span></a></li>
                                 <li><a href="VehicleHoursBasePricing.html" data-toggle="tooltip" data-placement="right" title="Details of Vech Hours Base Princing"><i class="fa fa-filter"></i><span class="submenu-title">VehicleHourBasePricing</span></a></li>
-                                </ul>
+                            </ul>
 
                         </li>
                         </ul>
@@ -401,12 +400,12 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Advertisment</div>
+                            <div class="page-title">Advertisment Deals</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Company and Users</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
-                            <li><a href="#">Advertisment</a>
+                            <li><a href="AdvertismentDeals.html">Advertisment Deals</a>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -498,7 +497,7 @@
                                                                         </div>
                                                                         <div class="row" style="margin-bottom:7px">
                                                                             <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Title:<span class='require'></span></label>
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">AdvertismentTitle:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
                                                                                     <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Title"></textarea>
                                                                                 </div>
@@ -512,25 +511,20 @@
                                                                         </div>
                                                                         <div class="row" style="margin-bottom:7px">
                                                                             <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Clarification:<span class='require'></span></label>
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">OfferDeals:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Clarification"></textarea>
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.dealoffer"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Conclusion:<span class='require'></span></label>
+                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Rating:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.Conclusion"></textarea>
+                                                                                    <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="adv.rating"></textarea>
                                                                                 </div>
                                                                             </div>
                                                                         </div>
                                                                         <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Date:<span class='require'></span></label>
-                                                                                <div class="col-md-8">
-                                                                                    <input id="Price" type="date" class="form-control" ng-model="adv.AdvertismentDate" /><span class="help-block"></span>
-                                                                                </div>
-                                                                            </div>
+                                                                            
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Expired Date:<span class='require'></span></label>
                                                                                 <div class="col-md-8">
@@ -538,16 +532,7 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>
-                                                                        <div class="row">
-                                                                            <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label">Prize Amount:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="adv.PrizeAmount" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                            <div class="col-md-6">
-                                                                                <label for="Fax" class="col-md-4 control-label">Advertisment Amount:<span class='require'></span></label>
-                                                                                <div class="col-md-8"><input id="Price" type="text" ng-model="adv.AdvertismentAmount" class="form-control" /><span class="help-block"></span></div>
-                                                                            </div>
-                                                                        </div>
+                                                                        
                                                                         <div class="form-actions">
                                                                             <div style="text-align:center">
 
@@ -566,6 +551,7 @@
                                                     </div>
                                                 </div>
                                             </div>
+
                                             <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                 <div class=" modal-dialog modal-lg">
                                                     <div class="modal-content">
@@ -605,10 +591,7 @@
 
 
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Company Name:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" class="form-control" ng-model="advEdit.CompanyName" /><span class="help-block"></span></div>
-                                                                </div>
+
                                                                 <div class="col-md-6">
                                                                     <label for="Address Id" class="col-md-4 control-label" style="float:left">Image:</label>
                                                                     <!--<div class="text-center mbl"><img src="images/user.jpg" style="width:50px;height:50px" alt="" class="img-responsive" /></div>-->
@@ -629,7 +612,7 @@
                                                             </div>
                                                             <div class="row" style="margin-bottom:7px">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Title:<span class='require'></span></label>
+                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">AdvertismentTitle:<span class='require'></span></label>
                                                                     <div class="col-md-8">
                                                                         <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Title"></textarea>
                                                                     </div>
@@ -641,27 +624,9 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <div class="row" style="margin-bottom:7px">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Clarification:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Clarification"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Conclusion:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <textarea class="form-control" id="exampleTextarea" rows="3" ng-model="advEdit.Conclusion"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
+
                                                             <div class="row">
-                                                                <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Date:<span class='require'></span></label>
-                                                                    <div class="col-md-8">
-                                                                        <input id="Price" type="date" class="form-control" ng-model="advEdit.AdvertismentDate" /><span class="help-block"></span>
-                                                                    </div>
-                                                                </div>
+
                                                                 <div class="col-md-6">
                                                                     <label for="Fax" class="col-md-4 control-label" style="float:left">Advertisment Expired Date:<span class='require'></span></label>
                                                                     <div class="col-md-8">
@@ -671,12 +636,12 @@
                                                             </div>
                                                             <div class="row">
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Prize Amount:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.PrizeAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Dealsoffer:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.dealoffer" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                                 <div class="col-md-6">
-                                                                    <label for="Fax" class="col-md-4 control-label">Advertisment Amount:<span class='require'></span></label>
-                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.AdvertismentAmount" class="form-control" /><span class="help-block"></span></div>
+                                                                    <label for="Fax" class="col-md-4 control-label">Rating:<span class='require'></span></label>
+                                                                    <div class="col-md-8"><input id="Price" type="text" ng-model="advEdit.rating" class="form-control" /><span class="help-block"></span></div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-actions">
@@ -701,7 +666,7 @@
 
 
 
-                                        
+
                                         <div class="container-fluid" style="background-color:#e8e8e8">
                                             <div class="container container-pad" id="property-listings">
 
@@ -737,7 +702,7 @@
                                                                         {{a.Description}}
                                                                     </p>
                                                                     <span class="fnt-smaller fnt-lighter fnt-arial">
-                                                                            {{a.Clarification}}
+                                                                        {{a.Clarification}}
                                                                     </span><br>
                                                                     <span class="fnt-smaller fnt-lighter fnt-arial">
                                                                         {{a.Conclusion}}
@@ -745,18 +710,18 @@
                                                                 </div>
                                                                 <div class="actions">
                                                                     <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setCMPCode();">Delete</button>
-                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setadvertisement();">Edit</button>  
+                                                                    <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;" ng-click="setadvertisement();">Edit</button>
                                                                 </div>
                                                             </div>
                                                         </div><!-- End Listing-->
-                                                       
+
 
                                                     </div>
-                                                    
+
                                                 </div>
                                             </div>
                                         </div>
-                                       
+
                                     </div>
 
                                 </div>
@@ -822,7 +787,7 @@
     <script src="js/ngStorage.js"></script>
     <script src="js/fileupload/angular-file-upload.js"></script>
     <script src="js/fileupload/angular-file-upload-shim.js"></script>
-    <script src="js/Advertisment.js"></script>
+    <script src="js/advertisementdeals.js"></script>
     <script src="js/fileupload/Upload.js"></script>
 </body>
 </html>

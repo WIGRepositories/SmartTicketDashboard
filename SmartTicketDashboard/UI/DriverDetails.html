@@ -910,26 +910,26 @@
                                                                                 </thead>
                                                                                 <tbody>
                                                                                     
-                                                                                    <tr ng-repeat="b in bankdetails">
-                                                                                        <td>{{b.Accountnumber}}</td>
-                                                                                        <td>{{b.BankName}}</td>
-                                                                                        <td>{{b.BankCode}}</td>
-                                                                                        <td>{{b.BranchAddress}}</td>
-                                                                                        <td>{{b.Country}}</td>
+                                                                                    <tr ng-repeat="bl in bankdetails">
+                                                                                        <td>{{bl.Accountnumber}}</td>
+                                                                                        <td>{{bl.BankName}}</td>
+                                                                                        <td>{{bl.BankCode}}</td>
+                                                                                        <td>{{bl.BranchAddress}}</td>
+                                                                                        <td>{{bl.Country}}</td>
                                                                                         <td>
                                                                                             <input type="checkbox" class="icheckbox_minimal-grey" checked />
                                                                                         </td>
                                                                                         <td> 
                                                                                         <span class="img-shadow">
                                                                                             <!--<a ng-click="SetBiggerPhoto(b)">-->
-                                                                                            <a ng-click="printDiv(b)">
-                                                                                                <img src="{{b.QRCode}}" class="media-object thumb" width="60px" height="60px" />
+                                                                                            <a ng-click="printDiv(bl)">
+                                                                                                <img src="{{bl.QRCode}}" class="media-object thumb" width="60px" height="60px" />
                                                                                             </a>
                                                                                                </span>
                                                                                         </td>
                                                                                         <td>
                                                                                             
-                                                                                            <button type="button" data-target="#Modal-header-bank" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbankdetails(b)" ng-disabled="isSuperUser == 0">
+                                                                                            <button type="button" data-target="#Modal-header-bank" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbankdetails(bl)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-edit"></i>
 
                                                                                             </button>

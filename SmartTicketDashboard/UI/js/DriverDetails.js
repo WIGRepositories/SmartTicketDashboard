@@ -877,17 +877,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.driver = null;
 
     $scope.setlistdrivers = function (Dl) {
-        $scope.driver = Dl;
+        $scope.driver = Dl;        
         $scope.imageSrc = null;
         document.getElementById('cmpNewLogo').src = "";
         $scope.imageSrc = Dl.photo;
         document.getElementById('uactive').checked = (Dl.Active == 1);
     };
 
+    $scope.setbankdetails = function (bl) {
+        $scope.b = bl;
+    }
+
+
     $scope.clearDriverlist = function () {
         $scope.Dl = null;
         $scope.imageSrc = null;
     }
+
+   
 
     $scope.UploadImg = function () {
         var fileinput = document.getElementById('fileInput');
@@ -1192,9 +1199,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         return $scope.checkedArr.length === $scope.UserDocs.length;
     };
        
-    $scope.printDiv = function (b) {
+    $scope.printDiv = function (bl) {
 
-        var printContents = b.QRCode;//document.getElementById(divName).innerHTML;
+        var printContents = bl.QRCode;//document.getElementById(divName).innerHTML;
         var originalContents = document.body.innerHTML;
 
         if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
