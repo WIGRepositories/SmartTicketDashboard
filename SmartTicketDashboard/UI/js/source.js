@@ -657,6 +657,7 @@ var mycrtl1 = app.controller('myCtrl1', function ($scope, $http, $localStorage, 
             templateUrl: 'myModalContent.html',
             controller: 'ModalInstanceCtrl',
             resolve: {
+
                 mssg: function () {
                     return message;
                 }
