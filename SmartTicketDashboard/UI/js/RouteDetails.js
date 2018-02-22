@@ -14,6 +14,28 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     stopsList = [];
     $scope.RouteDetails = [];
 
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeActiveCountry: '1',
+
+
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+
+            //$scope.ctry = $scope.initdata.Table1[0];
+
+        });
+    }
+
     $scope.GetRoutes = function () {
         $http.get('/api/Routes/GetRoutes').then(function (res, data) {
             $scope.routes = res.data;
@@ -34,8 +56,10 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             return;
         }
         $http.get('/api/routedetails/getroutedetails?routeid=' + route.Id).then(function (res, data) {
-            $scope.RouteDetails = res.data;      
+            $scope.RouteDetails = res.data;
+            $scope.getDirections();
         });
+        
     }
 
     $scope.SetCurrStop = function (currStop,indx)
@@ -195,13 +219,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.getDirections = function () {
         //get the source latitude and longitude
         //get the target latitude and longitude
-        $scope.srcLat = $scope.pickupPoint.place.geometry.location.lat();
-        $scope.srcLon = $scope.pickupPoint.place.geometry.location.lng();
-        $scope.destLat = $scope.dropPoint.place.geometry.location.lat();
-        $scope.destLon = $scope.dropPoint.place.geometry.location.lng();
+        $scope.srcLat = $scope.RouteDetails.Latitude;
+        $scope.srcLon = $scope.RouteDetails.Longitude;
+        $scope.destLat = $scope.RouteDetails.Latitude;
+        $scope.destLon = $scope.RouteDetails.Longitude;
 
-        $scope.srcName = $scope.pickupPoint.place.name;
-        $scope.destName = $scope.dropPoint.place.name;
+        $scope.srcName = $scope.RouteDetails.StopName;
+        $scope.destName = $scope.RouteDetails.StopName;
         //alert($scope.dropPoint.place.geometry.location.lat);
         var request = {
             origin: new google.maps.LatLng($scope.srcLat, $scope.srcLon),//$scope.directions.origin,
@@ -239,6 +263,39 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             }
 
         });
+    }
+
+    $scope.CenterMap = function (ctry) {
+        var lat = (ctry.latitude == null) ? 17.499800 : ctry.latitude;
+        var long = (ctry.longitude == null) ? 78.399597 : ctry.longitude;
+        var mapOptions = {
+            zoom: 15,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        $scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        var infoWindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener($scope.map, 'click', function (e) {
+            createMarkerWithLatLon(e.latLng.lat(), e.latLng.lng());
+            //$scope.lat = e.latLng.lat();
+            //$scope.lag = e.latLng.lng();
+
+            //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
+        });
+        $http.get('/api/DriverStatus/GetDriverlocation?ctnyId=' + $scope.ctry.Id).then(function (res, data) {
+            $scope.currentloc = res.data;
+
+            $scope.currentloc.forEach(function (loc) {
+                createMarker(loc);
+
+            });
+
+        });
+
+
     }
 
 

@@ -3607,6 +3607,7 @@
     <Content Include="UI\Maps\vs-autocomplete-validator.js" />
     <Content Include="UI\Maps\vs-google-autocomplete.js" />
     <Content Include="UI\pricingcredentials.html" />
+    <Content Include="UI\Routedetails1.html" />
     <Content Include="UI\SMSInbox.html" />
     <Content Include="UI\SOSMessages.html" />
     <Content Include="UI\SOSTemplates.html" />

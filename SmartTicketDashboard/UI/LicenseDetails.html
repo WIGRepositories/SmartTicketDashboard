@@ -462,7 +462,7 @@
 
                                                         </div>
                                                         <div style="height:15px">
-                                                            <button ng-hide="l.Id == null" type="button" data-target="#Modal-header-primary-New" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add Feature</button>
+                                                            <button ng-hide="l.Id == null" type="button" data-target="#Modal-header-primary-New" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;" ng-init="GetConfigData()">Add Feature</button>
                                                         </div>
                                                     </div>
 
@@ -543,7 +543,7 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <select ng-options="f.Name for f in Types track by f.Id" ng-model="f" style="width:100%">
+                            <select ng-options="f.Name for f in initdata.Table track by f.Id" ng-model="f" style="width:100%">
                                 <option value="">Select</option>
                             </select>
                         </div>
