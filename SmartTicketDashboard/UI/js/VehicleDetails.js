@@ -174,6 +174,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
       //  $scope.GetConfigData();
     }
 
+    $scope.GetMaster = function () {
+        $http.get('/api/DriverMaster/GetMaster?ctryId=' + $scope.cn.Id).then(function (res, data) {
+            $scope.listdrivers = res.data;
+        });
+        // $scope.imageSrc = $scope.listdrivers.Photo;
+    }
+
     $scope.GetConfigData = function () {
 
         var vc = {
@@ -472,7 +479,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            //alert("Saved Successfully");
+            alert("Saved Successfully");
         });
     }
     var winLookup;
@@ -569,14 +576,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (vDetails.ChasisNo == null || vDetails.ChasisNo == '') {
-            alert('Please Enter chasis number');
-            return;
-        }
-        if (vDetails.Engineno == null || vDetails.Engineno == '') {
-            alert('Please Enter Engine number');
-            return;
-        }
+        //if (vDetails.ChasisNo == null || vDetails.ChasisNo == '') {
+        //    alert('Please Enter chasis number');
+        //    return;
+        //}
+        //if (vDetails.Engineno == null || vDetails.Engineno == '') {
+        //    alert('Please Enter Engine number');
+        //    return;
+        //}
         if (vDetails.vt == null || vDetails.vt.Id == null) {
             alert('Please select type');
             return;
@@ -595,10 +602,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
 
 
-        if (vDetails.ModelYear == null) {
-            alert('Please Enter ModelYear');
-            return;
-        }
+        //if (vDetails.ModelYear == null) {
+        //    alert('Please Enter ModelYear');
+        //    return;
+        //}
 
 
         var vDetails = {

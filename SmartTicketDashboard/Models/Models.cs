@@ -6,7 +6,19 @@ using System.Web;
 namespace SmartTicketDashboard.Models
 {
 
-    
+    public class advdeals {
+        
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string Image { get; set; }
+        public string AdvertisementTitle { get; set; }
+        public string Description { get; set; }
+        public string Dealsoffer { get; set; }
+        public int Rating { get; set; }
+        public DateTime? PublishDate { get; set; }
+        public DateTime? ExpiredDate { get; set; }
+        public string Area { get; set; }
+    }
     public class CardUsers
     {
         public object Id { get; set; }
@@ -1414,7 +1426,11 @@ namespace SmartTicketDashboard.Models
         public string Description { get; set; }
         public string Code { get; set; }
         public int Active { get; set; }
+        public float latitude { get; set; }
+        public float longitude { get; set; }
         public string insupdflag { get; set; }
+        public string srcLat { get; set; }
+        public string srcLon { get; set; }
     }
     public class Objects
     {
@@ -3057,6 +3073,19 @@ namespace SmartTicketDashboard.Models
         public string Id { get; set; }
         public string Response { get; set;}
         public string Description { get; set; }
+        public string flag { get; set; }
+    }
+
+    public class Activity
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Rating { get; set; }
+        public string Image { get; set; }
+        public string CreatedOn { get; set; }
+        public string CreatedBy { get; set; }
+        public string UpdatedOn { get; set; }
+        public string UpdatedBy { get; set; }
         public string flag { get; set; }
     }
 

@@ -162,6 +162,29 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             });
             $scope.currSelLicense = null;
         };
+
+        $scope.GetConfigData = function () {
+
+            var vc = {
+                includeLicenseFeatures: '1',
+
+
+            };
+
+            var req = {
+                method: 'POST',
+                url: '/api/Types/ConfigData',
+                data: vc
+            }
+
+            $http(req).then(function (res) {
+                $scope.initdata = res.data;
+
+                //$scope.ctry = $scope.initdata.Table1[0];
+
+            });
+        }
+
     $scope.showDialog = function (message) {
 
         var modalInstance = $uibModal.open({

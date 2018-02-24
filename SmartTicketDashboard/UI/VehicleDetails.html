@@ -267,7 +267,9 @@
                                     <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
                                     <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
                                     <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
-                                </ul>
+                                    <li><a href="SOSTemplates.html" data-toggle="tooltip" data-placement="right" title="Details of Sos Templates"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Templates</span></a></li>
+                                    <li><a href="Operations.html" data-toggle="tooltip" data-placement="right" title="Details of Operations"><i class="fa fa-briefcase"></i><span class="submenu-title">Operations</span></a></li>
+                                 </ul>
                             </li>
 
                             <li>
@@ -355,7 +357,7 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                        <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                     </li>
                                     <li>
                                         <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -481,15 +483,15 @@
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Owner Phone No</td>
-                                                                    <td>{{v.ContactNo1}}</td>
+                                                                    <td>{{vDetails.ContactNo1}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Registration No</td>
-                                                                    <td> {{v.RegistrationNo}}</td>
+                                                                    <td> {{vDetails.RegistrationNo}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Address</td>
-                                                                    <td>{{v.Address}}</td>
+                                                                    <td>{{vDetails.Address}}</td>
                                                                 </tr>
 
                                                                 <tr>
@@ -650,7 +652,7 @@
                                                                                 <div class="col-md-6">
                                                                                     <label for="Name" class="col-md-4 control-label">Driver:<span class='require'></span></label>
                                                                                     <div class="col-md-8">
-                                                                                        <select ng-options="d.Name for vm in drivers track by d.Id" ng-model="d" class="form-control">
+                                                                                        <select ng-options="d.NAme for d in listdrivers track by d.DId" ng-model="d" ng-change="GetMaster()" class="form-control">
                                                                                             <option value="">Select</option>
                                                                                         </select>
                                                                                     </div>
@@ -729,7 +731,7 @@
                                                                                         <label class="col-sm-3 control-label">Owner Phone No</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="v.ContactNo1" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="vDetails.ContactNo1" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -804,10 +806,10 @@
                                                                                             {{d.expiryDate | date:'MM-dd-yyyy'}}
                                                                                         </td>
                                                                                         <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.isVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.isApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         
                                                                                         <td>

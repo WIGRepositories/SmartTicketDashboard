@@ -8174,3 +8174,7 @@ ul.thumb-small > li .media-body .media-heading small {
 ul.thumb-small > li .media-body .media-heading small a {
   color: #777777;
 }
+
+.pac-container {
+    z-index: 100000;
+}

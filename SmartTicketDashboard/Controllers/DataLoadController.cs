@@ -1631,6 +1631,7 @@ namespace SmartTicketDashboard.Controllers
                     cs.SqlDbType = SqlDbType.VarChar;
                     cs.Value = dva.CurrentStateId;
                     cmd.Parameters.Add(cs);
+                    
 
                     SqlParameter dvaflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     dvaflag.Value = dva.inspudflag;
@@ -1653,8 +1654,8 @@ namespace SmartTicketDashboard.Controllers
 
                 string str2 = ex.Message;
                 traceWriter.Trace(Request, "1", TraceLevel.Info, "{0}", "Error in SaveDriverVehicleAssignGroup:" + ex.Message);
-                //return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-                return null;
+                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+               // return ;
 
             }
         }

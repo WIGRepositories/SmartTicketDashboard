@@ -264,6 +264,8 @@
                                     <li><a href="MandatoryUserDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">User Documents</span></a></li>
                                     <li><a href="MandatoryVehicleDocs.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">Vehicle Documents</span></a></li>
                                     <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
+                                    <li><a href="SOSTemplates.html" data-toggle="tooltip" data-placement="right" title="Details of Sos Templates"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Templates</span></a></li>
+                                    <li><a href="Operations.html" data-toggle="tooltip" data-placement="right" title="Details of Operations"><i class="fa fa-briefcase"></i><span class="submenu-title">Operations</span></a></li>
                                 </ul>
                             </li>
 
@@ -352,7 +354,7 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a href="Website/Carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                        <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                     </li>
                                     <li>
                                         <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -460,7 +462,7 @@
 
                                                         </div>
                                                         <div style="height:15px">
-                                                            <button ng-hide="l.Id == null" type="button" data-target="#Modal-header-primary-New" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">Add Feature</button>
+                                                            <button ng-hide="l.Id == null" type="button" data-target="#Modal-header-primary-New" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;" ng-init="GetConfigData()">Add Feature</button>
                                                         </div>
                                                     </div>
 
@@ -541,7 +543,7 @@
                             </div>
                         </div>
                         <div class="col-md-5">
-                            <select ng-options="f.Name for f in Types track by f.Id" ng-model="f" style="width:100%">
+                            <select ng-options="f.Name for f in initdata.Table track by f.Id" ng-model="f" style="width:100%">
                                 <option value="">Select</option>
                             </select>
                         </div>

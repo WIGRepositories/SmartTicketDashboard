@@ -295,6 +295,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
 
             alert("Saved successfully!");
+            $scope.GetUserdetails();
 
             $scope.Group = null;
 

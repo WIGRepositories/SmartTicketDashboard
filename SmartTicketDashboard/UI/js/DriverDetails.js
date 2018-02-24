@@ -877,17 +877,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.driver = null;
 
     $scope.setlistdrivers = function (Dl) {
-        $scope.driver = Dl;
+        $scope.driver = Dl;        
         $scope.imageSrc = null;
         document.getElementById('cmpNewLogo').src = "";
         $scope.imageSrc = Dl.photo;
         document.getElementById('uactive').checked = (Dl.Active == 1);
     };
 
+    $scope.setbankdetails = function (bl) {
+        $scope.b = bl;
+    }
+
+
     $scope.clearDriverlist = function () {
         $scope.Dl = null;
         $scope.imageSrc = null;
     }
+
+   
 
     $scope.UploadImg = function () {
         var fileinput = document.getElementById('fileInput');
@@ -967,7 +974,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (response) {
             var res = response.data;
-            //alert("Saved Successfully");
+            alert("Saved Successfully");
         });
     }
 
@@ -1041,7 +1048,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             var doc =
                 {
-                    Id: ($scope.driverDoc == null) ? -1 : $scope.driverDoc.Id,
+                    Id: ($scope.driverDoc == null) ? -1 : $scope.Id,
                     DriverId: $scope.selectedlistdrivers,
                     createdById: ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
                     UpdatedById: ($scope.userdetails.Id == null) ? 1 : $scope.userdetails.Id,
@@ -1049,7 +1056,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                     dueDate: ($scope.driverDoc == null || $scope.driverDoc.dueDate == null) ? null : getdate($scope.driverDoc.dueDate),
                     DocumentNo: ($scope.driverDoc.docNo == null) ? null : $scope.driverDoc.docNo,
                     DocumentNo2: ($scope.driverDoc.docNo2 == null) ? null : $scope.driverDoc.docNo2,
-                    docTypeId: ($scope.driverDoc == null) ? null : $scope.driverDoc.docType.Id,
+                    docTypeId: ($scope.driverDoc == null) ? null : $scope.driverDoc.docType.typeid,
                     docName: files[0].name,
                     docContent: result,
                     isVerified: 0,
@@ -1192,9 +1199,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         return $scope.checkedArr.length === $scope.UserDocs.length;
     };
        
-    $scope.printDiv = function (b) {
+    $scope.printDiv = function (bl) {
 
-        var printContents = b.QRCode;//document.getElementById(divName).innerHTML;
+        var printContents = bl.QRCode;//document.getElementById(divName).innerHTML;
         var originalContents = document.body.innerHTML;
 
         if (navigator.userAgent.toLowerCase().indexOf('chrome') > -1) {
