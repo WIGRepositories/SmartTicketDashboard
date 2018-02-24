@@ -1012,7 +1012,7 @@
                                         </div>
                                         <div class="col-md-6">
 
-                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{uploaded:0}) track by d.Id" ng-model="driverDoc.docType" style="width:100%">
+                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{uploaded:0}) track by d.typeid" ng-model="driverDoc.docType" style="width:100%">
                                                 <option value="">Select</option>
                                             </select>
 
