@@ -981,14 +981,14 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.Approval = function (Dl) {
         //alert();
         MobileNo: Dl.PMobNo;
-        IsApproved: Dl.Approved;
+        IsApproved: Dl.IsApproved;
         
 
 
         var Approve = {
 
             MobileNo: Dl.PMobNo,
-            IsApproved: Dl.Approved,
+            IsApproved: Dl.IsApproved,
             change: '1'
 
         }
@@ -1001,8 +1001,16 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (response) {
             var res = response.data;
             
-            //alert("Saved Successfully");
+            alert("Saved Successfully");
+        
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+            $scope.Getdriverdetails();
         });
+
     }
 
 

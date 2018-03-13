@@ -43,7 +43,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (response) {
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -51,7 +51,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             var errdata = errres.data;
             var errmssg = "TypeGroup is Not Saved";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.TypeGroups();
         $scope.currGroup = null;
@@ -90,7 +90,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         $http(req).then(function (response) {
             $scope.Group = null;
 
-            $scope.showDialog("Saved successfully!");
+            alert("Saved successfully!");
 
             
 
@@ -98,7 +98,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });       
         $scope.currGroup = null;
     };

@@ -107,7 +107,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
     $scope.GetUsers = function () {
-        $http.get('/api/RegisterUser/GetUsers').then(function (res, data) {
+        $http.get('/api/AppUsers/GetUsers').then(function (res, data) {
             $scope.users = res.data;
         });
         // $scope.imageSrc = $scope.VehiclesList.Photo;
@@ -135,15 +135,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $scope.selectedUser = parseLocation(window.location.search)['UId'];
 
-        $http.get('/api/RegisterUser/GetUserdetails?UId=' + $scope.selectedUser).then(function (res, data) {
+        $http.get('/api/AppUsers/UserDetails?id=' + $scope.selectedUser).then(function (res, data) {
             $scope.User = res.data[0];
             $scope.imageSrc = $scope.User.UserPhoto;
 
-            //for (i = 0; i < $scope.initdata.Table1.length; i++) {
-            //    if ($scope.initdata.Table1[i].Id == $scope.user.StatusId) {                   
-            //        break;
-            //    }
-            //}
+            for (i = 0; i < $scope.initdata.Table.length; i++) {
+                if ($scope.initdata.Table[i].Id == $scope.User.Status) {
+                    $scope.User.Status = $scope.initdata.Table[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table1.length; i++) {
+                if ($scope.initdata.Table1[i].Id == $scope.User.Gender) {
+                    $scope.User.Gender = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
 
         });
     }
@@ -274,18 +281,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             Photo: $scope.imageSrc,
             Altemail: User.Altemail,
             Gender: User.Gender.Id,
-            Amount:User.Amount
+            Amount: User.Amount,
+            Status: User.Status.Id,
+            AltPhonenumber:User.AltPhonenumber
 
         }
 
         var req = {
             method: 'POST',
-            url: '/api/RegisterUser/Appusers',
+            url: '/api/AppUsers/Appusers',
             data: User
         }
         $http(req).then(function (response) {
 
             alert("Saved successfully!");
+            $scope.GetUserdetails();
 
             $scope.Group = null;
 
