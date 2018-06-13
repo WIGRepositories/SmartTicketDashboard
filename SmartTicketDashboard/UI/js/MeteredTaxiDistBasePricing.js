@@ -171,10 +171,10 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
             VehicleGroupId: $scope.vm.Id,
             VehicleTypeId: $scope.vt.Id,
             //PricingTypeId: directions.pricing,
-            PricingTypeId: $scope.pricing,
+            PricingTypeId: $scope.Pricelist.Pricing,
             Distance: $scope.distval,
-            UnitPrice: $scope.unitprice,
-            Amount: $scope.total,
+            UnitPrice: $scope.Pricelist.UnitPrice,
+            Amount: $scope.Pricelist.Amount,
             CountryId: $scope.ctry.Id,
             flag: 'I'
         }
