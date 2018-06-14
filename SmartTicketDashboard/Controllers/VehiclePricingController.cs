@@ -107,7 +107,7 @@ namespace SmartTicketDashboard.Controllers
 
 
         [HttpGet]
-        [Route("api/GetVehicleDistancePrices")]
+        [Route("api/VehiclePricing/GetVehicleDistancePrices")]
 
         public DataTable GetVehicleDistancePrices()
         {
