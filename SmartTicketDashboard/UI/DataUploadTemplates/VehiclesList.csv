@@ -1,9 +1,9 @@
-RegistrationNo	ChasisNo	VehicleGroup	VehicleModel	Country	VehicleCode	FleetOwner	EngineNo	VehicleType	VehicleMake	Driver	ModelYear	Has AC	IsDriverOwned
+RegistrationNo,	ChasisNo,	VehicleGroup,	VehicleModel,	Country,	VehicleCode,	FleetOwner,	EngineNo,	VehicleType,	VehicleMake,	Driver,	ModelYear,	Has AC,	IsDriverOwned
 ,,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "						",,,,,,,,,,,,,
 "example:						",,,,,,,,,,,,,
-TS001	Td5689	Hailing Car		India	TY0001	99	Yu4526	sedan		Smith	2015	0	0
-TS002	Td5689	Hailing Car		Zombia	TY0002	98	Yu4526	sedan		Kiran	2015	0	0
+TS001,	Td5689,	Hailing Car,	,	India,	TY0001,	99,	Yu4526,	sedan,	,	Smith,	2015,	0,	0
+TS002,	Td5689,	Hailing Car,	,	Zombia,	TY0002,	98,	Yu4526,	sedan,	,	Kiran,	2015,	0,	0
 
