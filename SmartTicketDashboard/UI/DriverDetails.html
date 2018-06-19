@@ -500,11 +500,11 @@
                                                     <div class="row mbm">
                                                         <div>
                                                             <font color="red">Mandatory Documents not uploaded:</font>
-                                                            <span ng-repeat="md in (PendDocFiles|filter:{IsMandatory:1,uploaded:0})"><a href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()"> {{md.Name}}</a></span>
+                                                            <span ng-repeat="md in (PendDocFiles|filter:{IsMandatory:1,uploaded:0})">
+                                                  <a href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()"> {{md.Name}}</a><br /></span>
                                                             <span><a ng-if="imageSrc == null" href="#" ng-click="UploadImg();">Photo</a></span>
                                                         </div>
                                                     </div>
-                                                   
                                                 </div>
                                                 <div class="col-md-9">
                                                     <div id="generalTabContent" class="tab-content">
@@ -768,15 +768,13 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-                                                                                    <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
-                                                                                        <td><a ng-if="d.uploaded==1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a>
-                                                                                            <span ng-if ="d.uploaded==0">{{d.docName}}</span></td><td>{{d.docType}}</td>
-                                                                                        <td>
-                                                                                            {{d.expiryDate | date:'MM-dd-yyyy'}}
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+    <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+    <td><a ng-if="d.uploaded==1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a>
+        <!--<span ng-if ="d.uploaded==0">{{d.docName}}</span>-->  
+        <a ng-if="d.uploaded==0" href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()" style="color:red;"> {{d.docName}}</a> </td>
+    <td>{{d.docType}}</td>
+    <td>{{d.expiryDate | date:'MM-dd-yyyy'}}</td>
+    <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
                                                                                             <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox"  ng-model="d.IsApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
