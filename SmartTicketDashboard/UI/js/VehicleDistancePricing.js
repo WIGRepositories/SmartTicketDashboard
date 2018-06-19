@@ -12,7 +12,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.Roleid = $scope.userdetails[0].roleid;
 
     $scope.GetDistancePrices = function () {
-        $http.get("/api/GetVehicleDistancePrices").then(function (response, req) {
+        $http.get("/api/VehiclePricing/GetVehicleDistancePrices").then(function (response, req) {
             $scope.DistPricelist = response.data;
         });
     }
