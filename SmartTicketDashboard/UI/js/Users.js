@@ -224,6 +224,23 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeGender: '1',          
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;            
+        });
+    }
+
     $scope.save = function (User, flag, role) {
         if (User == null) {
             alert('Please enter Email.');
@@ -309,6 +326,72 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
         $scope.currGroup = null;
     };
+
+
+    $scope.saveNew = function (User, flag) {
+
+        if (User == null) {
+            alert('Please enter Email.');
+            return;
+        }
+
+        if (User.FirstName == null) {
+            alert('Please enter first name.');
+            return;
+        }
+
+        if (User.LastName == null) {
+            alert('Please enter last name.');
+            return;
+        }
+
+        if (User.EmailId == null) {
+            //alert('Please enter Email.');
+            return;
+        }           
+
+        //if ($scope.cmp == null) {
+        //    alert('Please select a company.');
+        //    return;
+        //}
+
+
+        var User1 = {
+            Id: -1,
+            FirstName: User.FirstName,
+            LastName: User.LastName,
+            MiddleName: User.MiddleName,            
+            Email: User.EmailId,            
+            ContactNo1: User.MobileNo,           
+            mgrId: User.ManagerId,           
+            GenderId: User.Gender,
+            Address: User.Address,
+            companyId: $scope.cmp.Id,
+            Active: 1,
+
+        }
+
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleMaster/Vehicle',
+            data: User1
+        }
+        $http(req).then(function (res) {
+
+            alert("Saved successfully!");
+            $scope.GetVehcileList();
+            var data = res.data;
+
+            window.location.href = "vehicleDetails.html?VID=" + res.data[0].Id;
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your Details Are Incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
+    };
+
 
     $scope.showDialog = function (message) {
 
