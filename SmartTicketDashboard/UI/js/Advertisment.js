@@ -143,10 +143,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     $scope.saveNew = function (adv, flag) {
 
-        if (adv.CompanyName == null) {
-            alert('Please Enter CompanyName');
-            return;
-        }
+        //if (adv.CompanyName == null) {
+        //    alert('Please Enter CompanyName');
+        //    return;
+        //}
         if ($scope.imageSrc == null) {
             alert('Please Enter Image');
             return;
@@ -180,7 +180,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         var Advertisment = {
             Id: -1,
-            CompanyName: adv.CompanyName,
+            CompanyName: 'InterBus',
             Image: $scope.imageSrc,
             AdvertisementTitle: adv.Title,
             Description: adv.Description,

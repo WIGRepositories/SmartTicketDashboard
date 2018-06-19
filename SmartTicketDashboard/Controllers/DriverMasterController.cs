@@ -144,7 +144,7 @@ namespace SmartTicketDashboard.Controllers
             i.Value = d.DId;
             cmd.Parameters.Add(i);
 
-            SqlParameter di = new SqlParameter("@Country", SqlDbType.VarChar, 50);
+            SqlParameter di = new SqlParameter("@CountryId", SqlDbType.VarChar, 50);
             di.Value = d.Country;
             cmd.Parameters.Add(di);
 
