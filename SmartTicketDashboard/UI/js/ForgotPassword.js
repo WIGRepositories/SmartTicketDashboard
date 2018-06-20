@@ -20,17 +20,21 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage,$uibM
         $http.get('/api/LOGIN/RetrivePassword?email='+$scope.email).then(function (response, data) {
             $scope.result = response.data;        
        
-            if ($scope.result.length == 0)
-        {
+            if ($scope.result.length == 0) {
                 $scope.showDialog("Invalid email id or email id not registered. Please contact administrator.")
-        }else
-            $scope.showDialog("Temporary password has been sent to the registerd email-id:" + $scope.email)
+            } else
+                //$scope.showDialog("Temporary password has been sent to the registerd email-id:" + $scope.email)
+                $scope.inf = response.data;
+                
         }, function () {
             $scope.showDialog("Invalid email id or email id not registered. Please contact administrator.")
         });
     }
         //send the details to db for validation
 
+
+
+  
         $scope.showDialog = function (message) {
 
             var modalInstance = $uibModal.open({
