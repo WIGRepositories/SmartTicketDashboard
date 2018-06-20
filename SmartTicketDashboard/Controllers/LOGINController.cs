@@ -120,6 +120,7 @@ namespace SmartTicketDashboard.Controllers
 <div style='padding:10px;border:#0000FF solid 2px;'>
 Dear Mr AAAAABBBB<br><br>
                                                                             <h3>Congratulations!!</h3> <h4>We have successfully registered your email id <a href='http://154.120.237.198:52800' target='_blank'>user@gmail.com</a></h4><br/>
+                                                        <h4>Your Otp:1234</h4>
                                                                             We thank you for your support and look forward to sending you important information regarding your account and travel on your registered email id. <br><br>
                                                                             For any queries call us on <b>1000-000-0000</b>, (Monday to Friday, 10am to 7pm except national holidays).   <br /  <br /> 
                                                         Alternatively, write to us at <a href='http://154.120.237.198:52800' target='_blank'>admin@interbus.com</a> with your user name or email address or mobile number.                         
