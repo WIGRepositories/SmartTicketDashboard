@@ -185,22 +185,29 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             }
 
             for (i = 0; i < $scope.initdata.Table3.length; i++) {
-                if ($scope.initdata.Table3[i].Id == $scope.Dl.CountryId) {
-                    $scope.Dl.Country = $scope.initdata.Table3[i];
+                if ($scope.initdata.Table3[i].Id == $scope.Dl.PaymentTypeId) {
+                    $scope.Dl.pt = $scope.initdata.Table3[i];
                     break;
                 }
             }
 
             for (i = 0; i < $scope.initdata.Table4.length; i++) {
-                if ($scope.initdata.Table4[i].Id == $scope.Dl.FleetOwnerId) {
-                    $scope.Dl.Dl.fleetowner = $scope.initdata.Table4[i];
+                if ($scope.initdata.Table4[i].Id == $scope.Dl.CountryId) {
+                    $scope.Dl.Country = $scope.initdata.Table4[i];
                     break;
                 }
             }
 
             for (i = 0; i < $scope.initdata.Table5.length; i++) {
-                if ($scope.initdata.Table5[i].Id == $scope.Dl.CurrentStateId) {
-                    $scope.Dl.CurrentStateId = $scope.initdata.Table5[i];
+                if ($scope.initdata.Table5[i].Id == $scope.Dl.FleetOwnerId) {
+                    $scope.Dl.Dl.fleetowner = $scope.initdata.Table5[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.initdata.Table6.length; i++) {
+                if ($scope.initdata.Table6[i].Id == $scope.Dl.CurrentStateId) {
+                    $scope.Dl.CurrentStateId = $scope.initdata.Table6[i];
                     break;
                 }
             }         
@@ -600,6 +607,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             FirstName: Dl.Firstname,
             LastName: Dl.lastname,
             VehicleGroup: Dl.vg.Id,
+            PaymentTypeId:Dl.pt.Id,
             IsVerified: Dl.Isverified,
             IsApproved:Dl.IsApproved
 
@@ -1143,7 +1151,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             includeStatus: '1',
             includeDocumentType: '1',
             includeVehicleGroup: '1',
-            includeState:'1'
+            includeState: '1',
+            includePaymentType:'1',
         };
 
         var req = {

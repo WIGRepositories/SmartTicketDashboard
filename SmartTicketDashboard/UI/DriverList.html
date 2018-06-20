@@ -447,7 +447,7 @@
                                                 <div class="table-container">
                                                     <div class="row mbm">
                                                         <div class="col-md-3">
-                                                            Country:<select ng-options="ct.Name for ct in initdata.Table2 track by ct.Id" ng-model="ct" ng-change="GetMaster()">
+                                                            Country:<select ng-options="ct.Name for ct in initdata.Table3 track by ct.Id" ng-model="ct" ng-change="GetMaster()">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
@@ -631,7 +631,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="AssginDriver" class="col-md-4 control-label" style="float:left">Fleet Owner:</label>
                                                                         <div class="col-md-8">
-                                                                            <select ng-options="f.FleetOwnerCode for f in initdata.Table3  track by f.Id" ng-model="Driverlist.Foid" class="form-control">
+                                                                            <select ng-options="f.FleetOwnerCode for f in initdata.Table4  track by f.Id" ng-model="Driverlist.Foid" class="form-control">
                                                                                 <option value="">Select</option>
                                                                             </select>
                                                                         </div>
@@ -725,7 +725,7 @@
                                                                     <div class="col-md-6">
                                                                         <label for="code" class="col-md-4 control-label" style="float:left">Country:<span class='require'></span></label>
                                                                         <div class="col-md-8">
-                                                                            <select ng-options="vs.Name for vs in initdata.Table2 track by vs.Id" ng-model="Driverlist.Country" class="form-control">
+                                                                            <select ng-options="vs.Name for vs in initdata.Table3 track by vs.Id" ng-model="Driverlist.Country" class="form-control">
                                                                                 <option value="">Select</option>
                                                                             </select>
                                                                         </div>
@@ -734,6 +734,14 @@
                                                                         <label for="code" class="col-md-4 control-label" style="float:left">Vehicle Group:<span class='require'></span></label>
                                                                         <div class="col-md-8">
                                                                             <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Driverlist.Vg" class="form-control">
+                                                                                <option value="">Select</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-md-6">
+                                                                        <label for="code" class="col-md-4 control-label" style="float:left">Payment Mode:<span class='require'></span></label>
+                                                                        <div class="col-md-8">
+                                                                            <select ng-options="pt.Name for pt in initdata.Table2 track by pt.Id" ng-model="Driverlist.pt" class="form-control">
                                                                                 <option value="">Select</option>
                                                                             </select>
                                                                         </div>

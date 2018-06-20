@@ -458,9 +458,9 @@
 
                                             <div class="col-sm-6">
                                                 <div class="panel panel-default">
-                                                    <div class="panel-heading">Booking Details <i class="fa fa-link fa-1x"></i></div>
-                                                    <div class="row">
-                                                        <div class="col-md-6 verticalLine">
+                                                    <div class="panel-heading">Booking Number:{{b.BNo}}</div>
+                                                    <div class="row" style="margin-top:10px">
+                                                        <div class="col-md-6" >
                                                             Source-Destination:{{b.Src}}-{{b.Dest}}
                                                         </div>
                                                         <div class="col-md-6">
@@ -469,11 +469,31 @@
                                                     </div>
                                                     <hr>
                                                     <div class="row">
-                                                        <div class="col-md-6 verticalLine">
-                                                            No of Seats:{{b.NoofSeats}}
-                                                        </div>
                                                         <div class="col-md-6">
-                                                            No of Vehicles:{{b.NoofVehicles}}
+                                                            Booking date time:{{b.BookedDate}}:{{b.BookedTime}}
+                                                        </div>
+                                                        <div class="col-md-6 verticalLine">
+                                                            Closing Date time:{{b.closingDate}}:{{b.ClosingTime}}
+                                                        </div>
+                                                     
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-6 verticalLine">
+                                                            Booking Channel:{{b.BookingChannel}}
+                                                        </div>
+                                                        <div class="col-md-6 verticalLine">
+                                                            Number of Seats:{{b.NoofSeats}}
+                                                        </div>
+                                                    </div>
+                                                    <hr>
+                                                    <div class="row">
+                                                        <div class="col-md-6 verticalLine">
+                                                            Customer PhoneNo:{{b.CustomerPhoneNo}}
+                                                        </div>
+                                                     
+                                                        <div class="col-md-6">
+                                                            Driver PhoneNo:{{b.DriverPhoneNo}}
                                                         </div>
                                                     </div>
                                                     <hr>
@@ -482,34 +502,16 @@
                                                             Booking Type:{{b.BookingType}}
                                                         </div>
                                                         <div class="col-md-6">
-                                                            Booking date time:{{b.BookedDate}}:{{b.BookedTime}}
+                                                            Booking Status:{{b.BookingStatus}}
                                                         </div>
                                                     </div>
                                                     <hr>
                                                     <div class="row">
                                                         <div class="col-md-6 verticalLine">
-                                                            Closing Date time:{{b.closingDate}}:{{b.ClosingTime}}
+                                                            Customer Rating:{{b.Rating}}
                                                         </div>
                                                         <div class="col-md-6">
-                                                            Driver PhoneNo:{{b.DriverPhoneNo}}
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-6 verticalLine">
-                                                            Customer PhoneNo:{{b.CustomerPhoneNo}}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            Payment Type:Wallet
-                                                        </div>
-                                                    </div>
-                                                    <hr>
-                                                    <div class="row">
-                                                        <div class="col-md-6 verticalLine">
-                                                            Payment Status:{{b.PaymentStatus}}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            Booking No:{{b.BNo}}
+                                                            Customer Comments:{{b.Comments}}
                                                         </div>
                                                     </div>
                                                     <!--<ul class="list-group">
@@ -553,7 +555,7 @@
                                 <div class="col-lg-12">
                                     <div class="col-sm-6">
                                         <div class="panel panel-default">
-                                            <div class="panel-heading">Vehicle Details <i class="fa fa-link fa-1x"></i></div>
+                                            <div class="panel-heading">Vehicle Number:{{b.RegNo}} </div>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
                                                     Source-Destination:{{b.Src}}-{{b.Dest}}
@@ -564,26 +566,20 @@
                                             </div>
                                             <hr>
                                             <div class="row">
-                                                <div class="col-md-6 verticalLine">
-                                                    No of Seats:{{b.NoofSeats}}
-                                                </div>
                                                 <div class="col-md-6">
                                                     No of Vehicles:{{b.NoofVehicles}}
                                                 </div>
-                                            </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-6 verticalLine">
-                                                    Booking Type:{{b.BookingType}}
-                                                </div>
                                                 <div class="col-md-6">
-                                                    Booking date time:{{b.BookedDate}}:{{b.BookedTime}}
+                                                    No of Seats:{{b.NoofSeats}}
                                                 </div>
+                                              
                                             </div>
+                                           
+                                           
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
-                                                    Closing Date time:{{b.closingDate}}:{{b.ClosingTime}}
+                                                    Driver name:{{b.DriverName}}
                                                 </div>
                                                 <div class="col-md-6">
                                                     Driver PhoneNo:{{b.DriverPhoneNo}}
@@ -592,19 +588,14 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
-                                                    Customer PhoneNo:{{b.CustomerPhoneNo}}
+                                                    Driver Rating:{{b.DriverRating}}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    Payment Type:Wallet
+                                                    Driver Comments:{{b.DriverComments}}
                                                 </div>
                                             </div>
-                                            <hr>
-                                            <div class="row">
-                                                <div class="col-md-6 verticalLine">
-                                                    Payment Status:{{b.PaymentStatus}}
-                                                </div>
-
-                                            </div>
+                                            
+                                          
                                             <!--<ul class="list-group">
 
                     <li class="list-group-item text-right"><span class="pull-left"><strong>Source-Destination</strong></span>srnagr-prnagr</li>
@@ -624,7 +615,7 @@
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="panel panel-default">
-                                            <div class="panel-heading">Payment Details <i class="fa fa-link fa-1x"></i></div>
+                                            <div class="panel-heading"> Payment Type:{{b.PaymentType}}</div>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
                                                     Source-Destination:{{b.Src}}-{{b.Dest}}
@@ -636,7 +627,7 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
-                                                    No of Seats:{{b.NoofSeats}}
+                                                    Payment Status:{{b.PaymentStatus}}
                                                 </div>
                                                 <div class="col-md-6">
                                                     No of Vehicles:{{b.NoofVehicles}}
@@ -645,9 +636,9 @@
                                             <hr>
                                             <div class="row">
                                                 <div class="col-md-6 verticalLine">
-                                                    Booking Type:{{b.BookingType}}
+                                                    Pricing:{{b.Pricing}}
                                                 </div>
-                                                <div class="col-md-6">
+                                                <!--<div class="col-md-6">
                                                     Booking date time:{{b.BookedDate}}:{{b.BookedTime}}
                                                 </div>
                                             </div>
@@ -675,7 +666,7 @@
                                                     Payment Status:{{b.PaymentStatus}}
                                                 </div>
 
-                                            </div>
+                                            </div>-->
                                             <!--<ul class="list-group">
 
                 <li class="list-group-item text-right"><span class="pull-left"><strong>Source-Destination</strong></span>srnagr-prnagr</li>

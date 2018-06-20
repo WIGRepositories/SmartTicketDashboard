@@ -2201,7 +2201,8 @@ namespace SmartTicketDashboard.Models
         public int IsVerified { get; set; }
         public int IsApproved { get; set; }
         public int CurrentStateId { get; set; }
-        
+
+        public int PaymentTypeId { get; set; }
     }
     public class vehiclemas
     { 
