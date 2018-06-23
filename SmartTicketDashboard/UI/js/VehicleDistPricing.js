@@ -12,9 +12,27 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http.get('/api/VehicleDistPricing/GetDistanceBasePricing?ctryId=' + countryId + '&vgId=' + vgId).then(function (response, req) {
             $scope.VPricing = response.data;
 
+            for (i = 0; i < $scope.initdata.Table.length; i++) {
+                if ($scope.initdata.Table[i].Id == $scope.VPricing[0].VehicleGroupId) {
+                    $scope.v = $scope.initdata.Table[i];
+                    break;
+                }
+            }
             for (i = 0; i < $scope.initdata.Table1.length; i++) {
-                if ($scope.initdata.Table1[i].Id == $scope.VPricing.VehicleTypeId) {
-                    $scope.Changes.vt = $scope.initdata.Table1[i];
+                if ($scope.initdata.Table1[i].Id == $scope.VPricing[0].PricingType) {
+                    $scope.PricingType = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table2.length; i++) {
+                if ($scope.initdata.Table2[i].Id == $scope.VPricing[0].VehicleTypeId) {
+                    $scope.vt = $scope.initdata.Table2[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table3.length; i++) {
+                if ($scope.initdata.Table3[i].Id == $scope.VPricing[0].CountryId) {
+                    $scope.c = $scope.initdata.Table3[i];
                     break;
                 }
             }
@@ -69,7 +87,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VehicleTypeId: $scope.vt.Id,
             FromKm: Dist.FromKm,
             ToKm: Dist.ToKm,
-            PricingType: Dist.PricingType,
+            PricingType: Dist.PricingType.Id,
             FromDate: Dist.FromDate,
             ToDate: Dist.ToDate,
             Amount: Dist.Amount,
@@ -131,7 +149,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetConfigData = function () {
 
         var vc = {
-
+            includePricingType:'1',
             includeActiveCountry: '1',
             includeVehicleGroup: '1',
             includeVehicleType: '1'
@@ -146,7 +164,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.ct = $scope.initdata.Table2[0];
+            $scope.ct = $scope.initdata.Table3[0];
             $scope.vg = $scope.initdata.Table[0];
             $scope.GetDistanceBasePricing();
         });
@@ -171,7 +189,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (Changes.PricingType == null) {
+        if ($scope.PricingType.Id == null) {
             alert('Please enter Pricing.');
             return;
         }
@@ -183,11 +201,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please enter ToDate.');
             return;
         }
-        if (Changes.c.Id == null) {
+        if ($scope.c.Id == null) {
             alert('Please enter Country.');
             return;
         }
-        if (Changes.v.Id == null) {
+        if ($scope.v.Id == null) {
             alert('Please enter VehicleGroup.');
             return;
         }
@@ -198,13 +216,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             VehicleTypeId: $scope.vt.Id,
             FromKm: Changes.FromKm,
             ToKm: Changes.ToKm,
-            PricingType: Changes.PricingType1,
+            PricingType: $scope.PricingType.Id,
             FromDate: Changes.FromDate,
             ToDate: Changes.ToDate,
             Amount: Changes.Amount,
             PerUnitPrice: Changes.PerUnitPrice,
-            CountryId: Changes.c.Id,
-            VehicleGroupId: Changes.v.Id,
+            CountryId: $scope.c.Id,
+            VehicleGroupId: $scope.v.Id,
             insupddelflag: 'U'
         }
 

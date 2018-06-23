@@ -112,7 +112,7 @@
 
 </head>
 
-<body ng-controller="MainCtrl" ng-init="GetPricinglist()" ng-model="Pricelist">
+<body ng-controller="MainCtrl" ng-init="GetConfigData()"  ng-model="Pricelist">
 
     <div>
         <!--BEGIN THEME SETTING-->
@@ -534,9 +534,9 @@
 
                                 <div id="tableactionTabContent" class="tab-content">
                                     <div class="row mbm">
-                                        <div class="col-md-3" ng-init="GetConfigData()">
+                                        <div class="col-md-3">
 
-                                            Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%" ng-change="GetPricinglist()">
+                                            Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%">
     <option value="">Select</option>
 
 </select>
@@ -673,7 +673,7 @@
                                                                     <span id="place-address"></span>
                                                                 </div>
                                                                 <google-map control="map.control" center="map.center" zoom="map.zoom">
-                                                                    <marker coords="marker.center"></marker>
+                                                                    <!--<marker coords="marker.center"></marker>-->
                                                                 </google-map>
 
                                                                 <div id="directionsList" ng-show="directions"></div>
@@ -914,7 +914,7 @@
     <script src="js/ngStorage.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU&libraries=places&sensor=false"></script>
-
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>-->
     <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
     <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
     <script src="Maps/vs-google-autocomplete.js"></script>

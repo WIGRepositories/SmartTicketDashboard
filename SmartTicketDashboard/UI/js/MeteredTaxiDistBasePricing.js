@@ -1,4 +1,6 @@
-﻿var app = angular.module('plunker', ['google-maps','vsGoogleAutocomplete']);
+﻿//var app = angular.module('plunker', ['google-maps','vsGoogleAutocomplete']);
+
+var app = angular.module('plunker', [ 'vsGoogleAutocomplete']);
 
 app.controller('MainCtrl', function ($scope, $document,$http) {
 
@@ -7,6 +9,24 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         componentRestrictions: { country: 'FR' }
     }
 
+    //// Set the country restriction based on user input.
+    //// Also center and zoom the map on the given country.
+    //function setAutocompleteCountry() {
+    //    var country = document.getElementById('country').value;
+    //    if (country == 'all') {
+    //        autocomplete.setComponentRestrictions({ 'country': [] });
+    //        map.setCenter({ lat: 15, lng: 0 });
+    //        map.setZoom(2);
+    //    } else {
+    //        autocomplete.setComponentRestrictions({ 'country': country });
+    //        map.setCenter(countries[country].center);
+    //        map.setZoom(countries[country].zoom);
+    //    }
+    //    clearResults();
+    //    clearMarkers();
+    //}
+
+    var a = [];
     // map object
     //---------------------------------
     $scope.GetVehicleConfig = function () {
@@ -36,11 +56,59 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         });
 
     }
+    $scope.GetPricinglist = function () {
+        $scope.DistPricelist = null;
 
+        $scope.selectedprice = parseLocation(window.location.search)['vdpid'];
+        if ($scope.selectedprice == null) return;
+
+        $http.get("/api/VehiclePricing/GetPricinglist?vdpid=" + $scope.selectedprice).then(function (response, req) {
+
+           // $scope.GetConfigData();
+            $scope.Pricelist = response.data;
+            $scope.dd;
+            $scope.distval = $scope.Pricelist[0];
+            for (i = 0; i < $scope.dd.Table.length; i++) {
+                if ($scope.dd.Table[i].Id == $scope.Pricelist[0].VehicleGroupId) {
+                    $scope.vm = $scope.dd.Table[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.dd.Table1.length; i++) {
+                if ($scope.dd.Table1[i].Id == $scope.Pricelist[0].VehicleTypeId) {
+                    $scope.vt = $scope.dd.Table1[i];
+                    break;
+                }
+            }
+
+            for (i = 0; i < $scope.dd.Table2.length; i++) {
+                if ($scope.dd.Table2[i].Id == $scope.Pricelist[0].CountryId) {
+                    $scope.ctry = $scope.dd.Table2[i];
+                    break;
+                }
+            }
+
+            var request = {
+                placeId: 'ChIJN1t_tDeuEmsRUsoyG83frY4',
+                fields: ['name', 'rating', 'formatted_phone_number', 'geometry']
+            };
+
+            //service = new google.maps.places.PlacesService($scope.map);
+            //service.getDetails(request, callback);
+
+            //function callback(place, status) {
+            //    if (status == google.maps.places.PlacesServiceStatus.OK) {
+            //        //  createMarker(place);
+            //        $scope.pickupPoint.components = place;
+            //    }
+            //}
+
+        });
+    }
     $scope.GetConfigData = function () {
 
         var vc = {
-            
             includeVehicleType: '1',
             includeVehicleGroup: '1',
             includeActiveCountry: '1',
@@ -53,10 +121,14 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         }
 
         $http(req).then(function (res) {
-            $scope.initdata = res.data;
-            $scope.ct = $scope.initdata.Table[0];
-            $scope.s = $scope.initdata.Table1[0];
+            $scope.dd = res.data;
+            //$scope.ct = $scope.initdata.Table2[0];
+            //$scope.s = $scope.initdata.Table1[0];
+
+            $scope.initdata = $scope.dd;
+            $scope.GetPricinglist();
         });
+       
     }
 
     var parseLocation = function (location) {
@@ -75,15 +147,7 @@ app.controller('MainCtrl', function ($scope, $document,$http) {
         return obj;
     };
 
-    $scope.GetPricinglist = function () {
-        $scope.DistPricelist = null;
-
-        $scope.selectedprice = parseLocation(window.location.search)['vdpid'];
-
-        $http.get("/api/VehiclePricing/GetPricinglist?vdpid="+$scope.selectedprice).then(function (response, req) {
-            $scope.Pricelist = response.data;
-        });
-    }
+   
 
 
     $scope.map = {

@@ -733,7 +733,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.initdata = res.data;
             // $scope.Getdriverdetails();
-            $scope.ct = $scope.initdata.Table2[0];
+            $scope.ct = $scope.initdata.Table3[0];
             $scope.GetMaster();
         });
     }
