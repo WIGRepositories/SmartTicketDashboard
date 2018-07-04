@@ -1,6 +1,6 @@
 ﻿//var app = angular.module('plunker', ['google-maps','vsGoogleAutocomplete']);
 
-var app = angular.module('plunker', [ 'vsGoogleAutocomplete']);
+var app = angular.module('plunker', ['google-maps', 'vsGoogleAutocomplete']);
 
 app.controller('MainCtrl', function ($scope, $document,$http) {
 
