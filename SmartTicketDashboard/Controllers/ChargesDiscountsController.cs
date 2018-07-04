@@ -216,7 +216,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Value = new SqlParameter();
             Value.ParameterName = "@UnitId";
-            Value.SqlDbType = SqlDbType.Decimal;
+            Value.SqlDbType = SqlDbType.Int;
             Value.Value = Convert.ToString(pc.UnitId);
             cmd.Parameters.Add(Value);
 
@@ -325,7 +325,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Value = new SqlParameter();
             Value.ParameterName = "@UnitId";
-            Value.SqlDbType = SqlDbType.Decimal;
+            Value.SqlDbType = SqlDbType.Int;
             Value.Value = Convert.ToString(dc.UnitId);
             cmd.Parameters.Add(Value);          
 
@@ -386,7 +386,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Condition = new SqlParameter();
             Condition.ParameterName = "@Condition";
-            Condition.SqlDbType = SqlDbType.Int;
+            Condition.SqlDbType = SqlDbType.VarChar;
             Condition.Value = Convert.ToString(pd.Condition);
             cmd.Parameters.Add(Condition);
 

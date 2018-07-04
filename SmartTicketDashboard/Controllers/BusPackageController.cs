@@ -70,13 +70,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Title = new SqlParameter();
             Title.ParameterName = "@PackageName";
-            Title.SqlDbType = SqlDbType.Int;
+            Title.SqlDbType = SqlDbType.VarChar;
             Title.Value = Convert.ToString(pc.PackageName);
             cmd.Parameters.Add(Title);
 
             SqlParameter Description = new SqlParameter();
             Description.ParameterName = "@Description";
-            Description.SqlDbType = SqlDbType.Int;
+            Description.SqlDbType = SqlDbType.VarChar;
             Description.Value = Convert.ToString(pc.Description);
             cmd.Parameters.Add(Description);
 
@@ -100,7 +100,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Value = new SqlParameter();
             Value.ParameterName = "@RouteId";
-            Value.SqlDbType = SqlDbType.Decimal;
+            Value.SqlDbType = SqlDbType.Int;
             Value.Value = Convert.ToString(pc.RouteId);
             cmd.Parameters.Add(Value);
 
@@ -149,7 +149,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Value = new SqlParameter();
             Value.ParameterName = "@RouteId";
-            Value.SqlDbType = SqlDbType.Decimal;
+            Value.SqlDbType = SqlDbType.Int;
             Value.Value = Convert.ToString(pp.RouteId);
             cmd.Parameters.Add(Value);
 
@@ -181,13 +181,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter UnitPrice = new SqlParameter();
             UnitPrice.ParameterName = "@UnitPrice";
-            UnitPrice.SqlDbType = SqlDbType.Int;
+            UnitPrice.SqlDbType = SqlDbType.Decimal;
             UnitPrice.Value = Convert.ToString(pp.UnitPrice);
             cmd.Parameters.Add(UnitPrice);
 
             SqlParameter Amount = new SqlParameter();
             Amount.ParameterName = "@Amount";
-            Amount.SqlDbType = SqlDbType.Int;
+            Amount.SqlDbType = SqlDbType.Decimal;
             Amount.Value = Convert.ToString(pp.Amount);
             cmd.Parameters.Add(Amount);
 
@@ -199,7 +199,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Description = new SqlParameter();
             Description.ParameterName = "@Description";
-            Description.SqlDbType = SqlDbType.Int;
+            Description.SqlDbType = SqlDbType.VarChar;
             Description.Value = Convert.ToString(pp.Description);
             cmd.Parameters.Add(Description);
 
@@ -235,13 +235,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter EffectiveDate = new SqlParameter();
             EffectiveDate.ParameterName = "@EffectiveDate";
-            EffectiveDate.SqlDbType = SqlDbType.Int;
+            EffectiveDate.SqlDbType = SqlDbType.DateTime;
             EffectiveDate.Value = Convert.ToString(pp.EffectiveDate);
             cmd.Parameters.Add(EffectiveDate);
 
             SqlParameter ExpiryDate = new SqlParameter();
             ExpiryDate.ParameterName = "@ExpiryDate";
-            ExpiryDate.SqlDbType = SqlDbType.Int;
+            ExpiryDate.SqlDbType = SqlDbType.DateTime;
             ExpiryDate.Value = Convert.ToString(pp.ExpiryDate);
             cmd.Parameters.Add(ExpiryDate);
 

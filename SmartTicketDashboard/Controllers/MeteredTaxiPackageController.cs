@@ -69,13 +69,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Title = new SqlParameter();
             Title.ParameterName = "@PackageName";
-            Title.SqlDbType = SqlDbType.Int;
+            Title.SqlDbType = SqlDbType.VarChar;
             Title.Value = Convert.ToString(mt.PackageName);
             cmd.Parameters.Add(Title);
 
             SqlParameter Description = new SqlParameter();
             Description.ParameterName = "@Description";
-            Description.SqlDbType = SqlDbType.Int;
+            Description.SqlDbType = SqlDbType.VarChar;
             Description.Value = Convert.ToString(mt.Description);
             cmd.Parameters.Add(Description);
 
@@ -190,13 +190,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter UnitPrice = new SqlParameter();
             UnitPrice.ParameterName = "@UnitPrice";
-            UnitPrice.SqlDbType = SqlDbType.Int;
+            UnitPrice.SqlDbType = SqlDbType.Decimal;
             UnitPrice.Value = Convert.ToString(mtp.UnitPrice);
             cmd.Parameters.Add(UnitPrice);
 
             SqlParameter Amount = new SqlParameter();
             Amount.ParameterName = "@Amount";
-            Amount.SqlDbType = SqlDbType.Int;
+            Amount.SqlDbType = SqlDbType.Decimal;
             Amount.Value = Convert.ToString(mtp.Amount);
             cmd.Parameters.Add(Amount);
 
@@ -208,7 +208,7 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter Description = new SqlParameter();
             Description.ParameterName = "@Description";
-            Description.SqlDbType = SqlDbType.Int;
+            Description.SqlDbType = SqlDbType.VarChar;
             Description.Value = Convert.ToString(mtp.Description);
             cmd.Parameters.Add(Description);
 
@@ -244,13 +244,13 @@ namespace SmartTicketDashboard.Controllers
 
             SqlParameter EffectiveDate = new SqlParameter();
             EffectiveDate.ParameterName = "@EffectiveDate";
-            EffectiveDate.SqlDbType = SqlDbType.Int;
+            EffectiveDate.SqlDbType = SqlDbType.DateTime;
             EffectiveDate.Value = Convert.ToString(mtp.EffectiveDate);
             cmd.Parameters.Add(EffectiveDate);
 
             SqlParameter ExpiryDate = new SqlParameter();
             ExpiryDate.ParameterName = "@ExpiryDate";
-            ExpiryDate.SqlDbType = SqlDbType.Int;
+            ExpiryDate.SqlDbType = SqlDbType.DateTime;
             ExpiryDate.Value = Convert.ToString(mtp.ExpiryDate);
             cmd.Parameters.Add(ExpiryDate);
 
