@@ -445,7 +445,7 @@
                                                 <div class="table-container">
                                                     <div class="row mbm" ng-init="GetConfigData()">
                                                         <div class="col-md-3">
-                                                            Country:<select ng-options="ct.Name for ct in initdata.Table2 track by ct.Id" ng-model="ct" ng-change="GetDistanceBasePricing()">
+                                                            Country:<select ng-options="ct.Name for ct in initdata.Table3 track by ct.Id" ng-model="ct" ng-change="GetDistanceBasePricing()">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
@@ -474,7 +474,7 @@
                                                                             <div class="col-md-6" style="margin-bottom:10px;">
                                                                                 <label for="Fax" class="col-md-4 control-label">Country<span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <select ng-options="cv.Name for cv in initdata.Table2 track by cv.Id" ng-model="Dist.c" class="form-control">
+                                                                                    <select ng-options="cv.Name for cv in initdata.Table3 track by cv.Id" ng-model="Dist.c" class="form-control">
                                                                                         <option value="">Select</option>
                                                                                     </select>
                                                                                 </div>
@@ -482,10 +482,8 @@
                                                                             <div class="col-md-6">
                                                                                 <label for="Fax" class="col-md-4 control-label">Pricing Type: <span class='require'></span></label>
                                                                                 <div class="col-md-8">
-                                                                                    <select class='form-control' ng-model="Dist.PricingType">
-                                                                                        <option value="">Select</option>
-                                                                                        <option value="1">1</option>
-                                                                                        <option value="2">2</option>
+                                                                                    <select ng-options="pt.Name for pt in initdata.Table1 track by pt.Id" class='form-control' ng-model="Dist.PricingType">
+                                                                                        <option value="">Select</option>                                                                                       
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
@@ -503,7 +501,7 @@
 
                                                                                 <label for="selCountry" class="col-md-4 control-label">Vehicle Type</label>
                                                                                 <div class="col-md-8">
-                                                                                    <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control">
+                                                                                    <select ng-options="vt.Name for vt in initdata.Table2 track by vt.Id" ng-model="vt" class="form-control">
                                                                                         <option value="">Select</option>
                                                                                     </select>
                                                                                 </div>
@@ -587,7 +585,7 @@
                                                         <div class="col-md-6">
                                                             <label for="Fax" class="col-md-4 control-label">Vehicle Group<span class='require'></span></label>
                                                             <div class="col-md-8">
-                                                                <select ng-options="v.Name for v in initdata.Table track by v.Id" ng-model="Changes.v" class="form-control">
+                                                                <select ng-options="v.Name for v in initdata.Table track by v.Id" ng-model="v" class="form-control">
                                                                     <option value="">Select</option>
                                                                 </select>
                                                             </div>
@@ -596,7 +594,7 @@
 
                                                             <label for="selCountry" class="col-md-4 control-label">Vehicle Type</label>
                                                             <div class="col-md-8">
-                                                                <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control">
+                                                                <select ng-options="vt.Name for vt in initdata.Table2 track by vt.Id" ng-model="vt" class="form-control">
                                                                     <option value="">Select</option>
                                                                 </select>
                                                             </div>
@@ -633,12 +631,10 @@
                                                     <div class="row" style="margin-bottom:10px;">
                                                         <div class="col-md-6">
                                                             <label for="Fax" class="col-md-4 control-label">Pricing Type: <span class='require'></span></label>
-                                                            <div class="col-md-8">
-                                                                <select class='form-control' ng-model="Changes.PricingType1">
-                                                                    <option value="">Select</option>
-                                                                    <option value="1">1</option>
-                                                                    <option value="2">2</option>
-                                                                </select>
+                                                            <div class="col-md-8">                                                               
+                                                                    <select ng-options="pt.Name for pt in initdata.Table1 track by pt.Id" class='form-control' ng-model="PricingType">
+                                                                        <option value="">Select</option>
+                                                                    </select>                                                              
                                                             </div>
                                                         </div>
                                                         <div class="col-md-6">
@@ -658,7 +654,7 @@
                                                         <div class="col-md-6" style="margin-bottom:10px;">
                                                             <label for="Fax" class="col-md-4 control-label">Country<span class='require'></span></label>
                                                             <div class="col-md-8">
-                                                                <select ng-options="cv.Name for cv in initdata.Table2 track by cv.Id" ng-model="Changes.c" class="form-control">
+                                                                <select ng-options="cv.Name for cv in initdata.Table3 track by cv.Id" ng-model="c" class="form-control">
                                                                     <option value="">Select</option>
                                                                 </select>
                                                             </div>
@@ -694,6 +690,7 @@
                                                 <th>Pricing Type</th>
                                                 <th>From Date</th>
                                                 <th>To Date</th>
+                                                <th>Unit Price</th>
                                                 <th>Amount</th>
                                                 <th>Update</th>
 
@@ -706,9 +703,10 @@
                                                 <td>{{vp.VehicleGroup}}</td>
                                                 <td>{{vp.FromKm}}</td>
                                                 <td>{{vp.ToKm}}</td>
-                                                <td>{{vp.PricingType}}</td>
+                                                <td>{{vp.price}}</td>
                                                 <td>{{vp.FromDate}}</td>
                                                 <td>{{vp.ToDate}}</td>
+                                                <td>{{vp.PerUnitPrice}}</td>
                                                 <td>{{vp.Amount}}</td>
 
 

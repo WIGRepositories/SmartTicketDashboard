@@ -232,6 +232,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             alert('Please Enter VehicleGroup');
             return;
         }
+        if (Driverlist.pt.Id == null) {
+            alert('Please Enter Payment Type');
+            return;
+        }
 
         var Driverlist = {
 
@@ -258,6 +262,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             EmailId: Driverlist.Email,
             Status: Driverlist.Status.Id,
             VehicleGroup: Driverlist.Vg.Id,
+            PaymentTypeId: Driverlist.pt.Id,
             CuurentStateId:1
         }
 
@@ -716,6 +721,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             includeActiveCountry: '1',
             includeStatus: '1',           
             includeVehicleGroup: '1',
+            includePaymentType:'1',
         };
 
         var req = {
@@ -727,7 +733,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $http(req).then(function (res) {
             $scope.initdata = res.data;
             // $scope.Getdriverdetails();
-            $scope.ct = $scope.initdata.Table2[0];
+            $scope.ct = $scope.initdata.Table3[0];
             $scope.GetMaster();
         });
     }

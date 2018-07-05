@@ -15,8 +15,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.VechPricing = response.data;
 
             for (i = 0; i < $scope.initdata.Table.length; i++) {
-                if ($scope.initdata.Table[i].Id == $scope.vDetails.StatusId) {
-                    $scope.vDetails.StatusId = $scope.initdata.Table[i];
+                if ($scope.initdata.Table[i].Id == $scope.VechPricing[0].VehicleGroupId) {
+                    $scope.vm = $scope.initdata.Table[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table1.length; i++) {
+                if ($scope.initdata.Table1[i].Id == $scope.VechPricing[0].PricingTypeId) {
+                    $scope.PricingType = $scope.initdata.Table1[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table2.length; i++) {
+                if ($scope.initdata.Table2[i].Id == $scope.VechPricing[0].VehicleTypeId) {
+                    $scope.vt = $scope.initdata.Table2[i];
+                    break;
+                }
+            }
+            for (i = 0; i < $scope.initdata.Table3.length; i++) {
+                if ($scope.initdata.Table3[i].Id == $scope.VechPricing[0].CountryId) {
+                    $scope.c = $scope.initdata.Table3[i];
                     break;
                 }
             }
@@ -43,7 +61,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (Vprice.PricingType == null) {
+        if ($scope.PricingType.Id == null) {
             alert('Please enter Pricing.');
             return;
         }
@@ -74,7 +92,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             FromTime: Vprice.FromTime,
             ToTime: Vprice.ToTime,
             Hours:Vprice.Hours,
-            PricingType: Vprice.PricingType,
+            PricingType: $scope.PricingType.Id,
             FromDate: Vprice.FromDate,
             ToDate: Vprice.ToDate,                        
             CountryId: Vprice.c.Id,
@@ -132,9 +150,11 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.GetConfigData = function () {
 
         var vc = {
+           
             includeVehicleType: '1',
             includeVehicleGroup: '1',           
-            includeActiveCountry: '1'
+            includeActiveCountry: '1',
+            includePricingType: '1',
         };
 
         var req = {
@@ -145,7 +165,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.ct = $scope.initdata.Table2[0];
+            $scope.ct = $scope.initdata.Table3[0];
             $scope.vg = $scope.initdata.Table[0];
             $scope.GetHourBasePricing();
         });

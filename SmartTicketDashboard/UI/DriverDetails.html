@@ -15,7 +15,7 @@
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">    
-    
+      
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();">
     <div>
@@ -571,7 +571,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="f.FleetOwnerCode for f in initdata.Table4  track by f.Id" ng-model="Dl.fleetowner" class="form-control">
+                                                                                                    <select ng-options="f.FleetOwnerCode for f in initdata.Table5  track by f.Id" ng-model="Dl.fleetowner" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -667,7 +667,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="c.Name for c in initdata.Table3 track by c.Id" ng-model="Dl.Country" class="form-control">
+                                                                                                    <select ng-options="c.Name for c in initdata.Table4 track by c.Id" ng-model="Dl.Country" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -697,7 +697,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="vcs.Name for vcs in initdata.Table5 track by vcs.Id" ng-model="Dl.CurrentStateId" class="form-control">
+                                                                                                    <select ng-options="vcs.Name for vcs in initdata.Table6 track by vcs.Id" ng-model="Dl.CurrentStateId" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -713,7 +713,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Dl.vg" class=" form-control">
+                                                                                                    <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Dl.vg" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -731,6 +731,22 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                            </div>
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Payment Type</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9">
+                                                                                                    <select ng-options="pt.Name for pt in initdata.Table3 track by pt.Id" ng-model="Dl.pt" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>                                                                                
                                                                             </div>
                                                                         </div>
                                                                     </div>
@@ -1173,7 +1189,7 @@
                                     </div>
                                     <div class="col-md-6">
 
-                                        <select ng-options="c.Name for c in initdata.Table3 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
+                                        <select ng-options="c.Name for c in initdata.Table4 track by c.Id" ng-model="c" class="form-control" ng-change="GetMaster()">
                                             <option value="">Select</option>
                                         </select>
                                     </div>

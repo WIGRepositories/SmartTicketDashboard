@@ -226,8 +226,12 @@ namespace SmartTicketDashboard.Controllers
             cdd.Value = d.CurrentStateId;
             cmd.Parameters.Add(cdd);
 
+            SqlParameter ptt = new SqlParameter("@PaymentTypeId", SqlDbType.Int);
+            ptt.Value = d.PaymentTypeId;
+            cmd.Parameters.Add(ptt);
 
-            DataTable dt = new DataTable();
+
+                DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
 
