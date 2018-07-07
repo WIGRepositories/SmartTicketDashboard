@@ -3279,6 +3279,64 @@ namespace SmartTicketDashboard.Models
         public DateTime? ExpiryDate { get; set; }
 
     }
+    public class Transmaster
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }       
+        public string GateWayTransId { get; set; }
+        public int StatusId { get; set; }
+        public Decimal BaseAmount { get; set; }
+        public Decimal Discount { get; set; }
+        public Decimal Charges { get; set; }
+        public Decimal TotalAmount { get; set; }
+        public string OpCode { get; set; }
+        public int CreatedBy { get; set; }
+        public int PaymentTypeId { get; set; }
+        public string Description { get; set; }
+      
+    }
+    public class TransCharges
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int TransmasterId { get; set; }
+        public int ChargedId { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime AppliedOndate { get; set; }
+    }
+    public class TransDiscounts
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int TransmasterId { get; set; }
+        public int DiscountId { get; set; }
+        public decimal Amount { get; set; }
+        public DateTime AppliedOndate { get; set; }
+    }
+    public class TransInfo
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int TransmasterId { get; set; }        
+        public int Emailsent { get; set; }
+        public int smssent { get; set; }
+        public int noofretries { get; set; }
+        public int statusId { get; set; }
+        public DateTime Emailsenton { get; set; }
+        public DateTime smssenton { get; set; }
+        public string sendphno { get; set; }
+        public string Email { get; set; }
+        public string TransactionDocument { get; set; }
+    }
+    public class TransDetails
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public int TransmasterId { get; set; }
+        public int PaymentTypeId { get; set; }
+        public string AccountNumber { get; set; }
+        public int StatusId { get; set; }
+    }
 }
 
 
