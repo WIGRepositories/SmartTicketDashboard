@@ -16,7 +16,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/TransactionMaster/GetTransactionMaster")]
-        public DataTable GetTransactionMaster(int Id)
+        public DataTable GetTransactionMaster()
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection();
@@ -27,7 +27,111 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetTransactionMaster";
 
-            cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            cmd.Connection = conn;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
+        [HttpGet]
+        [Route("api/TransactionMaster/GetTransactionCharges")]
+        public DataTable GetTransactionCharges()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetTransactionCharges";
+
+            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            cmd.Connection = conn;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
+        [HttpGet]
+        [Route("api/TransactionMaster/GetTransactionDiscounts")]
+        public DataTable GetTransactionDiscounts()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetTransactionDiscounts";
+
+            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            cmd.Connection = conn;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
+        [HttpGet]
+        [Route("api/TransactionMaster/GetTransactionDetails")]
+        public DataTable GetTransactionDetails()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetTransactionDetails";
+
+            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            cmd.Connection = conn;
+
+            DataSet ds = new DataSet();
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            db.Fill(ds);
+            dt = ds.Tables[0];
+
+            return dt;
+
+        }
+
+        [HttpGet]
+        [Route("api/TransactionMaster/GetTransactionInfo")]
+        public DataTable GetTransactionInfo()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetTransactionInfo";
+
+            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
             cmd.Connection = conn;
 
             DataSet ds = new DataSet();
@@ -98,7 +202,7 @@ namespace SmartTicketDashboard.Controllers
                 ed.Value = tm.PaymentTypeId;
                 cmd.Parameters.Add(ed);
 
-                SqlParameter dc = new SqlParameter("@Description", SqlDbType.VarChar);
+                SqlParameter dc = new SqlParameter("@Desc", SqlDbType.VarChar);
                 dc.Value = tm.Description;
                 cmd.Parameters.Add(dc);
 
@@ -140,11 +244,11 @@ namespace SmartTicketDashboard.Controllers
                 i.Value = tc.Id;
                 cmd.Parameters.Add(i);
 
-                SqlParameter n = new SqlParameter("@TransmasterId", SqlDbType.Int);
+                SqlParameter n = new SqlParameter("@TransactionMasterId", SqlDbType.Int);
                 n.Value = tc.TransmasterId;
                 cmd.Parameters.Add(n);
 
-                SqlParameter r = new SqlParameter("@ChargedId", SqlDbType.Int);
+                SqlParameter r = new SqlParameter("@ChargeId", SqlDbType.Int);
                 r.Value = tc.ChargedId;
                 cmd.Parameters.Add(r);
 
@@ -152,7 +256,7 @@ namespace SmartTicketDashboard.Controllers
                 f.Value = tc.Amount;
                 cmd.Parameters.Add(f);
 
-                SqlParameter s = new SqlParameter("@AppliedOndate", SqlDbType.DateTime);
+                SqlParameter s = new SqlParameter("@AppliedOndate", SqlDbType.Date);
                 s.Value = tc.AppliedOndate;
                 cmd.Parameters.Add(s);
                
@@ -195,7 +299,7 @@ namespace SmartTicketDashboard.Controllers
                 i.Value = td.Id;
                 cmd.Parameters.Add(i);
 
-                SqlParameter n = new SqlParameter("@TransmasterId", SqlDbType.Int);
+                SqlParameter n = new SqlParameter("@TransactionMasterId", SqlDbType.Int);
                 n.Value = td.TransmasterId;
                 cmd.Parameters.Add(n);
 
@@ -250,7 +354,7 @@ namespace SmartTicketDashboard.Controllers
                 i.Value = ti.Id;
                 cmd.Parameters.Add(i);
 
-                SqlParameter n = new SqlParameter("@TransmasterId", SqlDbType.Int);
+                SqlParameter n = new SqlParameter("@TransactionMasterId", SqlDbType.Int);
                 n.Value = ti.TransmasterId;
                 cmd.Parameters.Add(n);
 
@@ -262,7 +366,7 @@ namespace SmartTicketDashboard.Controllers
                 f.Value = ti.smssent;
                 cmd.Parameters.Add(f);
 
-                SqlParameter s = new SqlParameter("@noofretries", SqlDbType.Int);
+                SqlParameter s = new SqlParameter("@NumberOfRetries", SqlDbType.Int);
                 s.Value = ti.noofretries;
                 cmd.Parameters.Add(s);
 
@@ -329,7 +433,7 @@ namespace SmartTicketDashboard.Controllers
                 i.Value = tdd.Id;
                 cmd.Parameters.Add(i);
 
-                SqlParameter n = new SqlParameter("@TransmasterId", SqlDbType.Int);
+                SqlParameter n = new SqlParameter("@TransactionMasterId", SqlDbType.Int);
                 n.Value = tdd.TransmasterId;
                 cmd.Parameters.Add(n);
 

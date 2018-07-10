@@ -131,7 +131,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             var Addcharges = {
 
                 flag: "I",
-                Id : Addcharges.Id ,
+                Id : -1,
                 Code: Addcharges.Code,
                 Title: Addcharges.Title,
                 Description: Addcharges.Description,
@@ -146,7 +146,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
             var req = {
                 method: 'POST',
-                url: '/api/SaveChargesDiscounts',
+                url: '/api/ChargesDiscounts/SaveChargesDiscounts',
                 data: Addcharges
             }
             $http(req).then(function (response) {
