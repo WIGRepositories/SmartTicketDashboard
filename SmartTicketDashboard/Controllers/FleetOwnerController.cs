@@ -14,6 +14,7 @@ namespace SmartTicketDashboard.Controllers
     public class FleetOwnerController : ApiController
     {
         [HttpGet]
+        [Route("api/FleetOwner/getFleetOwner")]
         public DataTable getFleetOwner()//Main Method
         {
 

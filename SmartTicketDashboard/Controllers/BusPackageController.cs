@@ -21,7 +21,7 @@ namespace SmartTicketDashboard.Controllers
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = conn;
             cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetBusPackage";
+            cmd.CommandText = "GetBusPackages";
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(dt);
 

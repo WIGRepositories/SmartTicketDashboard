@@ -13,7 +13,9 @@ namespace SmartTicketDashboard.Controllers
 {
     public class RoutesController : ApiController
     {
+
         [HttpGet]
+        [Route("api/Routes/GetRoutes")]
         public DataTable GetRoutes()
         {
             DataTable Tbl = new DataTable();
