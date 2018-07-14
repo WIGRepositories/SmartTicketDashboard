@@ -3336,6 +3336,7 @@ namespace SmartTicketDashboard.Models
         public int PaymentTypeId { get; set; }
         public string AccountNumber { get; set; }
         public int StatusId { get; set; }
+        public string Totp { get; set; }
     }
 }
 
