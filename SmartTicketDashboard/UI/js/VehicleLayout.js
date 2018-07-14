@@ -52,9 +52,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         rowCount = document.getElementById('rowSelected').value;
         colCount = document.getElementById('colSelected').value;
-        var rows = [],
-            i,
-            j;
+        var rows = [], i, j;
+
         for (i = 0; i < rowCount; i++) {
             var row = [];
             for (j = 0; j < colCount; j++) {
