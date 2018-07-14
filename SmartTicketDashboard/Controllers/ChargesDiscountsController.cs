@@ -235,13 +235,13 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter EffectiveDate = new SqlParameter();
             EffectiveDate.ParameterName = "@EffectiveDate";
             EffectiveDate.SqlDbType = SqlDbType.DateTime;
-            EffectiveDate.Value = Convert.ToString(pc.EffectiveDate);
+            EffectiveDate.Value = (pc.EffectiveDate);
             cmd.Parameters.Add(EffectiveDate);
 
             SqlParameter ExpiryDate = new SqlParameter();
             ExpiryDate.ParameterName = "@ExpiryDate";
             ExpiryDate.SqlDbType = SqlDbType.DateTime;
-            ExpiryDate.Value = Convert.ToString(pc.ExpiryDate);
+            ExpiryDate.Value = (pc.ExpiryDate);
             cmd.Parameters.Add(ExpiryDate);
 
             SqlParameter ChargeTy = new SqlParameter();
@@ -255,6 +255,12 @@ namespace SmartTicketDashboard.Controllers
             ChargeCode.SqlDbType = SqlDbType.VarChar;
             ChargeCode.Value = Convert.ToString(pc.ChargeCode);
             cmd.Parameters.Add(ChargeCode);
+
+            SqlParameter OpCode = new SqlParameter();
+            OpCode.ParameterName = "@OpCode";
+            OpCode.SqlDbType = SqlDbType.Int;
+            OpCode.Value = Convert.ToString(pc.OpCode);
+            cmd.Parameters.Add(OpCode);
 
             SqlParameter Flag = new SqlParameter();
             Flag.ParameterName = "@Flag ";
@@ -332,13 +338,13 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter EffectiveDate = new SqlParameter();
             EffectiveDate.ParameterName = "@EffectiveDate";
             EffectiveDate.SqlDbType = SqlDbType.DateTime;
-            EffectiveDate.Value = Convert.ToString(dc.EffectiveDate);
+            EffectiveDate.Value = (dc.EffectiveDate);
             cmd.Parameters.Add(EffectiveDate);
 
             SqlParameter ExpiryDate = new SqlParameter();
             ExpiryDate.ParameterName = "@ExpiryDate";
             ExpiryDate.SqlDbType = SqlDbType.DateTime;
-            ExpiryDate.Value = Convert.ToString(dc.ExpiryDate);
+            ExpiryDate.Value = (dc.ExpiryDate);
             cmd.Parameters.Add(ExpiryDate);
 
             SqlParameter ChargeTy = new SqlParameter();

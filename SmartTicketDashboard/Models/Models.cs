@@ -1795,6 +1795,9 @@ namespace SmartTicketDashboard.Models
         public int includePackageNames { get; set; }
 
         public int includePackageTypeName { get; set; }
+        public int includeApplicabilityType { get; set; }
+        public int includeUnitType { get; set; }
+        public int includeUnit { get; set; }
     }
     public class VehicleConfig
     {
@@ -3136,7 +3139,8 @@ namespace SmartTicketDashboard.Models
         public DateTime? EffectiveDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public int ChargeTypeId { get; set; }
-        public string ChargeCode { get; set; }   
+        public string ChargeCode { get; set; }  
+        public int OpCode { get; set; }
     }
     public class PackageDiscount
     {
