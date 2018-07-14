@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | BTPOS | StartReport</title>
+    <title>Home | BTPOS | Metered Taxi</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -468,18 +468,18 @@
 
 
                                                                                     <div class="col-md-12">
-                                                                                        <div id="generalTabContent" ng-model="Editcharges" class="tab-content">
+                                                                                        <div id="generalTabContent" ng-model="Edittaxipack" class="tab-content">
 
 
                                                                                             <div class="row">
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Code" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Edittaxipack.Code" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Package Name:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.PackageName" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Edittaxipack.PackageName" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
 
                                                                                             </div>
@@ -487,15 +487,14 @@
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Description" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="Edittaxipack.Description" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">Operation Id:<span class='require'></span></label>
+                                                                                                    <label for="Name" class="col-md-4 control-label">Operation Name:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select ng-options="cc.Name for cc in Categories track by cc.Id" ng-init="GetCategories()" ng-model="Editcharges.OpId" class="form-control">
+                                                                                                        <select ng-model="OpId" ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
-
                                                                                                     </div>
                                                                                                 </div>
 
@@ -505,21 +504,22 @@
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label"> Vehicle Group:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select ng-options="aa.Name for aa in ApplyAs track by aa.Id" ng-init="GetApplyAs()" ng-model="Editcharges.VehicleGroupId" class="form-control">
+                                                                                                        <select ng-model="vg" ng-options="aa.Name for aa in initdata.Table track by aa.Id" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
                                                                                                     </div>
                                                                                                 </div>
-
                                                                                                 <div class="col-md-6">
 
                                                                                                     <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select ng-options="aa.Name for aa in vehtype track by aa.Id" ng-init="Getvehtype()" ng-model="Editcharges.VehicleTypeId" class="form-control">
+                                                                                                        <select ng-model="vt" ng-options="aa.Name for aa in initdata.Table1 track by aa.Id" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
+
                                                                                                     </div>
                                                                                                 </div>
+
                                                                                             </div>                                                     
 
 
@@ -529,9 +529,9 @@
                                                                                         <div class="form-actions">
                                                                                             <div style="text-align:center">
 
-                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="EditChargesDiscounts(Editcharges)">Save</button>
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="Save(Edittaxipack)">Save</button>
 
-                                                                                                <a href="ChargesDiscounts.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                                <a href="ChargesDiscounts.html" class="btn btn-primary" ng-click="clearEdittaxipack()">Cancel</a>
 
                                                                                             </div>
                                                                                         </div>
@@ -551,13 +551,14 @@
                                                     <table class="table table-hover table-striped table-bordered table-advanced tablesorter">
                                                         <thead>
                                                             <tr>
-                                                                <th width="10%">Code</th>
-                                                                <th width="10%">Package name</th>
-                                                                <th width="10%">Description</th>
-                                                                <th width="10%">Vehicle Group</th>
-                                                                <th width="10%">Vehicle Type</th>                                                               
+                                                                <th>Code</th>
+                                                                <th>Package name</th>
+                                                                <th>Description</th>
+                                                                <th>Vehicle Group</th>
+                                                                <th>Vehicle Type</th> 
+                                                                <th>Operation Name</th>                                                               
                                                                 <th>Edit</th>
-                                                                <th>Delate</th>
+                                                                <th>Delete</th>
 
                                                             </tr>
                                                         <tbody>
@@ -565,9 +566,9 @@
                                                                 <td>{{cd.Code}}</td>
                                                                 <td>{{cd.PackageName}}</td>
                                                                 <td>{{cd.Description}}</td>
-                                                                <td>{{cd.VehicleGroupId}}</td>
-                                                                <td>{{cd.VehicleTypeId}}</td>
-
+                                                                <td>{{cd.vgroup}}</td>
+                                                                <td>{{cd.vtype}}</td>
+                                                                <td>{{cd.OperationName}}</td>
                                                                 <td>
                                                                     <button type="button" data-target="#Modal-header-primary" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setCharges(cd);">
                                                                         <i class="fa fa-edit"></i>
@@ -589,7 +590,7 @@
                                                     </table>
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                                                         <div class=" modal-dialog modal-lg">
-                                                            <div class="modal-content" ng-model="Addcharges">
+                                                            <div class="modal-content" ng-model="taxipack"  ng-init="GetConfigData()">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                                                     <h4 id="modal-header-primary-label" class="modal-title">Add Package</h4>
@@ -610,11 +611,11 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.Code" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="taxipack.Code" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Package Name:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.PackageName" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="taxipack.PackageName" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
 
                                                                                         </div>
@@ -622,13 +623,13 @@
 
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="text" ng-model="Addcharges.Description" class="form-control" /><span class="help-block"></span></div>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="taxipack.Description" class="form-control" /><span class="help-block"></span></div>
                                                                                             </div>
 
                                                                                             <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Operation Id:<span class='require'></span></label>
+                                                                                                <label for="Name" class="col-md-4 control-label">Operation Name:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="Addcharges.OpId" ng-options="cc.Name for cc in Categories track by cc.Id" ng-init="GetCategories()" class="form-control">
+                                                                                                    <select ng-model="OpId" ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -640,7 +641,7 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label"> Vehicle Group:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="Addcharges.VehicleGroupId" ng-options="aa.Name for aa in ApplyAs track by aa.Id" ng-init="GetApplyAs()" class="form-control">
+                                                                                                    <select ng-model="vg" ng-options="aa.Name for aa in initdata.Table track by aa.Id" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -649,13 +650,14 @@
 
                                                                                                 <label for="Name" class="col-md-4 control-label">Vehicle Type:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="Addcharges.VehicleTypeId" ng-options="aa.Name for aa in vehtype track by aa.Id" ng-init="Getvehtype()" class="form-control">
+                                                                                                    <select ng-model="vt" ng-options="aa.Name for aa in initdata.Table1 track by aa.Id" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
 
                                                                                                 </div>
                                                                                             </div>
-                                                                                        </div>                                                                                   
+
+                                                                                        </div>                                                                                     
 
                                                                                     </div>
 
@@ -663,9 +665,9 @@
                                                                                     <div class="form-actions">
                                                                                         <div style="text-align:center">
 
-                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="AddChargesDiscounts(Addcharges,'I')">Save</button>
+                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="SaveNew(taxipack,'I')">Save</button>
 
-                                                                                            <a href="ChargesDiscounts.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                            <a href="MeteredTaxiPackage.html" class="btn btn-primary" ng-click="cleartaxipack()">Cancel</a>
 
                                                                                         </div>
                                                                                     </div>

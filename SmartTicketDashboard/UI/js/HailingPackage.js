@@ -49,7 +49,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
 
-    $scope.AddChargesDiscounts = function (Addcharges, flag) {
+    $scope.SaveNew = function (pack, flag) {
 
 
         //if (Addcharges == null) {
@@ -128,23 +128,23 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var Addcharges = {
+        var hailpack = {
 
             flag: "I",
             Id: -1,
-            Code: Addcharges.Code,
-            PackageName: Addcharges.PackageName,
-            Description: Addcharges.Description,
-            OpId: Addcharges.OpId.Id,
-            VehicleGroupId: Addcharges.VehicleGroupId.Id,
-            VehicleTypeId: Addcharges.VehicleTypeId.Id,
-            Active: (Addcharges.Active == true) ? 1 : 0,
+            Code: pack.Code,
+            PackageName: pack.PackageName,
+            Description: pack.Description,
+            OpId: $scope.OpId.Id,
+            VehicleGroupId: $scope.vg.Id,
+            VehicleTypeId: $scope.vt.Id
+            
         }
 
         var req = {
             method: 'POST',
             url: '/api/HailingPackage/SaveHailingPackages',
-            data: Addcharges
+            data: hailpack
         }
         $http(req).then(function (response) {
 
@@ -308,6 +308,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.setCharges = function (cd) {
-        $scope.Editcharges = cd;
+        $scope.Editpack = cd;
     };
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeOperationName: '1',
+            includeVehicleGroup: '1',
+            includeVehicleType: '1',
+           
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
 });

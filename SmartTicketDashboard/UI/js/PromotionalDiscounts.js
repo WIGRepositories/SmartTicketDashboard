@@ -18,105 +18,75 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
 
-    $scope.SaveNew = function (Addcharges, flag) {
+    $scope.SaveNew = function (disc, flag) {
 
+        if (disc == null) {
+            alert('Please Enter Name');
+            return;
+        }
+        if (disc.Code == null) {
+            alert('Please Enter Code');
+            return;
+        }
+        if ($scope.opcode == null || $scope.opcode.Id == null) {
+            alert('Please Enter Operation Name');
+            return;
+        }
+        if (disc.Condition == null) {
+            alert('Please Enter Condition');
+            return;
+        }
+        if ($scope.v == null || $scope.v.Id == null) {
+            alert('Please Enter Value Type');
+            return;
+        }
+        if ($scope.ApplyOn == null || $scope.ApplyOn.Id == null) {
+            alert('Please Enter Apply On');
+            return;
+        }
+        if ($scope.t == null || $scope.t.Id == null) {
+            alert('Please Enter Type');
+            return;
+        }
+        if (disc.FromValue == null) {
+            alert('Please Enter From Value');
+            return;
+        }
+        if (disc.ToValue == null) {
+            alert('Please Enter To Value');
+            return;
+        }
+        if ($scope.a == null || $scope.a.Id == null) {
+            alert('Please Enter Applicability');
+            return;
+        }
+        if (disc.Value == null) {
+            alert('Please Enter Value');
+            return;
+        }
 
-        //if (Addcharges == null) {
-        //    alert('Please Enter Name');
-        //    return;
-        //}
-        //if (Addcharges.EntryDate == null) {
-        //    alert('Please Enter EntryDate');
-        //    return;
-        //}
-        //if (Addcharges.VechID == null) {
-        //    alert('Please Enter VechID');
-        //    return;
-        //}
-        //if (Addcharges.RegistrationNo == null) {
-        //    alert('Please Enter RegistrationNo');
-        //    return;
-        //}
-        //if (Addcharges.DriverName == null) {
-        //    alert('Please Enter DriverName');
-        //    return;
-        //}
-        //if (Addcharges.PartyName == null) {
-        //    alert('Please Enter PartyName');
-        //    return;
-        //}
-        //if (Addcharges.PickupPlace == null) {
-        //    alert('Please Enter PickupPlace');
-        //    return;
-        //}
-        //if (Addcharges.DropPlace == null) {
-        //    alert('Please Enter DropPlace');
-        //    return;
-        //}
-        //if (Addcharges.StartMeter == null) {
-        //    alert('Please Enter StartMeter');
-        //    return;
-        //}
-        //if (Addcharges.EndMeter == null) {
-        //    alert('Please Enter EndMeter');
-        //    return;
-        //}
-        //if (Addcharges.OtherExp == null) {
-        //    alert('Please Enter OtherExp');
-        //    return;
-        //}
-        //if (Addcharges.GeneratedAmount == null) {
-        //    alert('Please Enter GeneratedAmount');
-        //    return;
-        //}
-        //if (Addcharges.ActualAmount == null) {
-        //    alert('Please Enter ActualAmount');
-        //    return;
-        //}
-
-        //if (Addcharges.ExecutiveName == null) {
-        //    alert('Please Enter ExecutiveName');
-        //    return;
-        //}
-        //if (Addcharges.BNo == null) {
-        //    alert('Please Enter BNo');
-        //    return;
-        //}
-        //if (Addcharges.DropTime == null) {
-        //    alert('Please Enter DropTime');
-        //    return;
-        //}
-        //if (Addcharges.PickupTime == null) {
-        //    alert('Please Enter PickupTime');
-        //    return;
-        //}
-        //if (Addcharges.EntryTime == null) {
-        //    alert('Please Enter EntryTime');
-        //    return;
-        //}
-
-
-
-        var Addcharges = {
+        var discounts = {
 
             flag: "I",
             Id: -1,
-            Code: Addcharges.Code,
-            Title: Addcharges.Title,
-            Description: Addcharges.Description,
-            cdTypeId: Addcharges.cdType.Id,
-            CategoryId: Addcharges.Category.Id,
-            ApplyAsId: Addcharges.ApplyAs.Id,
-            cdValue: Addcharges.cdValue,
-            FromDate: Addcharges.FromDate,
-            ToDate: Addcharges.ToDate,
-            Active: (Addcharges.Active == true) ? 1 : 0,
+            Code: disc.Code,
+            OpCode: $scope.opcode.Id,
+            Condition: disc.Condition,
+            ValueType: $scope.v.Id,
+            ApplyOn: $scope.ApplyOn.Id,
+            TypeId: $scope.t.Id,           
+            FromValue: disc.FromValue,
+            ToValue: disc.ToValue,
+            Applicability:$scope.a.Id,
+            Value: disc.Value
+           
+            
         }
 
         var req = {
             method: 'POST',
             url: '/api/ChargesDiscounts/SavePromotionalDiscount',
-            data: Addcharges
+            data: discounts
         }
         $http(req).then(function (response) {
 
@@ -134,102 +104,69 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    $scope.Save = function (Editcharges) {
+    $scope.Save = function (prodisc) {
 
 
-        //if (Addcharges == null) {
-        //    alert('Please Enter Name');
-        //    return;
-        //}
-        //if (Addcharges.EntryDate == null) {
-        //    alert('Please Enter EntryDate');
-        //    return;
-        //}
-        //if (Addcharges.VechID == null) {
-        //    alert('Please Enter VechID');
-        //    return;
-        //}
-        //if (Addcharges.RegistrationNo == null) {
-        //    alert('Please Enter RegistrationNo');
-        //    return;
-        //}
-        //if (Addcharges.DriverName == null) {
-        //    alert('Please Enter DriverName');
-        //    return;
-        //}
-        //if (Addcharges.PartyName == null) {
-        //    alert('Please Enter PartyName');
-        //    return;
-        //}
-        //if (Addcharges.PickupPlace == null) {
-        //    alert('Please Enter PickupPlace');
-        //    return;
-        //}
-        //if (Addcharges.DropPlace == null) {
-        //    alert('Please Enter DropPlace');
-        //    return;
-        //}
-        //if (Addcharges.StartMeter == null) {
-        //    alert('Please Enter StartMeter');
-        //    return;
-        //}
-        //if (Addcharges.EndMeter == null) {
-        //    alert('Please Enter EndMeter');
-        //    return;
-        //}
-        //if (Addcharges.OtherExp == null) {
-        //    alert('Please Enter OtherExp');
-        //    return;
-        //}
-        //if (Addcharges.GeneratedAmount == null) {
-        //    alert('Please Enter GeneratedAmount');
-        //    return;
-        //}
-        //if (Addcharges.ActualAmount == null) {
-        //    alert('Please Enter ActualAmount');
-        //    return;
-        //}
-
-        //if (Addcharges.ExecutiveName == null) {
-        //    alert('Please Enter ExecutiveName');
-        //    return;
-        //}
-        //if (Addcharges.BNo == null) {
-        //    alert('Please Enter BNo');
-        //    return;
-        //}
-        //if (Addcharges.DropTime == null) {
-        //    alert('Please Enter DropTime');
-        //    return;
-        //}
-        //if (Addcharges.PickupTime == null) {
-        //    alert('Please Enter PickupTime');
-        //    return;
-        //}
-        //if (Addcharges.EntryTime == null) {
-        //    alert('Please Enter EntryTime');
-        //    return;
-        //}
-
-
-
+        if (prodisc == null) {
+            alert('Please Enter Name');
+            return;
+        }
+        if (prodisc.Code == null) {
+            alert('Please Enter Code');
+            return;
+        }
+        if ($scope.opcode == null || $scope.opcode.Id == null) {
+            alert('Please Enter Operation Name');
+            return;
+        }
+        if (prodisc.Condition == null) {
+            alert('Please Enter Condition');
+            return;
+        }
+        if ($scope.v == null || $scope.v.Id == null) {
+            alert('Please Enter Value Type');
+            return;
+        }
+        if ($scope.ApplyOn == null || $scope.ApplyOn.Id == null) {
+            alert('Please Enter Apply On');
+            return;
+        }
+        if ($scope.t == null || $scope.t.Id == null) {
+            alert('Please Enter Type');
+            return;
+        } 
+        if (prodisc.FromValue == null) {
+            alert('Please Enter From Value');
+            return;
+        }
+        if (prodisc.ToValue == null) {
+            alert('Please Enter To Value');
+            return;
+        }
+        if ($scope.a == null || $scope.a.Id == null) {
+            alert('Please Enter Applicability');
+            return;
+        }
+        if (prodisc.Value == null) {
+            alert('Please Enter Value');
+            return;
+        }       
+        
         var Editcharges = {
 
             flag: "U",
-            Id: Editcharges.Id,
-            Code: Editcharges.Code,
-            Title: Editcharges.Title,
-            Description: Editcharges.Description,
-            cdType: Editcharges.cdType.Id,
-            Category: Editcharges.Category.Id,
-            ApplyAs: Editcharges.ApplyAs.Id,
-            cdValue: Editcharges.cdValue,
-            FromDate: Editcharges.FromDate,
-            ToDate: Editcharges.ToDate,
-
-
-
-            Active: (Editcharges.Active == true) ? 1 : 0,
+            Id: prodisc.Id,
+            Code: prodisc.Code,
+            OpCode: $scope.opcode.Id,
+            Condition: prodisc.Condition,
+            ValueType: $scope.v.Id,
+            ApplyOn: $scope.ApplyOn.Id,
+            TypeId: $scope.t.Id,
+            FromValue: prodisc.FromValue,
+            ToValue: prodisc.ToValue,
+            Applicability: $scope.a.Id,
+            Value: prodisc.Value
+           
         }
 
         var req = {
@@ -286,6 +223,28 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.setCharges = function (cd) {
-        $scope.Editcharges = cd;
+        $scope.prodisc = cd;
     };
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeApplicability: '1',
+            includeApplicabilityType: '1',
+            includeOperationName: '1',
+            includeValueType: '1',
+            includeApplyOn:'1',
+           
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
 });

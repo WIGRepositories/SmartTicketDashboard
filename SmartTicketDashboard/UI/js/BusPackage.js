@@ -327,4 +327,24 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.setCharges = function (cd) {
         $scope.Editcharges = cd;
     };
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeOperationName: '1',
+            includeVehicleGroup: '1',
+            includeVehicleType: '1',
+            includeFleetOwner: '1',            
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
 });
