@@ -30,7 +30,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showdialog("Saved successfully")
         });
 
     }

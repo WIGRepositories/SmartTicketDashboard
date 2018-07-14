@@ -56,7 +56,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data.Table;
-            $scope.showdialogue("Saved successfully")
+            $scope.showdialog("Saved successfully")
         });
     }
 
@@ -80,7 +80,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showdialog("Saved successfully")
         });
 
     }
