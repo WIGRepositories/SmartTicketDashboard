@@ -49,7 +49,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
 
-    $scope.AddChargesDiscounts = function (Addcharges, flag) {
+    $scope.SaveNew = function (taxipack, flag) {
 
 
         //if (Addcharges == null) {
@@ -128,23 +128,22 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var Addcharges = {
+        var Addtaxipack = {
 
             flag: "I",
-            Id: -1,
-            Code: Addcharges.Code,
-            PackageName: Addcharges.PackageName,
-            Description: Addcharges.Description,
-            OpId: Addcharges.OpId.Id,
-            VehicleGroupId: Addcharges.VehicleGroupId.Id,
-            VehicleTypeId: Addcharges.VehicleTypeId.Id,           
-            //Active: (Addcharges.Active == true) ? 1 : 0,
+            Id: -1,           
+            Code: taxipack.Code,
+            PackageName: taxipack.PackageName,
+            Description: taxipack.Description,
+            OpId: $scope.OpId.Id,
+            VehicleGroupId: $scope.vg.Id,
+            VehicleTypeId: $scope.vt.Id
         }
 
         var req = {
             method: 'POST',
             url: '/api/MeteredTaxiPackage/SaveMeteredTaxiPackages',
-            data: Addcharges
+            data: Addtaxipack
         }
         $http(req).then(function (response) {
 
@@ -162,7 +161,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
     }
 
-    $scope.EditChargesDiscounts = function (Editcharges) {
+    $scope.Save = function (Edittaxipack) {
 
 
         //if (Addcharges == null) {
@@ -241,29 +240,28 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var Editcharges = {
+        var Edittaxipack = {
 
             flag: "U",
-            Id: Editcharges.Id,
-            Code: Editcharges.Code,
-            PackageName: Editcharges.PackageName,
-            Description: Editcharges.Description,
-            OpId: Editcharges.OpId.Id,
-            VehicleGroupId: Editcharges.VehicleGroupId.Id,
-            VehicleTypeId: Editcharges.VehicleTypeId.Id,
-            //Active: (Editcharges.Active == true) ? 1 : 0,
+            Id: Edittaxipack.Id,
+            Code: Edittaxipack.Code,
+            PackageName: Edittaxipack.PackageName,
+            Description: Edittaxipack.Description,
+            OpId: $scope.OpId.Id,
+            VehicleGroupId: $scope.vg.Id,
+            VehicleTypeId: $scope.vt.Id
         }
 
         var req = {
             method: 'POST',
             url: '/api/MeteredTaxiPackage/SaveMeteredTaxiPackages',
-            data: Editcharges
+            data: Edittaxipack
         }
         $http(req).then(function (response) {
 
             alert("Updated successfully!");
 
-            $scope.Editcharges = null;
+            $scope.Edittaxipack = null;
 
         }, function (errres) {
             var errdata = errres.data;
@@ -308,8 +306,28 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     $scope.setCharges = function (cd) {
-        $scope.Editcharges = cd;
+        $scope.Edittaxipack = cd;
     };
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeOperationName: '1',
+            includeVehicleGroup: '1',
+            includeVehicleType: '1',
+
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+        });
+    }
 
     $scope.showDialog = function (message) {
 

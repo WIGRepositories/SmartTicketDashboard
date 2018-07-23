@@ -1798,6 +1798,9 @@ namespace SmartTicketDashboard.Models
         public int includeApplicabilityType { get; set; }
         public int includeUnitType { get; set; }
         public int includeUnit { get; set; }
+        public int includeOperationName { get; set; }
+        public int includeValueType { get; set; }
+        public int includeApplyOn { get; set; }
     }
     public class VehicleConfig
     {

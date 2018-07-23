@@ -456,7 +456,7 @@
                                                                 <div class="modal-content">
                                                                     <div class="modal-header modal-header-primary">
                                                                         <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Charges</h4>
+                                                                        <h4 id="modal-header-primary-label" class="modal-title">Edit Discounts</h4>
                                                                     </div>
                                                                     <div class="modal-body">
                                                                         <div class="row ">
@@ -468,34 +468,21 @@
 
 
                                                                                     <div class="col-md-12">
-                                                                                        <div id="generalTabContent" ng-model="Editcharges" class="tab-content">
+                                                                                        <div id="generalTabContent" ng-model="prodisc" class="tab-content">
 
 
                                                                                             <div class="row">
 
                                                                                                 <div class="col-md-6">
                                                                                                     <label for="Name" class="col-md-4 control-label">Code:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Code" class="form-control" /><span class="help-block"></span></div>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="prodisc.Code" class="form-control" /><span class="help-block"></span></div>
                                                                                                 </div>
                                                                                                 <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">Title:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Title" class="form-control" /><span class="help-block"></span></div>
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                            <div class="row">
-
-                                                                                                <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">Description:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="text" ng-model="Editcharges.Description" class="form-control" /><span class="help-block"></span></div>
-                                                                                                </div>
-                                                                                                <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">Category:<span class='require'></span></label>
+                                                                                                    <label for="Name" class="col-md-4 control-label">Operation Name:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select ng-options="cc.Name for cc in Categories track by cc.Id" ng-init="GetCategories()" ng-model="Editcharges.Category" class="form-control">
+                                                                                                        <select ng-model="opcode" ng-options="c.Name for c in initdata.Table2 track by c.Id" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
-
                                                                                                     </div>
                                                                                                 </div>
 
@@ -503,47 +490,74 @@
                                                                                             <div class="row">
 
                                                                                                 <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label"> ApplyAs:<span class='require'></span></label>
+                                                                                                    <label for="Name" class="col-md-4 control-label">Condition:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <select ng-options="aa.Name for aa in ApplyAs track by aa.Id" ng-init="GetApplyAs()" ng-model="Editcharges.ApplyAs" class="form-control">
+                                                                                                        <input type="text" ng-model="prodisc.Condition" class="form-control" /><span class="help-block"></span>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Value Type:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select ng-model="v" ng-options="v.Name for v in initdata.Table3 track by v.Id" class="form-control">
                                                                                                             <option value="">Select</option>
                                                                                                         </select>
                                                                                                     </div>
                                                                                                 </div>
 
+                                                                                            </div>
+                                                                                            <div class="row">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label"> Apply On:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select ng-model="ApplyOn" ng-options="aa.Name for aa in initdata.Table4 track by aa.Id" class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="t" class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+                                                                                                    </div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row" style="margin-top:10px;">
+
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">From Value:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="prodisc.FromValue" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+                                                                                                <div class="col-md-6">
+                                                                                                    <label for="Name" class="col-md-4 control-label">To Value:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8"><input type="text" ng-model="prodisc.ToValue" class="form-control" /><span class="help-block"></span></div>
+                                                                                                </div>
+
+                                                                                            </div>
+                                                                                            <div class="row">
+                                                                                                <div class="col-md-6">
+
+                                                                                                    <label for="Name" class="col-md-4 control-label">Applicability:<span class='require'></span></label>
+                                                                                                    <div class="col-md-8">
+                                                                                                        <select ng-options="aa.Name for aa in initdata.Table track by aa.Id" ng-model="a" class="form-control">
+                                                                                                            <option value="">Select</option>
+                                                                                                        </select>
+
+                                                                                                    </div>
+                                                                                                </div>
                                                                                                 <div class="col-md-6">
 
                                                                                                     <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
                                                                                                     <div class="col-md-8">
-                                                                                                        <input type="text" ng-model="Editcharges.cdValue" class="form-control" /><span class="help-block"></span>
-                                                                                                    </div>
+                                                                                                        <input type="text" ng-model="prodisc.Value" class="form-control" /><span class="help-block"></span>
 
-
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                            <div class="row">
-
-                                                                                                <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="date" ng-model="Editcharges.FromDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                                </div>
-                                                                                                <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8"><input type="date" ng-model="Editcharges.ToDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                                </div>
-
-                                                                                            </div>
-                                                                                            <div class="row">
-                                                                                                <div class="col-md-6">
-                                                                                                    <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
-                                                                                                    <div class="col-md-8">
-                                                                                                        <select ng-model="Editcharges.cdType" ng-options="cc.Name for cc in AppTypes track by cc.Id" ng-init="GetAppTypes()" class="form-control">
-                                                                                                            <option value="">Select</option>
-                                                                                                        </select>
                                                                                                     </div>
                                                                                                 </div>
-                                                                                            </div>
+                                                                                            </div>       
 
 
                                                                                         </div>
@@ -552,9 +566,9 @@
                                                                                         <div class="form-actions">
                                                                                             <div style="text-align:center">
 
-                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="EditChargesDiscounts(Editcharges)">Save</button>
+                                                                                                <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="Save(prodisc)">Save</button>
 
-                                                                                                <a href="ChargesDiscounts.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                                <a href="PromotionalDiscounts.html" class="btn btn-primary" ng-click="clearprodisc()">Cancel</a>
 
                                                                                             </div>
                                                                                         </div>
@@ -593,7 +607,7 @@
                                                                 <td>{{cd.Code}}</td>
                                                                 <td>{{cd.OpCodes}}</td>
                                                                 <td>{{cd.Condition}}</td>
-                                                                <td>{{cd.ValueType}}</td>
+                                                                <td>{{cd.vtype}}</td>
                                                                 <td>{{cd.dist}}</td>                                                                
                                                                 <td>{{cd.Applyonn}}</td>
                                                                 <td>{{cd.applicable}}</td>
@@ -620,13 +634,13 @@
 
                                                     </table>
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class=" modal-dialog modal-lg">
-                                                            <div class="modal-content" ng-model="disc">
+                                                        <div class="modal-dialog modal-lg">
+                                                            <div class="modal-content" ng-model="disc" ng-init="GetConfigData()">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                                                     <h4 id="modal-header-primary-label" class="modal-title">Add Charges</h4>
                                                                 </div>
-                                                                <div class="modal-body">
+                                                                <div class="modal-body" >
                                                                     <div class="row ">
 
 
@@ -647,7 +661,7 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Operation Name:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="opcode" ng-options="cc.Name for cc in Categories track by cc.Id" ng-init="GetCategories()" class="form-control">
+                                                                                                    <select ng-model="opcode" ng-options="c.Name for c in initdata.Table2 track by c.Id"  class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -666,7 +680,7 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label">Value Type:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="disc.valueType" ng-options="cc.Name for cc in Categories track by cc.Id" ng-init="GetCategories()" class="form-control">
+                                                                                                    <select ng-model="v" ng-options="v.Name for v in initdata.Table3 track by v.Id" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -678,44 +692,53 @@
                                                                                             <div class="col-md-6">
                                                                                                 <label for="Name" class="col-md-4 control-label"> Apply On:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <select ng-model="disc.ApplyOn" ng-options="aa.Name for aa in ApplyAs track by aa.Id" ng-init="GetApplyAs()" class="form-control">
+                                                                                                    <select ng-model="ApplyOn" ng-options="aa.Name for aa in initdata.Table4 track by aa.Id"  class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
+                                                                                                <div class="col-md-8">
+                                                                                                    <select ng-options="cc.Name for cc in initdata.Table1 track by cc.Id" ng-model="t" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+                                                                                                </div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row" style="margin-top:10px;">
+
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">From Value:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="disc.FromValue" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+                                                                                            <div class="col-md-6">
+                                                                                                <label for="Name" class="col-md-4 control-label">To Value:<span class='require'></span></label>
+                                                                                                <div class="col-md-8"><input type="text" ng-model="disc.ToValue" class="form-control" /><span class="help-block"></span></div>
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <div class="row">
+                                                                                            <div class="col-md-6">
+
+                                                                                                <label for="Name" class="col-md-4 control-label">Applicability:<span class='require'></span></label>
+                                                                                                <div class="col-md-8">
+                                                                                                    <select ng-options="aa.Name for aa in initdata.Table track by aa.Id" ng-model="a" class="form-control">
+                                                                                                        <option value="">Select</option>
+                                                                                                    </select>
+
                                                                                                 </div>
                                                                                             </div>
                                                                                             <div class="col-md-6">
 
                                                                                                 <label for="Name" class="col-md-4 control-label">Value:<span class='require'></span></label>
                                                                                                 <div class="col-md-8">
-                                                                                                    <input type="text" ng-model="Addcharges.cdValue" class="form-control" /><span class="help-block"></span>
+                                                                                                    <input type="text" ng-model="disc.Value" class="form-control" /><span class="help-block"></span>
 
                                                                                                 </div>
                                                                                             </div>
-
-                                                                                        </div>
-                                                                                        <div class="row">
-
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">From Date:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="date" ng-model="Addcharges.FromDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                            </div>
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">To Date:<span class='require'></span></label>
-                                                                                                <div class="col-md-8"><input type="date" ng-model="Addcharges.ToDate" class="form-control" /><span class="help-block"></span></div>
-                                                                                            </div>
-
-                                                                                        </div>
-                                                                                        <div class="row">
-                                                                                            <div class="col-md-6">
-                                                                                                <label for="Name" class="col-md-4 control-label">Type:<span class='require'></span></label>
-                                                                                                <div class="col-md-8">
-                                                                                                    <select ng-options="cc.Name for cc in AppTypes track by cc.Id" ng-init="GetAppTypes()" ng-model="Addcharges.cdType" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-
+                                                                                        </div>                                                                                      
 
                                                                                     </div>
 
@@ -723,9 +746,9 @@
                                                                                     <div class="form-actions">
                                                                                         <div style="text-align:center">
 
-                                                                                            <button class="btn btn-green" data-dismiss="modal" type="button" ng-click="AddChargesDiscounts(Addcharges,'I')">Save</button>
+                                                                                            <button class="btn btn-green" type="button" ng-click="SaveNew(disc,'I')">Save</button>
 
-                                                                                            <a href="ChargesDiscounts.html" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                                                                            <a href="PromotionalDiscounts.html" class="btn btn-primary" ng-click="cleardisc()">Cancel</a>
 
                                                                                         </div>
                                                                                     </div>
