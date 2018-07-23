@@ -14,6 +14,31 @@ namespace SmartTicketDashboard.Controllers
     public class VehicleLayoutController : ApiController
     {
 
+        [HttpGet]
+        [Route("api/VehicleLayout/GetVehicleLayout")]
+        public DataTable GetVehicleLayout(int rows, int col)
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "GetvehicleLayout";
+
+            cmd.Parameters.Add("@Rows", SqlDbType.Int).Value = rows;
+            cmd.Parameters.Add("@col", SqlDbType.Int).Value = col;
+            cmd.Connection = conn;
+
+           
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+
+            db.Fill(dt);           
+
+            return dt;
+        }
+
         [HttpPost]
         [Route("api/VehicleLayout/saveVehicleLayout")]
         public HttpResponseMessage saveVehicleLayout(IEnumerable<VehicleLayout> vcList)

@@ -29,12 +29,12 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if ($scope.s == null) {
+        if ($scope.fc == null) {
             $scope.fleet = null;
             return;
         }
 
-        $http.get('/api/Fleet/getFleetList?cmpId=' + $scope.cmp.Id + '&fleetOwnerId=' + $scope.s.Id).then(function (res, data) {
+        $http.get('/api/Fleet/getFleetList?cmpId=' + $scope.cmp.Id + '&fleetOwnerId=' + $scope.fc.Id).then(function (res, data) {
             $scope.Fleet = res.data.Table;
         });
     }
