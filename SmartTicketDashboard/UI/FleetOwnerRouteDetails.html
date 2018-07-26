@@ -816,11 +816,11 @@
                                                                                         <input class="form-control" id="destination" type="text" placeholder="Enter drop point" ng-model="destination">
                                                                                         <br />
                                                                                     </div>
-                                                                                    <div class="form-group">
+                                                                                    <!--<div class="form-group">
                                                                                         <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
                                                                                             <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
                                                                                         </div>
-                                                                                    </div>
+                                                                                    </div>-->
                                                                                     <!--<div class="col-md-12">
                 <select ng-options="x.Name for x in CardTypes track by x.id" ng-model="currCard.Name" ng-change="GetCardUsers(cu);" style="width:100%">
                     <option value="">Select VehicleModel</option>
@@ -831,15 +831,14 @@
                                                                                         <div class="form-group form-group-sm">
                                                                                             <label class="col-sm-2 control-label" for="sm"><span class="badge">1</span></label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm"{{d.srcLat}}>
-                                                                                            </div>
+                                                                                                <input class="form-control" type="text" id="sm" ng-model="latitude">                                                                                            </div>
                                                                                         </div>
                                                                                     </div>
                                                                                     <div class="col-xs-12">
                                                                                         <div class="form-group form-group-sm">
                                                                                             <label class="col-sm-2 control-label" for="sm"><span class="badge">2</span></label>
                                                                                             <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm" {{d.srcLon}}>
+                                                                                                <input class="form-control" type="text" id="sm" ng-model="longitude">
                                                                                             </div>
                                                                                         </div>
 
@@ -859,11 +858,8 @@
 
                                                                             <div class="main">
                                                                                 <div class="panel panel-default">
-                                                                                    <div class="panel-body">
-                                                                                        <google-map control="map.control" center="map.center" zoom="map.zoom" ng-click="CenterMap()">
-
-                                                                                            <!--<marker coords="marker.center"></marker>-->
-
+                                                                                    <div class="panel-body" id="map">
+                                               <google-map  control="map.control"  center="map.center" zoom="map.zoom" ng-click="CenterMap(loc)">
                                                                                         </google-map>
 
                                                                                         <form class="form-horizontal" role="form">

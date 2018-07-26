@@ -104,7 +104,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
     
-    $scope.CenterMap = function (loc) {
+    $scope.CenterMap = function () {
 
         var lat =  17.3850;
         var long = 78.4867;
@@ -119,15 +119,12 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         var infoWindow = new google.maps.InfoWindow();
 
         google.maps.event.addListener($scope.map, 'click', function (loc) {
-            createMarkerWithLatLon(lat(), long());
-          //createMarker(lat(), long());
-        
-          
-        //    //    //alert("Latitude: " + e.latLng.lat() + "\r\nLongitude: " + e.latLng.lng());
-            
+            createMarkerWithLatLon(loc.lat(), loc.long());
+           
         });
+       
 
-        createMarkerWithLatLon(lat,long);
+        createMarkerWithLatLon(lat, long);
        
         //createMarker(lat,long);
 
@@ -135,6 +132,73 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
     
+    $scope.CenterMap1 = function () {
+
+        var lat = 17.3850;
+        var long = 78.4867;
+        var mapOptions = {
+            zoom: 8,
+            center: new google.maps.LatLng(lat, long),
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        //$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+        var infoWindow = new google.maps.InfoWindow();
+
+        google.maps.event.addListener($scope.map, 'click', function (loc) {
+            createMarkerWithLatLon(loc.lat(), loc.long());
+
+        });
+
+
+        createMarkerWithLatLon(lat, long);
+
+        $scope.MapOptions = {
+            center: new google.maps.LatLng($scope.Markers[0].lat, $scope.Markers[0].lng),
+            zoom: 8,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+ 
+        //Initializing the InfoWindow, Map and LatLngBounds objects.
+        $scope.InfoWindow = new google.maps.InfoWindow();
+        $scope.Latlngbounds = new google.maps.LatLngBounds();
+        $scope.Map = new google.maps.Map(document.getElementById("dvMap"), $scope.MapOptions);
+ 
+        //Looping through the Array and adding Markers.
+        for (var i = 0; i < $scope.Markers.length; i++) {
+            var data = $scope.Markers[i];
+            var myLatlng = new google.maps.LatLng(data.lat, data.lng);
+ 
+            //Initializing the Marker object.
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: $scope.Map,
+                title: data.title
+            });
+ 
+            //Adding InfoWindow to the Marker.
+            (function (marker, data) {
+                google.maps.event.addListener(marker, "click", function (e) {
+                    $scope.InfoWindow.setContent("<div style = 'width:200px;min-height:40px'>" + data.description + "</div>");
+                    $scope.InfoWindow.open($scope.Map, marker);
+                });
+            })(marker, data);
+ 
+            //Plotting the Marker on the Map.
+            $scope.Latlngbounds.extend(marker.position);
+        }
+ 
+        //Adjusting the Map for best display.
+        $scope.Map.setCenter($scope.Latlngbounds.getCenter());
+        $scope.Map.fitBounds($scope.Latlngbounds);
+  
+
+        //createMarker(lat,long);
+
+
+    }
+
 
     var createMarker = function (lat,long) {
         var marker = new google.maps.Marker({
@@ -455,6 +519,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
 });
+
 
 
 myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {

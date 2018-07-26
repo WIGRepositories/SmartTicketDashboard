@@ -503,7 +503,8 @@
                                                                                 <td>{{route.routename}}</td>
                                                                                 <td>{{route.code}}</td>
                                                                                 <td class="col-lg-2">
-                                                                                    <div data-date-format="dd-mm-yyyy" class="input-group date datepicker-filter  input-group-sm mbs"><input type="date" id="{{route.routename}}FDate" class="form-control" /><span class="input-group-addon"></span></div>
+                                                                                    <div data-date-format="dd-mm-yyyy" class="input-group date datepicker-filter  input-group-sm mbs"><input type="date" id="{{route.routename}}FDate" ng-model="{{route.FromDate | date:dateFormat}}" class="form-control" /><span class="input-group-addon" ></span></div>
+                                                                                   
 
 
                                                                                 </td>

@@ -65,7 +65,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
 
         $http.get('/api/FleetOwnerRoute/getFleetOwnerRoute?cmpId=' + $scope.cmp.Id + '&fleetownerId=' + $scope.s.Id).then(function (res, data) {
-            $scope.FORoutes = res.data;
+            $scope.FORoutes = res.data;            
             $scope.checkedArr = $filter('filter')($scope.FORoutes, { assigned: "1" });
             $scope.uncheckedArr = $filter('filter')($scope.FORoutes, { assigned: "0" });
         });
@@ -165,6 +165,23 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
                 FleetOwnerRoutes.push(fr);
             }
         }
+        for (var cnt = 0; cnt < $scope.checkedArr.length; cnt++) {
+
+            if ($scope.checkedArr[cnt].assigned == 1) {
+                var fr = {
+                    Id: -1,
+                    FleetOwnerId: $scope.s.Id,
+                    CompanyId: $scope.cmp.Id,
+                    RouteId: $scope.checkedArr[cnt].RouteId,
+                    From: $scope.checkedArr[cnt].FromDate,
+                    To: $scope.checkedArr[cnt].ToDate,
+                    Active: 1,
+                    insupddelflag: 'U'
+                }
+
+                FleetOwnerRoutes.push(fr);
+            }
+        }
         for (var cnt = 0; cnt < $scope.uncheckedArr.length; cnt++) {
 
             if ($scope.uncheckedArr[cnt].assigned == 1) {
@@ -190,7 +207,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             data: FleetOwnerRoutes,
 
         }).success(function (data, status, headers, config) {
-            $scope.showdialogue("Saved successfully")
+            alert("Saved successfully")
             $scope.getFleetOwnerRoute();
         }).error(function (ata, status, headers, config) {
             alert(ata);

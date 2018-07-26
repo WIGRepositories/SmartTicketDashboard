@@ -28,7 +28,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         $http(req).then(function (res) {
             //$scope.initdata = res.data;
             $scope.companies = res.data;
-            $scope.showdialogue("Saved successfully")
+           //alert("Saved successfully")
         });
 
     }
@@ -56,7 +56,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data.Table;
-            $scope.showdialog("Saved successfully")
+           //alert("Saved successfully")
         });
     }
 
@@ -80,7 +80,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialog("Saved successfully")
+            //alert("Saved successfully")
         });
 
     }
@@ -97,37 +97,9 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         $http.get('/api/VehicleLayout/GetVehicleLayout?rows=2&col=4').then(function (res, data) {
             $scope.layout = res.data;
 
-            //rowCount = $scope.layout[0].RowNo;//document.getElementById('rowSelected').value;
-            //colCount = $scope.layout[0].ColNo;//document.getElementById('colSelected').value;
-            //var rows = [],
-            //    i,
-            //    j;
-
-            //for (i = 0; i < rowCount; i++) {
-            //    var row = [];
-            //    for (j = 0; j < colCount; j++) {
-            //        row.push({ "Id": spreadsheetColumnLabel(j) + (i + 1), "selected": true });
-            //    }
-            //    rows.push(row);
-            //}
-
-
-            //$scope.datarows = rows;
-
-            //function spreadsheetColumnLabel(index) {
-            //    var dividend = index + 1;
-            //    var columnLabel = '';
-            //    var modulo;
-            //    while (dividend > 0) {
-            //        modulo = (dividend - 1) % 26;
-            //        columnLabel = String.fromCharCode(65 + modulo) + columnLabel;
-            //        dividend = parseInt((dividend - modulo) / 26, 10);
-            //    }
-            //    return columnLabel;
-            //}
-
         });
     }
+
 
     $scope.displayLayout = function () {
         var container = document.getElementById('basic_example');
@@ -234,67 +206,65 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
     $scope.SaveFleetOwnerVehicleLayout = function () {
 
-            var savedata = $scope.datarows;
-            //var Vl = {
-            //    Id: -1,
-            //    RowNo: $scope.Id,
-            //    VehicleId: $scope.V.Id,
-            //    VehicleITypeId: $scope.checkedArr[cnt].VehicleITypeId,
-            //    ColNo: $scope.checkedArr[cnt].ColNo,
-            //    label: $scope.checkedArr[cnt].lbl,
-            
-            //    insupddelflag: 'I'
-            
-            //}
+        var savedata = $scope.datarows;
+        //var Vl = {
+        //    Id: -1,
+        //    RowNo: $scope.Id,
+        //    VehicleId: $scope.V.Id,
+        //    VehicleITypeId: $scope.checkedArr[cnt].VehicleITypeId,
+        //    ColNo: $scope.checkedArr[cnt].ColNo,
+        //    label: $scope.checkedArr[cnt].lbl,
 
-            //rowCount = document.getElementById('rowSelected').value;
-            //colCount = document.getElementById('colSelected').value;
-      
-            ////var checkedArr = []
-            ////var uncheckedArr = [];
-            var checkedArr = new Array();
-            var uncheckedArr = new Array();
-            //var rows = [];
-            //i;      
-            //var col = [];
-            //j;
-            for (i = 0; i < savedata.length; i++)
-            {
-                for(j=0; j < savedata[i].length; j++)
-                {                
+        //    insupddelflag: 'I'
 
-                    var item = {
-                        "label": savedata[i][j].Id, 
-                        "RowNo": i,
-                        "ColNo": j,
-                        "VehicleLayoutTypeId": $scope.layout.vl.Id,
-                        "VehicleTypeId": $scope.layout.vt.Id,                    
-                    }                
-                    item.insupdflag = (savedata[i][j].selected == true) ? "I" : "D";
-                    checkedArr.push(item)                
+        //}
+
+        //rowCount = document.getElementById('rowSelected').value;
+        //colCount = document.getElementById('colSelected').value;
+
+        ////var checkedArr = []
+        ////var uncheckedArr = [];
+        var checkedArr = new Array();
+        var uncheckedArr = new Array();
+        //var rows = [];
+        //i;      
+        //var col = [];
+        //j;
+        for (i = 0; i < savedata.length; i++) {
+            for (j = 0; j < savedata[i].length; j++) {
+
+                var item = {
+                    "label": savedata[i][j].Id,
+                    "RowNo": i,
+                    "ColNo": j,
+                    "VehicleLayoutTypeId": $scope.layout.vl.Id,
+                    "VehicleTypeId": $scope.layout.vt.Id,
                 }
+                item.insupdflag = (savedata[i][j].selected == true) ? "I" : "D";
+                checkedArr.push(item)
             }
-       
-            //write the post logic and test
-            var req = {
-                method: 'POST',
-                url: '/api/VehicleLayout/SaveFleetOwnerVehicleLayout',
-                data: checkedArr
+        }
 
-            }
-            $http(req).then(function (response) {
+        //write the post logic and test
+        var req = {
+            method: 'POST',
+            url: '/api/VehicleLayout/SaveFleetOwnerVehicleLayout',
+            data: checkedArr
 
-               $scope.showDialog("Saved successfully!");
+        }
+        $http(req).then(function (response) {
 
-                $scope.Group = null;
+            alert("Saved successfully!");
 
-            }, function (errres) {
-                var errdata = errres.data;
-                var errmssg = "Your details are incorrect";
-                errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-                $scope.showDialog(errmssg);
-            });
-            $scope.currGroup = null;
+            $scope.Group = null;
+
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your details are incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+        });
+        $scope.currGroup = null;
     };
 
     $scope.showDialog = function (message) {

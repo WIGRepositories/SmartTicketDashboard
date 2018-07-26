@@ -99,7 +99,7 @@ $scope.GetRoutesForFO = function () {
 
     $scope.vehicles = null;
 
-    var fleetowner = $scope.s;
+    var fleetowner = $scope.s1;
 
     if (fleetowner == null) {
         return;
@@ -151,6 +151,27 @@ $scope.GetFleetRoutes = function () {
     }
     $http(req).then(function (res) {
         $scope.FleetRoute = res.data;
+
+        for (i = 0; i < $scope.Companies.length; i++) {
+            if ($scope.Companies[i].Id == $scope.FleetRoute[0].CompanyId) {
+                $scope.cmp1 = $scope.Companies[i];
+                break;
+            }
+        }
+        for (i = 0; i < $scope.cmpdata.Table.length; i++) {
+            if ($scope.cmpdata.Table[i].Id == $scope.FleetRoute[0].FleetOwnerId) {
+                $scope.s1 = $scope.cmpdata.Table[i];
+                break;
+            }
+            $scope.GetRoutesForFO();
+        }
+        for (i = 0; i < $scope.cmpdata.Table.length; i++) {
+            if ($scope.cmpdata.Table[i].Id == $scope.FleetRoute[0].FleetOwnerId) {
+                $scope.s1 = $scope.cmpdata.Table[i];
+                break;
+            }
+            $scope.GetRoutesForFO();
+        }
     });
 }
 
@@ -261,7 +282,7 @@ $scope.saveNewFleetRoutes = function (initdata) {
 
     $http(req).then(function (response) {
 
-       // $scope.showDialog("Saved successfully!");
+       alert("Saved successfully!");
 
         $scope.Group = null;
 
