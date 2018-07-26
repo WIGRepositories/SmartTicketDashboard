@@ -112,7 +112,7 @@
 
 </head>
 
-<body ng-controller="myCtrl" ng-init="GetSchedulelist()" ng-model="sclist">
+<body ng-controller="myCtrl" ng-init="GetRoutes()" ng-model="sclist">
 
     <div>
         <!--BEGIN THEME SETTING-->
@@ -789,7 +789,7 @@
                         <div class="container" style="padding-top:10px">
                             <div class="col-md-3">
 
-                                Country:<select ng-options="cc.Name for cc in initdata.Table2 track by cc.Id" ng-model="ctry" style="width:80%">
+                                Route Name:<select ng-options="s.RouteName for s in routes track by s.Id" ng-model="rt" style="width:80%" ng-change="GetRouteDetails(rt)">
                                     <option value="">Select</option>
 
                                 </select>
@@ -806,7 +806,7 @@
                                                 <label for="pickupPoint">Source</label>
                                                 <input vs-google-autocomplete
                                                        vs-autocomplete-validator
-                                                       ng-model="pickupPoint.place.name"
+                                                       ng-model="srcname.place.name"
                                                        vs-place="pickupPoint.place"
                                                        vs-place-id="pickupPoint.components.placeId"
                                                        vs-street-number="pickupPoint.components.streetNumber"
@@ -823,14 +823,37 @@
                                                        name="pickupPoint"
                                                        id="pickupPoint"
                                                        class="form-control"
-                                                       placeholder="Enter any address" value="{{pickupPoint.name}}" />
+                                                       placeholder="Enter any address" value="{{srcname}}" />
                                             </div>
-
+                                            <div class="col-xs-6">
+                                                <label for="dropPoint">Destination</label>
+                                                <input vs-google-autocomplete
+                                                       vs-autocomplete-validator
+                                                       ng-model="destname.place.name"
+                                                       vs-place="dropPoint.place"
+                                                       vs-place-id="dropPoint.components.placeId"
+                                                       vs-street-number="dropPoint.components.streetNumber"
+                                                       vs-street="dropPoint.components.street"
+                                                       vs-city="dropPoint.components.city"
+                                                       vs-state="dropPoint.components.state"
+                                                       vs-country-short="dropPoint.components.countryCode"
+                                                       vs-country="dropPoint.components.country"
+                                                       vs-district="dropPoint.components.district"
+                                                       vs-post-code="dropPoint.components.postCode"
+                                                       vs-latitude="dropPoint.components.location.lat"
+                                                       vs-longitude="dropPoint.components.location.long"
+                                                       type="text"
+                                                       name="dropPoint"
+                                                       id="dropPoint"
+                                                       class="form-control"
+                                                       placeholder="Enter any address" value="{{destname}}" />
+                                                <br />
+                                            </div>
                                             <!--<div class="form-group">
-                                                <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
-                                                    <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
-                                                </div>
-                                            </div>-->
+                        <div class="btn-medium green" style="margin-top:15px;margin-left:225px">
+                            <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
+                        </div>
+                    </div>-->
                                             <div class="col-md-12">
                                                 <div class="col-xs-6">
                                                     <label>From Date</label>
@@ -849,13 +872,13 @@
                                             <div class="col-md-12">
                                                 <div class="col-xs-6">
                                                     <label>Vehicle Group</label>
-                                                    <select ng-options="vm.Name for vm in initdata.Table track by vm.Id" ng-model="vm" class="form-control">
+                                                    <select ng-options="vm.Name for vm in initdata.Table1 track by vm.Id" ng-model="vm" class="form-control">
                                                         <option value="">Select</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-xs-6">
                                                     <label>Vehicle Type</label>
-                                                    <select ng-options="vt.Name for vt in initdata.Table1 track by vt.Id" ng-model="vt" class="form-control" style="width:100%">
+                                                    <select ng-options="vt.Name for vt in initdata.Table2 track by vt.Id" ng-model="vt" class="form-control" style="width:100%">
                                                         <option value="">Select Type</option>
                                                     </select>
                                                 </div>
@@ -864,10 +887,8 @@
                                             <div class="col-md-12">
                                                 <div class="col-xs-6">
                                                     <label>Status</label>
-                                                    <select class="form-control" style="width:100%" ng-model="sdluelist.s">
+                                                    <select ng-options="ss.Name for ss in initdata.Table track by ss.Id" class="form-control" style="width:100%" ng-model="s">
                                                         <option value="">Select</option>
-                                                        <option value="3">Yes</option>
-                                                        <option value="6">No</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-xs-6">

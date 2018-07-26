@@ -7,7 +7,9 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
 using System.Web.Http;
+using System.Web.Http.Tracing;
 
 namespace SmartTicketDashboard.Controllers
 {
@@ -416,6 +418,7 @@ namespace SmartTicketDashboard.Controllers
         [Route("api/TransactionMaster/SaveTransactionDetails")]
         public DataTable SaveTransactionDetails(TransDetails tdd)
         {
+            DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection();
             try
             {
@@ -451,11 +454,87 @@ namespace SmartTicketDashboard.Controllers
 
 
 
-                DataTable dt = new DataTable();
+
                 SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(dt);
 
-                return dt;
+                #region transaction otp
+                string Totp = dt.Rows[0]["Transactionotp"].ToString();
+                if (Totp != null)
+                {
+                    try
+                    {
+                        MailMessage mail = new MailMessage();
+                        string emailserver = System.Configuration.ConfigurationManager.AppSettings["emailserver"].ToString();
+
+                        string username = System.Configuration.ConfigurationManager.AppSettings["username"].ToString();
+                        string pwd = System.Configuration.ConfigurationManager.AppSettings["password"].ToString();
+                        string fromaddress = System.Configuration.ConfigurationManager.AppSettings["fromaddress"].ToString();
+                        string port = System.Configuration.ConfigurationManager.AppSettings["port"].ToString();
+
+                        SmtpClient SmtpServer = new SmtpClient(emailserver);
+
+                        mail.From = new MailAddress(fromaddress);
+                        mail.To.Add(fromaddress);
+                        mail.Subject = "Transaction - Transaction OTP";
+                        mail.IsBodyHtml = true;
+
+                        string verifcodeMail = @"<table>
+                                                        <tr>
+                                                            <td>
+                                                                <h2>Thank you for Your Transaction</h2>
+                                                                <table width=\""760\"" align=\""center\"">
+                                                                    <tbody style='background-color:#F0F8FF;'>
+                                                                        <tr>
+                                                                            <td style=\""font-family:'Zurich BT',Arial,Helvetica,sans-serif;font-size:15px;text-align:left;line-height:normal;background-color:#F0F8FF;\"" >
+<div style='padding:10px;border:#0000FF solid 2px;'>    <br /><br />
+                                                                             
+                                                       Your Transaction OTP is:<h3>" + Totp + @" </h3>
+
+                                                        If you didn't make this request, <a href='http://154.120.237.198:52800'>click here</a> to cancel.
+
+                                                                                <br/>
+                                                                                <br/>             
+                                                                       
+                                                                                Warm regards,<br>
+                                                                                Webingate Customer Service Team<br/><br />
+</div>
+                                                                            </td>
+                                                                        </tr>
+
+                                                                    </tbody>
+                                                                </table>
+                                                            </td>
+                                                        </tr>
+
+                                                    </table>";
+
+
+                        mail.Body = verifcodeMail;
+                        //SmtpServer.Port = 465;
+                        //SmtpServer.Port = 587;
+                        SmtpServer.Port = Convert.ToInt32(port);
+                        SmtpServer.UseDefaultCredentials = false;
+
+                        SmtpServer.Credentials = new System.Net.NetworkCredential(username, pwd);
+                        SmtpServer.EnableSsl = true;
+                        //SmtpServer.TargetName = "STARTTLS/smtp.gmail.com";
+                        SmtpServer.Send(mail);
+                        //Status = 1;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        //throw ex;
+                    }
+                    finally
+                    {
+                        conn.Close();
+                    }
+                    #endregion transaction otp
+
+
+                }
             }
             catch (Exception ex)
             {
@@ -465,6 +544,57 @@ namespace SmartTicketDashboard.Controllers
                 }
                 throw ex;
             }
+            return dt;
+        }
+
+        [HttpPost]
+        [Route("api/TransactionMaster/TotpVerification")]
+        public DataTable TotpVerification(TransDetails tdd)
+        {
+
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();            
+           
+            try
+            {
+
+               conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InsUpdTransactionOtp";
+
+                cmd.Connection = conn;
+
+
+                SqlParameter q1 = new SqlParameter("@Id", SqlDbType.Int);
+                q1.Value = tdd.Id;
+                cmd.Parameters.Add(q1);
+
+                SqlParameter tms = new SqlParameter("@TransmasterId", SqlDbType.Int);
+                tms.Value = tdd.TransmasterId;
+                cmd.Parameters.Add(tms);
+
+                SqlParameter e = new SqlParameter("@TOtp", SqlDbType.VarChar, 10);
+                e.Value = tdd.Totp;
+                cmd.Parameters.Add(e);
+
+
+                SqlDataAdapter ds = new SqlDataAdapter(cmd);
+                ds.Fill(dt);           
+            }
+            catch (Exception ex)
+            {
+                if (conn.State == ConnectionState.Open)
+                {
+                    conn.Close();
+                }
+                
+                throw ex;                
+            }            
+
+            return dt;
+
         }
     }
 }

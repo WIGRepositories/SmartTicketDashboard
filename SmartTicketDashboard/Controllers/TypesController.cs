@@ -390,6 +390,30 @@ namespace SmartTicketDashboard.Controllers
                 ipn.Value = vc.includePackageNames;
                 cmd.Parameters.Add(ipn);
 
+                SqlParameter aaa = new SqlParameter("@includeApplicabilityType", SqlDbType.Int);
+                aaa.Value = vc.includeApplicabilityType;
+                cmd.Parameters.Add(aaa);
+
+                SqlParameter utt = new SqlParameter("@includeUnitType", SqlDbType.Int);
+                utt.Value = vc.includeUnitType;
+                cmd.Parameters.Add(utt);
+
+                SqlParameter uuu = new SqlParameter("@includeUnit", SqlDbType.Int);
+                uuu.Value = vc.includeUnit;
+                cmd.Parameters.Add(uuu);
+
+                SqlParameter oop = new SqlParameter("@includeOperationName", SqlDbType.Int);
+                oop.Value = vc.includeOperationName;
+                cmd.Parameters.Add(oop);
+
+                SqlParameter vtt = new SqlParameter("@includeValueType", SqlDbType.Int);
+                vtt.Value = vc.includeValueType;
+                cmd.Parameters.Add(vtt);
+
+                SqlParameter aao = new SqlParameter("@includeApplyOn", SqlDbType.Int);
+                aao.Value = vc.includeApplyOn;
+                cmd.Parameters.Add(aao);
+
                 SqlDataAdapter db = new SqlDataAdapter(cmd);
                 db.Fill(ds);
                 traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "ConfigData completed.");

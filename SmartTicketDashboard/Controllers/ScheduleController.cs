@@ -131,7 +131,7 @@ namespace SmartTicketDashboard.Controllers
         [HttpGet]
         [Route("api/Schedule/GetScheduleTiming")]
 
-        public DataTable GetScheduleTiming()
+        public DataTable GetScheduleTiming(int Id)
         {
             SqlConnection conn = new SqlConnection();
 
@@ -141,9 +141,9 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandText = "GetScheduleTimings";
             cmd.Connection = conn;
 
-            //SqlParameter cmpid = new SqlParameter("@Id", SqlDbType.Int);
-            //cmpid.Value = Id;
-            //cmd.Parameters.Add(cmpid);
+            SqlParameter cmpid = new SqlParameter("@Id", SqlDbType.Int);
+            cmpid.Value = Id;
+            cmd.Parameters.Add(cmpid);
 
             DataTable dt = new DataTable();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
@@ -189,11 +189,11 @@ namespace SmartTicketDashboard.Controllers
                 cmd.Parameters.Add(em);
                
 
-                SqlParameter sfd = new SqlParameter("@ArrivalTime", SqlDbType.Time);
+                SqlParameter sfd = new SqlParameter("@ArrivalTime", SqlDbType.DateTime);
                 sfd.Value = st.ArrivalTime;
                 cmd.Parameters.Add(sfd);
 
-                SqlParameter std = new SqlParameter("@DepartureTime", SqlDbType.Time);
+                SqlParameter std = new SqlParameter("@DepartureTime", SqlDbType.DateTime);
                 std.Value = st.DepartureTime;
                 cmd.Parameters.Add(std);
 

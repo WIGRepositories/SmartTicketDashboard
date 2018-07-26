@@ -56,7 +56,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data.Table;
-            $scope.showdialogue("Saved successfully")
+            $scope.showdialog("Saved successfully")
         });
     }
 
@@ -80,7 +80,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showdialog("Saved successfully")
         });
 
     }
@@ -93,6 +93,41 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         }
     }
 
+    $scope.Getlayout = function () {
+        $http.get('/api/VehicleLayout/GetVehicleLayout?rows=2&col=4').then(function (res, data) {
+            $scope.layout = res.data;
+
+            //rowCount = $scope.layout[0].RowNo;//document.getElementById('rowSelected').value;
+            //colCount = $scope.layout[0].ColNo;//document.getElementById('colSelected').value;
+            //var rows = [],
+            //    i,
+            //    j;
+
+            //for (i = 0; i < rowCount; i++) {
+            //    var row = [];
+            //    for (j = 0; j < colCount; j++) {
+            //        row.push({ "Id": spreadsheetColumnLabel(j) + (i + 1), "selected": true });
+            //    }
+            //    rows.push(row);
+            //}
+
+
+            //$scope.datarows = rows;
+
+            //function spreadsheetColumnLabel(index) {
+            //    var dividend = index + 1;
+            //    var columnLabel = '';
+            //    var modulo;
+            //    while (dividend > 0) {
+            //        modulo = (dividend - 1) % 26;
+            //        columnLabel = String.fromCharCode(65 + modulo) + columnLabel;
+            //        dividend = parseInt((dividend - modulo) / 26, 10);
+            //    }
+            //    return columnLabel;
+            //}
+
+        });
+    }
 
     $scope.displayLayout = function () {
         var container = document.getElementById('basic_example');

@@ -460,7 +460,7 @@
                                                             </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Fleet Owner:<select ng-options="f.FleetOwnerCode for f in initdata1.Table track by f.Id" ng-model="fc" ng-init="GetConfigData()" id="test1" style="width:70%">
+                                                            Fleet Owner:<select ng-options="f.FleetOwnerCode for f in initdata1.Table track by f.Id" ng-model="fc" ng-init="GetConfigData()" ng-change="GetFleetDetails(fc)" id="test1" style="width:70%">
 
     <option value="">Select</option>
 </select>
@@ -853,21 +853,21 @@
                                                                 <tr class="condensed">
                                                                     <!--<th width="10%">Photo</th>-->
                                                                     <th width="10%">Registration No</th>
-                                                                    <th width="10%">Vehicle Group</th>
+                                                                    <!--<th width="10%">Vehicle Group</th>-->
                                                                     <th width="10%">Vehicle Type</th>
                                                                     <th width="10%">Vehicle Model</th>
 
                                                                     <th width="10%">Owner Code</th>
                                                                     <th width="10%">Owner Name</th>
                                                                     <th width="10%">Owner Phone No</th>
-                                                                    <th width="10%">Owner E-Mail Id</th>
+                                                                    <th width="10%">Owner E-Mail</th>
                                                                     <th width="5%">Approved</th>
                                                                     <th width="5%">Status</th>
                                                                     <th width="5%">Edit</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody class="media-thumb">
-                                                                <tr ng-repeat="v in VehiclesList | filter:Registration">
+                                                                <tr ng-repeat="v in Fleet | filter:Registration">
                                                                     <!--<td>
                                                                         <span class="img-shadow" ng-if="v.Photo == null">
                                                                             <img src="images/car.png" class="media-object thumb" />
@@ -876,14 +876,14 @@
                                                                             <img src="{{v.Photo}}" class="media-object thumb" />
                                                                         </span>
                                                                     </td>-->
-                                                                    <td>{{v.RegistrationNo}}<div>Vehicle Code:{{v.VehicleCode}}</div></td>
+                                                                    <td>{{v.VehicleRegNo}}<div>Vehicle Code:{{v.VehicleCode}}</div></td>
 
-                                                                    <td>{{v.VehicleGroup}}</td>
+                                                                    <!--<td>{{v.VehicleGroup}}</td>-->
                                                                     <td>{{v.VehicleType}}</td>
                                                                     <td>{{v.VehicleModel}}</td>
 
-                                                                    <td>{{v.FleetOwnerId}}</td>
-                                                                    <td>{{v.FleetOwner}}</td>
+                                                                    <td>{{v.FleetOwnerCode}}</td>
+                                                                    <td>{{v.FleetOwnerName}}</td>
                                                                     <td>{{v.ContactNo1}}</td>
                                                                     <td>{{v.EmailId}}</td>
 
