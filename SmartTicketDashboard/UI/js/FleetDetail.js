@@ -299,27 +299,31 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
         var Fleet = {
+            flag: 'I',
             Id: -1,
-            VehicleRegNo: newVD.VehicleRegNo,
-            VehicleTypeId: (newVD.vt != null) ? newVD.vt.Id : newVD.VehicleTypeId,
-            VehicleLayoutId: (newVD.vl != null) ? newVD.vl.Id : newVD.VehicleLayoutId,
-            FleetOwnerId: $scope.s.Id,
-            CompanyId: $scope.cmp.Id,
-            ServiceTypeId: (newVD.st != null) ? newVD.st.Id : newVD.ServiceTypeId,
-            EngineNo: newVD.EngineNo,
-            FuelUsed: newVD.FuelUsed,
-            MonthAndYrOfMfr: newVD.MonthAndYrOfMfr,
-            ChasisNo: newVD.ChasisNo,
-            SeatingCapacity: newVD.SeatingCapacity,
-            DateOfRegistration: newVD.DateOfRegistration,
-            Active: 1,
-            insupddelflag: 'I'
+            VehicleCode: newVehicle.VCode,
+            OwnerId: (newVehicle.s == null || newVehicle.s.Id == '') ? null : newVehicle.s.Id,
+            RegistrationNo: newVehicle.RegistrationNo,
+            ChasisNo: newVehicle.ChasisNo,
+            Engineno: newVehicle.Engineno,
+            VehicleGroupId: newVehicle.vg.Id,
+            VehicleTypeId: newVehicle.vt.Id,
+            VehicleModelId: 13,//newVehicle.vmo.Id,
+            VehicleMakeId: 21,//newVehicle.vm.Id,
+            ModelYear: newVehicle.ModelYear,
+            //StatusId: 15,      // new      
+            HasAC: 1,
+            isDriverOwned: 1,
+            LayOutTypeId: newVehicle.lt.Id,
+            CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
+            DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
+            Photo: $scope.imageSrc
 
         };
 
         var req = {
             method: 'POST',
-            url: '/api/Fleet/NewFleetDetails',
+            url: '/api/VehicleMaster/Vehicle',
             //headers: {
             //    'Content-Type': undefined
 

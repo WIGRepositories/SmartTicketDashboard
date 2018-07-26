@@ -318,6 +318,10 @@ namespace SmartTicketDashboard.Controllers
             li.Value = v.LeftImage;
             cmd.Parameters.Add(li);
 
+            SqlParameter lti = new SqlParameter("@LayOutTypeId", SqlDbType.Int);
+            lti.Value = v.LayOutTypeId;
+            cmd.Parameters.Add(lti);
+
             DataTable dt = new DataTable();
             SqlDataAdapter da = new SqlDataAdapter(cmd);
             da.Fill(dt);
