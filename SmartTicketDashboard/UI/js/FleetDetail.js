@@ -418,6 +418,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             LayOutTypeId: newVehicle.lt.Id,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
             DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
+            CompanyId:$scope.newVehicle.c.Id,
             Photo: $scope.imageSrc
 
         };

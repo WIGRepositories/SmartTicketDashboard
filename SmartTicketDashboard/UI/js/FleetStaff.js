@@ -78,7 +78,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //alert("Saved successfully")
 
 
             if ($scope.userSId != 1) {
@@ -177,7 +177,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         }
         $http(req).then(function (res) {
             $scope.vehicles = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showdialogue("Saved successfully")
         });
 
     }
@@ -242,8 +242,8 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
 
         $http(req).then(function (response) {
 
-           $scope.showDialog("Saved successfully!");
-
+           alert("Saved successfully!");
+           $('#Modal-header-new').modal('hide');
             $scope.Group = null;
 
         }, function (errres) {
@@ -362,6 +362,8 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
 
         $http.get('/api/FleetStaff/GetFleetStaff?foId=' + $scope.s.Id + '&cmpId=' + $scope.cmp.Id).then(function (res, data) {
             $scope.FleetStaff = res.data;
+
+            $scope.f1 = $scope.FleetStaff[0].RegistrationNo;
         });
     }
 
@@ -389,10 +391,11 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
             data: FRoutes
         }
         $http(req).then(function (response) {
-            $scope.showdialogue("Saved successfully")
+            alert("Saved successfully")
 
             $http.get('/api/FleetStaff/GetFleetStaff?roleid=' + Fleet.RoleId).then(function (res, data) {
                 $scope.FleetStaff = res.data;
+                
             });
 
         });

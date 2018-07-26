@@ -616,6 +616,14 @@
                                                                                                 </select>
                                                                                             </div>
                                                                                         </div>
+                                                                                        <div class="col-md-6">
+                                                                                            <label for="Name" class="col-md-4 control-label">Company:<span class='require'></span></label>
+                                                                                            <div class="col-md-8">
+                                                                                                <select ng-options="lt.Name for lt in Companies track by lt.Id" ng-model="newVehicle.c" class="form-control">
+                                                                                                    <option value="">Select</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
                                                                                     </div>
                                                                                     <div class="row" style="margin-top:8px">
                                                                                         <div style="text-align:left" class="col-md-6">
