@@ -248,7 +248,7 @@ namespace SmartTicketDashboard.Controllers
                     id.Value = p.Id;
                     cmd.Parameters.Add(id);
 
-                    SqlParameter nm = new SqlParameter("@Name", SqlDbType.Int);
+                    SqlParameter nm = new SqlParameter("@Name", SqlDbType.VarChar);
                     nm.Value = p.Name;
                     cmd.Parameters.Add(nm);
 
@@ -260,7 +260,7 @@ namespace SmartTicketDashboard.Controllers
                     ai.Value = p.TypeId;
                     cmd.Parameters.Add(ai);                   
 
-                    SqlParameter insupdflag = new SqlParameter("@insupdflag", SqlDbType.VarChar, 1);
+                    SqlParameter insupdflag = new SqlParameter("@flag", SqlDbType.VarChar);
                     insupdflag.Value = p.flag;
                     cmd.Parameters.Add(insupdflag);
 
