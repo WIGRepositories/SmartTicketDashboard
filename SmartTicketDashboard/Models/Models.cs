@@ -3139,7 +3139,8 @@ namespace SmartTicketDashboard.Models
         public DateTime? EffectiveDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public int ChargeTypeId { get; set; }
-        public string ChargeCode { get; set; }   
+        public string ChargeCode { get; set; }
+        public int OpCode { get; set; }
     }
     public class PackageDiscount
     {
