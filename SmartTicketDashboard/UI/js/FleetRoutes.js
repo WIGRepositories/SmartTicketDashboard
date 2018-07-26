@@ -283,7 +283,7 @@ $scope.saveNewFleetRoutes = function (initdata) {
     $http(req).then(function (response) {
 
        alert("Saved successfully!");
-
+       $('#Modal-header-new').modal('hide');
         $scope.Group = null;
 
     }, function (errres) {

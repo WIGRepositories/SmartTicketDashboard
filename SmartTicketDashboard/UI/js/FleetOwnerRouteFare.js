@@ -45,7 +45,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
         $http(req).then(function (res) {
             $scope.initdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showDialog("Saved successfully");
         });
 
         $scope.pricingType = [{ "Id": "1", "Name": "Per unit pricing" }, { "Id": "2", "Name": "Stage to Stage" }]
@@ -73,7 +73,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showDialog("Saved successfully");
         });
     }
        
@@ -115,7 +115,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             }
             $http(req).then(function (res) {
                 $scope.fleet = res.data;
-                $scope.showdialogue("Saved successfully")
+                $scope.showDialog("Saved successfully");
             });
         
     }
@@ -219,4 +219,29 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
     });
 
 
+});
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
+
+    $scope.mssg = mssg;
+    $scope.ok = function () {
+        $uibModalInstance.close('test');
+    };
+
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+
+    $scope.showDialog = function (message) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'myModalContent.html',
+            controller: 'ModalInstanceCtrl',
+            resolve: {
+                mssg: function () {
+                    return message;
+                }
+            }
+        });
+    }
 });
