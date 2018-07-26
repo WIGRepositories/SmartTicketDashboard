@@ -87,7 +87,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
                 $scope.objectsAccesses[ac].options = new Array();
 
                     var acc = {
-                        id: objAccessList[ac].TypeID,
+                        id: objAccessList[ac].TypeId,
                         label: objAccessList[ac].Name
                     }
                    accArr.push(acc);                    
@@ -201,7 +201,7 @@ $scope.processData = function (a) {
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
             alert(errmssg);
-            alert(errmssg);
+            
         });
     
         
