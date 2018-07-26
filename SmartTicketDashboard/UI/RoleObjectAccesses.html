@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Entitlements Dashboard</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/bootstrap/css/bootstrap.css">
+    <!--LOADING STYLESHEET FOR PAGE--><!--Loading style vendors-->
+
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
+    <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jstree/dist/themes/default/style.min.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-treetable/stylesheets/jquery.treetable.css">
+    <link type="text/css" rel="stylesheet" href="vendors/jquery-treetable/stylesheets/jquery.treetable.theme.custom.css">
+    <!--Loading style-->
+    <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <link type="text/css" rel="stylesheet" href="css/MultiSelectCSS.css">
+</head>
+
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="getRootObjects()" ng-model="NewObjects">
+    <div>
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <div id="header-topbar-option-demo" class="page-header-topbar">
+            <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
+                <div class="navbar-header">
+                    <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Entitlements Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                </div>
+                <div class="topbar-main">
+                    <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
+
+                    <ul class="nav navbar navbar-top-links navbar-right mbn">
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-bell fa-fw"></i><span class="badge badge-green">{{dashboardDS.Table2.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table2.length==0">
+                                <li><p>You have 0 new alerts</p></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table2">
+                                <li><p>{{A.Message}}</p></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><i class="fa fa-envelope fa-fw"></i><span class="badge badge-orange">{{dashboardDS.Table1.length}}</span></a>
+                            <ul class="dropdown-menu dropdown-messages" ng-show="dashboardDS.Table1.length==0">
+                                <li><p>You have 0 new notifications</p></li>
+                            </ul>
+                            <ul class="dropdown-menu dropdown-messages" ng-repeat="A in dashboardDS.Table1">
+                                <li><p>{{A.Message}}</p></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown topbar-user">
+                            <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">Admin</span>&nbsp;<span class="caret"></span></a>
+                            <ul class="dropdown-menu dropdown-user pull-right">
+                                <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
+
+                                <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
+                                <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success"></span></a></li>
+                                <li class="divider"></li>
+                                <li><a href="extra-lock-screen.html"><i class="fa fa-lock"></i>Lock Screen</a></li>
+                                <li><a href="../Login.html"><i class="fa fa-key"></i>Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <!--END TOPBAR-->
+            <div id="wrapper">
+                <!--BEGIN SIDEBAR MENU-->
+                <nav id="sidebar" role="navigation" data-step="2" data-position="right" class="navbar-default navbar-static-side">
+                    <div class="sidebar-collapse menu-scroll">
+                        <ul id="side-menu" class="nav">
+                            <li class="user-panel">
+                                <div class="thumb"><img src="images/user.jpg" height="20" width="20" alt="" class="img-circle" /></div>
+                                <div class="info">
+                                    <p>{{uname}}</p>
+                                    <ul class="list-inline list-unstyled">
+                                        <li><a href="UserProfile.html" data-hover="tooltip" title="Profile"><i class="fa fa-user"></i></a></li>
+                                        <li><a href="email-inbox.html" data-hover="tooltip" title="Mail"><i class="fa fa-envelope"></i></a></li>
+                                        <li><a href="#" data-hover="tooltip" title="Setting" data-toggle="modal" data-target="#modal-config"><i class="fa fa-cog"></i></a></li>
+                                        <li><a href="login.html" data-hover="tooltip" title="Logout"><i class="fa fa-sign-out"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li class="active">
+                                <a href="Index.html" data-toggle="tooltip" data-placement="right" title="Application Dashboard for Equipment, Types, and Jobs">
+                                    <i class="fa fa-tachometer fa-fw">
+                                        <div class="icon-bg bg-orange"></div>
+                                    </i><span class="menu-title">Dashboard</span>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="Organisation.html">
+                                    <i class="fa fa-sitemap fa-fw">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Organisation</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li>
+                                    <li><a href="Organisation.html" data-toggle="tooltip" data-placement="right" title="Details of Company"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Organisation Details</span></a></li>
+                                    <li><a href="OrganisationRoles.html" data-toggle="tooltip" data-placement="right" title="Manage roles of Company"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Organisation Roles</span></a></li>
+                                </ul>
+                            </li>
+
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-truck">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Users</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+
+                                    <li><a href="Users.html" data-toggle="tooltip" data-placement="right" title="Details of Fleet"><i class="fa fa-briefcase"></i><span class="submenu-title">User Details</span></a></li>
+                                    <li><a href="UserRoles.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnerRoutes"><i class="fa fa-briefcase"></i><span class="submenu-title">User Roles</span></a></li>
+
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-truck">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Objects</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="Objects.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Objects Details</span></a></li>
+                                    <li><a href="RoleObjectAccesses.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwners"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Role Object Accesses</span></a></li>                                    
+                                    <li><a href="ObjectAccesses.html" data-toggle="tooltip" data-placement="right" title="Details of FleetOwnersVehicleLayout"><i class="fa fa-briefcase"></i><span class="submenu-title">Object Accesses</span></a></li>
+
+                                </ul>
+                            </li>
+
+
+                            <li class="active">
+                                <a href="#">
+                                    <i class="fa fa-gears">
+                                        <div class="icon-bg bg-dark"></div>
+                                    </i><span class="menu-title">Configuration</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Countries</span></a></li>
+                                    <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type Groups</span></a></li>
+                                    <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
+                                    <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Roles</span></a></li>
+                                    <li><a href="RoleDetails.html" data-toggle="tooltip" data-placement="right" title="Details of RoleDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Role Details</span></a></li>
+                                </ul>
+                            </li>
+
+                            <li>
+                                <a href="#">
+                                    <i class="fa fa-ticket">
+                                        <div class="icon-bg bg-green"></div>
+                                    </i><span class="menu-title">Utilties & Tools</span><span class="fa arrow"></span>
+                                </a>
+                                <ul class="nav nav-second-level">
+                                    <li><a href="DataLoad.html" data-toggle="tooltip" data-placement="right" title="Details of DataLoad"><i class="fa fa-briefcase"></i><span class="submenu-title">Data Load</span></a></li>
+                                    <li><a href="EditHistory.html" data-toggle="tooltip" data-placement="right" title="Details of EditHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Edit History</span></a></li>
+                                    <li><a href="paymentHistory.html" data-toggle="tooltip" data-placement="right" title="Details of paymentHistory"><i class="fa fa-briefcase"></i><span class="submenu-title">Payment History</span></a></li>
+                                    <li><a href="FAQs.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">FAQs</span></a></li>
+                                    <li><a href="emailinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">Emails</span></a></li>
+                                    <li><a href="smsinbox.html" data-toggle="tooltip" data-placement="right" title="Details of FAQs"><i class="fa fa-briefcase"></i><span class="submenu-title">SMS</span></a></li>
+                                </ul>
+
+                            </li>
+
+
+
+                        </ul>
+                    </div>
+                </nav>                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
+                <div id="page-wrapper">
+                    <!--BEGIN TITLE & BREADCRUMB PAGE-->
+                    <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
+                        <div class="page-header pull-left">
+                            <div class="page-title">Role Object Accesses</div>
+                        </div>
+                        <ol class="breadcrumb page-breadcrumb pull-right">
+                            <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="#">Configuration</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
+                            <li><a href="Objects.html">Objects</a></li>
+
+                        </ol>
+                        <div class="clearfix"></div>
+                    </div>
+                    <!--END TITLE & BREADCRUMB PAGE--><!--BEGIN CONTENT-->
+                    <div class="page-content">
+                        <div id="table-action" class="row">
+                            <div class="col-lg-12">
+                                <div id="tableactionTabContent" class="tab-content">
+                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                        <div class="row" >
+                                            <div class="col-lg-12">
+
+                                                <!--<div class="actions">-->
+                                                <!-----   <a href="NewObject.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Object</button></a>--->
+                                                <!--<button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>-->
+                                                <!--</div>-->
+                                                <div class="col-md-4" style="margin-bottom:20px">
+                                                    Entitlments: <select ng-options="s.Name for s in RootObjects track by s.Id" ng-model="s" ng-change="getRoleObjects()" style="width:60%">
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-md-4" style="margin-bottom:20px">
+                                                    Roles: <select ng-options="r.Name for r in RoleObjects track by r.Id" ng-model="r" ng-change="getChildObject()" style="width:60%">
+                                                        <option value="">All</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="actions">
+                                                <!----   <button  type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Type</button>--->
+                                                <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add New Object</button>
+                                            </div>
+                                        </div>
+                                        <table id="example-advanced">
+                                            <!--<caption class="mbl mtl"><a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>&nbsp; | &nbsp;<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a></caption>-->
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Description</th>
+                                                    <th>Role Object Access</th>
+                                                    <th>Created On</th>
+                                                    <th>Created By</th>
+                                                    <th>Active</th>
+                                                    <th>Test</th>
+                                                </tr>
+
+                                            </thead>
+                                            <tbody>
+
+                                                <tr ng-repeat="a in childobjects" data-tt-id="{{a.Id}}" data-tt-parent-id="{{a.ParentID}}" on-finish-render>
+                                                    <td><span class="folder">{{a.ObjectName}}</span> </td>
+                                                    <td>{{a.Description}}</td>
+                                                    <td><div ng-dropdown-multiselect options="options" extra-settings="dropdownSettings" selected-model="a.test"></div></td>
+                                                    <td>{{a.CreatedOn}}</td>
+                                                    <td>{{a.CreatedBy}}</td>
+                                                    <td><input type="checkBox" ng-checked="a.Active" disabled /></td>
+                                                    <td><button type="button" class="btn btn-primary" ng-click="processData(a);">Save</button></td>
+                                                </tr>
+                                            </tbody>
+
+                                        </table>
+
+
+                                    </div>
+
+
+                                </div>
+                                <!--<div class="row">
+                                    <div class="col-lg-6">
+                                        <div class="pagination-panel">
+                                            Page
+                                            &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" maxlenght="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
+                                            of 6 | View
+                                            &nbsp;<select class="form-control input-xsmall input-sm input-inline">
+                                                <option value="20" selected="selected">20</option>
+                                                <option value="50">50</option>
+                                                <option value="100">100</option>
+                                                <option value="150">150</option>
+                                                <option value="-1">All</option>
+                                            </select>&nbsp;
+                                            records
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 text-right">
+                                        <div class="pagination-panel">
+                                            <ul class="pagination pagination-sm man">
+                                                <li><a href="#">&laquo;</a></li>
+                                                <li><a href="#">1</a></li>
+                                                <li><a href="#">2</a></li>
+                                                <li><a href="#">3</a></li>
+
+                                                <li><a href="#">&raquo;</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>-->
+                            </div>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <!--END CONTENT--><!--BEGIN FOOTER-->
+            <div id="footer">
+                <div class="copyright">2016 © Webingate - Entitlements Dashboard</div>
+            </div>
+            <!--END FOOTER-->
+        </div>
+    </div>
+    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add New Object</h4>
+                </div>
+                <div class="modal-body" ng-model="NewObject">
+
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label" style="color:red;"> Name <span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="Name" type="text" ng-model="NewObject.Name" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>
+
+
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Description" class="col-md-4 control-label"> Description <span class='require'></span></label>
+                        </div>
+
+                        <div class="col-md-6">
+                            <input id="Description" type="text" ng-model="NewObject.Description" class="form-control" /><span class="help-block"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="selCountry" class="col-md-4 control-label" style="color:red;">Parent:<span class='require'>*</span></label>
+                    </div>
+                    <div class="col-md-6">
+                        <!--<input type="text" disabled ng-model="NewObject.ParentId" class="form-control" />-->
+                        <select ng-options="O.Name for O in RootObjects track by O.Id" class="form-control" ng-model="p">
+                            <option value="">Select</option>
+                        </select>
+
+
+                    </div>
+                </div>
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="RootObject" class="col-md-4 control-label" style="color:red;"> RootObjectId <span class='require'>*</span></label>
+                    </div>
+                    <div>
+                        <select class="col-md-6" ng-model="NewObject.RootObjectId">
+                            <option value="">select</option>
+                            <option value="1">1</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Name" class="col-md-4 control-label" style="color:red;"> Created On <span class='require'>*</span></label>
+                    </div>
+                    <div class="col-md-6">
+                        <input id="createdon" type="date" ng-model="NewObject.CreatedOn" class="form-control" /><span class="help-block"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Description" class="col-md-4 control-label"> Created By <span class='require'></span></label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input id="createdby" type="text" ng-model="NewObject.CreatedBy" class="form-control" /><span class="help-block"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div><input type="checkbox" checked /></div>
+
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save(NewObject,'o');">Save</button>
+
+                        <a href="Objects.html" class="btn btn-green">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-body" ng-model="currRole">
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label">Name:<span class='require'>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="text" class="form-control" id="Name" ng-model="NewObject.Name" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label">description:<span class='require'></span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="text" class="form-control" id="description" ng-model="currRole.Description" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label">Created On:<span class='require'></span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="date" class="form-control" id="createdon" ng-model="currRole.CreatedOn" /></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label">Created By:<span class='require'></span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-5">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="text" class="form-control" id="createdby" ng-model="currRole.CreatedBy" /></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col-md-3">
+                            <div class="form-group has-success" style="text-align:right">
+                                <label for="inputFirstName" class="control-label">Active:<span class='require'>*</span></label>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <div class="input-icon right"><input type="checkbox" class="form-control" id="cactive" ng-model="currRole.active" checked /></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" ng-click="saveNewObjects(SelNewObjects,'O');">Save</button>
+                    <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--<div class="row mbm">
+        <div style="text-align:right">
+            <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
+        </div>
+        <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
+    </div>-->
+
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+    </div>
+    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+        <div class="modal-header">
+            <h3 class="modal-title">Save confirmation!</h3>
+        </div>
+        <div class="modal-body">
+            <!--<ul>
+                <li ng-repeat="item in items">
+                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                </li>
+            </ul>
+            Selected: <b>{{ selected.item }}</b>-->
+            {{mssg}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+
+    </script>
+    </div>
+
+
+    <!--END PAGE WRAPPER-->
+
+
+
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="js/jquery-ui.js"></script>
+    <!--loading bootstrap js-->
+    <script src="vendors/bootstrap/js/bootstrap.js"></script>
+    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+
+    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <script src="vendors/iCheck/custom.min.js"></script>
+
+    <script src="js/jquery.menu.js"></script>
+    <script src="vendors/jquery-pace/pace.min.js"></script>
+    <script src="vendors/holder/holder.js"></script>
+    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+
+    <script src="vendors/jstree/dist/jstree.min.js"></script>
+    <script src="vendors/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
+    <!--<script>
+        $("#example-advanced tbody").on("mousedown", "tr", function () {
+            $(".selected").not(this).removeClass("selected");
+            $(this).toggleClass("selected");
+        });
+    </script>-->
+    <!--LOADING SCRIPTS FOR PAGE-->
+    <!--CORE JAVASCRIPT-->
+
+
+    <script src="js/main.js"></script>
+
+    <script src="js/angular.js"></script>
+
+    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+
+    <script src="js/ngStorage.js"></script>
+    <script src="js/angularjs-dropdown-multiselect.js"></script>
+
+    <!--<script src="js/TreeView/nd.js"></script>-->
+
+    <script src="js/RoleObjectAccesses.js"></script>
+
+    <!--<script src="js/TreeView/ng-tree-dnd.js"></script>-->
+    <!--<script src="js/Alerts.js"></script>
+
+    <script src="js/Notifications.js"></script>-->
+    <!--<script src="js/multiselect/app.js"></script>
+    <script src="js/multiselect/MMvendor.js"></script>-->
+
+</body>
+
+</html>

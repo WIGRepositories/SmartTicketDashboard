@@ -30,71 +30,76 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     //$scope.Roleid = $scope.userdetails[0].roleid;
     //$scope.isAdmin = ($scope.Roleid == 1) ? 1 : 0;
     $scope.dropdownSettings = {
-        idProperty:"id",
+        idProperty: "id",
         checkBoxes: false,
         styleActive: true,
         smartButtonMaxItems: 3
     }
-    
+
 
     //$scope.isSuperUser = ($scope.Roleid == 2) ? 2 : 0;
 
     $scope.dashboardDS = $localStorage.dashboardDS;
+    $scope.getRootObjects = function () {
+        $http.get('/api/Objects/getRootObjects').then(function (res, data) {
+            $scope.RootObjects = res.data;
+        });
+    }
 
-    $http.get('/api/Objects/getRootObjects').then(function (res, data) {
-        $scope.RootObjects = res.data;
-    });
-
-
+    $scope.getRoleObjects = function () {
+        $http.get('/api/Roles/getroleobj?RootObjectId='+$scope.s.Id).then(function (res, data) {
+            $scope.RoleObjects = res.data;
+        });
+    }
     //$scope.options = function () {
     //    $http.get('/api/Roles/getroles').then(function (response, data) {
     //        $scope.roles = response.data;
     //    });
     //}
-    
-    $scope.objectsAccesses = [];
+
+    $scope.RoleObjectsAccesses = [];
     $scope.options = [];
-    
-   // $http.get('/api/Types/GetTypes?TypeGroupId=31').then(function (data) {        
-     //     angular.forEach(data.data, function (value, index) {
-       //       $scope.objectsAccesses.push({ id: value.TypeGroupId, label: value.Name });
-         // });
-        //});
-    
-    $http.get('/api/Objects/getObjAccsess?TypeGroupId=30').then(function (res, data) {
+
+    // $http.get('/api/Types/GetTypes?TypeGroupId=31').then(function (data) {        
+    //     angular.forEach(data.data, function (value, index) {
+    //       $scope.objectsAccesses.push({ id: value.TypeGroupId, label: value.Name });
+    // });
+    //});
+
+    $http.get('/api/Types/GetTypes?TypeGroupId=31').then(function (res, data) {
         // res.data;
         for (ol = 0; ol < res.data.length; ol++) {
             $scope.options.push({ id: res.data[ol].ID, label: res.data[ol].Name });
         }
     });
 
-   
-      
+
+
 
     $scope.getChildObject = function () {
-        $http.get('/api/Objects/getChildObjects?RootObjectId=' + $scope.s.Id).then(function (res, data) {
+        $http.get('/api/Roles/getroleobjectAccsess?RoleId='+$scope.r.RoleId).then(function (res, data) {
             $scope.childobjects = res.data.Table;
-            $scope.objectsAccesses = res.data.Table1;
+            $scope.RoleObjectsAccesses = res.data.Table1;
 
             for (cnt = 0; cnt < $scope.childobjects.length; cnt++) {
 
                 var accArr = new Array();
 
-                var objAccessList = $filter('filter')($scope.objectsAccesses, { ObjectID: $scope.childobjects[cnt].Id });
+                var objAccessList = $filter('filter')($scope.RoleObjectsAccesses, { ObjectID: $scope.childobjects[cnt].Id });
 
                 for (ac = 0; ac < objAccessList.length; ac++) {
 
-                $scope.objectsAccesses[ac].options = new Array();
+                    //$scope.objectsAccesses[ac].options = new Array();
 
                     var acc = {
                         id: objAccessList[ac].TypeID,
                         label: objAccessList[ac].Name
                     }
-                   accArr.push(acc);                    
-               }               
-             $scope.childobjects[cnt].test = accArr;
+                    accArr.push(acc);
+                }
+                $scope.childobjects[cnt].test = accArr;
             }
-           
+
 
         });
     }
@@ -103,93 +108,94 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-$scope.processData1 = function (a) {
-      
-   
+    $scope.processData1 = function (a) {
 
-    var headers = a;
 
-    //var header = [$scope.seloption];                  
-    var lines = [];
 
-    for (var i = 1; i < headers.length; i++) {
-        // split content based on comma
-        var data = headers[i];
-        if (data == '' || data == null) continue;
-        lines.push(list33(data));
+        var headers = a;
 
-        if (data.length == headers.length) {
-            var tarr = [];
-            for (var j = 0; j < headers.length; j++) {
-                tarr.push(data[j]);
+        //var header = [$scope.seloption];                  
+        var lines = [];
+
+        for (var i = 1; i < headers.length; i++) {
+            // split content based on comma
+            var data = headers[i];
+            if (data == '' || data == null) continue;
+            lines.push(list33(data));
+
+            if (data.length == headers.length) {
+                var tarr = [];
+                for (var j = 0; j < headers.length; j++) {
+                    tarr.push(data[j]);
+                }
+                //lines.push(GetVehicles(data));
             }
-            //lines.push(GetVehicles(data));
         }
-    }
 
-    //list
-    var req = {
-        method: 'POST',
-        url: '/api/Objects/saveobj',
-        data: lines
-    }
-    $http(req).then(function (res) {
-        $scope.initdata = res.data;                        
-        alert("Saved successfully");
+        //list
+        var req = {
+            method: 'POST',
+            url: '/api/Objects/saveobj',
+            data: lines
+        }
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;
+            alert("Saved successfully");
 
-    }, function (errres) {
-        var errdata = errres.data;
-        var errmssg = "Your details are incorrect";
-        errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-        alert(errmssg);
-        alert(errmssg);
-    });
-                
-    //$scope.logdata = lines;
-};
+        }, function (errres) {
+            var errdata = errres.data;
+            var errmssg = "Your details are incorrect";
+            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+            alert(errmssg);
+            alert(errmssg);
+        });
 
-              
-     
+        //$scope.logdata = lines;
+    };
 
 
 
-$scope.processData = function (a) {
 
-    //check if any value is selected
-    //then iterate through the selected values
-    //for each value push into arr or create a item
-    //add the item to data for saving
 
-    if (a.test.length > 0) {
-        $scope.dd = [];
 
-        for (it = 0; it < a.test.length; it++) {
-            var objAccess = {
-                Id: -1,
-                Name: a.Name,
-                ObjectId: a.Id,
-                TypeId: a.test[it].id,
-                flag: 'I'
+    $scope.processData = function (a) {
+
+        //check if any value is selected
+        //then iterate through the selected values
+        //for each value push into arr or create a item
+        //add the item to data for saving
+
+        if (a.test.length > 0) {
+            $scope.dd = [];
+
+            for (it = 0; it < a.test.length; it++) {
+                var objAccess = {
+                    Id: -1,
+                    RoleId: $scope.r.Id,
+                    ObjectId: a.Id,
+                    TypeId: a.test[it].id,
+                    flag: 'I'
+                }
+                $scope.dd.push(objAccess);
             }
-            $scope.dd.push(objAccess);
         }
-    }
 
-        
 
-        //var list = {
-        //    flag: 'U',
-        //    Id: a.Id,
-        //    Name: a.Name,            
+
+        //var list = {    flag: 'I',
+        //    Id: -1,
+        //    Name: a.Name,
+            
         //    RootObjectId: a.RootObjectId,
         //    ParentID: a.ParentID,
         //    ObjectAccessesId: $scope.dd[0].TypeId,
         //    ObjectAccesses: $scope.dd
         //}
+        
 
         var req = {
             method: 'POST',
-            url: '/api/Objects/saveObjAcc',
+            url: '/api/Roles/SaveRoleObjAcc',
             data: $scope.dd
         }
         $http(req).then(function (res) {
@@ -203,12 +209,57 @@ $scope.processData = function (a) {
             alert(errmssg);
             alert(errmssg);
         });
-    
-        
-}
 
-   
-   
+
+    }
+
+
+    //$scope.processData = function (a) {
+
+    //        // split content based on new line
+    //    //var example1model = a.split(/\r\n|\n/);
+
+    //    //var headers = example1model[0].split(',');
+
+    //        //var header = [$scope.seloption];                  
+    //        var lines = [];
+
+    //        for (var i = 1; i < $scope.example13data.length; i++) {
+    //            // split content based on comma
+    //           // var data = example1model[i].split(',');
+    //            if (data == '' || data == null) continue;
+    //            lines.push(list33(data));
+
+    //            if (data.length == $scope.example13data.length) {
+    //                var tarr = [];
+    //                for (var j = 0; j < $scope.example13data.length; j++) {
+    //                    tarr.push(data[j]);
+    //                }
+    //                //lines.push(GetVehicles(data));
+    //            }
+    //        }
+
+    //        //list
+    //        var req = {
+    //            method: 'POST',
+    //            url: '/api/Objects/saveobj',
+    //            data: lines
+    //        }
+    //        $http(req).then(function (res) {
+    //            $scope.initdata = res.data;                        
+    //            alert("Saved successfully");
+
+    //        }, function (errres) {
+    //            var errdata = errres.data;
+    //            var errmssg = "Your details are incorrect";
+    //            errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
+    //            alert(errmssg);
+    //            alert(errmssg);
+    //        });
+
+    //        //$scope.logdata = lines;
+    //    };
+
 
     function GetVehicles(data) {
 
@@ -262,14 +313,14 @@ $scope.processData = function (a) {
         if ($scope.p.Id == null) {
             alert('Please Enter ParentId');
             return;
-        } 
+        }
         if (NewObject.RootObjectId == null) {
             alert('Please Enter RootObjectId');
             return;
         }
         //for (cnt = 0; cnt < $scope.getObjroles.length; cnt++) {
         //    if ($scope.getObjroles[cnt].test.length>0){
-            
+
         //    }
 
         var SelNewObjects = {

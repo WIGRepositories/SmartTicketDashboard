@@ -74,7 +74,7 @@ namespace SmartTicketDashboard.Controllers
             SqlParameter Gid = new SqlParameter();
             Gid.ParameterName = "@AccessId";
             Gid.SqlDbType = SqlDbType.Int;
-            Gid.Value = Convert.ToInt32(b.AccessId);
+            Gid.Value = Convert.ToInt32(b.TypeId);
             cmd.Parameters.Add(Gid);
 
             SqlParameter lid = new SqlParameter();

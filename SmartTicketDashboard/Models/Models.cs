@@ -1439,23 +1439,19 @@ namespace SmartTicketDashboard.Models
         public string Name { get; set; }
         public string Description { get; set; }
 
-        public int ParentId { get; set; }
+        public int ParentID { get; set; }
 
         public int RootObjectId { get; set; }
 
         public string Path { get; set; }
         public int Active { get; set; }
-        public string insupdflag { get; set; }
-
+        public string flag { get; set; }
+        public string CreatedBy { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public DateTime? UpdatedOn { get; set; }
+        public string UpdatedBy { get; set; }
     }
-    public class ObjectAccess
-    {
-        public int Id { get; set; }
-        public String Name { get; set; }
-        public int ObjectId { get; set; }
-
-        public int AccessId { get; set; }
-    }
+   
     public class RouteDetails
     {
         public int Id { get; set; }
@@ -2252,6 +2248,7 @@ namespace SmartTicketDashboard.Models
         public string BackImage { get; set; }
         public string RightImage { get; set; }
         public string LeftImage { get; set; }
+        public int LayOutTypeId { get; set; }
     }
     public class allocatedriver
     {
@@ -3136,7 +3133,7 @@ namespace SmartTicketDashboard.Models
         public DateTime? EffectiveDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public int ChargeTypeId { get; set; }
-        public string ChargeCode { get; set; }   
+        public string ChargeCode { get; set; }
     }
     public class PackageDiscount
     {
@@ -3148,11 +3145,11 @@ namespace SmartTicketDashboard.Models
         public int Value { get; set; }
         public string Code { get; set; }
         public int UnitTypeId { get; set; }
-        public int UnitId { get; set; }       
+        public int UnitId { get; set; }
         public DateTime? EffectiveDate { get; set; }
         public DateTime? ExpiryDate { get; set; }
         public int DiscountTypeId { get; set; }
-        
+
     }
     public class Promotionaldisc
     {
@@ -3167,7 +3164,7 @@ namespace SmartTicketDashboard.Models
         public int ApplyOn { get; set; }
         public int Value { get; set; }
         public int Applicability { get; set; }
-        public string Code { get; set; }        
+        public string Code { get; set; }
     }
     public class Buspackages
     {
@@ -3180,9 +3177,9 @@ namespace SmartTicketDashboard.Models
         public int VehicleGroupId { get; set; }
         public string VehicleTypeId { get; set; }
         public int RouteId { get; set; }
-        public int FleetOwnerId { get; set; }      
+        public int FleetOwnerId { get; set; }
 
-    }   
+    }
 
 
     public class Buspackagepricing
@@ -3218,17 +3215,17 @@ namespace SmartTicketDashboard.Models
         public string Description { get; set; }
         public int OpId { get; set; }
         public int VehicleGroupId { get; set; }
-        public int VehicleTypeId { get; set; }       
+        public int VehicleTypeId { get; set; }
 
     }
     public class HailingPackagepricing
     {
         public string flag { get; set; }
         public int Id { get; set; }
-        public int PackageId { get; set; }        
+        public int PackageId { get; set; }
         public int PricingTypeId { get; set; }
         public string VehicleTypeId { get; set; }
-        public int UnitTypeId { get; set; }       
+        public int UnitTypeId { get; set; }
         public decimal Amount { get; set; }
         public string Code { get; set; }
         public string Description { get; set; }
@@ -3282,7 +3279,7 @@ namespace SmartTicketDashboard.Models
     public class Transmaster
     {
         public string flag { get; set; }
-        public int Id { get; set; }       
+        public int Id { get; set; }
         public string GateWayTransId { get; set; }
         public int StatusId { get; set; }
         public Decimal BaseAmount { get; set; }
@@ -3293,7 +3290,7 @@ namespace SmartTicketDashboard.Models
         public int CreatedBy { get; set; }
         public int PaymentTypeId { get; set; }
         public string Description { get; set; }
-      
+
     }
     public class TransCharges
     {
@@ -3317,7 +3314,7 @@ namespace SmartTicketDashboard.Models
     {
         public string flag { get; set; }
         public int Id { get; set; }
-        public int TransmasterId { get; set; }        
+        public int TransmasterId { get; set; }
         public int Emailsent { get; set; }
         public int smssent { get; set; }
         public int noofretries { get; set; }
@@ -3337,6 +3334,20 @@ namespace SmartTicketDashboard.Models
         public string AccountNumber { get; set; }
         public int StatusId { get; set; }
     }
+        
+    public class ObjectAccess 
+  {
+        public ObjectAccess[] p = null;
+    public int Id { get; set; }
+    public string Name { get; set; }
+    public int ObjectId { get; set; }
+
+    public int TypeId { get; set; }
+     public string flag { get; set; }
+ }
+
 }
+
+
 
 

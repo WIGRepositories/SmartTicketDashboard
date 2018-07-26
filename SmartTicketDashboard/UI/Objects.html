@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Configuration | Master Data | Objects</title>
+    <title>Home | Configuration | Object Access</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,21 +11,23 @@
 
     <link type="text/css" rel="stylesheet" href="vendors/jquery-pace/pace.css">
     <link type="text/css" rel="stylesheet" href="vendors/iCheck/skins/all.css">
+     <link type="text/css" rel="stylesheet" href="vendors/jstree/dist/themes/default/style.min.css">
     <link type="text/css" rel="stylesheet" href="vendors/jquery-treetable/stylesheets/jquery.treetable.css">
     <link type="text/css" rel="stylesheet" href="vendors/jquery-treetable/stylesheets/jquery.treetable.theme.custom.css">
-    <!--Loading style-->
+<!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+    <link type="text/css" rel="stylesheet" href="css/MultiSelectCSS.css">
 </head>
 
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="" ng-model="NewObjects">
     <div>
-              <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
+        <a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
         <div id="header-topbar-option-demo" class="page-header-topbar">
             <nav id="topbar" role="navigation" style="margin-bottom: 0;" data-step="3" class="navbar navbar-default navbar-static-top">
                 <div class="navbar-header">
                     <button type="button" data-toggle="collapse" data-target=".sidebar-collapse" class="navbar-toggle"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
-                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Smart Tickets Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
+                    <a id="logo" href="index.html" class="navbar-brand"><img src="images/dashboard.png" height="25" width="25" align="left" alt="" class="img-responsive"><font size="3">Entitlements Dashboard</font></><span style="display: none" class="logo-text-icon">µ</span></a>
                 </div>
                 <div class="topbar-main">
                     <a id="menu-toggle" href="#" class="hidden-xs"><i class="fa fa-bars"></i></a>
@@ -53,7 +55,7 @@
                             <a data-hover="dropdown" href="#" class="dropdown-toggle"><img src="images/user.jpg" alt="" class="img-responsive img-circle" />&nbsp;<span class="hidden-xs">Admin</span>&nbsp;<span class="caret"></span></a>
                             <ul class="dropdown-menu dropdown-user pull-right">
                                 <li><a href="UserProfile.html"><i class="fa fa-user"></i>User Profile</a></li>
-                              
+
                                 <li><a href="email-inbox.html"><i class="fa fa-envelope"></i>My Inbox<span class="badge badge-danger">3</span></a></li>
                                 <li><a href="#"><i class="fa fa-tasks"></i>My Tasks<span class="badge badge-success"></span></a></li>
                                 <li class="divider"></li>
@@ -219,12 +221,12 @@
                                         <ul class="nav nav-third-level">
                                             <li><a href="Countries.html" data-toggle="tooltip" data-placement="right" title="Details of Countries"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Countries</span></a></li>
                                             <li><a href="TypeGroups.html" data-toggle="tooltip" data-placement="right" title="Details of TypeGroups"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Type Groups</span></a></li>
-                                            <li><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
+                                            <li class="active"><a href="Types.html" data-toggle="tooltip" data-placement="right" title="Details of Types"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Types</span></a></li>
                                             <li><a href="SubCategory.html" data-toggle="tooltip" data-placement="right" title="Details of SubCategory"><i class="fa fa-angle-double-right"></i><span class="submenu-title"> Sub Categories</span></a></li>
                                             <li><a href="Stops.html" data-toggle="tooltip" data-placement="right" title="Details of Stops"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Stops</span></a></li>
                                             <li><a href="Roles.html" data-toggle="tooltip" data-placement="right" title="Details of Roles"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Roles</span></a></li>
                                             <li><a href="RoleDetails.html" data-toggle="tooltip" data-placement="right" title="Details of RoleDetails"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Role Details</span></a></li>
-                                            <li class="active"><a href="Objects.html" data-toggle="tooltip" data-placement="right" title="Details of Objects"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Objects</span></a></li>
+                                            <li><a href="Objects.html" data-toggle="tooltip" data-placement="right" title="Details of Objects"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Objects</span></a></li>
                                             <li><a href="PaymentGatewayConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of PaymentGatewayConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">Payment Gateway Configuration</span></a></li>
                                             <li><a href="SmsGatewayConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of SmsGatewayConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">SmsGatewayConfiguration</span></a></li>
                                             <li><a href="EmailGatewayConfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of EmailGatewayConfiguration"><i class="fa fa-angle-double-right"></i><span class="submenu-title">EmailGatewayConfiguration</span></a></li>
@@ -354,7 +356,7 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                        <a href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                     </li>
                                     <li>
                                         <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -415,7 +417,7 @@
                             </li>
                         </ul>
                     </div>
-                </nav>                <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
+                </nav>               <!--END CHAT FORM--><!--BEGIN PAGE WRAPPER-->
                 <div id="page-wrapper">
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
@@ -434,196 +436,209 @@
                     <div class="page-content">
                         <div id="table-action" class="row">
                             <div class="col-lg-12">
-
                                 <div id="tableactionTabContent" class="tab-content">
-                                    <div id="table-table-tab" class="tab-pane fade in active">
+                                    <div id="table-table-tab" class="tab-pane fade in active">                                     
                                         <div class="row">
-
                                             <div class="col-lg-12">
 
                                                 <!--<div class="actions">-->
-                                                    <!-----   <a href="NewObject.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Object</button></a>--->
-                                                    <!--<button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>-->
+                                                <!-----   <a href="NewObject.html"><button type="button" data-target="#modal-header-primary" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Object</button></a>--->
+                                                <!--<button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>-->
                                                 <!--</div>-->
-
-                                                
-
-                                                <table id="example-advanced">
-                                                    <!--<caption class="mbl mtl"><a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>&nbsp; | &nbsp;<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a></caption>-->
-                                                    <thead>
-                                                        <tr>
-                                                            <th width="20%">Name</th>
-                                                            <th width="15%">Details</th>
-                                                            <th width="30%">Add Child</th>                                                           
-                                                            <th>Delete</th>
-                                                        </tr>
-
-                                                    </thead>
-                                                    <tbody>
-
-                                                        <tr ng-repeat="a in NewObjects" data-tt-id="{{a.Id}}" data-tt-parent-id="{{a.ParentId}}" on-finish-render>
-                                                            <td>
-                                                                <span class="folder">{{a.Name}}</span>
-                                                              
-                                                            </td>
-                                                            
-                                                            <td style="text-align:center">
-                                                                <button ng-click="ViewDetails(a)" class="btn btn-default btn-sm">Details</button>
-                                                            </td>
-                                                           
-                                                            <td>
-                                                                <button ng-disabled="CanUploadDoc == 0" ng-click="AddChildObj(a)" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm" style="align-content:center">Add Child Object</button>
-                                                            </td>
-                                                            <td style="text-align:center">
-                                                                <button ng-click="remove_node(a)" ng-disabled="CanUploadDoc == 0" ng-hide="a.ParentId == null" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                                                            </td>                                                            
-                                                            <td>
-                                                                <div ng-dropdown-multiselect="" options="example1data" selected-model="example1model"></div>
-                                                            </td>
-                                                        </tr>
-                                                    </tbody>
-                                                </table>
-                                            </div>
-                                                                                       
-
+                                                <div class="col-md-4" style="margin-bottom:20px">
+                                                    Entitlments: <select ng-options="s.Name for s in RootObjects track by s.Id" ng-model="s" ng-change="getChildObject()" style="width:60%">
+                                                        <option value="">All</option>
+                                                    </select>
                                                 </div>
-                                                <!--<div class="row">
-                                                    <div class="col-lg-6">
-                                                        <div class="pagination-panel">
-                                                            Page
-                                                            &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" maxlenght="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
-                                                            of 6 | View
-                                                            &nbsp;<select class="form-control input-xsmall input-sm input-inline">
-                                                                <option value="20" selected="selected">20</option>
-                                                                <option value="50">50</option>
-                                                                <option value="100">100</option>
-                                                                <option value="150">150</option>
-                                                                <option value="-1">All</option>
-                                                            </select>&nbsp;
-                                                            records
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-6 text-right">
-                                                        <div class="pagination-panel">
-                                                            <ul class="pagination pagination-sm man">
-                                                                <li><a href="#">&laquo;</a></li>
-                                                                <li><a href="#">1</a></li>
-                                                                <li><a href="#">2</a></li>
-                                                                <li><a href="#">3</a></li>
-
-                                                                <li><a href="#">&raquo;</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
-                                                </div>-->
                                             </div>
+                                            <div class="actions">
+                                                <!----   <button  type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float:right;margin:10px;">  Add New Type</button>--->
+                                                <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add New Object</button>
+                                            </div>
+                                        </div>
+                                                    <table id="example-advanced">
+                                                        <!--<caption class="mbl mtl"><a href="#" onclick="jQuery('#example-advanced').treetable('expandAll'); return false;">Expand all</a>&nbsp; | &nbsp;<a href="#" onclick="jQuery('#example-advanced').treetable('collapseAll'); return false;">Collapse all</a></caption>-->
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Description</th>
+                                                                <th>Object Access</th>
+                                                                <th>Created On</th>
+                                                                <th>Created By</th>
+                                                                <th>Active</th>
+                                                                <th>Test</th>
+                                                            </tr>
 
+                                                        </thead>
+                                                        <tbody>
 
+                                                            <tr ng-repeat="a in childobjects" data-tt-id="{{a.Id}}" data-tt-parent-id="{{a.ParentID}}" on-finish-render>
+                                                                <td><span class="folder">{{a.Name}}</span> </td>
+                                                                <td>{{a.Description}}</td>
+                                                                <td><div ng-dropdown-multiselect options="options" extra-settings="dropdownSettings" selected-model="a.test" ></div></td>                                                               
+                                                                <td>{{a.CreatedOn}}</td>
+                                                                <td>{{a.CreatedBy}}</td>
+                                                                <td><input type="checkBox" ng-checked="a.Active" disabled /></td>                                                                
+                                                                <td><button type="button" class="btn btn-primary"  ng-click="processData(a);">Save</button></td>
+                                                            </tr>
+                                                        </tbody>
+
+                                                    </table>
+
+                                       
+                                                </div>
+                                  
 
                                         </div>
-                                    </div>
+                                        <!--<div class="row">
+                            <div class="col-lg-6">
+                                <div class="pagination-panel">
+                                    Page
+                                    &nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-left"></i></a>&nbsp;<input type="text" maxlenght="5" value="1" class="pagination-panel-input form-control input-mini input-inline input-sm text-center" />&nbsp;<a href="#" class="btn btn-sm btn-default btn-prev"><i class="fa fa-angle-right"></i></a>&nbsp;
+                                    of 6 | View
+                                    &nbsp;<select class="form-control input-xsmall input-sm input-inline">
+                                        <option value="20" selected="selected">20</option>
+                                        <option value="50">50</option>
+                                        <option value="100">100</option>
+                                        <option value="150">150</option>
+                                        <option value="-1">All</option>
+                                    </select>&nbsp;
+                                    records
                                 </div>
-
                             </div>
+                            <div class="col-lg-6 text-right">
+                                <div class="pagination-panel">
+                                    <ul class="pagination pagination-sm man">
+                                        <li><a href="#">&laquo;</a></li>
+                                        <li><a href="#">1</a></li>
+                                        <li><a href="#">2</a></li>
+                                        <li><a href="#">3</a></li>
 
-
-
-                            <!--END CONTENT--><!--BEGIN FOOTER-->
-                            <div id="footer">
-                                <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                        <li><a href="#">&raquo;</a></li>
+                                    </ul>
+                                </div>
                             </div>
-                            <!--END FOOTER-->
+                        </div>-->
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                                   
+                                            
+
+                    <!--END CONTENT--><!--BEGIN FOOTER-->
+                    <div id="footer">
+                        <div class="copyright">2016 © Webingate - Entitlements Dashboard</div>
+                    </div>
+                    <!--END FOOTER-->
+                </div>
+            </div>
+    <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header modal-header-primary">
+                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                    <h4 id="modal-header-primary-label" class="modal-title">Add New Object</h4>
+                </div>
+                <div class="modal-body" ng-model="NewObject">
+
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Name" class="col-md-4 control-label" style="color:red;"> Name <span class='require'>*</span></label>
+                        </div>
+                        <div class="col-md-6">
+                            <input id="Name" type="text" ng-model="NewObject.Name" class="form-control" /><span class="help-block"></span>
                         </div>
                     </div>
-            <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header modal-header-primary">
-                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                            <h4 id="modal-header-primary-label" class="modal-title">Add New Object</h4>
-                        </div>
-                        <div class="modal-body" ng-model="NewObject">
-
-                            <div class="row mbm">
-                                <div style="text-align:right">
-                                    <label for="Name" class="col-md-4 control-label" style="color:red;"> Name <span class='require'>*</span></label>
-                                </div>
-                                <div class="col-md-6">
-                                    <input id="Name" type="text" ng-model="NewObject.Name" class="form-control" /><span class="help-block"></span>
-                                </div>
-                            </div>
 
 
-                            <div class="row mbm">
-                                <div style="text-align:right">
-                                    <label for="Description" class="col-md-4 control-label"> Description <span class='require'></span></label>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <input id="Description" type="text" ng-model="NewObject.Description" class="form-control" /><span class="help-block"></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row mbm">
-                            <div style="text-align:right">
-                                <label for="selCountry" class="col-md-4 control-label" style="color:red;">Parent:<span class='require'>*</span></label>
-                            </div>
-                            <div class="col-md-6">
-                                 <!--<input type="text" disabled ng-model="NewObject.ParentId" class="form-control" />-->
-                                <select ng-options="O.Name for O in NewObjects track by O.Id" class="form-control"  ng-model="p">
-                                    <option value="">Select</option>
-                                </select>
-
-
-                            </div>
+                    <div class="row mbm">
+                        <div style="text-align:right">
+                            <label for="Description" class="col-md-4 control-label"> Description <span class='require'></span></label>
                         </div>
 
-
-
-
-                        <div class="row mbm">
-                            <div style="text-align:right">
-
-
-                                <label for="RootObject" class="col-md-4 control-label" style="color:red;"> RootObjectId <span class='require'>*</span></label>
-
-                                <select class="col-md-4 control-label" ng-model="NewObject.RootObjectId">
-                                    <option value="">select</option>
-                                    <option value="1">1</option>
-
-
-                                </select>
-
-                            </div>
-
+                        <div class="col-md-6">
+                            <input id="Description" type="text" ng-model="NewObject.Description" class="form-control" /><span class="help-block"></span>
                         </div>
+                    </div>
+                </div>
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="selCountry" class="col-md-4 control-label" style="color:red;">Parent:<span class='require'>*</span></label>
+                    </div>
+                    <div class="col-md-6">
+                        <!--<input type="text" disabled ng-model="NewObject.ParentId" class="form-control" />-->
+                        <select ng-options="O.Name for O in RootObjects track by O.Id" class="form-control" ng-model="p">
+                            <option value="">Select</option>
+                        </select>
 
 
-
-                        <div class="row mbm">
-                            <div style="text-align:right">
-                                <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div><input type="checkbox" checked /></div>
-
-                            </div>
-                        </div>
-
-                        <div class="form-actions">
-                            <div class="col-md-offset-3 col-md-9">
-                                <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save(NewObject,'o');">Save</button>
-
-                                <a href="Objects.html" class="btn btn-green">Cancel</a>
-                            </div>
-                        </div>
+                    </div>
+                </div>
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="RootObject" class="col-md-4 control-label" style="color:red;"> RootObjectId <span class='require'>*</span></label>
+                    </div>
+                    <div>
+                        <select class="col-md-6" ng-model="NewObject.RootObjectId">
+                            <option value="">select</option>
+                            <option value="1">1</option>
+                            <option value="5">5</option>
+                        </select>
                     </div>
                 </div>
 
 
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Name" class="col-md-4 control-label" style="color:red;"> Created On <span class='require'>*</span></label>
+                    </div>
+                    <div class="col-md-6">
+                        <input id="createdon" type="date" ng-model="NewObject.CreatedOn" class="form-control" /><span class="help-block"></span>
+                    </div>
+                </div>
 
+
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Description" class="col-md-4 control-label"> Created By <span class='require'></span></label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <input id="createdby" type="text" ng-model="NewObject.CreatedBy" class="form-control" /><span class="help-block"></span>
+                    </div>
+                </div>
+
+
+                <div class="row mbm">
+                    <div style="text-align:right">
+                        <label for="Active" class="col-md-4 control-label">Active<span class='require'></span></label>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div><input type="checkbox" checked /></div>
+
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <div class="col-md-offset-3 col-md-9">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="save(NewObject,'o');">Save</button>
+
+                        <a href="Objects.html" class="btn btn-green">Cancel</a>
+                    </div>
+                </div>
             </div>
+        </div>
+
+
+
+    </div>
             <div id="Modal-header-primary" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -657,10 +672,33 @@
                                 </div>
                             </div>
 
+                            <div class="row">
 
+                                <div class="col-md-3">
+                                    <div class="form-group has-success" style="text-align:right">
+                                        <label for="inputFirstName" class="control-label">Created On:<span class='require'></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <div class="input-icon right"><input type="date" class="form-control" id="createdon" ng-model="currRole.CreatedOn" /></div>
+                                    </div>
+                                </div>
+                            </div>
 
+                            <div class="row">
 
-
+                                <div class="col-md-3">
+                                    <div class="form-group has-success" style="text-align:right">
+                                        <label for="inputFirstName" class="control-label">Created By:<span class='require'></span></label>
+                                    </div>
+                                </div>
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                        <div class="input-icon right"><input type="text" class="form-control" id="createdby" ng-model="currRole.CreatedBy" /></div>
+                                    </div>
+                                </div>
+                            </div>
                             <div class="row">
 
                                 <div class="col-md-3">
@@ -674,11 +712,7 @@
                                     </div>
                                 </div>
                             </div>
-
-
-
                         </div>
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-primary" ng-click="saveNewObjects(SelNewObjects,'O');">Save</button>
                             <button type="button" data-dismiss="modal" class="btn btn-default">Close</button>
@@ -686,35 +720,14 @@
                     </div>
                 </div>
             </div>
-                           
-                            <!--<div class="row mbm">
-            <div style="text-align:right">
-                <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
-            </div>
-            <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
-        </div>-->
-                       
-                    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
-                        <div class="modal-header">
-                            <h3 class="modal-title">Save confirmation!</h3>
-                        </div>
-                        <div class="modal-body">
-                            <!--<ul>
-                                <li ng-repeat="item in items">
-                                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                                </li>
-                            </ul>
-                            Selected: <b>{{ selected.item }}</b>-->
-                            {{mssg}}
-                        </div>
-                        <div class="modal-footer">
-                            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-                        </div>
-
-                    </script>
+            <!--<div class="row mbm">
+                <div style="text-align:right">
+                    <label for="Active" class="col-md-4 control-label">Active:<span class='require'></span></label>
                 </div>
+                <input type="checkbox" class="col-md-4 control-label" id="cactive" ng-checked="Types.Active" />
+            </div>-->
+
             <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
 
                 <div class="modal-header">
@@ -722,11 +735,11 @@
                 </div>
                 <div class="modal-body">
                     <!--<ul>
-                <li ng-repeat="item in items">
-                    <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>-->
+                        <li ng-repeat="item in items">
+                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>-->
                     {{mssg}}
                 </div>
                 <div class="modal-footer">
@@ -735,12 +748,33 @@
                 </div>
 
             </script>
+        </div>
+        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+            <div class="modal-header">
+                <h3 class="modal-title">Save confirmation!</h3>
+            </div>
+            <div class="modal-body">
+                <!--<ul>
+                    <li ng-repeat="item in items">
+                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                    </li>
+                </ul>
+                Selected: <b>{{ selected.item }}</b>-->
+                {{mssg}}
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
             </div>
 
-        
-        <!--END PAGE WRAPPER-->
-       
-   
+        </script>
+    </div>
+
+
+    <!--END PAGE WRAPPER-->
+
+
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -748,13 +782,13 @@
     <!--loading bootstrap js-->
     <script src="vendors/bootstrap/js/bootstrap.js"></script>
     <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-   
+
     <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
     <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
     <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
     <script src="vendors/iCheck/icheck.min.js"></script>
     <script src="vendors/iCheck/custom.min.js"></script>
-    
+
     <script src="js/jquery.menu.js"></script>
     <script src="vendors/jquery-pace/pace.min.js"></script>
     <script src="vendors/holder/holder.js"></script>
@@ -762,23 +796,28 @@
 
     <script src="vendors/jstree/dist/jstree.min.js"></script>
     <script src="vendors/jquery-treetable/javascripts/src/jquery.treetable.js"></script>
-    <!--LOADING SCRIPTS FOR PAGE-->
+    <!--<script>
+        $("#example-advanced tbody").on("mousedown", "tr", function () {
+            $(".selected").not(this).removeClass("selected");
+            $(this).toggleClass("selected");
+        });
+    </script>--><!--LOADING SCRIPTS FOR PAGE-->
     <!--CORE JAVASCRIPT-->
- 
-   
+
+
     <script src="js/main.js"></script>
-    
+
     <script src="js/angular.js"></script>
-    
+
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    
+
     <script src="js/ngStorage.js"></script>
-    
-    
+    <script  src="js/angularjs-dropdown-multiselect.js"></script>
+
     <!--<script src="js/TreeView/nd.js"></script>-->
-    
+
     <script src="js/Objects.js"></script>
-    
+
     <!--<script src="js/TreeView/ng-tree-dnd.js"></script>-->
     <!--<script src="js/Alerts.js"></script>
 
