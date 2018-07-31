@@ -457,9 +457,8 @@
                                                         </div>
                                                         <div class="col-md-3" ng-init="init">
                                                             Vehicle Group:<select ng-options="r.Name for r in initdata.Table track by r.Id" ng-model="r" ng-change="GetVehcileList()">
-
-    <option value="">Select</option>
-</select>
+                                                                           <option value="">Select</option>
+                                                                           </select>
 
                                                         </div>
                                                         <div>
@@ -530,7 +529,7 @@
 
                                                             </tbody>
                                                         </table>
-                                                        <div class="form-actions row" ng-show="assets.length>0">
+                                                        <div class="form-actions row" ng-show="VehiclesList.length>0">
                                                             <!--<div style="margin-top: -8px;margin-left: 0px;"  class="col-lg-1">
             <pre style="padding:6px;width:120px;" ng-repeat="P in paggin" ng-model="assets"> Page: {{page}} / {{P.totalpages}} </pre>
 
@@ -551,12 +550,12 @@
         </div>-->
                                                             <div class="col-md-4 grid">
                                                                 <div class="row">
-                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="P in paggin" ng-model="assets">
+                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="P in paggin">
                                                                         <div>	&nbsp;</div>
                                                                         <span style="border:1px solid darkgrey;padding:8px;"> Page: {{page}} / {{P.totalpages}} </span>
                                                                     </div>
                                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
-                                                                        Page Entries:<select class="form-control" ng-model="selectedvalue" ng-change="GetAssetsForModel()">
+                                                                        Page Entries:<select class="form-control" ng-model="selectedvalue" ng-change="GetVehcileList()">
                                                                             <option ng-value="10">10</option>
                                                                             <option ng-value="15">15</option>
                                                                             <option ng-value="25">25</option>
@@ -564,12 +563,12 @@
                                                                             <option ng-value="100">100</option>
                                                                         </select>
                                                                     </div>
-                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">  Go to Page:<select class="form-control" ng-options="s for s in jumptotalpages" ng-model="selectgoto" ng-change="GetAssetsForModel()"></select></div>
+                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">  Go to Page:<select class="form-control" ng-options="s for s in jumptotalpages" ng-model="selectgoto" ng-change="GetVehcileList()"></select></div>
                                                                 </div>
                                                             </div>
                                                             <div style="text-align: center; margin-top: -2px;" ng-repeat="P in paggin" ng-model="assets" class="col-lg-5">
-                                                                <button class="btn btn-info btn-lg" ng-click="GetAssetsForModel('P')" ng-disabled="page == 1">Prev page </button>
-                                                                <button class="btn btn-green btn-lg" ng-click="GetAssetsForModel('N')" ng-disabled="page == P.totalpages">Next page </button>
+                                                                <button class="btn btn-info btn-lg" ng-click="GetVehcileList('P')" ng-disabled="page == 1">< Prev page </button>
+                                                                <button class="btn btn-green btn-lg" ng-click="GetVehcileList('N')" ng-disabled="page == P.totalpages">Next page ></button>
 
                                                             </div>
                                                             <div style="float:right;" ng-repeat="P in paggin" ng-model="assets" class="col-lg-3">
@@ -780,10 +779,8 @@
         
 
         <div class="modal-header">
-            <h3 class="modal-title">Save confirmatio
-n!</h3>
-            </h3>
-            io
+            <h3 class="modal-title">Save confirmation!</h3>
+            
         </div>
         <div class="modal-body">
             <!--<ul>

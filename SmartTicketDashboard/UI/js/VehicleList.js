@@ -83,7 +83,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         window.location.href = "login.html";
     }
 
-
+    $scope.selectedvalue = '10';
+    $scope.selectgoto = 1;
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
@@ -120,14 +121,71 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     }
 
    
-    $scope.GetVehcileList = function () {
+    $scope.GetVehcileList = function (flag) {
+
         var fid = ($scope.s == null) ? -1 : ($scope.s.Id);
-        $http.get('/api/VehicleMaster/GetVehcileList?ctryId=' + $scope.ct.Id + '&fid=' + fid+'&vgId='+$scope.r.Id).then(function (res, data) {
-            $scope.VehiclesList = res.data;
-            $scope.imageSrc = $scope.VehiclesList.Photo;
+        var selecting = ($scope.selectedvalue == null) ? 10 : $scope.selectedvalue;
+        if (flag == '' || flag == null) {
+            $scope.page = ($scope.selectgoto == null || $scope.selectgoto == '') ? 1 : $scope.selectgoto;
+        }
+        if (flag == 'N') {
+
+            $scope.page++;
+            curpage = $scope.page;
+            $scope.firstvalue = $scope.secondvalue;
+            $scope.secondvalue = curpage * selecting;
+            $scope.selectgoto = curpage;
+        } else if (flag == 'P') {
+            $scope.page--
+            curpage = $scope.page;
+            $scope.secondvalue = $scope.firstvalue;
+            $scope.firstvalue = ($scope.firstvalue - selecting);
+            if ($scope.firstvalue == 0) {
+                $scope.firstvalue = 1;
+            }
+            $scope.selectgoto = curpage;
+        }
+        else {
+            $scope.page;
+            curpage = $scope.page;
+            if ($scope.selectgoto > 1) {
+
+                $scope.secondvalue = curpage * selecting;
+                $scope.firstvalue = ($scope.secondvalue - selecting);
+            }
+            else {
+                $scope.firstvalue = 1
+                $scope.secondvalue = selecting;
+            }
+        }
+        var lid = ($scope.ct == null) ? -1 : $scope.ct.Id;
+        var fid = ($scope.s == null) ? -1 : $scope.s.Id;
+        var rid = ($scope.r == null) ? -1 : $scope.r.Id;
+        //var lockid = ($scope.ty == null) ? -1 : $scope.ty;
+
+
+        //$http.get('/api/VehicleMaster/GetVehcileList?ctryId=' + $scope.ct.Id + '&fid=' + fid+'&vgId='+$scope.r.Id).then(function (res, data) {
+        //    $scope.VehiclesList = res.data;
+        //    $scope.imageSrc = $scope.VehiclesList.Photo;
            
+        //});
+        ////$scope.GetFleetOwners();
+
+        $http.get('/api/VehicleMaster/GetVehiclespaging?ctryId=' + lid + '&fid=' + fid + '&curpage=' + curpage + '&maxrows=' + selecting + '&vgId=' + rid).then(function (res, data) {
+            $scope.VehiclesList = res.data.Table;
+            $scope.paggin = res.data.Table1;
+            //$scope.assets2 = res.data.Table2;
+            if ($scope.VehiclesList.length < selecting) {
+                $scope.secondvalue = $scope.secondvalue - (selecting - $scope.VehiclesList.length);
+
+            }
+            var result = [];
+            for (var i = 1; i <= $scope.paggin[0].totalpages; i++) {
+                result.push(i);
+            }
+            $scope.jumptotalpages = result;
         });
-        //$scope.GetFleetOwners();
+
     }
     
     $scope.GetFleetOwners = function () {
@@ -240,7 +298,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope.currGroup = null;
     };
 
-    $scope.newVehicle = null;   
+    $scope.newVehicle = null;
+
+    
 
     $scope.clearnewVehicle = function () {
         $scope.vech = null;

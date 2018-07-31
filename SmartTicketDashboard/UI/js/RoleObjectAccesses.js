@@ -46,7 +46,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         });
     }
 
-    $scope.getRoleObjects = function () {
+    $scope.getRoles = function () {
         $http.get('/api/Roles/getroleobj?RootObjectId='+$scope.s.Id).then(function (res, data) {
             $scope.RoleObjects = res.data;
         });

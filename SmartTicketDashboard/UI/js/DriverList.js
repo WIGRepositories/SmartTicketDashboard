@@ -127,6 +127,8 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
     }
+    $scope.selectedvalue = '10';
+    $scope.selectgoto = 1;
     $scope.uname = $localStorage.uname;
     $scope.userdetails = $localStorage.userdetails;
     $scope.Roleid = $scope.userdetails[0].roleid;
@@ -151,13 +153,66 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     };
 
     
-    $scope.GetMaster = function () {
-        $http.get('/api/DriverMaster/GetMaster?ctryId='+$scope.ct.Id).then(function (res, data) {
-            $scope.listdrivers = res.data;            
+    $scope.GetMaster = function (flag) {
+
+        var lid = ($scope.ct == null) ? -1 : ($scope.ct.Id);
+        var selecting = ($scope.selectedvalue == null) ? 10 : $scope.selectedvalue;
+        if (flag == '' || flag == null) {
+            $scope.page = ($scope.selectgoto == null || $scope.selectgoto == '') ? 1 : $scope.selectgoto;
+        }
+        if (flag == 'N') {
+
+            $scope.page++;
+            curpage = $scope.page;
+            $scope.firstvalue = $scope.secondvalue;
+            $scope.secondvalue = curpage * selecting;
+            $scope.selectgoto = curpage;
+        } else if (flag == 'P') {
+            $scope.page--
+            curpage = $scope.page;
+            $scope.secondvalue = $scope.firstvalue;
+            $scope.firstvalue = ($scope.firstvalue - selecting);
+            if ($scope.firstvalue == 0) {
+                $scope.firstvalue = 1;
+            }
+            $scope.selectgoto = curpage;
+        }
+        else {
+            $scope.page;
+            curpage = $scope.page;
+            if ($scope.selectgoto > 1) {
+
+                $scope.secondvalue = curpage * selecting;
+                $scope.firstvalue = ($scope.secondvalue - selecting);
+            }
+            else {
+                $scope.firstvalue = 1
+                $scope.secondvalue = selecting;
+            }
+        }
+        var lid = ($scope.ct == null) ? -1 : $scope.ct.Id;
+        //var fid = ($scope.s == null) ? -1 : $scope.s.Id;
+        //var rid = ($scope.r == null) ? -1 : $scope.r.Id;
+
+        $http.get('/api/DriverMaster/GetDriverMasterpaging?ctryId=' + lid + '&curpage=' + curpage + '&maxrows=' + selecting).then(function (res, data) {
+            $scope.listdrivers = res.data.Table;
+            $scope.paggin = res.data.Table1;
+            //$scope.assets2 = res.data.Table2;
+            if ($scope.listdrivers.length < selecting) {
+                $scope.secondvalue = $scope.secondvalue - (selecting - $scope.listdrivers.length);
+
+            }
+            var result = [];
+            for (var i = 1; i <= $scope.paggin[0].totalpages; i++) {
+                result.push(i);
+            }
+            $scope.jumptotalpages = result;   
         });
        // $scope.imageSrc = $scope.listdrivers.Photo;
     }
-    $scope.DocFiles = [];    
+
+
+    $scope.DocFiles = [];
 
     $scope.GetCountry = function () {
         $http.get('/api/Users/GetCountry?active=1').then(function (response, req) {

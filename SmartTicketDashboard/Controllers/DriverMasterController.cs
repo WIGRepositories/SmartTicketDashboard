@@ -124,6 +124,53 @@ namespace SmartTicketDashboard.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/DriverMaster/GetDriverMasterpaging")]
+        public DataSet GetDriverMasterpaging(int ctryId , int curpage, int maxrows)
+        {
+            DataSet ds = new DataSet();
+
+            //connect to database
+            SqlConnection conn = new SqlConnection();
+            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+            SqlCommand cmd = new SqlCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandText = "HVgetdrivermasterpaging";
+            cmd.Connection = conn;
+
+            SqlParameter mid = new SqlParameter("@ctryId", SqlDbType.Int);
+            mid.Value = ctryId;
+            cmd.Parameters.Add(mid);
+
+            SqlParameter cpage = new SqlParameter();
+            cpage.ParameterName = "@curpage";
+            cpage.SqlDbType = SqlDbType.Int;
+            cpage.Value = curpage;
+            cmd.Parameters.Add(cpage);
+
+            SqlParameter mrows = new SqlParameter();
+            mrows.ParameterName = "@maxrows";
+            mrows.SqlDbType = SqlDbType.Int;
+            mrows.Value = maxrows;
+            cmd.Parameters.Add(mrows);          
+
+
+            SqlDataAdapter db = new SqlDataAdapter(cmd);
+            db.Fill(ds);
+            //Tbl = ds.Tables[0];
+
+            //    Logger.Trace(LogCategory.WebApp, "DataTable in GetAssets() procedure is loaded", LogLevel.Information, null);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logger.Error(ex, LogCategory.WebApp, "An error occured in GetAssets() procedure", LogLevel.Error, null);
+            //}
+            return ds;
+        }
+    
+
         [HttpPost]
         [Route("api/DriverMaster/Driverlist")]
         public DataTable Driverlist(driverdetails d)
@@ -245,7 +292,7 @@ namespace SmartTicketDashboard.Controllers
                 }
                 throw ex;
             }
-        }
+        }        
 
         [HttpPost]
         [Route("api/DriverMaster/SaveDriverDoc")]
