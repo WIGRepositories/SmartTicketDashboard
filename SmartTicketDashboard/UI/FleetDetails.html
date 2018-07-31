@@ -17,7 +17,7 @@
     <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
 </head>
 
-<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetVehcileList();" ng-model="Companies">
+<body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData()" ng-model="Companies">
     <div>
         <!--BEGIN THEME SETTING-->
         <!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
@@ -455,19 +455,19 @@
                                                         </div>
 
                                                         <div class="col-md-3" ng-init="GetCompanies();">
-                                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test" style="width:80%">
+                                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners()" id="test" style="width:80%">
                                                                 <option value="">Select</option>
                                                             </select>
                                                         </div>
                                                         <div class="col-md-3">
-                                                            Fleet Owner:<select ng-options="f.FleetOwnerCode for f in initdata1.Table track by f.Id" ng-model="fc" ng-init="GetConfigData()" ng-change="GetFleetDetails(fc)" id="test1" style="width:70%">
+                                                            Fleet Owner:<select ng-options="f.FleetOwnerCode for f in initdata.Table4 track by f.Id" ng-model="fc" ng-change="GetFleetDetails(fc)" id="test1" style="width:70%">
 
     <option value="">Select</option>
 </select>
                                                         </div>
 
                                                         <div class="col-md-3">
-                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="text-align-last:right">Add Fleet Details</button>
+                                                            <button type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="text-align-last:right" >Add Fleet Details</button>
 
 
                                                         </div>
@@ -476,7 +476,7 @@
 
 
                                                     <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
-                                                        <div class=" modal-dialog modal-lg">
+                                                        <div class="modal-dialog modal-lg">
                                                             <div class="modal-content">
                                                                 <div class="modal-header modal-header-primary">
                                                                     <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
@@ -514,7 +514,7 @@
                                                                                         <div class="col-md-6">
                                                                                             <label for="Name" class="col-md-4 control-label">Fleet Owner:<span class='require'></span></label>
                                                                                             <div class="col-md-8">
-                                                                                                <select ng-options="f.FleetOwnerCode for f in initdata.Table5  track by f.Id" ng-model="newVehicle.s" class="form-control">
+                                                                                                <select ng-options="f.FleetOwnerCode for f in initdata.Table4  track by f.Id" ng-model="newVehicle.s" class="form-control">
                                                                                                     <option value="">Select</option>
                                                                                                 </select>
                                                                                             </div>
@@ -561,7 +561,7 @@
                                                                                         <div class="col-md-6">
                                                                                             <label for="Name" class="col-md-4 control-label">Vehicle Model:<span class='require'></span></label>
                                                                                             <div class="col-md-8">
-                                                                                                <select ng-options="vmo.Name for vmo in initdata.Table2 track by vmo.Id" ng-model="newVehicle.vmo" class="form-control">
+                                                                                                <select ng-options="vmo.Name for vmo in initdata.Table6 track by vmo.Id" ng-model="newVehicle.vmo" class="form-control">
                                                                                                     <option value="">Select</option>
                                                                                                 </select>
                                                                                             </div>
@@ -569,7 +569,7 @@
                                                                                         <div class="col-md-6">
                                                                                             <label for="Name" class="col-md-4 control-label">Vehicle Make:<span class='require'></span></label>
                                                                                             <div class="col-md-8">
-                                                                                                <select ng-options="vm.Name for vm in initdata.Table3 track by vm.Id" ng-model="newVehicle.vm" class="form-control">
+                                                                                                <select ng-options="vm.Name for vm in initdata.Table5 track by vm.Id" ng-model="newVehicle.vm" class="form-control">
                                                                                                     <option value="">Select</option>
                                                                                                 </select>
                                                                                             </div>
@@ -579,7 +579,7 @@
                                                                                         <div class="col-md-6">
                                                                                             <label for="Name" class="col-md-4 control-label">Country:<span class='require'></span></label>
                                                                                             <div class="col-md-8">
-                                                                                                <select ng-options="cn.Name for cn in initdata.Table4 track by cn.Id" ng-model="newVehicle.cn" class="form-control">
+                                                                                                <select ng-options="cn.Name for cn in initdata.Table3 track by cn.Id" ng-model="newVehicle.cn" class="form-control">
                                                                                                     <option value="">Select</option>
                                                                                                 </select>
                                                                                             </div>
@@ -607,8 +607,25 @@
                                                                                         </div>
 
                                                                                     </div>
-
-                                                                                    <div class="row">
+                                                                                    <div class="row" style="margin-top:8px">
+                                                                                        <div class="col-md-6">
+                                                                                            <label for="Name" class="col-md-4 control-label">LayOut Type:<span class='require'></span></label>
+                                                                                            <div class="col-md-8">
+                                                                                                <select ng-options="lt.Name for lt in initdata.Table2 track by lt.Id" ng-model="newVehicle.lt" class="form-control">
+                                                                                                    <option value="">Select</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="col-md-6">
+                                                                                            <label for="Name" class="col-md-4 control-label">Company:<span class='require'></span></label>
+                                                                                            <div class="col-md-8">
+                                                                                                <select ng-options="lt.Name for lt in Companies track by lt.Id" ng-model="newVehicle.c" class="form-control">
+                                                                                                    <option value="">Select</option>
+                                                                                                </select>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="row" style="margin-top:8px">
                                                                                         <div style="text-align:left" class="col-md-6">
                                                                                             <label for="Active" class="control-label">Has AC<span class='require'></span></label>
 
@@ -621,22 +638,12 @@
                                                                                             <input type="checkbox" ng-model="newVehicle.isDriverOwned" />
 
                                                                                         </div>
-                                                                                    </div>
-                                                                                    <div class="row" style="margin-top:8px">
-                                                                                        <div class="col-md-6">
-                                                                                            <label for="Name" class="col-md-4 control-label">LayOut Type:<span class='require'></span></label>
-                                                                                            <div class="col-md-8">
-                                                                                                <select ng-options="lt.Name for lt in initdata.Table4 track by lt.Id" ng-model="newVehicle.lt" class="form-control">
-                                                                                                    <option value="">Select</option>
-                                                                                                </select>
-                                                                                            </div>
-                                                                                        </div>                                                                                       
-                                                                                    </div>
+                                                                                    </div>                                                                                    
                                                                                 </div>
                                                                                 <div class="form-actions">
                                                                                     <div style="text-align:center">
 
-                                                                                        <button class="btn btn-green" type="button" data-dismiss="modal" ng-click="savenewfleetdetails(initdata);">Save</button>
+                                                                                        <button class="btn btn-green" type="button" data-dismiss="modal" ng-click="savenewfleetdetails(newVehicle);">Save</button>
 
 
 
@@ -851,11 +858,11 @@
                                                         <table id="user-last-logged-table" class="table table-striped table-hover thumb-small">
                                                             <thead>
                                                                 <tr class="condensed">
-                                                                    <!--<th width="10%">Photo</th>-->
+                                                                    <th width="10%">Photo</th>
                                                                     <th width="10%">Registration No</th>
-                                                                    <!--<th width="10%">Vehicle Group</th>-->
+                                                                    <th width="10%">Vehicle Group</th>
                                                                     <th width="10%">Vehicle Type</th>
-                                                                    <th width="10%">Vehicle Model</th>
+                                                                    <!--<th width="10%">Vehicle Model</th>-->
 
                                                                     <th width="10%">Owner Code</th>
                                                                     <th width="10%">Owner Name</th>
@@ -868,22 +875,22 @@
                                                             </thead>
                                                             <tbody class="media-thumb">
                                                                 <tr ng-repeat="v in Fleet | filter:Registration">
-                                                                    <!--<td>
+                                                                    <td>
                                                                         <span class="img-shadow" ng-if="v.Photo == null">
                                                                             <img src="images/car.png" class="media-object thumb" />
                                                                         </span>
                                                                         <span class="img-shadow" ng-if="v.Photo != null">
                                                                             <img src="{{v.Photo}}" class="media-object thumb" />
                                                                         </span>
-                                                                    </td>-->
-                                                                    <td>{{v.VehicleRegNo}}<div>Vehicle Code:{{v.VehicleCode}}</div></td>
+                                                                    </td>
+                                                                    <td><a href="VehicleDetails.html?VID={{v.Id}}"><h6 class="media-heading">{{v.RegistrationNo}}</h6></a><div>Vehicle Code:{{v.VehicleCode}}</div></td>
 
-                                                                    <!--<td>{{v.VehicleGroup}}</td>-->
+                                                                    <td>{{v.vehiclegroup}}</td>
                                                                     <td>{{v.VehicleType}}</td>
-                                                                    <td>{{v.VehicleModel}}</td>
+                                                                    <!--<td>{{v.VehicleModel}}</td>-->
 
                                                                     <td>{{v.FleetOwnerCode}}</td>
-                                                                    <td>{{v.FleetOwnerName}}</td>
+                                                                    <td>{{v.username}}</td>
                                                                     <td>{{v.ContactNo1}}</td>
                                                                     <td>{{v.EmailId}}</td>
 
@@ -977,7 +984,10 @@
     <script src="js/angular.js"></script>
     <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
     <script src="js/ngStorage.js"></script>
+    <script src="js/fileupload/angular-file-upload.js"></script>
+    <script src="js/fileupload/angular-file-upload-shim.js"></script>
     <script src="js/FleetDetail.js"></script>
+    <script src="js/fileupload/Upload.js"></script>
 
 </body>
 </html>

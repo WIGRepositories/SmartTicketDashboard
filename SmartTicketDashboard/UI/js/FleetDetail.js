@@ -1,5 +1,85 @@
-var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap'])
-var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
+var app = angular.module('myApp', ['ngStorage', 'ui.bootstrap', 'angularFileUpload'])
+
+app.directive('file-input', function ($parse) {
+    return {
+        restrict: "EA",
+        template: "<input type='file' />",
+        replace: true,
+        link: function (scope, element, attrs) {
+
+            var modelGet = $parse(attrs.fileInput);
+            var modelSet = modelGet.assign;
+            var onChange = $parse(attrs.onChange);
+
+            var updateModel = function () {
+                scope.$apply(function () {
+                    modelSet(scope, element[0].files[0]);
+                    onChange(scope);
+                });
+            };
+
+            element.bind('change', updateModel);
+        }
+    };
+});
+
+app.directive("ngFileSelect", function () {
+    return {
+        link: function ($scope, el) {
+            el.on('click', function () {
+                this.value = '';
+            });
+
+            el.bind("change", function (e) {
+                $scope.file = (e.srcElement || e.target).files[0];
+
+                var allowed = ["jpeg", "png", "gif", "jpg"];
+                var found = false;
+                var img;
+                img = new Image();
+
+                allowed.forEach(function (extension) {
+                    if ($scope.file.type.match('image/' + extension)) {
+                        found = true;
+                    }
+                });
+
+                if (!found) {
+                    alert('file type should be .jpeg, .png, .jpg, .gif');
+                    return;
+                }
+
+                img.onload = function () {
+                    var dimension = $scope.selectedImageOption.split(" ");
+                    if (dimension[0] == this.width && dimension[2] == this.height) {
+                        allowed.forEach(function (extension) {
+                            if ($scope.file.type.match('image/' + extension)) {
+                                found = true;
+                            }
+                        });
+
+                        if (found) {
+                            if ($scope.file.size <= 1048576) {
+                                $scope.getFile();
+                            } else {
+                                alert('file size should not be grater then 1 mb.');
+                            }
+
+                        } else {
+                            alert('file type should be .jpeg, .png, .jpg, .gif');
+                        }
+
+                    } else {
+                        alert('selected image dimension is not equal to size drop down.');
+                    }
+                };
+            });
+        }
+    };
+});
+
+
+var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal, $upload, fileReader) {
 
     if ($localStorage.uname == null) {
         window.location.href = "login.html";
@@ -89,7 +169,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
            
             var vc = {
                 needfleetowners: '1',
-                cmpId: $scope.cmp.Id
+                cmpId: $scope.cmp.Id,
             };
 
             var req = {
@@ -129,6 +209,27 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             $scope.imageSrc = $scope.VehiclesList.Photo;
         });
         $scope.GetFleetOwners();
+    }
+
+    $scope.GetConfigData = function () {
+
+        var vc = {
+            includeFleetOwner: '1',
+            includeVehicleType: '1',
+            includeVehicleGroup: '1',
+            includeActiveCountry: '1',
+            includeVehicleLayoutType: '1'
+        };
+
+        var req = {
+            method: 'POST',
+            url: '/api/Types/ConfigData',
+            data: vc
+        }
+
+        $http(req).then(function (res) {
+            $scope.initdata = res.data;         
+        });
     }
 
     //This will hide the DIV by default.
@@ -280,9 +381,9 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
         $scope. GetCompanies();
     }
 
-    $scope.savenewfleetdetails = function (initdata, flag) {
-        var newVD = initdata.newfleet;
-        if (newVD == null) {
+    $scope.savenewfleetdetails = function (newVehicle, flag) {
+        
+        if (newVehicle.RegistrationNo == null) {
             alert('Please enter VehicleRegNo.');
             return;
         }
@@ -317,6 +418,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             LayOutTypeId: newVehicle.lt.Id,
             CountryId: (newVehicle.cn == null || newVehicle.cn.Id == '') ? null : newVehicle.cn.Id,
             DriverId: ($scope.d != null && $scope.d.Id != null) ? $scope.d.Id : null,
+            CompanyId:$scope.newVehicle.c.Id,
             Photo: $scope.imageSrc
 
         };
@@ -332,7 +434,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
         $http(req).then(function (response) {
 
-          $scope.showDialog("Saved successfully!");
+          alert("Saved successfully!");
 
             $scope.Group = null;
 
@@ -348,24 +450,26 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
     $scope.setFleet = function (F) {
         $scope.currVD = F;
     }
+    $scope.UploadImg = function () {
+        var fileinput = document.getElementById('fileInput');
+        fileinput.click();
 
-    $scope.GetConfigData = function () {
+        //  
+        //if ($scope.file == null)
+        //{ $scope.file = fileinput.files[0]; }
+        //fileReader.readAsDataUrl($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+        //fileReader.onLoad($scope.file, $scope).then(function (result) { $scope.imageSrc = result; });
+    };
+    $scope.onFileSelect1 = function () {
 
-        var vc = {
-            includeFleetOwner: '1',
-            
-        };
+        fileReader.readAsDataUrl($scope.file, $scope).then(function (result) {
 
-        var req = {
-            method: 'POST',
-            url: '/api/Types/ConfigData',
-            data: vc
-        }
-
-        $http(req).then(function (res) {
-            $scope.initdata1 = res.data;
+            $scope.imageSrc = result;
         });
     }
+
+
+    
 
     $scope.showDialog = function (message) {
 

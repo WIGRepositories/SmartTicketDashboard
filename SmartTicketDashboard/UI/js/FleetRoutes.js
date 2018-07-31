@@ -163,14 +163,14 @@ $scope.GetFleetRoutes = function () {
                 $scope.s1 = $scope.cmpdata.Table[i];
                 break;
             }
-            $scope.GetRoutesForFO();
+            $scope.GetRoutesForFO(s1);
         }
-        for (i = 0; i < $scope.cmpdata.Table.length; i++) {
-            if ($scope.cmpdata.Table[i].Id == $scope.FleetRoute[0].FleetOwnerId) {
-                $scope.s1 = $scope.cmpdata.Table[i];
+        for (i = 0; i < $scope.vehicles.Table.length; i++) {
+            if ($scope.vehicles.Table[i].Id == $scope.FleetRoute[0].VehicleId) {
+                $scope.currFR.newfleet.v = $scope.vehicles.Table[i];
                 break;
             }
-            $scope.GetRoutesForFO();
+            
         }
     });
 }
@@ -283,7 +283,7 @@ $scope.saveNewFleetRoutes = function (initdata) {
     $http(req).then(function (response) {
 
        alert("Saved successfully!");
-
+       $('#Modal-header-new').modal('hide');
         $scope.Group = null;
 
     }, function (errres) {

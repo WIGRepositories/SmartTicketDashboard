@@ -524,7 +524,7 @@
                                                                     </div>
                                                                     <div class="col-md-6">
                                                                        
-                                                                        <select ng-options="v.VehicleRegNo for v in vehicles.Table track by v.Id" class="form-control" value="{{currFR.vehicles}}"  ng-change="GetFleetRoutes();" ng-model="currFR.newfleet.v">
+                                                                        <select ng-options="v.RegistrationNo for v in vehicles.Table track by v.Id" class="form-control" value="{{currFR.vehicles}}"  ng-change="GetFleetRoutes();" ng-model="currFR.newfleet.v">
                                                                             <option value="">Select</option>
                                                                         </select>
 
@@ -606,7 +606,7 @@
                                         <tbody>
 
                                             <tr ng-repeat="R in FleetRoute" class="gradeA">
-                                                <td>{{R.VehicleRegNo}}</td>
+                                                <td>{{R.RegistrationNo}}</td>
                                                 <td>{{R.RouteName}}</td>
                                                 <td>{{R.EffectiveFrom}}</td>
                                                 <td>{{R.EffectiveTill}}</td>
