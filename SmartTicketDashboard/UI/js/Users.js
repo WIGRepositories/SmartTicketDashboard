@@ -345,7 +345,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             return;
         }
 
-        if (User.EmailId == null) {
+        if (User.Email == null) {
             //alert('Please enter Email.');
             return;
         }           
@@ -361,7 +361,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
             FirstName: User.FirstName,
             LastName: User.LastName,
             MiddleName: User.MiddleName,            
-            Email: User.EmailId,            
+            Email: User.Email,            
             ContactNo1: User.MobileNo,           
             mgrId: User.ManagerId,           
             GenderId: User.Gender,

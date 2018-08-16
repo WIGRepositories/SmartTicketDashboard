@@ -27,19 +27,16 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         zoom: 16       
 
     };    
-
-
     var directionsDisplay = new google.maps.DirectionsRenderer();
     var directionsService = new google.maps.DirectionsService();
     var geocoder = new google.maps.Geocoder();
-
-
     $scope.getDirections = function () {
         var request = {
             origin: $scope.origin,
             destination: $scope.destination,
             travelMode: google.maps.DirectionsTravelMode.DRIVING
         };
+
         directionsService.route(request, function (response, status) {
             if (status == google.maps.DirectionsStatus.OK) {
                 directionsDisplay.setDirections(response);
@@ -62,14 +59,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
                 $scope.srcLon = response.routes[0].bounds["b"].b;
                 $scope.destLat = response.routes[0].bounds["f"].f;
                 $scope.destLon = response.routes[0].bounds["b"].f;
-                $scope.directions.showList = true;
+                //$scope.directions.showList = true;
             } else {
                 alert('Google route unsuccesfull!');
             }
         });
+       
     }
-  
-
     $scope.displocations = function () {
         var maplocations = $scope.locations;
 
@@ -103,35 +99,46 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     }
 
-    
-    $scope.CenterMap = function () {
 
-        var lat =  17.3850;
-        var long = 78.4867;
+    
+
+
+    $scope.CenterMap = function () {
+        var srclat = $scope.srcLat;
+        var srclng = $scope.srcLon;
+        var destlat = $scope.destLat;
+        var destlng = $scope.destLon;
+        //var lat = (event.latitude == null) ? 17.3850 : event.latitude;
+        //var long = (event.longitude == null) ? 78.4867 : event.longitude;
+        //var lat =  17.3850;
+        //var long = 78.4867;
         var mapOptions = {
             zoom: 8,
-            center: new google.maps.LatLng(lat, long),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
+            center: new google.maps.LatLng(srclat, srclng, destlat, destlng),
+            //mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
-        //$scope.map = new google.maps.Map(document.getElementById('map'), mapOptions);
-
+        var map = new google.maps.Map(document.getElementById('map'), mapOptions);
+        
         var infoWindow = new google.maps.InfoWindow();
 
-        google.maps.event.addListener($scope.map, 'click', function (loc) {
-            createMarkerWithLatLon(loc.lat(), loc.long());
+        google.maps.event.addListener(map, 'click', function (event) {
+            createMarkerWithLatLon(map, event.latLng);
            
         });
        
 
-        createMarkerWithLatLon(lat, long);
+       createMarkerWithLatLon(lat, long);
        
         //createMarker(lat,long);
-
-       
     }
 
+       
     
+       
+
+
+
     $scope.CenterMap1 = function () {
 
         var lat = 17.3850;
@@ -146,13 +153,13 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         var infoWindow = new google.maps.InfoWindow();
 
-        google.maps.event.addListener($scope.map, 'click', function (loc) {
+        google.maps.event.addListener($scope.map, 'click', function (event) {
             createMarkerWithLatLon(loc.lat(), loc.long());
 
         });
 
 
-        createMarkerWithLatLon(lat, long);
+      //  createMarkerWithLatLon(lat, long);
 
         $scope.MapOptions = {
             center: new google.maps.LatLng($scope.Markers[0].lat, $scope.Markers[0].lng),
@@ -198,8 +205,6 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
 
     }
-
-
     var createMarker = function (lat,long) {
         var marker = new google.maps.Marker({
             map: $scope.map,
@@ -219,27 +224,29 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
         $scope.markers.push(marker);
     };
-
-    var createMarkerWithLatLon = function (lat, long) {
+    var createMarkerWithLatLon = function (map1,latLng) {
         var marker = new google.maps.Marker({
-            map: $scope.map,
-            position: new google.maps.LatLng(lat, long),
+            map: map1,
+            position: new google.maps.LatLng(latLng.lat(), latLng.lng()),
             //title: loc.loc
 
             icon: marker
         });
 
-        google.maps.event.addListener(marker, 'click', function () {
-            alert();
-            infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
-            infoWindow.setContent(marker.content);
-            infoWindow.open($scope.map, marker);
-        });
+        //google.maps.event.addListener(marker, 'click', function () {
+        //    alert();
+        //    infoWindow.setContent('<h2>' + marker.title + '</h2>' + marker.content);
+        //    infoWindow.setContent(marker.content);
+        //    infoWindow.open($scope.map, marker);
+        //});
 
         $scope.markers.push(marker);
+
+        var infowindow = new google.maps.InfoWindow({
+            content: 'Latitude: ' + latLng.lat() + '<br>Longitude: ' + latLng.lng()
+        });
+        infowindow.open(map1, marker);
     };
-
-
     $scope.SavePricing = function (directions, flag) {
         alert();
 
@@ -281,8 +288,6 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             $scope.showDialog(errmssg);
         });
     }
-
-
     //$scope.GetRoutes = function () {
     //    $http.get('/api/FleetOwnerRouteDetails/GetRoutes').then(function (res, data) {
     //        $scope.routes = res.data;
@@ -449,8 +454,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
             $scope.origin = $scope.RouteDetails.Table[0].source;
             $scope.destination = $scope.RouteDetails.Table[0].dest;
             $scope.getDirections();
-        });
-        
+        });        
     }
 
     $scope.SetCurrStop = function (currStop, indx) {
@@ -519,9 +523,6 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     }
 
 });
-
-
-
 myapp1.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, mssg) {
 
     $scope.mssg = mssg;

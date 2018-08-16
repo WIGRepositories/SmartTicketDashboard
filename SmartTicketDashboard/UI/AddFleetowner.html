@@ -484,7 +484,7 @@
                                                     <div class="col-md-3"><textarea rows="3" class="form-control" ng-model="User.AdressId"></textarea></div>
                                                     <label for="inputMiddleName" class="col-md-2 control-label">Company:<span class='require'>*</span></label>
                                                     <div class="col-md-3">
-                                                        <select ng-options="cmp.Name for cmp in Companies track by cmp.Id" ng-model="cmp" ng-change="getRolesForCompany(cmp)" width="100%" class="form-control">
+                                                        <select ng-options="cmp.Name for cmp in Companies track by cmp.Id" ng-model="cmp" ng-init="GetUsersinitData()" ng-change="getRolesForCompany(cmp)" width="100%" class="form-control">
                                                             <option value="">Select Company</option>
                                                         </select>
                                                     </div>

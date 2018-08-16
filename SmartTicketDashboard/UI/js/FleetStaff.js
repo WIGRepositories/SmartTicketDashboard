@@ -78,7 +78,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         }
         $http(req).then(function (res) {
             $scope.cmpdata = res.data;
-            $scope.showdialogue("Saved successfully")
+            //$scope.showDialog("Saved successfully")
 
 
             if ($scope.userSId != 1) {
@@ -177,7 +177,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         }
         $http(req).then(function (res) {
             $scope.vehicles = res.data;
-            $scope.showdialogue("Saved successfully")
+            $scope.showDialog("Saved successfully")
         });
 
     }
@@ -243,7 +243,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
         $http(req).then(function (response) {
 
            $scope.showDialog("Saved successfully!");
-
+           $('#Modal-header-new').modal('hide');
             $scope.Group = null;
 
         }, function (errres) {
@@ -389,7 +389,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
             data: FRoutes
         }
         $http(req).then(function (response) {
-            $scope.showdialogue("Saved successfully")
+            $scope.showDialog("Saved successfully")
 
             $http.get('/api/FleetStaff/GetFleetStaff?roleid=' + Fleet.RoleId).then(function (res, data) {
                 $scope.FleetStaff = res.data;

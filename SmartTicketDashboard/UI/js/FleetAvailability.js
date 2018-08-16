@@ -66,7 +66,7 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
             return;
         }
        
-        $http.get('/api/FleetAvailability/GetFleetAvailability?foid=-1&cmpId='+$scope.cmp.Id).then(function (res, data) {
+        $http.get('/api/FleetAvailability/GetFleetAvailability?foid='+$scope.s.Id +'&cmpId='+$scope.cmp.Id).then(function (res, data) {
             $scope.FleetAvailability = res.data;
 
         });

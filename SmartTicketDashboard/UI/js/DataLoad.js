@@ -63,7 +63,7 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
     $scope.DriverArr = [{ "Id": 1, "NAme": "Address" },
                         { "Id": 2, "NAme": "Address" }]
 
-    $scope.VehiclesCol = 'Registration No,Chasis No,Vehicle Group,Vehicle Model,Country,Vehicle Code,Fleet Owner,Engine No,Vehicle Type,Vehicle Make,Driver,Model Year,Has AC,IsDriverOwned';
+    $scope.VehiclesCol = 'Registration No,Chasis No,Vehicle Group,Vehicle Model,Country,Vehicle Code,Fleet Owner,Engine No,Vehicle Type,Vehicle Make,Driver,Model Year,Has AC,IsDriverOwned,Status,Layout Type,Company';
     $scope.VehiclesArr = [{ "Id": 1, "VechMobileNo": "OwnerName" },
                         { "Id": 2, "VechMobileNo": "OwnerName" }]
 
@@ -898,20 +898,10 @@ app.controller('myCtrl', function ($scope, $http, $localStorage, $uibModal) {
             DriverId: data[10],
             ModelYear: data[11],
             HasAC: data[12],
-            IsDriverowned: data[13],
-            RoadTaxDate: data[14],
-            InsDate: data[15],
-            PolutionNo: data[16],
-            PolExpDate: data[17],
-            RCBookNo: data[18],
-            RCExpDate: data[19],
-            StatusId: data[20],
-            IsVerified: data[21],
-            EntryDate: data[22],
-
-
-
-
+            IsDriverowned: data[13],           
+            StatusId: data[14],
+            LayoutType: data[15],
+            Company: data[16],
 
             flag: 'I'
 

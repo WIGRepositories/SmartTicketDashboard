@@ -2,6 +2,98 @@
 <html lang="en">
 <head>
     <title>Route Details </title>
+    <!--<style>
+        #map {
+            position: absolute;
+            height:600px;
+            width:600px;
+            left: 5px;
+            right: 50%;
+        }
+        #panel-wpr {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            right: 0;
+            overflow: auto;
+        }
+        #panel {
+            font-family: arial;
+            padding: 0 5px;
+        }
+        #info {
+            padding: 5px;
+        }
+        #from {
+            width: 90%;
+            font-size: 1.2em;
+        }
+        .adp-directions {
+            width: 100%;
+        }
+        .input {
+            background-color: white;
+            padding-left: 8px;
+            border: 1px solid #D9D9D9;
+            border-top: 1px solid silver;
+            -webkit-border-radius: 1px;
+            -moz-border-radius: 1px;
+            border-radius: 1px;
+        }
+        .time {
+            margin: 0;
+            height: 17px;
+            border: 1px solid;
+            border-top-color: #CCC;
+            border-right-color: #999;
+            border-left-color: #999;
+            border-bottom-color: #CCC;
+            padding: 2px 15px 1px 1px;
+        }
+        button {
+            border: 1px solid #3079ED;
+            color: white;
+            background-color: #4D90FE;
+            background-image: -webkit-gradient(linear, left top, left bottom, from(#4D90FE), to(#4787ED));
+            background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
+            background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
+            background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
+            background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
+            background-image: linear-gradient(top, #4D90FE, #4787ED);
+            filter: progid: DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#4787ed');
+            display: inline-block;
+            min-width: 54px;
+            text-align: center;
+            font-weight: bold;
+            padding: 0 8px;
+            line-height: 27px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            -webkit-transition: all 0.218s;
+            -moz-transition: all 0.218s;
+            -o-transition: all 0.218s;
+            transition: all 0.218s;
+        }
+        #info div {
+            line-height: 22px;
+            font-size: 110%;
+        }
+        .btn {
+        }
+        #panel-wpr {
+            border-left: 1px solid #e6e6e6;
+        }
+        #info {
+            border-bottom: 1px solid #E6E6E6;
+            margin-bottom: 5px;
+        }
+        h2 {
+            margin: 0;
+            padding: 0;
+        }
+    </style>-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -21,17 +113,19 @@
     <link href="css/VehicleDistBasePricingConfig.css" rel="stylesheet" />
 
     <!--<link href="css/BookHireVechicle.css" rel="stylesheet" />-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
+  
     <!--<script data-require="google-maps@1.0.0" data-semver="1.0.0" src="http://maps.google.com/maps/api/js?sensor=false"></script>-->
     <script data-require="angular.js@1.2.x" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.17/angular.min.js" data-semver="1.2.17"></script>
     <script data-require="lodash-underscore@*" data-semver="2.4.1" src="https://rawgit.com/lodash/lodash/2.4.1/dist/lodash.underscore.min.js"></script>
     <script data-require="angular-google-maps@*" data-semver="1.1.4" src="https://rawgit.com/nlaplante/angular-google-maps/1.1.4/dist/angular-google-maps.min.js"></script>
     <script src="http://jvandemo.github.io/angularjs-google-maps/dist/angularjs-google-maps.js"></script>
+    <script data-require="google-maps@1.0.0" data-semver="1.0.0" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAvjzroTvKlmWDxJn2ZCNvv_12jGA6XadU"></script>
+    
     <!--maping-->
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetCompanies();" ng-model="RouteDetails">
     <div>
-       
         <!--BEGIN THEME SETTING-->
         <!--END THEME SETTING--><!--BEGIN BACK TO TOP--><a id="totop" href="#"><i class="fa fa-angle-up"></i></a><!--END BACK TO TOP--><!--BEGIN TOPBAR-->
         <div>
@@ -283,7 +377,7 @@
                                         <li><a href="SOSMessages.html" data-toggle="tooltip" data-placement="right" title="Details of BlockList"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Messages</span></a></li>
                                         <li><a href="SOSTemplates.html" data-toggle="tooltip" data-placement="right" title="Details of Sos Templates"><i class="fa fa-briefcase"></i><span class="submenu-title">SOS Templates</span></a></li>
                                         <li><a href="Operations.html" data-toggle="tooltip" data-placement="right" title="Details of Operations"><i class="fa fa-briefcase"></i><span class="submenu-title">Operations</span></a></li>
-                                     </ul>
+                                    </ul>
                                 </li>
 
                                 <li>
@@ -371,7 +465,7 @@
                                     </a>
                                     <ul class="nav nav-second-level">
                                         <li>
-                                            <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                            <a href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                         </li>
                                         <li>
                                             <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -450,8 +544,8 @@
                             <div class="clearfix"></div>
                         </div>
 
-                        <div class="page-content">
 
+                        <div class="page-content">
                             <div id="table-action" class="row">
                                 <div class="col-lg-12">
 
@@ -462,591 +556,225 @@
                                                 <div class="col-lg-12">
 
                                                     <div class="table-container">
-                                                        <div class="row mbm">
+                                                        <div id="transit-wpr">
+                                                <button id="transit">Toggle transit layer</button>
+                                            </div>
+                                            <div id="map" style="width:600px;height:400px;"></div>
+                                            <div id="panel"></div>
+                                                        <!--END CONTENT-->
+                                                        <div class="row">
+                                                            <div class="row mbm">
+                                                                <div class="col-md-4">
+                                                                    Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div class="col-md-4">
+                                                                    Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFORoutes()" id="test1">
 
-                                                            <div class="modal fade" id="Modal-prev" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header modal-header-primary">
-                                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                            <h4 id="modal-header-primary-label" class="modal-title">Add Previous Stop</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" ng-model="newNextStop">
+                                                                        <option value="">Select</option>
+                                                                    </select>
+                                                                </div>
+                                                                <div>
+                                                                    <div class="col-md-4">
 
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop Name:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="col-md-5">
-                                                                                            <select ng-options="stp.Name for stp in Stops track by stp.Id" ng-model="newNextStop.stp" ng-change="setNewStopCode(newNextStop.stp);">
-                                                                                                <option value="">Select</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop Code:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" value="{{newNextStop.StopCode}}" ng-model="newNextStop.StopCode" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Next stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="currStop.nextstop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Previous stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="currStop.prevstop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop no:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" value="{{currStop.StopNo}}" class="form-control" ng-model="newNextStop.StopNo" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from previous stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right">
-                                                                                            <input type="text" class="form-control" ng-model="newNextStop.DistanceFromPreviousStop" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from next stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromNextStop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from source:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromSource" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from destination:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromDestination" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addPrevStop(newNextStop);">Add Stop</button>
-                                                                            <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
-
-                                                                        </div>
+                                                                        Route Name:<select ng-options="r.routename for r in sdata.Table track by r.RouteId" ng-model="r" ng-change="GetRouteDetails()">
+                                                                            <option value="">Select</option>
+                                                                        </select>
                                                                     </div>
                                                                 </div>
                                                             </div>
 
-                                                            <div class="modal fade" id="Modal-next" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true">
-                                                                <div class="modal-dialog">
-                                                                    <div class="modal-content">
-                                                                        <div class="modal-header modal-header-primary">
-                                                                            <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                                                            <h4 id="modal-header-primary-label" class="modal-title">Add Next Stop</h4>
-                                                                        </div>
-                                                                        <div class="modal-body" ng-model="newNextStop">
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop Name:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="col-md-5">
-                                                                                            <select ng-options="stp.Name for stp in Stops track by stp.Id" ng-model="newNextStop.stp" ng-change="setNewStopCode(newNextStop.stp);">
-                                                                                                <option value="">Select</option>
-                                                                                            </select>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop Code:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" value="{{newNextStop.StopCode}}" ng-model="newNextStop.StopCode" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Next stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="currStop.nextstop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Previous stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="currStop.prevstop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Stop no:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" value="{{currStop.StopNo + 1}}" class="form-control" ng-model="newNextStop.StopNo" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from previous stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right">
-                                                                                            <input type="text" class="form-control" ng-model="newNextStop.DistanceFromPreviousStop" />
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from next stop:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromNextStop" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from source:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromSource" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="row">
-
-                                                                                <div class="col-md-3">
-                                                                                    <div class="form-group has-success" style="text-align:right">
-                                                                                        <label for="inputFirstName" class="control-label">Distance from destination:<span class='require'>*</span></label>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-5">
-                                                                                    <div class="form-group">
-                                                                                        <div class="input-icon right"><input type="text" class="form-control" ng-model="newNextStop.DistanceFromDestination" /></div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                        </div>
-                                                                        <div class="modal-footer">
-                                                                            <button type="button" class="btn btn-primary" data-dismiss="modal" ng-click="addNextStop(newNextStop);">Add Stop</button>
-                                                                            <button type="reset" data-dismiss="modal" class="btn btn-default">Close</button>
-
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-
-
-
-                                                            <div class="col-md-12">
-                                                                <div class="row">
-                                                                    <div class="row mbm">
-                                                                        <div class="col-md-4">
-                                                                            Company:<select ng-options="c.Name for c in Companies track by c.Id" ng-model="cmp" ng-change="GetFleetOwners(cmp)" id="test">
-    <option value="">Select</option>
-</select>
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            Fleet Owner:<select ng-options="s.Name for s in cmpdata.Table track by s.Id" ng-model="s" ng-change="GetFORoutes()" id="test1">
-
-    <option value="">Select</option>
-</select>
-                                                                        </div>
-                                                                        <div>
-                                                                            <div class="col-md-4">
-
-                                                                                Route Name:<select ng-options="r.routename for r in sdata.Table track by r.RouteId" ng-model="r" ng-change="GetRouteDetails()">
-                                                                                    <option value="">Select</option>
-                                                                                </select>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-
-                                                                    <!--<div class="row mbm">
-                                                                        <div class="col-md-4">
-                                                                            Route Code: <input type="text" disabled ng-model="r.code" />
-                                                                        </div>
-                                                                        <div class="col-md-4">
-                                                                            Source: <input type="text" disabled ng-model="r.Source" />
-                                                                        </div>
-                                                                        <div>
-                                                                            <div class="col-md-4">
-                                                                                Destination: <input type="text" disabled ng-model="r.Destination" />
-                                                                            </div>
-
-                                                                        </div>
-                                                                    </div>-->
-
-
-
-                                                                </div>
-
-                                                                <div class="container" style="padding-top:10px">
-                                                                    <div class="col-md-12 ">
-                                                                        <div class="col-md-4" style="padding-top:10px;margin-left:-20px">
-
-                                                                            <form class="form-horizontal">
-                                                                                <div class="form-group row">
-                                                                                    <div class="col-xs-12">
-                                                                                        <label for="ex1">Source</label>
-                                                                                        <input class="form-control" id="origin" type="text" placeholder="Current location" ng-model="origin">
-                                                                                    </div>
-                                                                                    <div class="col-xs-12">
-                                                                                        <label for="ex2">Destination</label>
-                                                                                        <input class="form-control" id="destination" type="text" placeholder="Enter drop point" ng-model="destination">
-                                                                                        <br />
-                                                                                    </div>
-                                                                                    <!--<div class="form-group">
-                                                                                        <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
-                                                                                            <button class="btn-medium green" ng-click="getDirections()">Get Directions</button>
-                                                                                        </div>
-                                                                                    </div>-->
-                                                                                    <!--<div class="col-md-12">
-                <select ng-options="x.Name for x in CardTypes track by x.id" ng-model="currCard.Name" ng-change="GetCardUsers(cu);" style="width:100%">
-                    <option value="">Select VehicleModel</option>
-                </select>
-            </div>-->
-                                                                                    <h6>Create Stops</h6>
-                                                                                    <div class="col-xs-12">
-                                                                                        <div class="form-group form-group-sm">
-                                                                                            <label class="col-sm-2 control-label" for="sm"><span class="badge">1</span></label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm" ng-model="latitude">                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="col-xs-12">
-                                                                                        <div class="form-group form-group-sm">
-                                                                                            <label class="col-sm-2 control-label" for="sm"><span class="badge">2</span></label>
-                                                                                            <div class="col-sm-10">
-                                                                                                <input class="form-control" type="text" id="sm" ng-model="longitude">
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                    </div>
-
-                                                                                    <div class="form-group">
-                                                                                        <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
-                                                                                            <button class="btn-medium green" ng-click="SavePricing(directions,'I')">Save</button>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </form>
-                                                                        </div>
-                                                                        <!-------maping--------------------->
-
-                                                                        <div id="full-width-content" class="col-md-6">
-
-                                                                            <div class="main">
-                                                                                <div class="panel panel-default">
-                                                                                    <div class="panel-body" id="map">
-                                               <google-map  control="map.control"  center="map.center" zoom="map.zoom" ng-click="CenterMap(loc)">
-                                                                                        </google-map>
-
-                                                                                        <form class="form-horizontal" role="form">
-                                                                                            <!--<div class="form-group">
-                <label for="origin" class="col-sm-2 control-label">Origin</label>
-                <div class="col-sm-8">
-                    <input type="text" id="origin" class="form-control" ng-model="directions.origin" />
-                </div>
+                                                            <!--<div class="row mbm">
+            <div class="col-md-4">
+                Route Code: <input type="text" disabled ng-model="r.code" />
             </div>
-            <div class="form-group">
-                <label for="destination" class="col-sm-2 control-label">Destination</label>
-                <div class="col-sm-8">
-                    <input type="text" id="destination" class="form-control" ng-model="directions.destination" />
+            <div class="col-md-4">
+                Source: <input type="text" disabled ng-model="r.Source" />
+            </div>
+            <div>
+                <div class="col-md-4">
+                    Destination: <input type="text" disabled ng-model="r.Destination" />
                 </div>
-            </div>-->
-                                                                                            <div class="form-group">
-                                                                                                <!--<div class="col-sm-offset-2 col-sm-8">
-                    <button class="btn btn-primary" ng-click="getDirections()">Get Directions</button>
-                </div>-->
-                                                                                            </div>
-                                                                                        </form>
-                                                                                        <div id="directionsList" ng-show="directions"></div>
 
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-                                                                        </div>
-                                                                        
-                                                                        
-                                                                    </div>                                                                    
-                                                                    
-                                                                    
-                                                                    <hr>
-                                                                    <div class="main-and-aside r">
-                                                                        <div class="main">
-                                                                            <div class="small-medium" data-set="widget"></div>
-
-                                                                            <div class="clearfix"></div>
-                                                                            <div class="module-grid clearfix">
-                                                                                <!--<div>
-                        <h2 class="active">Ammount</h2>
-
-                        <div class="panel col-md-10">
-                            <h4 class="panel-title">
-                                <a href="#" class="collapsed">Fares <p style="text-align:right;margin-top:-25px;">Rs:150</p></a>
-
-                            </h4>
-
-                        </div>
+            </div>
+        </div>-->
 
 
 
-                    </div>-->
-
-                                                                            </div>
-                                                                        </div>
-
-                                                                    </div>
-                                                                    <div class="aside">
-                                                                        <div class="large" data-set="widget">
-                                                                            <div class="moving-source-order">
-                                                                                <div class="widget-wrapper">
-                                                                                    <div class="expandable-box">
-                                                                                        <div class="content">
-                                                                                            <!--<div class="always-visible widget-heading">
-                                    <div class="controls"> </div>
-                                    <h2 class="active">Confirm Booking</h2>
-                                </div>-->
-                                                                                            <!--<div class="toggle-container">
-                                    <form>
-                                        <div class="form-group row">
-                                            <div class="col-xs-6">
-                                                <label for="ex1">Enter Mobile Number</label>
-                                                <input class="form-control input-medium bfh-phone" id="ex1" type="text" data-format="+1 (ddd) ddd-dddd" placeholder="Enter Mobile Number">
-                                            </div>
-
-                                            <button type="submit" class="btn-medium green" style="margin-top:30px">Submit</button>
-                                        </div>
-                                    </form>
-
-
-
-
-
-                                    <div class="panel">
-                                        <form>
-                                            <div class="form-group row">
-                                                <div class="col-xs-6">
-                                                    <label for="ex1">Enter OTP</label>
-                                                    <input class="form-control" id="ex1" type="text" placeholder="OTP">
+                                                        </div>
+                                                    </div><!--BEGIN FOOTER-->
                                                 </div>
 
-                                                <button type="submit" class="btn-medium green" style="margin-top:23px">Submit</button>
                                             </div>
-                                        </form>
-
-                                    </div>
-                                    <div class="panel">
-
-
-                                        <button type="submit" class="btn-medium green" style="margin:5px 0px 10px 60px">Go TO Payment</button>
-                                    </div>
-
-
-                                </div>-->
-
-
-
-
-
-
-
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-
-                                                                
-                                                            </div>
-                                                            <!--END CONTENT-->
-                                                        </div><!--BEGIN FOOTER-->
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
                         </div>
-
-                        <div id="footer">
-                            <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                        </div>
-
                     </div>
                 </div>
-            </div>
-        </div>
-        <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+                                                    <div id="footer">
+                                                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
+                                                    </div>
 
-            <div class="modal-header">
-                <h3 class="modal-title">Save confirmation!</h3>
-            </div>
-            <div class="modal-body">
-                <!--<ul>
-                    <li ng-repeat="item in items">
-                        <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                    </li>
-                </ul>
-                Selected: <b>{{ selected.item }}</b>-->
-                {{mssg}}
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
-                <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
-            </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+                                        <div class="modal-header">
+                                            <h3 class="modal-title">Save confirmation!</h3>
+                                        </div>
+                                        <div class="modal-body">
+                                            <!--<ul>
+                            <li ng-repeat="item in items">
+                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                            </li>
+                        </ul>
+                        Selected: <b>{{ selected.item }}</b>-->
+                                            {{mssg}}
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+                                            <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+                                        </div>
 
-        </script>
-    </div>
+                                    </script>
+                                </div>
 
-    <script src="js/jquery-1.10.2.min.js"></script>
-    <script src="js/jquery-migrate-1.2.1.min.js"></script>
-    <script src="js/jquery-ui.js"></script>
-    <!--loading bootstrap js-->
-    <script src="vendors/bootstrap/js/bootstrap.js"></script>
-    <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
-    <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
-    <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
-    <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
-    <script src="vendors/iCheck/icheck.min.js"></script>
-    <script src="vendors/iCheck/custom.min.js"></script>
-    <script src="js/jquery.menu.js"></script>
-    <script src="vendors/jquery-pace/pace.min.js"></script>
-    <script src="vendors/holder/holder.js"></script>
-    <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
-    <!--LOADING SCRIPTS FOR PAGE--><!--CORE JAVASCRIPT-->
-    <script src="js/main.js"></script>
-    <script src="js/angular.js"></script>
-    <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
-    <script src="js/ngStorage.js"></script>
-    <script src="js/FleetOwnerRouteDetails.js"></script>
+                                <script src="js/jquery-1.10.2.min.js"></script>
+                                <script src="js/jquery-migrate-1.2.1.min.js"></script>
+                                <script src="js/jquery-ui.js"></script>
+                                <!--loading bootstrap js-->
+                                <script src="vendors/bootstrap/js/bootstrap.js"></script>
+                                <script src="vendors/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
+                                <script src="vendors/metisMenu/jquery.metisMenu.js"></script>
+                                <script src="vendors/slimScroll/jquery.slimscroll.js"></script>
+                                <script src="vendors/jquery-cookie/jquery.cookie.js"></script>
+                                <script src="vendors/iCheck/icheck.min.js"></script>
+                                <script src="vendors/iCheck/custom.min.js"></script>
+                                <script src="js/jquery.menu.js"></script>
+                                <script src="vendors/jquery-pace/pace.min.js"></script>
+                                <script src="vendors/holder/holder.js"></script>
+                                <script src="vendors/responsive-tabs/responsive-tabs.js"></script>
+                                <!--LOADING SCRIPTS FOR PAGE--><!--CORE JAVASCRIPT-->
+                                <script src="js/main.js"></script>
+                                <script src="js/angular.js"></script>
+                                <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
+                                <script src="js/ngStorage.js"></script>
+                                <!--<script src="js/FleetOwnerRouteDetails.js"></script>-->
+                                <script src="js/Testingrouts.js"></script>
 
+                                <script>
+                                    var arrlist = [];
+                                    var infowindow = new google.maps.InfoWindow();
+                                    var directions = new google.maps.DirectionsService();
+                                    var renderer = new google.maps.DirectionsRenderer({
+                                        suppressPolylines: true,
+                                        infoWindow: infowindow,
+                                        polylineOptions: {
+                                            strokeColor: '#C83939',
+                                            strokeOpacity: 0,
+                                            strokeWeight: 1,
+                                            icons: [{
+                                                icon: {
+                                                    path: google.maps.SymbolPath.CIRCLE,
+                                                    fillColor: '#C83939',
+                                                    scale: 3,
+                                                    strokeOpacity: 1
+                                                },
+                                                offset: '0',
+                                                repeat: '15px'
+                                            }]
+                                        }
+
+                                    });
+                                    var map;
+
+                                    function initialize() {
+                                        var mapOptions = {
+                                            zoom: 13,
+                                            center: new google.maps.LatLng(17.3850, 78.4867),
+                                            mapTypeId: google.maps.MapTypeId.ROADMAP
+                                        };
+
+                                        map = new google.maps.Map(document.getElementById('map'), mapOptions);
+
+                                        //google.maps.event.addDomListener(document.getElementById('go'), 'click',
+                                        //  route);
+
+                                        //var input = document.getElementById('from');
+                                        //var autocomplete = 'Grand Central 42, NY';//new google.maps.places.Autocomplete(input);
+                                        //autocomplete.bindTo('bounds', map);
+                                        route();
+                                    }
+
+                                    function route() {
+                                        var request = {
+                                            //origin: document.getElementById('from').value,
+                                            origin: 'Ameerpet, Hyderabad, Telangana',
+                                            destination: 'Madhapur, Hyderabad, Telangana',
+                                            travelMode: google.maps.DirectionsTravelMode.WALKING
+                                        };
+
+                                        var panel = document.getElementById('panel');
+                                        panel.innerHTML = '';
+                                        directions.route(request, function (response, status) {
+                                            if (status == google.maps.DirectionsStatus.OK) {
+                                                renderer.setDirections(response);
+                                                renderer.setMap(map);
+                                                //renderer.setPanel(panel);
+                                                renderDirectionsPolylines(response);
+                                                console.log(renderer.getDirections());
+                                            } else {
+                                                renderer.setMap(null);
+                                                //renderer.setPanel(null);
+                                            }
+
+                                        });
+
+                                    }
+
+                                    var polylineOptions = {
+                                        strokeColor: '#C83939',
+                                        strokeOpacity: 1,
+                                        strokeWeight: 4
+                                    };
+                                    var polylines = [];
+                                    function renderDirectionsPolylines(response) {
+                                        for (var i = 0; i < polylines.length; i++) {
+                                            polylines[i].setMap(null);
+                                        }
+                                        var legs = response.routes[0].legs;
+                                        for (i = 0; i < legs.length; i++) {
+                                            var steps = legs[i].steps;
+                                            for (j = 0; j < steps.length; j++) {
+                                                var nextSegment = steps[j].path;
+                                                var stepPolyline = new google.maps.Polyline(polylineOptions);
+                                                for (k = 0; k < nextSegment.length; k++) {
+                                                    stepPolyline.getPath().push(nextSegment[k]);
+                                                }
+                                                stepPolyline.setMap(map);
+                                                polylines.push(stepPolyline);
+                                                google.maps.event.addListener(stepPolyline, 'click', function (evt) {
+                                                    arrlist.push(evt);
+                                                    //infowindow.setContent("you clicked on the route<br>"+evt.latLng.toUrlValue(6));
+                                                    //infowindow.setPosition(evt.latLng);
+                                                    var marker = new google.maps.Marker({
+
+                                                        position: evt.latLng,
+                                                        map: map,
+                                                        title: 'Hello World!'
+                                                    });
+                                                    infowindow.open(map);
+                                                })
+                                            }
+                                        }
+                                    }
+                                    google.maps.event.addDomListener(window, 'load', initialize);
+
+                                </script>
 </body>
 </html>

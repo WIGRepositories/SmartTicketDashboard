@@ -755,7 +755,7 @@ namespace SmartTicketDashboard.Models
         //public List<VehiclesGroups> list3 { get; set; }
         public string flag { get; set; }
         public int Id { get; set; }
-        public string CompanyId { get; set; }
+        public string Company { get; set; }
         public int VID { get; set; }
         public string RegistrationNo { get; set; }
         public string vehicleType { get; set; }
@@ -769,7 +769,7 @@ namespace SmartTicketDashboard.Models
         public DateTime? PolExpDate { get; set; }
         public string RCBookNo { get; set; }
         public DateTime? RCExpDate { get; set; }
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
         public int IsVerified { get; set; }
         public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
@@ -780,6 +780,9 @@ namespace SmartTicketDashboard.Models
         public string VehicleModel { get; set; }
         public string VehicleMake { get; set; }
         public string VehicleGroup { get; set; }
+        public string LayoutType { get; set; }
+        
+
     }
 
 
