@@ -106,6 +106,65 @@ namespace SmartTicketDashboard.Controllers
 
         }
 
+        [HttpGet]
+        [Route("api/VehicleMaster/GetVehiclespaging")]
+        public DataSet GetVehiclespaging(int ctryId, int fid, int curpage, int maxrows, int vgId)
+        {
+            DataSet ds = new DataSet();
+           
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSGetVehicleListPaging";
+                cmd.Connection = conn;
+
+                SqlParameter mid = new SqlParameter("@ctryId", SqlDbType.Int);
+                mid.Value = ctryId;
+                cmd.Parameters.Add(mid);
+
+                SqlParameter lid = new SqlParameter("@fleetId", SqlDbType.Int);
+                lid.Value = fid;
+                cmd.Parameters.Add(lid);
+
+                SqlParameter cpage = new SqlParameter();
+                cpage.ParameterName = "@curpage";
+                cpage.SqlDbType = SqlDbType.Int;
+                cpage.Value = curpage;
+                cmd.Parameters.Add(cpage);
+
+                SqlParameter mrows = new SqlParameter();
+                mrows.ParameterName = "@maxrows";
+                mrows.SqlDbType = SqlDbType.Int;
+                mrows.Value = maxrows;
+                cmd.Parameters.Add(mrows);
+
+                SqlParameter st = new SqlParameter("@vgId", SqlDbType.Int);
+                st.Value = vgId;
+                cmd.Parameters.Add(st);
+
+
+                //SqlParameter lok = new SqlParameter("@RegistrationNo", SqlDbType.VarChar);
+                //lok.Value = RegistrationNo;
+                //cmd.Parameters.Add(lok);
+
+
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(ds);
+                //Tbl = ds.Tables[0];
+            
+            //    Logger.Trace(LogCategory.WebApp, "DataTable in GetAssets() procedure is loaded", LogLevel.Information, null);
+            //}
+            //catch (Exception ex)
+            //{
+            //    Logger.Error(ex, LogCategory.WebApp, "An error occured in GetAssets() procedure", LogLevel.Error, null);
+            //}
+            return ds;
+        }
+
         [HttpPost]
         [Route("api/VehicleMaster/Vehicles")]
         public DataTable Vehicles(vehiclemas v)

@@ -362,6 +362,8 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
 
         $http.get('/api/FleetStaff/GetFleetStaff?foId=' + $scope.s.Id + '&cmpId=' + $scope.cmp.Id).then(function (res, data) {
             $scope.FleetStaff = res.data;
+
+            $scope.f1 = $scope.FleetStaff[0].RegistrationNo;
         });
     }
 
@@ -393,6 +395,7 @@ var mycrtl1 = app.controller('myCtrl', function ($scope, $http, $localStorage, $
 
             $http.get('/api/FleetStaff/GetFleetStaff?roleid=' + Fleet.RoleId).then(function (res, data) {
                 $scope.FleetStaff = res.data;
+                
             });
 
         });

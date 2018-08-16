@@ -115,7 +115,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $fil
             }
             $http(req).then(function (res) {
                 $scope.fleet = res.data;
-                $scope.showDialog("Saved successfully");
+                //$scope.showDialog("Saved successfully");
             });
         
     }

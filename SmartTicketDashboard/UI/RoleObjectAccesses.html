@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Entitlements Dashboard</title>
+    <title>Home | Configuration |Roles Object Access</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -201,12 +201,12 @@
                                                 <!--<button ng-hide="isSuperUser == 0 && isAdminSupervisor ==0" type="button" data-target="#Modal-header-new" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;"> Add New Object</button>-->
                                                 <!--</div>-->
                                                 <div class="col-md-4" style="margin-bottom:20px">
-                                                    Entitlments: <select ng-options="s.Name for s in RootObjects track by s.Id" ng-model="s" ng-change="getRoleObjects()" style="width:60%">
+                                                    Entitlments: <select ng-options="s.Name for s in RootObjects track by s.Id" ng-model="s"  style="width:60%">
                                                         <option value="">All</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-md-4" style="margin-bottom:20px">
-                                                    Roles: <select ng-options="r.Name for r in RoleObjects track by r.Id" ng-model="r" ng-change="getChildObject()" style="width:60%">
+                                                    Roles: <select ng-options="r.Name for r in RoleObjects track by r.Id" ng-model="r" ng-change="getRoles()" style="width:60%">
                                                         <option value="">All</option>
                                                     </select>
                                                 </div>

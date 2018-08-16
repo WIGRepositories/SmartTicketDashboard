@@ -177,7 +177,7 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
         }
         $http(req).then(function (res) {
             $scope.FleetForFO = res.data;
-            $scope.showdialogue("Saved successfully")
+            //alert("Saved successfully")
 
         });
     }
@@ -215,15 +215,15 @@ var ctrl = app.controller('Mycntrl', function ($scope, $http,$localStorage) {
 
         $http(req).then(function (response) {
 
-           $scope.showDialog("Saved successfully!");
-
+           alert("Saved successfully!");
+           $('#Modal-header-new').modal('hide');
             $scope.Group = null;
 
         }, function (errres) {
             var errdata = errres.data;
             var errmssg = "Your details are incorrect";
             errmssg = (errdata && errdata.ExceptionMessage) ? errdata.ExceptionMessage : errdata.Message;
-            $scope.showDialog(errmssg);
+            alert(errmssg);
         });
         $scope.currGroup = null;
     };

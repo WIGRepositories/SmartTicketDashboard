@@ -518,6 +518,59 @@
 
                                                                             </tbody>
                                                                         </table>
+
+                                                                        <div class="form-actions row" ng-show="listdrivers.length>0">
+                                                                            <!--<div style="margin-top: -8px;margin-left: 0px;"  class="col-lg-1">
+            <pre style="padding:6px;width:120px;" ng-repeat="P in paggin" ng-model="assets"> Page: {{page}} / {{P.totalpages}} </pre>
+
+        </div>
+
+        <div class="col-lg-1 " style="margin-top:-25px;">
+            <div>Page Entries:</div>
+            <select class="form-control" style="height:28px;width:80px;" ng-model="selectedvalue" ng-change="GetAssetsForModel()">
+                <option ng-value="10">10</option>
+                <option ng-value="15">15</option>
+                <option ng-value="25">25</option>
+                <option ng-value="50">50</option>
+                <option ng-value="100">100</option>
+            </select>
+        </div>
+        <div class="col-lg-2" style="margin-top:-25px;">
+            Go to Page:<select class="form-control" style="height:28px;width:80px;" ng-options="s for s in jumptotalpages" ng-model="selectgoto" ng-change="GetAssetsForModel()"></select>
+        </div>-->
+                                                                            <div class="col-md-4 grid">
+                                                                                <div class="row">
+                                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12" ng-repeat="P in paggin">
+                                                                                        <div>	&nbsp;</div>
+                                                                                        <span style="border:1px solid darkgrey;padding:8px;"> Page: {{page}} / {{P.totalpages}} </span>
+                                                                                    </div>
+                                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">
+                                                                                        Page Entries:<select class="form-control" ng-model="selectedvalue" ng-change="GetMaster()">
+                                                                                            <option ng-value="10">10</option>
+                                                                                            <option ng-value="15">15</option>
+                                                                                            <option ng-value="25">25</option>
+                                                                                            <option ng-value="50">50</option>
+                                                                                            <option ng-value="100">100</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-xs-12">  Go to Page:<select class="form-control" ng-options="s for s in jumptotalpages" ng-model="selectgoto" ng-change="GetMaster()"></select></div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div style="text-align: center; margin-top: -2px;" ng-repeat="P in paggin" ng-model="assets" class="col-lg-5">
+                                                                                <button class="btn btn-info btn-lg" ng-click="GetMaster('P')" ng-disabled="page == 1">< Prev page </button>
+                                                                                <button class="btn btn-green btn-lg" ng-click="GetMaster('N')" ng-disabled="page == P.totalpages">Next page ></button>
+
+                                                                            </div>
+                                                                            <div style="float:right;" ng-repeat="P in paggin" ng-model="assets" class="col-lg-3">
+                                                                                <!--{{assets.length}} of total {{P.recordcount}} results-->
+                                                                                <!--<pre style="padding:3px;width:300px;text-align:right;">-->
+                                                                                <!--</pre>-->
+                                                                                <span class="pull-right" style="border:1px solid darkgrey;padding:5px;">Showing: {{firstvalue}}-{{secondvalue}} of {{P.recordcount}}</span>
+                                                                            </div>
+
+
+                                                                        </div>
+
                                                                         <div class="modal fade product_view1" id="driver-image">
                                                                             <div class="modal-dialog">
                                                                                 <div class="modal-content">
