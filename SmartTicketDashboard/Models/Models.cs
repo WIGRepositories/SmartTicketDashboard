@@ -814,7 +814,7 @@ namespace SmartTicketDashboard.Models
         public string ChasisNo { get; set; }
         public string Engineno { get; set; }
         public int HasAC { get; set; }
-        public int StatusId { get; set; }
+        public string StatusId { get; set; }
         public int IsVerified { get; set; }
         public string VehicleCode { get; set; }
         public string ModelYear { get; set; }
@@ -837,6 +837,8 @@ namespace SmartTicketDashboard.Models
         public string Address { get; set; }
         public string Pin { get; set; }
         public int CurrentStateId { get; set; }
+        public string LayoutType { get; set; }
+        public string Company { get; set; }
 
     }
     public class UsersGroup
