@@ -20,6 +20,7 @@ namespace SmartTicketDashboard.Controllers
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
+            try { 
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertisment credentials....");
 
 
@@ -37,7 +38,12 @@ namespace SmartTicketDashboard.Controllers
             db.Fill(ds);
             Tbl = ds.Tables[0];
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertisment Credentials completed.");
-            // int found = 0;
+                // int found = 0;
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Error, "{0}", "GetAdvertisment Credentials error" + ex.Message);
+            }
             return Tbl;
 
         }
@@ -49,12 +55,12 @@ namespace SmartTicketDashboard.Controllers
         {
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            DataTable dt = new DataTable();
             try
             {
-
-
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Advertismentsectionone....");
                 conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "InsUpdDeladvertisement";
                 cmd.Connection = conn;
@@ -112,16 +118,16 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
                 ar.Value = A.Area;
                 cmd.Parameters.Add(ar);
-            }
-            catch
-            {
-                Exception ex;
-            }
-            DataTable dt = new DataTable();
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
-            da.Fill(dt);
-
-            return dt;
+               
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
+                da.Fill(dt);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Advertismentsectionone completed....");
+                }
+                catch (Exception ex)
+                {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertisment credentials error."+ ex.Message);
+                }
+                return dt;
         }
 
 
@@ -131,30 +137,36 @@ namespace SmartTicketDashboard.Controllers
         public DataTable GetActivityLog()
         {
             SqlConnection conn = new SqlConnection();
-            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-
-            SqlCommand cmd = new SqlCommand();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetActivityLog";
-
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
             DataTable tbl = new DataTable();
-
-            db.Fill(tbl);
-
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            try
+            {
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetActivityLog ...");
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetActivityLog";
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(tbl);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetActivityLog completed ...");
+            }
+            catch (Exception ex) {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetActivityLog error." + ex.Message);
+            }
             return tbl;
 
         }
  
-        
         [HttpPost]
         [Route("api/Advertisement/ActivityLog")]
         public int ActivityLog(Activity ac)
         {
             SqlConnection conn = new SqlConnection();
+            LogTraceWriter traceWriter = new LogTraceWriter();
             try
             {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "ActivityLog....");
                 conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = conn;
@@ -200,7 +212,7 @@ namespace SmartTicketDashboard.Controllers
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-                                
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "ActivityLog completed.");
             }
             catch(Exception ex)
             {
@@ -209,6 +221,7 @@ namespace SmartTicketDashboard.Controllers
                     conn.Close();
                 }
                 throw ex;
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "ActivityLog error." + ex.Message);
             }
             finally
             {
@@ -216,6 +229,7 @@ namespace SmartTicketDashboard.Controllers
                 {
                     conn.Close();
                 }
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "ActivityLog...");
             }
             return 7;
         }

@@ -19,41 +19,47 @@ namespace SmartTicketDashboard.Controllers
 
         public DataTable ValidateCredentials(UserLogin u)
         {
+
             DataTable Tbl = new DataTable();
-
-            string username = u.LoginInfo;
-            string pwd = u.Passkey;
-
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Validating credentials....");
- 
-            //connect to database
-            SqlConnection conn = new SqlConnection();
-            //connetionString = "Data Source=localhost;Initial Catalog=POSDashboard;UserID=admin;Password=admin";
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+            try
+            {
+                string username = u.LoginInfo;
+                string pwd = u.Passkey;
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "ValidateCredentials";
+              
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Validating credentials....");
 
-            cmd.Connection = conn;
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString = "Data Source=localhost;Initial Catalog=POSDashboard;UserID=admin;Password=admin";
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-            SqlParameter lUserName = new SqlParameter("@logininfo", SqlDbType.VarChar, 50);           
-            lUserName.Value = username;
-            lUserName.Direction = ParameterDirection.Input;
-            cmd.Parameters.Add(lUserName);
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "ValidateCredentials";
+
+                cmd.Connection = conn;
+
+                SqlParameter lUserName = new SqlParameter("@logininfo", SqlDbType.VarChar, 50);
+                lUserName.Value = username;
+                lUserName.Direction = ParameterDirection.Input;
+                cmd.Parameters.Add(lUserName);
 
 
-            SqlParameter lPassword = new SqlParameter("@passkey", SqlDbType.VarChar, 50); 
-            lPassword.Value = pwd;
-            lPassword.Direction = ParameterDirection.Input;
-            cmd.Parameters.Add(lPassword);
-            //System.Threading.Thread.Sleep(10000);
-            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                SqlParameter lPassword = new SqlParameter("@passkey", SqlDbType.VarChar, 50);
+                lPassword.Value = pwd;
+                lPassword.Direction = ParameterDirection.Input;
+                cmd.Parameters.Add(lPassword);
+                //System.Threading.Thread.Sleep(10000);
+                SqlDataAdapter da = new SqlDataAdapter(cmd);
                 da.Fill(Tbl);
 
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Validate Credentials completed.");
-            
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Validate Credentials completed.");
+            }
+            catch (Exception ex) {
+                traceWriter.Trace(Request, "0", TraceLevel.Error, "{0}", "Validate Credentials error:."+ex.Message);
+            }
             return Tbl;
 
         }

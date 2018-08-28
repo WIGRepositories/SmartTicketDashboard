@@ -21,24 +21,30 @@ namespace SmartTicketDashboard.Controllers
            // System.Configuration.ConnectionStringSettings connString;
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAddress credentials....");
-            //connect to database
-            SqlConnection conn = new SqlConnection();
-            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-            
-            
-            //conn.ConnectionString = "Data Source=localhost;Initial Catalog=MyAlerts;integrated security=sspi;";
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;//Stored Procedure
-            cmd.CommandText = "GetAddress";
-            cmd.Connection = conn;
-            DataSet ds = new DataSet();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            Tbl = ds.Tables[0];
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAddress Credentials completed.");
-            // int found = 0;
+            try
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAddress credentials....");
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+
+
+                //conn.ConnectionString = "Data Source=localhost;Initial Catalog=MyAlerts;integrated security=sspi;";
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;//Stored Procedure
+                cmd.CommandText = "GetAddress";
+                cmd.Connection = conn;
+                DataSet ds = new DataSet();
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(ds);
+                Tbl = ds.Tables[0];
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAddress Credentials completed.");
+                // int found = 0;
+            }
+            catch (Exception ex) {
+                traceWriter.Trace(Request, "0", TraceLevel.Error, "{0}", "GetAddress Credentials error" + ex.Message);
+            }
             return Tbl;
         }
           [HttpPost]

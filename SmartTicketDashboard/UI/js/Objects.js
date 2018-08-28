@@ -61,7 +61,7 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
          // });
         //});
     
-    $http.get('/api/Objects/getObjAccsess?TypeGroupId=29').then(function (res, data) {
+    $http.get('/api/Objects/getObjAccsess?TypeGroupId=36').then(function (res, data) {
         // res.data;
         for (ol = 0; ol < res.data.length; ol++) {
             $scope.options.push({ id: res.data[ol].ID, label: res.data[ol].Name });

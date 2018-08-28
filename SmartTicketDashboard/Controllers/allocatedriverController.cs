@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Tracing;
 
 namespace SmartTicketDashboard.Controllers
 {
@@ -22,19 +23,29 @@ namespace SmartTicketDashboard.Controllers
         public DataTable GetAssigndetails(int VechId)
         {
             SqlConnection conn = new SqlConnection();
-
-            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PSGetAssigndetails";
-            cmd.Connection = conn;
-
-            
-            cmd.Parameters.Add("@VechID", SqlDbType.Int).Value = VechId;
             DataTable dt = new DataTable();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(dt);
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            try
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts credentials....");
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PSGetAssigndetails";
+                cmd.Connection = conn;
 
+
+                cmd.Parameters.Add("@VechID", SqlDbType.Int).Value = VechId;
+
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(dt);
+                
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts Error..." + ex.Message);
+                throw ex;
+            }
             return dt;
 
         }
@@ -44,20 +55,29 @@ namespace SmartTicketDashboard.Controllers
 
         public DataTable Getallocatedriver(int VID)
         {
-            SqlConnection conn = new SqlConnection();
-
-            conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "HVGetallocatedriver";
-            cmd.Connection = conn;
-            cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
-
-            
             DataTable dt = new DataTable();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(dt);
+            SqlConnection conn = new SqlConnection();
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            try { 
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Getallocatedriver Completed...");
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "HVGetallocatedriver";
+                cmd.Connection = conn;
+                cmd.Parameters.Add("@VID", SqlDbType.Int).Value = VID;
 
+
+               
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(dt);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Getallocatedriver Completed...");
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "Getallocatedriver Error..." + ex.Message);
+                throw ex;
+            }
             return dt;
 
         }

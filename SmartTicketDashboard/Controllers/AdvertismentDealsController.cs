@@ -20,25 +20,33 @@ namespace SmartTicketDashboard.Controllers
         public DataTable GetAdvertismentDeal()
         {
             DataTable Tbl = new DataTable();
-            //LogTraceWriter traceWriter = new LogTraceWriter();
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertismentDeals credentials....");
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            try
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertismentDeals....");
 
 
-            //connect to database
-            SqlConnection conn = new SqlConnection();
-            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "GetAdvertismentDeals";
-            cmd.Connection = conn;
-            DataSet ds = new DataSet();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(ds);
-            Tbl = ds.Tables[0];
-            //traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertismentDeals credentials....");
-            // int found = 0;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetAdvertismentDeals";
+                cmd.Connection = conn;
+                DataSet ds = new DataSet();
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(ds);
+                Tbl = ds.Tables[0];
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertismentDeals Completed....");
+                // int found = 0;
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAdvertismentDeals Error..."+ex.Message);
+                throw ex;
+            }
             return Tbl;
         }
 
@@ -48,8 +56,10 @@ namespace SmartTicketDashboard.Controllers
         {
             SqlConnection conn = new SqlConnection();
             SqlCommand cmd = new SqlCommand();
+            LogTraceWriter traceWriter = new LogTraceWriter();
             try
             {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "PostAdvertismentDeals...");
                 conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.CommandText = "InsUpdDelAdvertismentDeals";
@@ -94,9 +104,11 @@ namespace SmartTicketDashboard.Controllers
                 SqlParameter ar = new SqlParameter("@Area", SqlDbType.VarChar, 50);
                 ar.Value = A.Area;
                 cmd.Parameters.Add(ar);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "PostAdvertismentDeals credentials...");
             }
             catch (Exception ex)
             {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "PostAdvertismentDeals Error..." + ex.Message);
                 throw ex;
             }
             DataTable dt = new DataTable();

@@ -115,7 +115,7 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlParameter co = new SqlParameter();
                 co.ParameterName = "@CreatedOn";
-                co.SqlDbType = SqlDbType.VarChar;
+                co.SqlDbType = SqlDbType.DateTime;
                 co.Value = b.CreatedOn;
                 //llid.Value = b.Active;
                 cmd.Parameters.Add(co);
@@ -129,7 +129,7 @@ namespace SmartTicketDashboard.Controllers
 
                 SqlParameter uo = new SqlParameter();
                 uo.ParameterName = "@UpdatedOn";
-                uo.SqlDbType = SqlDbType.VarChar;
+                uo.SqlDbType = SqlDbType.DateTime;
                 uo.Value = b.UpdatedOn;
                 //llid.Value = b.Active;
                 cmd.Parameters.Add(uo);

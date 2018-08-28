@@ -18,7 +18,6 @@ namespace SmartTicketDashboard.Controllers
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
             traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getAlertsConfiguration credentials....");
-
             //connect to database
             SqlConnection conn = new SqlConnection();
             //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
@@ -34,8 +33,6 @@ namespace SmartTicketDashboard.Controllers
             //Rid.SqlDbType = SqlDbType.Int;
             //Rid.Value = TypeGroupId;
             //cmd.Parameters.Add(Rid);
-
-
 
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);

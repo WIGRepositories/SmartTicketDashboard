@@ -21,27 +21,33 @@ namespace SmartTicketDashboard.Controllers
         {
             DataTable Tbl = new DataTable();
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts credentials....");
+            try {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts credentials....");
 
-            //connect to database
-            SqlConnection conn = new SqlConnection();
-            //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                //connect to database
+                SqlConnection conn = new SqlConnection();
+                //connetionString="Data Source=ServerName;Initial Catalog=DatabaseName;User ID=UserName;Password=Password"
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "PsGetAlerts";
-            cmd.Connection = conn;
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "PsGetAlerts";
+                cmd.Connection = conn;
 
 
-            cmd.Parameters.Add("@roleid", SqlDbType.Int).Value = roleid;
-            
-            DataSet ds = new DataSet();
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(Tbl);
-            
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts Credentials completed.");
-            
+                cmd.Parameters.Add("@roleid", SqlDbType.Int).Value = roleid;
+
+                DataSet ds = new DataSet();
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(Tbl);
+
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts Credentials completed.");
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "GetAlerts Error..." + ex.Message);
+                throw ex;
+            }
             // int found = 0;
             return Tbl;
 
@@ -54,76 +60,81 @@ namespace SmartTicketDashboard.Controllers
             DataTable Tbl = new DataTable();
             SqlConnection conn = new SqlConnection();
             LogTraceWriter traceWriter = new LogTraceWriter();
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts credentials....");
+            try {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts credentials....");
+                conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "InsUpdDeLAlerts";
+                cmd.Connection = conn;
+                conn.Open();
 
-            conn.ConnectionString = System.Configuration.ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlParameter flag = new SqlParameter("@flag", SqlDbType.VarChar);
+                flag.Value = a.flag;
+                cmd.Parameters.Add(flag);
 
-            SqlCommand cmd = new SqlCommand();
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = "InsUpdDeLAlerts";
-            cmd.Connection = conn;
-            conn.Open();
+                SqlParameter Aid = new SqlParameter("@Id", SqlDbType.Int);
+                Aid.Value = a.Id;
+                cmd.Parameters.Add(Aid);
 
-            SqlParameter flag = new SqlParameter("@flag", SqlDbType.VarChar);
-            flag.Value = a.flag;
-            cmd.Parameters.Add(flag); 
+                SqlParameter roleid = new SqlParameter("@RoleId", SqlDbType.Int);
+                roleid.Value = a.RoleId;
+                cmd.Parameters.Add(roleid);
 
-            SqlParameter Aid = new SqlParameter("@Id", SqlDbType.Int);
-            Aid.Value =a.Id;
-            cmd.Parameters.Add(Aid);
+                SqlParameter userid = new SqlParameter("@UserId", SqlDbType.Int);
+                userid.Value = a.UserId;
+                cmd.Parameters.Add(userid);
 
-            SqlParameter roleid = new SqlParameter("@RoleId", SqlDbType.Int);
-            roleid.Value =a.RoleId;
-            cmd.Parameters.Add(roleid);
+                SqlParameter Title = new SqlParameter("@Title", SqlDbType.VarChar);
+                Title.Value = a.Title;
+                cmd.Parameters.Add(Title);
 
-            SqlParameter userid = new SqlParameter("@UserId", SqlDbType.Int);
-            userid.Value =a.UserId;
-            cmd.Parameters.Add(userid);
+                SqlParameter Message = new SqlParameter("@Message", SqlDbType.VarChar);
+                Message.Value = a.Message;
+                cmd.Parameters.Add(Message);
 
-            SqlParameter Title = new SqlParameter("@Title", SqlDbType.VarChar);
-            Title.Value = a.Title;
-            cmd.Parameters.Add(Title); 
+                SqlParameter CreatedOn = new SqlParameter("@CreatedOn", SqlDbType.DateTime);
+                CreatedOn.Value = a.CreatedOn;
+                cmd.Parameters.Add(CreatedOn);
 
-            SqlParameter Message = new SqlParameter("@Message", SqlDbType.VarChar);
-            Message.Value = a.Message;
-            cmd.Parameters.Add(Message);
+                SqlParameter UpdatedOn = new SqlParameter("@UpdatedOn", SqlDbType.DateTime);
+                UpdatedOn.Value = a.UpdatedOn;
+                cmd.Parameters.Add(UpdatedOn);
 
-            SqlParameter CreatedOn = new SqlParameter("@CreatedOn", SqlDbType.DateTime);
-            CreatedOn.Value = a.CreatedOn;
-            cmd.Parameters.Add(CreatedOn);
+                SqlParameter updBy = new SqlParameter("@UpdatedBy", SqlDbType.Int);
+                updBy.Value = a.UpdatedBy;
+                cmd.Parameters.Add(updBy);
 
-            SqlParameter UpdatedOn = new SqlParameter("@UpdatedOn", SqlDbType.DateTime);
-            UpdatedOn.Value = a.UpdatedOn;
-            cmd.Parameters.Add(UpdatedOn);
+                SqlParameter StateId = new SqlParameter("@StateId", SqlDbType.Int);
+                StateId.Value = a.StateId;
+                cmd.Parameters.Add(StateId);
 
-            SqlParameter updBy = new SqlParameter("@UpdatedBy", SqlDbType.Int);
-            updBy.Value =a.UpdatedBy;
-            cmd.Parameters.Add(updBy);
+                SqlParameter StatusId = new SqlParameter("@StatusId", SqlDbType.Int);
+                StatusId.Value = a.StatusId;
+                cmd.Parameters.Add(StatusId);
 
-            SqlParameter StateId = new SqlParameter("@StateId", SqlDbType.Int);
-            StateId.Value =a.StateId;
-            cmd.Parameters.Add(StateId);
+                SqlParameter CategoryId = new SqlParameter("@CategoryId", SqlDbType.Int);
+                CategoryId.Value = a.CategoryId;
+                cmd.Parameters.Add(CategoryId);
 
-            SqlParameter StatusId = new SqlParameter("@StatusId", SqlDbType.Int);
-            StatusId.Value =a.StatusId;
-            cmd.Parameters.Add(StatusId);
+                SqlParameter subcatId = new SqlParameter("@SubCategoryId", SqlDbType.Int);
+                subcatId.Value = a.SubCategoryId;
+                cmd.Parameters.Add(subcatId);
 
-            SqlParameter CategoryId = new SqlParameter("@CategoryId", SqlDbType.Int);
-            CategoryId.Value =a.CategoryId;
-            cmd.Parameters.Add(CategoryId);
+                SqlParameter Active = new SqlParameter("@Active", SqlDbType.Int);
+                Active.Value = a.Active;
+                cmd.Parameters.Add(Active);
 
-            SqlParameter subcatId = new SqlParameter("@SubCategoryId", SqlDbType.Int);
-            subcatId.Value =a.SubCategoryId;
-            cmd.Parameters.Add(subcatId);
-
-            SqlParameter Active = new SqlParameter("@Active", SqlDbType.Int);
-            Active.Value =a.Active;
-            cmd.Parameters.Add(Active);
-           
-            SqlDataAdapter db = new SqlDataAdapter(cmd);
-            db.Fill(Tbl);
-            traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts Credentials completed.");
-
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(Tbl);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts Credentials completed.");
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "SaveAlerts Error..." + ex.Message);
+                throw ex;
+            }
+            //
             return Tbl;
         }
     }
