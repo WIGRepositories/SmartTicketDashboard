@@ -18,7 +18,7 @@ namespace SmartTicketDashboard.Controllers
 
         [HttpGet]
         [Route("api/TransactionMaster/GetTransactionMaster")]
-        public DataTable GetTransactionMaster()
+        public DataTable GetTransactionMaster(int opcode)
         {
             DataTable dt = new DataTable();
             SqlConnection conn = new SqlConnection();
@@ -29,7 +29,7 @@ namespace SmartTicketDashboard.Controllers
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = "GetTransactionMaster";
 
-            //cmd.Parameters.Add("@Id", SqlDbType.Int).Value = Id;
+            cmd.Parameters.Add("@opcode", SqlDbType.Int).Value = opcode;
             cmd.Connection = conn;
 
             DataSet ds = new DataSet();

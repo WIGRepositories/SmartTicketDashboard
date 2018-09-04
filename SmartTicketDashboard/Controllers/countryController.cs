@@ -1,6 +1,5 @@
-﻿
-using BTPOSDashboard;
-using BTPOSDashboardAPI.Models;
+﻿using SmartTicketDashboard;
+using SmartTicketDashboard.Models;
 using System;
 using System.Collections.Generic;
 using System.Data;
