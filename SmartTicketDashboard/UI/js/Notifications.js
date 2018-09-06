@@ -17,7 +17,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage) {
 
         });
     }
+    $scope.getNotificationdetails = function () {
 
+        $http.get('/api/Notifications/getNotificationdetails').then(function (response, req) {
+            $scope.Notifications = response.data;
+
+        });
+    }
 });
 //    $scope.save = function (Notifications) {
 

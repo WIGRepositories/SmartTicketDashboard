@@ -1,6 +1,7 @@
 ﻿using SmartTicketDashboard.Models;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,6 +14,36 @@ namespace SmartTicketDashboard.Controllers
 {
     public class NotificationsController : ApiController
     {
+        [HttpGet]
+        [Route("api/Notifications/getNotificationdetails")]
+
+        public DataTable getNotificationdetails()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection conn = new SqlConnection();
+            LogTraceWriter traceWriter = new LogTraceWriter();
+            try
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getNotificationdetails Completed...");
+                conn.ConnectionString = ConfigurationManager.ConnectionStrings["btposdb"].ToString();
+                SqlCommand cmd = new SqlCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "GetNotifications";
+                cmd.Connection = conn;
+
+                SqlDataAdapter db = new SqlDataAdapter(cmd);
+                db.Fill(dt);
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getNotificationdetails Completed...");
+            }
+            catch (Exception ex)
+            {
+                traceWriter.Trace(Request, "0", TraceLevel.Info, "{0}", "getNotificationdetails Error..." + ex.Message);
+                throw ex;
+            }
+            return dt;
+
+        }
+
         [HttpPost]
         [Route("api/Notifications/GetNotifications")]
         public DataTable GetNotifications(Notifications  not)

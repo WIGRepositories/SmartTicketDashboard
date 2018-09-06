@@ -531,41 +531,35 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $uib
 
 
 
-        var driver = {
+        var brand = {
 
-            flag: ($scope.selectedlistdrivers == -1) ? 'I' : 'U',
-            DId: Dl.DId,
+            flag: ($scope.selectedlistusers == -1) ? 'I' : 'U',
+            Id: Dl.Id,
             Country: Dl.Country.Id,
-            NAme: Dl.NAme,
+            firstname: Dl.FirstName,
+            lastname: Dl.LastName,
+            middlename: Dl.MiddleName,
             Address: Dl.Address,
-            Pin: Dl.Pin,
-            PermanentAddress: Dl.PAddress,
-            PermanentPin: Dl.PPin,
-            Mobilenumber: Dl.PMobNo,
-            DOB: Dl.DOB,
-            DOJ: Dl.DOJ,
-            BloodGroup: Dl.BloodGroup,
-            Photo: $scope.imageSrc,
-            drivercode: Dl.DriverCode,
-            Status: Dl.StatusId.Id,
-            FirstName: Dl.Firstname,
-            LastName: Dl.lastname,
-            VehicleGroup: Dl.vg.Id,
-            PaymentTypeId: Dl.pt.Id,
-            IsVerified: Dl.Isverified,
-            IsApproved: Dl.IsApproved
-
+            contact1: Dl.ContactNo1,
+            contact2: Dl.ContactNo2,
+            email: Dl.Email,
+            DOJ:Dl.DOJ,
+            category: Dl.category,
+            gender: Dl.gender.Id,
+            EffectiveDate: Dl.EffectiveDate,
+            Active: Dl.Active,
+            Photo: $scope.imageSrc
 
         }
 
         var req = {
             method: 'POST',
-            url: '/api/DriverMaster/Driverlist',
-            data: driver
+            url: '/api/BrandAmbassador/SaveBrandAmbassador',
+            data: brand
         }
         $http(req).then(function (response) {
             var res = response.data;
-            window.location.href = "DriverDetails.html?DId=" + res[0].DId;
+            window.location.href = "BrandAmbassdorDetails.html?Id=" + res[0].Id;
 
         }, function (errres) {
             var errdata = errres.data;

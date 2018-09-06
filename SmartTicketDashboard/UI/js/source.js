@@ -158,9 +158,10 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
 
         $http(req).then(function (res) {
             $scope.initdata = res.data;            
-            //$scope.ctry = $scope.initdata.Table1[0];
-            
+            $scope.nn = $scope.initdata.Table1[0];
+            $scope.GetDashboardDS();
         });
+        
     }
 
     $scope.myVar = false;
@@ -459,9 +460,6 @@ var mycrtl1 = app.controller('myCtrl1', function ($scope, $http, $localStorage, 
 
         });
     }
-
-    
-    
 
     $scope.getUsersnRoles = function () {
         var s = $scope.cmp;
