@@ -199,6 +199,7 @@ namespace SmartTicketDashboard.Models
 
 
         public string Flag { get; set; }
+        public int Active { get; set; }
 
         public string Code { get; set; }
 
@@ -3359,6 +3360,27 @@ namespace SmartTicketDashboard.Models
      public string flag { get; set; }
  }
 
+    public class brand
+    {
+        public string flag { get; set; }
+        public int Id { get; set; }
+        public string firstname { get; set; }
+        public string lastname { get; set; }
+        public string middlename { get; set; }
+        public string contact1 { get; set; }
+        public string contact2 { get; set; }
+        public string email { get; set; }
+        public string category { get; set; }
+        public int gender { get; set; }
+        public string Address { get; set; }
+        public string Photo { get; set; }
+        public DateTime? DOJ { get; set; }
+        public DateTime? EffectiveDate { get; set; }
+        public int Active { get; set; }
+        public int CountryId { get; set; }
+
+
+    }
 }
 
 

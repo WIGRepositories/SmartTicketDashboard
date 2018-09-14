@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Home | Smart Ticket Dashboard | DriverDetails</title>
+    <title>Home | Smart Ticket Dashboard | AmbassadorDetails</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <!--Loading bootstrap css-->
@@ -14,8 +14,8 @@
 
     <!--Loading style-->
     <link type="text/css" rel="stylesheet" href="css/themes/style2/Custom.css" id="theme-change" class="style-change color-change">
-    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">    
-      
+    <link type="text/css" rel="stylesheet" href="css/style-responsive.css">
+
 </head>
 <body ng-app="myApp" ng-controller="myCtrl" ng-init="GetConfigData();">
     <div>
@@ -354,7 +354,7 @@
                                 </a>
                                 <ul class="nav nav-second-level">
                                     <li>
-                                        <a  href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
+                                        <a href="carousel.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Carousel Configuration</span></a>
                                     </li>
                                     <li>
                                         <a href="advertismentconfiguration.html" data-toggle="tooltip" data-placement="right" title="Details of Carousel Configuration"><span class="fa fa-angle-right"></span><span class="submenu-title">Advertisment Configuration</span></a>
@@ -421,13 +421,13 @@
                     <!--BEGIN TITLE & BREADCRUMB PAGE-->
                     <div id="title-breadcrumb-option-demo" class="page-title-breadcrumb">
                         <div class="page-header pull-left">
-                            <div class="page-title">Driver Details</div>
+                            <div class="page-title">Ambassdor Details</div>
                         </div>
                         <ol class="breadcrumb page-breadcrumb pull-right">
                             <li><i class="fa fa-home"></i>&nbsp;<a href="index.html">Home</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
                             <li><a href="#">Hire Vehicle</a>&nbsp;&nbsp;<i class="fa fa-angle-right"></i>&nbsp;&nbsp;</li>
 
-                            <li><a href="DriverList.html">Driver Details</a></li>
+                            <li><a href="BrandAmbassador.html">Ambassdor Details</a></li>
 
                         </ol>
                         <div class="clearfix"></div>
@@ -465,16 +465,16 @@
                                                         <table class="table table-striped table-hover">
                                                             <tbody>
                                                                 <tr>
-                                                                    <td>Driver Name</td>
-                                                                    <td>{{Dl.NAme}}</td>
+                                                                    <td>User Name</td>
+                                                                    <td>{{Dl.UserName}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Phone Number</td>
-                                                                    <td>{{Dl.PMobNo}}</td>
+                                                                    <td>{{Dl.ContactNo1}}</td>
                                                                 </tr>
                                                                 <tr>
-                                                                    <td>Licence Number</td>
-                                                                    <td> {{Dl.LicenceNo}}</td>
+                                                                    <td>Email</td>
+                                                                    <td> {{Dl.Email}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <td>Address</td>
@@ -501,7 +501,8 @@
                                                         <div>
                                                             <font color="red">Mandatory Documents not uploaded:</font>
                                                             <span ng-repeat="md in (PendDocFiles|filter:{IsMandatory:1,uploaded:0})">
-                                                  <a href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()"> {{md.Name}}</a><br /></span>
+                                                                <a href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()"> {{md.Name}}</a><br />
+                                                            </span>
                                                             <span><a ng-if="imageSrc == null" href="#" ng-click="UploadImg();">Photo</a></span>
                                                         </div>
                                                     </div>
@@ -513,7 +514,7 @@
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
 
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                        <div class="caption"><a href="#collapse2">Driver Details</a></div>
+                                                                        <div class="caption"><a href="#collapse2">Ambassdor Details</a></div>
                                                                         <div class="tools"><span class="badge badge-green"></span><i class="fa fa-chevron-up"></i></div>
                                                                     </div>
 
@@ -526,7 +527,7 @@
                                                                                         <label class="col-sm-3 control-label">First Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Firstname" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.FirstName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -536,7 +537,7 @@
                                                                                         <label class="col-sm-3 control-label">Last Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.lastname" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.LastName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -545,20 +546,20 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Driver Name</label>
+                                                                                        <label class="col-sm-3 control-label">User Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.NAme" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.UserName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Mobile Number</label>
+                                                                                        <label class="col-sm-3 control-label">Middle Name</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PMobNo" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.MiddleName" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
@@ -567,18 +568,41 @@
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Fleet Owner</label>
+                                                                                        <label class="col-sm-3 control-label">Contact No1</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="f.FleetOwnerCode for f in initdata.Table5  track by f.Id" ng-model="Dl.fleetowner" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
+                                                                                                    <input type="text" class="form-control" ng-model="Dl.ContactNo1"/>
                                                                                                 </div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Contact No2</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.ContactNo2" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                            <div class="col-md-12">
+                                                                                <div class="col-md-6">
+                                                                                    <div class="form-group">
+                                                                                        <label class="col-sm-3 control-label">Email</label>
+                                                                                        <div class="col-sm-9 controls">
+                                                                                            <div class="row">
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.Email" class="form-control" /></div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
                                                                                         <label class="col-sm-3 control-label">Address</label>
@@ -589,72 +613,17 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
-                                                                                
                                                                             </div>
-                                                                            
+
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Permanent Address</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PAddress" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Date Of Birth</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOB" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-
-                                                                            <div class="col-md-12">                                                                                
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Permanent PinCode</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.PPin" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Date Of Joining</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOJ" class="form-control" /></div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-md-12">
-
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Blood Group</label>
+                                                                                        <label class="col-sm-3 control-label">Gender</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-model="Dl.BloodGroup" class="form-control">
+                                                                                                    <select ng-options="g.Name for g in initdata.Table track by g.Id" ng-model="Dl.gender" class="form-control">
                                                                                                         <option value="">Select</option>
-                                                                                                        <option value="A+">A+</option>
-                                                                                                        <option value="A-">A-</option>
-                                                                                                        <option value="B+">B+</option>
-                                                                                                        <option value="B-">B-</option>
-                                                                                                        <option value="O+">O+</option>
-                                                                                                        <option value="AB+">AB+</option>
-                                                                                                        <option value="AB-">AB-</option>
                                                                                                     </select>
                                                                                                 </div>
                                                                                             </div>
@@ -667,7 +636,7 @@
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
                                                                                                 <div class="col-xs-9">
-                                                                                                    <select ng-options="c.Name for c in initdata.Table4 track by c.Id" ng-model="Dl.Country" class="form-control">
+                                                                                                    <select ng-options="c.Name for c in initdata.Table1 track by c.Id" ng-model="Dl.Country" class="form-control">
                                                                                                         <option value="">Select</option>
                                                                                                     </select>
                                                                                                 </div>
@@ -675,89 +644,65 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
+                                                                                
                                                                             </div>
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Status</label>
+                                                                                        <label class="col-sm-3 control-label">Date Of Joining</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9">
-                                                                                                    <select ng-options="vs.Name for vs in initdata.Table track by vs.Id" ng-model="Dl.StatusId" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.DOJ" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">State</label>
+                                                                                        <label class="col-sm-3 control-label">Effective Date</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9">
-                                                                                                    <select ng-options="vcs.Name for vcs in initdata.Table6 track by vcs.Id" ng-model="Dl.CurrentStateId" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
+                                                                                                <div class="col-xs-9"><input type="date" ng-model="Dl.EffectiveDate" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
+                                                                            
                                                                             <div class="col-md-12">
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Vehicle Group</label>
+                                                                                        <label class="col-sm-3 control-label">Category</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9">
-                                                                                                    <select ng-options="vg.Name for vg in initdata.Table1 track by vg.Id" ng-model="Dl.vg" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
+                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.category" class="form-control" /></div>
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-md-6">
                                                                                     <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Driver Code</label>
+                                                                                        <label class="col-sm-3 control-label">Active</label>
                                                                                         <div class="col-sm-9 controls">
                                                                                             <div class="row">
-                                                                                                <div class="col-xs-9"><input type="text" ng-model="Dl.DriverCode" class="form-control" /></div>
+                                                                                                <div class="col-xs-9"><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="Dl.Active" ng-true-value="1" ng-false-value="0" /></div>
+                                                                                                
                                                                                             </div>
                                                                                         </div>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="col-md-12">
-                                                                                <div class="col-md-6">
-                                                                                    <div class="form-group">
-                                                                                        <label class="col-sm-3 control-label">Payment Type</label>
-                                                                                        <div class="col-sm-9 controls">
-                                                                                            <div class="row">
-                                                                                                <div class="col-xs-9">
-                                                                                                    <select ng-options="pt.Name for pt in initdata.Table3 track by pt.Id" ng-model="Dl.pt" class="form-control">
-                                                                                                        <option value="">Select</option>
-                                                                                                    </select>
-                                                                                                </div>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                </div>                                                                                
-                                                                            </div>
+                                                                            
                                                                         </div>
                                                                     </div>
                                                                 </div>
 
-                                                                
-                                                                
+
+
                                                                 <div class="portlet box portlet-grey" style="margin-bottom:10px;">
 
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
-                                                                        <div class="caption"><a href="#collapse1">Driver documents & Approvals</a></div>
+                                                                        <div class="caption"><a href="#collapse1">Ambassdor documents & Approvals</a></div>
                                                                         <div class="tools">
                                                                             <span class="badge badge-green">{{(dl|filter:{IsExpired:0}).length}}</span>
                                                                             <span ng-hide="(dl|filter:{IsExpired:1}).length == 0" class="badge badge-red" style="margin-right:3px">{{(dl| filter:{IsExpired:1}).length}}</span>
@@ -779,21 +724,24 @@
                                                                                         <th>Expiry Date</th>
                                                                                         <th>Is Verified?</th>
                                                                                         <th>Is Approved</th>
-                                                                                        <th>Update</th>                                                                                        
+                                                                                        <th>Update</th>
                                                                                         <!--<th>Details</th>-->
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody>
-    <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
-    <td><a ng-if="d.uploaded==1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a>
-        <!--<span ng-if ="d.uploaded==0">{{d.docName}}</span>-->  
-        <a ng-if="d.uploaded==0" href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()" style="color:red;"> {{d.docName}}</a> </td>
-    <td>{{d.docType}}</td>
-    <td>{{d.expiryDate | date:'MM-dd-yyyy'}}</td>
-    <td><input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                    <tr ng-repeat="d in dl = (DocFiles|filter:{insupddelflag: '!D'}:true)" ng-style="d.IsExpired == 1 ?{'background-color':'#F2DEDE'}:(d.IsExpired == 2 ?{'background-color':'#FCF8E3'}:'')">
+                                                                                        <td>
+                                                                                            <a ng-if="d.uploaded==1" href="#" ng-click="GetFileContent(d)"><font color="blue">{{d.docName}}</font></a>
+                                                                                            <!--<span ng-if ="d.uploaded==0">{{d.docName}}</span>-->
+                                                                                            <a ng-if="d.uploaded==0" href="#" data-target="#Modal-header-new-f" data-toggle="modal" ng-click="SetMissingDocTypes()" style="color:red;"> {{d.docName}}</a>
+                                                                                        </td>
+                                                                                        <td>{{d.docType}}</td>
+                                                                                        <td>{{d.expiryDate | date:'MM-dd-yyyy'}}</td>
+                                                                                        <td>
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsVerified" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox"  ng-model="d.IsApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
+                                                                                            <input type="checkbox" class="icheckbox_minimal-grey activeCheckbox" ng-model="d.IsApproved" ng-true-value="1" ng-false-value="0" ng-change="UpdateIsVerified(d);" />
                                                                                         </td>
                                                                                         <td>
                                                                                             <button type="button" data-target="#Modal-header-new-e" data-toggle="modal" class="btn btn-default btn-xs" ng-click="EditAssetDoc(d)" ng-disabled="isSuperUser == 0">
@@ -801,7 +749,7 @@
 
                                                                                             </button>
                                                                                         </td>
-                                                                                        
+
                                                                                         <!--<td>
                                                                                             <button type="button" data-toggle="modal" class="btn btn-default btn-xs" ng-click="DeleteDoc(d)" ng-disabled="isSuperUser == 0">
                                                                                                 <i class="fa fa-trash-o"></i>
@@ -840,7 +788,7 @@
 
                                                                             <table id="user-last-logged-table" class="table table-striped table-hover thumb-small">
                                                                                 <thead>
-                                                                                    <tr class="condensed">                                                                                        
+                                                                                    <tr class="condensed">
                                                                                         <th width="10%">Driver Name</th>
                                                                                         <th width="10%">Registration No</th>
                                                                                         <th width="10%">Vehicle Group</th>
@@ -852,7 +800,7 @@
                                                                                     </tr>
                                                                                 </thead>
                                                                                 <tbody class="media-thumb">
-                                                                                    <!--<tr>                                                                                       
+                                                                                    <!--<tr>
                                                                                         <td>
                                                                                             <span class="img-shadow" ng-if="v.Photo == null">
                                                                                                 <img src="images/car.png" class="media-object thumb" />
@@ -870,12 +818,12 @@
                                                                                         <td><input type="checkbox" checked /></td>
                                                                                         <td><span class="label label-success">Approved</span></td>
                                                                                     </tr>-->
-                                                                                    
+
                                                                                     <tr ng-repeat="v in VehicleList">
-                                                                                        <td>                                                                                         
-                                                                                           {{v.DriverName}}
+                                                                                        <td>
+                                                                                            {{v.DriverName}}
                                                                                         </td>
-                                                                                        <td><a href="VehicleDetails.html?VID={{v.VechID}}"><h6 class="media-heading">{{v.RegistrationNo}}</h6></a><div></div></td>
+                                                                                        <td><a href="VehicleDetails.html?VID={{v.Id}}"><h6 class="media-heading">{{v.RegistrationNo}}</h6></a><div></div></td>
 
                                                                                         <td>{{v.VehicleGroup}}</td>
                                                                                         <td>{{v.VehicleType}}</td>
@@ -901,7 +849,7 @@
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="">Banking Details</a></div>
                                                                         <div class="tools">
-                                                                        <span class="badge badge-green">{{bankdetails.length}}</span><i class="fa fa-chevron-down"></i>
+                                                                            <span class="badge badge-green">{{bankdetails.length}}</span><i class="fa fa-chevron-down"></i>
                                                                         </div>
                                                                     </div>
                                                                     <div id="collapse1" class="panel-collapse list-group portlet-body" style="padding: 0px; display: none; border: 1px solid #e5e5e5;">
@@ -909,53 +857,53 @@
                                                                             <button ng-disabled="Roleid != 1" type="button" data-target="#Modal-Add-Bank" data-toggle="modal" class="btn btn-info btn-sm fa fa-plus" style="float: right; margin: 10px;">Add Bank</button>
 
                                                                         </div>
-                                                                            <table class="table table-bordered table-advanced tablesorter">
-                                                                                <thead>
-                                                                                    <tr>
-                                                                                        <th>Account Number</th>
-                                                                                        <th>Bank Name</th>
-                                                                                        <th>Bank Code</th>                                                                                        
-                                                                                        <th>Branch Address</th>
-                                                                                        <th>Country</th>
-                                                                                        <th>Active</th>
-                                                                                        <th>QRCode</th>
-                                                                                        <th>Edit</th>
-                                                                                    </tr>
-                                                                                </thead>
-                                                                                <tbody>
-                                                                                    
-                                                                                    <tr ng-repeat="bl in bankdetails">
-                                                                                        <td>{{bl.Accountnumber}}</td>
-                                                                                        <td>{{bl.BankName}}</td>
-                                                                                        <td>{{bl.BankCode}}</td>
-                                                                                        <td>{{bl.BranchAddress}}</td>
-                                                                                        <td>{{bl.Country}}</td>
-                                                                                        <td>
-                                                                                            <input type="checkbox" class="icheckbox_minimal-grey" checked />
-                                                                                        </td>
-                                                                                        <td> 
+                                                                        <table class="table table-bordered table-advanced tablesorter">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <th>Account Number</th>
+                                                                                    <th>Bank Name</th>
+                                                                                    <th>Bank Code</th>
+                                                                                    <th>Branch Address</th>
+                                                                                    <th>Country</th>
+                                                                                    <th>Active</th>
+                                                                                    <th>QRCode</th>
+                                                                                    <th>Edit</th>
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                <tr ng-repeat="bl in bankdetails">
+                                                                                    <td>{{bl.Accountnumber}}</td>
+                                                                                    <td>{{bl.BankName}}</td>
+                                                                                    <td>{{bl.BankCode}}</td>
+                                                                                    <td>{{bl.BranchAddress}}</td>
+                                                                                    <td>{{bl.Country}}</td>
+                                                                                    <td>
+                                                                                        <input type="checkbox" class="icheckbox_minimal-grey" checked />
+                                                                                    </td>
+                                                                                    <td>
                                                                                         <span class="img-shadow">
                                                                                             <!--<a ng-click="SetBiggerPhoto(b)">-->
                                                                                             <a ng-click="printDiv(bl)">
                                                                                                 <img src="{{bl.QRCode}}" class="media-object thumb" width="60px" height="60px" />
                                                                                             </a>
-                                                                                               </span>
-                                                                                        </td>
-                                                                                        <td>
-                                                                                            
-                                                                                            <button type="button" data-target="#Modal-header-bank" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbankdetails(bl)" ng-disabled="isSuperUser == 0">
-                                                                                                <i class="fa fa-edit"></i>
+                                                                                        </span>
+                                                                                    </td>
+                                                                                    <td>
 
-                                                                                            </button>
-                                                                                        </td>
-                                                                                    </tr>
-                                                                                </tbody>
-                                                                            </table>
-                                                                        
-                                                                        
-                                                                        </div>
+                                                                                        <button type="button" data-target="#Modal-header-bank" data-toggle="modal" class="btn btn-default btn-xs" ng-click="setbankdetails(bl)" ng-disabled="isSuperUser == 0">
+                                                                                            <i class="fa fa-edit"></i>
+
+                                                                                        </button>
+                                                                                    </td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+
+
                                                                     </div>
-                                                                
+                                                                </div>
+
                                                                 <div class="portlet box portlet-grey" style="margin-bottom: 10px;">
                                                                     <div class="portlet-header" style="background-color: #f5f5f5; border: 1px solid #e5e5e5; color: #b8adb7">
                                                                         <div class="caption"><a href="">Driver Transaction</a></div>
@@ -983,7 +931,7 @@
                                                                                         <td>{{t.Amount}}</td>
                                                                                         <td>{{t.Amount}}</td>
                                                                                     </tr>
-                                                                                   
+
                                                                                 </tbody>
                                                                             </table>
                                                                         </div>
@@ -997,93 +945,172 @@
                                                                 </div>
                                                             </form>
                                                         </div>
-                                                        </div>
-
                                                     </div>
+
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-
                                 </div>
+
                             </div>
                         </div>
                     </div>
+                </div>
                 <!----------BEGIN popups------------------->
                 <!----------BEGIN Uplode Files------------------->
-                    <div id="Modal-header-new-f" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header modal-header-primary">
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                    <h4 id="modal-header-primary-label" class="modal-title">Add New files</h4>
+                <div id="Modal-header-new-f" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Add New files</h4>
+                            </div>
+                            <div class="modal-body" ng-model="driverDoc">
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="d.Name for d in (PendDocFiles|filter:{uploaded:0}) track by d.typeid" ng-model="driverDoc.docType" style="width:100%">
+                                            <option value="">Select</option>
+                                        </select>
+
+                                    </div>
                                 </div>
-                                <div class="modal-body" ng-model="driverDoc">
-
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Type:</label>
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{uploaded:0}) track by d.typeid" ng-model="driverDoc.docType" style="width:100%">
-                                                <option value="">Select</option>
-                                            </select>
-
-                                        </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Number:</label>
                                     </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Number:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block">
-                                                <input type="text" ng-model="driverDoc.docNo" class="form-control" />
-                                            </span>
+                                    <div class="col-md-6">
+                                        <span class="help-block">
+                                            <input type="text" ng-model="driverDoc.docNo" class="form-control" />
+                                        </span>
 
-                                        </div>
                                     </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Number2:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block">
-                                                <input type="text" ng-model="driverDoc.docNo2" class="form-control" />
-                                            </span>
-
-                                        </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Number2:</label>
                                     </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block"></span>
+                                    <div class="col-md-6">
+                                        <span class="help-block">
+                                            <input type="text" ng-model="driverDoc.docNo2" class="form-control" />
+                                        </span>
 
-                                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="driverDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-
-                                        </div>
                                     </div>
-
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="driverDoc.doc" ng-click="validateFile($event)" />
-                                        </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
                                     </div>
+                                    <div class="col-md-6">
+                                        <span class="help-block"></span>
 
-                                    <div class="row mbm" style="text-align:center">
-                                        <font color="red">Note: Only .pdf,.jpg,.png,.gif file types are supported</font>
+                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="driverDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
                                     </div>
-                                    <div class="form-actions">
-                                        <div style="text-align:center">
-                                            <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
-                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveDriverDoc()">Upload</button>
-                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelNewDoc()">Cancel</button>
-                                        </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="driverDoc.doc" ng-click="validateFile($event)" />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm" style="text-align:center">
+                                    <font color="red">Note: Only .pdf,.jpg,.png,.gif file types are supported</font>
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+                                        <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                                        <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="SaveDriverDoc()">Upload</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="cancelNewDoc()">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div id="Modal-header-new-e" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header modal-header-primary">
+                                <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
+                                <h4 id="modal-header-primary-label" class="modal-title">Update selected file</h4>
+                            </div>
+                            <div class="modal-body" ng-model="driverDoc">
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Type:</label>
+                                    </div>
+                                    <div class="col-md-6">
+
+                                        <select ng-options="d.Name for d in (PendDocFiles|filter:{IsMandatory:1,uploaded:0}) track by d.Id" ng-model="driverDoc.docType" style="width:100%">
+                                            <option value="">Select</option>
+                                        </select>
+
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Number:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="help-block">
+                                            <input type="text" ng-model="driverDoc.DocumentNo" class="form-control" />
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Document Number2:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="help-block">
+                                            <input type="text" ng-model="driverDoc.docNo2" class="form-control" />
+                                        </span>
+
+                                    </div>
+                                </div>
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <span class="help-block"></span>
+
+                                        <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="driverDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
+
+                                    </div>
+                                </div>
+
+                                <div class="row mbm">
+                                    <div style="text-align:right">
+                                        <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="driverDoc.doc" ng-click="validateFile($event)" />
+                                    </div>
+                                </div>
+
+                                <div class="row mbm" style="text-align:center">
+                                    <font color="red">Note: Only .pdf,.jpg,.png,.gif file types are supported</font>
+                                </div>
+                                <div class="form-actions">
+                                    <div style="text-align:center">
+                                        <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
+                                        <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="updateDoc();">Update</button>
+                                        <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -1091,87 +1118,8 @@
                         </div>
                     </div>
 
-                    <div id="Modal-header-new-e" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header modal-header-primary">
-                                    <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
-                                    <h4 id="modal-header-primary-label" class="modal-title">Update selected file</h4>
-                                </div>
-                                <div class="modal-body" ng-model="driverDoc">
 
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Type:</label>
-                                        </div>
-                                        <div class="col-md-6">
-
-                                            <select ng-options="d.Name for d in (PendDocFiles|filter:{IsMandatory:1,uploaded:0}) track by d.Id" ng-model="driverDoc.docType" style="width:100%">
-                                                <option value="">Select</option>
-                                            </select>
-
-                                        </div>
-                                    </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Number:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block">
-                                                <input type="text" ng-model="driverDoc.DocumentNo" class="form-control" />
-                                            </span>
-
-                                        </div>
-                                    </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Document Number2:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block">
-                                                <input type="text" ng-model="driverDoc.docNo2" class="form-control" />
-                                            </span>
-
-                                        </div>
-                                    </div>
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Name" class="col-md-4 control-label">Expiry Date:</label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <span class="help-block"></span>
-
-                                            <div data-date-format="mm/dd/yyyy" style="width:100%" class="input-group date datepicker-filter"><input type="text" placeholder="mm/dd/yyyy" style="width:100%" class="form-control" ng-model="driverDoc.expiryDate" /><span class="input-group-addon"><i class="fa fa-calendar"></i></span></div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="row mbm">
-                                        <div style="text-align:right">
-                                            <label for="Description" class="col-md-4 control-label">Select files:<span class='require'></span></label>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="driverDoc.doc" ng-click="validateFile($event)" />
-                                        </div>
-                                    </div>
-
-                                    <div class="row mbm" style="text-align:center">
-                                        <font color="red">Note: Only .pdf,.jpg,.png,.gif file types are supported</font>
-                                    </div>
-                                    <div class="form-actions">
-                                        <div style="text-align:center">
-                                            <!--<button class="btn btn-primary" type="button" ng-click="AddAssetDoc();">Add</button>-->
-                                            <button type="button" data-dismiss="modal" class="btn btn-default" ng-click="updateDoc();">Update</button>
-                                            <button type="button" data-dismiss="modal" class="btn btn-default">Cancel</button>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
+                </div>
                 <!----------END Uplode Files------------------->
                 <!----------BEGIN Vehicle Details------------------->
                 <div id="Modal-Assign-vehicle" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
@@ -1259,7 +1207,7 @@
 
                                         <button type="button" class="btn btn-info" data-dismiss="modal" ng-click="AssignVehicle(newVehicle,'I')">Save</button>
 
-                                        <a  data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
+                                        <a data-dismiss="modal" class="btn btn-primary" ng-click="clearnewVehicle()">Cancel</a>
 
                                     </div>
                                 </div>
@@ -1279,7 +1227,7 @@
                             </div>
                             <div class="modal-body" ng-model="b">
 
-                                
+
 
                                 <div class="row mbm">
                                     <div style="text-align:right">
@@ -1346,12 +1294,12 @@
                                     <div style="text-align:right">
                                         <label for="selCompany" class="col-md-4 control-label">QR Code:<span class='require'></span></label>
                                     </div>
-                                    <div class="col-md-6">                                         
+                                    <div class="col-md-6">
                                         <input type="file" name="fileInput" id="fileInput" ngf-pattern="'image/*,application/pdf'" ng-file-select="onFileSelect($files,$event)" class="btn btn-green" accept=".pdf,.jpg,.png,.gif" ng-model="b.qrcode"/>
                                     </div>
                                 </div>-->
-                                
-                          
+
+
                                 <div class="form-actions">
                                     <div style="text-align:center">
 
@@ -1374,15 +1322,15 @@
                                 <button type="button" data-dismiss="modal" aria-hidden="true" class="close">&times;</button>
                                 <h4 id="modal-header-primary-label" class="modal-title">Edit Bank Details</h4>
                             </div>
-                            <div class="modal-body" ng-model ="b">
+                            <div class="modal-body" ng-model="b">
                                 <div class=" row mbm">
-                                <div style="text-align:right">
-                                    <label for="Fax" class="col-md-4 control-label">Account Number<span class='require'></span></label>
+                                    <div style="text-align:right">
+                                        <label for="Fax" class="col-md-4 control-label">Account Number<span class='require'></span></label>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <input type="text" ng-model="b.AccountNumber" class="form-control" />
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <input type="text" ng-model="b.AccountNumber" class="form-control" />
-                                </div>
-                            </div>
 
                                 <div class="row mbm">
 
@@ -1451,7 +1399,7 @@
 
                 </div>
 
-                
+
                 <!----------END Banking------------------->
                 <!----------BEGIN Email ------------------->
                 <div id="email-sent" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal">
@@ -1475,7 +1423,7 @@
                                                     <div class="input-group"><span class="input-group-addon">To:</span><input id="to" type="text" ng-model="m.ToMailId" class="form-control" /></div>
                                                 </div>
                                                 <div class="form-group hidden">
-                                                    <div class="input-group"><span class="input-group-addon">Cc:</span><input id="cc" type="text"  ng-model="m.CarbonCopy" class="form-control" /></div>
+                                                    <div class="input-group"><span class="input-group-addon">Cc:</span><input id="cc" type="text" ng-model="m.CarbonCopy" class="form-control" /></div>
                                                 </div>
                                                 <div class="form-group hidden">
                                                     <div class="input-group"><span class="input-group-addon">Bcc:</span><input id="bcc" type="text" ng-model="m.BlindCarbonCopy" class="form-control" /></div>
@@ -1529,26 +1477,26 @@
                                     <div class="portlet box portlet-white">
                                         <div class="portlet-header">
                                             <div class="caption">Compose Sms</div>
-                                           
+
                                         </div>
                                         <div class="portlet-body">
                                             <form role="form-horizontal" method="post">
                                                 <div class="form-group">
                                                     <div class="input-group"><span class="input-group-addon">Mobile Number:</span><input id="to" type="text" ng-model="m.ToMailId" class="form-control" /></div>
                                                 </div>
-                                               
+
                                                 <div class="form-group">
                                                     <div class="input-group"><span class="input-group-addon">Subject:</span><input id="subject" type="text" ng-model="m.Subject" class="form-control" /></div>
                                                 </div>
                                                 <div class="compose-editor mbl"><textarea rows="6" class="wysihtml5 form-control" ng-model="m.Text"></textarea></div>
-                                               
+
                                                 <div class="compose-btn">
                                                     <button class="btn btn-sm btn-primary" data-dismiss="modal" ng-click="sendemail(m,'I')">
                                                         <i class="fa fa-check"></i>&nbsp;
                                                         Send
                                                     </button>
-                                                   
-                                                   
+
+
                                                 </div>
                                             </form>
                                         </div>
@@ -1560,9 +1508,6 @@
                     </div>
                 </div>
                 <!----------END Sms------------------->
-
-
-
                 <!----------Begin Vehicle------>
                 <div id="Modal-header-new" tabindex="-1" role="dialog" aria-labelledby="modal-header-primary-label" aria-hidden="true" class="modal fade">
                     <div class=" modal-dialog modal-lg">
@@ -1753,38 +1698,36 @@
 
                 </div>
                 <!----------End Vehicle------>
-
-
                 <!----------ENDpopups------------------->
-                    <!--BEGIN FOOTER-->
-                    <div id="footer">
-                        <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
-                    </div>
-                    <!--END FOOTER-->
-
-
-
+                <!--BEGIN FOOTER-->
+                <div id="footer">
+                    <div class="copyright">2016 © Interbus - Smart Ticketing Dashboard portal</div>
                 </div>
-                <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
-
-                    <div class="modal-header">
-                        <h3 class="modal-title">Save confirmation!</h3>
-                    </div>
-                    <div class="modal-body">
-                        <!--<ul>
-                            <li ng-repeat="item in items">
-                                <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
-                            </li>
-                        </ul>
-                        Selected: <b>{{ selected.item }}</b>-->
-                        {{mssg}}
-                    </div>
+                <!--END FOOTER-->
 
 
-                </script>
+
             </div>
+            <script type="text/ng-template" id="myModalContent.html" data-backdrop="static">
+
+                <div class="modal-header">
+                    <h3 class="modal-title">Save confirmation!</h3>
+                </div>
+                <div class="modal-body">
+                    <!--<ul>
+                        <li ng-repeat="item in items">
+                            <a href="#" ng-click="$event.preventDefault(); selected.item = item">{{ item }}</a>
+                        </li>
+                    </ul>
+                    Selected: <b>{{ selected.item }}</b>-->
+                    {{mssg}}
+                </div>
+
+
+            </script>
         </div>
-  
+    </div>
+
 
     <script src="js/jquery-1.10.2.min.js"></script>
     <script src="js/jquery-migrate-1.2.1.min.js"></script>
@@ -1820,7 +1763,7 @@
     <script src="js/ngStorage.js"></script>
     <script src="js/fileupload/angular-file-upload.js"></script>
     <script src="js/fileupload/angular-file-upload-shim.js"></script>
-    <script src="js/DriverDetails.js"></script>
+    <script src="js/BrandAmbassdorDetails.js"></script>
 
     <script src="js/fileupload/Upload.js"></script>
     <script src="vendors/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>

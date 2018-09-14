@@ -33,7 +33,6 @@ namespace SmartTicketDashboard.Controllers
             //Rid.SqlDbType = SqlDbType.Int;
             //Rid.Value = TypeGroupId;
             //cmd.Parameters.Add(Rid);
-
             DataSet ds = new DataSet();
             SqlDataAdapter db = new SqlDataAdapter(cmd);
             db.Fill(ds);
