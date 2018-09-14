@@ -2,98 +2,6 @@
 <html lang="en">
 <head>
     <title>Route Details </title>
-    <!--<style>
-        #map {
-            position: absolute;
-            height:600px;
-            width:600px;
-            left: 5px;
-            right: 50%;
-        }
-        #panel-wpr {
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            right: 0;
-            overflow: auto;
-        }
-        #panel {
-            font-family: arial;
-            padding: 0 5px;
-        }
-        #info {
-            padding: 5px;
-        }
-        #from {
-            width: 90%;
-            font-size: 1.2em;
-        }
-        .adp-directions {
-            width: 100%;
-        }
-        .input {
-            background-color: white;
-            padding-left: 8px;
-            border: 1px solid #D9D9D9;
-            border-top: 1px solid silver;
-            -webkit-border-radius: 1px;
-            -moz-border-radius: 1px;
-            border-radius: 1px;
-        }
-        .time {
-            margin: 0;
-            height: 17px;
-            border: 1px solid;
-            border-top-color: #CCC;
-            border-right-color: #999;
-            border-left-color: #999;
-            border-bottom-color: #CCC;
-            padding: 2px 15px 1px 1px;
-        }
-        button {
-            border: 1px solid #3079ED;
-            color: white;
-            background-color: #4D90FE;
-            background-image: -webkit-gradient(linear, left top, left bottom, from(#4D90FE), to(#4787ED));
-            background-image: -webkit-linear-gradient(top, #4D90FE, #4787ED);
-            background-image: -moz-linear-gradient(top, #4D90FE, #4787ED);
-            background-image: -ms-linear-gradient(top, #4D90FE, #4787ED);
-            background-image: -o-linear-gradient(top, #4D90FE, #4787ED);
-            background-image: linear-gradient(top, #4D90FE, #4787ED);
-            filter: progid: DXImageTransform.Microsoft.gradient(startColorStr='#4d90fe', EndColorStr='#4787ed');
-            display: inline-block;
-            min-width: 54px;
-            text-align: center;
-            font-weight: bold;
-            padding: 0 8px;
-            line-height: 27px;
-            -webkit-border-radius: 2px;
-            -moz-border-radius: 2px;
-            border-radius: 2px;
-            -webkit-transition: all 0.218s;
-            -moz-transition: all 0.218s;
-            -o-transition: all 0.218s;
-            transition: all 0.218s;
-        }
-        #info div {
-            line-height: 22px;
-            font-size: 110%;
-        }
-        .btn {
-        }
-        #panel-wpr {
-            border-left: 1px solid #e6e6e6;
-        }
-        #info {
-            border-bottom: 1px solid #E6E6E6;
-            margin-bottom: 5px;
-        }
-        h2 {
-            margin: 0;
-            padding: 0;
-        }
-    </style>-->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link type="text/css" rel="stylesheet" href="vendors/font-awesome/css/font-awesome.min.css">
@@ -543,8 +451,6 @@
                             </ol>
                             <div class="clearfix"></div>
                         </div>
-
-
                         <div class="page-content">
                             <div id="table-action" class="row">
                                 <div class="col-lg-12">
@@ -556,11 +462,11 @@
                                                 <div class="col-lg-12">
 
                                                     <div class="table-container">
-                                                        <div id="transit-wpr">
+                                                        <!--<div id="transit-wpr">
                                                 <button id="transit">Toggle transit layer</button>
-                                            </div>
-                                            <div id="map" style="width:600px;height:400px;"></div>
-                                            <div id="panel"></div>
+                                            </div>-->
+                                            <!--<div id="map" style="width:600px;height:400px;"></div>
+                                            <div id="panel"></div>-->
                                                         <!--END CONTENT-->
                                                         <div class="row">
                                                             <div class="row mbm">
@@ -584,26 +490,68 @@
                                                                     </div>
                                                                 </div>
                                                             </div>
-
-                                                            <!--<div class="row mbm">
-            <div class="col-md-4">
-                Route Code: <input type="text" disabled ng-model="r.code" />
-            </div>
-            <div class="col-md-4">
-                Source: <input type="text" disabled ng-model="r.Source" />
-            </div>
-            <div>
-                <div class="col-md-4">
-                    Destination: <input type="text" disabled ng-model="r.Destination" />
-                </div>
-
-            </div>
-        </div>-->
-
-
-
+                                                                                                                      
                                                         </div>
-                                                    </div><!--BEGIN FOOTER-->
+                                                        <div class="row">
+                                                            <!--Show Place Names-->
+                                                            <div class="lg-md-4">
+                                                                <div class="col-md-4" style="padding-top:10px;margin-left:10px">
+
+                                                                    <form class="form-horizontal">
+                                                                        <div class="form-group row">
+                                                                            <div class="col-xs-12">
+                                                                                <label for="ex1">Source</label>
+                                                                                <input class="form-control" id="origin" type="text" placeholder="Current location" ng-model="origin">
+                                                                            </div>
+                                                                            <div class="col-xs-12">
+                                                                                <label for="ex2">Destination</label>
+                                                                                <input class="form-control" id="destination" type="text" placeholder="Enter drop point" ng-model="destination">
+                                                                                <br />
+                                                                            </div>
+                                                                            <h6>Create Stops</h6>
+                                                                            <div class="col-xs-12" id="room_fileds">
+                                                                                <div class="content">
+                                                                                </div>
+                                                                                <!--<textarea id="disdata" style="width:340px;height:500px;"></textarea>-->
+                                                                            </div>
+                                                                            <!--<div class="col-xs-12">
+                                                                                <div class="form-group form-group-sm">
+                                                                                    <label class="col-sm-2 control-label" for="sm"><span class="badge">1</span></label>
+                                                                                    <div class="col-sm-10">
+                                                                                        <input class="form-control" type="text" id="sm" ng-model="latitude">
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="col-xs-12">
+                                                                                <div class="form-group form-group-sm">
+                                                                                    <label class="col-sm-2 control-label" for="sm"><span class="badge">2</span></label>
+                                                                                    <div class="col-sm-10">
+                                                                                        <input class="form-control" type="text" id="sm" ng-model="longitude">
+                                                                                    </div>
+                                                                                </div>
+
+                                                                            </div>-->
+
+                                                                            <div class="form-group">
+                                                                                <div class="btn-medium green" style="margin-top:15px;margin-left:75px">
+                                                                                    <button class="btn-medium green" ng-click="SaveRouteStops(directions ,'I')">Save</button>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </form>
+                                                                </div>
+                                                                </div>
+                                                            <!--To dispaly Map-->
+                                                                <div class="lg-md-6">
+                                                                    <!--<div class="panel-body" id="map">
+                                                                        <google-map control="map.control" center="map.center" zoom="map.zoom" ng-click="CenterMap(loc)">
+                                                                        </google-map>
+                                                                    </div>-->
+                                                                    <div id="map" style="width:600px;height:400px;"></div>
+                                                                    <div id="panel"></div>
+                                                                </div>
+                                                            </div>
+                                                        <!--BEGIN FOOTER-->
                                                 </div>
 
                                             </div>
@@ -664,11 +612,13 @@
                                 <script src="js/angular.js"></script>
                                 <script src="js/ui-bootstrap-tpls-1.3.3.js"></script>
                                 <script src="js/ngStorage.js"></script>
-                                <!--<script src="js/FleetOwnerRouteDetails.js"></script>-->
-                                <script src="js/Testingrouts.js"></script>
-
+                                <script src="js/FleetOwnerRouteDetails.js"></script>
+                                <!--<script src="js/Testingrouts.js"></script>-->
                                 <script>
                                     var arrlist = [];
+                                    var room = 1;
+                                    var arrlist1 = [];
+                                    var a='';var b='';
                                     var infowindow = new google.maps.InfoWindow();
                                     var directions = new google.maps.DirectionsService();
                                     var renderer = new google.maps.DirectionsRenderer({
@@ -710,15 +660,13 @@
                                         //autocomplete.bindTo('bounds', map);
                                         route();
                                     }
-
-                                    function route() {
+                                    function route(a,b) {
                                         var request = {
                                             //origin: document.getElementById('from').value,
-                                            origin: 'Ameerpet, Hyderabad, Telangana',
-                                            destination: 'Madhapur, Hyderabad, Telangana',
+                                            origin: a,
+                                            destination:b, //'Madhapur, Hyderabad, Telangana',
                                             travelMode: google.maps.DirectionsTravelMode.WALKING
                                         };
-
                                         var panel = document.getElementById('panel');
                                         panel.innerHTML = '';
                                         directions.route(request, function (response, status) {
@@ -732,16 +680,17 @@
                                                 renderer.setMap(null);
                                                 //renderer.setPanel(null);
                                             }
-
                                         });
-
                                     }
-
+                                    //function testgetloc(ddd) {
+                                    //    var testlg = ddd;
+                                    //}
                                     var polylineOptions = {
                                         strokeColor: '#C83939',
                                         strokeOpacity: 1,
                                         strokeWeight: 4
                                     };
+
                                     var polylines = [];
                                     function renderDirectionsPolylines(response) {
                                         for (var i = 0; i < polylines.length; i++) {
@@ -760,21 +709,67 @@
                                                 polylines.push(stepPolyline);
                                                 google.maps.event.addListener(stepPolyline, 'click', function (evt) {
                                                     arrlist.push(evt);
-                                                    //infowindow.setContent("you clicked on the route<br>"+evt.latLng.toUrlValue(6));
-                                                    //infowindow.setPosition(evt.latLng);
+                                                    //testgetloc(arrlist);
+                                                    var geocoder = new google.maps.Geocoder;
+                                                    var infowindow = new google.maps.InfoWindow;
+                                                    var getlat = evt.latLng.lat();
+                                                    var getlog = evt.latLng.lng();
+                                                    geocodeLatLng(getlat + ',' + getlog, geocoder, map, infowindow);
                                                     var marker = new google.maps.Marker({
 
                                                         position: evt.latLng,
                                                         map: map,
-                                                        title: 'Hello World!'
                                                     });
+                                                    //infowindow.setContent(evt.la.formatted_address);
                                                     infowindow.open(map);
                                                 })
                                             }
                                         }
                                     }
-                                    google.maps.event.addDomListener(window, 'load', initialize);
+                                    // Start To popup Address 
+                                    function geocodeLatLng(dd,geocoder, map, infowindow) {
+                                        var latlngStr = dd.split(',', 2);
+                                        var latlng = { lat: parseFloat(latlngStr[0]), lng: parseFloat(latlngStr[1]) };
+                                        geocoder.geocode({ 'location': latlng }, function (results, status) {
+                                            if (status === 'OK') {
+                                                if (results[0]) {
+                                                    //map.setZoom(11);
+                                                    arrlist1.push(results[0]);
+                                                    var marker = new google.maps.Marker({
+                                                        position: latlng,
+                                                        map: map
+                                                    });
+                                                    var distext = '';
+                                                    for (var i = 0; i < arrlist1.length; i++) {
+                                                        distext += arrlist1[i].formatted_address+'<br\>';
+                                                    }
 
+                                                    //document.getElementById("disdata").innerHTML = distext;
+                                                    infowindow.setContent(results[0].formatted_address);
+                                                    infowindow.open(map, marker);
+                                                    add_fields(results[0].formatted_address);
+                                                } else {
+                                                    window.alert('No results found');
+                                                }
+                                            } else {
+                                                window.alert('Geocoder failed due to: ' + status);
+                                            }
+                                        });
+                                       
+                                    }
+                                    // End To popup Address 
+                                    //Start Creating Input Fields
+                                    function add_fields(getadd) {
+                                        room++;
+                                        var rr = room + "";
+                                        var objTo = document.getElementById('room_fileds')
+                                        var divtest = document.createElement("div");
+                                        divtest.innerHTML = '<div class="label">Room ' + (room-1)+ ':</div><div class="content"><span>' + (room-1) + ': <input id=rr type="text" style="width:320px;height:40px;" name="width[]" value="'+getadd+'" /></div>';
+                                        
+                                        objTo.appendChild(divtest)
+                                    }
+                                    //End Creating Input Fields
+                                    google.maps.event.addDomListener(window, 'load', initialize);
                                 </script>
 </body>
 </html>

@@ -17,7 +17,7 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
     $scope.markers = [];
     stopsList = [];
     $scope.RouteDetails = [];
-
+   
     $scope.map = {
         control: {},
         center: {
@@ -99,10 +99,6 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
     }
 
-
-    
-
-
     $scope.CenterMap = function () {
         var srclat = $scope.srcLat;
         var srclng = $scope.srcLon;
@@ -132,13 +128,6 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
        
         //createMarker(lat,long);
     }
-
-       
-    
-       
-
-
-
     $scope.CenterMap1 = function () {
 
         var lat = 17.3850;
@@ -247,9 +236,14 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
         });
         infowindow.open(map1, marker);
     };
-    $scope.SavePricing = function (directions, flag) {
-        alert();
+    $scope.SaveRouteStops = function (directions, flag) {
+        if (arrlist.length == 0) {
+            alert('Please Select Stops..!')
+            return;
+        }
+        for (var i = 0; i < arrlist.length; i++) {
 
+        }
 
         var directions = {
             Id: directions.Id,
@@ -453,7 +447,9 @@ var mycrtl1 = myapp1.controller('myCtrl', function ($scope, $http, $localStorage
 
             $scope.origin = $scope.RouteDetails.Table[0].source;
             $scope.destination = $scope.RouteDetails.Table[0].dest;
-            $scope.getDirections();
+            //$scope.getDirections();
+            route($scope.origin, $scope.destination);
+
         });        
     }
 
