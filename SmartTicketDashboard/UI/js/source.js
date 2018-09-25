@@ -15,6 +15,13 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
        
         });
     }
+
+    $scope.GetDemoRequest = function () {
+        $http.get('/api/DemoRequest/GetDemoRequest').then(function (response, req) {
+            $scope.demoreq = response.data;
+
+        });
+    }
     
 
 
