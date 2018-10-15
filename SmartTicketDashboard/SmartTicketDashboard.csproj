@@ -5551,6 +5551,7 @@
     <Compile Include="Controllers\CreateFleetOwnerController.cs" />
     <Compile Include="Controllers\CustomerAccountDetailsController.cs" />
     <Compile Include="Controllers\DataLoadController.cs" />
+    <Compile Include="Controllers\DemoRequestController.cs" />
     <Compile Include="Controllers\DriverMasterController.cs" />
     <Compile Include="Controllers\DriverStatusController.cs" />
     <Compile Include="Controllers\EditHistoryController.cs" />
