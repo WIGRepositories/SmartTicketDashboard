@@ -3393,7 +3393,7 @@ namespace SmartTicketDashboard.Models
         public string Reviewed { get; set; }
         public string notification { get; set; }
         public int statusid { get; set; }
-        
+
     }
 }
 

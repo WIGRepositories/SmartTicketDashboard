@@ -15,13 +15,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
        
         });
     }
-    
+
     $scope.GetDemoRequest = function () {
         $http.get('/api/DemoRequest/GetDemoRequest').then(function (response, req) {
             $scope.demoreq = response.data;
 
         });
     }
+    
+
 
     $scope.GetFleetDetails = function () {
 
@@ -244,14 +246,15 @@ var ctrl = app.controller('myCtrl', function ($scope, $http, $localStorage, $int
         $scope.currGroup = null;
     };
 
+
     $scope.SendDemoMail = function (d) {
 
         var demo = {
 
-            Id:d.Id,
+            Id: d.Id,
             email: d.Email,
-            Mobile: d.MobileNumber,            
-            flag:'U',
+            Mobile: d.MobileNumber,
+            flag: 'U',
         }
 
         var req = {
